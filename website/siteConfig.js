@@ -21,7 +21,7 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'Sirius-Chain Developer Center', // Title for your website.
+  title: 'Sirius-Chain Developer Center 0.16', // Title for your website.
   tagline: 'A website for blockchain developer',
   url: 'https://bcdocs.xpxsirius.io', // Your website URL
   baseUrl: '/', // Base URL for your project */
