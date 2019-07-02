@@ -83,7 +83,7 @@ body{
 #redoc .menu-content label.active,
 #redoc .menu-content label.active:hover,
 #redoc .menu-content label:hover {
-    color: #fff !important;
+    color: #24292e !important;
     background-color: rgba(255,255,255,0) !important;
 }
 .bbzwOW,
@@ -100,6 +100,12 @@ body{
     padding-right: 30px !important;
 }
 
+.hJjUAi,
+.cpeKUl {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
 .hJjUAi {
     opacity: 0.6;
 }
@@ -112,16 +118,33 @@ body{
 .bbzwOW, .hJjUAi,
 #redoc .menu-content label.-depth1.active > span,
 #redoc .menu-content label.-depth1:hover > span {
-    color: #fff !important;
+    color: #24292e !important;
+}
+.bbzwOW, .hJjUAi,
+#redoc .menu-content label.-depth1.active > span,
+#redoc .menu-content label.-depth1:hover > span,
+#redoc .menu-content li .bbzwOW .iYFoHM {
+    font-weight: 600 !important;
+}
+#redoc .menu-content li .fJsPqZ {
+    font-size: 14px !important;
+}
+#redoc .menu-content li ul {
+    padding-bottom: 20px;
 }
 #redoc .dYkZdi,
 .bbzwOW .sc-1g5rdgs-0 polygon,
 .dBdWcW.active .sc-1g5rdgs-0 polygon {
-    fill: #fff !important
+    fill: #24292e !important
 }
 #redoc .flpwnc {
     width: 100% !important;
     margin: 0 !important;
+}
+#redoc .bbzwOW {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 8px;
 }
 #redoc .hsnYXF .search-input {
     padding: 20px 25px;
@@ -138,10 +161,11 @@ body{
     border-top-color: rgba(255,255,255,0.1) !important;
     font-size: 12px !important;
     font-weight: 700 !important;
-    color: #fff !important;
+    color: #24292e !important;
 }
 #redoc .flpwnc {
-    border-bottom-color: rgba(255,255,255,0.1) !important;
+    border-bottom: 1px solid #e1e6e9 !important;
+    margin-bottom: 20px !important;
 }
 
 @media screen and (max-width: 800px){

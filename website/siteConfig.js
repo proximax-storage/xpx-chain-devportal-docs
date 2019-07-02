@@ -58,7 +58,7 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/logo-proximax-white.png',
+  headerIcon: 'img/logo-proximax.png',
   footerIcon: 'img/logo-proximax.png',
   favicon: 'img/favicon.png',
 
