@@ -19,7 +19,7 @@ Configuration parameters are [editable](https://github.com/proximax-storage/cata
 
 ## Block creation
 
-Blocks are created by [accounts](../built-in-features/account.md). The process of creating new blocks is called [harvesting](./harvesting.md). The harvesting account - called the harvester - gets the fees for the transactions in the block. This gives the harvester an incentive to add as many transactions to the block as possible.
+Blocks are created by [accounts](../built-in-features/account.md). The process of creating new blocks is called [validating](./validating.md). The validating account - called the validator - gets the fees for the transactions in the block. This gives the validator an incentive to add as many transactions to the block as possible.
 
 
 ## Guides
@@ -50,7 +50,7 @@ previousBlockHash |	32 bytes (binary) |	The hash of the previous block.
 blockTransactionHash | 32 bytes (binary) |	The transactions included in a block are hashed forming a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree). The root of the tree summarizes them.
 blockReceiptsHash | 32 bytes (binary) |	The collection of [receipts](./receipt.md) are hashed into a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree) and linked to a [block](#). The block header stores the root hash.
 stateHash |	32 bytes (binary) |	The state of the blockchain is stored in RocksDB for each block, forming a [patricia tree](https://en.wikipedia.org/wiki/Radix_tree). The root of the tree summarizes the state of the blockchain for a given block.
-beneficiaryPublicKey | 32 bytes (binary) | The public key of the optional beneficiary designated by harvester.
+beneficiaryPublicKey | 32 bytes (binary) | The public key of the optional beneficiary designated by validator.
 
 **Version**: The higher byte represents the network identifier.
 

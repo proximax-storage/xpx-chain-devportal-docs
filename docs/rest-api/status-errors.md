@@ -24,7 +24,7 @@ Failure_Core_Too_Many_Transactions |	Validation failed because there are too man
 Failure_Core_Nemesis_Account_Signed_After_Nemesis_Block |	Validation failed because an entity originated from the nemesis account after the nemesis block.
 Failure_Core_Wrong_Network |	Validation failed because the entity has the wrong network specified.
 Failure_Core_Invalid_Address |	Validation failed because an address is invalid.
-Failure_Core_Block_Harvester_Ineligible |	Validation failed because a block was harvested by an ineligible harvester
+Failure_Core_Block_Validator_Ineligible |	Validation failed because a block was validated by an ineligible validator
 Failure_Hash_Exists |	Validation failed because the entity hash is already known.
 Failure_Signature_Not_Verifiable | Validation failed because the verification of the signature failed.
 Failure_AccountLink_Invalid_Action 	| Validation failed because the account link action is invalid: link (0) and unlink (1).

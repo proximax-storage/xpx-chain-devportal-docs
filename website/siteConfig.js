@@ -21,7 +21,7 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'Sirius-Chain Developer Center 0.16', // Title for your website.
+  title: 'Sirius-Chain Developer Center 0.1.0', // Title for your website.
   tagline: 'A website for blockchain developer',
   url: 'https://bcdocs.xpxsirius.io', // Your website URL
   baseUrl: '/', // Base URL for your project */
@@ -38,7 +38,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'getting-started/setting-up-workstation', label: 'Getting Started'},
+    {doc: 'getting-started/what-is-proximax-sirius-chain', label: 'Getting Started'},
     {doc: 'built-in-features/account', label: 'Built-in features'},
     {page: 'endpoints', label: 'REST API Endpoints'},
     {doc: 'guides/account/account-overview', label: 'Guides'},

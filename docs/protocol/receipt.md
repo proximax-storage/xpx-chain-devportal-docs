@@ -32,7 +32,7 @@ Sirius-Chain records invisible state changes for the following entities.
 **Id** | 	**Receipt** |	**Type** |	**Description**
 -------|----------------|------------|-------------------
 **Core**  |  | |  |
-0x4321 |	Harvest_Fee |	[BalanceCredit](#balancechangereceipt) |	The recipient, account and amount of fees received for harvesting a block. It is recorded when a block is [harvested](./harvesting.md).
+0x4321 |	Validate_Fee |	[BalanceCredit](#balancechangereceipt) |	The recipient, account and amount of fees received for validating a block. It is recorded when a block is [validated](./validating.md).
 0x43F1 |	Address_Alias_Resolution |	[Alias Resolution](#resolutionstatement) |	The unresolved and resolved [alias](../built-in-features/namespace.md). It is recorded when a transaction indicates a valid address alias instead of an address.
 0x43F2 |	Mosaic_Alias_Resolution |	[Alias Resolution](#resolutionstatement) |	The unresolved and resolved alias. It is recorded when a transaction indicates a valid mosaic alias instead of a mosaicId.
 0x43E1 |	Transaction_Group |	[Aggregate](#transactionstatement) |	A collection of state changes for a given source. It is recorded when a state change receipt is issued.

@@ -11,7 +11,7 @@ Creates a new profile.
 **Options**
 
     -p, --privatekey <privatekey> - Private key
-    -n, --network <network>       - Network Type: MAIN_NET, TEST_NET, MIJIN, MIJIN_TEST
+    -n, --network <network>       - Network Type: MAIN_NET, TEST_NET, MIJIN, MIJIN_TEST, PRIVATE, PRIVATE_TEST
     -u, --url <url>               - Sirius-Chain Node URL. Example: http://localhost:3000
     --profile <profile>           - (Optional) profile name, if not private key will be stored as default
 
@@ -326,7 +326,7 @@ The Sirius-Chain command line interface has a set of monitoring commands to trac
 
 ### Block
 
-Monitors new confirmed [blocks](../protocol/block.md) harvested in the blockchain.
+Monitors new confirmed [blocks](../protocol/block.md) validated in the blockchain.
 
 **Command**
 ```
