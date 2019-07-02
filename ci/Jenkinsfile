@@ -38,7 +38,7 @@ pipeline {
 
         // echo 'Compressing Artifacts'
         // // Creates an XZ compressed archive
-        // sh "tar cJfv stage-techportal-${env.GIT_BRANCH}.tar.xz dist"
+        // sh "tar cJfv bcdocs-${env.GIT_BRANCH}.tar.xz dist"
       }
 
       post {
@@ -72,7 +72,7 @@ pipeline {
         success {
           slackSend channel: '#devops',
             color: 'good',
-            message: "Branch *${env.GIT_BRANCH}* Deployment of *${currentBuild.fullDisplayName}* completed successfully :100:\nAvailable at http://stage-techportal.xpxsirius.io"
+            message: "Branch *${env.GIT_BRANCH}* Deployment of *${currentBuild.fullDisplayName}* completed successfully :100:\nAvailable at http://bcdocs.xpxsirius.io"
         }
 
         failure {
