@@ -281,7 +281,7 @@ Some features are not yet implemented in this version of the SDK.
 - Encrypt and decrypt messages.
 - Mosaic Levies.
 - Connection pool.
-- Harvesting.
+- Validating.
 - Pageables.
 - NodeHttp.
 

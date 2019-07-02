@@ -153,7 +153,7 @@ Announce a hash lock transaction before sending a signed [aggregate bonded trans
 
 Once the related aggregate bonded transaction is confirmed, locked funds become available again in the account that signed the initial hash lock transaction.
 
-If the aggregate bonded transaction duration is reached without being signed by all cosignatories, the locked amount is collected by the block harvester at the height where the lock expires.
+If the aggregate bonded transaction duration is reached without being signed by all cosignatories, the locked amount is collected by the block validator at the height where the lock expires.
 
 **Version**: 0x01
 

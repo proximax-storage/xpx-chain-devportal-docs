@@ -1,10 +1,10 @@
 ---
-id: what-is-proximax-blockchain-layer
-title: What is ProximaX Blockchain Layer (Sirius-Chain)
+id: what-is-proximax-sirius-chain
+title: What is ProximaX Sirius-Chain
 ---
 ## Blockchain Reimagined and Evolved
 
-[ProximaX](https://proximax.io/) blockchain layer is a blockchain platform built from the ground up to be simple for developers to use blockchain technology. We named it as **Sirius-Chain**.
+[ProximaX](https://proximax.io/) Sirius-chain is a blockchain component under ProximaX Sirius platform built from the ground up to be simple for developers to use blockchain technology.
 
 Sirius-Chain is built around a powerful system to customize your using of the blockchain. We call it the Smart Asset System. It gives you the power to use Sirius Chain as if it were a custom blockchain built for your application and your assets.
 

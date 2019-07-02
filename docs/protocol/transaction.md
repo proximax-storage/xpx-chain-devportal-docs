@@ -34,8 +34,8 @@ There are different types of transactions. For example, you can transfer [mosaic
 |**Cross-chain swaps** | | |	  	 
 |0x4152 |	[Secret Lock Transaction](../built-in-features/cross-chain-swaps.md#secretlocktransaction)  |	Start a [token swap](../built-in-features/cross-chain-swaps.md) between different chains.|
 |0x4252 |	[Secret Proof Transaction](../built-in-features/cross-chain-swaps.md#secretprooftransaction)  |	Conclude a token swap between different chains. |
-|**Remote harvesting** | | |	  	 
-|0x414C |	[Account Link Transaction](./harvesting.md#accountlinktransaction) |	Delegates the account importance to a proxy account to enable [delegated harvesting](./harvesting.md).|
+|**Remote validating** | | |	  	 
+|0x414C |	[Account Link Transaction](./validating.md#accountlinktransaction) |	Delegates the account importance to a proxy account to enable [delegated validating](./validating.md).|
 
 ## Defining a transaction
 
@@ -45,17 +45,17 @@ Transactions are defined in a [serialized form](../rest-api/serialization.md). W
 
 ## Fees
 
-Transactions have an associated cost. This cost is necessary to provide an incentive for the [harvesters](./harvesting.md) who secure the network and run the infrastructure.
+Transactions have an associated cost. This cost is necessary to provide an incentive for the [validator](./validating.md) who secure the network and run the infrastructure.
 
-The fee associated with a transaction primarily depends on the transaction’s size. The effective fee is the product of the size of the transaction, and a fee multiplier set by the harvester. The node owner can configure the latter value to all positive values, including zero.
+The fee associated with a transaction primarily depends on the transaction’s size. The effective fee is the product of the size of the transaction, and a fee multiplier set by the validator. The node owner can configure the latter value to all positive values, including zero.
 
 > effective_fee = transaction::size * block::fee_multiplier
 
 A sender of a transaction must specify during the transaction definition a `max_fee`, meaning the maximum fee the account allows to spend for this transaction.
 
-If the `effective_fee` is smaller or equal to the `max_fee`, the harvester can opt to include the transaction in the block. The `fee_multiplier` is stored in the [block header](./block.md#blockheader), permitting to resolve which was the effective fee paid for every transaction included.
+If the `effective_fee` is smaller or equal to the `max_fee`, the validator can opt to include the transaction in the block. The `fee_multiplier` is stored in the [block header](./block.md#blockheader), permitting to resolve which was the effective fee paid for every transaction included.
 
-The harvesting nodes can decide their transaction inclusion strategy:
+The validating nodes can decide their transaction inclusion strategy:
 
 - **Prefer-oldest**: Preferred for networks with high transaction throughput requirements. Include first the oldest transactions.
 - **Minimize-fees**: Philanthropic nodes. Include first transactions that other nodes do not want to include.
@@ -84,7 +84,7 @@ After [announcing a transaction](https://github.com/proximax-storage/proximax-bc
 
 The first stage of validation happens in the API nodes. If the transaction presents some error, the WebSocket throws a notification through the status channel. In the positive case, the transaction reaches the P2P network with an **unconfirmed** status. Never rely on a transaction which has an unconfirmed state. It is not clear if it will get included in a block, as it should pass a second validation.
 
-The second validation is done before the transaction is added in a harvested block. If valid, the harvester stores the transaction in a block, and it reaches the **confirmed** status.
+The second validation is done before the transaction is added in a validated block. If valid, the validator stores the transaction in a block, and it reaches the **confirmed** status.
 
 Continuing the previous example, the transaction gets processed and the amount stated gets transferred from the signer’s account to the recipient’s account. Additionally, the transaction fee is deducted from the signer’s account.
 

@@ -24,10 +24,10 @@ class HomeSplash extends React.Component {
     return (
         <div className="home jumbotron text-center gap">
           <div className="inner">
-            <h1>Start Using Developer-Friendly Blockchain Platform</h1>
-            <h6>ProximaX Sirius gives you direct access to a specialized set of <b>tested</b> and <b>secure on-blockchain features</b> using your favourite <b>programming language</b>.
+            <h1>Start building apps on ProximaX Blockchain Platform</h1>
+            <h6>ProximaX Sirius-Chain gives you direct access to a specialised set of <b>tested</b> and <b>secure on-blockchain features</b> using your favourite <b>programming language</b>.
             </h6>
-            <p>ProximaX Sirius Version 0.16 &mdash; NEW UPDATE! <span>06.19.2019</span></p>
+            <p>ProximaX Sirius-Chain Version 0.1.0 &mdash; NEW UPDATE! <span>06.19.2019</span></p>
           </div>
         </div>
     );
@@ -108,7 +108,7 @@ class Index extends React.Component {
             content: 'Install the development kit and start coding your first blockchain app.',
             image: `${baseUrl}img/home-getting-started.png`,
             imageAlign: 'top',
-            link: `${baseUrl + docsUrl}/getting-started/what-is-proximax-blockchain-layer`,
+            link: `${baseUrl + docsUrl}/getting-started/what-is-proximax-sirius-chain`,
             title: 'Getting started',
           },
           {

@@ -27,7 +27,7 @@ Accounts have the following properties:
 > The amount of different [mosaics](./mosaic.md) the account owns. <br>
 >
 > **Importance** <br>
-> The relation between the amount of harvesting mosaics the account owns and the total mosaic supply. 
+> The relation between the amount of validating mosaics the account owns and the total mosaic supply. 
 
 ## Multisig Account
 

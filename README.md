@@ -1,6 +1,6 @@
 # ProximaX Sirius Docs
 
-The Official ProximaX Sirius Documentation.
+The Official ProximaX Sirius-Chain Documentation.
 
 # Requirement
 

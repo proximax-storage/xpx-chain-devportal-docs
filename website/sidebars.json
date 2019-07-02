@@ -1,7 +1,7 @@
 {
   "docs": {
     "Getting Started": [
-      "getting-started/what-is-proximax-blockchain-layer",
+      "getting-started/what-is-proximax-sirius-chain",
       "getting-started/setting-up-workstation",
       "getting-started/writing-first-application"
     ],
@@ -9,11 +9,11 @@
       "protocol/cryptography",
       "protocol/block",
       "protocol/transaction",
-      "protocol/harvesting",
+      "protocol/validating",
       "protocol/receipt",
       "protocol/node"
     ],
-    "Built-in Feautres": [
+    "Built-in Features": [
       "built-in-features/account",
       "built-in-features/account-filter",
       "built-in-features/multisig-account",
