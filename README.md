@@ -1,4 +1,4 @@
-# ProximaX Sirius Docs
+# ProximaX Sirius-Chain Docs
 
 The Official ProximaX Sirius-Chain Documentation.
 
@@ -16,7 +16,7 @@ npm i -g yarn
 
 1. `yarn install` in the website directory.
 
-## Building ProximaX Sirius Documentation
+## Building ProximaX Sirius-Chain Documentation
 
 2. `yarn build` in the website directory  
 
