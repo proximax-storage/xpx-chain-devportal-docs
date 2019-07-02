@@ -53,7 +53,7 @@ pipeline {
     stage('Deploy to bcdocs.xpxsirius.io') {
       steps {
         echo 'Managing S3'
-        withAWS(credentials: 'jenkins-ecr', region: 'ap-southeast-1') {
+        withAWS(credentials: 'jenkins-ecr', region: 'ap-southeast-2') {
         echo 'Deleting old files'
         s3Delete bucket: 'bcdocs.xpxsirius.io', path: './'
 
