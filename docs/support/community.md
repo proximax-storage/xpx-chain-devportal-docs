@@ -8,7 +8,8 @@ Discover how the open source [community](https://github.com/proximax-storage/com
 
 - Ask in [StackOverflow](https://stackoverflow.com/tags/xpx/) development related questions.
 
-[//]: <> (9- Reach our community joining the official [Slack](https://join.slack.com/t/xpx-chain/shared_invite/enQtMzY4MDc2NTg0ODgyLTFhZjgxM2NhYTQ1MTY1Mjk0ZDE2ZTJlYzUxYWYxYmJlYjAyY2EwNGM5NzgxMjM4MGEzMDc5ZDIwYTgzZjgyODM).)
+<!-- 9- Reach our community joining the official [Slack](https://join.slack.com/t/xpx-chain/shared_invite/enQtMzY4MDc2NTg0ODgyLTFhZjgxM2NhYTQ1MTY1Mjk0ZDE2ZTJlYzUxYWYxYmJlYjAyY2EwNGM5NzgxMjM4MGEzMDc5ZDIwYTgzZjgyODM).
+-->
 
 - Check the [contributing guidelines](./suggesting-changes.md) to propose changes.
 - Follow the development updates on [Twitter](https://twitter.com/proximaxio).

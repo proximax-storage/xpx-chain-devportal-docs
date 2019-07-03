@@ -58,8 +58,8 @@ beneficiaryPublicKey | 32 bytes (binary) | The public key of the optional benefi
 -------|----------------
 0x68 (MAIN_NET) | Public main network
 0x98 (TEST_NET) | Public test network
-0x60 (MIJIN) | Private network
-0x90 (MIJIN_TEST) | Private test network
+0x60 (PRIVATE) | Private network
+0x90 (PRIVATE_TEST) | Private test network
 
 **Type**: The type of the block.
 

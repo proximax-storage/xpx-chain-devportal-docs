@@ -100,24 +100,24 @@ const transactionHttp = new TransactionHttp(nodeUrl);
 const listener = new Listener(nodeUrl);
 
 const alicePrivateKey = process.env.PRIVATE_KEY as string;
-const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.MIJIN_TEST);
+const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.PRIVATE_TEST);
 
 const ticketDistributorPublicKey = 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D';
-const ticketDistributorPublicAccount = PublicAccount.createFromPublicKey(ticketDistributorPublicKey, NetworkType.MIJIN_TEST);
+const ticketDistributorPublicAccount = PublicAccount.createFromPublicKey(ticketDistributorPublicKey, NetworkType.PRIVATE_TEST);
 
 const aliceToTicketDistributorTx = TransferTransaction.create(
     Deadline.create(),
     ticketDistributorPublicAccount.address,
     [NetworkCurrencyMosaic.createRelative(100)],
     PlainMessage.create('send 100 prx:xpx to distributor'),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const ticketDistributorToAliceTx = TransferTransaction.create(
     Deadline.create(),
     aliceAccount.address,
     [new Mosaic(new MosaicId('museum:ticket'), UInt64.fromUint(1))],
     PlainMessage.create('send 1 museum:ticket to alice'),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--JavaSript-->
@@ -127,24 +127,24 @@ const transactionHttp = new TransactionHttp(nodeUrl);
 const listener = new Listener(nodeUrl);
 
 const alicePrivateKey = process.env.PRIVATE_KEY;
-const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.MIJIN_TEST);
+const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.PRIVATE_TEST);
 
 const ticketDistributorPublicKey = 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D';
-const ticketDistributorPublicAccount = PublicAccount.createFromPublicKey( ticketDistributorPublicKey, NetworkType.MIJIN_TEST);
+const ticketDistributorPublicAccount = PublicAccount.createFromPublicKey( ticketDistributorPublicKey, NetworkType.PRIVATE_TEST);
 
 const aliceToTicketDistributorTx = TransferTransaction.create(
     Deadline.create(),
     ticketDistributorPublicAccount.address,
     [NetworkCurrencyMosaic.createRelative(100)],
     PlainMessage.create('send 100 prx:xpx to distributor'),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const ticketDistributorToAliceTx = TransferTransaction.create(
     Deadline.create(),
     aliceAccount.address,
     [new Mosaic( new MosaicId('museum:ticket'), UInt64.fromUint(1))],
     PlainMessage.create('send 1 museum:ticket to alice'),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 <!--Java-->
 ```js
@@ -154,15 +154,15 @@ const ticketDistributorToAliceTx = TransferTransaction.create(
         // Replace with public key
         final String ticketDistributorPublicKey = "";
 
-        final Account aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.MIJIN_TEST);
-        final PublicAccount ticketDistributorPublicAccount = PublicAccount.createFromPublicKey(ticketDistributorPublicKey, NetworkType.MIJIN_TEST);
+        final Account aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.PRIVATE_TEST);
+        final PublicAccount ticketDistributorPublicAccount = PublicAccount.createFromPublicKey(ticketDistributorPublicKey, NetworkType.PRIVATE_TEST);
 
         final TransferTransaction aliceToTicketDistributorTx = TransferTransaction.create(
                 Deadline.create(2, HOURS),
                 ticketDistributorPublicAccount.getAddress(),
             Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(100))),
                 PlainMessage.create("send 100 prx:xpx to distributor"),
-                NetworkType.MIJIN_TEST
+                NetworkType.PRIVATE_TEST
         );
 
         final TransferTransaction ticketDistributorToAliceTx = TransferTransaction.create(
@@ -170,7 +170,7 @@ const ticketDistributorToAliceTx = TransferTransaction.create(
                 aliceAccount.getAddress(),
                 Collections.singletonList(new Mosaic(new MosaicId("museum:ticket"), BigInteger.valueOf(1))),
                 PlainMessage.create("send 1 museum:ticket to alice"),
-                NetworkType.MIJIN_TEST
+                NetworkType.PRIVATE_TEST
         );
 
         final AggregateTransaction aggregateTransaction = AggregateTransaction.createBonded(
@@ -179,7 +179,7 @@ const ticketDistributorToAliceTx = TransferTransaction.create(
                         aliceToTicketDistributorTx.toAggregate(aliceAccount.getPublicAccount()),
                         ticketDistributorToAliceTx.toAggregate(ticketDistributorPublicAccount)
                 ),
-                NetworkType.MIJIN_TEST
+                NetworkType.PRIVATE_TEST
         );
 
         final SignedTransaction aggregateSignedTransaction = aliceAccount.sign(aggregateTransaction);
@@ -195,7 +195,7 @@ const ticketDistributorToAliceTx = TransferTransaction.create(
 const aggregateTransaction = AggregateTransaction.createBonded(Deadline.create(),
     [aliceToTicketDistributorTx.toAggregate(aliceAccount.publicAccount),
         ticketDistributorToAliceTx.toAggregate(ticketDistributorPublicAccount)],
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const signedTransaction = aliceAccount.sign(aggregateTransaction);
 
@@ -204,7 +204,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
     NetworkCurrencyMosaic.createRelative(10),
     UInt64.fromUint(480),
     signedTransaction,
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction);
 
@@ -230,7 +230,7 @@ listener.open().then(() => {
 const aggregateTransaction = AggregateTransaction.createBonded(Deadline.create(),
     [aliceToTicketDistributorTx.toAggregate(aliceAccount.publicAccount),
         ticketDistributorToAliceTx.toAggregate(ticketDistributorPublicAccount)],
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const signedTransaction = aliceAccount.sign(aggregateTransaction);
 
@@ -239,7 +239,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
     NetworkCurrencyMosaic.createRelative(10),
     UInt64.fromUint(480),
     signedTransaction,
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction);
 
@@ -269,7 +269,7 @@ listener.open().then(() => {
                 NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
                 BigInteger.valueOf(480),
                 aggregateSignedTransaction,
-                NetworkType.MIJIN_TEST
+                NetworkType.PRIVATE_TEST
         );
 
         final SignedTransaction lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction);

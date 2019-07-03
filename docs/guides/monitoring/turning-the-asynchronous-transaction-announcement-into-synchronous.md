@@ -97,7 +97,7 @@ $> java -jar nem2-camel.jar --url http://localhost:3000
 <!--TypeScript-->
 ```js
 const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey,NetworkType.MIJIN_TEST);
+const account = Account.createFromPrivateKey(privateKey,NetworkType.PRIVATE_TEST);
 
 const recipientAddress =  Address.createFromRawAddress('SBHEVGUFDEW22FAT2EFU6UYXRKLTC6HFOPB4CRSE');
 
@@ -106,7 +106,7 @@ const transferTransaction = TransferTransaction.create(
    recipientAddress,
     [NetworkCurrencyMosaic.createRelative(10)],
     EmptyMessage,
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const signedTransaction = account.sign(transferTransaction);
 ```

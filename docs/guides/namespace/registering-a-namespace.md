@@ -82,7 +82,7 @@ In Sirius-Chain, Sirius-Chain blocks are complete every `15` seconds in average.
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
 const namespaceName = "foo"; //Replace with an unique namespace name
 
@@ -90,7 +90,7 @@ const registerNamespaceTransaction = RegisterNamespaceTransaction.createRootName
     Deadline.create(),
     namespaceName,
     UInt64.fromUint(1000),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const signedTransaction = account.sign(registerNamespaceTransaction);
 
@@ -104,7 +104,7 @@ transactionHttp
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
 const namespaceName = "foo"; //Replace with an unique namespace name
 
@@ -112,7 +112,7 @@ const registerNamespaceTransaction = RegisterNamespaceTransaction.createRootName
     Deadline.create(),
     namespaceName,
     UInt64.fromUint(1000),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const signedTransaction = account.sign(registerNamespaceTransaction);
 
@@ -126,7 +126,7 @@ transactionHttp
     // Replace with private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
     // Replace with namespace name
     final String namespaceName = "foo";
@@ -135,7 +135,7 @@ transactionHttp
         Deadline.create(2, ChronoUnit.HOURS),
         namespaceName,
         BigInteger.valueOf(1000),
-        NetworkType.MIJIN_TEST
+        NetworkType.PRIVATE_TEST
     );
 
     final SignedTransaction signedTransaction = account.sign(registerNamespaceTransaction);

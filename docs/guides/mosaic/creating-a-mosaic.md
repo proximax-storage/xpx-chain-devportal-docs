@@ -29,7 +29,7 @@ Our mosaic will be called `token`, and its parent namespace will be `foo`.
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
 // Replace with namespace name and mosaic name
 const namespaceName = 'foo';
@@ -41,7 +41,7 @@ const mosaicName = 'token';
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
 // Replace with namespace name and mosaic name
 const namespaceName = 'foo';
@@ -53,7 +53,7 @@ const mosaicName = 'token';
     // Replace with private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
     // Replace with namespace name and mosaic name
     final String namespaceName = "foo";
@@ -81,7 +81,7 @@ const mosaicDefinitionTransaction = MosaicDefinitionTransaction.create(
         divisibility: 0,
         duration: UInt64.fromUint(1000)
     }),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--JavaScript-->
@@ -97,7 +97,7 @@ const mosaicDefinitionTransaction = MosaicDefinitionTransaction.create(
         divisibility: 0,
         duration: UInt64.fromUint(1000)
     }),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--Java-->
@@ -107,7 +107,7 @@ MosaicDefinitionTransaction mosaicDefinitionTransaction = MosaicDefinitionTransa
     mosaicName,
     namespaceName,
     new MosaicProperties(true, true, false, 0, BigInteger.valueOf(1000)),
-    NetworkType.MIJIN_TEST
+    NetworkType.PRIVATE_TEST
 );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -130,7 +130,7 @@ const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
     mosaicDefinitionTransaction.mosaicId,
     MosaicSupplyType.Increase,
     UInt64.fromUint(1000000),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--JavaScript-->
@@ -140,7 +140,7 @@ const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
     mosaicDefinitionTransaction.mosaicId,
     MosaicSupplyType.Increase,
     UInt64.fromUint(1000000),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--Java-->
@@ -150,7 +150,7 @@ MosaicSupplyChangeTransaction mosaicSupplyChangeTransaction = MosaicSupplyChange
     mosaicDefinitionTransaction.getMosaicId(),
     MosaicSupplyType.INCREASE,
     BigInteger.valueOf(1000000),
-    NetworkType.MIJIN_TEST
+    NetworkType.PRIVATE_TEST
 );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -166,7 +166,7 @@ const aggregateTransaction = AggregateTransaction.createComplete(
         mosaicDefinitionTransaction.toAggregate(account.publicAccount),
         mosaicSupplyChangeTransaction.toAggregate(account.publicAccount)
     ],
-    NetworkType.MIJIN_TEST,
+    NetworkType.PRIVATE_TEST,
     []);
 
 const signedTransaction = account.sign(aggregateTransaction);
@@ -184,7 +184,7 @@ const aggregateTransaction = AggregateTransaction.createComplete(
         mosaicDefinitionTransaction.toAggregate(account.publicAccount),
         mosaicSupplyChangeTransaction.toAggregate(account.publicAccount)
     ],
-    NetworkType.MIJIN_TEST,
+    NetworkType.PRIVATE_TEST,
     []);
 
 const signedTransaction = account.sign(aggregateTransaction);
@@ -202,7 +202,7 @@ AggregateTransaction aggregateTransaction = AggregateTransaction.createComplete(
         mosaicDefinitionTransaction.toAggregate(account.getPublicAccount()),
         mosaicSupplyChangeTransaction.toAggregate(account.getPublicAccount())
     ),
-    NetworkType.MIJIN_TEST
+    NetworkType.PRIVATE_TEST
 );
 
 final SignedTransaction signedTransaction = account.sign(aggregateTransaction);
