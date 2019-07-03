@@ -68,6 +68,10 @@ const siteConfig = {
     secondaryColor: '#f06623',
   },
 
+  stylesheets: [
+    "https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900"
+  ],
+
   /* Custom fonts for website */
   
   fonts: {

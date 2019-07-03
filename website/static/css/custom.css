@@ -9,7 +9,7 @@ strong{
 }
 blockquote {
     background-color: #f3faff;
-    border-left-color: #e1e6e9;
+    border-left-color: #e1f0f9;
 }
 
 .caption{
@@ -387,7 +387,7 @@ div.cap-alpha-ol ol {
 }
 .separateOnPageNav .docsNavContainer {
     position: sticky;
-    top: 0;
+    top: 59px;
     padding-left: 30px;
     padding-right: 10px;
 }
@@ -423,12 +423,12 @@ div.cap-alpha-ol ol {
 }
 .toc .toggleNav ul li a:hover {
     color: #24292e;
-    background-color: #e2e6ea;
-    border-color: #e2e6ea;
+    background-color: #eef3f7;
+    border-color: #eef3f7;
 }
 .toc .toggleNav ul li.navListItemActive a {
     background-color: #ffffff;
-    border-color: #e2e6ea;
+    border-color: #eef3f7;
 }
 .collapsible .arrow svg path:first-child {
     fill: #24292e;
@@ -452,8 +452,7 @@ div.cap-alpha-ol ol {
     top: 0 !important;
     flex: 0 0 380px;
 }
-.menu-content,
-.docsNavContainer.docsSliderActive {
+.menu-content {
     height: 100vh !important;
 }
 .api-content {
@@ -528,7 +527,7 @@ div.cap-alpha-ol ol {
         padding-top: 40px;
     }
     .docsNavContainer {
-        height: 100vh;
+        height: calc(100vh - 59px);
     }
 }
 
