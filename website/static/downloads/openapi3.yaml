@@ -1638,7 +1638,7 @@ components:
       properties:
         name:
           type: string
-          example: mijinTest
+          example: privateTest
         description:
           type: string
           example: Sirius-Chain development network

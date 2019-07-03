@@ -13,7 +13,8 @@ In case you haven’t used XPX-Chain-SDK or Sirius-Chain in general, we encourag
 3. [Check the API reference](../rest-api/overview.md#requests) and play with the API endpoints.
 4. Become familiar with the current [xpx-chain-sdk via code examples](../built-in-features/account.md) & [xpx-cli](../client/overview.md) .
 
-[//]: # (5. [Join](https://join.slack.com/t/xpx-chain/shared_invite/enQtMzY4MDc2NTg0ODgyLTFhZjgxM2NhYTQ1MTY1Mjk0ZDE2ZTJlYzUxYWYxYmJlYjAyY2EwNGM5NzgxMjM4MGEzMDc5ZDIwYTgzZjgyODM) our Slack to ask ProximaX Sirius-Chain related questions.)
+<!-- (5. [Join](https://join.slack.com/t/xpx-chain/shared_invite/enQtMzY4MDc2NTg0ODgyLTFhZjgxM2NhYTQ1MTY1Mjk0ZDE2ZTJlYzUxYWYxYmJlYjAyY2EwNGM5NzgxMjM4MGEzMDc5ZDIwYTgzZjgyODM) our Slack to ask ProximaX Sirius-Chain related questions.)
+-->
 
 ## Development
 

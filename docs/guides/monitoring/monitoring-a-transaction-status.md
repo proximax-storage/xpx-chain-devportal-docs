@@ -39,7 +39,7 @@ const transferTransaction = TransferTransaction.create(
     recipientAddress,
     [],
     PlainMessage.create('Test'),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -50,7 +50,7 @@ const transferTransaction = TransferTransaction.create(
 <!--TypeScript-->
 ```js
 const privateKey = process.env.PRIVATE_KEY as string;
-const signer = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+const signer = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 const signedTransaction = signer.sign(transferTransaction);
 ```
 

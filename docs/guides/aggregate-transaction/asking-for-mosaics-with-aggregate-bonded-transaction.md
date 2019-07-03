@@ -28,10 +28,10 @@ const transactionHttp = new TransactionHttp(nodeUrl);
 const listener = new Listener(nodeUrl);
 
 const alicePrivateKey = process.env.ALICE_PRIVATE_KEY as string;
-const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.MIJIN_TEST);
+const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.PRIVATE_TEST);
 
 const bobPublicKey = 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D';
-const bobAccount = PublicAccount.createFromPublicKey(bobPublicKey, NetworkType.MIJIN_TEST);
+const bobAccount = PublicAccount.createFromPublicKey(bobPublicKey, NetworkType.PRIVATE_TEST);
 ```
 <!--JavaScript-->
 ```js
@@ -40,10 +40,10 @@ const transactionHttp = new TransactionHttp(nodeUrl);
 const listener = new Listener(nodeUrl);
 
 const alicePrivateKey = process.env.ALICE_PRIVATE_KEY;
-const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.MIJIN_TEST);
+const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.PRIVATE_TEST);
 
 const bobPublicKey = 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D';
-const bobAccount = PublicAccount.createFromPublicKey(bobPublicKey, NetworkType.MIJIN_TEST);
+const bobAccount = PublicAccount.createFromPublicKey(bobPublicKey, NetworkType.PRIVATE_TEST);
 ```
 <!--Java-->
 ```java
@@ -66,8 +66,8 @@ class AskingForMosaicsWithAggregateBondedTransaction {
         // Replace with a Bob's public key
         final String bobPublicKey = "";
 
-        final Account aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.MIJIN_TEST);
-        final PublicAccount bobPublicAccount = PublicAccount.createFromPublicKey(bobPublicKey, NetworkType.MIJIN_TEST);
+        final Account aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.PRIVATE_TEST);
+        final PublicAccount bobPublicAccount = PublicAccount.createFromPublicKey(bobPublicKey, NetworkType.PRIVATE_TEST);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -93,7 +93,7 @@ const transferTransaction1 = TransferTransaction.create(
     bobAccount.address,
     [],
     PlainMessage.create('send me 20 XPX'),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--JavaScript-->
@@ -103,7 +103,7 @@ const transferTransaction1 = TransferTransaction.create(
     bobAccount.address,
     [],
     PlainMessage.create('send me 20 XPX'),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--Java-->
@@ -113,7 +113,7 @@ const transferTransaction1 = TransferTransaction.create(
         bobPublicAccount.getAddress(),
         Collections.emptyList(),
         PlainMessage.create("send me 20 XPX"),
-        NetworkType.MIJIN_TEST
+        NetworkType.PRIVATE_TEST
     );
 ```
 
@@ -139,7 +139,7 @@ const transferTransaction2 = TransferTransaction.create(
     aliceAccount.address,
     [NetworkCurrencyMosaic.createRelative(20)],
     EmptyMessage,
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--JavaScript-->
@@ -149,7 +149,7 @@ const transferTransaction2 = TransferTransaction.create(
     aliceAccount.address,
     [NetworkCurrencyMosaic.createRelative(20)],
     EmptyMessage,
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--Java-->
@@ -159,7 +159,7 @@ const transferTransaction2 = TransferTransaction.create(
         aliceAccount.getAddress(),
         Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(20))),
         PlainMessage.Empty,
-        NetworkType.MIJIN_TEST
+        NetworkType.PRIVATE_TEST
     );
 ```
 
@@ -174,7 +174,7 @@ const aggregateTransaction = AggregateTransaction.createBonded(
     Deadline.create(),
     [transferTransaction1.toAggregate(aliceAccount.publicAccount),
         transferTransaction2.toAggregate(bobAccount)],
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const signedTransaction = aliceAccount.sign(aggregateTransaction);
 ```
@@ -185,7 +185,7 @@ const aggregateTransaction = AggregateTransaction.createBonded(
     Deadline.create(),
     [transferTransaction1.toAggregate(aliceAccount.publicAccount),
         transferTransaction2.toAggregate(bobAccount)],
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const signedTransaction = aliceAccount.sign(aggregateTransaction);
 ```
@@ -197,7 +197,7 @@ const signedTransaction = aliceAccount.sign(aggregateTransaction);
         aliceAccount.getAddress(),
         Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(20))),
         PlainMessage.Empty,
-        NetworkType.MIJIN_TEST
+        NetworkType.PRIVATE_TEST
     );
 ```
 
@@ -213,7 +213,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
     NetworkCurrencyMosaic.createRelative(10),
     UInt64.fromUint(480),
     signedTransaction,
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction);
 
@@ -242,7 +242,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
     NetworkCurrencyMosaic.createRelative(10),
     UInt64.fromUint(480),
     signedTransaction,
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction);
 
@@ -274,7 +274,7 @@ listener.open().then(() => {
         NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
         BigInteger.valueOf(480),
         pullTransactionSigned,
-        NetworkType.MIJIN_TEST
+        NetworkType.PRIVATE_TEST
     );
 
     final SignedTransaction lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction);

@@ -58,7 +58,7 @@ const transferTransaction = TransferTransaction.create(
     recipientAddress,
     [NetworkCurrencyMosaic.createRelative(10)],
     PlainMessage.create('Welcome To Sirius-Chain'),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--JavaScript-->
@@ -70,7 +70,7 @@ const transferTransaction = TransferTransaction.create(
     recipientAddress,
     [NetworkCurrencyMosaic.createRelative(10)],
     PlainMessage.create('Welcome To Sirius-Chain'),
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 ```
 
 <!--Java-->
@@ -82,7 +82,7 @@ const transferTransaction = TransferTransaction.create(
         Address.createFromRawAddress(recipientAddress),
         Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10))),
         PlainMessage.create("Welcome To Sirius-Chain"),
-        NetworkType.MIJIN_TEST
+        NetworkType.PRIVATE_TEST
     );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -97,7 +97,7 @@ Although the transaction is created, it has not been announced to the network ye
 ```js
 const privateKey = process.env.PRIVATE_KEY as string;
 
-const account = Account.createFromPrivateKey(privateKey,NetworkType.MIJIN_TEST);
+const account = Account.createFromPrivateKey(privateKey,NetworkType.PRIVATE_TEST);
 
 const signedTransaction = account.sign(transferTransaction);
 ```
@@ -106,7 +106,7 @@ const signedTransaction = account.sign(transferTransaction);
 ```js
 const privateKey = process.env.PRIVATE_KEY;
 
-const account = Account.createFromPrivateKey(privateKey,NetworkType.MIJIN_TEST);
+const account = Account.createFromPrivateKey(privateKey,NetworkType.PRIVATE_TEST);
 
 const signedTransaction = account.sign(transferTransaction);
 ```
@@ -116,7 +116,7 @@ const signedTransaction = account.sign(transferTransaction);
     // Replace with private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
     final SignedTransaction signedTransaction = account.sign(transferTransaction);
 ```

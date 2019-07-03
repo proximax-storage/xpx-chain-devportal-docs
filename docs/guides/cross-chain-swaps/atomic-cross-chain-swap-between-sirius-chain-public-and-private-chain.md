@@ -53,10 +53,10 @@ For that reason, each actor involved should have at least one account in each bl
 <!--TypeScript-->
 ```js
 const alicePublicChainAccount = Account.createFromPrivateKey('', NetworkType.MAIN_NET);
-const alicePrivateChainAccount = Account.createFromPrivateKey('', NetworkType.MIJIN);
+const alicePrivateChainAccount = Account.createFromPrivateKey('', NetworkType.PRIVATE);
 
 const bobPublicChainAccount = Account.createFromPrivateKey('', NetworkType.MAIN_NET);
-const bobPrivateChainAccount = Account.createFromPrivateKey('', NetworkType.MIJIN);
+const bobPrivateChainAccount = Account.createFromPrivateKey('', NetworkType.PRIVATE);
 
 const privateChainTransactionHttp = new TransactionHttp('http://localhost:3000');
 const publicChainTransactionHttp = new TransactionHttp('http://localhost:3000');
@@ -95,7 +95,7 @@ const tx1 = SecretLockTransaction.create(
     HashType.SHA3_512,
     secret,
     bobPrivateChainAccount.address,
-    NetworkType.MIJIN);
+    NetworkType.PRIVATE);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -191,7 +191,7 @@ const tx4 = SecretProofTransaction.create(
     HashType.SHA3_512,
     secret,
     proof,
-    NetworkType.MIJIN);
+    NetworkType.PRIVATE);
 
 const tx4Signed = bobPrivateChainAccount.sign(tx4);
 privateChainTransactionHttp

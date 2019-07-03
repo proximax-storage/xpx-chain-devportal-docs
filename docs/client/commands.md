@@ -11,13 +11,13 @@ Creates a new profile.
 **Options**
 
     -p, --privatekey <privatekey> - Private key
-    -n, --network <network>       - Network Type: MAIN_NET, TEST_NET, MIJIN, MIJIN_TEST, PRIVATE, PRIVATE_TEST
+    -n, --network <network>       - Network Type: MAIN_NET, TEST_NET, PRIVATE, PRIVATE_TEST
     -u, --url <url>               - Sirius-Chain Node URL. Example: http://localhost:3000
     --profile <profile>           - (Optional) profile name, if not private key will be stored as default
 
 **Command**
 ```
-$> xpx2-cli profile create -p 206CE7E4B16B48430FD2C216E4BB105564B21E21DEE196267B4B33C54F1023FC -n MIJIN_TEST -u http://localhost:3000
+$> xpx2-cli profile create -p 206CE7E4B16B48430FD2C216E4BB105564B21E21DEE196267B4B33C54F1023FC -n PRIVATE_TEST -u http://localhost:3000
 ```
 
 ### List
@@ -51,11 +51,11 @@ Generated accounts can be stored as named profiles by adding a node url.
     -s, --save              - (Optional) Save profile
     -u, --url <url>         - (Optional) When saving profile, provide a Sirius-Chain Node URL
     --profile <profile>     - (Optional) When saving profile you can add profile name, if not will be stored as default
-    -n, --network <network> - Network Type: MAIN_NET, TEST_NET, MIJIN, MIJIN_TEST
+    -n, --network <network> - Network Type: MAIN_NET, TEST_NET, PRIVATE, PRIVATE_TEST
 
 **Command**
 ```
-$> xpx2-cli account generate --network MIJIN_TEST
+$> xpx2-cli account generate --network PRIVATE_TEST
 ```
 
 ### Get account info

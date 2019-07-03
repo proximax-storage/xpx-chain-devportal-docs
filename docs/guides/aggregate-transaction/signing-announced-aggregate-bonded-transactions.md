@@ -55,7 +55,7 @@ To fetch aggregate bonded transactions that must be signed by multisig cosignato
 <!--TypeScript-->
 ```js
 const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
 const nodeUrl = 'http://localhost:3000';
 const accountHttp = new AccountHttp(nodeUrl);
@@ -76,7 +76,7 @@ accountHttp
 <!--JavaScript-->
 ```js
 const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
 const nodeUrl = 'http://localhost:3000';
 const accountHttp = new AccountHttp(nodeUrl);
@@ -99,7 +99,7 @@ accountHttp
     // Replace with a private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
     final AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
 

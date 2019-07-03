@@ -34,13 +34,13 @@ A profile holds an account and a node url for a specific network. Profiles are u
 Configure default profile.
 
 ```bash
-$> xpx-cli profile create --privatekey your_private_key --network MIJIN_TEST --url http://localhost:3000
+$> xpx-cli profile create --privatekey your_private_key --network PRIVATE_TEST --url http://localhost:3000
 ```
 
 XPX-CLI supports named profiles. You can configure additional profiles by using the –profile option.
 
 ```bash
-$> xpx-cli profile create --privatekey your_private_key --network MIJIN_TEST --url http://localhost:3000 --profile test_net_profile
+$> xpx-cli profile create --privatekey your_private_key --network PRIVATE_TEST --url http://localhost:3000 --profile test_net_profile
 ```
 
 By default, XPX-CLI will always use the default profile. To use a named profile, add the –profile option to the command.
@@ -57,5 +57,5 @@ $> export XPX_PROFILE=_test_net_profile
 If you do not have a private key to create a profile you can generate a new account, add a node url and save it as default or named profile.
 
 ```bash
-$> xpx-cli account generate --network MIJIN_TEST -s --url http://localhost:3000 --profile test_net_profile
+$> xpx-cli account generate --network PRIVATE_TEST -s --url http://localhost:3000 --profile test_net_profile
 ```

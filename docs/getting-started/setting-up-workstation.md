@@ -48,10 +48,10 @@ $> sudo npm install --global xpx2-cli
 2. Create an account with the command line tool.
 
 ```
-$> xpx2-cli account generate --network MIJIN_TEST --save --url http://localhost:3000
+$> xpx2-cli account generate --network PRIVATE_TEST --save --url http://localhost:3000
 ```
 
-The `network flag` is set to MIJIN_TEST. Test network is an alternative Sirius-Chain used for development and testing purposes.
+The `network flag` is set to PRIVATE_TEST. Test network is an alternative Sirius-Chain used for development and testing purposes.
 
 Use `save flag` to store the account on your computer. XPX2-CLI uses stored account to sign the transactions that you start.
 
@@ -76,7 +76,7 @@ $> cat addresses.yaml
 ```
 $> xpx2-cli profile create
 
-Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
+Introduce network type (PRIVATE_TEST, PRIVATE, MAIN_NET, TEST_NET): PRIVATE_TEST
 Introduce your private key: 41************************************************************FF
 Introduce Sirius-Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile):

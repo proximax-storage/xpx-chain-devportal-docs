@@ -30,7 +30,7 @@ In this example, we have registered a subnamespace called `bar` under `foo` name
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
 const rootNamespaceName = 'foo';
 const subnamespaceName = 'bar';
@@ -39,7 +39,7 @@ const registerNamespaceTransaction = RegisterNamespaceTransaction.createSubNames
     Deadline.create(),
     subnamespaceName,
     rootNamespaceName,
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const signedTransaction = account.sign(registerNamespaceTransaction);
 
@@ -53,7 +53,7 @@ transactionHttp
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
 const rootNamespaceName = 'foo';
 const subnamespaceName = 'bar';
@@ -62,7 +62,7 @@ const registerNamespaceTransaction = RegisterNamespaceTransaction.createSubNames
     Deadline.create(),
     subnamespaceName,
     rootNamespaceName,
-    NetworkType.MIJIN_TEST);
+    NetworkType.PRIVATE_TEST);
 
 const signedTransaction = account.sign(registerNamespaceTransaction);
 
@@ -76,7 +76,7 @@ transactionHttp
     // Replace with private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.MIJIN_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
 
     // Replace with root namespace name
     final NamespaceId rootNamespaceId = new NamespaceId("foo");
@@ -88,7 +88,7 @@ transactionHttp
         Deadline.create(2, ChronoUnit.HOURS),
         subnamespaceName,
         rootNamespaceId,
-        NetworkType.MIJIN_TEST
+        NetworkType.PRIVATE_TEST
     );
 
     final SignedTransaction signedTransaction = account.sign(registerNamespaceTransaction);

@@ -12,9 +12,10 @@ It is very helpful if you can prepare a reproduction of the error. It makes it e
 
 Please, take into consideration the next template to report your issue:
 
->  **Error description** <\n>
-> Short and expressive sentence explaining what is wrong.<\n>
-> **Url or screenshot** <\n>
+>  **Error description** <br>
+> Short and expressive sentence explaining what is wrong.<br>
+>
+> **Url or screenshot** <br>
 > For faster issue detection, we would need where to find it.
 
 Provide as much information as you can.
