@@ -611,7 +611,7 @@ paths:
       - Blockchain routes
       summary: Get the current score of the chain
       description: |
-        Gets the current score of the block chain. The higher the score, the better the chain. During synchronization, nodes try to get the best block chain in the network.
+        Gets the current score of the block chain. The higher the score, the better the chain. During synchronisation, nodes try to get the best block chain in the network.
       operationId: getBlockchainScore
       produces:
       - application/json

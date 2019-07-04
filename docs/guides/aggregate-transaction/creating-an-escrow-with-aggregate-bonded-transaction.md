@@ -23,7 +23,7 @@ In this example, imagine the two parties agree on a virtual service, implying th
 
 **How is it applied to Proximax Sirius-Chain?**
 
-Normalizing the language into Sirius-Chain related concepts:
+Normalising the language into Sirius-Chain related concepts:
 
 **contractual arrangement**
 

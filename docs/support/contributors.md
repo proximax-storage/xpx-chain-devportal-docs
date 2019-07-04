@@ -12,7 +12,7 @@ The NEM Developer Center is not written from scratch. It is the sum of previous 
 - [NEM Blog articles](https://blog.nem.io/)
 - [NEM Medium articles](https://medium.com/nemofficial)
 
-We want to recognize the contributors who provide content and improve the quality and completeness of this documentation.
+We want to recognise the contributors who provide content and improve the quality and completeness of this documentation.
 
 - [dgarcia360](https://github.com/dgarcia360) - 427 contributions
 - [44uk](https://github.com/44uk) - 31 contributions

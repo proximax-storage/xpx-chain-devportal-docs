@@ -4,7 +4,7 @@ title: Account
 ---
 An account is a **key pair** (private and public key) associated with a mutable state stored on the Sirius-Chain. In other words, you have a deposit box in the blockchain, which only you can modify with your key pair. As the name suggests, the private key has to be kept secret at all times. Anyone with access to the private key, ultimately has control over the account.
 
-Think about Sirius-Chain accounts as a **container for assets** in the blockchain. An account could represent a deposit of tokens, like most blockchains. However, it could also represent a **single object** that must be unique and updatable: a package to be shipped, a deed to a house or a document to be notarized.
+Think about Sirius-Chain accounts as a **container for assets** in the blockchain. An account could represent a deposit of tokens, like most blockchains. However, it could also represent a **single object** that must be unique and updatable: a package to be shipped, a deed to a house or a document to be notarised.
 
 Accounts have the following properties:
 

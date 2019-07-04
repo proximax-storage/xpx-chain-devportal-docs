@@ -14,7 +14,7 @@ Buying a ticket from someone that is not the initial vendor does not necessarily
 
 ![Getting Started](/img/getting-started.png "Getting Started")
 
-<p class="caption">Authorization model</p>
+<p class="caption">Authorisation model</p>
 
 The ticket vendor wants to set up a system to:
 
@@ -35,7 +35,7 @@ Blockchain technology makes sense in cases where:
 - These participants need to trust each other.
 - There is the need to keep track of an immutable set of events.
 
-Sirius-Chain is a **flexible blockchain** technology. Instead of uploading all the application logic into the blockchain, you can use its tested features through **API calls** for transfer and storage of value, authorization, traceability, and identification.
+Sirius-Chain is a **flexible blockchain** technology. Instead of uploading all the application logic into the blockchain, you can use its tested features through **API calls** for transfer and storage of value, authorisation, traceability, and identification.
 
 The rest of the code remains **off-chain**. This reduces the inherent immutability risk, as you could change the process when necessary.
 
@@ -73,7 +73,7 @@ Mosaics
 3628d0b327fb1dd8:       1000000
 ```
 
-2. This account owns 1.000.000 XPX. If your own mosaics is empty, follow the [previous guide instructions](./setting-up-workstation.md).
+2. This account owns 1,000,000 XPX. If your own mosaics is empty, follow the [previous guide instructions](./setting-up-workstation.md).
 3. Create a second account to identify the ticket buyer.
 ```
 $> xpx2-cli account generate --network PRIVATE_TEST --save --url http://localhost:3000 --profile buyer
@@ -107,7 +107,7 @@ $> xpx2-cli monitor confirmed
 
 We are representing the ticket as a mosaic. [Mosaics](../built-in-features/mosaic.md) can be used to represent any asset in the blockchain, such as objects, tickets, coupons, stock share representation, and even your cryptocurrency. They have configurable properties, which are defined at the moment of their creation. For example, we opt to set **transferable property to false**. This means that the ticket buyer can only send back the ticket to the creator of the mosaic, avoiding the ticket reselling.
 
-Before creating a mosaic with the ticket vendor account, you need to register a [namespace](../built-in-features/namespace.md). A namespace is a unique name in the network that gives a recognizable name to your assets.
+Before creating a mosaic with the ticket vendor account, you need to register a [namespace](../built-in-features/namespace.md). A namespace is a unique name in the network that gives a recognisable name to your assets.
 
 1. Register the namespace called `company`. Let’s check if this name is available.
 

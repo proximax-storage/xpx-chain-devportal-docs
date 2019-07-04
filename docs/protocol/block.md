@@ -47,9 +47,9 @@ timestamp |	uint64 | The number of seconds elapsed since the creation of the nem
 difficulty | uint64 | The block difficulty.
 feeMultiplier | uint32 | The fee multiplier applied to transactions contained in block.
 previousBlockHash |	32 bytes (binary) |	The hash of the previous block.
-blockTransactionHash | 32 bytes (binary) |	The transactions included in a block are hashed forming a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree). The root of the tree summarizes them.
+blockTransactionHash | 32 bytes (binary) |	The transactions included in a block are hashed forming a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree). The root of the tree summarises them.
 blockReceiptsHash | 32 bytes (binary) |	The collection of [receipts](./receipt.md) are hashed into a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree) and linked to a [block](#). The block header stores the root hash.
-stateHash |	32 bytes (binary) |	The state of the blockchain is stored in RocksDB for each block, forming a [patricia tree](https://en.wikipedia.org/wiki/Radix_tree). The root of the tree summarizes the state of the blockchain for a given block.
+stateHash |	32 bytes (binary) |	The state of the blockchain is stored in RocksDB for each block, forming a [patricia tree](https://en.wikipedia.org/wiki/Radix_tree). The root of the tree summarises the state of the blockchain for a given block.
 beneficiaryPublicKey | 32 bytes (binary) | The public key of the optional beneficiary designated by validator.
 
 **Version**: The higher byte represents the network identifier.

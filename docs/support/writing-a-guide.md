@@ -45,7 +45,7 @@ $> pip install -r requirements.txt
 ```
 $> mkdir source/guides/<folder_name>/<title>.rst
 ```
-5. Use the following template to organize your content.
+5. Use the following template to organise your content.
 
     
     :orphan:
