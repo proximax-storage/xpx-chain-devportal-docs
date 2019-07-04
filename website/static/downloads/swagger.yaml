@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  version: 1.0.11
+  version: 0.1.0
   title: Sirius-Chain REST API Reference
   license:
     name: Apache 2.0
@@ -12,25 +12,25 @@ host: 'localhost:3000'
 tags:
 - name: Account routes
   description: |
-    [Account](https://proximax-storage.github.io/concepts/account.html) related endpoints.
+    [Account](https://bcdocs.xpxsirius.io/docs/built-in-features/account) related endpoints.
 - name: Blockchain routes
   description: |
-    [Block](https://proximax-storage.github.io/concepts/block.html) related endpoints.
+    [Block](https://bcdocs.xpxsirius.io/docs/protocol/block) related endpoints.
 - name: Mosaic routes
   description: |
-    [Mosaic](https://proximax-storage.github.io/concepts/mosaic.html) related endpoints.
+    [Mosaic](https://bcdocs.xpxsirius.io/docs/built-in-features/mosaic) related endpoints.
 - name: Namespace routes
   description: |
-    [Namespace](https://proximax-storage.github.io/concepts/mosaic.html) related endpoints.
+    [Namespace](https://bcdocs.xpxsirius.io/docs/built-in-features/namespace) related endpoints.
 - name: Transaction routes
   description: |
-    [Transaction](https://proximax-storage.github.io/concepts/transaction.html) related endpoints.
+    [Transaction](https://bcdocs.xpxsirius.io/docs/protocol/transaction/) related endpoints.
 - name: Network routes
   description: |
     Network related endpoints.
 - name: Node routes
   description: |
-    [Node](https://proximax-storage.github.io/concepts/node.html) related endpoints.
+    [Node](https://bcdocs.xpxsirius.io/docs/protocol/node) related endpoints.
 
 schemes:
 - http
@@ -270,7 +270,7 @@ paths:
       - Account routes
       summary: Get aggregate bonded transactions information
       description: |
-        Gets an array of [aggregate bonded transactions](https://proximax-storage.github.io/concepts/aggregate-transaction.html) where the account is the sender or requires to cosign the transaction.
+        Gets an array of [aggregate bonded transactions](https://bcdocs.xpxsirius.io/docs/built-in-features/aggregate-transaction) where the account is the sender or requires to cosign the transaction.
       operationId: partialTransactions
       produces:
       - application/json
@@ -316,7 +316,7 @@ paths:
       - Account routes
       summary: Get account configurable properties information
       description: |
-        Returns the [configurable properties](https://proximax-storage.github.io/concepts/account-filter.html) for a given account.
+        Returns the [configurable properties](https://bcdocs.xpxsirius.io/docs/built-in-features/account-filter) for a given account.
       operationId: getAccountProperties
       produces:
       - application/json
@@ -341,7 +341,7 @@ paths:
       - Account routes
       summary: Get account properties for given array of addresses
       description: |
-        Returns the [configurable properties](https://proximax-storage.github.io/concepts/account-filter.html) for a given array of addresses.
+        Returns the [configurable properties](https://bcdocs.xpxsirius.io/docs/built-in-features/account-filter) for a given array of addresses.
       operationId: getAccountPropertiesFromAccounts
       produces:
       - application/json
@@ -368,7 +368,7 @@ paths:
       tags:
       - Account routes
       summary: Get multisig account information
-      description: Returns the [multisig account](https://proximax-storage.github.io/concepts/multisig-account.html) information.
+      description: Returns the [multisig account](https://bcdocs.xpxsirius.io/docs/built-in-features/multisig-account) information.
       operationId: getAccountMultisig
       produces:
       - application/json
@@ -392,7 +392,7 @@ paths:
       tags:
       - Account routes
       summary: Get multisig account graph information
-      description: Returns the [multisig account](https://proximax-storage.github.io/concepts/multisig-account.html) graph.
+      description: Returns the [multisig account](https://bcdocs.xpxsirius.io/docs/built-in-features/multisig-account) graph.
       operationId: getAccountMultisigGraph
       produces:
       - application/json
@@ -473,7 +473,7 @@ paths:
       tags:
       - Blockchain routes
       summary: Get transactions from a block
-      description: Returns an array of [transactions](https://proximax-storage.github.io/concepts/transaction.html) included in a block for a given block height.
+      description: Returns an array of [transactions](https://bcdocs.xpxsirius.io/docs/protocol/transaction) included in a block for a given block height.
       operationId: getBlockTransactions
       produces:
       - application/json
@@ -511,7 +511,7 @@ paths:
       tags:
       - Blockchain routes
       summary: Get the merkle path for a given a transaction and block
-      description: Returns the merkle path for a [transaction](https://proximax-storage.github.io/concepts/transaction.html) included in a block. The path is the complementary data needed to calculate the merkle root. A client can compare if the calculated root equals the one recorded in the block header, verifying that the transaction was included in the block.
+      description: Returns the merkle path for a [transaction](https://bcdocs.xpxsirius.io/docs/protocol/transaction) included in a block. The path is the complementary data needed to calculate the merkle root. A client can compare if the calculated root equals the one recorded in the block header, verifying that the transaction was included in the block.
       operationId: getMerkleTransaction
       produces:
       - application/json
@@ -540,7 +540,7 @@ paths:
       tags:
       - Blockchain routes
       summary: Get receipts from a block
-      description: Returns the [receipts](https://proximax-storage.github.io/concepts/receipt.html) linked to a block.
+      description: Returns the [receipts](https://bcdocs.xpxsirius.io/docs/protocol/receipt) linked to a block.
       operationId: getBlockReceipts
       produces:
       - application/json
@@ -567,7 +567,7 @@ paths:
       tags:
       - Blockchain routes
       summary: Get the merkle path for a given a receipt statement hash and block
-      description: Returns the merkle path for a [receipt statement or resolution](https://proximax-storage.github.io/concepts/receipt.html) linked to a block. The path is the complementary data needed to calculate the merkle root. A client can compare if the calculated root equals the one recorded in the block header, verifying that the receipt was linked with the block.
+      description: Returns the merkle path for a [receipt statement or resolution](https://bcdocs.xpxsirius.io/docs/protocol/receipt) linked to a block. The path is the complementary data needed to calculate the merkle root. A client can compare if the calculated root equals the one recorded in the block header, verifying that the receipt was linked with the block.
       operationId: getMerkleReceipts
       produces:
       - application/json
@@ -887,14 +887,14 @@ paths:
       tags:
       - Transaction routes
       summary: Announce a new transaction
-      description: Announces a transaction to the network. It is recommended to use the XPX-Chain-SDK to announce transactions as they should be [serialized](https://proximax-storage.github.io/api/serialization.html).
+      description: Announces a transaction to the network. It is recommended to use the XPX-Chain-SDK to announce transactions as they should be [serialized](https://bcdocs.xpxsirius.io/docs/rest-api/serialization/).
       operationId: announceTransaction
       produces:
       - application/json
       parameters:
       - name: payload
         in: body
-        description: The transaction [payload](https://proximax-storage.github.io/api/serialization.html).
+        description: The transaction [payload](https://bcdocs.xpxsirius.io/docs/rest-api/serialization/).
         required: true
         schema:
           $ref: '#/definitions/transactionPayload'
@@ -914,14 +914,14 @@ paths:
       tags:
       - Transaction routes
       summary: Announce an aggregate bonded transaction
-      description: Announces an [aggregate bonded transaction](https://proximax-storage.github.io/concepts/aggregate-transaction.html#aggregate-bonded) to the network.
+      description: Announces an [aggregate bonded transaction](https://bcdocs.xpxsirius.io/docs/built-in-features/aggregate-transaction/#aggregate-bonded) to the network.
       operationId: announcePartialTransaction
       produces:
       - application/json
       parameters:
       - name: payload
         in: body
-        description: The transaction [payload](https://proximax-storage.github.io/api/serialization.html).
+        description: The transaction [payload](https://bcdocs.xpxsirius.io/docs/rest-api/serialization/).
         required: true
         schema:
           $ref: '#/definitions/transactionPayload'
@@ -941,14 +941,14 @@ paths:
       tags:
       - Transaction routes
       summary: Announce a cosignature transaction
-      description: Announces a [cosignature transaction](https://proximax-storage.github.io/concepts/aggregate-transaction.html#cosignature-transaction) to the network.
+      description: Announces a [cosignature transaction](https://bcdocs.xpxsirius.io/docs/built-in-features/aggregate-transaction/#cosignature) to the network.
       operationId: announceCosignatureTransaction
       produces:
       - application/json
       parameters:
       - name: payload
         in: body
-        description: The transaction [payload](https://proximax-storage.github.io/api/serialization.html).
+        description: The transaction [payload](hhttps://bcdocs.xpxsirius.io/docs/rest-api/serialization/).
         required: true
         schema:
           $ref: '#/definitions/transactionPayload'
@@ -1611,5 +1611,5 @@ definitions:
     - lower
     - higher
 externalDocs:
-  description: ProximaX Developer Center
-  url: 'https://proximax-storage.github.io/'
+  description: ProximaX Sirius-Chain Developer Center
+  url: 'https://bcdocs.xpxsirius.io/'

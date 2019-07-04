@@ -13,7 +13,7 @@ Check the amount of XPX you have sent to any account.
 ## Let’s get into some code
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 
 ```javascript
 const accountHttp = new AccountHttp('http://localhost:3000');

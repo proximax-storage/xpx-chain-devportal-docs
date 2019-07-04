@@ -31,7 +31,7 @@ When a node connects to a remote peer, the first increments the trust towards th
 
 From these interactions, the node assigns a weight between 500 and 10000 to every peer reached.
 
-The probability of selecting a remote node depends linearly on its weight. Every four rounds of node selections, the criteria changes to prevent [Sybil attacks](https://en.wikipedia.org/wiki/Sybil_attack). The node selects a peer with high importance instead.
+The probability of selecting a remote node depends linearly on its weight. Every four rounds of node selections, the criteria changes to prevent [Sybil attacks](https://en.wikipedia.org/wiki/Sybil_attack).
 
 ## RocksDB
 

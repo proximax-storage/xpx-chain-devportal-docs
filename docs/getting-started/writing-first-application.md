@@ -138,7 +138,7 @@ Send one `company:ticket` to the ticket vendor account announcing a [transfer tr
 - An array of mosaics: [1 company:ticket].
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--typesSript-->
+<!--TypeScript-->
 
 ```ts
 import {
@@ -182,10 +182,10 @@ final TransferTransaction transferTransaction = TransferTransaction.create(
 
 Although the transaction is created, it has not been announced to the network yet.
 
-2. Sign the transaction the ticket vendor account first, so that the network can verify the authenticity of the transaction.
+2. Sign the transaction with the ticket vendor account first, so that the network can verify the authenticity of the transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--typesSript-->
+<!--TypeScript-->
 ```ts
 const privateKey = process.env.PRIVATE_KEY;
 
@@ -193,7 +193,7 @@ const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TES
 
 const signedTransaction = account.sign(transferTransaction);
 ```
-<!--java-->
+<!--Java-->
 ```java
 final String privateKey = "";
 
@@ -206,7 +206,7 @@ final SignedTransaction signedTransaction = account.sign(transferTransaction);
 3. Once signed, announce the transaction to the network.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--typesSript-->
+<!--TypeScript-->
 ```ts
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
@@ -215,14 +215,14 @@ transactionHttp.announce(signedTransaction).subscribe(
     err => console.log(err)
 );
 ```
-<!--java-->
+<!--Java-->
 ```java
 final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
 
 transactionHttp.announceTransaction(signedTransaction).toFuture().get();
 ```
 
-<!--bash-->
+<!--Bash-->
 ```
 $> xpx2-cli transaction transfer --recipient WD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics company:ticket::1 --message enjoy_your_ticket
 ```

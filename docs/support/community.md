@@ -4,7 +4,7 @@ title: Community
 ---
 After reading the docs, you probably have some unanswered questions. Most of the documentation and guides that the ProximaX Sirius-Chain Developer Center as of today have been added because our community saw the need.
 
-Discover how the open source [community](https://github.com/proximax-storage/community/) works, and get started participating:
+Discover how the open source community works, and get started participating:
 
 - Ask in [StackOverflow](https://stackoverflow.com/tags/xpx/) development related questions.
 

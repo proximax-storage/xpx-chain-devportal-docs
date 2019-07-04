@@ -17,7 +17,7 @@ The **public key** identifies your account publicly in the network. Your **addre
 Get more information about your account passing the address and network as a parameter.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 
 ```ts
 const accountHttp = new AccountHttp('http://localhost:3000');
@@ -28,7 +28,7 @@ accountHttp
     .subscribe(accountInfo => console.log(accountInfo), err => console.error(err));
 ```
 
-<!--JavaSript-->
+<!--JavaScript-->
 ```js
 const accountHttp = new AccountHttp('http://localhost:3000');
 const address = Address.createFromRawAddress('SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
@@ -64,7 +64,7 @@ Can you determine the account’s public key? Which was the first block where th
 The balance is the amount of the different mosaics owned by the account. How many different mosaics does your account own?
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 
 ```ts
 const url = 'http://localhost:3000';
@@ -84,7 +84,7 @@ mosaicService
         err => console.error(err));
 ```
 
-<!--JavaSript-->
+<!--JavaScript-->
 ```js
 const url = 'http://localhost:3000';
 const accountHttp = new AccountHttp(url);
@@ -103,7 +103,7 @@ mosaicService
         err => console.error(err));
 ```
 
-<!--bash-->
+<!--Bash-->
 ```sh
 xpx-cli account info --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 ```

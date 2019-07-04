@@ -39,7 +39,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'getting-started/what-is-proximax-sirius-chain', label: 'Getting Started'},
-    {doc: 'built-in-features/account', label: 'Built-in features'},
+    {doc: 'built-in-features/account', label: 'Built-in Features'},
     {page: 'endpoints', label: 'REST API Endpoints'},
     {doc: 'guides/account/account-overview', label: 'Guides'},
     {search: true}

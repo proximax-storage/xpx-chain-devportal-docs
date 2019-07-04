@@ -2,7 +2,7 @@
 id: block
 title: Block
 ---
-The central element of every cryptocurrency is a public ledger called the called blockchain, which links blocks together.
+The central element of every cryptocurrency is a public ledger called the blockchain, which links blocks together.
 
 Since the blocks in the chain are ordered, the complete transaction history is held in the blockchain. Subsequent blocks in the blockchain have increasing heights that differ by one.
 

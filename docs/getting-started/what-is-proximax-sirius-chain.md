@@ -4,9 +4,9 @@ title: What is ProximaX Sirius-Chain
 ---
 ## Blockchain Reimagined and Evolved
 
-[ProximaX](https://proximax.io/) Sirius-chain is a blockchain component under ProximaX Sirius platform built from the ground up to be simple for developers to use blockchain technology.
+[ProximaX](https://proximax.io/) Sirius-chain is a blockchain component under ProximaX Sirius platform. It is built from the ground up with one key purpose in mind - to make utilising blockchain technology simple for developers.
 
-Sirius-Chain is built around a powerful system to customize your using of the blockchain. We call it the Smart Asset System. It gives you the power to use Sirius Chain as if it were a custom blockchain built for your application and your assets.
+Sirius-Chain is built around a powerful system that enables you to customize your use of blockchain. We call it the Smart Asset System. It gives you the power to use Sirius-Chain as if it were a custom blockchain built for your application and your assets.
 
 ![Smart Assets System](/img/smart-assets-system.png "Smart Assets System")
 <p class="caption">The Smart Asset System</p>
@@ -25,7 +25,7 @@ All the features are available through the API interface on each node in the net
 
 **Mobile app direct access** 
 
-A lightweight app directly interfaces to blockchain features.
+A lightweight app directly interfaces with blockchain features.
 
 **Client/server model** 
 

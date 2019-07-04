@@ -28,7 +28,7 @@ There are different types of transactions. For example, you can transfer [mosaic
 |0x4148 |	[Hash Lock Transaction](../built-in-features/aggregate-transaction.md#hashlocktransaction) | A deposit before announcing aggregate bonded transactions.|
 |– |	[Cosignature Transaction](../built-in-features/aggregate-transaction.md#detachedcosignature) |	Cosign an aggregate bonded transaction.|
 |**Account filters** |	 | 	 |
-|0x4150 |	[Account Properties Address Transaction](../built-in-features/account-filter.md#accountpropertiesaddresstransaction) |	Allow or block incoming transactions for a given a set of addresses.|
+|0x4150 |	[Account Properties Address Transaction](../built-in-features/account-filter.md#accountpropertiesaddresstransaction) |	Allow or block incoming transactions for a given set of addresses.|
 |0x4250 |	[Account Properties Mosaic Transaction](../built-in-features/account-filter.md#accountpropertiesmosaictransaction) |	Allow or block incoming transactions containing a given set of mosaics.|
 |0x4350 |	[Account Properties Entity Type Transaction](../built-in-features/account-filter.md#accountpropertiesentitytypetransaction) |	Allow or block outgoing transactions by transaction type.|
 |**Cross-chain swaps** | | |	  	 

@@ -4,7 +4,7 @@ title: Guidelines
 ---
 First off, thank you for considering contributing to Sirius-Chain!
 
-Follow these guidelines for contributing to Sirius-Chain projects, achieving the best quality with the less effort.
+Follow these guidelines for contributing to Sirius-Chain projects.
 
 <div class=info>
 
