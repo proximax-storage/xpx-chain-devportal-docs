@@ -21,7 +21,7 @@ Alice wants to ask Bob for 20 XPX.
 1. Set up both Alice’s and Bob’s accounts.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 ```js
 const nodeUrl = 'http://localhost:3000';
 const transactionHttp = new TransactionHttp(nodeUrl);

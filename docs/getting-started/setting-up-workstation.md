@@ -31,7 +31,7 @@ $> curl localhost:3000/block/1
 ```
 
 ## Creating a test account
-An account is a key pair (private and public key) associated to a mutable state stored in the Sirius-Chain. In other words, you have a deposit box on the blockchain, which only you can modify with your key pair. As the name suggests, the private key has to be kept secret at all times. Anyone with access to the private key, ultimately has control over the account.
+An account is a key pair (private and public key) associated to a mutable state stored in the Sirius-Chain. In other words, you have a deposit box on the blockchain, which only you can modify with your key pair. As the name suggests, the private key has to be kept secret at all times. Anyone with access to the private key ultimately has control over the account.
 
 The **public key** is cryptographically derived from the private key. It would take millions of years to do the reverse process and therefore, the public key is safe to be shared.
 
@@ -87,7 +87,7 @@ It is time to choose a programming language. Pick the one you feel most comforta
 Create a folder for your new project and run the instructions for the selected language.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 
 1. Create a `package.json` file. The minimum required Node.js version is 8.9.X.
 ```

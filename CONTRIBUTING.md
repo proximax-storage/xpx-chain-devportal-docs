@@ -9,7 +9,7 @@ There are many ways to contribute, from writing guides, improving the documentat
 Following these guidelines helps to communicate that you respect the time of
 the developers managing and developing this open source project. In return,
 they should reciprocate that respect in addressing your issue, assessing changes,
-and help you finalize your pull requests.
+and help you finalise your pull requests.
 
 Please, **don't use the issue tracker for support questions**.
 

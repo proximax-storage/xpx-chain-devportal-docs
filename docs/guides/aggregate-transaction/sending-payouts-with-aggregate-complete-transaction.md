@@ -26,7 +26,7 @@ He chooses to send an aggregate complete transaction, so both will receive the f
 1. Dan creates two [transfer transaction](../../built-in-features/transfer-transaction.md) with two different recipients, and wrap them in an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples).
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 
 ```ts
 const transactionHttp = new TransactionHttp('http://localhost:3000');
@@ -54,7 +54,7 @@ const aggregateTransaction = AggregateTransaction.createComplete(
 );
 ```
 
-<!--JavaSript-->
+<!--JavaScript-->
 ```js
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
@@ -128,7 +128,7 @@ That means that there is no need to lock funds to send the transaction. If valid
 2. Sign and announce the transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 ```ts
 const signedTransaction = account.sign(aggregateTransaction);
 
@@ -136,7 +136,7 @@ transactionHttp
     .announce(signedTransaction)
     .subscribe(x => console.log(x), err => console.error(err));
 ```
-<!--JavaSript-->
+<!--JavaScript-->
 ```js
 const signedTransaction = account.sign(aggregateTransaction);
 

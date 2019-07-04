@@ -18,7 +18,7 @@ In this example, you will fetch the latest confirmed transactions for a given ac
 By default, the SDK provides up to 10 transactions. The page size can be increased up to 100 transactions.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 
 ```ts
 const accountHttp = new AccountHttp('http://localhost:3000');
@@ -33,7 +33,7 @@ accountHttp
     .subscribe(transactions => console.log(transactions), err => console.error(err));
 ```
 
-<!--JavaSript-->
+<!--JavaScript-->
 ```js
 const accountHttp = new AccountHttp('http://localhost:3000');
 
@@ -47,7 +47,7 @@ accountHttp
     .subscribe(transactions => console.log(transactions), err => console.error(err));
 ```
 
-<!--bash-->
+<!--Bash-->
 ```sh
 xpx-cli account transactions --publickey 7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246 --numtransactions 10
 ```

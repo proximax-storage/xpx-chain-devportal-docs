@@ -4,7 +4,7 @@ title: Architecture
 ---
 ## Characteristics
 
-- **Standardized Contracts**: Guaranteeing interoperability and harmonization of data models.
+- **Standardised Contracts**: Guaranteeing interoperability and harmonisation of data models.
 - **Loose Coupling**: Reducing the degree of component coupling fosters.
 - **Abstraction**: Increasing long-term consistency of interoperability and allowing underlying components to evolve independently.
 - **Reusability**: Enabling high-level interoperability between modules and potential component consumers.
@@ -26,7 +26,7 @@ XPX-Chain-SDK uses intensely ReactiveX Library. See [reactivex here](http://reac
 - **Functional**: Developers can avoid complex stateful programs using clean input/output functions over observable streams.
 - **Less is more**: ReactiveX’s operators often reduce what was once an elaborate challenge into a few lines of code.
 - **Async error handling**: Traditional try/catch is powerless for errors handling in asynchronous computations, but ReactiveX will offer developers the proper tools to handle these sort of errors.
--  **Concurrency**: Observables and Schedulers in ReactiveX allow the programmer to abstract away low-level threading, synchronization, and concurrency issues.
+-  **Concurrency**: Observables and Schedulers in ReactiveX allow the programmer to abstract away low-level threading, synchronisation, and concurrency issues.
 - **Frontend**: Manipulation of UI events and API responses on the Web using RxJS.
 - **Backend**: Embrace ReactiveX’s asynchronicity, enabling concurrency and implementation independence.
 
@@ -44,11 +44,11 @@ In case you are not familiar with ReactiveX and you still have to deliver someth
 - [Functional Reactive Programming](https://www.manning.com/books/functional-reactive-programming)
 - [Learn RxJS](https://www.learnrxjs.io/)
 
-## Package Organization
+## Package Organisation
 
 ![xpx-chain-sdk Architecture](/img/xpx-chain-sdk-architecture.png "xpx-chain-sdk Architecture")
 
-<p class=caption>Package organization diagram</p>
+<p class=caption>Package organisation diagram</p>
 
 ## Infrastructure
 

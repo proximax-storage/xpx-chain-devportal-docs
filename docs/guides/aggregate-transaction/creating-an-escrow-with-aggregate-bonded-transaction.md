@@ -23,7 +23,7 @@ In this example, imagine the two parties agree on a virtual service, implying th
 
 **How is it applied to Proximax Sirius-Chain?**
 
-Normalizing the language into Sirius-Chain related concepts:
+Normalising the language into Sirius-Chain related concepts:
 
 **contractual arrangement**
 
@@ -93,7 +93,7 @@ An aggregate Transaction is *complete* if before announcing it to the network, a
 In case that signatures are required from other participants and the transaction is announced to the network, it is considered an aggregate bonded.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 ```js
 const nodeUrl = 'http://localhost:3000';
 const transactionHttp = new TransactionHttp(nodeUrl);
@@ -120,7 +120,7 @@ const ticketDistributorToAliceTx = TransferTransaction.create(
     NetworkType.PRIVATE_TEST);
 ```
 
-<!--JavaSript-->
+<!--JavaScript-->
 ```js
 const nodeUrl = 'http://localhost:3000';
 const transactionHttp = new TransactionHttp(nodeUrl);
@@ -190,7 +190,7 @@ const ticketDistributorToAliceTx = TransferTransaction.create(
 3. When an aggregate transaction is bonded, Alice will need to lock at least 10 XPX. Once the ticket distributor signs the aggregate transaction, the amount of locked XPX becomes available again on Alice’s account, and the exchange will get through.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 ```js
 const aggregateTransaction = AggregateTransaction.createBonded(Deadline.create(),
     [aliceToTicketDistributorTx.toAggregate(aliceAccount.publicAccount),

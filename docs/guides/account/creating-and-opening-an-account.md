@@ -15,7 +15,7 @@ Create a new [account](../../built-in-features/account.md) and open it.
 An account is a key pair (private and public key) associated to a mutable state stored in the Sirius-Chain.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 
 ```ts
 const account = Account.generateNewAccount(NetworkType.PRIVATE_TEST);
@@ -23,14 +23,14 @@ const account = Account.generateNewAccount(NetworkType.PRIVATE_TEST);
 console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
 
-<!--JavaSript-->
+<!--JavaScript-->
 ```js
 const account = Account.generateNewAccount(NetworkType.PRIVATE_TEST);
 
 console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
 
-<!--bash-->
+<!--Bash-->
 ```sh
 xpx2-cli account generate --network PRIVATE_TEST
 ```
@@ -44,7 +44,7 @@ The **public key** is cryptographically derived from the private key and safe to
 If you already have a private key, it is not necessary to generate a new account:
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 
 ```ts
 // Replace with a private key
@@ -55,7 +55,7 @@ const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TES
 console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
 
-<!--JavaSript-->
+<!--JavaScript-->
 ```js
 // Replace with a private key
 const privateKey = process.env.PRIVATE_KEY;
@@ -82,7 +82,7 @@ If the programming language of the SDK you are using allows client-side developm
 A wallet enables you to store your account to sign transactions, encrypting your private key with a password.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 
 ```ts
 const password = new Password('password');
@@ -94,7 +94,7 @@ const account = wallet.open(password);
 console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
 
-<!--JavaSript-->
+<!--JavaScript-->
 ```js
 const password = new Password('password');
 
@@ -105,7 +105,7 @@ const account = wallet.open(password);
 console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
 
-<!--bash-->
+<!--Bash-->
 ```sh
 xpx2-cli account generate --network PRIVATE_TEST --save --url http://localhost:3000 --profile test
 ```
@@ -115,7 +115,7 @@ xpx2-cli account generate --network PRIVATE_TEST --save --url http://localhost:3
 Do you have a private key? You can create and open a wallet importing your private key.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypesSript-->
+<!--TypeScript-->
 
 ```ts
 const password = new Password('password');
@@ -130,7 +130,7 @@ const account = wallet.open(password);
 console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
 
-<!--JavaSript-->
+<!--JavaScript-->
 ```js
 const password = new Password('password');
 
@@ -144,7 +144,7 @@ const account = wallet.open(password);
 console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
 
-<!--bash-->
+<!--Bash-->
 ```sh
 xpx2-cli profile create --privatekey your_private_key --network PRIVATE_TEST --url http://localhost:3000 --profile test
 ```

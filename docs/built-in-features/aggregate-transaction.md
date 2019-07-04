@@ -25,7 +25,7 @@ In this example, Alice is buying tickets with currency:euro. When the ticket dis
 
 ## Paying for others fees
 
-Alice sends 10 € to Bob using an app to make payments. But she doesn’t have any XPX to pay the blockchain transaction fee.
+Alice sends $10 to Bob using an app to make payments. But she doesn’t have any XPX to pay the blockchain transaction fee.
 
 By creating an aggregate bonded transaction, she can convert USD to XPX to pay the fee. Now Alice and Bob can use Sirius-Chain without ever having to buy or hold XPX.
 

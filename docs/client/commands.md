@@ -163,7 +163,7 @@ $> xpx2-cli blockchain height
 ```
 ### Blockchain score
 
-Gets the current score of the block chain. The higher the score, the better the chain. During synchronization, nodes try to get the best block chain in the network.
+Gets the current score of the block chain. The higher the score, the better the chain. During synchronisation, nodes try to get the best block chain in the network.
 
 **Command**
 ```

@@ -39,7 +39,7 @@ Regularly check the [Changelog](https://github.com/proximax-storage/java-xpx-cha
 3. Add a [Contributors guidelines](https://help.github.com/articles/setting-guidelines-for-repository-contributors/) to help others know how they can help you. Find `here a CONTRIBUTING.md template`.
 4. Setup the Continuous Integration system. We use [travis-ci](https://travis-ci.org/), but feel free to use the one suits you best.
 
-A project with a good test coverage it’s more likely to be used and trusted by the developers!
+A project with good test coverage is more likely to be used and trusted by the developers.
 
 We **strongly** suggest you to do [Test-Driven Development](https://en.wikipedia.org/wiki/Test-driven_development) or Unit-Testing (test last). If you need inspiration, you can adapt the same [tests we did](https://github.com/proximax-storage/tsjs-xpx-chain-sdk/tree/master/test).
 
@@ -96,7 +96,7 @@ The Transaction Serialization will change when [catbuffer](https://github.com/pr
 
 </div>
 
-A Transaction needs a particular serialization schema in binary optimized in size. The transaction serialization has multiple steps to keep easy to create transactions and maintain the schema serialization.
+A Transaction needs a particular serialization schema in binary optimised in size. The transaction serialization has multiple steps to keep easy to create transactions and maintain the schema serialization.
 
 **Generating the buffer classes: The easy part**
 
@@ -116,7 +116,7 @@ A Transaction needs a particular serialization schema in binary optimized in siz
 
 **Creating the Transaction Schemas**
 
-Each transaction has a Schema. It has the same type as `flatbuffer schemas` but using the `Schema` class. It’s used to know where each component is located in the `flatbuffer schema` and remove the unnecessary bytes to create the optimized serialization.
+Each transaction has a Schema. It has the same type as `flatbuffer schemas` but using the `Schema` class. It’s used to know where each component is located in the `flatbuffer schema` and remove the unnecessary bytes to create the optimised serialization.
 
 11. [AggregateTransactionSchema](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/model/transaction/AggregateTransactionSchema.java).
 12. [LockFundsTransactionSchema](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/model/transaction/LockFundsTransactionSchema.java).

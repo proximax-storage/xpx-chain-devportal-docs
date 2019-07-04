@@ -6,7 +6,7 @@ Namespaces allow you to create an on-chain **unique place** for your business an
 
 A namespace starts with a name that you choose, similar to an internet domain name. If one [account](./account.md) creates a namespace, that will appear as unique in the Sirius-Chain ecosystem.
 
-You can associate a name with an account address or a [mosaic](./mosaic.md) identifier by announcing an [alias transaction](#addressaliastransaction). The binding between namespaces and assets makes long account addresses rememberable and mosaics identifiers recognizable.
+You can associate a name with an account address or a [mosaic](./mosaic.md) identifier by announcing an [alias transaction](#addressaliastransaction). The binding between namespaces and assets makes long account addresses rememberable and mosaics identifiers recognisable.
 
 ## Subnamespaces
 
@@ -21,13 +21,13 @@ Namespaces can have up to `3` levels, a namespace and its two levels of subnames
 
 Every time a customer buys a ticket for an event, a ticket sales company sends a ticket to the customer account.
 
-The seller company has assigned the namespace “ticketsales” to its main account. Customers can quickly recognize incoming transactions from the vendor account.
+The seller company has assigned the namespace “ticketsales” to its main account. Customers can quickly recognise incoming transactions from the vendor account.
 
-## Organizing mosaics
+## Organising mosaics
 
-The same distributor sells tickets for an event organized in different venues. The company registers a non-transferable mosaic for each function.
+The same distributor sells tickets for an event organised in different venues. The company registers a non-transferable mosaic for each function.
 
-Namespaces and subnamespaces are used to organize the different mosaics. Customers can send 1 `ticketsales.eventname.ticket` to `alice` instead of 1 `0xE4EEB491` to `SCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6`.
+Namespaces and subnamespaces are used to organise the different mosaics. Customers can send 1 `ticketsales.eventname.ticket` to `alice` instead of 1 `0xE4EEB491` to `SCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6`.
 
 ## Guides
 

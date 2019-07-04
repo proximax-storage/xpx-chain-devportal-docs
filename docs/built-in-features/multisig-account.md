@@ -37,7 +37,7 @@ To ensure that all agree on which old stamps they should buy and on the right pr
 
 <p class="caption">M-of-N multisig account</p>
 
-## Multi-factor authorization
+## Multi-factor authorisation
 
 Alice wants to make sure her funds are not compromised in any way. Therefore she sets up a multisig account with her funds and attaches two accounts (signer accounts) to control her multisig account as a form of 2-factor authentication.
 
@@ -45,7 +45,7 @@ Both of her signer accounts need to approve the transaction, and her signer acco
 
 ![Multisig multifactor auth](/img/multisig-multifactor-auth.png "Multisig multifactor auth")
 
-<p class="caption">Multi-factor authorization using multisig accounts</p>
+<p class="caption">Multi-factor authorisation using multisig accounts</p>
 
 ## Assets ownership
 
