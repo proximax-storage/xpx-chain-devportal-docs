@@ -243,4 +243,4 @@ Did you solve the proposed use case?
 - Avoid ticket reselling: Creating a non-transferable mosaic.
 - Avoid non-authentic tickets and duplicate ones: Creating a unique namespace and a mosaic named `company:ticket`.
 
-Continue learning about more [Sirius-Chain built-in features](../built-in-features/account.md) or practicing with [self-paced training](./self-paced-training.md).
+Continue learning about more [Sirius-Chain built-in features](../built-in-features/account.md).
