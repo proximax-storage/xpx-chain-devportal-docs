@@ -37,10 +37,10 @@ Bob has finished filling his basket, and he is ready to pay. The cashier’s scr
 const transactionHttp = new TransactionHttp( 'http://localhost:3000');
 
 const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY as string;
-const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
+const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
 
 const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 
 const recipientAddress = Address.createFromRawAddress('SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
 ```
@@ -50,10 +50,10 @@ const recipientAddress = Address.createFromRawAddress('SD5DT3-CH4BLA-BL5HIM-EKP2
 const transactionHttp = new TransactionHttp( 'http://localhost:3000');
 
 const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY;
-const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
+const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
 
 const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 
 const recipientAddress = Address.createFromRawAddress('SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
 ```
@@ -69,9 +69,9 @@ const recipientAddress = Address.createFromRawAddress('SD5DT3-CH4BLA-BL5HIM-EKP2
     // Replace with recipient address
     final String recipientAddress = "SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54";
 
-    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
+    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
 
-    final PublicAccount multisigPublicAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+    final PublicAccount multisigPublicAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -90,7 +90,7 @@ const transferTransaction = TransferTransaction.create(
     recipientAddress,
     [NetworkCurrencyMosaic.createRelative(10)],
     PlainMessage.create('sending 10 prx:xpx'),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--JavaScript-->
@@ -100,7 +100,7 @@ const transferTransaction = TransferTransaction.create(
     recipientAddress,
     [NetworkCurrencyMosaic.createRelative(10)],
     PlainMessage.create('sending 10 prx:xpx'),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--Java-->
@@ -110,7 +110,7 @@ const transferTransaction = TransferTransaction.create(
         Address.createFromRawAddress(recipientAddress),
         Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10))),
         PlainMessage.create("sending 10 prx:xpx"),
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 ```
 
@@ -128,7 +128,7 @@ Remember that we are using a 1-of-2 multisig account? As Bob has one private key
 const aggregateTransaction = AggregateTransaction.createComplete(
     Deadline.create(),
     [transferTransaction.toAggregate(multisigAccount),],
-    NetworkType.PRIVATE_TEST,
+    NetworkType.TEST_NET,
     []);
 ```
 
@@ -137,7 +137,7 @@ const aggregateTransaction = AggregateTransaction.createComplete(
 const aggregateTransaction = AggregateTransaction.createComplete(
     Deadline.create(),
     [transferTransaction.toAggregate(multisigAccount),],
-    NetworkType.PRIVATE_TEST,
+    NetworkType.TEST_NET,
     []);
 ```
 
@@ -148,7 +148,7 @@ final AggregateTransaction aggregateTransaction = AggregateTransaction.createCom
     Collections.singletonList(
         transferTransaction.toAggregate(multisigPublicAccount)
     ),
-    NetworkType.PRIVATE_TEST
+    NetworkType.TEST_NET
 );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -201,7 +201,7 @@ As all required cosigners did not sign the transaction, it should be announced a
 const aggregateTransaction = AggregateTransaction.createBonded(
     Deadline.create(),
     [transferTransaction.toAggregate(multisigAccount)],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
 ```
@@ -211,7 +211,7 @@ const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
 const aggregateTransaction = AggregateTransaction.createBonded(
     Deadline.create(),
     [transferTransaction.toAggregate(multisigAccount)],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
 ```
@@ -223,7 +223,7 @@ final AggregateTransaction aggregateTransaction = AggregateTransaction.createBon
     Arrays.asList(
         transferTransaction.toAggregate(multisigPublicAccount)
     ),
-    NetworkType.PRIVATE_TEST
+    NetworkType.TEST_NET
 );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -231,7 +231,7 @@ final AggregateTransaction aggregateTransaction = AggregateTransaction.createBon
 1. Open a new terminal to [monitor](../monitoring/monitoring-a-transaction-status.md) the aggregate bonded transaction.
 
 ```
-xpx-cli monitor aggregatebonded --address <your-address-here>
+xpx2-cli monitor aggregatebonded --address <your-address-here>
 ```
 2. When an aggregate transaction is bonded, Bob needs to lock at least 10 XPX to avoid network spamming. Once all cosigners sign the transaction, the amount of XPX becomes available again in Bob’s account. After [hash lock transaction](../../built-in-features/aggregate-transaction.md#hashlocktransaction) has been confirmed, [announce the aggregate bonded transaction](../../built-in-features/aggregate-transaction.md).
 
@@ -243,7 +243,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
     NetworkCurrencyMosaic.createRelative(10),
     UInt64.fromUint(480),
     signedTransaction,
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction);
 
@@ -272,7 +272,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
     NetworkCurrencyMosaic.createRelative(10),
     UInt64.fromUint(480),
     signedTransaction,
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction);
 
@@ -305,7 +305,7 @@ listener.open().then(() => {
         NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
         BigInteger.valueOf(480),
         aggregateSignedTransaction,
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 
     final SignedTransaction lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction);

@@ -8,7 +8,7 @@ Get the list of [transactions](../../protocol/transaction.md) where an [account]
 
 - Finish the [getting started section](../../getting-started/setting-up-workstation.md)
 - Text editor or IDE
-- XPX-Chain-SDK or CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 - An account that has received some transaction
 
 ## Let’s get into some code
@@ -24,7 +24,7 @@ By default, the SDK provides up to 10 transactions. The page size can be increas
 const accountHttp = new AccountHttp('http://localhost:3000');
 
 const publicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
-const publicAccount =  PublicAccount.createFromPublicKey(publicKey, NetworkType.PRIVATE_TEST);
+const publicAccount =  PublicAccount.createFromPublicKey(publicKey, NetworkType.TEST_NET);
 
 const pageSize = 10; // Page size between 10 and 100, otherwise 10
 
@@ -38,7 +38,7 @@ accountHttp
 const accountHttp = new AccountHttp('http://localhost:3000');
 
 const publicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
-const publicAccount =  PublicAccount.createFromPublicKey(publicKey, NetworkType.PRIVATE_TEST);
+const publicAccount =  PublicAccount.createFromPublicKey(publicKey, NetworkType.TEST_NET);
 
 const pageSize = 10; // Page size between 10 and 100, otherwise 10
 
@@ -49,7 +49,7 @@ accountHttp
 
 <!--Bash-->
 ```sh
-xpx-cli account transactions --publickey 7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246 --numtransactions 10
+xpx2-cli account transactions --publickey 7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246 --numtransactions 10
 ```
 
 <!--Java-->
@@ -59,7 +59,7 @@ final AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
 // Replace with public key
 final String publicKey = "";
 
-final PublicAccount publicAccount = PublicAccount.createFromPublicKey(publicKey, NetworkType.PRIVATE_TEST);
+final PublicAccount publicAccount = PublicAccount.createFromPublicKey(publicKey, NetworkType.TEST_NET);
 
 // Page size between 10 and 100, otherwise 10
 int pageSize = 20;

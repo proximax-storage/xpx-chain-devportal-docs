@@ -14,7 +14,7 @@ It is possible to create multiple subnamespaces with the same name in different 
 Prerequisites
 
 - Finish [registering a namespace guide](../namespace/registering-a-namespace.md)
-- XPX-Chain-SDK or CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 - A text editor or IDE
 - An account with XPX and at least one namespace
 
@@ -30,7 +30,7 @@ In this example, we have registered a subnamespace called `bar` under `foo` name
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const rootNamespaceName = 'foo';
 const subnamespaceName = 'bar';
@@ -39,7 +39,7 @@ const registerNamespaceTransaction = RegisterNamespaceTransaction.createSubNames
     Deadline.create(),
     subnamespaceName,
     rootNamespaceName,
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const signedTransaction = account.sign(registerNamespaceTransaction);
 
@@ -53,7 +53,7 @@ transactionHttp
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const rootNamespaceName = 'foo';
 const subnamespaceName = 'bar';
@@ -62,7 +62,7 @@ const registerNamespaceTransaction = RegisterNamespaceTransaction.createSubNames
     Deadline.create(),
     subnamespaceName,
     rootNamespaceName,
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const signedTransaction = account.sign(registerNamespaceTransaction);
 
@@ -76,7 +76,7 @@ transactionHttp
     // Replace with private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
     // Replace with root namespace name
     final NamespaceId rootNamespaceId = new NamespaceId("foo");
@@ -88,7 +88,7 @@ transactionHttp
         Deadline.create(2, ChronoUnit.HOURS),
         subnamespaceName,
         rootNamespaceId,
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 
     final SignedTransaction signedTransaction = account.sign(registerNamespaceTransaction);
@@ -100,7 +100,7 @@ transactionHttp
 
 <!--Bash-->
 ```bash
-xpx-cli transaction namespace --subnamespace --parentname foo --name bar
+xpx2-cli transaction namespace --subnamespace --parentname foo --name bar
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

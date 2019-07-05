@@ -106,7 +106,7 @@ class Footer extends React.Component {
             <a href={this.docUrl('rest-api/rest-api-overview')}>REST API</a>
             <a href={this.docUrl('sdks/languages')}>SDKs</a>
             <a href={this.docUrl('sdks/extending-ProximaX-capabilities')}>Libraries</a>
-            <a href={this.docUrl('client/client-overview')}>CLI</a>
+            <a href={this.docUrl('client/client-overview')}>XPX-Chain-CLI</a>
             <a
               className="github-button"
               href={this.props.config.repoUrl}

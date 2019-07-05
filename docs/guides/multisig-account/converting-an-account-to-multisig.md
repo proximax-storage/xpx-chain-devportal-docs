@@ -20,7 +20,7 @@ Remember that a multisig account has cosignatories accounts, and it cannot start
 
 - Finish [creating and opening accounts guide](../account/creating-and-opening-an-account.md)
 - Text editor or IDE
-- XPX-Chain-SDK or CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 - Two accounts (public keys)
 - One account with XPX
 
@@ -34,12 +34,12 @@ Remember that a multisig account has cosignatories accounts, and it cannot start
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string; // Private key of the account to convert into multisig
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const cosignatory1PublicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
-const cosignatory1 = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.PRIVATE_TEST);
+const cosignatory1 = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.TEST_NET);
 const cosignatory2PublicKey = 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D';
-const cosignatory2 = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.PRIVATE_TEST);
+const cosignatory2 = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.TEST_NET);
 ```
 
 <!--JavaScript-->
@@ -47,12 +47,12 @@ const cosignatory2 = PublicAccount.createFromPublicKey(cosignatory2PublicKey, Ne
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY; // Private key of the account to convert into multisig
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const cosignatory1PublicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
-const cosignatory1 = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.PRIVATE_TEST);
+const cosignatory1 = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.TEST_NET);
 const cosignatory2PublicKey = 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D';
-const cosignatory2 = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.PRIVATE_TEST);
+const cosignatory2 = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.TEST_NET);
 ```
 
 <!--Java-->
@@ -64,10 +64,10 @@ const cosignatory2 = PublicAccount.createFromPublicKey(cosignatory2PublicKey, Ne
     final String cosignatory1PublicKey = "";
     final String cosignatory2PublicKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-    final PublicAccount cosignatory1PublicAccount = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.PRIVATE_TEST);
-    final PublicAccount cosignatory2PublicAccount = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.PRIVATE_TEST);
+    final PublicAccount cosignatory1PublicAccount = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.TEST_NET);
+    final PublicAccount cosignatory2PublicAccount = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.TEST_NET);
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -90,7 +90,7 @@ const convertIntoMultisigTransaction = ModifyMultisigAccountTransaction.create(
             MultisigCosignatoryModificationType.Add,
             cosignatory2,
         )],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--JavaScript-->
@@ -108,7 +108,7 @@ const convertIntoMultisigTransaction = ModifyMultisigAccountTransaction.create(
             MultisigCosignatoryModificationType.Add,
             cosignatory2,
         )],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--Java-->
@@ -127,7 +127,7 @@ const convertIntoMultisigTransaction = ModifyMultisigAccountTransaction.create(
                 cosignatory2PublicAccount
             )
         ),
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->

@@ -34,7 +34,7 @@ Feel free to start an issue or create a pull request. Check [CONTRIBUTING](CONTR
 We use GitHub issues for tracking bugs and have limited bandwidth to address them.
 Please, use the following available resources to get help:
 
-- [xpx-cli documentation][docs]
+- [xpx-chain-cli documentation][docs]
 - If you found a bug, [open a new issue][issues]
 
 ## License

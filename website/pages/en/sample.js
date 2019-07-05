@@ -105,7 +105,7 @@ class Index extends React.Component {
           {
             content:
               'To make your landing page more attractive, use illustrations! Check out ' +
-              '[**unDraw**](https://undraw.co/) which provides you with customizable illustrations which are free to use. ' +
+              '[**unDraw**](https://undraw.co/) which provides you with customisable illustrations which are free to use. ' +
               'The illustrations you see on this page are from unDraw.',
             image: `${baseUrl}img/undraw_code_review.svg`,
             imageAlign: 'left',

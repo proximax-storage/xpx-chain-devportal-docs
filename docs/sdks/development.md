@@ -11,7 +11,7 @@ In case you haven’t used XPX-Chain-SDK or Sirius-Chain in general, we encourag
 1. Review the technical documentation to become familiar with the [Sirius-Chain built-in features](../built-in-features/account.md).
 2. Setup the [Sirius-Chain in local environment via docker](#) or enroll the [beta program](#) to access a Sirius-Chain Test Net without the need to run it yourself.
 3. [Check the API reference](../rest-api/overview.md#requests) and play with the API endpoints.
-4. Become familiar with the current [xpx-chain-sdk via code examples](../built-in-features/account.md) & [xpx-cli](../client/overview.md) .
+4. Become familiar with the current [xpx-chain-sdk via code examples](../built-in-features/account.md) & [xpx-chain-cli](../client/overview.md) .
 
 <!-- (5. [Join](https://join.slack.com/t/xpx-chain/shared_invite/enQtMzY4MDc2NTg0ODgyLTFhZjgxM2NhYTQ1MTY1Mjk0ZDE2ZTJlYzUxYWYxYmJlYjAyY2EwNGM5NzgxMjM4MGEzMDc5ZDIwYTgzZjgyODM) our Slack to ask ProximaX Sirius-Chain related questions.)
 -->

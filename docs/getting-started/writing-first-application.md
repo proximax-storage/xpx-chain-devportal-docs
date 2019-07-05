@@ -43,7 +43,7 @@ The rest of the code remains **off-chain**. This reduces the inherent immutabili
 
 - Finish [getting started section](./setting-up-workstation.md)
 - Text editor or IDE
-- XPX-Chain-SDK and XPX2-CLI
+- XPX-Chain-SDK and XPX-Chain-CLI
 - An account with XPX
 
 ## Let’s get into some code
@@ -76,7 +76,7 @@ Mosaics
 2. This account owns 1,000,000 XPX. If your own mosaics is empty, follow the [previous guide instructions](./setting-up-workstation.md).
 3. Create a second account to identify the ticket buyer.
 ```
-$> xpx2-cli account generate --network PRIVATE_TEST --save --url http://localhost:3000 --profile buyer
+$> xpx2-cli account generate --network TEST_NET --save --url http://localhost:3000 --profile buyer
 ```
 
 **2. Monitoring the blockchain** 
@@ -151,7 +151,7 @@ const transferTransaction = TransferTransaction.create(
     Address.createFromRawAddress('WC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU'),
     [new Mosaic(new MosaicId(company:ticket'), UInt64.fromUint(1))],
     PlainMessage.create(‘enjoy your ticket’'),
-    NetworkType.PRIVATE_TEST
+    NetworkType.TEST_NET
 );
 ```
 
@@ -175,7 +175,7 @@ final TransferTransaction transferTransaction = TransferTransaction.create(
     Address.createFromRawAddress("WC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU"),
     Arrays.asList(new Mosaic(new MosaicId("company:ticket"), BigInteger.valueOf(1))),
     PlainMessage.create("enjoy your ticket"),
-    NetworkType.PRIVATE_TEST
+    NetworkType.TEST_NET
 );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -189,7 +189,7 @@ Although the transaction is created, it has not been announced to the network ye
 ```ts
 const privateKey = process.env.PRIVATE_KEY;
 
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const signedTransaction = account.sign(transferTransaction);
 ```
@@ -197,7 +197,7 @@ const signedTransaction = account.sign(transferTransaction);
 ```java
 final String privateKey = "";
 
-final Account account = Account.createFromPrivateKey(privateKey,NetworkType.PRIVATE_TEST);
+final Account account = Account.createFromPrivateKey(privateKey,NetworkType.TEST_NET);
 
 final SignedTransaction signedTransaction = account.sign(transferTransaction);
 ```

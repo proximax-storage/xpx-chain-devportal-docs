@@ -32,24 +32,24 @@ He chooses to send an aggregate complete transaction, so both will receive the f
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-const brotherAddress = 'SDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG';
+const brotherAddress = 'VDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG';
 const brotherAccount = Address.createFromRawAddress(brotherAddress);
 
-const sisterAddress = 'SCGPXB-2A7T4I-W5MQCX-FQY4UQ-W5JNU5-F55HGK-HBUN';
+const sisterAddress = 'VCGPXB-2A7T4I-W5MQCX-FQY4UQ-W5JNU5-F55HGK-HBUN';
 const sisterAccount = Address.createFromRawAddress(sisterAddress);
 
 const amount = NetworkCurrencyMosaic.createRelative(10); // 10 xpx represent 10 000 000 micro xpx
 
-const brotherTransferTransaction = TransferTransaction.create(Deadline.create(), brotherAccount, [amount], PlainMessage.create('payout'), NetworkType.PRIVATE_TEST);
-const sisterTransferTransaction = TransferTransaction.create(Deadline.create(), sisterAccount, [amount], PlainMessage.create('payout'), NetworkType.PRIVATE_TEST);
+const brotherTransferTransaction = TransferTransaction.create(Deadline.create(), brotherAccount, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
+const sisterTransferTransaction = TransferTransaction.create(Deadline.create(), sisterAccount, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
 
 const aggregateTransaction = AggregateTransaction.createComplete(
     Deadline.create(),
     [brotherTransferTransaction.toAggregate(account.publicAccount),
         sisterTransferTransaction.toAggregate(account.publicAccount)],
-    NetworkType.PRIVATE_TEST,
+    NetworkType.TEST_NET,
     []
 );
 ```
@@ -59,24 +59,24 @@ const aggregateTransaction = AggregateTransaction.createComplete(
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-const brotherAddress = 'SDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG';
+const brotherAddress = 'VDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG';
 const brotherAccount = Address.createFromRawAddress(brotherAddress);
 
-const sisterAddress = 'SCGPXB-2A7T4I-W5MQCX-FQY4UQ-W5JNU5-F55HGK-HBUN';
+const sisterAddress = 'VCGPXB-2A7T4I-W5MQCX-FQY4UQ-W5JNU5-F55HGK-HBUN';
 const sisterAccount = Address.createFromRawAddress(sisterAddress);
 
 const amount = NetworkCurrencyMosaic.createRelative(10); // 10 xpx represent 10 000 000 micro xpx
 
-const brotherTransferTransaction = TransferTransaction.create(Deadline.create(), brotherAccount, [amount], PlainMessage.create('payout'), NetworkType.PRIVATE_TEST);
-const sisterTransferTransaction = TransferTransaction.create(Deadline.create(), sisterAccount, [amount], PlainMessage.create('payout'), NetworkType.PRIVATE_TEST);
+const brotherTransferTransaction = TransferTransaction.create(Deadline.create(), brotherAccount, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
+const sisterTransferTransaction = TransferTransaction.create(Deadline.create(), sisterAccount, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
 
 const aggregateTransaction = AggregateTransaction.createComplete(
     Deadline.create(),
     [brotherTransferTransaction.toAggregate(account.publicAccount),
         sisterTransferTransaction.toAggregate(account.publicAccount)],
-    NetworkType.PRIVATE_TEST,
+    NetworkType.TEST_NET,
     []
 );
 ```
@@ -89,7 +89,7 @@ const aggregateTransaction = AggregateTransaction.createComplete(
         final Address brotherAddress = Address.createFromRawAddress("SDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG");
         final Address sisterAddress = Address.createFromRawAddress("SCGPXB-2A7T4I-W5MQCX-FQY4UQ-W5JNU5-F55HGK-HBUN");
 
-        final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+        final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
         final NetworkCurrencyMosaic xpx = NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)); // 10 xpx represent 10 000 000 micro xpx
 
@@ -98,7 +98,7 @@ const aggregateTransaction = AggregateTransaction.createComplete(
                 brotherAddress,
                 Collections.singletonList(xpx),
                 PlainMessage.create("payout"),
-                NetworkType.PRIVATE_TEST
+                NetworkType.TEST_NET
         );
 
         final TransferTransaction sisterTransferTransaction = TransferTransaction.create(
@@ -106,7 +106,7 @@ const aggregateTransaction = AggregateTransaction.createComplete(
                 sisterAddress,
                 Collections.singletonList(xpx),
                 PlainMessage.create("payout"),
-                NetworkType.PRIVATE_TEST
+                NetworkType.TEST_NET
         );
 
         final AggregateTransaction aggregateTransaction = AggregateTransaction.createComplete(
@@ -115,7 +115,7 @@ const aggregateTransaction = AggregateTransaction.createComplete(
                         brotherTransferTransaction.toAggregate(account.getPublicAccount()),
                         sisterTransferTransaction.toAggregate(account.getPublicAccount())
                 ),
-                NetworkType.PRIVATE_TEST
+                NetworkType.TEST_NET
         );
 ```
 
