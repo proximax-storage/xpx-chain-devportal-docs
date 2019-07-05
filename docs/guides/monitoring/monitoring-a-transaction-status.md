@@ -15,7 +15,7 @@ When working with blockchain technology, it is interesting to “fire” the tra
 
 - Finish the [getting started section](../../getting-started/setting-up-workstation.md)
 - Text editor or IDE
-- XPX-Chain-SDK or CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 
 ## Let’s get into some code
 
@@ -39,7 +39,7 @@ const transferTransaction = TransferTransaction.create(
     recipientAddress,
     [],
     PlainMessage.create('Test'),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -50,7 +50,7 @@ const transferTransaction = TransferTransaction.create(
 <!--TypeScript-->
 ```js
 const privateKey = process.env.PRIVATE_KEY as string;
-const signer = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const signer = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 const signedTransaction = signer.sign(transferTransaction);
 ```
 
@@ -91,7 +91,7 @@ listener.open().then(() => {
 
 <!--Bash-->
 ```
-xpx-cli monitor block
+xpx2-cli monitor block
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -114,7 +114,7 @@ xpx-cli monitor block
 
 <!--Bash-->
 ```
-xpx-cli monitor status --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
+xpx2-cli monitor status --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -134,7 +134,7 @@ xpx-cli monitor status --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 
 <!--Bash-->
 ```
-xpx-cli monitor unconfirmed --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
+xpx2-cli monitor unconfirmed --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -166,7 +166,7 @@ xpx-cli monitor unconfirmed --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-
 
 <!--Bash-->
 ```
-xpx-cli monitor confirmed --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
+xpx2-cli monitor confirmed --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -185,7 +185,7 @@ xpx-cli monitor confirmed --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR
 
 <!--Bash-->
 ```
-xpx-cli transaction transfer --recipient SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics prx:xpx::10000000 --message "Welcome to Sirius-Chain"
+xpx2-cli transaction transfer --recipient VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics prx:xpx::10000000 --message "Welcome to Sirius-Chain"
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

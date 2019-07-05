@@ -8,7 +8,7 @@ Get the public key and balance of an [account](../../built-in-features/account.m
 
 - Finish the [getting started section](../../getting-started/setting-up-workstation.md)
 - Text editor or IDE
-- XPX-Chain-SDK or CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 
 ## Let’s get into some code
 
@@ -40,7 +40,7 @@ accountHttp
 
 <!--bash-->
 ```sh
-xpx-cli account info --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
+xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 ```
 
 <!--Java-->
@@ -73,7 +73,7 @@ const mosaicHttp = new MosaicHttp(url);
 const namespaceHttp = new NamespaceHttp(url);
 const mosaicService = new MosaicService(accountHttp, mosaicHttp, namespaceHttp);
 
-const address = Address.createFromRawAddress("SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54");
+const address = Address.createFromRawAddress("VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54");
 
 mosaicService
     .mosaicsAmountViewFromAddress(address)
@@ -92,7 +92,7 @@ const mosaicHttp = new MosaicHttp(url);
 const namespaceHttp = new NamespaceHttp(url);
 const mosaicService = new MosaicService(accountHttp, mosaicHttp, namespaceHttp);
 
-const address = Address.createFromRawAddress("SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54");
+const address = Address.createFromRawAddress("VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54");
 
 mosaicService
     .mosaicsAmountViewFromAddress(address)
@@ -105,7 +105,7 @@ mosaicService
 
 <!--Bash-->
 ```sh
-xpx-cli account info --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
+xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

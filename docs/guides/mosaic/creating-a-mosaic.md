@@ -13,7 +13,7 @@ A mosaic is like a file hosted on a domain and it represents an asset. Like a we
 ## Prerequisites
 
 - Finish [registering a namespace guide](../namespace/registering-a-namespace.md)
-- XPX-Chain-SDK or CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 - A text editor or IDE
 - An account with XPX and at least one namespace
 
@@ -29,7 +29,7 @@ Our mosaic will be called `token`, and its parent namespace will be `foo`.
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 // Replace with namespace name and mosaic name
 const namespaceName = 'foo';
@@ -41,7 +41,7 @@ const mosaicName = 'token';
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 // Replace with namespace name and mosaic name
 const namespaceName = 'foo';
@@ -53,7 +53,7 @@ const mosaicName = 'token';
     // Replace with private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
     // Replace with namespace name and mosaic name
     final String namespaceName = "foo";
@@ -81,7 +81,7 @@ const mosaicDefinitionTransaction = MosaicDefinitionTransaction.create(
         divisibility: 0,
         duration: UInt64.fromUint(1000)
     }),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--JavaScript-->
@@ -97,7 +97,7 @@ const mosaicDefinitionTransaction = MosaicDefinitionTransaction.create(
         divisibility: 0,
         duration: UInt64.fromUint(1000)
     }),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--Java-->
@@ -107,7 +107,7 @@ MosaicDefinitionTransaction mosaicDefinitionTransaction = MosaicDefinitionTransa
     mosaicName,
     namespaceName,
     new MosaicProperties(true, true, false, 0, BigInteger.valueOf(1000)),
-    NetworkType.PRIVATE_TEST
+    NetworkType.TEST_NET
 );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -130,7 +130,7 @@ const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
     mosaicDefinitionTransaction.mosaicId,
     MosaicSupplyType.Increase,
     UInt64.fromUint(1000000),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--JavaScript-->
@@ -140,7 +140,7 @@ const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
     mosaicDefinitionTransaction.mosaicId,
     MosaicSupplyType.Increase,
     UInt64.fromUint(1000000),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--Java-->
@@ -150,7 +150,7 @@ MosaicSupplyChangeTransaction mosaicSupplyChangeTransaction = MosaicSupplyChange
     mosaicDefinitionTransaction.getMosaicId(),
     MosaicSupplyType.INCREASE,
     BigInteger.valueOf(1000000),
-    NetworkType.PRIVATE_TEST
+    NetworkType.TEST_NET
 );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -166,7 +166,7 @@ const aggregateTransaction = AggregateTransaction.createComplete(
         mosaicDefinitionTransaction.toAggregate(account.publicAccount),
         mosaicSupplyChangeTransaction.toAggregate(account.publicAccount)
     ],
-    NetworkType.PRIVATE_TEST,
+    NetworkType.TEST_NET,
     []);
 
 const signedTransaction = account.sign(aggregateTransaction);
@@ -184,7 +184,7 @@ const aggregateTransaction = AggregateTransaction.createComplete(
         mosaicDefinitionTransaction.toAggregate(account.publicAccount),
         mosaicSupplyChangeTransaction.toAggregate(account.publicAccount)
     ],
-    NetworkType.PRIVATE_TEST,
+    NetworkType.TEST_NET,
     []);
 
 const signedTransaction = account.sign(aggregateTransaction);
@@ -202,7 +202,7 @@ AggregateTransaction aggregateTransaction = AggregateTransaction.createComplete(
         mosaicDefinitionTransaction.toAggregate(account.getPublicAccount()),
         mosaicSupplyChangeTransaction.toAggregate(account.getPublicAccount())
     ),
-    NetworkType.PRIVATE_TEST
+    NetworkType.TEST_NET
 );
 
 final SignedTransaction signedTransaction = account.sign(aggregateTransaction);
@@ -214,7 +214,7 @@ transactionHttp.announce(signedTransaction).toFuture().get();
 
 <!--Bash-->
 ```
-xpx-cli transaction mosaic --mosaicname token --namespacename foo --amount 1000000 --transferable --supplymutable --divisibility 0 --duration 1000
+xpx2-cli transaction mosaic --mosaicname token --namespacename foo --amount 1000000 --transferable --supplymutable --divisibility 0 --duration 1000
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

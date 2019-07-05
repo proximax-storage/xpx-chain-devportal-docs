@@ -7,27 +7,24 @@ This first guide will walk you through a step-by-step installation of the requir
 ## Running Sirius-Chain Service Bootstrap
 ![Sirius-Chain Layer](/img/four-layer-architecture-basic.png "Sirius-Chain Layer")
 
+
 **Sirius-Chain Server nodes** (layer 1) build the peer-to-peer blockchain network. **Sirius-Chain Rest nodes** (layer 2) provide the API gateway that the applications may use to access the blockchain and its features.
 
-You are going to run a private chain for learning purposes using [Sirius-Chain Service Bootstrap](https://github.com/tech-bureau/sirius-Chain-service-bootstrap). This service runs Sirius-Chain server instances and Sirius-Chain REST nodes locally.
-
-1. Make sure you have [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/) installed before running the following commands:
+### Using your local environment and setup local Node
 
 ```
-~~This section is not ready right now
+This section is still in development.
 ```
 
-<div class="info">
 
-**NOTE** <br>
-Is Sirius Chain service bootstrap not working? Check [these troubleshooting tips](#).
-</div>
+### Access our TESTNET  without setup local node
 
-######
-2. Check if you can get the first block information:
+You can use our TESTNET REST API directly with this url `http://bctestnet1.xpxsirius.io:3000`
+
+To get first block information
 
 ```
-$> curl localhost:3000/block/1
+$> curl bctestnet1.xpxsirius.io/block/1
 ```
 
 ## Creating a test account
@@ -37,9 +34,9 @@ The **public key** is cryptographically derived from the private key. It would t
 
 Finally, the account address is generated with the public key, following the Sirius-Chain protocol. Share this address instead of the public key, as it contains more information, such as a validity check or which network it uses (public, testnet or private).
 
-[XPX2-CLI](../client/overview.md) conveniently allows you to perform the most commonly used commands from your terminal i.e. using it to interact with the blockchain, setting up an account, sending funds, etc.
+[XPX-Chain-CLI](../client/overview.md) conveniently allows you to perform the most commonly used commands from your terminal i.e. using it to interact with the blockchain, setting up an account, sending funds, etc.
 
-1. Install XPX2-CLI using `npm`.
+1. Install XPX-Chain-CLI using `npm`.
 
 ```
 $> sudo npm install --global xpx2-cli
@@ -47,23 +44,31 @@ $> sudo npm install --global xpx2-cli
 
 2. Create an account with the command line tool.
 
+#### With local node
 ```
-$> xpx2-cli account generate --network PRIVATE_TEST --save --url http://localhost:3000
+$> xpx2-cli account generate --network TEST_NET --save --url http://localhost:3000
 ```
 
-The `network flag` is set to PRIVATE_TEST. Test network is an alternative Sirius-Chain used for development and testing purposes.
+#### Without local node 
+```
+$> xpx2-cli account generate --network TEST_NET --save --url http://bctestnet1.xpxsirius.io:3000
+```
 
-Use `save flag` to store the account on your computer. XPX2-CLI uses stored account to sign the transactions that you start.
+The `network flag` is set to TEST_NET. Test network is an alternative Sirius-Chain used for development and testing purposes.
+
+Use `save flag` to store the account on your computer. XPX-Chain-CLI uses stored account to sign the transactions that you start.
 
 3. You should be able to see the following lines in your terminal, containing the account credentials:
 
-> New Account: WCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6 <br> Public Key: 33E0…6ED <br> Private Key: 0168…595
+> New Account: VCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6 <br> Public Key: 33E0…6ED <br> Private Key: 0168…595
 
 ## What is XPX and how to get it?
 
 The underlying cryptocurrency of the Sirius-Chain network is called **XPX**. Every action on the Sirius-Chain costs XPX, in order to provide an incentive for those who validate and secure the network.
 
 Let’s use an account which already has XPX. We will need it to register the namespace and mosaic.
+
+### Use nemesis address (for those who hosting local node)
 
 1. Open a terminal, and go to the directory where you have download Sirius-Chain Bootstrap Service.
 
@@ -72,15 +77,20 @@ $> cd  build/generated-addresses/
 $> cat addresses.yaml
 ```
 2. Under the section `nemesis_addresses`, you will find the key pairs which contain XPX.
-3. Load the first account as a profile in XPX2-CLI.
+3. Load the first account as a profile in XPX-Chain-CLI.
 ```
 $> xpx2-cli profile create
 
-Introduce network type (PRIVATE_TEST, PRIVATE, MAIN_NET, TEST_NET): PRIVATE_TEST
+Introduce network type (PRIVATE_TEST, PRIVATE, MAIN_NET, TEST_NET): TEST_NET
 Introduce your private key: 41************************************************************FF
 Introduce Sirius-Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile):
 ```
+
+### Use our faucet to get testing XPX
+
+Simply go to our [faucet](https://bctestnetfaucet.xpxsirius.io/) to get your testing XPX.
+
 ## Setting up the development environment
 It is time to choose a programming language. Pick the one you feel most comfortable with, or follow your project requirements.
 
@@ -97,7 +107,6 @@ $> npm init
 ```
 $> npm install tsjs-xpx-chain-sdk rxjs
 ```
-<!--END_DOCUSAURUS_CODE_TABS-->
 
 3. tsjs-xpx-chain-sdk is build with TypeScript language. It is recommended to use TypeScript instead of JavaScript when building applications for Sirius-Chain.
 
@@ -111,3 +120,16 @@ $> typescript --version
 ```
 $> sudo npm install --global ts-node
 ```
+
+<!--JavaScript-->
+
+1. Create a `package.json` file. The minimum required Node.js version is 8.9.X.
+```
+$> npm init
+```
+2. Install tsjs-xpx-chain-sdk and rxjs library.
+```
+$> npm install tsjs-xpx-chain-sdk rxjs
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->

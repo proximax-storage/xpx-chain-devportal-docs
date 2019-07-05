@@ -8,7 +8,7 @@ Create a new [account](../../built-in-features/account.md) and open it.
 
 - Finish the [getting started section](../../getting-started/setting-up-workstation.md)
 - Text editor or IDE
-- XPX-Chain-SDK or xpx2-CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 
 ## Let’s get into some code
 
@@ -18,21 +18,21 @@ An account is a key pair (private and public key) associated to a mutable state 
 <!--TypeScript-->
 
 ```ts
-const account = Account.generateNewAccount(NetworkType.PRIVATE_TEST);
+const account = Account.generateNewAccount(NetworkType.TEST_NET);
 
 console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
 
 <!--JavaScript-->
 ```js
-const account = Account.generateNewAccount(NetworkType.PRIVATE_TEST);
+const account = Account.generateNewAccount(NetworkType.TEST_NET);
 
 console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
 
 <!--Bash-->
 ```sh
-xpx2-cli account generate --network PRIVATE_TEST
+xpx2-cli account generate --network TEST_NET
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -50,7 +50,7 @@ If you already have a private key, it is not necessary to generate a new account
 // Replace with a private key
 const privateKey = process.env.PRIVATE_KEY as string;
 
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
@@ -60,7 +60,7 @@ console.log('Your account address is:', account.address.pretty(), 'and its priva
 // Replace with a private key
 const privateKey = process.env.PRIVATE_KEY;
 
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
@@ -70,7 +70,7 @@ console.log('Your account address is:', account.address.pretty(), 'and its priva
     // Replace with a private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -87,7 +87,7 @@ A wallet enables you to store your account to sign transactions, encrypting your
 ```ts
 const password = new Password('password');
 
-const wallet = SimpleWallet.create('wallet-name', password, NetworkType.PRIVATE_TEST);
+const wallet = SimpleWallet.create('wallet-name', password, NetworkType.TEST_NET);
 
 const account = wallet.open(password);
 
@@ -98,7 +98,7 @@ console.log('Your new account address is:', account.address.pretty(), 'and its p
 ```js
 const password = new Password('password');
 
-const wallet = SimpleWallet.create('wallet-name', password, NetworkType.PRIVATE_TEST);
+const wallet = SimpleWallet.create('wallet-name', password, NetworkType.TEST_NET);
 
 const account = wallet.open(password);
 
@@ -107,7 +107,7 @@ console.log('Your new account address is:', account.address.pretty(), 'and its p
 
 <!--Bash-->
 ```sh
-xpx2-cli account generate --network PRIVATE_TEST --save --url http://localhost:3000 --profile test
+xpx2-cli account generate --network TEST_NET --save --url http://localhost:3000 --profile test
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -123,7 +123,7 @@ const password = new Password('password');
 // Replace with a private key
 const privateKey = process.env.PRIVATE_KEY as string;
 
-const wallet = SimpleWallet.createFromPrivateKey('wallet-name', password, privateKey, NetworkType.PRIVATE_TEST);
+const wallet = SimpleWallet.createFromPrivateKey('wallet-name', password, privateKey, NetworkType.TEST_NET);
 
 const account = wallet.open(password);
 
@@ -137,7 +137,7 @@ const password = new Password('password');
 // Replace with a private key
 const privateKey = process.env.PRIVATE_KEY;
 
-const wallet = SimpleWallet.createFromPrivateKey('wallet-name', password, privateKey, NetworkType.PRIVATE_TEST);
+const wallet = SimpleWallet.createFromPrivateKey('wallet-name', password, privateKey, NetworkType.TEST_NET);
 
 const account = wallet.open(password);
 
@@ -146,7 +146,7 @@ console.log('Your account address is:', account.address.pretty(), 'and its priva
 
 <!--Bash-->
 ```sh
-xpx2-cli profile create --privatekey your_private_key --network PRIVATE_TEST --url http://localhost:3000 --profile test
+xpx2-cli profile create --privatekey your_private_key --network TEST_NET --url http://localhost:3000 --profile test
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

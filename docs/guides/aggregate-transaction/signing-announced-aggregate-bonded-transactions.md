@@ -55,7 +55,7 @@ To fetch aggregate bonded transactions that must be signed by multisig cosignato
 <!--TypeScript-->
 ```js
 const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const nodeUrl = 'http://localhost:3000';
 const accountHttp = new AccountHttp(nodeUrl);
@@ -76,7 +76,7 @@ accountHttp
 <!--JavaScript-->
 ```js
 const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const nodeUrl = 'http://localhost:3000';
 const accountHttp = new AccountHttp(nodeUrl);
@@ -99,7 +99,7 @@ accountHttp
     // Replace with a private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
     final AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
 
@@ -121,7 +121,7 @@ accountHttp
 
 <!--Bash-->
 ```sh
-xpx-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7CCBE29C47D07086E068C
+xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7CCBE29C47D07086E068C
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

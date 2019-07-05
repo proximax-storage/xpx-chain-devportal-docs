@@ -8,7 +8,7 @@ Transfer [mosaics](../../built-in-features/mosaic.md) and messages between two a
 ## Prerequisites
 
 - Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- XPX-Chain-SDK or CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 - A text editor or IDE
 - An account with XPX
 
@@ -27,19 +27,19 @@ Once an account announces a transaction, the server will always return an OK res
 To understand the transaction lifecycle, we recommend you to open three new terminals. The first terminal monitors announced transactions validation errors.
 
 ```
-$> xpx-cli monitor status
+$> xpx2-cli monitor status
 ```
 
 Monitoring `unconfirmed` shows you which transactions have reached the network, but not are not included in a block yet.
 
 ```
-$> xpx-cli monitor unconfirmed
+$> xpx2-cli monitor unconfirmed
 ```
 
 Once a transaction is included, you will see it under the `confirmed` terminal.
 
 ```
-$> xpx-cli monitor confirmed
+$> xpx2-cli monitor confirmed
 ```
 
 ## Let’s get into some code
@@ -58,7 +58,7 @@ const transferTransaction = TransferTransaction.create(
     recipientAddress,
     [NetworkCurrencyMosaic.createRelative(10)],
     PlainMessage.create('Welcome To Sirius-Chain'),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--JavaScript-->
@@ -70,7 +70,7 @@ const transferTransaction = TransferTransaction.create(
     recipientAddress,
     [NetworkCurrencyMosaic.createRelative(10)],
     PlainMessage.create('Welcome To Sirius-Chain'),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--Java-->
@@ -82,7 +82,7 @@ const transferTransaction = TransferTransaction.create(
         Address.createFromRawAddress(recipientAddress),
         Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10))),
         PlainMessage.create("Welcome To Sirius-Chain"),
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -97,7 +97,7 @@ Although the transaction is created, it has not been announced to the network ye
 ```js
 const privateKey = process.env.PRIVATE_KEY as string;
 
-const account = Account.createFromPrivateKey(privateKey,NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey,NetworkType.TEST_NET);
 
 const signedTransaction = account.sign(transferTransaction);
 ```
@@ -106,7 +106,7 @@ const signedTransaction = account.sign(transferTransaction);
 ```js
 const privateKey = process.env.PRIVATE_KEY;
 
-const account = Account.createFromPrivateKey(privateKey,NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey,NetworkType.TEST_NET);
 
 const signedTransaction = account.sign(transferTransaction);
 ```
@@ -116,7 +116,7 @@ const signedTransaction = account.sign(transferTransaction);
     // Replace with private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
     final SignedTransaction signedTransaction = account.sign(transferTransaction);
 ```
@@ -153,7 +153,7 @@ transactionHttp
 
 <!--Bash-->
 ```bash
-xpx-cli transaction transfer --recipient SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics prx:xpx::10000000 --message "Welcome to Sirius-Chain"
+xpx2-cli transaction transfer --recipient VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics prx:xpx::10000000 --message "Welcome to Sirius-Chain"
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -202,7 +202,7 @@ If you own more than one mosaic, send them together in the same transaction:
 
 <!--Bash-->
 ```bash
-xpx-cli transaction transfer --recipient SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics alice:token::10,prx:xpx::10000000 --message "sending multiple mosaics"
+xpx2-cli transaction transfer --recipient VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics alice:token::10,prx:xpx::10000000 --message "sending multiple mosaics"
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

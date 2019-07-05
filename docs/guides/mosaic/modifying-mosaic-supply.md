@@ -7,7 +7,7 @@ Did you register a [mosaic](../../built-in-features/mosaic.md) with supplyMutabl
 ## Prerequisites
 
 - Finish [creating a mosaic guide](./creating-a-mosaic.md)
-- XPX-Chain-SDK or CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 - A text editor or IDE
 - An account with XPX
 - Have registered a supply mutable mosaic
@@ -24,7 +24,7 @@ Increase to `2.000.000` the initial supply. Sign and announce a [mosaic supply c
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const mosaicID = new MosaicId('foo:token');
 
@@ -33,7 +33,7 @@ const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
     mosaicID,
     MosaicSupplyType.Increase,
     UInt64.fromUint(2000000),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const signedTransaction = account.sign(mosaicSupplyChangeTransaction);
 
@@ -47,7 +47,7 @@ transactionHttp
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const mosaicID = new MosaicId('foo:token');
 
@@ -56,7 +56,7 @@ const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
     mosaicID,
     MosaicSupplyType.Increase,
     UInt64.fromUint(2000000),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const signedTransaction = account.sign(mosaicSupplyChangeTransaction);
 
@@ -70,7 +70,7 @@ transactionHttp
     // Replace with private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
     // Replace with mosaic id
     final MosaicId mosaicId = new MosaicId("foo:token"); // replace with mosaic full name
@@ -80,7 +80,7 @@ transactionHttp
         mosaicId,
         MosaicSupplyType.INCREASE,
         BigInteger.valueOf(2000000),
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 
     final SignedTransaction signedTransaction = account.sign(mosaicSupplyChangeTransaction);

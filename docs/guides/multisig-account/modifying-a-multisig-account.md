@@ -10,7 +10,7 @@ First, you are going to turn a 1-of-2 multisig account into a 2-of-2. Then, you 
 
 - Finish [converting an account to multisig guide](./converting-an-account-to-multisig.md)
 - Text editor or IDE
-- XPX-Chain-SDK or CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 - One multisig account
 
 ## Let’s get into some code
@@ -25,10 +25,10 @@ Alice and Bob are cosignatories of the 1-of-2 multisig account. At least one of 
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY as string;
-const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
+const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
 
 const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 ```
 
 <!--JavaScript-->
@@ -36,10 +36,10 @@ const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicK
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY;
-const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
+const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
 
 const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 ```
 
 <!--Java-->
@@ -47,8 +47,8 @@ const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicK
     final String cosignatoryPrivateKey = "";
     final String multisigAccountPublicKey = "";
 
-    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
-    final PublicAccount multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
+    final PublicAccount multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -70,7 +70,7 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
     1,
     0,
     [],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--JavaScript-->
@@ -80,7 +80,7 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
     1,
     0,
     [],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--Java-->
@@ -90,7 +90,7 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
     1,
     0,
     Collections.emptyList(),
-    NetworkType.PRIVATE_TEST
+    NetworkType.TEST_NET
 );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -107,7 +107,7 @@ As only one cosignature is required (1-of-2), Alice can sign the transaction and
 const aggregateTransaction = AggregateTransaction.createComplete(
     Deadline.create(),
     [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.PRIVATE_TEST,
+    NetworkType.TEST_NET,
     []);
 
 const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
@@ -122,7 +122,7 @@ transactionHttp
 const aggregateTransaction = AggregateTransaction.createComplete(
     Deadline.create(),
     [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.PRIVATE_TEST,
+    NetworkType.TEST_NET,
     []);
 
 const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
@@ -137,7 +137,7 @@ transactionHttp
     final AggregateTransaction aggregateTransaction = AggregateTransaction.createComplete(
         Deadline.create(2, HOURS),
         Collections.singletonList(modifyMultisigAccountTransaction.toAggregate(multisigAccount)),
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 
     final SignedTransaction signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
@@ -178,13 +178,13 @@ const transactionHttp = new TransactionHttp(nodeUrl);
 const listener = new Listener(nodeUrl);
 
 const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY as string;
-const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
+const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
 
 const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 
 const newCosignatoryPublicKey = 'CD4EE677BD0642C93910CB93214954A9D70FBAAE1FFF1FF530B1FB52389568F1';
-const newCosignatoryAccount = PublicAccount.createFromPublicKey(newCosignatoryPublicKey, NetworkType.PRIVATE_TEST);
+const newCosignatoryAccount = PublicAccount.createFromPublicKey(newCosignatoryPublicKey, NetworkType.TEST_NET);
 
 const multisigCosignatoryModification = new MultisigCosignatoryModification(MultisigCosignatoryModificationType.Add,newCosignatoryAccount);
 ```
@@ -196,13 +196,13 @@ const transactionHttp = new TransactionHttp(nodeUrl);
 const listener = new Listener(nodeUrl);
 
 const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY;
-const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
+const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
 
 const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 
 const newCosignatoryPublicKey = 'CD4EE677BD0642C93910CB93214954A9D70FBAAE1FFF1FF530B1FB52389568F1';
-const newCosignatoryAccount = PublicAccount.createFromPublicKey(newCosignatoryPublicKey, NetworkType.PRIVATE_TEST);
+const newCosignatoryAccount = PublicAccount.createFromPublicKey(newCosignatoryPublicKey, NetworkType.TEST_NET);
 
 const multisigCosignatoryModification = new MultisigCosignatoryModification(MultisigCosignatoryModificationType.Add,newCosignatoryAccount);
 ```
@@ -214,9 +214,9 @@ const multisigCosignatoryModification = new MultisigCosignatoryModification(Mult
     final String multisigAccountPublicKey = "";
     final String newCosignatoryPublicKey = "";
 
-    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
-    final PublicAccount newCosignatoryAccount = PublicAccount.createFromPublicKey(newCosignatoryPublicKey, NetworkType.PRIVATE_TEST);
-    final PublicAccount multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
+    final PublicAccount newCosignatoryAccount = PublicAccount.createFromPublicKey(newCosignatoryPublicKey, NetworkType.TEST_NET);
+    final PublicAccount multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 
     final MultisigCosignatoryModification multisigCosignatoryModification = new MultisigCosignatoryModification(
         MultisigCosignatoryModificationType.ADD,
@@ -235,7 +235,7 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
     0,
     0,
     [multisigCosignatoryModification],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--JavaScript-->
@@ -245,7 +245,7 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
     0,
     0,
     [multisigCosignatoryModification],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 ```
 
 <!--Java-->
@@ -255,7 +255,7 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
         0,
         0,
         Collections.singletonList(multisigCosignatoryModification),
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -268,7 +268,7 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
 const aggregateTransaction = AggregateTransaction.createBonded(
     Deadline.create(),
     [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
 ```
@@ -278,7 +278,7 @@ const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
 const aggregateTransaction = AggregateTransaction.createBonded(
     Deadline.create(),
     [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
 ```
@@ -288,7 +288,7 @@ const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
     final AggregateTransaction aggregateTransaction = AggregateTransaction.createBonded(
         Deadline.create(2, HOURS),
         Collections.singletonList(modifyMultisigAccountTransaction.toAggregate(multisigAccount)),
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 
     final SignedTransaction signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
@@ -305,7 +305,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
     NetworkCurrencyMosaic.createRelative(10),
     UInt64.fromUint(480),
     signedTransaction,
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction);
 
@@ -334,7 +334,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
     NetworkCurrencyMosaic.createRelative(10),
     UInt64.fromUint(480),
     signedTransaction,
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction);
 
@@ -363,7 +363,7 @@ listener.open().then(() => {
         NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
         BigInteger.valueOf(480),
         signedTransaction,
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 
     final SignedTransaction lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction);
@@ -413,13 +413,13 @@ The minRemoval parameter indicates the number of required signatures to delete s
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 
 const cosignatoryToRemovePublicKey = 'CD4EE677BD0642C93910CB93214954A9D70FBAAE1FFF1FF530B1FB52389568F1';
-const cosignatoryToRemove = PublicAccount.createFromPublicKey(cosignatoryToRemovePublicKey, NetworkType.PRIVATE_TEST);
+const cosignatoryToRemove = PublicAccount.createFromPublicKey(cosignatoryToRemovePublicKey, NetworkType.TEST_NET);
 
 const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY as string;
-const cosignatoryAccount =  Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
+const cosignatoryAccount =  Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
 
 const multisigCosignatoryModification = new MultisigCosignatoryModification(MultisigCosignatoryModificationType.Remove,cosignatoryToRemove);
 
@@ -428,12 +428,12 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
     0,
     0,
     [multisigCosignatoryModification],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const aggregateTransaction = AggregateTransaction.createComplete(
     Deadline.create(),
     [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.PRIVATE_TEST,
+    NetworkType.TEST_NET,
     []);
 
 const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
@@ -447,13 +447,13 @@ transactionHttp.announce(signedTransaction)
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 
 const cosignatoryToRemovePublicKey = 'CD4EE677BD0642C93910CB93214954A9D70FBAAE1FFF1FF530B1FB52389568F1';
-const cosignatoryToRemove = PublicAccount.createFromPublicKey(cosignatoryToRemovePublicKey, NetworkType.PRIVATE_TEST);
+const cosignatoryToRemove = PublicAccount.createFromPublicKey(cosignatoryToRemovePublicKey, NetworkType.TEST_NET);
 
 const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY;
-const cosignatoryAccount =  Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
+const cosignatoryAccount =  Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
 
 const multisigCosignatoryModification = new MultisigCosignatoryModification(MultisigCosignatoryModificationType.Remove,cosignatoryToRemove);
 
@@ -462,12 +462,12 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
     0,
     0,
     [multisigCosignatoryModification],
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const aggregateTransaction = AggregateTransaction.createComplete(
     Deadline.create(),
     [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.PRIVATE_TEST,
+    NetworkType.TEST_NET,
     []);
 
 const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
@@ -485,12 +485,12 @@ transactionHttp
     // Replace with the cosignatory private key
     final String cosignatoryPrivateKey = "";
 
-    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.PRIVATE_TEST);
-    final PublicAccount multisigPublicAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.PRIVATE_TEST);
+    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
+    final PublicAccount multisigPublicAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 
     final MultisigCosignatoryModification multisigCosignatoryModification = new MultisigCosignatoryModification(
         MultisigCosignatoryModificationType.REMOVE,
-        PublicAccount.createFromPublicKey("", NetworkType.PRIVATE_TEST)
+        PublicAccount.createFromPublicKey("", NetworkType.TEST_NET)
     );
 
     final ModifyMultisigAccountTransaction modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
@@ -498,13 +498,13 @@ transactionHttp
         0,
         0,
         Collections.singletonList(multisigCosignatoryModification),
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 
     final AggregateTransaction aggregateTransaction = AggregateTransaction.createComplete(
         Deadline.create(2, HOURS),
         Collections.singletonList(modifyMultisigAccountTransaction.toAggregate(multisigPublicAccount)),
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 
     final SignedTransaction signedTransaction = cosignatoryAccount.sign(aggregateTransaction);

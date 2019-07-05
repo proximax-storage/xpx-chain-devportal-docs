@@ -17,7 +17,7 @@ Creates a new profile.
 
 **Command**
 ```
-$> xpx2-cli profile create -p 206CE7E4B16B48430FD2C216E4BB105564B21E21DEE196267B4B33C54F1023FC -n PRIVATE_TEST -u http://localhost:3000
+$> xpx2-cli profile create -p 206CE7E4B16B48430FD2C216E4BB105564B21E21DEE196267B4B33C54F1023FC -n TEST_NET -u http://localhost:3000
 ```
 
 ### List
@@ -34,7 +34,7 @@ $> xpx2-cli profile list
 
 **Note**
 
-By default, XPX2-CLI will always use the default profile to connect to a node and set default options such as: address, public key and sign transactions with private key. To use a named profile, add the –profile option to any command.
+By default, XPX-Chain-CLI will always use the default profile to connect to a node and set default options such as: address, public key and sign transactions with private key. To use a named profile, add the –profile option to any command.
 
 </div>
 
@@ -55,7 +55,7 @@ Generated accounts can be stored as named profiles by adding a node url.
 
 **Command**
 ```
-$> xpx2-cli account generate --network PRIVATE_TEST
+$> xpx2-cli account generate --network TEST_NET
 ```
 
 ### Get account info

@@ -43,7 +43,7 @@ The rest of the code remains **off-chain**. This reduces the inherent immutabili
 
 - Finish [getting started section](./setting-up-workstation.md)
 - Text editor or IDE
-- XPX-Chain-SDK and XPX2-CLI
+- XPX-Chain-SDK and XPX-Chain-CLI
 - An account with XPX
 
 ## Let’s get into some code
@@ -64,7 +64,7 @@ Have you loaded an account with test XPX? If it is not the case, go back to [get
 $> xpx2-cli account info
 
 
-New Account: WCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6
+New Account: VCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6
 
 [...]
 
@@ -76,7 +76,7 @@ Mosaics
 2. This account owns 1,000,000 XPX. If your own mosaics is empty, follow the [previous guide instructions](./setting-up-workstation.md).
 3. Create a second account to identify the ticket buyer.
 ```
-$> xpx2-cli account generate --network PRIVATE_TEST --save --url http://localhost:3000 --profile buyer
+$> xpx2-cli account generate --network TEST_NET --save --url http://localhost:3000 --profile buyer
 ```
 
 **2. Monitoring the blockchain** 
@@ -133,7 +133,7 @@ Send one `company:ticket` to the ticket vendor account announcing a [transfer tr
 
 1. Prepare the transfer transaction. Three main attributes form a transfer transaction:
 
-- The recipient account address: WC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU.
+- The recipient account address: VC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU.
 - A message: enjoy your ticket.
 - An array of mosaics: [1 company:ticket].
 
@@ -148,10 +148,10 @@ import {
 
 const transferTransaction = TransferTransaction.create(
     Deadline.create(),
-    Address.createFromRawAddress('WC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU'),
+    Address.createFromRawAddress('VC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU'),
     [new Mosaic(new MosaicId(company:ticket'), UInt64.fromUint(1))],
     PlainMessage.create(‘enjoy your ticket’'),
-    NetworkType.PRIVATE_TEST
+    NetworkType.TEST_NET
 );
 ```
 
@@ -172,10 +172,10 @@ import static java.time.temporal.ChronoUnit.HOURS;
 
 final TransferTransaction transferTransaction = TransferTransaction.create(
     Deadline.create(2, HOURS),
-    Address.createFromRawAddress("WC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU"),
+    Address.createFromRawAddress("VC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU"),
     Arrays.asList(new Mosaic(new MosaicId("company:ticket"), BigInteger.valueOf(1))),
     PlainMessage.create("enjoy your ticket"),
-    NetworkType.PRIVATE_TEST
+    NetworkType.TEST_NET
 );
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -189,7 +189,7 @@ Although the transaction is created, it has not been announced to the network ye
 ```ts
 const privateKey = process.env.PRIVATE_KEY;
 
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const signedTransaction = account.sign(transferTransaction);
 ```
@@ -197,7 +197,7 @@ const signedTransaction = account.sign(transferTransaction);
 ```java
 final String privateKey = "";
 
-final Account account = Account.createFromPrivateKey(privateKey,NetworkType.PRIVATE_TEST);
+final Account account = Account.createFromPrivateKey(privateKey,NetworkType.TEST_NET);
 
 final SignedTransaction signedTransaction = account.sign(transferTransaction);
 ```
@@ -224,7 +224,7 @@ transactionHttp.announceTransaction(signedTransaction).toFuture().get();
 
 <!--Bash-->
 ```
-$> xpx2-cli transaction transfer --recipient WD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics company:ticket::1 --message enjoy_your_ticket
+$> xpx2-cli transaction transfer --recipient VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics company:ticket::1 --message enjoy_your_ticket
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

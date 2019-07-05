@@ -8,7 +8,7 @@ Get the [block](../../protocol/block.md) information given a height.
 
 - Finish the [getting started section](../../getting-started/setting-up-workstation.md)
 - Text editor or IDE
-- XPX-Chain-SDK or CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 
 ## Let’s get into some code
 
@@ -82,7 +82,7 @@ blockchainHttp
 
 <!--Bash-->
 ```sh
-xpx-cli blockchain height
+xpx2-cli blockchain height
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

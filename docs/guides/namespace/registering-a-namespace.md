@@ -15,7 +15,7 @@ If an [account](../../built-in-features/account.md) creates a namespace, that na
 ## Prerequisites
 
 - Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- XPX-Chain-SDK or CLI
+- XPX-Chain-SDK or XPX-Chain-CLI
 - A text editor or IDE
 - An account with XPX
 
@@ -61,7 +61,7 @@ final NamespaceId namespaceId = new NamespaceId("foo");
 
 <!--Bash-->
 ```bash
-xpx-cli namespace info --name foo
+xpx2-cli namespace info --name foo
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -82,7 +82,7 @@ In Sirius-Chain, Sirius-Chain blocks are complete every `15` seconds in average.
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const namespaceName = "foo"; //Replace with an unique namespace name
 
@@ -90,7 +90,7 @@ const registerNamespaceTransaction = RegisterNamespaceTransaction.createRootName
     Deadline.create(),
     namespaceName,
     UInt64.fromUint(1000),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const signedTransaction = account.sign(registerNamespaceTransaction);
 
@@ -104,7 +104,7 @@ transactionHttp
 const transactionHttp = new TransactionHttp('http://localhost:3000');
 
 const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const namespaceName = "foo"; //Replace with an unique namespace name
 
@@ -112,7 +112,7 @@ const registerNamespaceTransaction = RegisterNamespaceTransaction.createRootName
     Deadline.create(),
     namespaceName,
     UInt64.fromUint(1000),
-    NetworkType.PRIVATE_TEST);
+    NetworkType.TEST_NET);
 
 const signedTransaction = account.sign(registerNamespaceTransaction);
 
@@ -126,7 +126,7 @@ transactionHttp
     // Replace with private key
     final String privateKey = "";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.PRIVATE_TEST);
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
     // Replace with namespace name
     final String namespaceName = "foo";
@@ -135,7 +135,7 @@ transactionHttp
         Deadline.create(2, ChronoUnit.HOURS),
         namespaceName,
         BigInteger.valueOf(1000),
-        NetworkType.PRIVATE_TEST
+        NetworkType.TEST_NET
     );
 
     final SignedTransaction signedTransaction = account.sign(registerNamespaceTransaction);
@@ -147,7 +147,7 @@ transactionHttp
 
 <!--Bash-->
 ```bash
-xpx-cli transaction namespace --name foo --rootnamespace --duration 1000
+xpx2-cli transaction namespace --name foo --rootnamespace --duration 1000
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
