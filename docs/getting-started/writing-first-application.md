@@ -64,7 +64,7 @@ Have you loaded an account with test XPX? If it is not the case, go back to [get
 $> xpx2-cli account info
 
 
-New Account: WCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6
+New Account: VCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6
 
 [...]
 
@@ -133,7 +133,7 @@ Send one `company:ticket` to the ticket vendor account announcing a [transfer tr
 
 1. Prepare the transfer transaction. Three main attributes form a transfer transaction:
 
-- The recipient account address: WC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU.
+- The recipient account address: VC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU.
 - A message: enjoy your ticket.
 - An array of mosaics: [1 company:ticket].
 
@@ -148,7 +148,7 @@ import {
 
 const transferTransaction = TransferTransaction.create(
     Deadline.create(),
-    Address.createFromRawAddress('WC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU'),
+    Address.createFromRawAddress('VC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU'),
     [new Mosaic(new MosaicId(company:ticket'), UInt64.fromUint(1))],
     PlainMessage.create(‘enjoy your ticket’'),
     NetworkType.TEST_NET
@@ -172,7 +172,7 @@ import static java.time.temporal.ChronoUnit.HOURS;
 
 final TransferTransaction transferTransaction = TransferTransaction.create(
     Deadline.create(2, HOURS),
-    Address.createFromRawAddress("WC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU"),
+    Address.createFromRawAddress("VC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU"),
     Arrays.asList(new Mosaic(new MosaicId("company:ticket"), BigInteger.valueOf(1))),
     PlainMessage.create("enjoy your ticket"),
     NetworkType.TEST_NET
@@ -224,7 +224,7 @@ transactionHttp.announceTransaction(signedTransaction).toFuture().get();
 
 <!--Bash-->
 ```
-$> xpx2-cli transaction transfer --recipient WD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics company:ticket::1 --message enjoy_your_ticket
+$> xpx2-cli transaction transfer --recipient VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics company:ticket::1 --message enjoy_your_ticket
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
