@@ -1081,8 +1081,6 @@ definitions:
     - publicKey
     - publicKeyHeight
     - mosaics
-    - importance
-    - importanceHeight
     properties:
       address:
         type: string
@@ -1096,10 +1094,6 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/MosaicDTO'
-      importance:
-        $ref: '#/definitions/UInt64DTO'
-      importanceHeight:
-        $ref: '#/definitions/UInt64DTO'
   AccountPropertiesInfoDTO:
     type: object
     required:

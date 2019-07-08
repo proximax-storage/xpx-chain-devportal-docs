@@ -13,18 +13,25 @@ This first guide will walk you through a step-by-step installation of the requir
 ### Using your local environment and setup local Node
 
 ```
-This section is still in development.
+This section is still work in progress.
 ```
 
 
-### Access our TESTNET  without setup local node
+### Access our existing testing network without setup local node
 
-You can use our TESTNET REST API directly with this url `http://bctestnet1.xpxsirius.io:3000`
+Node Description | Network Type| Node REST API URL | Address Prefix (1st Letter)
+-----------------|-------------|-------------------|------------------------
+Public Test Network node | TEST_NET | http://bctestnet1.xpxsirius.io:3000 | V
+Private Test Network node | PRIVATE_TEST | http://bcdev1.xpxsirius.io:3000 | W
+Private Network Node (internal demo node) | PRIVATE | http://siriusapi1.demo.xpxsirius.io <br> Please follow [instruction](#accessing-our-private-net) below to gain access. | Z
+
+#
+You can use our Sirius Chain REST API directly with respective url and network type as above. Besides, you can use your own node with your own API URL and network type if you happen to have one.
 
 To get first block information
 
 ```
-$> curl bctestnet1.xpxsirius.io/block/1
+$> {API URL}/block/1
 ```
 
 ## Creating a test account
@@ -44,14 +51,8 @@ $> sudo npm install --global xpx2-cli
 
 2. Create an account with the command line tool.
 
-#### With local node
 ```
-$> xpx2-cli account generate --network TEST_NET --save --url http://localhost:3000
-```
-
-#### Without local node 
-```
-$> xpx2-cli account generate --network TEST_NET --save --url http://bctestnet1.xpxsirius.io:3000
+$> xpx2-cli account generate --network {Network Type} --save --url {API URL}
 ```
 
 The `network flag` is set to TEST_NET. Test network is an alternative Sirius-Chain used for development and testing purposes.
@@ -89,7 +90,12 @@ Insert profile name (blank means default and it could overwrite the previous pro
 
 ### Use our faucet to get testing XPX
 
+For `testnet` you can get testing XPX from our online faucet.
 Simply go to our [faucet](https://bctestnetfaucet.xpxsirius.io/) to get your testing XPX.
+
+## Accessing our PRIVATE Net
+
+For our `Private` net, please send an email to devops@proximax.io to gain access to the private network.
 
 ## Setting up the development environment
 It is time to choose a programming language. Pick the one you feel most comfortable with, or follow your project requirements.

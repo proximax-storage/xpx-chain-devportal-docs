@@ -21,7 +21,9 @@
       "built-in-features/mosaic",
       "built-in-features/transfer-transaction",
       "built-in-features/aggregate-transaction",
-      "built-in-features/cross-chain-swaps"
+      "built-in-features/cross-chain-swaps",
+      "built-in-features/metadata",
+      "built-in-features/super-contracts"
     ],
     "REST API":[
       "rest-api/rest-api-overview",

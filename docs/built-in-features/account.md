@@ -24,10 +24,7 @@ Accounts have the following properties:
 > Each account has a unique [address](../protocol/cryptography.md#address). You will normally share the derived address instead, as it is shorter and gathers more information. <br>
 >
 > **Mosaics** <br>
-> The amount of different [mosaics](./mosaic.md) the account owns. <br>
->
-> **Importance** <br>
-> The relation between the amount of validating mosaics the account owns and the total mosaic supply. 
+> The amount of different [mosaics](./mosaic.md) the account owns. <br> 
 
 ## Multisig Account
 

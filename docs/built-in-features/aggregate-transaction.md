@@ -70,7 +70,7 @@ Every time a cosignatory signs the transaction and [announces an aggregate bonde
 
 **Note**
 
-⚠ The latest release introduces breaking changes. Until the SDKs are not aligned, we recommend using [catapult-service-bootstrap 0.1.0][Workstation] to run the guides.
+We recommend checking out [setting up your workstation][Workstation] before going through the guides.
 
 </div>
 

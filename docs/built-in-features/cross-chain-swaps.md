@@ -24,7 +24,7 @@ When talking about tokens in Sirius-Chain, we are actually referring to [mosaics
 
 **Note**
 
-⚠ The latest release introduces breaking changes. Until the SDKs are not aligned, we recommend using [catapult-service-bootstrap 0.1.0](../getting-started/setting-up-workstation.md) to run the guides.
+We recommend checking out [setting up your workstation][Workstation] before going through the guides.
 
 </div>
 
@@ -102,3 +102,5 @@ Enumeration: uint8
 1 (Keccak) | Input is hashed using Keccak.
 2 (Hash_160) | Input is hashed twice: first with Sha-256 and then with RIPEMD-160 (bitcoin’s OP_HASH160).
 3 (Hash_256) |	Input is hashed twice with Sha-256 (bitcoin’s OP_HASH256).
+
+[Workstation]: ../getting-started/setting-up-workstation.md
