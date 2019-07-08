@@ -27,7 +27,7 @@ class HomeSplash extends React.Component {
             <h1>Start building apps on ProximaX Blockchain Platform</h1>
             <h6>ProximaX Sirius-Chain gives you direct access to a specialised set of <b>tested</b> and <b>secure on-blockchain features</b> using your favourite <b>programming language</b>.
             </h6>
-            <p>ProximaX Sirius-Chain Version 0.1.0 &mdash; NEW UPDATE! </p>
+            <p>ProximaX Sirius-Chain Version <span>0.1.0</span> &mdash; NEW UPDATE! </p>
           </div>
         </div>
     );
