@@ -5,10 +5,11 @@ sidebar_label: Overview
 hide_title : true
 ---
 
-<div class="info">
+<div class=info>
+
 **Note**
 
-⚠ The latest release introduces breaking changes. Until the SDKs are not aligned, we recommend using [catapult-service-bootstrap 0.1.0](../../getting-started/setting-up-workstation.md) to run the guides.
+We recommend checking out [setting up your workstation][Workstation] before going through the guides.
 
 </div>
 
@@ -39,3 +40,5 @@ Create a [multi-level multisig account](../../built-in-features/multisig-account
 ## [Sending a multisig transaction](./sending-a-multisig-transaction.md)
 
 Send a transaction involving a [multisig](../../built-in-features/multisig-account.md) and learn how an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md#examples) works.
+
+[Workstation]: ../../getting-started/setting-up-workstation.md

@@ -60,7 +60,7 @@ $> xpx2-cli account generate --network TEST_NET
 
 ### Get account info
 
-Returns the account information, such as the public key, importance and [mosaics](../built-in-features/mosaic.md) balance.
+Returns the account information, such as the public key and [mosaics](../built-in-features/mosaic.md) balance.
 
 **Options**
 

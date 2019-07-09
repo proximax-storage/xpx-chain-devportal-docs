@@ -1687,8 +1687,6 @@ components:
       required:
       - address
       - addressHeight
-      - importance
-      - importanceHeight
       - mosaics
       - publicKey
       - publicKeyHeight
@@ -1706,10 +1704,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MosaicDTO'
-        importance:
-          $ref: '#/components/schemas/UInt64DTO'
-        importanceHeight:
-          $ref: '#/components/schemas/UInt64DTO'
     AccountPropertiesDTO:
       required:
       - address

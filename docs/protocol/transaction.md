@@ -35,7 +35,7 @@ There are different types of transactions. For example, you can transfer [mosaic
 |0x4152 |	[Secret Lock Transaction](../built-in-features/cross-chain-swaps.md#secretlocktransaction)  |	Start a [token swap](../built-in-features/cross-chain-swaps.md) between different chains.|
 |0x4252 |	[Secret Proof Transaction](../built-in-features/cross-chain-swaps.md#secretprooftransaction)  |	Conclude a token swap between different chains. |
 |**Remote validating** | | |	  	 
-|0x414C |	[Account Link Transaction](./validating.md#accountlinktransaction) |	Delegates the account importance to a proxy account to enable [delegated validating](./validating.md).|
+|0x414C |	[Account Link Transaction](./validating.md#accountlinktransaction) |	Delegates the account to a proxy account to enable [delegated validating](./validating.md).|
 
 ## Defining a transaction
 

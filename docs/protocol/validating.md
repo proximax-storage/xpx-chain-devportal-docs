@@ -44,7 +44,7 @@ Security-wise, sharing a proxy private key does not compromise the original acco
 
 ### AccountLinkTransaction
 
-Announce an AccountLinkTransaction to delegate the account importance to a proxy account. By doing so, you can enable delegated validating.
+Announce an AccountLinkTransaction to delegate the account to a proxy account. By doing so, you can enable delegated validating.
 
 **Version**: 0x02
 

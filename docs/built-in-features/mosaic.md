@@ -18,13 +18,13 @@ Transferability |	Boolean |	If set to true, the mosaic can be transferred betwee
 
 ## Guides
 
-<div class="info">
+<div class=info>
 
 **Note**
 
-⚠ The latest release introduces breaking changes. Until the SDKs are not aligned, we recommend using [catapult-service-bootstrap 0.1.0](../getting-started/setting-up-workstation.md) to run the guides.
+We recommend checking out [setting up your workstation][Workstation] before going through the guides.
 
-</diV>
+</div>
 
 - [Creating a mosaic](../guides/mosaic/creating-a-mosaic.md)
 
@@ -123,3 +123,5 @@ Enumeration: uint8
 ------|----------------------
 0 |	Increase.
 1 |	Decrease.
+
+[Workstation]: ../getting-started/setting-up-workstation.md
