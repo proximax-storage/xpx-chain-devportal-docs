@@ -6,6 +6,8 @@ Editable on-chain contracts, the most powerful way to secure funds and enable jo
 
 A Sirius-Chain [account](./account.md) can be [converted to multisig](../guides/multisig-account/converting-an-account-to-multisig.md). From that moment on, the account cannot announce transactions by itself. It will require other accounts to announce transactions for them. These other accounts are the multisig cosignatories.
 
+From that moment on, the multisig account cannot announce transactions by itself. A multisig cosignatory has to propose a transaction involving the multisig, wrapping it in an [aggregate transaction](./aggregate-transaction.md).
+
 Nevertheless, it is not always necessary to force all cosignatories to cosign the transaction. Sirius-Chain allows to set up the minimum number of consignatory agreements. These properties can be edited afterwards to suit almost all needs. Sirius-Chain current implementation of multisig is “M-of-N”. This means that M can be any number equal to or less than N, i.e., 1-of-4, 2-of-2, 4-of-9, 9-of-10 and so on.
 
 The number of minimum cosignatures to approve transactions and remove cosignatories is editable.
@@ -23,6 +25,7 @@ Some important considerations to keep in mind:
 - Multisig accounts can have up to `10` cosignatories.
 - An account can be cosigner of up to `5` multisig accounts.
 - Multisig accounts can have as a cosigner another multisig, up to `3` levels. Multi-level multisig accounts add “AND/OR” logic to multi-signature transactions.
+- [Multisig modification transactions](#modifymultisigtransaction) must be wrapped in an [aggregate transaction](./aggregate-transaction.md). New cosignatories added to the multisig must opt-in by cosigning the aggregate.
 
 ## Examples
 
