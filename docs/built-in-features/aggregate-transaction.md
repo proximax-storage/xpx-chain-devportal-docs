@@ -17,7 +17,7 @@ As he is the only required signed, we say the aggregate transaction it is comple
 
 ## Multi-Asset Escrowed Transactions
 
-In this example, Alice is buying tickets with currency:euro. When the ticket distributor cosigns the aggregate transaction, the swap will happen atomically.
+In this example, Alice is buying tickets with `currency:euro`. When the ticket distributor cosigns the aggregate transaction, the swap will happen atomically.
 
 ![Aggregate escrow](/img/aggregate-escrow-1.png "Aggregate escrow")
 
@@ -57,7 +57,7 @@ When sending an **aggregate bonded transaction**, an account must first announce
 
 Once an aggregate bonded is announced, it reaches partial state and notifies its status through WebSockets or HTTP API calls.
 
-Every time a cosignatory signs the transaction and [announces an aggregate bonded cosignature](#cosignaturetransaction), the network checks if all the required cosigners have already signed. In this situation, the transaction changes to unconfirmed state until the network accepts it, and it is included in a block once processed.
+Every time a cosignatory signs the transaction and [announces an aggregate bonded cosignature](#cosignature), the network checks if all the required cosigners have already signed. In this situation, the transaction changes to unconfirmed state until the network accepts it, and it is included in a block once processed.
 
 ![Aggregate bonded transaction cycle](/img/aggregate-bonded-transaction-cycle.png "Aggregate bonded transaction cycle")
 
