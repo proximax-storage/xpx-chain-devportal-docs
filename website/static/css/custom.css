@@ -11,7 +11,10 @@ blockquote {
     background-color: #f3faff;
     border-left-color: #e1f0f9;
 }
-
+article p img {
+    margin-left: initial;
+    margin-right: initial;
+}
 .caption{
     text-align: center;
     font-size : 120%;
