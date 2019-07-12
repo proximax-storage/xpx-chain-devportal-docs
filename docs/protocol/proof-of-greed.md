@@ -72,27 +72,27 @@ of Nxt Consensus. Now let's put it in mathematical words:
 
 ![](http://latex.codecogs.com/gif.latex?numTr_i) - the number of transactions in the block from the node ![](http://latex.codecogs.com/gif.latex?i), ![](http://latex.codecogs.com/gif.latex?i%20=%201...N).
 
-![](http://latex.codecogs.com/gif.latex?actFee_ij) - how much commission node  took from the transaction ![](http://latex.codecogs.com/gif.latex?j), ![](http://latex.codecogs.com/gif.latex?i%20=%201...N), ![](http://latex.codecogs.com/gif.latex?j%20=%201...numTr_i).
+![](http://latex.codecogs.com/gif.latex?actFee_ij) - how much commission node  took from the transaction ![](http://latex.codecogs.com/gif.latex?j), ![](http://latex.codecogs.com/gif.latex?i%20=%201...N), ![](http://latex.codecogs.com/gif.latex?j=1...numTr_i).
 
-![](http://latex.codecogs.com/gif.latex?maxFee_ij) - maximum that node ![](http://latex.codecogs.com/gif.latex?numTr_i) can take from the transaction ![](http://latex.codecogs.com/gif.latex?numTr_j), ![](http://latex.codecogs.com/gif.latex?i%20=%201...N), ![](http://latex.codecogs.com/gif.latex?j%20=%201...numTr_i).
+![](http://latex.codecogs.com/gif.latex?maxFee_ij) - maximum that node ![](http://latex.codecogs.com/gif.latex?numTr_i) can take from the transaction ![](http://latex.codecogs.com/gif.latex?numTr_j), ![](http://latex.codecogs.com/gif.latex?i=1...N), ![](http://latex.codecogs.com/gif.latex?j=1...numTr_i).
 
 ![](http://latex.codecogs.com/gif.latex?g_i) - the greed of the node ![](http://latex.codecogs.com/gif.latex?i), ![](http://latex.codecogs.com/gif.latex?i%20=%201...N).
 
-![](/img/pog_12.png)
+![](http://latex.codecogs.com/gif.latex?g_i=\frac{\epsilon+\sum^{numTr_i}_{j=1}actFee_ij}{\epsilon+\sum^{numTr_i}_{j=1}maxFee_ij})
 
-where ![](/img/pog_13.png) is the average cost of block recording in blockchain for a validator.
+where ![](http://latex.codecogs.com/gif.latex?\epsilon) is the average cost of block recording in blockchain for a validator.
 
-If ![](/img/pog_14.png) is less than or close to the ![](/img/pog_15.png), then ![](/img/pog_16.png).
+If ![](http://latex.codecogs.com/gif.latex?\sum^{numTr_i}_{j=1}maxFee_ij) is less than or close to the ![](http://latex.codecogs.com/gif.latex?\epsilon), then ![](http://latex.codecogs.com/gif.latex?g_i\approx1).
 In this case, the validator's behaviour strategy can be arbitrary, that is, it can take any
 percentage of the maximum possible commission without reducing its probability of creating the next block.
 
-The parameter ![](/img/pog_17.png) is set by the node for the whole block in the form of two variables ![](/img/pog_18.png) and ![](/img/pog_19.png).
+The parameter ![](http://latex.codecogs.com/gif.latex?g_i) is set by the node for the whole block in the form of two variables ![](http://latex.codecogs.com/gif.latex?\sum^{numTr_i}_{j=1}actFee_ij) and ![](http://latex.codecogs.com/gif.latex?\sum^{numTr_i}_{j=1}maxFee_ij).
 
-![](/img/pog_20.png) - parameter of the node _i_, ![](/img/pog_21.png).
+![](http://latex.codecogs.com/gif.latex?\lambda_i) - parameter of the node ![](http://latex.codecogs.com/gif.latex?i), ![](http://latex.codecogs.com/gif.latex?i=1...N).
 
-![](/img/pog_22.png),
+![](http://latex.codecogs.com/gif.latex?\lambda_i=[1+\triangle(1-2g_i)]^k),
 
-where ![](/img/pog_23.png) and ![](/img/pog_24.png) is variable
+where ![](http://latex.codecogs.com/gif.latex?0\leq\triangle<1) and ![](http://latex.codecogs.com/gif.latex?k>0) is variable
 parameters that are needed to be researched and modelled to get the best value.
 
 Now we have a possibility of every node to be chosen. Because of new
