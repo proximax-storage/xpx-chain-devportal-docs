@@ -3,14 +3,6 @@ id: account-filter
 title: Account filter
 ---
 
-<div class="info">
-
-**Note**
-
-Account filters feature is not implemented in the SDK yet.
-
-</div>
-
 [Accounts][Account] may configure a set of smart rules to block announcing or receiving transactions given a series of constraints.
 
 The editable on-chain constraints are called filters. Accounts can configure the following types:

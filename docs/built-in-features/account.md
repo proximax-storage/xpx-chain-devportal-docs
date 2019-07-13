@@ -11,8 +11,8 @@ Accounts have the following properties:
 > **Private key** <br>
 > A [private key](../protocol/cryptography.md#private-and-public-key) is a key to an account. Anyone having the private key to an account can initiate any account related action. <br>
 >
->  <div class="info">  
-> 
+>  <div class="info">
+>
 > **Note** <br>
 >    The private key must be kept secret at all costs. Make sure your private key is backed up safely somewhere offline.
 > </div><br>
@@ -24,7 +24,7 @@ Accounts have the following properties:
 > Each account has a unique [address](../protocol/cryptography.md#address). You will normally share the derived address instead, as it is shorter and gathers more information. <br>
 >
 > **Mosaics** <br>
-> The amount of different [mosaics](./mosaic.md) the account owns. <br> 
+> The amount of different [mosaics](./mosaic.md) the account owns. <br>
 
 ## Multisig Account
 

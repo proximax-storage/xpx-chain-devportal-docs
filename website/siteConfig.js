@@ -45,14 +45,14 @@ const siteConfig = {
     {search: true}
   ],
 
-  
+
   algolia: {
     apiKey: 'my-api-key',
     indexName: 'my-index-name',
     placeholder: 'Search',
     algoliaOptions: {} // Optional, if provided by Algolia
   },
-  
+
 
   // If you have users set above, you add it here:
   users,
@@ -73,7 +73,7 @@ const siteConfig = {
   ],
 
   /* Custom fonts for website */
-  
+
   fonts: {
     myFont: [
       "-apple-system",
@@ -83,7 +83,7 @@ const siteConfig = {
       "Lato"
     ]
   },
-  
+
 
   docsSideNavCollapsible: true,
 
