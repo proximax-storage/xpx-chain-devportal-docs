@@ -2,18 +2,21 @@
 id: mosaic
 title: Mosaic
 ---
-Mosaics are part of what makes the Smart Asset System unique and flexible. They are **fixed assets** on the Sirius-Chain that can represent a set of multiple identical things that do not change.
 
-A mosaic could be a token, but it could also be a collection of more specialised assets such as reward points, shares of stock, signatures, status flags, votes or even other currencies.
+Mosaics are part of what makes the Smart Asset System unique and flexible. They are *fixed assets* on the Sirius-Chain blockchain that can represent a set of multiple identical things that do not change.
 
-Each mosaic has a set of configurable properties. During the mosaic creation, you can define:
+A mosaic could be a token, but it could also be a collection of more specialized assets such as reward points, shares of stock, signatures, status flags, votes or even other currencies.
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-Divisibility |	Integer |	Determines up to what decimal place the mosaic can be divided. Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics. The divisibility must be in the range of 0 and `6`.
-Duration |	Integer |	Specifies the number of confirmed blocks the mosaic is rented for. Mosaics can be configured to not expire.
-Initial supply |	Integer |	Indicates the amount of mosaic in circulation. The initial supply must be in the range of 0 and `9,000,000,000`.
-Supply mutable |	Boolean |	If set to true, the mosaic supply can change at a later point. Otherwise, the mosaic supply remains immutable.
+## Properties
+
+Each mosaic has a unique identifier and a set of configurable properties. During the ![mosaic creation](../guides/mosaic/creating-a-mosaic.md), you can define:
+
+**Property**    |**Type** |	**Description**
+----------------|---------|--------------------
+Divisibility    |	Integer |	Determines up to what decimal place the mosaic can be divided. Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics. The divisibility must be in the range of 0 and `6`.
+Duration        |	Integer |	Specifies the number of confirmed blocks the mosaic is rented for. Mosaics can be configured to not expire.
+Initial supply  |	Integer |	Indicates the amount of mosaic in circulation. The initial supply must be in the range of 0 and `9,000,000,000`.
+Supply mutable  |	Boolean |	If set to true, the mosaic supply can change at a later point. Otherwise, the mosaic supply remains immutable.
 Transferability |	Boolean |	If set to true, the mosaic can be transferred between arbitrary accounts. Otherwise, the mosaic can be only transferred back to the mosaic creator.
 
 ## Guides
