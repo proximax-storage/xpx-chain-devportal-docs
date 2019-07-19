@@ -4,16 +4,12 @@ title: What is ProximaX Sirius-Chain
 ---
 ## Blockchain Reimagined and Evolved
 
-[ProximaX](https://proximax.io/) Sirius-chain is a blockchain component under ProximaX Sirius platform. It is built from the ground up with one key purpose in mind - to make utilising blockchain technology simple for developers.
+[ProximaX](https://proximax.io/) Sirius-Chain is a developer-friendly blockchain platform. Rather than force you to write your own “smart contract” code from scratch, ProximaX gives you direct access to a specialized set of tested and secure on-blockchain ![features](../built-in-features/account.md).
 
-Sirius-Chain is built around a powerful system that enables you to customise your use of blockchain. We call it the Smart Asset System. It gives you the power to use Sirius-Chain as if it were a custom blockchain built for your application and your assets.
+Sirius-Chain is suitable for an amazing variety of solutions of different classes, such as direct public transactions via a streamlined smartphone app, efficient cloud services that connect client or web applications, or a high-performance permissioned enterprise back-end for business-critical record keeping.
 
 ![Smart Assets System](/img/smart-assets-system.png "Smart Assets System")
 <p class="caption">The Smart Asset System</p>
-
-Rather than force you to write your own “smart contract” code from scratch or use off-blockchain methods that define custom assets for you application, Sirius-Chain gives you direct access to a specialised set of tested and secure on-blockchain features.
-
-Sirius-Chain is suitable for an amazing variety of solutions of different classes, such as direct public transactions via a streamlined smartphone app, efficient cloud services that connect client or web applications, or a high-performance permissioned enterprise back-end for business-critical record keeping.
 
 ## Architecting on Sirius-Chain
 
@@ -23,11 +19,11 @@ All the features are available through the API interface on each node in the net
 
 ![Architecting Sirius-Chain Solutions](/img/architecting-sirius-chain-solutions.png "Architecting Sirius-Chain Solutions")
 
-**Mobile app direct access** 
+**Mobile app direct access**
 
 A lightweight app directly interfaces with blockchain features.
 
-**Client/server model** 
+**Client/server model**
 
 A gateway server manages blockchain usage for a client app or web service.
 
