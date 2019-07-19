@@ -9,15 +9,50 @@ A mosaic could be a token, but it could also be a collection of more specialized
 
 ## Properties
 
-Each mosaic has a unique identifier and a set of configurable properties. During the ![mosaic creation](../guides/mosaic/creating-a-mosaic.md), you can define:
+Each mosaic has a unique identifier and a set of configurable properties. During the [mosaic creation](../guides/mosaic/creating-a-mosaic.md), you can define:
 
 **Property**    |**Type** |	**Description**
 ----------------|---------|--------------------
-Divisibility    |	Integer |	Determines up to what decimal place the mosaic can be divided. Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics. The divisibility must be in the range of 0 and `6`.
-Duration        |	Integer |	Specifies the number of confirmed blocks the mosaic is rented for. Mosaics can be configured to not expire.
-Initial supply  |	Integer |	Indicates the amount of mosaic in circulation. The initial supply must be in the range of 0 and `9,000,000,000`.
+Divisibility    |	Integer |	Determines up to what decimal place the mosaic can be divided. Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics. The divisibility must be in the range of `0` and `6`.
+Duration        |	Integer |	Specifies the number of confirmed blocks the mosaic is rented for. Duration is allowed to lie up to `3650` days (10 years). To create non-expiring mosaics, leave this property undefined.
+Initial supply  |	Integer |	Indicates the amount of mosaic in circulation. The total supply must be in the range of 0 and `9,000,000,000,000,000` atomic units (absolute amount).
 Supply mutable  |	Boolean |	If set to true, the mosaic supply can change at a later point. Otherwise, the mosaic supply remains immutable.
 Transferability |	Boolean |	If set to true, the mosaic can be transferred between arbitrary accounts. Otherwise, the mosaic can be only transferred back to the mosaic creator.
+
+## Absolute and relative amounts
+
+Sirius-Chain works with absolute amounts, removing the comma when the mosaic can be divisible. To get an absolute amount, multiply the amount of assets you want to create or send by ![](http://latex.codecogs.com/gif.latex?10^{divisibility}).
+
+For example, if the mosaic has divisibility 2, to create or send 10 units (relative) you should define 1000 (absolute) instead.
+
+## Cost
+
+The cost of creating a mosaic is configurable per network. By default, it has a cost of `500 cat.currency` plus transaction fees.
+
+## Example
+A private company, ComfyClothingCompany, decides that it wants to go public. Instead of a traditional IPO, the company decides to do an STO to issue tokens through the Sirius-Chain platform.
+
+Thus, the company must create a mosaic to represent shares to their company. Here is how the company might configure the mosaic properties:
+
+ **Property**  | **Configuration**
+---------------|------------------------------
+Duration       | undefined
+Divisibility   | 2
+Initial supply | 1000000000 (10,000,000.00)
+Sipply motable | true
+Transferable   | true
+
+*Duration*: Shares of the company should exist as long as the company is in business. The ComfyClothingCompany leaves this property *undefined*, creating a non-expiring mosaic representing their assets.
+
+*Divisibility*: Although brokerages and investment firms can fractionalize shares, the traditional minimum number of shares an investor can purchase from the open market is 1.
+
+However, Sirius-Chain mosaics offer more flexibility in tokenizing their company shares. ComfyClothingCompany chooses the divisibility to be `2`, allowing the smallest fraction of their shares to be 0.01.
+
+Fractional ownership, along with the ability to trade 24/7, brings additional liquidity to the market. These same characteristics also open up the market to smaller investors.
+
+*Supply*: ComfyClothingCompany sets the initial supply of the mosaic to a typical startup amount of `10,000,000` authorized shares. As the company grows, it could choose to increase the number of shares, so the supply mutable is set to `true`.
+
+*Transferable*: Once the initial shares are distributed, the shares will be on the market to be traded in public. Thus, the transferability property needs to be set to `true`.
 
 ## Guides
 
