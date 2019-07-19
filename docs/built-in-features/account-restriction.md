@@ -1,15 +1,15 @@
 ---
-id: account-filter
-title: Account filter
+id: account-restriction
+title: Account restriction
 ---
 
-[Accounts][Account] may configure a set of smart rules to block announcing or receiving transactions given a series of constraints.
+![Accounts](./account.md) may configure a set of smart rules to block announcing or receiving transactions given a series of restrictions.
 
-The editable on-chain constraints are called filters. Accounts can configure the following types:
+The account owners - plural in case of multisig accounts - can edit the account restrictions at a later time announcing the specific account restriction transaction.
 
-## Address filter
+## Address restrictions
 
-An account can decide to receive transactions only from an allowed list of [addresses][Account]. Similarly, an account can specify a list of addresses that don’t want to receive transactions from.
+An account can decide to *receive* transactions only from an allowed list of ![addresses](./account.md). Similarly, the account can define a list of blocked addresses.
 
 ![Account Properties Address](/img/account-properties-address.png "Account Properties Address")
 
@@ -19,41 +19,41 @@ An account can decide to receive transactions only from an allowed list of [addr
 
 **Note**
 
-Allow and block filters are mutually exclusive. In other words, an account can only configure a block or an allow list per type of filter.
+Allow and block restrictions are mutually exclusive. In other words, an account can only configure a block or an allow list per type of restriction.
 
 </div>
 
-By default, when there is no filter set, all the accounts in the network can announce transactions to the stated account.
+By default, when there are no restrictions set, all the accounts in the network can announce transactions to the unrestricted account.
 
-## Mosaic filter
+## Mosaic restriction
 
-An account can configure a filter to permit incoming transactions only if all the [mosaics][Mosaic] attached are allowed. On the other hand, the account can refuse to accept transactions containing a mosaic listed as blocked.
+An account can configure a filter to permit incoming transactions only if all the [mosaics](./mosaic.md) attached are allowed. On the other hand, the account can refuse to accept transactions containing a mosaic listed as blocked.
 
-## EntityType filter
+## Operation restriction
 
-An account can allow/block announcing outgoing transactions with a [determined type][Transaction-type]. By doing so, it increases its security, preventing the announcement by mistake of undesired transactions.
+An account can allow/block announcing *outgoing* transactions with a [determined type](../protocol/transaction.md). By doing so, it increases its security, preventing the announcement by mistake of undesired transactions.
 
 ## Examples
 
 ## Blocking spam transactions
 
-A company is using the public chain to certify the quality of their products.
+A pharmaceutical company is using the public chain to certify the quality of their products.
 
-When the quality verification process concludes, an operator sends a [quality seal][Mosaic] to the product account.
+When the quality verification process concludes, an operator sends a [quality seal](./mosaic.md) to the product account.
 
-The final customers can review the product mosaics scanning a QR code. For that reason, the company only wants to show related transactions, avoiding others to spam their products with non-related information.
+The final customers can review the product mosaics scanning a QR code. For that reason, the company only wants to show related transactions, avoiding that others spam their products with non-related information.
 
 ![Account Properties Spam](/img/account-properties-spam.png "Account Properties Spam")
 
 <p class="caption">Blocking spam transactions</p>
 
-The company opts to configure their product accounts filters, enabling only to receive transactions containing `company.quality.seal` mosaics.
+The company opts to configure their product accounts filters, enabling only to receive transactions containing `pharmaceutical.quality.seal` mosaics.
 
 ## Enhancing the account security
 
-Lately, Alice is only using her main account to cosign aggregate transactions where a [multisig][Multisig] she is a cosignatory is involved.
+Lately, Alice is only using her main account to cosign aggregate transactions where a [multisig]( ./multisig-account.md ) she is a cosignatory is involved.
 
-As a temporary measure, Alice opts to disable announcing transfer transactions from her main account, double checking that any of the funds she owns will be transferred.
+As a temporary security measure, Alice opts to disable announcing transfer transactions from her main account. Doing so, Alice double-checks that the funds held in the main account are not going to be transferred by mistake.
 
 ## Schemas
 
