@@ -2,67 +2,71 @@
 id: aggregate-transaction
 title: Aggregate Transaction
 ---
-Aggregated Transactions merge multiple transactions into one, allowing **trustless swaps**, and other advanced logic. Sirius Chain does this by generating a one-time disposable smart contract. When all involved [accounts][Account] have cosigned the aggregate transaction, all the inner transactions are executed at the same time.
 
-## Examples
-## Sending payouts
+Aggregated Transactions merge multiple transactions into one, allowing **trustless swaps**, and other advanced logic. Sirius-Chain does this by generating a one-time disposable smart contract.
 
-Dan announces an aggregate transaction that merges two transfer transactions.
+![Trustless swap](/img/aggregate-trustless-swap.png)
+<p class="caption">Example of an aggregate transaction between two participants</p>
 
-As he is the only required signed, we say the aggregate transaction it is complete. After announcing it to the network, Alice and Bob will receive the mosaics at the same time.
+When all involved [accounts](./account.md) have cosigned the aggregate transaction, all the inner transactions are executed at the same time.
 
-![Aggregate sending payouts](/img/aggregate-sending-payouts.png "Aggregate sending payouts")
-
-<p class="caption">Sending payouts with aggregate complete transactions</p>
-
-## Multi-Asset Escrowed Transactions
-
-In this example, Alice is buying tickets with `currency:euro`. When the ticket distributor cosigns the aggregate transaction, the swap will happen atomically.
-
-![Aggregate escrow](/img/aggregate-escrow-1.png "Aggregate escrow")
-
-<p class="caption">Multi-Asset Escrowed Transactions</p>
-
-## Paying for others fees
-
-Alice sends $10 to Bob using an app to make payments. But she doesn’t have any XPX to pay the blockchain transaction fee.
-
-By creating an aggregate bonded transaction, she can convert USD to XPX to pay the fee. Now Alice and Bob can use Sirius-Chain without ever having to buy or hold XPX.
-
-Since the app creator can put their own branding on the open source payment app, Alice and Bob may not even know they are using blockchain.
-
-![Aggregate paying for others fees](/img/aggregate-paying-for-others-fees.png "Aggregate paying for others fees")
-
-<p class="caption">Paying for others fees</p>
 
 ## Aggregate complete
 
-An aggregate transaction is **complete** when all cosigners have signed it.
+An aggregate transaction is *complete* when all the required participants have signed it.
 
-The different participants can sign without using the blockchain the aggregate transaction. Once it has all the required signatures, one of them can announce it to the network. If the inner transaction setup is valid, and there is no validation error, the transactions will get executed at the same time.
+The cosigners can sign the transaction without using the blockchain. Once it has all the required signatures, one of them can announce it to the network. If the inner transaction setup is valid, and there is no validation error, the transactions will get executed at the same time.
 
-Aggregate complete transactions enable adding more transactions per block by gathering multiple inner transactions between different participants in the same operation.
+Aggregate complete transactions enable adding more transactions per block by gathering multiple inner transactions.
 
 ## Aggregate bonded
 
 An aggregate transaction is **bonded** when it requires signatures from other participants.
 
-<div class=info>
+<div class="info">
 
 **Note**
 
-When sending an **aggregate bonded transaction**, an account must first announce and get confirmed a [hash lock transaction](#hashlocktransaction) for this aggregate with at least `10` XPX.
+Before announcing an **aggregate bonded transaction**, an account must announce and get confirmed a [hash lock transaction](./aggregate-transaction.md#hash-lock-trahsaction) locking `10 cat.currency`.
 
 </div>
 
 Once an aggregate bonded is announced, it reaches partial state and notifies its status through WebSockets or HTTP API calls.
 
-Every time a cosignatory signs the transaction and [announces an aggregate bonded cosignature](#cosignature), the network checks if all the required cosigners have already signed. In this situation, the transaction changes to unconfirmed state until the network accepts it, and it is included in a block once processed.
+Every time a cosignatory signs the transaction and [announces an aggregate bonded cosignature](./aggregate-transaction.md#cosignature), the network checks if all the required cosigners have signed. When all signatures are acquired, the transaction changes to unconfirmed state until the network includes it in a block.
 
 ![Aggregate bonded transaction cycle](/img/aggregate-bonded-transaction-cycle.png "Aggregate bonded transaction cycle")
+<p class="caption">Aggregate bonded transaction cycle</p>
 
-<p class=caption>Aggregate bonded transaction cycle</p>
 
+## Examples
+
+### Sending payouts
+
+Dan announces an aggregate transaction that merges two transfer transactions.
+
+As Dan is the only required signatory, the transaction is considered complete after he signed. After announcing it to the network, Alice and Bob will receive the mosaics at the same time.
+
+![Aggregate sending payouts](/img/aggregate-sending-payouts.png "Aggregate sending payouts")
+<p class="caption">Sending payouts with aggregate complete transactions</p>
+
+### Multi-Asset Escrowed Transactions
+
+In this example, Alice is buying tickets with `currency.euro` [mosaic](./mosaic.md). When the ticket distributor cosigns the aggregate transaction, the swap will happen atomically.
+
+![Multi-Asset Escrowed Transactions](/img/aggregate-trustless-swap.png)
+<p class="caption">Multi-Asset Escrowed Transaction</p>
+
+### Paying for others fees
+
+Alice sends 10 `currency.euro` to Bob using an app to make payments. But Alice doesn’t own cat.currency to pay the transaction fee.
+
+By creating an aggregate bonded transaction, Alice can convert EUR to `cat.currency` to pay the fee. Now, Alice and Bob can use Sirius-Chain blockchain without ever having to buy or hold `cat.currency`.
+
+Since the app creator can put their own branding on the open source payment app, Alice and Bob may not even know they are using blockchain.
+
+![Paying for others fees](/img/aggregate-paying-for-others-fees.png "Paying for others fees")
+<p class="caption">Paying for other fees</p>
 
 ## Guides
 

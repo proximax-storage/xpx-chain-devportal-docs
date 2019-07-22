@@ -3,17 +3,17 @@ id: account-restriction
 title: Account restriction
 ---
 
-![Accounts](./account.md) may configure a set of smart rules to block announcing or receiving transactions given a series of restrictions.
+[Accounts](./account.md) may configure a set of smart rules to block announcing or receiving transactions given a series of restrictions.
 
-The account owners - plural in case of multisig accounts - can edit the account restrictions at a later time announcing the specific account restriction transaction.
+The account owners - plural in case of multisig accounts - can edit the account restrictions at a later time announcing the specific [account restriction transaction](./account-restriction.md#account-address-restriction-transaction).
 
 ## Address restrictions
 
-An account can decide to *receive* transactions only from an allowed list of ![addresses](./account.md). Similarly, the account can define a list of blocked addresses.
+An account can decide to **receive** transactions only from an allowed list of [addresses](./account.md). Similarly, the account can define a list of blocked addresses.
 
 ![Account Properties Address](/img/account-properties-address.png "Account Properties Address")
 
-<p class="caption">Address filter diagram</p>
+<p class="caption">Address restriction diagram</p>
 
 <div class="info">
 
@@ -27,11 +27,11 @@ By default, when there are no restrictions set, all the accounts in the network 
 
 ## Mosaic restriction
 
-An account can configure a filter to permit incoming transactions only if all the [mosaics](./mosaic.md) attached are allowed. On the other hand, the account can refuse to accept transactions containing a mosaic listed as blocked.
+An account can configure a filter to permit **incoming** transactions only if all the [mosaics](./mosaic.md) attached are allowed. On the other hand, the account can refuse to accept transactions containing a mosaic listed as blocked.
 
 ## Operation restriction
 
-An account can allow/block announcing *outgoing* transactions with a [determined type](../protocol/transaction.md). By doing so, it increases its security, preventing the announcement by mistake of undesired transactions.
+An account can allow/block announcing **outgoing** transactions with a [determined type](../protocol/transaction.md). By doing so, it increases its security, preventing the announcement by mistake of undesired transactions.
 
 ## Examples
 
@@ -54,6 +54,13 @@ The company opts to configure their product accounts filters, enabling only to r
 Lately, Alice is only using her main account to cosign aggregate transactions where a [multisig]( ./multisig-account.md ) she is a cosignatory is involved.
 
 As a temporary security measure, Alice opts to disable announcing transfer transactions from her main account. Doing so, Alice double-checks that the funds held in the main account are not going to be transferred by mistake.
+
+## Guides
+
+- [Preventing spam attacks with account restrictions](../guides/account-restriction/preventing-spam-sttacks.md)
+
+    Send transactions to different accounts atomically, using an aggregate complete transaction.
+
 
 ## Schemas
 
