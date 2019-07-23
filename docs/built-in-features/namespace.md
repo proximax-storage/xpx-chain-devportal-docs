@@ -10,11 +10,11 @@ Namespaces allow you to [create an on-chain unique place](../guides/namespace/re
 
 A namespace starts with a name that you choose, similar to an internet domain name. The name must appear as unique in the network, and may have a maximum length of `64` characters. Allowed characters are a, b, c, …, z, 0, 1, 2, …, 9, _ , -.
 
-An account can link a registered name (namespace or subnamespace) with an account or a mosaic identifier.
+An account can link a registered name (namespace or subnamespace) with an [account](./account.md) or a [mosaic](./mosaic.md) identifier.
 
 ## Subnamespaces
 
-On the internet, a domain can have a sub-domain. In NEM, namespaces can have subnamespaces.
+On the internet, a domain can have a sub-domain. In Sirius-Chain, namespaces can have subnamespaces.
 
 You can [create multiple subnamespaces](../guides/namespace/registering-a-namespace.md) with the same name in different namespaces. For example, you can create the subnamespaces `foo.bar` and `foo2.bar`.
 
@@ -38,19 +38,20 @@ Restrictions:
 
 ## Duration
 
-> TODO add duration picture
+![Namespace life cycle](/img/namespace-life-cycle.png "Namespace life cycle")
+<p class="caption">Namespace life-cycle</p>
 
-At the time of the namespace *registration*, you must set the number of confirmed blocks you would like to rent the namespace for.
+At the time of the namespace **registration**, you must set the number of confirmed blocks you would like to rent the namespace for.
 
 The maximum namespace duration is `365` days. By default, the network is configured to generate a block every `15` seconds. You can use the following formula to convert approximately days to blocks:
 
 > duration ≈ numberOfDays * 86400 / blockGenerationTargetTimeInSeconds
 
-During the renting period, the namespace owner can create subnamespaces, alias accounts and mosaics. The owner can also *extend the rental* by sending a [register namespace transaction](../guides/namespace/registering-a-namespace.md) with the desired number of additional blocks.
+During the renting period, the namespace owner can create subnamespaces, alias accounts and mosaics. The owner can also **extend the rental** by sending a [register namespace transaction](../guides/namespace/registering-a-namespace.md) with the desired number of additional blocks.
 
-The network [can define](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) a *grace period* that enables the namespace owner to renew the namespace past the expiration date before it becomes publicly available for registration.
+The network [can define](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) a **grace period** that enables the namespace owner to renew the namespace past the expiration date before it becomes publicly available for registration.
 
-When the grace period ends, the existing aliases and subnamespaces are pruned, becoming *inactive*. Hence, other accounts can now register the namespace again.
+When the grace period ends, the existing aliases and subnamespaces are pruned, becoming **inactive**. Hence, other accounts can now register the namespace again.
 
 ## Cost
 
@@ -61,7 +62,8 @@ The cost of creating a namespace is [configurable per network](https://github.co
 
 A customer buys a ticket for an event. The ticket sales company sends a ticket to the customer account.
 
-> TODO add picture
+![Recognizable mosaics and addresses](/img/namespace-tickets.png "Recognizable mosaics and addresses")
+<p class="caption">Recognizable mosaics and addresses</p>
 
 ### Identifying the sender
 
