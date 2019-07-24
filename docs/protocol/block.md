@@ -2,6 +2,7 @@
 id: block
 title: Block
 ---
+
 The central element of every cryptocurrency is a public ledger called the blockchain, which links blocks together.
 
 Since the blocks in the chain are ordered, the complete transaction history is held in the blockchain. Subsequent blocks in the blockchain have increasing heights that differ by one.
@@ -14,12 +15,12 @@ Sirius-Chain blocks complete every `15` seconds, making transactions confirm qui
 
 **Note**
 
-Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties). Public network configuration may differ.
+Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties). Public network configuration may differ.
 </div>
 
 ## Block creation
 
-Blocks are created by [accounts](../built-in-features/account.md). The process of creating new blocks is called [validating](./validating.md). The validating account - called the validator - gets the fees for the transactions in the block. This gives the validator an incentive to add as many transactions to the block as possible.
+Blocks are created by [accounts](../built-in-features/account.md). The process of creating new blocks is called [harvesting](./harvesting.md). The harvesting account - called the harvester - gets the fees for the transactions in the block and [inflation](./inflation.md). This gives the validator an incentive to add as many transactions to the block as possible.
 
 
 ## Guides
