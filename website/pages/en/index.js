@@ -24,10 +24,10 @@ class HomeSplash extends React.Component {
     return (
         <div className="home jumbotron text-center gap">
           <div className="inner">
-            <h1>Start building apps on ProximaX Blockchain Platform</h1>
-            <h6>ProximaX Sirius-Chain gives you direct access to a specialised set of <b>tested</b> and <b>secure on-blockchain features</b> using your favourite <b>programming language</b>.
+            <h1>Start building apps on the ProximaX Blockchain Platform</h1>
+            <h6>ProximaX Sirius Chain gives you direct access to a specialised set of <b>tested</b> and <b>secure on-blockchain features</b> using your favourite <b>programming languages</b>.
             </h6>
-            <p>ProximaX Sirius-Chain Version <span>0.1.0</span> &mdash; NEW UPDATE! </p>
+            <p>ProximaX Sirius Chain Version <span>0.1.0</span> &mdash; NEW UPDATE! </p>
           </div>
         </div>
     );
@@ -112,14 +112,14 @@ class Index extends React.Component {
             title: 'Getting started',
           },
           {
-            content: 'Easy-to-follow step by step guides with code examples',
+            content: 'Easy-to-follow step-by-step guides with code examples',
             image: `${baseUrl}img/home-guides.png`,
             imageAlign: 'top',
             link: `${baseUrl + docsUrl}/guides/account/account-overview`,
             title: 'Guides',
           },
           {
-            content: 'Architecture your solution connecting the features that make up the Smart Asset System',
+            content: 'Use built-in blockchain features',
             image: `${baseUrl}img/home-built-in-features.png`,
             imageAlign: 'top',
             link: `${baseUrl + docsUrl}/built-in-features/account`,
