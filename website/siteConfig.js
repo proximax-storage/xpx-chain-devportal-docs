@@ -21,7 +21,7 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'Sirius Chain Developer Center 0.1.0', // Title for your website.
+  title: 'Sirius Chain Developer Center 0.1.1', // Title for your website.
   tagline: 'A website for blockchain developers',
   url: 'https://bcdocs.xpxsirius.io', // Your website URL
   baseUrl: '/', // Base URL for your project */
@@ -69,7 +69,8 @@ const siteConfig = {
   },
 
   stylesheets: [
-    "https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900"
+    "https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900",
+    "https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css"
   ],
 
   /* Custom fonts for website */
