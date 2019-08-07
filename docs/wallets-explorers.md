@@ -10,11 +10,3 @@ title: Wallets & Explorers
 Test Network Sirius-Chain Wallet|Official Test Network Wallet of ProximaX Sirius-Chain|[Link](http://bctestnetwallet.xpxsirius.io)|[@proximax-storage](https://github.com/proximax-storage)
 Test Network Sirius-Chain Explorer|Official Test Network Explorer of ProximaX Sirius-Chain|[Link](http://bctestnetexplorer.xpxsirius.io)|[@proximax-storage](https://github.com/proximax-storage)
 Test Network Sirius-Chain Faucet|Official Test Network Faucet of ProximaX Sirius-Chain|[Link](http://bctestnetfaucet.xpxsirius.io)|[@proximax-storage](https://github.com/proximax-storage)
-
-## Community tools
-Add a new wallet to this page by clicking the “Edit on Github” button at the top-right part of the screen.
-
-**Wallet Name** |	**Description** |	**Repository**  |	**Active Developers**
-----------------|-------------------|-------------------|---------------------------
-
-Be the first one! 	  	  	 
