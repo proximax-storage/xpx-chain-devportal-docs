@@ -52,6 +52,10 @@
     ],
     "Wallets & Explorers": [
       "wallets-explorers"
+    ],
+    "Extensions": [
+      "extensions/extension-overview",
+      "extensions/dfms-version1-extension"
     ]
   },
   "guides":{
