@@ -5,15 +5,6 @@
       "getting-started/setting-up-workstation",
       "getting-started/writing-first-application"
     ],
-    "Protocol": [
-      "protocol/cryptography",
-      "protocol/block",
-      "protocol/transaction",
-      "protocol/validating",
-      "protocol/receipt",
-      "protocol/node",
-      "protocol/proof-of-greed"
-    ],
     "Built-in Features": [
       "built-in-features/account",
       "built-in-features/mosaic",
@@ -25,6 +16,15 @@
       "built-in-features/cross-chain-swaps",
       "built-in-features/metadata",
       "built-in-features/super-contract"
+    ],
+    "Protocol": [
+      "protocol/cryptography",
+      "protocol/block",
+      "protocol/transaction",
+      "protocol/validating",
+      "protocol/receipt",
+      "protocol/node",
+      "protocol/proof-of-greed"
     ],
     "REST API": [
       "rest-api/rest-api-overview",
@@ -60,7 +60,8 @@
       "guides/account/create-open-account",
       "guides/account/getting-account-information",
       "guides/account/getting-xpx-amount-sent-to-account",
-      "guides/account/reading-account-transactions"
+      "guides/account/reading-account-transactions",
+      "guides/account/linking-namespace-to-account"
     ],
     "Aggregate Transaction": [
       "guides/aggregate-transaction/aggreagte-transaction-overview",

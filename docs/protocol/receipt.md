@@ -29,28 +29,28 @@ The alias receipts record the first occurrence of an (unresolved, resolved) alia
 
 Sirius-Chain records invisible state changes for the following entities.
 
-**Id** | 	**Receipt** |	**Type** |	**Description**
--------|----------------|------------|-------------------
-**Core**  |  | |  |
-0x4321 |	Validate_Fee |	[BalanceCredit](#balancechangereceipt) |	The recipient, account and amount of fees received for validating a block. It is recorded when a block is [validated](./validating.md).
-0x43F1 |	Address_Alias_Resolution |	[Alias Resolution](#resolutionstatement) |	The unresolved and resolved [alias](../built-in-features/namespace.md). It is recorded when a transaction indicates a valid address alias instead of an address.
-0x43F2 |	Mosaic_Alias_Resolution |	[Alias Resolution](#resolutionstatement) |	The unresolved and resolved alias. It is recorded when a transaction indicates a valid mosaic alias instead of a mosaicId.
-0x43E1 |	Transaction_Group |	[Aggregate](#transactionstatement) |	A collection of state changes for a given source. It is recorded when a state change receipt is issued.
-**Mosaic**	  	||||  	 
-0x4D41 |	Mosaic_Expired |	[ArtifactExpiry](#artifactexpiryreceipt) |	The mosaicId expiring in this block. It is recorded when a [mosaic](../built-in-features/mosaic.md) expires.
-0x4D12 |	Mosaic_Levy |	[BalanceTransfer](#balancetransferreceipt) |	The sender and recipient of the levied mosaic, the mosaicId and amount. It is recorded when a transaction has a levied mosaic.
-0x4D13 |	Mosaic_Rental_Fee |	[BalanceTransfer](#balancetransferreceipt) |	The sender and recipient of the mosaicId and amount representing the cost of registering the mosaic. It is recorded when a mosaic is registered.
-**Namespace** 	  	 |||| 	 
-0x4E41 |	Namespace_Expired |	[ArtifactExpiry](#artifactexpiryreceipt) |	The namespaceId expiring in this block. It is recorded when a [namespace](../built-in-features/namespace.md) expires.
-0x4E12 |	Namespace_Rental_Fee |	[BalanceTransfer](#balancetransferreceipt) |	The sender and recipient of the mosaicId and amount representing the cost of extending the namespace. It is recorded when a namespace is registered or its duration is extended.
-**HashLock** 	||||  	  	 
-0x4831 |	LockHash_Created |	[BalanceDebit](#balancetransferreceipt) |	The lockhash sender, mosaicId and amount locked. It is recorded when a valid [HashLockTransaction](../built-in-features/aggregate-transaction.md#hashlocktransaction) is announced.
-0x4822 |	LockHash_Completed |	[BalanceCredit](#balancechangereceipt) |	The haslock sender, mosaicId and amount locked that is returned. It is recorded when an aggregate bonded transaction linked to the hash completes.
-0x4823 |	LockHash_Expired |	[BalanceCredit](#balancechangereceipt) |	The account receiving the locked mosaic, the mosaicId and the amount. It is recorded when a lock hash expires.
-**SecretLock** 	  	 |||| 	 
-0x5231 |	LockSecret_Created |	[BalanceDebit](#balancetransferreceipt) |	The secretlock sender, mosaicId and amount locked. It is recorded when a valid [SecretLockTransaction](../built-in-features/cross-chain-swaps.md#secretlocktransaction) is announced.
-0x5222 |	LockSecret_Completed |	[BalanceCredit](#balancechangereceipt) |	The secretlock sender, mosaicId and amount locked. It is recorded when a secretlock is proved.
-0x5223 |	LockSecret_Expired |	[BalanceCredit](#balancechangereceipt) |	The account receiving the locked mosaic, the mosaicId and the amount. It is recorded when a secretlock expires.
+**Id** | 	**Receipt**              |	**Type**                                   |	**Description**
+-------|---------------------------|---------------------------------------------|-------------------
+**Core**      ||||
+0x4321 |	Validate_Fee             |	[BalanceCredit](#balancechangereceipt)     |	The recipient, account and amount of fees received for validating a block. It is recorded when a block is [validated](./validating.md).
+0x43F1 |	Address_Alias_Resolution |	[Alias Resolution](#resolutionstatement)   |	The unresolved and resolved [alias](../built-in-features/namespace.md). It is recorded when a transaction indicates a valid address alias instead of an address.
+0x43F2 |	Mosaic_Alias_Resolution  |	[Alias Resolution](#resolutionstatement)   |	The unresolved and resolved alias. It is recorded when a transaction indicates a valid mosaic alias instead of a mosaicId.
+0x43E1 |	Transaction_Group        |	[Aggregate](#transactionstatement)         |	A collection of state changes for a given source. It is recorded when a state change receipt is issued.
+**Mosaic**	 	||||
+0x4D41 |	Mosaic_Expired           |	[ArtifactExpiry](#artifactexpiryreceipt)   |	The mosaicId expiring in this block. It is recorded when a [mosaic](../built-in-features/mosaic.md) expires.
+0x4D12 |	Mosaic_Levy              |	[BalanceTransfer](#balancetransferreceipt) |	The sender and recipient of the levied mosaic, the mosaicId and amount. It is recorded when a transaction has a levied mosaic.
+0x4D13 |	Mosaic_Rental_Fee        |	[BalanceTransfer](#balancetransferreceipt) |	The sender and recipient of the mosaicId and amount representing the cost of registering the mosaic. It is recorded when a mosaic is registered.
+**Namespace** ||||
+0x4E41 |	Namespace_Expired        |	[ArtifactExpiry](#artifactexpiryreceipt)   |	The namespaceId expiring in this block. It is recorded when a [namespace](../built-in-features/namespace.md) expires.
+0x4E12 |	Namespace_Rental_Fee     |	[BalanceTransfer](#balancetransferreceipt) |	The sender and recipient of the mosaicId and amount representing the cost of extending the namespace. It is recorded when a namespace is registered or its duration is extended.
+**HashLock** 	||||
+0x4831 |	LockHash_Created         |	[BalanceDebit](#balancetransferreceipt)    |	The lockhash sender, mosaicId and amount locked. It is recorded when a valid [HashLockTransaction](../built-in-features/aggregate-transaction.md#hashlocktransaction) is announced.
+0x4822 |	LockHash_Completed       |	[BalanceCredit](#balancechangereceipt)     |	The haslock sender, mosaicId and amount locked that is returned. It is recorded when an aggregate bonded transaction linked to the hash completes.
+0x4823 |	LockHash_Expired         |	[BalanceCredit](#balancechangereceipt)     |	The account receiving the locked mosaic, the mosaicId and the amount. It is recorded when a lock hash expires.
+**SecretLock**||||
+0x5231 |	LockSecret_Created       |	[BalanceDebit](#balancetransferreceipt)    |	The secretlock sender, mosaicId and amount locked. It is recorded when a valid [SecretLockTransaction](../built-in-features/cross-chain-swaps.md#secretlocktransaction) is announced.
+0x5222 |	LockSecret_Completed     |	[BalanceCredit](#balancechangereceipt)     |	The secretlock sender, mosaicId and amount locked. It is recorded when a secretlock is proved.
+0x5223 |	LockSecret_Expired       |	[BalanceCredit](#balancechangereceipt)     |	The account receiving the locked mosaic, the mosaicId and the amount. It is recorded when a secretlock expires.
 
 ## Schemas
 

@@ -41,7 +41,7 @@ Accounts become truly smart when configured with special rules – directly on t
 One crucial type of rule is [multisig](./multisig-account.md) control that allows ownership of account based assets to be shared in a variety of ways between multiple parties.
 
 ## Restrictions
-Accounts may configure a set of smart rules to block announcing or receiving transactions [given a series of restrictions](./account-filter.md).
+Accounts may configure a set of smart rules to block announcing or receiving transactions [given a series of restrictions](./account-restrictions.md).
 
 ## Guides
 
