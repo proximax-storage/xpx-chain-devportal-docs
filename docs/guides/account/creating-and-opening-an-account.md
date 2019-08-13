@@ -10,24 +10,32 @@ Create a new [account](../../built-in-features/account.md) and open it.
 - Text editor or IDE
 - XPX-Chain-SDK or XPX-Chain-CLI
 
-## Let’s get into some code
+## Getting into some code
 
-An account is a key pair (private and public key) associated to a mutable state stored in the Sirius-Chain.
+An account is a key pair (private and public key) associated with a mutable state stored in the Sirius-Chain.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
 
-```ts
-const account = Account.generateNewAccount(NetworkType.TEST_NET);
+<!--TypeScript-->
+```typescript
+const account = Account.generateNewAccount(NetworkType.MIJIN_TEST);
 
 console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
 
 <!--JavaScript-->
-```js
-const account = Account.generateNewAccount(NetworkType.TEST_NET);
+```javascript
+const account = Account.generateNewAccount(NetworkType.MIJIN_TEST);
 
 console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
+```
+
+<!--Golang-->
+```go
+keyPair, _ := crypto.NewRandomKeyPair()
+
+fmt.Printf("PublicKey:\t%x\n", keyPair.PublicKey.Raw)
+fmt.Printf("PrivateKey:\t%x", keyPair.PrivateKey.Raw)
 ```
 
 <!--Bash-->
@@ -46,7 +54,7 @@ If you already have a private key, it is not necessary to generate a new account
 <!--DOCUSAURUS_CODE_TABS-->
 <!--TypeScript-->
 
-```ts
+```typescript
 // Replace with a private key
 const privateKey = process.env.PRIVATE_KEY as string;
 
@@ -56,7 +64,7 @@ console.log('Your account address is:', account.address.pretty(), 'and its priva
 ```
 
 <!--JavaScript-->
-```js
+```javascript
 // Replace with a private key
 const privateKey = process.env.PRIVATE_KEY;
 
@@ -73,6 +81,15 @@ console.log('Your account address is:', account.address.pretty(), 'and its priva
     final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 ```
 
+<!--Golang-->
+```go
+account, _ := sdk.NewAccountFromPrivateKey("...", sdk.TEST_NET)
+
+fmt.Printf("Address:\t%v\n", account.Address)
+fmt.Printf("PrivateKey:\t%x\n", account.KeyPair.PrivateKey.Raw)
+fmt.Printf("PublicKey:\t%x", account.KeyPair.PublicKey.Raw)
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ### Using a Wallet
@@ -84,7 +101,7 @@ A wallet enables you to store your account to sign transactions, encrypting your
 <!--DOCUSAURUS_CODE_TABS-->
 <!--TypeScript-->
 
-```ts
+```typescript
 const password = new Password('password');
 
 const wallet = SimpleWallet.create('wallet-name', password, NetworkType.TEST_NET);
@@ -95,7 +112,7 @@ console.log('Your new account address is:', account.address.pretty(), 'and its p
 ```
 
 <!--JavaScript-->
-```js
+```javascript
 const password = new Password('password');
 
 const wallet = SimpleWallet.create('wallet-name', password, NetworkType.TEST_NET);
@@ -115,9 +132,9 @@ xpx2-cli account generate --network TEST_NET --save --url http://localhost:3000 
 Do you have a private key? You can create and open a wallet importing your private key.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
 
-```ts
+<!--TypeScript-->
+```typescript
 const password = new Password('password');
 
 // Replace with a private key
@@ -131,7 +148,7 @@ console.log('Your account address is:', account.address.pretty(), 'and its priva
 ```
 
 <!--JavaScript-->
-```js
+```javascript
 const password = new Password('password');
 
 // Replace with a private key

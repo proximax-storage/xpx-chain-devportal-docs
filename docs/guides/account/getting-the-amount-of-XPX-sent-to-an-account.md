@@ -7,14 +7,18 @@ Check the amount of XPX you have sent to any account.
 ## Prerequisites
 
 - Finish the [getting started section](../../getting-started/setting-up-workstation.md)
+- have one account with `xpx` currency
+- have [sent mosaics](../../guides/transaction/sending-a-transfer-transaction.md) to another account
 - Text editor or IDE
 - XPX-Chain-SDK or XPX-Chain-CLI
 
-## Let’s get into some code
+## Getting into some code
+
+In this example, we are going to check how many assets of a certain type have we sent to an account.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
 
+<!--TypeScript-->
 ```javascript
 const accountHttp = new AccountHttp('http://localhost:3000');
 
@@ -43,39 +47,63 @@ accountHttp
 ```
 
 <!--Java-->
-```javascript
-        // Replace with public key
-        final String originPublicKey = "";
+```java
+// Replace with public key
+final String originPublicKey = "";
 
-        // Replace with recipient address
-        final String recipientAddress = "VB2RPH-EMTFMB-KELX2Y-Q3MZTD-RV7DQG-UZEADV-CYKC";
+// Replace with recipient address
+final String recipientAddress = "VB2RPH-EMTFMB-KELX2Y-Q3MZTD-RV7DQG-UZEADV-CYKC";
 
-        // Replace with public key
-        final PublicAccount originAccount = PublicAccount.createFromPublicKey(originPublicKey, NetworkType.TEST_NET);
+// Replace with public key
+final PublicAccount originAccount = PublicAccount.createFromPublicKey(originPublicKey, NetworkType.TEST_NET);
 
-        // Replace with address
-        final Address address = Address.createFromRawAddress(recipientAddress);
+// Replace with address
+final Address address = Address.createFromRawAddress(recipientAddress);
 
-        final AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
+final AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
 
-        final BigInteger total = accountHttp.outgoingTransactions(originAccount)
-                .flatMapIterable(tx -> tx) // Transform transaction array to single transactions to process them
-                .filter(tx -> tx.getType().equals(TransactionType.TRANSFER)) // Filter transfer transactions
-                .map(tx -> (TransferTransaction) tx) // Map transaction as transfer transaction
-                .filter(tx -> tx.getRecipient().equals(address)) // Filter transactions from to account
-                .filter(tx -> tx.getMosaics().size() == 1 && tx.getMosaics().get(0).getId().equals(NetworkCurrencyMosaic.MOSAICID)) // Filter xpx transactions
-                .map(tx -> tx.getMosaics().get(0).getAmount().divide(BigDecimal.valueOf(Math.pow(10, NetworkCurrencyMosaic.DIVISIBILITY)).toBigInteger())) // Map only amount in xpx
-                .toList() // Add all mosaics amounts into one array
-                .map(amounts -> amounts.stream().reduce(BigInteger.ZERO, BigInteger::add))
-                .toFuture()
-                .get();
+final BigInteger total = accountHttp.outgoingTransactions(originAccount)
+        .flatMapIterable(tx -> tx) // Transform transaction array to single transactions to process them
+        .filter(tx -> tx.getType().equals(TransactionType.TRANSFER)) // Filter transfer transactions
+        .map(tx -> (TransferTransaction) tx) // Map transaction as transfer transaction
+        .filter(tx -> tx.getRecipient().equals(address)) // Filter transactions from to account
+        .filter(tx -> tx.getMosaics().size() == 1 && tx.getMosaics().get(0).getId().equals(NetworkCurrencyMosaic.MOSAICID)) // Filter xpx transactions
+        .map(tx -> tx.getMosaics().get(0).getAmount().divide(BigDecimal.valueOf(Math.pow(10, NetworkCurrencyMosaic.DIVISIBILITY)).toBigInteger())) // Map only amount in xpx
+        .toList() // Add all mosaics amounts into one array
+        .map(amounts -> amounts.stream().reduce(BigInteger.ZERO, BigInteger::add))
+        .toFuture()
+        .get();
 
-        System.out.println("Total xpx send to account " + address.pretty() + " is: " + total.toString());
+System.out.println("Total xpx send to account " + address.pretty() + " is: " + total.toString());
+```
+
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(baseUrl, networkType, time.Second * 10)
+if err != nil {
+    panic(err)
+}
+
+client := sdk.NewClient(nil, conf)
+
+address, err := sdk.NewAddressFromPublicKey("...", sdk.PUBLIC_TEST)
+if err != nil {
+    panic(err)
+}
+
+accountInfo, err := client.Account.GetAccountInfo(context.Background(), address)
+if err != nil {
+    panic(err)
+}
+
+for _, mosaic := range accountInfo.Mosaics {
+    if mosaic.AssetId == sdk.XpxNamespaceId {
+      fmt.Println(mosaic.String())
+    }
+}
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-The amount of XPX sent is displayed in your terminal.
-What’s next?
+If you want to check another mosaic different than the native currency, change `mosaicId` for the target mosaic.
 
-Repeat the example by changing filter for another [mosaic](../../built-in-features/mosaic.md).
