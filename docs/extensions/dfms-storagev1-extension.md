@@ -13,6 +13,8 @@ blockchain and the immutability and availability of peer to peer storage network
 opens up a new breed of innovative applications. Ranging from KYC, Health Record Management, Identity IOT, Big Data to 
 immutable websites, notary services and reporting systems.
 
+![Sirius-Chain and DFMS](/img/storagebc.jpg "Sirius-Chain and DFMS")
+
 ## Software Development Kits and Libraries
 In order to integrate this two technologies, we developed software development kits across different main stream programming platform.
 
