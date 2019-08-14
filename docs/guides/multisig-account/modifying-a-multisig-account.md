@@ -1,23 +1,23 @@
 ---
 id: modifying-a-multisig-account
-title: Modifying a multisig-account
+title: Modifying a multisig account
 ---
-Modify an existing [multisig account](../../built-in-features/multisig-account.md).
+This guide will help you modify an existing [multisig account](../../built-in-features/multisig-account.md).
 
-First, you are going to turn a 1-of-2 multisig account into a 2-of-2. Then, you will add a new cosignatory, becoming a 2-of-3. After removing a cosignatory, you will know how to perform all sort of modifications to multisig accounts.
+First, you are going to turn a 1-of-2 multisig account into a 2-of-2. Then, you will add a new cosignatory, turning the account into a 2-of-3. After removing a cosignatory, you will know how to perform all sort of modifications to multisig accounts.
 
 ## Prerequisites
 
-- Finish [converting an account to multisig guide](./converting-an-account-to-multisig.md)
-- Text editor or IDE
-- XPX-Chain-SDK or XPX-Chain-CLI
-- One multisig account
+- Finish [converting an account to multisig guide](./converting-an-account-to-multisig.md).
+- Text editor or IDE.
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- One multisig account.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 ### Editing minApproval
 
-Alice and Bob are cosignatories of the 1-of-2 multisig account. At least one of their account’s signatures is required to authorise multisig transactions. In other words, the `minApproval` parameter of the multisig is currently set to `1`.
+Alice and Bob are cosignatories of the 1-of-2 multisig account. At least one of their account’s signatures is required to authorize multisig transactions. In other words, the `minApproval` parameter of the multisig is currently set to `1`.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--TypeScript-->
@@ -58,7 +58,7 @@ Multisig accounts are editable at the blockchain level. In this case, we want to
 
 <p class=caption>2-of-2 multisig account example</p>
 
-One of the accounts, for example Alice’s, announces a [modify multisig account transaction](../../built-in-features/multisig-account.md#modifymultisigtransaction) wrapped in an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples), increasing `minApprovalDelta`.
+One of the accounts, for example that of Alice’s, announces a [modify multisig account transaction](../../built-in-features/multisig-account.md#modifymultisigtransaction) wrapped in an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples), increasing `minApprovalDelta`.
 
 1. Create a modify multisig account transaction, increasing minAprovalDelta in one unit.
 
@@ -97,7 +97,7 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
 
 2. Wrap the modify multisig account transaction under an aggregate transaction, attaching multisig public key as the signer.
 
-An aggregate transaction is complete if, before announcing it to the network, all required cosignatories have signed it. If valid, it will be included in a block.
+An aggregate transaction is complete if, before announcing it to the network, all required cosignatories have signed it. If it is valid, it will be included in a block.
 
 As only one cosignature is required (1-of-2), Alice can sign the transaction and announce it to the network.
 
@@ -152,7 +152,7 @@ Once confirmed, the minApproval value of the multisig will be set to 2, having o
 
 <div class=info>
 
-**Note**
+**Note:**
 
 If you want to decrease the minApproval parameter, going back to a 1-of-2 multisig, set minApprovalDelta with a negative value. In this case `-1`.
 
@@ -385,7 +385,7 @@ listener.open().then(() => {
 
 <div class="info">
 
-**Note**
+**Note:**
 
 The [listener implementation changes](../monitoring/monitoring-a-transaction-status.md#troubleshooting-monitoring-transactions-on-the-client-side) when used on the client side (e.g., Angular, React, Vue).
 
@@ -401,7 +401,7 @@ The following code shows how to remove a cosignatory of a 2-of-3 multisig accoun
 
 <div class=info>
 
-**Note**
+**Note:**
 
 The minRemoval parameter indicates the number of required signatures to delete someone from the multisig. You can increase or decrease it the same way you [modify minApproval parameter](./modifying-a-multisig-account.md#editing-minapproval).
 

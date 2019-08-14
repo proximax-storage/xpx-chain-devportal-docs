@@ -2,13 +2,13 @@
 id: creating-a-multi-level-multisig-account
 title: Creating a multi-level multisig-account
 ---
-Create a [multi-level multisig account](../../built-in-features/multisig-account.md).
+This guide will help you create a [multi-level multisig account](../../built-in-features/multisig-account.md).
 
 ![Multi-level multisig-account](/img/mlma-complex-1.png "Multi-level multisig-account")
 
 <p class=caption>Three-level multisig account example</p>
 
-## Background
+## Background Information 
 
 [Multisig accounts](../../built-in-features/multisig-account.md) can have as cosignatories other multisig accounts. Multi-level multisig accounts add “AND/OR” logic to multi-signature transactions.
 
@@ -16,11 +16,11 @@ The maximum depth of a multilevel multisig account is `3`.
 
 ## Prerequisites
 
-- Finish [converting an account to multisig guide](./converting-an-account-to-multisig.md)
-- Text editor or IDE
-- XPX-Chain-SDK or XPX-Chain-CLI
+- Finish [converting an account to multisig guide](./converting-an-account-to-multisig.md).
+- Text editor or IDE.
+- XPX-Chain-SDK or XPX-Chain-CLI.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 1. Create multisig account #2
 
@@ -359,9 +359,9 @@ transactionHttp
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## What’s next?
+**Note:**
 
-Who should cosign the transaction if Account #5 initiates an aggregate bonded transaction? Multisig accounts are not capable of cosigning transactions, cosignatories are responsible for doing so.
+Who should co-sign the transaction if Account #5 initiates an aggregate bonded transaction? Multisig accounts are not capable of cosigning transactions, cosignatories are responsible for doing so.
 
 ![Multi-level multisig-account complex](/img/mlma-complex-2.png "Multi-level multisig-account complex")
 

@@ -2,9 +2,9 @@
 id: account
 title: Account
 ---
-An account is a **key pair** (private and public key) associated with a mutable state stored on the Sirius-Chain. In other words, you have a deposit box in the blockchain, which only you can modify with your key pair. As the name suggests, the private key has to be kept secret at all times. Anyone with access to the private key, ultimately has control over the account.
+An account is a **key pair**, which consists of two types: private and public key. It is associated with a mutable state stored on the Sirius Chain. In other words, you have a deposit box in the blockchain, which only you can modify with your key pair. As the name suggests, the private key has to be kept secret always. Anyone with access to the private key, ultimately has control over the account.
 
-Think about Sirius-Chain accounts as a **container for assets** in the blockchain. An account could represent a deposit of tokens, like most blockchains. However, it could also represent a **single object** that must be unique and updatable: a package to be shipped, a deed to a house or a document to be notarised.
+You can think about Sirius Chain accounts as a **container for assets** in the blockchain. An account could represent a deposit of tokens, like in most blockchains. However, it could also represent a **single object** that must be unique and can be updated: a package to be shipped, a deed to a house or a document to be notarised.
 
 Accounts have the following properties:
 
@@ -13,7 +13,7 @@ Accounts have the following properties:
 >
 >  <div class="info">
 >
-> **Note** <br>
+> **Note:** <br>
 >    The private key must be kept secret at all costs. Make sure your private key is backed up safely somewhere offline.
 > </div><br>
 >
@@ -28,7 +28,7 @@ Accounts have the following properties:
 
 ## Multisig Account
 
-Accounts become truly smart when configured with special rules – directly on the Sirius-Chain – that define how they relate and control each other, as well as how their contents can be updated and transferred. One crucial type of rule is [multisig](./multisig-account.md) control that allows ownership of account based assets to be shared in a variety of ways between multiple parties.
+Multisignature or multisig require more than one key for authorization. Multisig accounts allow ownership of account-based assets to be shared in a variety of ways between multiple parties. This has evolved into smart accounts that configured with special rules, directly on the Sirius Chain. It defines how they relate and control each other, as well as how their contents can be updated and transferred. 
 
 ## Filters
 

@@ -1,22 +1,22 @@
 ---
 id: modifying-mosaic-supply
-title: Modifying mosaic supply
+title: Modifying Mosaic Supply
 ---
-Did you register a [mosaic](../../built-in-features/mosaic.md) with supplyMutable option set to true? In that case, you can increase or decrease your mosaic available supply following this guide.
+Did you register a [mosaic](../../built-in-features/mosaic.md) with supply mutable option set to true? In that case, you can increase or decrease your mosaic available supply by following this guide.
 
 ## Prerequisites
 
-- Finish [creating a mosaic guide](./creating-a-mosaic.md)
-- XPX-Chain-SDK or XPX-Chain-CLI
-- A text editor or IDE
-- An account with XPX
-- Have registered a supply mutable mosaic
+- Finish [creating a mosaic guide](./creating-a-mosaic.md).
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- A text editor or IDE.
+- An account with XPX.
+- Have registered a supply mutable mosaic.
 
-## Let’s get into some code
+## Let’s do some coding!
 
-If you have followed the previous guide, right now you should own a `supply mutable` mosaic.
+If you have followed the previous guide, you should be able to own a `supply mutable` mosaic.
 
-Increase to `2.000.000` the initial supply. Sign and announce a [mosaic supply change transaction](../../built-in-features/mosaic.md#mosaicsupplychangetransaction).
+Proceed now to sign and announce a [mosaic supply change transaction](../../built-in-features/mosaic.md#mosaicsupplychangetransaction). This will increase to `2.000.000` initial supply.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--TypeScript-->

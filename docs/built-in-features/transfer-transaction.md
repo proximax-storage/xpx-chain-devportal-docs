@@ -2,7 +2,7 @@
 id: transfer-transaction
 title: Transfer Transaction
 ---
-Transfer transactions are used to send [mosaics](./mosaic.md) between two [accounts](./account.md). They can hold a messages of length `1023` characters.
+Transfer transactions are used to send [mosaics](./mosaic.md) between two [accounts](./account.md). They can hold messages that have a length of `1023` characters.
 
 ![Transfer Transaction](/img/transfer-transaction.png "Transfer Transaction")
 
@@ -10,33 +10,33 @@ Transfer transactions are used to send [mosaics](./mosaic.md) between two [accou
 
 <div class="info">
 
-**Note**
+**Note:**
 
-It is possible to send mosaics to any valid address even if the address has not previously participated in any transaction. If nobody owns the private key of the recipient’s account, the funds are most likely lost forever.
+It is possible to send mosaics to any valid address even if the address has not previously participated in any transaction. If nobody owns the private key of the recipient’s account, the funds are likely lost forever.
 
 </div>
 
-## Guides
+## Guides of Transfer Transaction
 
 - [Sending a transfer transaction](../guides/transaction/sending-a-transfer-transaction.md)
 
-    Transfer [*mosaics*](./mosaic.md) and messages between two accounts.
+    How to transfer [*mosaics*](./mosaic.md) and messages between two accounts.
 
 - [Monitoring a transaction status](../guides/monitoring/monitoring-a-transaction-status.md)
 
-    Make sure a [*transaction*](../protocol/transaction.md) gets included in the blockchain after being announced.
+    How to ensure a [*transaction*](../protocol/transaction.md) gets included in the blockchain after being announced.
 
 ## Schemas
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 
-### TransferTransaction
+### Transfer Transaction
 
 Announce a transfer transaction to send [mosaics](./mosaic.md) or messages between two [accounts](./account.md).
 

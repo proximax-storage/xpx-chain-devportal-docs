@@ -3,16 +3,16 @@ id: sending-a-transfer-transaction
 title: Sending a transfer transaction
 sidebar_label: Transfer transaction
 ---
-Transfer [mosaics](../../built-in-features/mosaic.md) and messages between two accounts.
+This guide will help you transfer [mosaics](../../built-in-features/mosaic.md) and messages between two accounts.
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- XPX-Chain-SDK or XPX-Chain-CLI
-- A text editor or IDE
-- An account with XPX
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- A text editor or IDE.
+- An account with XPX.
 
-## Background
+## Background Information 
 
 ![Transfer Transaction](/img/transfer-transaction1.png "Transfer Transaction")
 
@@ -159,7 +159,7 @@ xpx2-cli transaction transfer --recipient VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-4. Open the terminal where you are monitoring account transactions `status`. It should be empty. If there is an error, you can [check the error code here](../../rest-api/status-errors.md).
+4. Open the terminal where you are monitoring account transactions `status`. It should be vacant. If there is an error, you can [check the error code here](../../rest-api/status-errors.md).
 
 A new transaction should have appeared in the terminal where you are monitoring `unconfirmed`. At this point, the transaction has reached the network, but it is not clear if it will get included in a block.
 

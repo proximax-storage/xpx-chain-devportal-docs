@@ -2,9 +2,9 @@
 id: guidelines
 title: Guidelines
 ---
-First off, thank you for considering contributing to Sirius-Chain!
+First off, thank you for considering contributing to Sirius Chain!
 
-Follow these guidelines for contributing to Sirius-Chain projects.
+Follow these guidelines for contributing to Sirius Chain projects.
 
 <div class=info>
 

@@ -6,7 +6,7 @@ This section describes the error messages that can be returned via status channe
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties). Public network configuration may differ.
 

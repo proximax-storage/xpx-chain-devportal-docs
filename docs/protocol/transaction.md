@@ -2,7 +2,7 @@
 id: transaction
 title: Transaction
 ---
-A transaction generally represents a unit of work within a database system. In the case of blockchain, that is when an action signed by an [account](../built-in-features/account.md) changes its state.
+A transaction generally represents a unit of work within a database system. In the case of blockchain, a transaction is when an action signed by an [account](../built-in-features/account.md) changes its state.
 
 Transactions accepted by the network are stored permanently on [blocks](./block.md).
 
@@ -16,7 +16,7 @@ There are different types of transactions. For example, you can transfer [mosaic
 |0x414D | [Mosaic Definition Transaction](#mosaic-definition-transaction) | Register a new [mosaic](../built-in-features/mosaic.md).|
 |0x424D | [Mosaic Supply Change Transaction](#mosaic-supply-change-transaction) | Change an existent mosaic supply.|
 |**Namespace** |  | |
-|0x414E |	[Register Namespace Transaction](#register-namespace-transaction) | Register a [namespace](../built-in-features/namespace.md) to organise your assets. |
+|0x414E |	[Register Namespace Transaction](#register-namespace-transaction) | Register a [namespace](../built-in-features/namespace.md) to organize your assets. |
 |0x424E | [Address Alias Transaction](#address-alias-transaction) |	Attach a namespace name to an account.|
 |0x434E | [Mosaic Alias Transaction](#mosaic-alias-transaction) |	Attach a namespace name to a mosaic.|
 |**Transfer** | | |
@@ -45,15 +45,15 @@ Transactions are defined in a [serialized form](../rest-api/serialization.md). W
 
 ## Fees
 
-Transactions have an associated cost. This cost is necessary to provide an incentive for the [validator](./validating.md) who secure the network and run the infrastructure.
+Transactions have an associated cost. This cost is necessary to provide an incentive for the [Validator](./validating.md) who secure the network and run the infrastructure.
 
-The fee associated with a transaction primarily depends on the transaction’s size. The effective fee is the product of the size of the transaction, and a fee multiplier set by the validator. The node owner can configure the latter value to all positive values, including zero.
+The fee associated with a transaction primarily depends on the transaction’s size. The effective fee is the product of the size of the transaction, and a fee multiplier set by the Validator. The node owner can configure the latter value to all positive values, including zero.
 
 > effective_fee = transaction::size * block::fee_multiplier
 
 A sender of a transaction must specify during the transaction definition a `max_fee`, meaning the maximum fee the account allows to spend for this transaction.
 
-If the `effective_fee` is smaller or equal to the `max_fee`, the validator can opt to include the transaction in the block. The `fee_multiplier` is stored in the [block header](./block.md#blockheader), permitting to resolve which was the effective fee paid for every transaction included.
+If the `effective_fee` is smaller or equal to the `max_fee`, the Validator can opt to include the transaction in the block. The `fee_multiplier` is stored in the [block header](./block.md#blockheader), permitting to resolve which was the effective fee paid for every transaction included.
 
 The validating nodes can decide their transaction inclusion strategy:
 
@@ -61,7 +61,7 @@ The validating nodes can decide their transaction inclusion strategy:
 - **Minimise-fees**: Philanthropic nodes. Include first transactions that other nodes do not want to include.
 - **Maximise-fees**: Most common in public networks. Include first transactions with higher fees.
 
-By default, the fee is paid in `XPX`, the underlying currency of the Sirius-Chain network. Private chains can edit the configuration of the network to eliminate fees, or use another [mosaic](../built-in-features/mosaic.md) that better suits their needs.
+By default, the fee is paid in `XPX`, the underlying currency of the Sirius-Chain network. Private chains can edit the configuration of the network to eliminate fees, or use another [mosaic](../built-in-features/mosaic.md) that best suits their needs.
 
 ## Signing a transaction
 

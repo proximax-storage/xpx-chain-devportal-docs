@@ -42,9 +42,9 @@ By default, XPX-Chain-CLI will always use the default profile to connect to a no
 
 ### Generate new account
 
-Generates a new [account](../built-in-features/account.md). This command generates a private key, public key and address.
+To generates a new account, follow the [account](../built-in-features/account.md) guide. This command generates a private key, public key and address.
 
-Generated accounts can be stored as named profiles by adding a node url.
+Generated accounts can be stored as named profiles by adding a node URL.
 
 **Options**
 
@@ -60,7 +60,7 @@ $> xpx2-cli account generate --network TEST_NET
 
 ### Get account info
 
-Returns the account information, such as the public key and [mosaics](../built-in-features/mosaic.md) balance.
+To return the account information, such as the public key and [mosaics](../built-in-features/mosaic.md) balance.
 
 **Options**
 
@@ -74,7 +74,7 @@ $> xpx2-cli account info --address SDAUTVFWMVXVWWKTTEFTLGUO6HP6MR4GLEK6POJ4
 
 ### Get confirmed transactions
 
-Gets an array of transactions for which an account is the sender or receiver.
+To get an array of transactions for which an account is the sender or receiver.
 
 **Options**
 
@@ -92,7 +92,10 @@ $> xpx2-cli account transactions --publickey C811AC654B77522D5283640CDA7A222AED4
 
 ### Get incoming transactions
 
-Gets an array of incoming transactions. A transaction is said to be incoming with respect to an account if the account is the recipient of the transaction.
+To get an array of incoming transactions. 
+
+**Note:**
+A transaction is said to be incoming with respect to an account if the account is the recipient of the transaction.
 
 **Options**
 
@@ -108,7 +111,10 @@ $> xpx2-cli account incoming --publickey C811AC654B77522D5283640CDA7A222AED49B08
 
 ### Get outgoing transactions
 
-Gets an array of outgoing transactions. A transaction is said to be outgoing with respect to an account if the account is the sender of the transaction.
+To get an array of outgoing transactions. 
+
+**Note:**
+A transaction is said to be outgoing with respect to an account if the account is the sender of the transaction.
 
 **Options**
 
@@ -123,7 +129,7 @@ $> xpx2-cli account outgoing --publickey C811AC654B77522D5283640CDA7A222AED49B08
 
 ### Get unconfirmed transactions
 
-Gets the array of transactions for which an account is the sender or receiver and which have not yet been included in a block.
+To get the array of transactions for which an account is the sender or receiver and which have not yet been included in a block.
 
 **Options**
 
@@ -138,7 +144,7 @@ $> xpx2-cli account unconfirmedtransactions --publickey C811AC654B77522D5283640C
 
 ### Get Aggregate bonded transactions
 
-Gets an array of aggregate bonded transactions where the account is the sender or requires to cosign the transaction.
+To get an array of aggregate bonded transactions where the account is the sender or requires to co-sign the transaction.
 
 **Options**
 
@@ -163,7 +169,7 @@ $> xpx2-cli blockchain height
 ```
 ### Blockchain score
 
-Gets the current score of the block chain. The higher the score, the better the chain. During synchronisation, nodes try to get the best block chain in the network.
+Gets the current score of the block chain. The higher the score, the better the chain. During synchronization, nodes try to get the best block chain in the network.
 
 **Command**
 ```
@@ -203,7 +209,7 @@ $> xpx2-cli transaction info --hash AF92D0A1DC40F786DF455A54F3754E6ACBCEC1B59064
 
 ### Send transfer transaction
 
-Announces a [transfer transaction](../built-in-features/transfer-transaction.md#transfertransaction) to an account exchanging value and/or data. For this transaction provide recipient, message and [mosaics](../built-in-features/mosaic.md).
+To announce a [transfer transaction](../built-in-features/transfer-transaction.md#transfertransaction) to an account exchanging value and/or data. For this transaction provide recipient, message and [mosaics](../built-in-features/mosaic.md).
 
 You can send `multiple mosaics` splitting them with a comma, e.g: prx:xpx::10,nps:msc::10. The `mosaic amount` after :: is in `absolute value` so 1 XPX is 1000000.
 
@@ -220,7 +226,7 @@ $> xpx2-cli transaction transfer --recipient SDBDG4-IT43MP-CW2W4C-BBCSJJ-T42AYA-
 
 ### Send pull transaction
 
-Requests [mosaics](../built-in-features/mosaic.md) from an account. The other account has to cosign the transaction.
+To request [mosaics](../built-in-features/mosaic.md) from an account. The other account has to co-sign the transaction.
 
 **Options**
 
@@ -236,7 +242,7 @@ $> xpx2-cli transaction pullfunds --recipient SDBDG4-IT43MP-CW2W4C-BBCSJJ-T42AYA
 
 ### Register root namespace
 
-Registers a root [namespace](../built-in-features/namespace.md).
+To register a root [namespace](../built-in-features/namespace.md).
 
 **Options**
 
@@ -252,7 +258,7 @@ $> xpx2-cli transaction namespace --rootnamespace --duration 100000 --name new-n
 
 ### Register subnamespace
 
-Registers a [subnamespace](../built-in-features/namespace.md#subnamespaces).
+To register a [subnamespace](../built-in-features/namespace.md#subnamespaces).
 
 **Options**
 
@@ -268,7 +274,7 @@ $> xpx2-cli transaction namespace --subnamespace --parentname new-namespace --na
 
 ### Create a mosaic
 
-Creates a new [mosaic](../built-in-features/mosaic.md).
+To create a new [mosaic](../built-in-features/mosaic.md).
 
 **Options**
 
@@ -291,7 +297,7 @@ $> xpx2-cli transaction mosaic --mosaicname token --namespacename new-namespace 
 
 ### Info
 
-Gets information from a [namespace](../built-in-features/namespace.md). Use this command providing the namespace name or the mosaic uint ID in the form of [3646934825,3576016193].
+To get information from a [namespace](../built-in-features/namespace.md), use this command providing the namespace name or the mosaic uint ID in the form of [3646934825,3576016193].
 
 **Options**
 
@@ -308,7 +314,7 @@ $> xpx2-cli namespace info --uint [929036875,2226345261]
 
 ### Info
 
-Gets information from a [mosaic](../built-in-features/mosaic.md). Use this command providing the mosaic identifier name in the form of namespaceName:mosaicName (ex: prx:xpx) or the mosaic uint ID in the form of [3646934825,3576016193].
+To get information from a [mosaic](../built-in-features/mosaic.md), use this command providing the mosaic identifier name in the form of namespaceName:mosaicName (ex: prx:xpx) or the mosaic uint ID in the form of [3646934825,3576016193].
 
 **Options**
 
@@ -322,7 +328,7 @@ $> xpx2-cli mosaic info --name prx:xpx
 
 ## Monitoring
 
-The Sirius-Chain command line interface has a set of monitoring commands to track events in the Sirius-Chain.
+The Sirius Chain command line interface has a set of monitoring commands to track events in the Sirius Chain.
 
 ### Block
 
@@ -335,7 +341,7 @@ $> xpx2-cli monitor block
 
 ### Confirmed transactions
 
-Monitors new confirmed [transactions](../protocol/transaction.md) signed or received by an [account](../built-in-features/account.md).
+To monitor new confirmed [transactions](../protocol/transaction.md) signed or received by an [account](../built-in-features/account.md).
 
 **Options**
 
@@ -348,7 +354,7 @@ $> xpx2-cli monitor confirmed --address SCEKUG-H2IJBF-7JZRNK-ECMW52-E66SZ6-ODLB4
 
 ### Unconfirmed transactions
 
-Monitors new unconfirmed [transactions](../protocol/transaction.md) signed or received by an [account](../built-in-features/account.md).
+To monitor new unconfirmed [transactions](../protocol/transaction.md) signed or received by an [account](../built-in-features/account.md).
 
 **Options**
 
@@ -361,7 +367,7 @@ $> xpx2-cli monitor unconfirmed --address SCEKUG-H2IJBF-7JZRNK-ECMW52-E66SZ6-ODL
 
 ### Aggregate bonded transactions
 
-Monitors new [aggregate transactions](../built-in-features/aggregate-transaction.md) with missing signatures added to an [account](../built-in-features/account.md).
+To monitors new [aggregate transactions](../built-in-features/aggregate-transaction.md) with missing signatures added to an [account](../built-in-features/account.md).
 
 **Options**
 

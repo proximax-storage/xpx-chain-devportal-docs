@@ -2,7 +2,7 @@
 id: cryptography
 title: Cryptography
 ---
-Sirius-Chain is using cryptography based on **Elliptic Curve Cryptography**. The choice of the underlying curve is important to guarantee security and speed.
+Sirius Chain is using cryptography based on **Elliptic Curve Cryptography**. The choice of the underlying curve is important to guarantee security and speed.
 
 ## Private and public key
 

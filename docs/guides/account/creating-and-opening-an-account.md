@@ -2,17 +2,17 @@
 id: create-open-account
 title: Creating and opening an account
 ---
-Create a new [account](../../built-in-features/account.md) and open it.
+This guide will help you create a new [account](../../built-in-features/account.md) and open it.
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- Text editor or IDE
-- XPX-Chain-SDK or XPX-Chain-CLI
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
+- Text editor or IDE.
+- XPX-Chain-SDK or XPX-Chain-CLI.
 
-## Let’s get into some code
+## Let’s do some coding!
 
-An account is a key pair (private and public key) associated to a mutable state stored in the Sirius-Chain.
+An account is a key pair, private and public key, associated to a mutable state stored in the Sirius Chain.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--TypeScript-->
@@ -37,9 +37,9 @@ xpx2-cli account generate --network TEST_NET
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-The **private key** uniquely identifies a Sirius-Chain account and holds all of its power. It is a priority to make sure it is stored safely somewhere **offline** and not to share it with anyone.
+The **private key** uniquely identifies a Sirius Chain account and holds all of its power. It is a priority to ensure it is stored safely somewhere **offline** and not to share it with anyone.
 
-The **public key** is cryptographically derived from the private key and safe to be shared. In spite of that, it is preferable to share the **address**, which contains further information such as network and validity check.
+The **public key** is cryptographically derived from the private key and safe to be shared. Nonetheless, it is preferable to share the **address**, which contains further information such as network and validity check.
 
 If you already have a private key, it is not necessary to generate a new account:
 

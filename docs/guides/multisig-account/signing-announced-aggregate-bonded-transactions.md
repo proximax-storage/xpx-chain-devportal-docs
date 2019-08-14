@@ -4,19 +4,19 @@ title: Signing announced aggregate-bonded transactions
 ---
 You have probably announced an aggregate bonded transaction, but all required cosigners have not signed it yet.
 
-This guide will show you how to cosign aggregate bonded transactions that require being signed by your account.
+This guide will show you how to co-sign aggregate bonded transactions that require being signed by your account.
 
 ## Prerequisites
 
-- Finish [creating an escrow with aggregate bonded transaction guide](../aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction.md)
-- Received some aggregate bonded transaction
-- XPX-Chain-SDK
-- A text editor or IDE
-- An account with XPX
+- Finish [creating an escrow with aggregate bonded transaction guide](../aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction.md).
+- Received some aggregate bonded transaction.
+- XPX-Chain-SDK.
+- A text editor or IDE.
+- An account with XPX.
 
-## Let’s get into some code
+## Let’s do some coding!
 
-1. Create a function to cosign any aggregate bonded transaction.
+1. Create a function to co-sign any aggregate bonded transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--TypeScript-->
@@ -38,17 +38,17 @@ const cosignAggregateBondedTransaction = (transaction, account)  => {
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-2. Fetch all aggregate bonded transactions pending to be signed by your account.
+2. Fetch all the aggregate bonded transactions pending to be signed by your account.
 
 <div class=info>
 
-**Note**
+**Note:**
 
 To fetch aggregate bonded transactions that must be signed by multisig cosignatories, refer to the multisig public key instead. See [how to get multisig accounts where an account is cosignatory](../multisig-account/converting-an-account-to-multisig.md#getMultisigAccountInfo).
 
 </div>
 
-3. For each transaction, check if you have not already signed it. Cosign each pending transaction using the previously created function.
+3. For each transaction, check if you have not already signed it. Co-sign each pending transaction using the previously created function.
 
 4. Announce `CosignatureSignedTransaction` to the network using the `TransactionHttp` repository.
 

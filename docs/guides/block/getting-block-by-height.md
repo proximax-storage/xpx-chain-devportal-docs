@@ -2,15 +2,15 @@
 id: getting-block-by-height
 title: Getting block by height
 ---
-Get the [block](../../protocol/block.md) information given a height.
+This guide will help you get the [block](../../protocol/block.md) information given a height.
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- Text editor or IDE
-- XPX-Chain-SDK or XPX-Chain-CLI
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
+- Text editor or IDE.
+- XPX-Chain-SDK or XPX-Chain-CLI.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 Are you curious to see what happened in the genesis block?
 
