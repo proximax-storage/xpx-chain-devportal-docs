@@ -2,7 +2,7 @@
 id: aggregate-transaction
 title: Aggregate Transaction
 ---
-Aggregated Transactions merge multiple transactions into one, allowing **trustless swaps**, and other advanced logic. Sirius Chain does this by generating a one-time disposable smart contract. When all involved [accounts][Account] have cosigned the aggregate transaction, all the inner transactions are executed simultaneously.
+Aggregate Transactions merge multiple transactions into one, allowing **trustless swaps**, and other advanced logic. Sirius Chain does this by generating a one-time disposable smart contract. When all involved [accounts][Account] have cosigned the aggregate transaction, all the inner transactions are executed simultaneously.
  
 ## Examples of Aggregate Transacitons
 ## Sending payouts

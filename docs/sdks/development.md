@@ -2,11 +2,11 @@
 id: sdk-development
 title: SDK Development
 ---
-A key objective in SDK Development is the interoperability that becomes a natural design of the XPX Chain-SDK. This guideline will show how to collaborate creating a XPX Chain-SDK, achieving the best quality with the less effort.
+A key objective in SDK Development is the interoperability that becomes a natural design of the XPX-Chain-SDK. This guideline will show how to collaborate creating a XPX-Chain-SDK, achieving the best quality with the less effort.
 
 ## Learning about Sirius Chain (Sirius Chain)
 
-In case you haven’t used XPX Chain-SDK or Sirius Chain in general, you need to do the following:
+In case you haven’t used XPX-Chain-SDK or Sirius Chain in general, you need to do the following:
 
 1. Review the technical documentation to become familiar with the [Sirius Chain built-in features](../built-in-features/account.md).
 2. Setup the [Sirius Chain in local environment via docker](#) or enroll the [beta program](#) to access a Sirius Chain Test Net without the need to run it yourself.
@@ -66,7 +66,7 @@ Check the [HTTP implementations](https://github.com/proximax-storage/java-xpx-ch
 
 <div class=info>
 
-**Warning:**
+**Note:**
 
 The repositories return Models instead of DTOs. You will need to code the [Models](#models) before finishing the API wrapper.
 
@@ -90,7 +90,7 @@ Particular decisions to consider:
 
 <div class=info>
 
-**Warning:**
+**Note:**
 
 The Transaction Serialization will change when [catbuffer](https://github.com/proximax-storage/catbuffer) tool is finished. Meanwhile, we will use [flatbuffers](https://google.github.io/flatbuffers/).
 
@@ -148,7 +148,7 @@ The Transaction class has the abstract method [generateBytes()](https://github.c
 
 <div class=info>
 
-**Warning**
+**Note:**
 
 This section is incomplete.
 

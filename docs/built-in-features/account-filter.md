@@ -9,9 +9,9 @@ The editable on-chain constraints are called filters.
 
 Accounts can configure the following types:
 <ul>
-<li>Address Filter<li>
-<li>Mosaic Filter<li>
-<li>Entity Type Filter<li>
+<li>Address Filter
+<li>Mosaic Filter
+<li>Entity Type Filter
 </ul>
 
 ## Address Filter

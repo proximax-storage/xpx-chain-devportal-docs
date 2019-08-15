@@ -41,7 +41,7 @@ Storing the state in memory is usually faster than using RocksDB. However, stori
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Persisting the state is convenient in networks with many accounts.
 
@@ -83,7 +83,7 @@ MongoDB should not be accessed externally.
 
 ## REST Component
 
-**Repository**: [SiriusChain REST](https://github.com/proximax-storage/catapult-rest)
+**Repository**: [Sirius Chain REST](https://github.com/proximax-storage/catapult-rest)
 
 The REST component handles JSON API client requests. This reads from MongoDB, formats the response, and returns it to the client. This component is responsible as well to return events to the client using [WebSockets](../rest-api/websockets.md).
 

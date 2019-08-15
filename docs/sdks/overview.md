@@ -18,7 +18,7 @@ The new SDK enables developers to focus on their product rather than on the Siri
 XPX-Chain-SDK shares the same design/architecture between programming languages to accomplish the next properties:
 
 - **Fast language adaptation**: There is a library for Java, but you need it for C# for example. As both SDKs share the same design, you can re-write the library faster, adapting the syntax to your language. It also applies to examples, projects and applications…
-- **Cohesion/Shared knowledge cross Sirius-Chain developers**: Be able to change between projects that use Sirius Chain, sharing the same design accompanied by the best practices.
+- **Cohesion/Shared knowledge cross Sirius Chain developers**: Be able to change between projects that use Sirius Chain, sharing the same design accompanied by the best practices.
 - **Fast SDK updates**: Migrating any improvement from a XPX-Chain-SDK implementation to the rest is faster.
 - **Fewer bugs**: If any bug appears in one language, it is faster to check and fix it.
 

@@ -16,9 +16,9 @@ In other words, to reduce counterparty risk, the receiver of a payment needs to 
 
 <p class=caption>Atomic cross-chain swap sequence diagram</p>
 
-When talking about tokens in Sirius-Chain, we are actually referring to [mosaics](./mosaic.md). Sirius Chain enables atomic swaps through [secret lock](#secretlocktransaction) / [secret proof transaction](#secretprooftransaction) mechanism.
+When talking about tokens in Sirius-Chain, we are actually referring to [mosaics](./mosaic.md). Sirius Chain enables atomic swaps through [secret lock](#secretlocktransaction) or [secret proof transaction](#secretprooftransaction) mechanism.
 
-## Guides on Cross-CHhain Swaps
+## Guides on Cross-Chain Swaps
 
 <div class=info>
 
@@ -28,7 +28,7 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 </div>
 
-- [Atomic cross-chain swap between Sirius-Chain public and private chain](../guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain.md)
+- [Atomic cross-chain swap between Sirius Chain public and private chain](../guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain.md)
 
     How to swap cross-chain swaps to enable trading tokens between different blockchains, without using an intermediary party in the process.
 
@@ -71,7 +71,7 @@ hashAlgorithm |	[LockHashAlgorithm](#lockhashalgorithm) |	The algorithm used to 
 secret |	64 bytes (binary) |	The proof hashed.
 recipient |	25 bytes (binary) |	The address who will receive the funds once unlocked.
 
-### SecretProofTransaction
+### Secret Proof Transaction
 
 Use a secret proof transaction to unlock [secret lock transactions](#secretlocktransaction).
 
@@ -92,7 +92,7 @@ secret |	64 bytes (binary) |	The proof hashed.
 proofSize |	uint16 |	The proof size in bytes.
 proof |	array(byte, proofSize) |	The original proof.
 
-### LockHashAlgorithm
+### Lock Hash Algorithm
 
 Enumeration: uint8
 

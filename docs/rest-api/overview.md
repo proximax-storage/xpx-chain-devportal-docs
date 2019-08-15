@@ -9,7 +9,7 @@ sidebar_label: Overview
 
 Sirius Chain REST uses port `3000`. It accepts both HTTP **GET**, **PUT** and **POST** requests.
 
-Assuming that Sirius-Chain REST is running locally, HTTP GET requests can be executed from a browser and have the form:
+Assuming that Sirius Chain REST is running locally, HTTP GET requests can be executed from a browser and have the form:
 
 [http://localhost:3000/](http://localhost:3000/)<path-to-API-request>
 

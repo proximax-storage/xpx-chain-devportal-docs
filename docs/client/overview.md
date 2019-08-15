@@ -7,11 +7,11 @@ The Sirius Chain Command Line Interface is a unified tool to interact with the S
 
 This tool will enable you to perform the most common used actions to interact with the blockchain.
 
-**XPX Chain-CLI** is an open source tool built on top of the [XPX Chain-SDK](../sdks/overview.md) Typescript. Use it in your favorite terminal program.
+**XPX-Chain-CLI** is an open source tool built on top of the [XPX-Chain-SDK](../sdks/overview.md) Typescript. Use it in your favorite terminal program.
 
 ## Installation
 
-XPX Chain-CLI is distributed using the node package manager `npm`.
+XPX-Chain-CLI is distributed using the node package manager `npm`.
 
 To install:
 
@@ -27,7 +27,7 @@ $> sudo npm update --global xpx2-cli
 
 ## Configuration
 
-To start using XPX Chain-CLI, configure a profile.
+To start using XPX-Chain-CLI, configure a profile.
 
 A profile holds an account and a node URL for a specific network. Profiles are used to set a base URL and have an account to sign transactions.
 

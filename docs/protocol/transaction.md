@@ -61,7 +61,7 @@ The validating nodes can decide their transaction inclusion strategy:
 - **Minimise-fees**: Philanthropic nodes. Include first transactions that other nodes do not want to include.
 - **Maximise-fees**: Most common in public networks. Include first transactions with higher fees.
 
-By default, the fee is paid in `XPX`, the underlying currency of the Sirius-Chain network. Private chains can edit the configuration of the network to eliminate fees, or use another [mosaic](../built-in-features/mosaic.md) that best suits their needs.
+By default, the fee is paid in `XPX`, the underlying currency of the Sirius Chain network. Private chains can edit the configuration of the network to eliminate fees, or use another [mosaic](../built-in-features/mosaic.md) that best suits their needs.
 
 ## Signing a transaction
 
@@ -96,7 +96,7 @@ Blockchains are designed in a way that under certain circumstances recent blocks
 
 The “rewrite limit” is the maximum number of blocks that can be rolled back. Hence, forks can only be resolved up to a certain depth too.
 
-Sirius-Chain has a rewrite limit of `360` blocks. Once a transaction has more than 360 confirmations, it cannot be reversed.
+Sirius Chain has a rewrite limit of `360` blocks. Once a transaction has more than 360 confirmations, it cannot be reversed.
 
 From experience, forks that are deeper than 20 blocks do not happen, unless there is a severe problem with the blockchain due to a bug in the code or an attack.
 

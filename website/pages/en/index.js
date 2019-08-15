@@ -45,7 +45,7 @@ class BriefDef extends React.Component{
         <div className="briefDef ">
           <p>
             <b>Sirius Chain </b>gives you direct access to a specialized set of <b>tested</b> and
-            <b>secure on-blockchain features</b>using your favorite <b>programming languages.</b> 
+            <b> secure on-blockchain features</b> using your favorite <b>programming languages.</b> 
           </p>
         </div>
       </section>

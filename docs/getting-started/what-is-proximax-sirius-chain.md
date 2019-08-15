@@ -39,4 +39,4 @@ A gateway server links existing business contract logic, systems, or databases t
 
 ![Public Private Blockchain](/img/public-private-blockchain.png "Public Private Blockchain")
 
-Sirius Chain provides both a decentralized, open and self-sustaining **public blockchain** that can be used by anyone – as well as a **permissioned/private blockchain solution** that can be provisioned specifically for your use on your servers when speed and privacy are the priority.
+Sirius Chain provides both a decentralized, open and self-sustaining **public blockchain** that can be used by anyone, as well as a **permissioned or private blockchain solution** that can be provisioned specifically for your use on your servers when speed and privacy are the priority.

@@ -6,7 +6,7 @@ title: Wallets & Explorers
 
 **Wallet Name** |	**Description** |	**Repository**  |	**Active Developers**
 ----------------|-------------------|-------------------|---------------------------
-[XPX-Chain-CLI](client/overview.md) |	Terminal client to interact with Sirius-Chain. |	[Repository](https://github.com/proximax-storage/xpx-chain-cli) |	
+[XPX-Chain-CLI](client/overview.md) |	Terminal client to interact with Sirius Chain. |	[Repository](https://github.com/proximax-storage/xpx-chain-cli) |	
 
 ## Community tools
 

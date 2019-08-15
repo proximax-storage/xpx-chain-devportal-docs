@@ -2,7 +2,7 @@
 id: serialization
 title: Serialization
 ---
-[Catbuffer library](https://github.com/proximax-storage/catbuffer) defines the protocol to serialize and deserialize Sirius-Chain entities. The library comes with code generators for different languages. SDKs and applications use the generated code to interact with REST transaction endpoint.
+[Catbuffer library](https://github.com/proximax-storage/catbuffer) defines the protocol to serialize and deserialize Sirius Chain entities. The library comes with code generators for different languages. SDKs and applications use the generated code to interact with REST transaction endpoint.
 
 ![Catbuffer](/img/catbuffer.png "Catbuffer")
 
@@ -12,7 +12,7 @@ The library accomplishes the following properties:
 
 ## Memory Efficiency
 
-Large networks comprise a large number of transactions. Working with binary optimized in size makes the communication faster. Furthermore, reading entities from memory buffers -or just a part of them - is memory efficient.
+Large networks comprise a large number of transactions. Working with binary optimized in size makes the communication faster. Furthermore, reading entities from memory buffers or just a part of them, is memory efficient.
 
 ## Flexibility
 
@@ -53,7 +53,7 @@ The generator creates a new file under `_generated/cpp` folder. Repeat the proce
 
 ## Writing a schema
 
-Are you writing a new Sirius-Chain plugin that includes a new transaction type?
+Are you writing a new Sirius Chain plugin that includes a new transaction type?
 
 In this example, we are examining how the [transfer.cats](https://github.com/proximax-storage/catbuffer/blob/master/schemas/transfer.cats) schema works. Follow the same steps to define a new schema.
 

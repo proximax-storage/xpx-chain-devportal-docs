@@ -27,15 +27,15 @@ Some important considerations to keep in mind:
 - Multisig accounts can have up to `10` cosignatories.
 - An account can be cosigner of up to `5` multisig accounts.
 - Multisig accounts can have as a cosigner another multisig, up to `3` levels. Multi-level multisig accounts add “AND/OR” logic to multi-signature transactions.
-- [Multisig modification transactions](#modifymultisigtransaction) must be wrapped in an [aggregate transaction](./aggregate-transaction.md). New cosignatories added to the multisig must opt-in by co-signing the aggregate.
+- [Multisig modification transactions](#modifymultisigtransaction) must be wrapped in an [aggregate transaction](./aggregate-transaction.md). New cosignatories added to the multisig must opt-in by cosigning the aggregate.
 
-## Examples pf Using Multisig Accounts
+## Examples of Using Multisig Accounts
 
 There is a broad range of useful applications for multisig accounts. Let’s take a look at some of the most common use cases.
 
 Shared accounts
 
-Alice, Bob and Carol are members of a charity group for educating disadvantaged children in the city. THey use a shared account to buy materials for their weekly class. 
+Alice, Bob and Carol are members of a charity group for educating disadvantaged children in the city. They use a shared account to buy materials for their weekly class. 
 
 To ensure that all agree on which educational material they should buy and at the right price, they use a multisig account. This way, all members need to approve the transaction before it is included in the blockchain.
 
@@ -47,7 +47,7 @@ To ensure that all agree on which educational material they should buy and at th
 
 Alice wants to make sure her funds are not totally compromised. Therefore, she sets up a multisig account with her funds and attaches two accounts called "signer accounts" to control her multisig account as a form of two-factor authentication.
 
-Both of her signer accounts need to approve the transaction, and her signer accounts are located on different computer platforms with different passwords. This means that when a hacker or computer virus compromise one of her accounts, the funds will be kept secure.
+Both of her "signer accounts" need to approve the transaction, and her signer accounts are located on different computer platforms with different passwords. This means that when a hacker or computer virus compromise one of her accounts, the funds will be kept secure.
 
 ![Multisig multifactor auth](/img/multisig-multifactor-auth.png "Multisig multifactor auth")
 
@@ -57,7 +57,7 @@ Both of her signer accounts need to approve the transaction, and her signer acco
 
 Multisig accounts can be used to represent the ownership of assets.
 
-A company could create a one-of-one multisig account for each of its products, adding themselves as the co-signatories. When the company sells the product to Alice, she becomes the owner and the company will be removed as a co-signer.
+A company could create a one-of-one multisig account for each of its products, adding themselves as the cosignatories. When the company sells the product to Alice, she becomes the owner and the company will be removed as a cosigner.
 
 ![Multisig asset ownership](/img/multisig-asset-ownership.png "Multisig asset ownership")
 
@@ -84,24 +84,24 @@ Transactions are only approved from a hardware wallet or your phone and a fraud 
 <p class="caption">Fraud Detection</p>
 
 ## Guides for Using Multisig Accounts
-<ul>
-<li>- [Signing announced aggregate bonded transactions](../guides/multisig-account/signing-announced-aggregate-bonded-transactions.md)
+
+- [Signing announced aggregate bonded transactions](../guides/multisig-account/signing-announced-aggregate-bonded-transactions.md)
 
     What to do when all required consigners have not signed the aggregate bonded transaction.
 
-<li>- [Converting an account to multisig](../guides/multisig-account/converting-an-account-to-multisig.md)
+- [Converting an account to multisig](../guides/multisig-account/converting-an-account-to-multisig.md)
 
     How to create a one-of-two multisig account adding two co-signatories. 
 
-<li>- [Modifying a multisig account](../guides/multisig-account/modifying-a-multisig-account.md)
+- [Modifying a multisig account](../guides/multisig-account/modifying-a-multisig-account.md)
 
     How to modify an existing multisig account.
 
-<li>- [Creating a multi-level multisig account (MLMA)](../guides/multisig-account/creating-a-multi-level-multisig-account.md)
+- [Creating a multi-level multisig account (MLMA)](../guides/multisig-account/creating-a-multi-level-multisig-account.md)
 
     How to create a multi-level multisig account.
 
-<li>- [Sending a multisig transaction](../guides/multisig-account/sending-a-multisig-transaction.md)
+- [Sending a multisig transaction](../guides/multisig-account/sending-a-multisig-transaction.md)
 
    How to send a transaction involving a multisig.
    How an aggregate bonded transaction works.

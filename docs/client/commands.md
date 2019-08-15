@@ -12,7 +12,7 @@ Creates a new profile.
 
     -p, --privatekey <privatekey> - Private key
     -n, --network <network>       - Network Type: MAIN_NET, TEST_NET, PRIVATE, PRIVATE_TEST
-    -u, --url <url>               - Sirius-Chain Node URL. Example: http://localhost:3000
+    -u, --url <url>               - Sirius Chain Node URL. Example: http://localhost:3000
     --profile <profile>           - (Optional) profile name, if not private key will be stored as default
 
 **Command**
@@ -49,7 +49,7 @@ Generated accounts can be stored as named profiles by adding a node URL.
 **Options**
 
     -s, --save              - (Optional) Save profile
-    -u, --url <url>         - (Optional) When saving profile, provide a Sirius-Chain Node URL
+    -u, --url <url>         - (Optional) When saving profile, provide a Sirius Chain Node URL
     --profile <profile>     - (Optional) When saving profile you can add profile name, if not will be stored as default
     -n, --network <network> - Network Type: MAIN_NET, TEST_NET, PRIVATE, PRIVATE_TEST
 

@@ -18,14 +18,14 @@ title: Architecture
 In computing, **reactive programming** is a declarative programming paradigm concerned with data streams and the propagation of change. This means that it becomes possible to express static (e.g. arrays) or dynamic (e.g. event emitters) data streams with ease via the employed programming language(s), and that an inferred dependency within the associated execution model exists, which facilitates the automatic propagation of the change involved with data flow.
 
 Reference:
-- Wikipedia Contributors. "Reactive Programming." Wikipedia, Wikipedia Foundation. 11 June 2019. [Wikipedia reference](https://en.wikipedia.org/wiki/Reactive_programming##).
+- Wikipedia Contributors. "Reactive Programming." Wikipedia, Wikipedia Foundation. 11 June 2019. https://en.wikipedia.org/wiki/Reactive_programming.
 
 **Observer Pattern**
 
 The **observer pattern** is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
 
 Reference:
-- Wikipedia Contributors. "Observer Pattern." Wikipedia, Wikipedia Foundation. 3 July 2019. [Wikipedia reference](https://en.wikipedia.org/wiki/Observer_pattern).
+- Wikipedia Contributors. "Observer Pattern." Wikipedia, Wikipedia Foundation. 3 July 2019. https://en.wikipedia.org/wiki/Observer_pattern
 
 XPX-Chain-SDK uses intensely ReactiveX Library. See [reactivex here](http://reactivex.io/).
 

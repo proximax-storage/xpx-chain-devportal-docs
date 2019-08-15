@@ -2,15 +2,15 @@
 id: cryptography
 title: Cryptography
 ---
-Sirius Chain is using cryptography based on **Elliptic Curve Cryptography**. The choice of the underlying curve is important to guarantee security and speed.
+Sirius Chain is using cryptography based on **"Elliptic Curve Cryptography"**. The choice of the underlying curve is important to guarantee security and speed.
 
 ## Private and public key
 
-The **private key** is a random 256-bit integer. The **public key** is cryptographically derived from the private key. Sirius-Chain is using the `Ed25519 elliptic curve` with the `sha3` hashing algorithm.
+The **private key** is a random 256-bit integer. The **public key** is cryptographically derived from the private key. Sirius Chain is using the `Ed25519 elliptic curve` with the `sha3` hashing algorithm.
 
 ## Address
 
-A Sirius-Chain address is a base-32 3 encoded triplet consisting of:
+A Sirius Chain address is a base-32 3 encoded triplet consisting of:
 
 - Network byte
 - 160-bit hash of the account’s public key

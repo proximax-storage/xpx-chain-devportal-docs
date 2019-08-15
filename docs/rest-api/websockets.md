@@ -42,7 +42,7 @@ Possible scenarios when this channel notifies is the transaction now is in uncon
 
 **cosignature/<ADDRESS>**
 
-The cosignature channel notifies when a co-signature signed transaction related to an address is added to an aggregate bonded transaction with partial state. The message contains the co-signature signed transaction.
+The cosignature channel notifies when a cosignature signed transaction related to an address is added to an aggregate bonded transaction with partial state. The message contains the co-signature signed transaction.
 
 **status/<ADDRESS>**
 
