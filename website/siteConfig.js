@@ -47,8 +47,8 @@ const siteConfig = {
 
 
   algolia: {
-    apiKey: 'my-api-key',
-    indexName: 'my-index-name',
+    apiKey: 'bbae234aab827ff0a453db2683f95647',
+    indexName: 'xpxsirius_proximax',
     placeholder: 'Search',
     algoliaOptions: {} // Optional, if provided by Algolia
   },
