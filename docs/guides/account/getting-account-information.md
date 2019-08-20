@@ -55,6 +55,18 @@ xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
     System.out.println(accountInfo);
 ```
 
+<!--DotNet-->
+```C#
+    AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
+
+    // Replace with address
+    var address = "VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54";
+
+    var accountInfo = await accountHttp.GetAccountInfo(Address.CreateFromRawAddress(address)).Wait();
+
+    Console.WriteLine(accountInfo);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 Can you determine the account’s public key? Which was the first block where this account appeared?
@@ -108,8 +120,25 @@ mosaicService
 xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 ```
 
+<!--DotNet-->
+```C#
+var url = "http://localhost:3000";
+var accountHttp = new AccountHttp(url);
+var mosaicHttp = new MosaicHttp(url);
+var address = Address.CreateFromRawAddress("VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54");
+
+accountHttp.GetAccountInfo(address).Subscribe(
+    info =>
+    {
+        foreach (var mosaic in info.Mosaics)
+        {
+            Console.WriteLine($"You have {mosaic.Amount} of {mosaic.HexId}.");
+        }
+    },
+    err => Console.WriteLine($"{err}"));
+```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## What’s next?
+## What’s next ?
 
 Retrieve the balance by only [filtering the prx:xpx](https://www.learnrxjs.io/operators/filtering/filter.html) amount.

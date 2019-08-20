@@ -34,7 +34,12 @@ console.log('Your new account address is:', account.address.pretty(), 'and its p
 ```sh
 xpx2-cli account generate --network TEST_NET
 ```
+<!-- DotNet -->
+```C#
+var account = Account.GenerateNewAccount(NetworkType.TEST_NET);
 
+Console.WriteLine($"Your new account address is: {account.Address.Pretty} and its private key {account.PrivateKey}");
+```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 The **private key** uniquely identifies a Sirius-Chain account and holds all of its power. It is a priority to make sure it is stored safely somewhere **offline** and not to share it with anyone.
@@ -72,7 +77,15 @@ console.log('Your account address is:', account.address.pretty(), 'and its priva
 
     final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 ```
+<!-- DotNet -->
+```C#
+// Replace with a private key
+var privateKey = "";
 
+var account = Account.CreateFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
+```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ### Using a Wallet
