@@ -61,7 +61,7 @@ Accounts may configure a set of smart rules to block announcing or receiving tra
 
     Get the list of transactions where an [account](./account.md) is involved.
 
-- [Linking a namespace to an address](../guides/account/linking-namespace-to-account.md)
+- [Linking a namespace to an address](../guides/namespace/linking-namespace-to-account.md)
 
     Link a [namespace](./namespace.md) to an [account](./account.md).
 

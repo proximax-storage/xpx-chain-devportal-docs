@@ -2,519 +2,302 @@
 id: modifying-a-multisig-account
 title: Modifying a multisig-account
 ---
+
 Modify an existing [multisig account](../../built-in-features/multisig-account.md).
 
-First, you are going to turn a 1-of-2 multisig account into a 2-of-2. Then, you will add a new cosignatory, becoming a 2-of-3. After removing a cosignatory, you will know how to perform all sort of modifications to multisig accounts.
+First, you are going to turn a 1-of-2 multisig account into a 2-of-2. Then, you will **add a new cosignatory**, becoming a 2-of-3. Finally, **after removing a cosignatory**, you will know how to perform all sort of modifications to multisig accounts.
 
 ## Prerequisites
 
-- Finish [converting an account to multisig guide](./converting-an-account-to-multisig.md)
 - Text editor or IDE
 - XPX-Chain-SDK or XPX-Chain-CLI
-- One multisig account
+- Finish [converting an account to multisig guide](./converting-an-account-to-multisig.md)
+- Have on emultisignature account
 
-## Let’s get into some code
+## Getting into some code
 
 ### Editing minApproval
 
-Alice and Bob are cosignatories of the 1-of-2 multisig account. At least one of their account’s signatures is required to authorise multisig transactions. In other words, the `minApproval` parameter of the multisig is currently set to `1`.
+Alice and Bob are cosignatories of the 1-of-2 multisig account. This means that at least one of their account’s signatures is required to authorize multisig transactions. In other words, we can say that the `minApproval` parameter of the multisig is currently set to `1`.
 
-<!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
-
-const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY as string;
-const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
-
-const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
-```
-
-<!--JavaScript-->
-```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
-
-const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY;
-const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
-
-const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
-```
-
-<!--Java-->
-```java
-    final String cosignatoryPrivateKey = "";
-    final String multisigAccountPublicKey = "";
-
-    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
-    final PublicAccount multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
-
-Multisig accounts are editable at the blockchain level. In this case, we want to make both cosignatories required, shifting to a 2-of-2 multisig instead. We could achieve it by increasing `minApproval` parameter in one unit.
+Multisig accounts are editable at the blockchain level. In this case, we want to make both cosignatories required, shifting to a 2-of-2 multisig instead. You can achieve this by increasing `minApproval` parameter in one unit.
 
 ![Multisig 2 of 2](/img/multisig-2-of-2.png "Multisig 2 of 2")
 
 <p class=caption>2-of-2 multisig account example</p>
 
-One of the accounts, for example Alice’s, announces a [modify multisig account transaction](../../built-in-features/multisig-account.md#modifymultisigtransaction) wrapped in an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples), increasing `minApprovalDelta`.
+One of the accounts, for example Alice’s, will announce a [modify multisig account transaction](../../built-in-features/multisig-account.md#modify-multisig-transaction) to increase minApprovalDelta.
 
-1. Create a modify multisig account transaction, increasing minAprovalDelta in one unit.
+1. First, define Alice account as the cosignatory and the multisig account using its public key.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-    Deadline.create(),
-    1,
-    0,
-    [],
-    NetworkType.TEST_NET);
-```
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig("http://localhost:3000", sdk.MijinTest, time.Second * 10)
+if err != nil {
+    panic(err)
+}
+client := sdk.NewClient(nil, conf)
 
-<!--JavaScript-->
-```js
-const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-    Deadline.create(),
-    1,
-    0,
-    [],
-    NetworkType.TEST_NET);
-```
+multisig, err := sdk.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"), networkType)
+if err != nil {
+    panic(err)
+}
 
-<!--Java-->
-```java
- final ModifyMultisigAccountTransaction modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-    Deadline.create(2, HOURS),
-    1,
-    0,
-    Collections.emptyList(),
-    NetworkType.TEST_NET
-);
+cosignatory, err := sdk.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_PRIVATE_KEY"), networkType)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-2. Wrap the modify multisig account transaction under an aggregate transaction, attaching multisig public key as the signer.
+2. Define a modify multisig account transaction to increase the `minAprovalDelta` in one unit.
 
-An aggregate transaction is complete if, before announcing it to the network, all required cosignatories have signed it. If valid, it will be included in a block.
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+modifyMultisigAccountTransaction, err := client.NewModifyMultisigAccountTransaction(
+    sdk.NewDeadline(deadline),
+    1,
+    0,
+    []*sdk.MultisigCosignatoryModification{ },
+)
+if err != nil {
+    panic(err)
+}
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+3. Wrap the modify multisig account transaction in an aggregate transaction, attaching the multisig public key as the signer.
+
+An aggregate transaction is `complete` if, before announcing it to the network, all required cosignatories have signed it. If valid, it will be included in a block.
 
 As only one cosignature is required (1-of-2), Alice can sign the transaction and announce it to the network.
 
+
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const aggregateTransaction = AggregateTransaction.createComplete(
-    Deadline.create(),
-    [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.TEST_NET,
-    []);
+<!--Golang-->
+```go
+modifyMultisigAccountTransaction.ToAggregate(multisig.PublicAccount)
 
-const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
+aggregateTransaction, err := client.NewCompleteAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{modifyMultisigAccountTransaction})
+if err != nil {
+    panic(err)
+}
 
-transactionHttp
-    .announce(signedTransaction)
-    .subscribe(x => console.log(x), err => console.error(err));
-```
+signedTransaction, err := account.Sign(aggregateTransaction)
+if err != nil {
+    panic(err)
+}
 
-<!--JavaScript-->
-```js
-const aggregateTransaction = AggregateTransaction.createComplete(
-    Deadline.create(),
-    [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.TEST_NET,
-    []);
-
-const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
-
-transactionHttp
-    .announce(signedTransaction)
-    .subscribe(x => console.log(x), err => console.error(err));
-```
-
-<!--Java-->
-```java
-    final AggregateTransaction aggregateTransaction = AggregateTransaction.createComplete(
-        Deadline.create(2, HOURS),
-        Collections.singletonList(modifyMultisigAccountTransaction.toAggregate(multisigAccount)),
-        NetworkType.TEST_NET
-    );
-
-    final SignedTransaction signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
-
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
-
-    transactionHttp.announce(signedTransaction).toFuture().get();
+_, err = client.Transaction.Announce(ctx, signedTransaction)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-Once confirmed, the minApproval value of the multisig will be set to 2, having our 2-of-2 multisig.
+Once confirmed, the `minApproval` value of the multisig will be set to 2, having our 2-of-2 multisig.
 
 <div class=info>
 
 **Note**
 
-If you want to decrease the minApproval parameter, going back to a 1-of-2 multisig, set minApprovalDelta with a negative value. In this case `-1`.
+If you want to decrease the `minApproval` parameter, set `minApprovalDelta` with a negative value. In this case `-1`.
 
 </div>
 
 ### Adding a new cosignatory
 
-Suddenly, Alice and Bob want to add Carol as a cosignatory of the multisig account to achieve 2-of-3 cosignatures required.
+Alice and Bob want to add Carol as a cosignatory of the multisig account to achieve 2-of-3 cosignatures required.
 
 ![Multisig 2 of 3](/img/multisig-2-of-31.png "Multisig 2 of 3")
 
 <p class=caption>2-of-3 multisig account example</p>
 
-Alice creates a [modify multisig account transaction](../../built-in-features/multisig-account.md#modifymultisigtransaction) adding in a `MultisigCosignatoryModification` Carol as a cosignatory. The multisig account will become a 2-of-3, as she is not increasing the minApprovalDelta.
-
-1. Create a multisig cosignatory modification:
+1. Create a [modify multisig account transaction](../../built-in-features/multisig-account.md#modifymultisigtransaction) adding Carol as a cosignatory. The multisig account will become a 2-of-3, since you are not increasing the `minApprovalDelta`.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const nodeUrl = 'http://localhost:3000';
-const transactionHttp = new TransactionHttp(nodeUrl);
-const listener = new Listener(nodeUrl);
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig("http://localhost:3000", sdk.MijinTest, time.Second * 10)
+if err != nil {
+    panic(err)
+}
+client := sdk.NewClient(nil, conf)
 
-const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY as string;
-const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
+multisig, err := sdk.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"), networkType)
+if err != nil {
+    panic(err)
+}
 
-const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
+cosignatory, err := sdk.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_PRIVATE_KEY"), networkType)
+if err != nil {
+    panic(err)
+}
 
-const newCosignatoryPublicKey = 'CD4EE677BD0642C93910CB93214954A9D70FBAAE1FFF1FF530B1FB52389568F1';
-const newCosignatoryAccount = PublicAccount.createFromPublicKey(newCosignatoryPublicKey, NetworkType.TEST_NET);
+newCosignatory, err := sdk.NewAccountFromPrivateKey(os.Getenv("NEW_COSIGNATORY_PRIVATE_KEY"), networkType)
+if err != nil {
+    panic(err)
+}
 
-const multisigCosignatoryModification = new MultisigCosignatoryModification(MultisigCosignatoryModificationType.Add,newCosignatoryAccount);
-```
-
-<!--JavaScript-->
-```js
-const nodeUrl = 'http://localhost:3000';
-const transactionHttp = new TransactionHttp(nodeUrl);
-const listener = new Listener(nodeUrl);
-
-const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY;
-const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
-
-const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
-
-const newCosignatoryPublicKey = 'CD4EE677BD0642C93910CB93214954A9D70FBAAE1FFF1FF530B1FB52389568F1';
-const newCosignatoryAccount = PublicAccount.createFromPublicKey(newCosignatoryPublicKey, NetworkType.TEST_NET);
-
-const multisigCosignatoryModification = new MultisigCosignatoryModification(MultisigCosignatoryModificationType.Add,newCosignatoryAccount);
-```
-
-<!--Java-->
-```java
-    // Replace with the multisig public key
-    final String cosignatoryPrivateKey = "";
-    final String multisigAccountPublicKey = "";
-    final String newCosignatoryPublicKey = "";
-
-    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
-    final PublicAccount newCosignatoryAccount = PublicAccount.createFromPublicKey(newCosignatoryPublicKey, NetworkType.TEST_NET);
-    final PublicAccount multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
-
-    final MultisigCosignatoryModification multisigCosignatoryModification = new MultisigCosignatoryModification(
-        MultisigCosignatoryModificationType.ADD,
-        newCosignatoryAccount
-    );
+multisigCosignatoryModification := {sdk.Add, newCosignatory.PublicAccount}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-2. Create a modify multisig account transaction:
+2. Create a modify multisig account transaction adding the previous modification.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-    Deadline.create(),
+<!--Golang-->
+```go
+modifyMultisigTransaction, err := client.NewModifyMultisigAccountTransaction(
+    sdk.NewDeadline(deadline),
     0,
     0,
-    [multisigCosignatoryModification],
-    NetworkType.TEST_NET);
-```
-
-<!--JavaScript-->
-```js
-const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-    Deadline.create(),
-    0,
-    0,
-    [multisigCosignatoryModification],
-    NetworkType.TEST_NET);
-```
-
-<!--Java-->
-```java
-    final ModifyMultisigAccountTransaction modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-        Deadline.create(2, HOURS),
-        0,
-        0,
-        Collections.singletonList(multisigCosignatoryModification),
-        NetworkType.TEST_NET
-    );
+    []*sdk.MultisigCosignatoryModification{
+        multisigCosignatoryModification
+    },
+)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-3. Create an aggregate bonded transaction. The transaction is aggregate bonded because more than one cosignature is required:
+3. Wrap the modify multisig account transaction in an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md) and sign it.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const aggregateTransaction = AggregateTransaction.createBonded(
-    Deadline.create(),
-    [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.TEST_NET);
+<!--Golang-->
+```go
+modifyMultisigTransaction.ToAggregate(multisig.PublicAccount)
 
-const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
-```
+aggregateTransaction, err := client.NewBondedAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{modifyMultisigTransaction})
+if err != nil {
+    panic(err)
+}
 
-<!--JavaScript-->
-```js
-const aggregateTransaction = AggregateTransaction.createBonded(
-    Deadline.create(),
-    [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.TEST_NET);
-
-const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
-```
-
-<!--Java-->
-```java
-    final AggregateTransaction aggregateTransaction = AggregateTransaction.createBonded(
-        Deadline.create(2, HOURS),
-        Collections.singletonList(modifyMultisigAccountTransaction.toAggregate(multisigAccount)),
-        NetworkType.TEST_NET
-    );
-
-    final SignedTransaction signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
+signedAggregateTransaction, err := cosignatory.Sign(aggregateTransaction)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-4. Before sending an aggregate bonded transaction, Alice needs to lock at least `10` XPX. This mechanism is required to prevent network spamming and ensure that transactions are cosigned. After hash lock transaction has been confirmed, Alice announces the aggregate transaction.
+4. Before sending an aggregate bonded transaction, Alice needs to [lock](../../built-in-features/aggregate-transaction.md#hash-lock-transaction) at least `10 xpx`. This transaction is required to prevent network spamming and ensure that transactions are cosigned. After the hash lock transaction has been confirmed, announce the aggregate transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const lockFundsTransaction = LockFundsTransaction.create(
-    Deadline.create(),
-    NetworkCurrencyMosaic.createRelative(10),
-    UInt64.fromUint(480),
-    signedTransaction,
-    NetworkType.TEST_NET);
+<!--Golang-->
+```go
+lockFundsTransaction, err := client.NewLockFundsTransaction(
+    sdk.NewDeadline(time.Hour),
+    sdk.XpxRelative(10),
+    sdk.Duration(1000),
+    signedAggregateBoundedTransaction
+)
+if err != nil {
+    panic(err)
+}
 
-const lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction);
+signedLockFundsTransaction, err := cosignatory.Sign(lockFundsTransaction)
+if err != nil {
+    panic(err)
+}
 
-listener.open().then(() => {
-
-    transactionHttp
-        .announce(lockFundsTransactionSigned)
-        .subscribe(x => console.log(x), err => console.error(err));
-
-    listener
-        .confirmed(cosignatoryAccount.address)
-        .pipe(
-            filter((transaction) => transaction.transactionInfo !== undefined
-                && transaction.transactionInfo.hash === lockFundsTransactionSigned.hash),
-            mergeMap(ignored => transactionHttp.announceAggregateBonded(signedTransaction))
-        )
-        .subscribe(announcedAggregateBonded => console.log(announcedAggregateBonded),
-            err => console.error(err));
-});
-```
-
-<!--JavaScript-->
-```js
-const lockFundsTransaction = LockFundsTransaction.create(
-    Deadline.create(),
-    NetworkCurrencyMosaic.createRelative(10),
-    UInt64.fromUint(480),
-    signedTransaction,
-    NetworkType.TEST_NET);
-
-const lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction);
-
-listener.open().then(() => {
-
-    transactionHttp
-        .announce(lockFundsTransactionSigned)
-        .subscribe(x => console.log(x), err => console.error(err));
-
-    listener
-        .confirmed(cosignatoryAccount.address)
-        .pipe(
-            filter((transaction) => transaction.transactionInfo !== undefined
-                && transaction.transactionInfo.hash === lockFundsTransactionSigned.hash),
-            mergeMap(ignored => transactionHttp.announceAggregateBonded(signedTransaction))
-        )
-        .subscribe(announcedAggregateBonded => console.log(announcedAggregateBonded),
-            err => console.error(err));
-});
-```
-
-<!--Java-->
-```java
-    final LockFundsTransaction lockFundsTransaction = LockFundsTransaction.create(
-        Deadline.create(2, HOURS),
-        NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
-        BigInteger.valueOf(480),
-        signedTransaction,
-        NetworkType.TEST_NET
-    );
-
-    final SignedTransaction lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction);
-
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
-
-    transactionHttp.announce(lockFundsTransactionSigned).toFuture().get();
-
-    // announce signed transaction
-    final Listener listener = new Listener("http://localhost:3000");
-
-    listener.open().get();
-
-    final Transaction transaction = listener.confirmed(cosignatoryAccount.getAddress()).toFuture().get();
-
-    transactionHttp.announceAggregateBonded(signedTransaction).toFuture().get();
+_, err := client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-<div class="info">
+5. [Cosign the aggregate transaction](../aggregate-transaction/signing-announced-aggregate-bonded-transactions.md) hash with Carols’s account. She has to opt-in to become a multisig cosignatory.
 
-**Note**
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Bash-->
+```sh
+xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7CCBE29C47D07086E068C --profile carol
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
-The [listener implementation changes](../monitoring/monitoring-a-transaction-status.md#troubleshooting-monitoring-transactions-on-the-client-side) when used on the client side (e.g., Angular, React, Vue).
+6. [Cosign the aggregate transaction](../aggregate-transaction/signing-announced-aggregate-bonded-transactions.md) with Bob’s account. The amount of cat.currency locked becomes available again on Alice’s account and Carol is added to the multisig.
 
-</div>
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Bash-->
+```sh
+xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7CCBE29C47D07086E068C --profile bob
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
-Once Bob [cosigns the transaction](./signing-announced-aggregate-bonded-transactions.md), the amount of XPX locked becomes available again on Alice’s account and Carol is added to the multisig.
 
 ### Removing a cosignatory
 
 Once you have finished this guide, delete a cosignatory from the multisig. Multisig accounts can be converted again into regular accounts by removing all cosignatories. Make sure you own the multisig private key!
 
-The following code shows how to remove a cosignatory of a 2-of-3 multisig account with `minRemoval` set to 1. The multisig modification transaction is wrapped in an aggregate complete, as only one person is required to delete others from the multisig.
+The following code shows how to remove a cosignatory of a 2-of-3 multisig account with `minRemoval` set to `1`. The multisig modification transaction is wrapped in an aggregate complete, as only one account is required to delete others from the multisig.
 
 <div class=info>
 
 **Note**
 
-The minRemoval parameter indicates the number of required signatures to delete someone from the multisig. You can increase or decrease it the same way you [modify minApproval parameter](./modifying-a-multisig-account.md#editing-minapproval).
+The `minRemoval` parameter indicates the number of required signatures to delete an account from the multisig. You can increase or decrease it the same way you [modify minApproval parameter](./modifying-a-multisig-account.md#guide-modify-a-multisig-account-min-approval).
 
 </div>
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig("http://localhost:3000", sdk.MijinTest, time.Second * 10)
+if err != nil {
+    panic(err)
+}
+client := sdk.NewClient(nil, conf)
 
-const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
+multisig, err := sdk.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"), networkType)
+if err != nil {
+    panic(err)
+}
 
-const cosignatoryToRemovePublicKey = 'CD4EE677BD0642C93910CB93214954A9D70FBAAE1FFF1FF530B1FB52389568F1';
-const cosignatoryToRemove = PublicAccount.createFromPublicKey(cosignatoryToRemovePublicKey, NetworkType.TEST_NET);
+cosignatory, err := sdk.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_PRIVATE_KEY"), networkType)
+if err != nil {
+    panic(err)
+}
 
-const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY as string;
-const cosignatoryAccount =  Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
+cosignatoryToRemove, err := sdk.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_PUBLIC_KEY"), networkType)
+if err != nil {
+    panic(err)
+}
 
-const multisigCosignatoryModification = new MultisigCosignatoryModification(MultisigCosignatoryModificationType.Remove,cosignatoryToRemove);
+multisigCosignatoryModification := {sdk.Remove, cosignatoryToRemove}
 
-const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-    Deadline.create(),
+modifyMultisigAccountTransaction, err := client.NewModifyMultisigAccountTransaction(
+    sdk.NewDeadline(deadline),
     0,
     0,
-    [multisigCosignatoryModification],
-    NetworkType.TEST_NET);
+    []*sdk.MultisigCosignatoryModification{ multisigCosignatoryModification },
+)
+if err != nil {
+    panic(err)
+}
+modifyMultisigAccountTransaction.ToAggregate(multisig.PublicAccount)
 
-const aggregateTransaction = AggregateTransaction.createComplete(
-    Deadline.create(),
-    [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.TEST_NET,
-    []);
+aggregateTransaction, err := client.NewCompleteAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{modifyMultisigAccountTransaction})
+if err != nil {
+    panic(err)
+}
 
-const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
+signedTransaction, err := cosignatory.Sign(aggregateTransaction)
+if err != nil {
+    panic(err)
+}
 
-transactionHttp.announce(signedTransaction)
-    .subscribe(x => console.log(x), err => console.error(err));
-```
-
-<!--JavaScript-->
-```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
-
-const multisigAccountPublicKey = '202B3861F34F6141E120742A64BC787D6EBC59C9EFB996F4856AA9CBEE11CD31';
-const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
-
-const cosignatoryToRemovePublicKey = 'CD4EE677BD0642C93910CB93214954A9D70FBAAE1FFF1FF530B1FB52389568F1';
-const cosignatoryToRemove = PublicAccount.createFromPublicKey(cosignatoryToRemovePublicKey, NetworkType.TEST_NET);
-
-const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY;
-const cosignatoryAccount =  Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
-
-const multisigCosignatoryModification = new MultisigCosignatoryModification(MultisigCosignatoryModificationType.Remove,cosignatoryToRemove);
-
-const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-    Deadline.create(),
-    0,
-    0,
-    [multisigCosignatoryModification],
-    NetworkType.TEST_NET);
-
-const aggregateTransaction = AggregateTransaction.createComplete(
-    Deadline.create(),
-    [modifyMultisigAccountTransaction.toAggregate(multisigAccount)],
-    NetworkType.TEST_NET,
-    []);
-
-const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
-
-transactionHttp
-    .announce(signedTransaction)
-    .subscribe(x => console.log(x), err => console.error(err));
-```
-
-<!--Java-->
-```java
-    // Replace with the multisig public key
-    final String multisigAccountPublicKey = "";
-
-    // Replace with the cosignatory private key
-    final String cosignatoryPrivateKey = "";
-
-    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
-    final PublicAccount multisigPublicAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
-
-    final MultisigCosignatoryModification multisigCosignatoryModification = new MultisigCosignatoryModification(
-        MultisigCosignatoryModificationType.REMOVE,
-        PublicAccount.createFromPublicKey("", NetworkType.TEST_NET)
-    );
-
-    final ModifyMultisigAccountTransaction modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-        Deadline.create(2, HOURS),
-        0,
-        0,
-        Collections.singletonList(multisigCosignatoryModification),
-        NetworkType.TEST_NET
-    );
-
-    final AggregateTransaction aggregateTransaction = AggregateTransaction.createComplete(
-        Deadline.create(2, HOURS),
-        Collections.singletonList(modifyMultisigAccountTransaction.toAggregate(multisigPublicAccount)),
-        NetworkType.TEST_NET
-    );
-
-    final SignedTransaction signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
-
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
-
-    transactionHttp.announce(signedTransaction).toFuture().get();
+_, err = client.Transaction.Announce(ctx, signedTransaction)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ## What’s next?
 
-Learn more about [multi-level multisig accounts](./creating-a-multi-level-multisig-account.md). 
+Learn more about [multi-level multisig accounts](./creating-a-multi-level-multisig-account.md).
+

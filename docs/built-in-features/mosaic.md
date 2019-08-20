@@ -65,12 +65,19 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 </div>
 
 - [Creating a mosaic](../guides/mosaic/creating-a-mosaic.md)
-
-    After creating a namespace, follow this guide to create a mosaic .
+  After creating a namespace, follow this guide to create a mosaic.
 
 - [Modifying mosaic supply](../guides/mosaic/modifying-mosaic-supply.md)
+  Alter the supply of a mosaic following this guide.
 
-    Did you register a mosaic with supplyMutable option set to true? In that case, you can increase or decrease your mosaic available supply following this guide.
+- [Linking a namespace to a mosaic](../guides/namespace/linking-a-namespace-to-a-mosaic.md)
+  Link a namespace to a mosaic.
+
+- [Getting the mosaic information](../guides/mosaic/getting-mosaic-information.md)
+  Get the ownership, divisibility, duration, and flags for a given mosaic identifier.
+
+- [Getting the asset identifier behind a namespace with receipts](../guides/mosaic/getting-the-mosaic-indentifier-behind-a-namespace-with-receipts.md)
+  Get the resolution for a given alias and transaction using receipts.
 
 ## Schemas
 

@@ -21,6 +21,7 @@ Alice wants to ask Bob for 20 XPX.
 1. Set up both Alice’s and Bob’s accounts.
 
 <!--DOCUSAURUS_CODE_TABS-->
+
 <!--TypeScript-->
 ```js
 const nodeUrl = 'http://localhost:3000';
@@ -70,6 +71,15 @@ class AskingForMosaicsWithAggregateBondedTransaction {
         final PublicAccount bobPublicAccount = PublicAccount.createFromPublicKey(bobPublicKey, NetworkType.TEST_NET);
 ```
 
+<!--Golang-->
+```go
+alicePrivateKey := os.GetEnv("PRIVATE_KEY")
+aliceAccount := sdk.NewAccountFromPrivateKey(alicePrivateKey, sdk.PUBLIC_TEST)
+
+bobPublicKey := 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D';
+bobAccount := sdk.NewAccountFromPublicKey(bobPublicKey, sdk.PUBLIC_TEST)
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Alice creates an aggregate bonded transaction with two inner transactions:
@@ -115,6 +125,22 @@ const transferTransaction1 = TransferTransaction.create(
         PlainMessage.create("send me 20 XPX"),
         NetworkType.TEST_NET
     );
+```
+
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(baseUrl, sdk.PUBLIC_NET, time.Second * 10)
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+transferTransaction1, err := client.NewTransferTransaction(sdk.NewDeadline(2), bobAccount.PublicAccount.Address, []*sdk.Mosaic{}, sdk.NewPlainMessage("send me 20 XPX"))
+if err != nil {
+    panic(err)
+}
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -163,6 +189,14 @@ const transferTransaction2 = TransferTransaction.create(
     );
 ```
 
+<!--Golang-->
+```go
+transferTransaction2, err := client.NewTransferTransaction(sdk.NewDeadline(2), aliceAccount.Address, []*sdk.Mosaic{sdk.XpxRelative(20)}, sdk.NewPlainMessage(""))
+if err != nil {
+    panic(err)
+}
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 3. Wrap the defined transactions in an aggregate bonded transaction:
@@ -192,15 +226,16 @@ const signedTransaction = aliceAccount.sign(aggregateTransaction);
 
 <!--Java-->
 ```java
-    final TransferTransaction transferTransaction2 = TransferTransaction.create(
-        Deadline.create(2, HOURS),
-        aliceAccount.getAddress(),
-        Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(20))),
-        PlainMessage.Empty,
-        NetworkType.TEST_NET
-    );
+// TODO
 ```
 
+<!--Golang-->
+```go
+aggregateTransaction, err := client.NewBondedAggregateTransaction(sdk.NewDeadline(10), []sdk.Transaction{transferTransaction1, transferTransaction2})
+if err != nil {
+    panic(err)
+}
+```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 4. Alice signs the aggregate bonded transaction and announces it to the network, locking first 10 XPX.

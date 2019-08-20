@@ -94,10 +94,6 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
     You have probably announced an aggregate bonded transaction, but all required cosigners have not signed it yet.
 
-- [Signing announced aggregate bonded transactions automatically][Auto-sign-aggregate]
-
-    Sign automatically transactions pending to be cosigned.
-
 - [Sending a multisig transaction][Send-multisig]
 
     Send a transaction involving a multisig and learn how an aggregate bonded transaction works.

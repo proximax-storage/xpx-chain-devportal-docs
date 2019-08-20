@@ -2,216 +2,175 @@
 id: converting-an-account-to-multisig
 title: Converting an account to multisig
 ---
+
 Create a 1-of-2 [multisig account](../../built-in-features/multisig-account.md), by adding two cosignatories.
 
 ## Background
 
 Alice and Bob live together and have separate [accounts](../../built-in-features/account.md). They also have a shared account so that if Bob is out shopping, he can buy groceries for both himself and Alice.
 
-This shared account is in Sirius-Chain translated as 1-of-2 multisig, meaning that one cosignatory needs to cosign the transaction to be included in a block.
+This shared account appears in Sirius-Chain as **1-of-2 multisig**. Multisig accounts permit Alice and Bob sharing funds in a separate account, requiring only the signature from one of them to transact.
 
 ![Multisig 1 of 2](/img/multisig-1-of-2.png "Multisig 1 of 2")
 
 <p class=caption>1-of-2 multisig account example</p>
 
-Remember that a multisig account has cosignatories accounts, and it cannot start transactions itself. Only the cosignatories can initiate transactions.
+In this guide, you are going to create a 1-of-2 multisig account. In future guides, you will learn how to increase the minimum number of cosignatures required, as well as invite and remove cosignatories from the multisig account.
 
 ## Prerequisites
 
-- Finish [creating and opening accounts guide](../account/creating-and-opening-an-account.md)
 - Text editor or IDE
 - XPX-Chain-SDK or XPX-Chain-CLI
-- Two accounts (public keys)
-- One account with XPX
+- Finish [creating and opening accounts guide](../account/creating-and-opening-an-account.md)
+- Have one account with `xpx`
 
-## Let’s get into some code
+## Getting into some code
 
-1. Define who will be the cosignatories of the multisig account. Then, open the account that will be converted into multisig by providing its private key.
+1. First, define the accounts that will be cosginatories of the multisig account. In our case, these are Alice and Bob addresses. Then, open the account that will be converted into multisig using its private key.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig("http://localhost:3000", sdk.MijinTest, time.Second * 10)
+if err != nil {
+    panic(err)
+}
+client := sdk.NewClient(nil, conf)
 
-const privateKey = process.env.PRIVATE_KEY as string; // Private key of the account to convert into multisig
-const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+multisig, err := sdk.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"), networkType)
+if err != nil {
+    panic(err)
+}
 
-const cosignatory1PublicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
-const cosignatory1 = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.TEST_NET);
-const cosignatory2PublicKey = 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D';
-const cosignatory2 = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.TEST_NET);
-```
+cosignatory1, err := sdk.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_1_PRIVATE_KEY"), networkType)
+if err != nil {
+    panic(err)
+}
 
-<!--JavaScript-->
-```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
-
-const privateKey = process.env.PRIVATE_KEY; // Private key of the account to convert into multisig
-const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-const cosignatory1PublicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
-const cosignatory1 = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.TEST_NET);
-const cosignatory2PublicKey = 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D';
-const cosignatory2 = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.TEST_NET);
-```
-
-<!--Java-->
-```java
-    // Replace with the private key of the account that you want to convert into multisig
-    final String privateKey = "";
-
-    // Replace with cosignatories public keys
-    final String cosignatory1PublicKey = "";
-    final String cosignatory2PublicKey = "";
-
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-    final PublicAccount cosignatory1PublicAccount = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.TEST_NET);
-    final PublicAccount cosignatory2PublicAccount = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.TEST_NET);
+cosignatory2, err := sdk.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_2_PRIVATE_KEY"), networkType)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-2. Convert the account into a multisig account by setting a modify multisig account transaction. As they want a 1-of-2 multisig account, set the minimum signatures to 1.
-
+2. Create a [modify multisig account transaction](../../built-in-features/multisig-account.md#modify-multisig-account-transaction) to convert the shared account into a multisig account. As you want to create a 1-of-2 multisig account, set the minimum signatures required to `1`.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const convertIntoMultisigTransaction = ModifyMultisigAccountTransaction.create(
-    Deadline.create(),
+<!--Golang-->
+```go
+convertIntoMultisigTransaction, err := client.NewModifyMultisigAccountTransaction(
+    sdk.NewDeadline(deadline),
     1,
     1,
-    [
-        new MultisigCosignatoryModification(
-            MultisigCosignatoryModificationType.Add,
-            cosignatory1,
-        ),
-        new MultisigCosignatoryModification(
-            MultisigCosignatoryModificationType.Add,
-            cosignatory2,
-        )],
-    NetworkType.TEST_NET);
-```
-
-<!--JavaScript-->
-```js
-const convertIntoMultisigTransaction = ModifyMultisigAccountTransaction.create(
-    Deadline.create(),
-    1,
-    1,
-    [
-        new MultisigCosignatoryModification(
-            MultisigCosignatoryModificationType.Add,
-            cosignatory1,
-        ),
-        new MultisigCosignatoryModification(
-            MultisigCosignatoryModificationType.Add,
-            cosignatory2,
-        )],
-    NetworkType.TEST_NET);
-```
-
-<!--Java-->
-```java
-    final ModifyMultisigAccountTransaction convertIntoMultisigTransaction = ModifyMultisigAccountTransaction.create(
-        Deadline.create(2, HOURS),
-        1,
-        1,
-        Arrays.asList(
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                cosignatory1PublicAccount
-            ),
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                cosignatory2PublicAccount
-            )
-        ),
-        NetworkType.TEST_NET
-    );
+    []*sdk.MultisigCosignatoryModification{
+        {sdk.Add, cosignatory1.PublicAccount},
+        {sdk.Add, cosignatory2.PublicAccount},
+    },
+)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-3. Sign and announce the transaciton with the canidate multisig account.
-
+3. Create an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md), wrapping the modify multisig account transaction. This is necessary since Alice and Bob must opt-in to become cosignatories of the new multisig account.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const signedTransaction = account.sign(convertIntoMultisigTransaction);
+<!--Golang-->
+```go
+convertIntoMultisigTransaction.ToAggregate(multisig.PublicAccount)
 
-transactionHttp
-    .announce(signedTransaction)
-    .subscribe(x => console.log(x), err => console.error(err));
-```
-
-<!--JavaScript-->
-```js
-const signedTransaction = account.sign(convertIntoMultisigTransaction);
-
-transactionHttp
-    .announce(signedTransaction)
-    .subscribe(x => console.log(x), err => console.error(err));
-```
-
-<!--Java-->
-```java
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
-    final SignedTransaction signedTransaction = account.sign(convertIntoMultisigTransaction);
-    transactionHttp.announce(signedTransaction).toFuture().get();
+aggregateTransaction, err := client.NewBondedAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{convertIntoMultisigTransaction})
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-If everything goes well, Alice and Bob should be cosignatories of the multisig account.
+4. Sign the aggregate transaction using the private key of the multisig account.
 
 <div class=info>
 
 **Note**
 
-You could also get the list of the multisig accounts where Alice or Bob are cosignatories using <span id=getMultisigAccountInfo>`getMultisigAccountInfo`</span> function.
+To make the transaction only valid for your network, include the first block generation hash. Open `http://localhost:3000/block/1` in a new tab and copy the `meta.generationHash` value.
 
 </div>
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const accountHttp = new AccountHttp('http://localhost:3000');
-
-const address = Address.createFromRawAddress('SCSGBN-HYJD6P-KJHACX-3R2BI3-QUMMOY-QSNW5J-ICLK');
-
-accountHttp
-    .getMultisigAccountInfo(address)
-    .subscribe(accountInfo => console.log(accountInfo), err => console.error(err));
-```
-
-<!--JavaScript-->
-```js
-const accountHttp = new AccountHttp('http://localhost:3000');
-
-const address = Address.createFromRawAddress('SCSGBN-HYJD6P-KJHACX-3R2BI3-QUMMOY-QSNW5J-ICLK');
-
-accountHttp
-    .getMultisigAccountInfo(address)
-    .subscribe(accountInfo => console.log(accountInfo), err => console.error(err));
-```
-
-<!--Java-->
-```java
-    final AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
-
-    // Replace with address
-    final String addressRaw = "SB2RPH-EMTFMB-KELX2Y-Q3MZTD-RV7DQG-UZEADV-CYKC";
-
-    final Address address = Address.createFromRawAddress(addressRaw);
-
-    final MultisigAccountInfo multisigAccountInfo = accountHttp.getMultisigAccountInfo(address).toFuture().get();
-
-    System.out.println(multisigAccountInfo);
+<!--Golang-->
+```go
+signedAggregateBoundedTransaction, err := account.Sign(aggregateTransaction)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
+5. Before sending an aggregate bonded transaction, the future multisig account needs to [lock](../../built-in-features/aggregate-transaction.md#hash-lock-transaction) at least `10 xpx`. This transaction is required to prevent network spamming and ensure that the inner transactions are cosigned. After the hash lock transaction has been confirmed, announce the aggregate transaction.
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+lockFundsTransaction, err := client.NewLockFundsTransaction(
+    sdk.NewDeadline(time.Hour),
+    sdk.XpxRelative(10),
+    sdk.Duration(1000),
+    signedAggregateBoundedTransaction
+)
+if err != nil {
+    panic(err)
+}
+
+signedLockFundsTransaction, err := account.Sign(lockFundsTransaction)
+if err != nil {
+    panic(err)
+}
+
+_, err := client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
+if err != nil {
+    panic(err)
+}
+
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+6. [Cosign the aggregate transaction](../aggregate-transaction/signing-announced-aggregate-bonded-transactions.md) with Alice’s account.
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Bash-->
+```sh
+xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7CCBE29C47D07086E068C --profile alice
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+7. [Cosign the aggregate transaction](../aggregate-transaction/signing-announced-aggregate-bonded-transactions.md) with Bob’s account.
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Bash-->
+```sh
+xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7CCBE29C47D07086E068C --profile bob
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+8. If everything goes well, the account is now multisig, being Alice and Bob cosignatories. You can get the list of the multisig accounts where Alice or Bob are cosignatories using `getMultisigAccountInfo` function.
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+address, err := sdk.NewAddressFromRaw("SCSGBN-HYJD6P-KJHACX-3R2BI3-QUMMOY-QSNW5J-ICLK")
+if err != nil {
+    panic(err)
+}
+multisigInfo, err := client.Account.GetMultisigAccountInfo(ctx, address)
+if err != nil {
+    panic(err)
+}
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 ## What’s next?
 
-Modify the account, converting it into a 2-of-2 multisig following [modifying a multisig account](./modifying-a-multisig-account.md) guide.
+Modify the multisig account you just created, converting it into a 2-of-2 multisig following the [next guide](./modifying-a-multisig-account.md).
 

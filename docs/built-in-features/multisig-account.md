@@ -94,7 +94,7 @@ Transactions are only approved from a hardware wallet OR your phone AND a fraud 
 
 ## Guides
 
-- [Signing announced aggregate bonded transactions](../guides/multisig-account/signing-announced-aggregate-bonded-transactions.md)
+- [Signing announced aggregate bonded transactions](../guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions.md)
 
     You have probably announced an aggregate bonded transaction, but all required cosigners have not signed it yet.
 

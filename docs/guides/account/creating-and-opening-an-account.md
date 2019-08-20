@@ -15,21 +15,6 @@ Create a new [account](../../built-in-features/account.md) and open it.
 An account is a key pair (private and public key) associated with a mutable state stored in the Sirius-Chain.
 
 <!--DOCUSAURUS_CODE_TABS-->
-
-<!--TypeScript-->
-```typescript
-const account = Account.generateNewAccount(NetworkType.MIJIN_TEST);
-
-console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
-```
-
-<!--JavaScript-->
-```javascript
-const account = Account.generateNewAccount(NetworkType.MIJIN_TEST);
-
-console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
-```
-
 <!--Golang-->
 ```go
 keyPair, _ := crypto.NewRandomKeyPair()
@@ -37,12 +22,6 @@ keyPair, _ := crypto.NewRandomKeyPair()
 fmt.Printf("PublicKey:\t%x\n", keyPair.PublicKey.Raw)
 fmt.Printf("PrivateKey:\t%x", keyPair.PrivateKey.Raw)
 ```
-
-<!--Bash-->
-```sh
-xpx2-cli account generate --network TEST_NET
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 The **private key** uniquely identifies a Sirius-Chain account and holds all of its power. It is a priority to make sure it is stored safely somewhere **offline** and not to share it with anyone.
@@ -52,35 +31,6 @@ The **public key** is cryptographically derived from the private key and safe to
 If you already have a private key, it is not necessary to generate a new account:
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-
-```typescript
-// Replace with a private key
-const privateKey = process.env.PRIVATE_KEY as string;
-
-const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
-```
-
-<!--JavaScript-->
-```javascript
-// Replace with a private key
-const privateKey = process.env.PRIVATE_KEY;
-
-const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
-```
-
-<!--Java-->
-```java
-    // Replace with a private key
-    final String privateKey = "";
-
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-```
-
 <!--Golang-->
 ```go
 account, _ := sdk.NewAccountFromPrivateKey("...", sdk.TEST_NET)
@@ -89,7 +39,6 @@ fmt.Printf("Address:\t%v\n", account.Address)
 fmt.Printf("PrivateKey:\t%x\n", account.KeyPair.PrivateKey.Raw)
 fmt.Printf("PublicKey:\t%x", account.KeyPair.PublicKey.Raw)
 ```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ### Using a Wallet
@@ -98,72 +47,5 @@ If the programming language of the SDK you are using allows client-side developm
 
 A wallet enables you to store your account to sign transactions, encrypting your private key with a password.
 
-<!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-
-```typescript
-const password = new Password('password');
-
-const wallet = SimpleWallet.create('wallet-name', password, NetworkType.TEST_NET);
-
-const account = wallet.open(password);
-
-console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
-```
-
-<!--JavaScript-->
-```javascript
-const password = new Password('password');
-
-const wallet = SimpleWallet.create('wallet-name', password, NetworkType.TEST_NET);
-
-const account = wallet.open(password);
-
-console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
-```
-
-<!--Bash-->
-```sh
-xpx2-cli account generate --network TEST_NET --save --url http://localhost:3000 --profile test
-```
-
-<!--END_DOCUSAURUS_CODE_TABS-->
-
 Do you have a private key? You can create and open a wallet importing your private key.
 
-<!--DOCUSAURUS_CODE_TABS-->
-
-<!--TypeScript-->
-```typescript
-const password = new Password('password');
-
-// Replace with a private key
-const privateKey = process.env.PRIVATE_KEY as string;
-
-const wallet = SimpleWallet.createFromPrivateKey('wallet-name', password, privateKey, NetworkType.TEST_NET);
-
-const account = wallet.open(password);
-
-console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
-```
-
-<!--JavaScript-->
-```javascript
-const password = new Password('password');
-
-// Replace with a private key
-const privateKey = process.env.PRIVATE_KEY;
-
-const wallet = SimpleWallet.createFromPrivateKey('wallet-name', password, privateKey, NetworkType.TEST_NET);
-
-const account = wallet.open(password);
-
-console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
-```
-
-<!--Bash-->
-```sh
-xpx2-cli profile create --privatekey your_private_key --network TEST_NET --url http://localhost:3000 --profile test
-```
-
-<!--END_DOCUSAURUS_CODE_TABS-->

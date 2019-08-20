@@ -57,7 +57,7 @@ As a temporary security measure, Alice opts to disable announcing transfer trans
 
 ## Guides
 
-- [Preventing spam attacks with account restrictions](../guides/account-restriction/preventing-spam-sttacks.md)
+- [Preventing spam attacks with account restrictions](../guides/account-restriction/preventing-spam-attacks.md)
 
     Send transactions to different accounts atomically, using an aggregate complete transaction.
 
