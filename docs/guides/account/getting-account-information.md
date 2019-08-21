@@ -21,7 +21,7 @@ To get more information about your account passing the address and network as a 
 
 ```ts
 const accountHttp = new AccountHttp('http://localhost:3000');
-const address = Address.createFromRawAddress('SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
+const address = Address.createFromRawAddress('VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
 
 accountHttp
     .getAccountInfo(address)
@@ -31,7 +31,7 @@ accountHttp
 <!--JavaScript-->
 ```js
 const accountHttp = new AccountHttp('http://localhost:3000');
-const address = Address.createFromRawAddress('SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
+const address = Address.createFromRawAddress('VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
 
 accountHttp
     .getAccountInfo(address)
@@ -48,7 +48,7 @@ xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
     final AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
 
     // Replace with address
-    final String address = "SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54";
+    final String address = "VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54";
 
     final AccountInfo accountInfo = accountHttp.getAccountInfo(Address.createFromRawAddress(address)).toFuture().get();
 
