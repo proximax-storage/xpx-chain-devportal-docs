@@ -31,7 +31,7 @@ However, they do not trust each other that much. Bob could decide not to send hi
 
 ## Prerequisites
 
-- Finish [creating an escrow with aggregate bonded transaction guide](../aggregate-transaction/.creating-an-escrow-with-aggregate-bonded-transaction.md)
+- Finish [creating an escrow with aggregate bonded transaction guide](../aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction.md)
 - XPX-Chain-SDK.
 - A text editor or IDE.
 
