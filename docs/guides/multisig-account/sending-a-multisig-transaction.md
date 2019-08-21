@@ -2,30 +2,30 @@
 id: sending-a-multisig-transaction
 title: Sending a multisig transaction
 ---
-Send a transaction involving a [multisig](../../built-in-features/multisig-account.md) and learn how an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md#examples) works.
+This guide will help you send transaction involving a [multisig](../../built-in-features/multisig-account.md) and learn how an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md#examples) works.
 
-## Background
+## Background Information 
 
 ![Multisig transaction 1 of 2](/img/multisig-transaction-1-of-2.png "Multisig transaction 1 of 2")
 
 <p class=caption>Sending an aggregate complete transaction</p>
 
-Alice and Bob live together and have separate accounts. They also have a shared account so that if Bob is out shopping, he can buy groceries for both himself and Alice.
+Alice and Bob live together and have separate accounts. They have a shared account so that if Bob is shopping, he can buy groceries for both himself and Alice.
 
-This shared account is in Sirius-Chain translated as 1-of-2 multisig, meaning that one cosignatory needs to cosign the transaction to be included in a block.
+This shared account is in Sirius Chain translated as 1-of-2 multisig, meaning that one cosignatory needs to co-sign the transaction to be included in a block.
 
 Remember that a multisig account has cosignatories accounts, and it cannot start transactions itself. Only the cosignatories can initiate transactions.
 
 ## Prerequisites
 
-- Finish [sending a transfer transaction guide](../transaction/sending-a-transfer-transaction.md)
-- Finish [converting an account to multisig guide](./converting-an-account-to-multisig.md)
-- XPX-Chain-SDK
-- A text editor or IDE
-- An multisig account with XPX
-- An cosignatory account with XPX
+- Finish [sending a transfer transaction guide](../transaction/sending-a-transfer-transaction.md).
+- Finish [converting an account to multisig guide](./converting-an-account-to-multisig.md).
+- XPX-Chain-SDK.
+- A text editor or IDE.
+- An multisig account with XPX.
+- An cosignatory account with XPX.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 Bob has finished filling his basket, and he is ready to pay. The cashier’s screen indicates that the cost of the purchase adds up to 10 XPX.
 
@@ -116,7 +116,7 @@ const transferTransaction = TransferTransaction.create(
 
 3. Wrap the transfer transaction under an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples), attaching multisig public key as the signer.
 
-An aggregate transaction is `complete` if before announcing it to the network, all required cosigners have signed it. If valid, it will be included in a block.
+An aggregate transaction is `complete` if before announcing it to the network, all required cosigners have signed it. If it is valid, it will be included in a block.
 
 Remember that we are using a 1-of-2 multisig account? As Bob has one private key to sign the transaction, consider an aggregate complete transaction.
 
@@ -182,7 +182,7 @@ transactionHttp
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## What’s next?
+**Note:**
 
 What would have happened if the account were a 2-of-2 multisig instead of a 1-of-2?
 
@@ -328,10 +328,10 @@ listener.open().then(() => {
 
 <div class=info>
 
-**Note**
+**Note:**
 
 The [listener implementation changes](../monitoring/monitoring-a-transaction-status.md#troubleshooting-monitoring-transactions-on-the-client-side) when used on the client side (e.g., Angular, React, Vue).
 
 </div>
 
-Alice should [cosign the transaction](./signing-announced-aggregate-bonded-transactions.md) to be confirmed!
+Alice should [cosign the transaction](./signing-announced-aggregate-bonded-transactions.md) for it to be confirmed!

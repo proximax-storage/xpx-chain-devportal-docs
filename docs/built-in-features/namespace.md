@@ -2,56 +2,56 @@
 id: namespace
 title: Namespace
 ---
-Namespaces allow you to create an on-chain **unique place** for your business and your assets on the Sirius-Chain.
+Namespaces allow you to create an on-chain **unique place** for your business and your assets on the Sirius Chain.
 
-A namespace starts with a name that you choose, similar to an internet domain name. If one [account](./account.md) creates a namespace, that will appear as unique in the Sirius-Chain ecosystem.
+A namespace starts with a name that you choose, similar to an internet domain name. If one [account](./account.md) creates a namespace, that will appear as unique in the Sirius Chain ecosystem.
 
-You can associate a name with an account address or a [mosaic](./mosaic.md) identifier by announcing an [alias transaction](#addressaliastransaction). The binding between namespaces and assets makes long account addresses rememberable and mosaics identifiers recognisable.
+You can associate a name with an account address or a [mosaic](./mosaic.md) identifier by announcing an [alias transaction](#addressaliastransaction). What binds namespaces and assets are called "long account addresses" and recognizable "mosaics identifiers."
 
 ## Subnamespaces
 
-On the internet, a domain can have a sub-domain. In Sirius-Chain, namespaces can have subnamespaces.
+In the internet, a domain name can have a sub-domain name. In Sirius Chain, namespaces can have subnamespaces.
 
-It is possible to create multiple subnamespaces with the same name (example: `foo.bar` and `foo2.bar`, `bar` is the subnamespace/sub-domain).
+It is possible to create multiple subnamespaces with the same name. For example, if a domain name is `foo.bar` and another domain name is `foo2.bar`, the `bar` is the sub-domain. Namespaces can have up to three levels, which consists of a namespace and two levels of subnamespace domains.
 
 Namespaces can have up to `3` levels, a namespace and its two levels of subnamespace domains.
 
-## Examples
+## Examples of Namespaces
 ## Identifying an account
 
-Every time a customer buys a ticket for an event, a ticket sales company sends a ticket to the customer account.
+Every time a customer buys a ticket for an event, the ticket sales company sends a ticket to the customer account.
 
-The seller company has assigned the namespace “ticketsales” to its main account. Customers can quickly recognise incoming transactions from the vendor account.
+The seller company has assigned the namespace “ticketsales” to its vendo account. Customers can quickly recognize incoming transactions from the vendor account.
 
-## Organising mosaics
+## Organizing mosaics
 
-The same distributor sells tickets for an event organised in different venues. The company registers a non-transferable mosaic for each function.
+A distributor sells tickets for an event organized in different venues. The distributing company registers a non-transferable mosaic for each function. 
 
-Namespaces and subnamespaces are used to organise the different mosaics. Customers can send 1 `ticketsales.eventname.ticket` to `alice` instead of 1 `0xE4EEB491` to `SCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6`.
+Namespaces and subnamespaces are used to organize the different mosaics. 
 
-## Guides
+## Guides on Namespaces 
 
 - [Registering a namespace](../guides/namespace/registering-a-namespace.md)
 
-    Rregister your own namespace.
+    How to register your own namespace.
 
 - [Registering a subnamespace](../guides/namespace/registering-a-subnamespace.md)
 
-    Register a subnamespace following this guide.
+    How to register a subnamespace.
 
 ## Schemas
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 
-### RegisterNamespaceTransaction
+### Register Namespace Transaction
 
-Announce a register namespace transaction to register and re-rent a namespace.
+Announce a register namespace transaction to register and rent a namespace again.
 
 **Version**: 0x02
 

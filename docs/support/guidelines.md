@@ -2,13 +2,13 @@
 id: guidelines
 title: Guidelines
 ---
-First off, thank you for considering contributing to Sirius-Chain!
+First off, thank you for considering contributing to Sirius Chain!
 
-Follow these guidelines for contributing to Sirius-Chain projects.
+Follow these guidelines for contributing to Sirius Chain projects.
 
 <div class=info>
 
-**Note**
+**Note:**
 
 If you want to contribute to a existent project, read as well the CONTRIBUTING.md file of its repository.
 

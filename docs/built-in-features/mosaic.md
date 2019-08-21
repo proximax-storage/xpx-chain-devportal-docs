@@ -2,9 +2,9 @@
 id: mosaic
 title: Mosaic
 ---
-Mosaics are part of what makes the Smart Asset System unique and flexible. They are **fixed assets** on the Sirius-Chain that can represent a set of multiple identical things that do not change.
+Mosaics are part of what makes the Smart Asset System unique and flexible. They are **fixed assets** on the Sirius Chain that can represent a set of multiple identical assets that do not change.
 
-A mosaic could be a token, but it could also be a collection of more specialised assets such as reward points, shares of stock, signatures, status flags, votes or even other currencies.
+A mosaic could be a token, but it could also be a collection of more specialized assets such as reward points, shares of stock, signatures, status flags, votes or even other currencies.
 
 Each mosaic has a set of configurable properties. During the mosaic creation, you can define:
 
@@ -16,11 +16,11 @@ Initial supply |	Integer |	Indicates the amount of mosaic in circulation. The in
 Supply mutable |	Boolean |	If set to true, the mosaic supply can change at a later point. Otherwise, the mosaic supply remains immutable.
 Transferability |	Boolean |	If set to true, the mosaic can be transferred between arbitrary accounts. Otherwise, the mosaic can be only transferred back to the mosaic creator.
 
-## Guides
+## Guides in Using Mosaics
 
 <div class=info>
 
-**Note**
+**Note:**
 
 We recommend checking out [setting up your workstation][Workstation] before going through the guides.
 
@@ -28,17 +28,17 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 - [Creating a mosaic](../guides/mosaic/creating-a-mosaic.md)
 
-    After creating a namespace, follow this guide to create a mosaic .
+    How to create a mosaic after creating a namespace.
 
 - [Modifying mosaic supply](../guides/mosaic/modifying-mosaic-supply.md)
 
-    Did you register a mosaic with supplyMutable option set to true? In that case, you can increase or decrease your mosaic available supply following this guide.
+    How to increase or decrease the mosaic after registering a mosaic with supply Mutable option set to true. 
 
 ## Schemas
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) . Public network configuration may differ.
 

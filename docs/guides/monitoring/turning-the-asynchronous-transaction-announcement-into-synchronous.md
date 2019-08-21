@@ -18,7 +18,7 @@ nem2-camel aims to solve these problems by providing a server that listens to th
 
 <div class=info>
 
-**Note**
+**Note:**
 
 The function `TransactionHttp.announceSync` allows announcing transactions synchronously when using nem2-camel as a proxy. nem2-camel will respond successfully when the transaction has reached the network and had no validation errors. You might still need to [wait for several confirmations](../../protocol/transaction.md) before executing additional actions.
 
@@ -30,11 +30,11 @@ The function `TransactionHttp.announceSync` allows announcing transactions synch
 
 ## Prerequisites
 
-- Finish [sending a transfer transaction guide](../transaction/sending-a-transfer-transaction.md)
-- A text editor or IDE
-- An account with XPX
+- Finish [sending a transfer transaction guide](../transaction/sending-a-transfer-transaction.md).
+- A text editor or IDE.
+- An account with XPX.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 ### Running Catapult Service in local
 

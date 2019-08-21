@@ -4,7 +4,7 @@ title: Registering a subnamespace
 ---
 Register a [subnamespace](../../) following this guide.
 
-## Background
+## Background Information 
 
 Once you have a registered root namespace, you can create up to `3` levels of subnamespaces.
 
@@ -18,7 +18,7 @@ Prerequisites
 - A text editor or IDE
 - An account with XPX and at least one namespace
 
-## Let’s get into some code
+## Let’s do some coding!
 
 The first step is to choose a name for your subnamespace.
 

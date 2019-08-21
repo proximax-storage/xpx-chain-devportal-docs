@@ -2,19 +2,19 @@
 id: getting-account-information
 title: Getting account information
 ---
-Get the public key and balance of an [account](../../built-in-features/account.md).
+This guide will help you get the public key and balance of an [account](../../built-in-features/account.md).
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- Text editor or IDE
-- XPX-Chain-SDK or XPX-Chain-CLI
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
+- Text editor or IDE.
+- XPX-Chain-SDK or XPX-Chain-CLI.
 
-## Let’s get into some code
+## Let's do some coding!
 
 The **public key** identifies your account publicly in the network. Your **address** is derived from it, which contains further information such as network and validity check.
 
-Get more information about your account passing the address and network as a parameter.
+To get more information about your account passing the address and network as a parameter, enter the following code:
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--TypeScript-->
@@ -59,7 +59,7 @@ xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 
 Can you determine the account’s public key? Which was the first block where this account appeared?
 
-### Checking account’s balance
+### Checking the account’s balance
 
 The balance is the amount of the different mosaics owned by the account. How many different mosaics does your account own?
 

@@ -2,9 +2,9 @@
 id: sending-payouts-with-aggregate-complete-transaction
 title: Sending payouts with aggregate-complete transaction
 ---
-Send transactions to different accounts atomically, using an [aggregate complete transaction](../../built-in-features/aggregate-transaction.md#examples).
+This guide will help you send transactions to different accounts atomically, using an [aggregate complete transaction](../../built-in-features/aggregate-transaction.md#examples).
 
-## Background
+## Background Information 
 
 Dan wants to send mosaics to Alice and Bob.
 
@@ -12,16 +12,16 @@ Dan wants to send mosaics to Alice and Bob.
 
 <p class=caption>Sending transactions to different recipients atomically</p>
 
-He chooses to send an aggregate complete transaction, so both will receive the funds at the same time.
+Dan chooses to send an aggregate complete transaction, so both will receive the funds at the same time.
 
 ## Prerequisites
 
-- Finish [sending a transfer transaction guide](../transaction/sending-a-transfer-transaction.md)
-- XPX-Chain-SDK
-- A text editor or IDE
-- An account with XPX
+- Finish [sending a transfer transaction guide](../transaction/sending-a-transfer-transaction.md).
+- XPX-Chain-SDK.
+- A text editor or IDE.
+- An account with XPX.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 1. Dan creates two [transfer transaction](../../built-in-features/transfer-transaction.md) with two different recipients, and wrap them in an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples).
 
@@ -120,10 +120,11 @@ const aggregateTransaction = AggregateTransaction.createComplete(
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
-
+<br>
+**Note:**
 Do you know the difference between aggregate complete and aggregate bonded? In this case, one private key can sign all the transactions in the aggregate, so it is aggregate complete.
 
-That means that there is no need to lock funds to send the transaction. If valid, it will be accepted by the network.
+This means that there is no need to lock funds to send the transaction. If it is valid, it will be accepted by the network.
 
 2. Sign and announce the transaction.
 
@@ -159,4 +160,4 @@ transactionHttp
 
 ## What’s next?
 
-Send an aggregate bonded transaction by following [creating an escrow with aggregate bonded transaction](./creating-an-escrow-with-aggregate-bonded-transaction.md) guide.
+Send an aggregate bonded transaction by following the [creating an escrow with aggregate bonded transaction](./creating-an-escrow-with-aggregate-bonded-transaction.md) guide.

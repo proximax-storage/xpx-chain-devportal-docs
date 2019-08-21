@@ -2,15 +2,15 @@
 id: asking-for-mosaics-with-aggregate-bonded-transaction
 title: Asking for mosaics with aggregate-bonded transaction
 ---
-Ask an account to send you funds using an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md).
+This guide will help you ask an account to send you funds using an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md).
 
 ## Prerequisites
 
-- Finish [creating an escrow with aggregate bonded transaction guide](./creating-an-escrow-with-aggregate-bonded-transaction.md)
-- A text editor or IDE
-- An account with XPX
+- Finish [creating an escrow with aggregate bonded transaction guide](./creating-an-escrow-with-aggregate-bonded-transaction.md).
+- A text editor or IDE.
+- An account with XPX.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 ![Aggregate asking for mosaics](/img/aggregate-asking-for-mosaics.png "Aggregate asking for mosaics")
 
@@ -76,7 +76,7 @@ class AskingForMosaicsWithAggregateBondedTransaction {
 
 <div class=cap-alpha-ol>
 
-1. Define the first inner [transfer transaction](../../built-in-features/transfer-transaction.md#transfertransaction):
+- Define the first inner [transfer transaction](../../built-in-features/transfer-transaction.md#transfertransaction):
 
 </div>
 
@@ -121,7 +121,7 @@ const transferTransaction1 = TransferTransaction.create(
 
 <div class=cap-alpha-ol>
 
-2. Define the second inner [transfer transaction](../../built-in-features/transfer-transaction.md#transfertransaction):
+- Define the second inner [transfer transaction](../../built-in-features/transfer-transaction.md#transfertransaction):
 
 </div>
 
@@ -298,7 +298,7 @@ listener.open().then(() => {
 
 <div class=info>
 
-**Note**
+**Note:**
 
 The [listener implementation changes](../monitoring/monitoring-a-transaction-status.md#troubleshooting-monitoring-transactions-on-the-client-side) when used on the client side (e.g., Angular, React, Vue).
 

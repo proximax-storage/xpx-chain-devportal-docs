@@ -2,15 +2,15 @@
 id: getting-xpx-amount-sent-to-account
 title: Getting the amount of XPX sent to an account
 ---
-Check the amount of XPX you have sent to any account.
+This guide will help you check the amount of XPX you have sent to any account.
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- Text editor or IDE
-- XPX-Chain-SDK or XPX-Chain-CLI
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
+- Text editor or IDE.
+- XPX-Chain-SDK or XPX-Chain-CLI.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--TypeScript-->

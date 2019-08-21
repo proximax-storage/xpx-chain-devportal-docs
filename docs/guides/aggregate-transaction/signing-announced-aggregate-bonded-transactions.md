@@ -8,13 +8,13 @@ This guide will show you how to cosign aggregate bonded transactions that requir
 
 ## Prerequisites
 
-- Finish [creating an escrow with aggregate bonded transaction guide](https://bcdocs.xpxsirius.io/guides/transaction/creating-an-escrow-with-aggregate-bonded-transaction.html)
-- Received some aggregate bonded transaction
-- XPX-Chain-SDK
-- A text editor or IDE
-- An account with XPX
+- Finish [creating an escrow with aggregate bonded transaction guide](https://bcdocs.xpxsirius.io/guides/transaction/creating-an-escrow-with-aggregate-bonded-transaction.html).
+- Received some aggregate bonded transaction.
+- XPX-Chain-SDK.
+- A text editor or IDE.
+- An account with XPX.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 1. Create a function to cosign any aggregate bonded transaction.
 
@@ -41,7 +41,7 @@ const cosignAggregateBondedTransaction = (transaction, account)  => {
 
 <div class=info>
 
-**Note**
+**Note:**
 
 To fetch aggregate bonded transactions that must be signed by multisig cosignatories, refer to the multisig public key instead. See [how to get multisig accounts where an account is cosignatory](../multisig-account/converting-an-account-to-multisig.md#guide-get-multisig-account-info).
 

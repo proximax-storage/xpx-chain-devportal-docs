@@ -2,24 +2,24 @@
 id: registering-a-namespace
 title: Registering a namespace
 ---
-Register your own [namespace](../../built-in-features/namespace.md).
+This guide will help you register your own [namespace](../../built-in-features/namespace.md).
 
-## Background
+## Background Information 
 
 A [namespace](../../built-in-features/namespace.md) is an on-chain unique domain for your assets. The easiest way to understand it is by means of the domain-file analogy on the internet.
 
-A mosaic is like a file hosted on a domain and represents an asset. Like a website and directory, a mosaic can have the same name as other files on other domains. However, a namespace + mosaic is always unique.
+A mosaic is like a file hosted on a domain and represents an asset. Like a website and directory, a mosaic can have the same name as other files on other domains. However, a namespace and a mosaic is always unique.
 
-If an [account](../../built-in-features/account.md) creates a namespace, that namespace will appear as unique in the Sirius-Chain ecosystem. For example, if one were to create a namespace called `foo`, a second person cannot create the same namespace.
+If an [account](../../built-in-features/account.md) creates a namespace, that namespace will appear as unique in the Sirius Chain ecosystem. For example, if one were to create a namespace called `foo`, a second person cannot create the same namespace.
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- XPX-Chain-SDK or XPX-Chain-CLI
-- A text editor or IDE
-- An account with XPX
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- A text editor or IDE.
+- An account with XPX.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 Register your namespace by choosing a name you like. One common option is to use your company’s or own name. In this example, we will register a namespace called `foo`.
 
@@ -70,9 +70,9 @@ xpx2-cli namespace info --name foo
 
 <div class=info>
 
-**Note**
+**Note:**
 
-In Sirius-Chain, Sirius-Chain blocks are complete every `15` seconds in average.
+In Sirius Chain, Sirius Chain blocks are complete every `15` seconds in average.
 
 </div>
 

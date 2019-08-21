@@ -2,29 +2,30 @@
 id: converting-an-account-to-multisig
 title: Converting an account to multisig
 ---
-Create a 1-of-2 [multisig account](../../built-in-features/multisig-account.md), by adding two cosignatories.
+This guide will help you create a 1-of-2 [multisig account](../../built-in-features/multisig-account.md), by adding two cosignatories.
 
-## Background
+## Background Information
 
-Alice and Bob live together and have separate [accounts](../../built-in-features/account.md). They also have a shared account so that if Bob is out shopping, he can buy groceries for both himself and Alice.
+Alice and Bob live together and have separate [accounts](../../built-in-features/account.md). They also have a shared account so that if Bob is shopping, he can buy groceries for both himself and Alice.
 
-This shared account is in Sirius-Chain translated as 1-of-2 multisig, meaning that one cosignatory needs to cosign the transaction to be included in a block.
+This shared account is in Sirius Chain translated as 1-of-2 multisig, meaning that one cosignatory needs to cosign the transaction to be included in a block.
 
 ![Multisig 1 of 2](/img/multisig-1-of-2.png "Multisig 1 of 2")
 
 <p class=caption>1-of-2 multisig account example</p>
 
+**Note:**
 Remember that a multisig account has cosignatories accounts, and it cannot start transactions itself. Only the cosignatories can initiate transactions.
 
 ## Prerequisites
 
-- Finish [creating and opening accounts guide](../account/creating-and-opening-an-account.md)
-- Text editor or IDE
-- XPX-Chain-SDK or XPX-Chain-CLI
-- Two accounts (public keys)
-- One account with XPX
+- Finish [creating and opening accounts guide](../account/creating-and-opening-an-account.md).
+- Text editor or IDE.
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- Two accounts (public keys).
+- One account with XPX.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 1. Define who will be the cosignatories of the multisig account. Then, open the account that will be converted into multisig by providing its private key.
 
@@ -166,7 +167,7 @@ If everything goes well, Alice and Bob should be cosignatories of the multisig a
 
 <div class=info>
 
-**Note**
+**Note:**
 
 You could also get the list of the multisig accounts where Alice or Bob are cosignatories using <span id=getMultisigAccountInfo>`getMultisigAccountInfo`</span> function.
 
@@ -213,5 +214,5 @@ accountHttp
 
 ## What’s next?
 
-Modify the account, converting it into a 2-of-2 multisig following [modifying a multisig account](./modifying-a-multisig-account.md) guide.
+Modify the account that will convert it into a 2-of-2 multisig by following the next guide: [modifying a multisig account](./modifying-a-multisig-account.md). 
 

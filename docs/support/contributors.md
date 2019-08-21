@@ -27,3 +27,4 @@ We want to recognise the contributors who provide content and improve the qualit
 - [dexterslabor](https://github.com/dexterslabor) - 1 contribution
 - [vindberg](https://github.com/vindberg) - 1 contribution
 - [daoka](https://github.com/daoka) - 1 contribution
+- [jdiaz] (https:/github.com/jdiaz80zy) - 1 contribution

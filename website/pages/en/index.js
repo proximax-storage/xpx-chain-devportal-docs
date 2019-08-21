@@ -24,10 +24,13 @@ class HomeSplash extends React.Component {
     return (
         <div className="home jumbotron text-center gap">
           <div className="inner">
-            <h1>Start building apps on the ProximaX Blockchain Platform</h1>
-            <h6>ProximaX Sirius Chain gives you direct access to a specialised set of <b>tested</b> and <b>secure on-blockchain features</b> using your favourite <b>programming languages</b>.
+            <h1>Start building apps on the ProximaX Sirius' Blockchain Layer</h1>
+            <h6>This developer center is for Sirius Chain, which is the blockchain layer
+              that forms an integral part of the <b>ProximaX Sirius</b> development platform. 
+              Proximax Sirius extends traditional blockchain protocols by integrating off-chain, 
+              peer-to-peer storage, streaming, and database service layers. 
             </h6>
-            <p>ProximaX Sirius Chain Version <span>0.1.0</span> &mdash; NEW UPDATE! </p>
+            <p>Sirius Chain Developer Center <span>0.1.0</span> &mdash; NEW UPDATE! </p>
           </div>
         </div>
     );
@@ -41,9 +44,8 @@ class BriefDef extends React.Component{
       <section className="container text-center">
         <div className="briefDef ">
           <p>
-            ProximaX Sirius is a <b>developer-friendly blockchain platform</b>. 
-            The latest ProximaX version, Sirius-Chain, gives you direct access 
-            to a specialised set of <b>tested</b> and <b>secure on-blockchain features</b> using your favourite <b>programming languages</b>.
+            <b>Sirius Chain </b>gives you direct access to a specialized set of <b>tested</b> and
+            <b> secure on-blockchain features</b> using your favorite <b>programming languages.</b> 
           </p>
         </div>
       </section>

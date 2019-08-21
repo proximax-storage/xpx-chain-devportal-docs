@@ -2,7 +2,7 @@
 id: serialization
 title: Serialization
 ---
-[Catbuffer library](https://github.com/proximax-storage/catbuffer) defines the protocol to serialize and deserialize Sirius-Chain entities. The library comes with code generators for different languages. SDKs and applications use the generated code to interact with REST transaction endpoint.
+[Catbuffer library](https://github.com/proximax-storage/catbuffer) defines the protocol to serialize and deserialize Sirius Chain entities. The library comes with code generators for different languages. SDKs and applications use the generated code to interact with REST transaction endpoint.
 
 ![Catbuffer](/img/catbuffer.png "Catbuffer")
 
@@ -12,7 +12,7 @@ The library accomplishes the following properties:
 
 ## Memory Efficiency
 
-Large networks compute a large number of transactions. Working with binary optimised in size makes the communication faster. Furthermore, reading entities from memory buffers -or just a part of them - is memory efficient.
+Large networks comprise a large number of transactions. Working with binary optimized in size makes the communication faster. Furthermore, reading entities from memory buffers or just a part of them, is memory efficient.
 
 ## Flexibility
 
@@ -20,7 +20,7 @@ REST [transaction endpoints](https://proximax-storage.github.io/api/endpoints.ht
 
 ## Reusability
 
-Applications can embed the generated code, without managing dependencies. This is particularly desirable in highly-secure environments. Besides, sharing a common codebase enables the addition of new features with less effort.
+Applications can embed the generated code, without managing dependencies. This is particularly desirable in highly-secure environments. Besides, sharing a common code base enables the addition of new features with less effort.
 
 At the current moment, you can generate buffers for **C++**. Javascript and Python are under development. If you are developing an SDK in another language, please consider coding a new generator.
 
@@ -53,7 +53,7 @@ The generator creates a new file under `_generated/cpp` folder. Repeat the proce
 
 ## Writing a schema
 
-Are you writing a new Sirius-Chain plugin that includes a new transaction type?
+Are you writing a new Sirius Chain plugin that includes a new transaction type?
 
 In this example, we are examining how the [transfer.cats](https://github.com/proximax-storage/catbuffer/blob/master/schemas/transfer.cats) schema works. Follow the same steps to define a new schema.
 
@@ -76,7 +76,7 @@ struct TransferTransactionBody
     mosaics = array(UnresolvedMosaic, mosaicsCount, sort_key=mosaicId)
 ```
 
-Secondly, define a second transaction struct in the same file. This will contain information about the version of the entity and its identifier. The underlying transaction properties and the particular transaction body are appended as inlines.
+Secondly, define a second transaction struct in the same file. This will contain information about the version of the entity and its identifier. The underlying transaction properties and the particular transaction body are appended as inline.
 
 ```c
 # binary layout for a non-embedded transfer transaction
@@ -88,7 +88,7 @@ struct TransferTransaction
     inline TransferTransactionBody
 ```
 
-Finally, define an EmbeddedTransaction struct. This struct is used to serialize inner transactions. The embedded transaction and the body transaction are added as inlines.
+Finally, define an EmbeddedTransaction struct. This struct is used to serialize inner transactions. The embedded transaction and the body transaction are added as inline.
 
 ```c
 # binary layout for an embedded transaction
@@ -105,7 +105,7 @@ After compiling all the schemas for a selected language, move the generated file
 
 <div class=info>
 
-**Note**
+**Note:**
 
 This section is incomplete. More information will be published once the XPX-Chain-SDK is updated.
 
