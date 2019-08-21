@@ -17,6 +17,7 @@
     "Built-in Features": [
       "built-in-features/account",
       "built-in-features/account-filter",
+      "built-in-features/account-restriction",
       "built-in-features/multisig-account",
       "built-in-features/namespace",
       "built-in-features/mosaic",
@@ -64,7 +65,8 @@
       "guides/account/create-open-account",
       "guides/account/getting-account-information",
       "guides/account/getting-xpx-amount-sent-to-account",
-      "guides/account/reading-account-transactions"
+      "guides/account/reading-account-transactions",
+      "guides/account/preventing-spam-attacks-with-account-restrictions"
       ],
     "Aggregate Transaction" : [
         "guides/aggregate-transaction/aggreagte-transaction-overview",
@@ -84,6 +86,12 @@
         "guides/cross-chain-swaps/cross-chain-swaps-overview",
         "guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain"
       ],
+    "Metadata": [
+      "guides/metadata/metadata-overview",
+      "guides/metadata/account-metadata",
+      "guides/metadata/mosaic-metadata",
+      "guides/metadata/namespace-metadata"
+    ],
     "Monitoring" : [
         "guides/monitoring/monitoring-overview",
         "guides/monitoring/monitoring-a-transaction-status"

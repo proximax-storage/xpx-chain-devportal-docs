@@ -29,5 +29,54 @@ where users can get or exchange this asset.
 
 ## Schemas
 
-`This section is not complete yet.`
+### ModifyMetadataTransaction
+
+Announce an modify metadata transaction to associate a key-value state to an account, mosaic or namespace.
+
+**Version**: 0x01
+
+**Entity type**| **Description**
+---------------|-----------------
+0x413D         | Modify account metadata
+0x423D         | Modify mosaic metadata
+0x433D         | Modify namespace metadata
+
+Inlines:
+
+- [Transaction][TransactionSchema] or [EmbeddedTransaction][Embedded-transactionSchema]
+
+**Property** |	**Type** |	**Description**
+-------------|-----------|---------------------
+metadataType |	[MetadataType](#metadatatype) |	Type of the metadata to be associated.
+metadataId |	string |	It can be plain address, mosaicId in hex and namespaceId in hex. Depend on the metadataType.
+modifications |	array([MetadataModification](#metadatamodification)) |	Array of metadata modifications.
+
+### MetadataType
+
+**Id** |	**Type**
+-------|---------------------
+0 | None
+1 | Address
+2 | Mosaic
+3 | Namespace
+
+### MetadataModification
+
+**Property** |	**Type** |	**Description**
+-------------|-----------|---------------------
+type |	[MetadataModificationType](#metadatamodificationtype) |	Type of the metadata modification.
+key |	string |	Key of the metadata.
+value |	string &#124; undefined | Value to be associate to the key.
+
+### MetadataModificationType
+
+**Id** |	**Type**
+-------|---------------------
+0 | Add
+1 | Remove
+
+[Embedded-transactionSchema]: ../protocol/transaction#embeddedtransaction
+[TransactionSchema]: ../protocol/transaction#transaction
+
+
 
