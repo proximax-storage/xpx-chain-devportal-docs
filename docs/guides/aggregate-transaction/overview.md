@@ -7,7 +7,7 @@ hide_title : true
 
 <div class=info>
 
-**Note**
+**Note:**
 
 We recommend checking out [setting up your workstation][Workstation] before going through the guides.
 

@@ -1,9 +1,9 @@
 ---
 id: client-overview
-title: Client Overview
+title: Overview
 sidebar_label: Overview
 ---
-The Sirius-Chain Command Line Interface is a unified tool to interact with the Sirius-Chain.
+The Sirius Chain Command Line Interface is a unified tool to interact with the Sirius Chain.
 
 This tool will enable you to perform the most common used actions to interact with the blockchain.
 
@@ -29,7 +29,7 @@ $> sudo npm update --global xpx2-cli
 
 To start using XPX-Chain-CLI, configure a profile.
 
-A profile holds an account and a node url for a specific network. Profiles are used to set a base url and have an account to sign transactions.
+A profile holds an account and a node URL for a specific network. Profiles are used to set a base URL and have an account to sign transactions.
 
 Configure default profile.
 

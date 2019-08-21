@@ -2,9 +2,9 @@
 id: aggregate-transaction
 title: Aggregate Transaction
 ---
-Aggregated Transactions merge multiple transactions into one, allowing **trustless swaps**, and other advanced logic. Sirius Chain does this by generating a one-time disposable smart contract. When all involved [accounts][Account] have cosigned the aggregate transaction, all the inner transactions are executed at the same time.
-
-## Examples
+Aggregate Transactions merge multiple transactions into one, allowing **trustless swaps**, and other advanced logic. Sirius Chain does this by generating a one-time disposable smart contract. When all involved [accounts][Account] have cosigned the aggregate transaction, all the inner transactions are executed simultaneously.
+ 
+## Examples of Aggregate Transacitons
 ## Sending payouts
 
 Dan announces an aggregate transaction that merges two transfer transactions.
@@ -15,19 +15,19 @@ As he is the only required signed, we say the aggregate transaction it is comple
 
 <p class="caption">Sending payouts with aggregate complete transactions</p>
 
-## Multi-Asset Escrowed Transactions
+## Example of Multi-Asset Escrowed Transactions
 
-In this example, Alice is buying tickets with `currency:euro`. When the ticket distributor cosigns the aggregate transaction, the swap will happen atomically.
+Alice buys tickets. When the ticket distributor co-signs the aggregate transaction, the swap will happen atomically.
 
 ![Aggregate escrow](/img/aggregate-escrow-1.png "Aggregate escrow")
 
 <p class="caption">Multi-Asset Escrowed Transactions</p>
 
-## Paying for others fees
+## Example of Paying For Others Fees
 
-Alice sends $10 to Bob using an app to make payments. But she doesn’t have any XPX to pay the blockchain transaction fee.
+Alice sends ten dollars to Bob using an app that makes payments. But she doesn’t have any XPX tokens to pay the blockchain transaction fee.
 
-By creating an aggregate bonded transaction, she can convert USD to XPX to pay the fee. Now Alice and Bob can use Sirius-Chain without ever having to buy or hold XPX.
+By creating an aggregate bonded transaction, Alice can convert USD to XPX to pay the fee. Now, Alice and Bob can use Sirius Chain without ever having to buy or hold XPX.
 
 Since the app creator can put their own branding on the open source payment app, Alice and Bob may not even know they are using blockchain.
 
@@ -35,40 +35,40 @@ Since the app creator can put their own branding on the open source payment app,
 
 <p class="caption">Paying for others fees</p>
 
-## Aggregate complete
+## Aggregate Complete
 
-An aggregate transaction is **complete** when all cosigners have signed it.
+The aggregate transaction is **complete** when all co-signers have signed it.
 
-The different participants can sign without using the blockchain the aggregate transaction. Once it has all the required signatures, one of them can announce it to the network. If the inner transaction setup is valid, and there is no validation error, the transactions will get executed at the same time.
+Once it has all the required signatures, one of those who signed can announce it to the network. If the setup of the inner transaction setup is valid, and there is no validation error, the transactions will be executed at the same time.
 
-Aggregate complete transactions enable adding more transactions per block by gathering multiple inner transactions between different participants in the same operation.
+Aggregate complete transactions enable more transactions to be added per block by gathering multiple inner transactions between different participants in the same operation.
 
-## Aggregate bonded
+## Aggregate Bonded
 
 An aggregate transaction is **bonded** when it requires signatures from other participants.
 
 <div class=info>
 
-**Note**
+**Note:**
 
-When sending an **aggregate bonded transaction**, an account must first announce and get confirmed a [hash lock transaction](#hashlocktransaction) for this aggregate with at least `10` XPX.
+When sending an **aggregate bonded transaction**, an account must first announce and confirm a [hash lock transaction](#hashlocktransaction) for this aggregate with at least `10` XPX.
 
 </div>
 
 Once an aggregate bonded is announced, it reaches partial state and notifies its status through WebSockets or HTTP API calls.
 
-Every time a cosignatory signs the transaction and [announces an aggregate bonded cosignature](#cosignature), the network checks if all the required cosigners have already signed. In this situation, the transaction changes to unconfirmed state until the network accepts it, and it is included in a block once processed.
+Every time a cosignatory signs the transaction and [announces an aggregate bonded cosignature](#cosignature), the network checks if all the required cosigners have already signed. In this situation, the transaction changes to an unconfirmed state until the network accepts it, and it is included in a block once processed.
 
 ![Aggregate bonded transaction cycle](/img/aggregate-bonded-transaction-cycle.png "Aggregate bonded transaction cycle")
 
 <p class=caption>Aggregate bonded transaction cycle</p>
 
 
-## Guides
+## Guides on Aggregate Transactions
 
 <div class=info>
 
-**Note**
+**Note:**
 
 We recommend checking out [setting up your workstation][Workstation] before going through the guides.
 
@@ -76,33 +76,33 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 - [Sending payouts with aggregate complete transaction][Aggregate-complete]
 
-    Send transactions to different accounts atomically, using an aggregate complete transaction.
+    HOw to seend transactions to different accounts atomically using an aggregate complete transaction.
 
 - [Creating an escrow with aggregate bonded transaction][Aggregate-escrow]
 
-    Learn about aggregate bonded transactions, by creating an escrow.
+    How to create an escrow with aggregate bonded transactions.
 
 - [Asking for mosaics with aggregate bonded transaction][Aggregate-ask-mosaic]
 
-    Ask an account to send you funds using an aggregate bonded transaction.
+    How to ask an account to send you funds using an aggregate bonded transaction.
 
 - [Signing announced aggregate bonded transactions][Signing-aggregate]
 
-    You have probably announced an aggregate bonded transaction, but all required cosigners have not signed it yet.
+    How to sign announced aggregate bonded transaction that all required co-signers have not signed it yet.
 
 - [Signing announced aggregate bonded transactions automatically][Auto-sign-aggregate]
 
-    Sign automatically transactions pending to be cosigned.
+    How to sign automatically transactions pending to be co-signed.
 
 - [Sending a multisig transaction][Send-multisig]
 
-    Send a transaction involving a multisig and learn how an aggregate bonded transaction works.
+    How to send a transaction involving a multisig and learn how an aggregate bonded transaction works.
 
 ## Schemas
 
 <div class=info>
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable][Server-configurable] . Public network configuration may differ.
 
@@ -120,7 +120,7 @@ Configuration parameters are [editable][Server-configurable] . Public network co
 
 **Property** |	**Type** |	**Description**
 -------------|-----------|--------------------
-payloadSize |	uint8 |	The transaction payload size in bytes. In other words, the total number of bytes occupied by all inner transactions.
+payloadSize |	uint8 |	The transaction payload size in bytes. In other words, the total number of bytes was occupied by all inner transactions.
 transactions |	array(byte, payloadSize) |	The array of transactions initiated by different accounts. An aggregate transaction can contain up to `1000` inner transactions involving up to `15` different cosignatories. Other aggregate transactions are not allowed as inner transactions.
 cosignatures |	array(byte, size - payloadSize) |	An array of transaction [cosignatures](#detachedcosignature).
 
@@ -153,7 +153,7 @@ Announce a hash lock transaction before sending a signed [aggregate bonded trans
 
 Once the related aggregate bonded transaction is confirmed, locked funds become available again in the account that signed the initial hash lock transaction.
 
-If the aggregate bonded transaction duration is reached without being signed by all cosignatories, the locked amount is collected by the block validator at the height where the lock expires.
+If the aggregate bonded transaction duration is reached without being signed by all cosignatories, the locked amount is collected by the block Validator at the height where the lock expires.
 
 **Version**: 0x01
 

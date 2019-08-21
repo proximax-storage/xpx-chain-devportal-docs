@@ -4,22 +4,22 @@ title: Block
 ---
 The central element of every cryptocurrency is a public ledger called the blockchain, which links blocks together.
 
-Since the blocks in the chain are ordered, the complete transaction history is held in the blockchain. Subsequent blocks in the blockchain have increasing heights that differ by one.
+Since the blocks in the chain are ordered, the complete transaction history is held in the blockchain. Subsequent blocks in the blockchain have increased heights that differ by one.
 
-Blocks are stored in a database as permanent medium. Sirius-Chain calls the first block in the chain the nemesis block.
+Blocks are stored in a database as a permanent medium. Sirius Chain calls the first block in the chain the nemesis block.
 
-Sirius-Chain blocks complete every `15` seconds, making transactions confirm quickly enough for everyday use.
+Sirius Chain blocks complete every `15` seconds, making transactions confirm quickly enough for everyday use.
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties). Public network configuration may differ.
 </div>
 
 ## Block creation
 
-Blocks are created by [accounts](../built-in-features/account.md). The process of creating new blocks is called [validating](./validating.md). The validating account - called the validator - gets the fees for the transactions in the block. This gives the validator an incentive to add as many transactions to the block as possible.
+Blocks are created by [accounts](../built-in-features/account.md). The process of creating new blocks is called [validating](./validating.md). The validating account, called the Validator, earns the fees for the transactions in the block. This gives the Validator an incentive to add as many transactions to the block as possible.
 
 
 ## Guides
@@ -47,9 +47,9 @@ timestamp |	uint64 | The number of seconds elapsed since the creation of the nem
 difficulty | uint64 | The block difficulty.
 feeMultiplier | uint32 | The fee multiplier applied to transactions contained in block.
 previousBlockHash |	32 bytes (binary) |	The hash of the previous block.
-blockTransactionHash | 32 bytes (binary) |	The transactions included in a block are hashed forming a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree). The root of the tree summarises them.
+blockTransactionHash | 32 bytes (binary) |	The transactions included in a block are hashed forming a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree). The root of the tree summarizes them.
 blockReceiptsHash | 32 bytes (binary) |	The collection of [receipts](./receipt.md) are hashed into a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree) and linked to a [block](#). The block header stores the root hash.
-stateHash |	32 bytes (binary) |	The state of the blockchain is stored in RocksDB for each block, forming a [patricia tree](https://en.wikipedia.org/wiki/Radix_tree). The root of the tree summarises the state of the blockchain for a given block.
+stateHash |	32 bytes (binary) |	The state of the blockchain is stored in RocksDB for each block, forming a [patricia tree](https://en.wikipedia.org/wiki/Radix_tree). The root of the tree summarizes the state of the blockchain for a given block.
 beneficiaryPublicKey | 32 bytes (binary) | The public key of the optional beneficiary designated by validator.
 
 **Version**: The higher byte represents the network identifier.

@@ -5,11 +5,18 @@ title: Account filter
 
 [Accounts][Account] may configure a set of smart rules to block announcing or receiving transactions given a series of constraints.
 
-The editable on-chain constraints are called filters. Accounts can configure the following types:
+The editable on-chain constraints are called filters.
 
-## Address filter
+Accounts can configure the following types:
+<ul>
+<li>Address Filter
+<li>Mosaic Filter
+<li>Entity Type Filter
+</ul>
 
-An account can decide to receive transactions only from an allowed list of [addresses][Account]. Similarly, an account can specify a list of addresses that don’t want to receive transactions from.
+## Address Filter
+
+An account can decide to receive transactions only from an allowed list of [addresses][Account]. Similarly, an account can specify a list of addresses from which it does not want to receive transactions.
 
 ![Account Properties Address](/img/account-properties-address.png "Account Properties Address")
 
@@ -17,7 +24,7 @@ An account can decide to receive transactions only from an allowed list of [addr
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Allow and block filters are mutually exclusive. In other words, an account can only configure a block or an allow list per type of filter.
 
@@ -25,41 +32,37 @@ Allow and block filters are mutually exclusive. In other words, an account can o
 
 By default, when there is no filter set, all the accounts in the network can announce transactions to the stated account.
 
-## Mosaic filter
+## Mosaic Filter
 
 An account can configure a filter to permit incoming transactions only if all the [mosaics][Mosaic] attached are allowed. On the other hand, the account can refuse to accept transactions containing a mosaic listed as blocked.
 
-## EntityType filter
+## EntityType Filter
 
-An account can allow/block announcing outgoing transactions with a [determined type][Transaction-type]. By doing so, it increases its security, preventing the announcement by mistake of undesired transactions.
+An account can allow or block announcing outgoing transactions with a [determined type][Transaction-type]. By doing so, it increases its security, preventing the announcement by mistake of undesired transactions.
 
 ## Examples
 
-## Blocking spam transactions
+## Blocking Spam Transactions
 
 A company is using the public chain to certify the quality of their products.
 
 When the quality verification process concludes, an operator sends a [quality seal][Mosaic] to the product account.
 
-The final customers can review the product mosaics scanning a QR code. For that reason, the company only wants to show related transactions, avoiding others to spam their products with non-related information.
+The customers can review the product mosaics by scanning a QR code. In this way, the company only wants to show related transactions, avoiding others to spam their products with non-related information.
 
 ![Account Properties Spam](/img/account-properties-spam.png "Account Properties Spam")
 
-<p class="caption">Blocking spam transactions</p>
+The company opt to configure their product accounts filters in order to enable only receiving transactions containing company quality sealed mosaics.
 
-The company opts to configure their product accounts filters, enabling only to receive transactions containing `company.quality.seal` mosaics.
+## Enhancing Account Security
 
-## Enhancing the account security
-
-Lately, Alice is only using her main account to cosign aggregate transactions where a [multisig][Multisig] she is a cosignatory is involved.
-
-As a temporary measure, Alice opts to disable announcing transfer transactions from her main account, double checking that any of the funds she owns will be transferred.
+To enhance security, a multisig account can be used instead of a single account. This would require more than one user to sign-off before a transaction can be executed. 
 
 ## Schemas
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable][Server-configurable] . Public network configuration may differ.
 

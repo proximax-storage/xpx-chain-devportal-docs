@@ -3,13 +3,14 @@ id: creating-an-escrow-with-aggregate-bonded-transaction
 title: Creating an escrow with aggregate-bonded transaction
 sidebar_label: Creating an escrow with aggregate-bonded transaction
 ---
-Learn about [aggregate bonded transactions](../../built-in-features/aggregate-transaction.md), by creating an escrow.
+This guide will help you learn about [aggregate bonded transactions](../../built-in-features/aggregate-transaction.md), by creating an escrow.
 
-## Background
+## Background Information 
 
-An **escrow** is a `contractual arrangement` in which a `third party receives and disburses money` or documents for the `primary transacting parties`, with the disbursement dependent on `conditions agreed to by the transacting parties`, or an `account established by a broker for holding funds` on behalf of the broker’s principal or some other person `until the consummation or termination of a transaction`; or, a trust account held in the borrower’s name to pay obligations such as property taxes and insurance premiums.
+An **escrow** is a `contractual arrangement` in which a `third party receives and disburses money` or documents for the `primary transacting parties`. Transacting parties will agree to the conditions in which the disbursement depend on. For example, it can be an `account established by a broker for holding funds` on behalf of the broker’s principal or some other person `until the consummation or termination of a transaction.` An escrow can also be a trust account held in the borrower’s name to pay obligations such as property taxes and insurance premiums.
 
-See full description at [Wikipedia](https://en.wikipedia.org/wiki/Escrow).
+**Reference:**
+- Wikipedia Contributors. "Escrow." Wikipedia, Wikipedia Foundation, 25 June 2019. en.wikipedia.org/wiki/Escrow.
 
 In this example, imagine the two parties agree on a virtual service, implying that the **escrow can be immediate**.
 
@@ -21,42 +22,42 @@ In this example, imagine the two parties agree on a virtual service, implying th
 4. Buyer approves goods or service
 5. Escrow releases payment to the seller
 
-**How is it applied to Proximax Sirius-Chain?**
+**How is it applied to Proximax Sirius Chain?**
 
-Normalising the language into Sirius-Chain related concepts:
+Normalizing the language into Sirius Chain related concepts:
 
-**contractual arrangement**
+- What is the **contractual arrangement**?
 
-Aggregate Transaction
+-- Aggregate Transaction
 
-**third party receives and disburses money**
+- Is there a **third party receives and disburses money**?
 
-No third party
+-- No third party
 
-**primary transacting parties**
+- What are the **primary transacting parties**?
 
-Accounts
+-- Accounts
 
-**conditions agreed to by the transacting parties**
+- What are the **conditions agreed to by the transacting parties**?
 
-Sign transaction
+-- Sign transactions
 
-**account established by a broker for holding funds**
+- Is there an **account established by a broker for holding funds**?
 
-No account, it will happen atomically using an aggregate transaction
+-- No account, it will happen atomically using an aggregate transaction
 
-**until the consummation or termination of a transaction**
+- When will **the transaction begets terminated or consummated**?
 
-The transaction gets included in a block
+-- The transaction gets included in a block
 
 ## Prerequisites
 
-- Finish [creating a mosaic guide](../mosaic/creating-a-mosaic.md)
-- Finish [sending payouts with aggregate complete transactions](./sending-payouts-with-aggregate-complete-transaction.md)
-- tsjs-xpx-chain-sdk
-- A text editor or IDE
+- Finish [creating a mosaic guide](../mosaic/creating-a-mosaic.md).
+- Finish [sending payouts with aggregate complete transactions](./sending-payouts-with-aggregate-complete-transaction.md).
+- tsjs-xpx-chain-sdk.
+- A text editor or IDE.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 ![Aggregate Escrow](/img/aggregate-escrow-1.png "Aggregate Escrow")
 
@@ -71,7 +72,7 @@ In this example, Alice and a ticket distributor want to swap the following mosai
 Alice |	prx:xpx |	100
 Ticket distributor |	museum:ticket |	1
 
-Before continuing, practise by setting up the namespaces and mosaics required.
+Before continuing, practice by setting up the namespaces and mosaics required.
 
 ### Mosaics swap
 
@@ -81,14 +82,14 @@ Alice will send a transaction to the ticket distributor exchanging 100 prx:xpx w
 
 <div class=cap-alpha-ol>
 
-1. From Alice to the ticket distributor sending 100 prx:xpx
-2. From the ticket distributor to Alice sending 1 museum:ticket.
+- From Alice to the ticket distributor sending 100 prx:xpx
+- From the ticket distributor to Alice sending 1 museum:ticket.
 
 </div>
 
 2. Add them as `innerTransactions` under an [aggregate transaction](../../built-in-features/aggregate-transaction.md).
 
-An aggregate Transaction is *complete* if before announcing it to the network, all required cosigners have signed it. If valid, it will be included in a block.
+An aggregate Transaction is *complete* if before announcing it to the network, all required cosigners have signed it. If it is valid, it will be included in a block.
 
 In case that signatures are required from other participants and the transaction is announced to the network, it is considered an aggregate bonded.
 
@@ -293,7 +294,7 @@ listener.open().then(() => {
 
 <div class=info>
 
-**Note**
+**Note:**
 
 The [listener implementation changes](../monitoring/monitoring-a-transaction-status.md#troubleshooting-monitoring-transactions-on-the-client-side) when used on the client side (e.g., Angular, React, Vue).
 
@@ -301,7 +302,7 @@ The [listener implementation changes](../monitoring/monitoring-a-transaction-sta
 
 ## Is it possible without aggregate transactions?
 
-**It is not secure**, since any event of the next list may happen:
+**It is not secure**. Any event of the next list may happen:
 
 - The buyer does not pay.
 - The seller does not send the virtual goods.

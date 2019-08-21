@@ -2,16 +2,16 @@
 id: reading-account-transactions
 title: Reading transactions from an account
 ---
-Get the list of [transactions](../../protocol/transaction.md) where an [account](../../built-in-features/account.md) is involved.
+This guide will help you get the list of [transactions](../../protocol/transaction.md) where an [account](../../built-in-features/account.md) is involved.
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- Text editor or IDE
-- XPX-Chain-SDK or XPX-Chain-CLI
-- An account that has received some transaction
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
+- Text editor or IDE.
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- An account that has received some transaction.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 In this example, you will fetch the latest confirmed transactions for a given account using the `accountHttp` repository.
 
@@ -73,13 +73,13 @@ System.out.print(transactions);
 
 <div class="info">
 
-**Note**
+**Note:**
 
-Get filtered the transactions received (incoming) from the ones sent (outgoing) checking the complete [accountHttp definition](https://proximax-storage.github.io/tsjs-xpx-chain-sdk/classes/_infrastructure_accounthttp_.accounthttp.html).
+To filter the transactions received (incoming) from the ones sent (outgoing), check the complete [accountHttp definition](https://proximax-storage.github.io/tsjs-xpx-chain-sdk/classes/_infrastructure_accounthttp_.accounthttp.html).
 
 </div>
 
-## What’s next
+## What’s next?
 
 To [get more than 100 transactions](https://github.com/proximax-storage/proximax-bc-docs/blob/master/source/resources/examples/typescript/account/GettingAllConfirmedTransactions.ts), you will have to make further requests. For each additional call, add to the `QueryParams` the optional parameter `transactionId` with the latest transaction identifier known returned by the previous request.
 

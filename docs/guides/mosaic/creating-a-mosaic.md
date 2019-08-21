@@ -2,26 +2,26 @@
 id: creating-a-mosaic
 title: Creating a mosaic
 ---
-After creating a namespace, follow this guide to create a [mosaic](../../built-in-features/mosaic.md) .
+This guide will help you create a[mosaic](../../built-in-features/mosaic.md) after creating a namespace.
 
-## Background
+## Background Information 
 
 Mosaics can be used to represent any asset in the blockchain such as objects, tickets, coupons, stock share representation, and even your cryptocurrency.
 
-A mosaic is like a file hosted on a domain and it represents an asset. Like a website and directory, a mosaic can have the same name as other files on other domains. However, a namespace + mosaic is always unique.
+A mosaic is like a file hosted on a domain and it represents an asset. Like a website and directory, a mosaic can have the same name as other files on other domains. However, a namespace  and a mosaic is always unique.
 
 ## Prerequisites
 
-- Finish [registering a namespace guide](../namespace/registering-a-namespace.md)
-- XPX-Chain-SDK or XPX-Chain-CLI
-- A text editor or IDE
-- An account with XPX and at least one namespace
+- Finish [registering a namespace guide](../namespace/registering-a-namespace.md).
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- A text editor or IDE.
+- An account with XPX and at least one namespace.
 
-## Let’s get into some code
+## Let’s do some coding!
 
 The first step is to choose a name for your mosaic. The name of the mosaic, up to a size limit of `64` characters, must be unique under the domain name.
 
-Our mosaic will be called `token`, and its parent namespace will be `foo`.
+Our mosaic will be called `token`, and its parent namespace will be called `foo`.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--TypeScript-->
@@ -63,7 +63,7 @@ const mosaicName = 'token';
 
 It is necessary to announce two transactions when creating a mosaic:
 
-1. A [mosaic definition transaction](../../built-in-features/mosaic.md#mosaicdefinitiontransaction), to create the mosaic.
+1. A [mosaic definition transaction](../../built-in-features/mosaic.md#mosaicdefinitiontransaction) is announced to create the mosaic.
 
 Under mosaic properties, we define a mosaic with `supplyMutable`, `transferable` among accounts other than the creator and registered for `1000 blocks`. `foo:token` won’t be `divisible`.
 
@@ -112,11 +112,11 @@ MosaicDefinitionTransaction mosaicDefinitionTransaction = MosaicDefinitionTransa
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-2. A [mosaic supply change transaction](../../built-in-features/mosaic.md#mosaicsupplychangetransaction), to set the supply. `foo:token` initial supply is 1.000.000
+2. A [mosaic supply change transaction](../../built-in-features/mosaic.md#mosaicsupplychangetransaction) is announced to set the supply. `foo:token` initial supply is 1.000.000
 
 <div class=info>
 
-**Note**
+**Note:**
 
 Once you announce a MosaicSupplyChangeTransaction, you cannot change mosaic properties for this mosaic.
 

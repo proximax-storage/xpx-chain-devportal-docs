@@ -2,7 +2,7 @@
 id: signing-announced-aggregate-bonded-transactions-automatically
 title: Signing announced aggregate-bonded transactions automatically
 ---
-Sign automatically transactions pending to be cosigned.
+This guide will sign automatically transactions pending to be co-signed.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ Sign automatically transactions pending to be cosigned.
 
 ## Let’s get into some code
 
-1. Create a function to cosign any aggregate bonded transaction.
+1. Create a function to co-sign any aggregate bonded transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--TypeScript-->
@@ -36,19 +36,19 @@ const cosignAggregateBondedTransaction = (transaction, account)  => {
 
 2. Create a new listener to get notified every time a new aggregate bonded transaction requires the signature of your account.
 
-3. Open the connection. You only need to open the connection once and then connect to all desired channels.
+3. Open the connection. You only need to open the connection once and then connect to all the desired channels.
 
 4. Start listening for new transactions, subscribing to the `aggregateBondedAdded` channel using your account’s address.
 
 <div class=info>
 
-**Note**
+**Note:**
 
 To automatically sign aggregate bonded transactions that must be signed by multisig cosignatories, refer to the multisig address instead. See [how to get multisig accounts where an account is cosignatory](../multisig-account/converting-an-account-to-multisig.md#guide-get-multisig-account-info).
 
 </div>
 
-5. For each received transaction, check if you have not already signed it. Cosign each pending aggregate bonded transaction using the previously created function.
+5. For each received transaction, check if you have not already signed it. Co-sign each pending aggregate bonded transaction using the previously created function.
   
 6. Announce `CosignatureSignedTransaction` to the network using the `TransactionHttp` repository.
 
