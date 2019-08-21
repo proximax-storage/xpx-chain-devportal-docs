@@ -13,7 +13,9 @@ When the quality verification process concludes, an operator sends a [quality se
 
 The final customers can review the product mosaics scanning a QR code. For that reason, the company only wants to show related transactions, avoiding that others spam their products with non-related information.
 
-TODO IMAGE https://nemtech.github.io/guides/account/preventing-spam-attacks-with-account-restrictions.html
+![Blocking spam attacks](img/TODO.png "Blocking spam attacks")
+
+<p class=caption>Blocking spam attacks</p>
 
 
 Thus, you opt to configure the product [account restrictions](../../built-in-features/account-restriction.md) to only receive transactions that follow a set of conditions.
