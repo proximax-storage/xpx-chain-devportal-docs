@@ -7,4 +7,6 @@ Sirius-Chain comes with a predefined set of built-in features and there's a grea
 
 **Extension** |	**Reference** 
 -------------|-----------------
-IPFS/DFMS extension |[DFMS version 1 extension](dfms-version1-extension) 
+IPFS/DFMS extension |[DFMS version 1 extension][dfms-version1-extension] 
+
+[dfms-version1-extension]: ./dfms-storagev1-extension.md
