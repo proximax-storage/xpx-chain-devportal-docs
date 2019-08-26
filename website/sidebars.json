@@ -10,13 +10,13 @@
       "protocol/block",
       "protocol/transaction",
       "protocol/validating",
+      "protocol/inflation",
       "protocol/receipt",
       "protocol/node",
       "protocol/proof-of-greed"
     ],
     "Built-in Features": [
       "built-in-features/account",
-      "built-in-features/account-filter",
       "built-in-features/account-restriction",
       "built-in-features/multisig-account",
       "built-in-features/namespace",

@@ -32,7 +32,7 @@ Multisignature or multisig require more than one key for authorization. Multisig
 
 ## Filters
 
-Accounts may configure a set of smart rules to block announcing or receiving transactions [given a series of constraints](./account-filter.md).
+Accounts may configure a set of smart rules to block announcing or receiving transactions [given a series of constraints](./account-restriction.md).
 
 
 ## Guides

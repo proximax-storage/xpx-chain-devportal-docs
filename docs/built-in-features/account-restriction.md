@@ -22,7 +22,7 @@ Restricting **incoming transactions** is useful when the account will be only re
 
 <div class="caption">
 
-![Accounts restriction](/img/account-restrictions-address.png "Accounts restriction")
+![Accounts restriction](/img/account-properties-address.png "Accounts restriction")
 
 </div>
 
@@ -60,7 +60,7 @@ When the quality verification process concludes, an operator sends a [quality se
 
 The final customers can review the product mosaics scanning a QR code. For that reason, the company only wants to show related transactions, avoiding that others spam their products with non-related information.
 
-![Blocking spam transactions](/img/account-restrictions-spam.png "Blocking spam transactions")
+![Blocking spam transactions](/img/account-properties-spam.png "Blocking spam transactions")
 
 <p class="caption">Blocking spam transactions</p>
 
