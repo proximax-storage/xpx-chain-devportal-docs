@@ -1,6 +1,6 @@
 ---
 id: sending-an-encrypted-message
-title: Sending an enctypted message
+title: Sending an encrypted message
 ---
 
 Send an encrypted message that only can be read by the recipient account.
@@ -87,6 +87,7 @@ if err != nil {
 4. Sign the transaction with Alice’s account.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
 ```go
 aliceAccount, err := account.sign(transferTransaction)
 if err != nil {

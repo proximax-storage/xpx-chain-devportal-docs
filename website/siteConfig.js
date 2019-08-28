@@ -41,8 +41,7 @@ const siteConfig = {
     { doc: 'getting-started/what-is-proximax-sirius-chain', label: 'Getting Started' },
     { doc: 'built-in-features/account', label: 'Built-in Features' },
     { page: 'endpoints', label: 'REST API Endpoints' },
-    // { doc: 'guides', label: 'Guides' },
-    { doc: 'guides/account/creating-and-opening-an-account', label: 'Guides' },
+    { doc: 'guides/guides-overview', label: 'Guides' },
     { search: true }
   ],
 

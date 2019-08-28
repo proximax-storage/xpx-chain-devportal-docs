@@ -180,7 +180,7 @@ if err != nil {
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-4. [Cosign the aggregate transaction](./signing-announced-aggregate-bonded-transactions.md) with Alice's account. Use transaction hash output from step 1.
+4. [Cosign the aggregate transaction](../aggregate-transaction/signing-announced-aggregate-bonded-transactions.md) with Alice's account. Use transaction hash output from step 1.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Bash-->

@@ -18,7 +18,7 @@ It is possible to create multiple subnamespaces with the same name in different 
 - XPX-Chain-SDK or XPX-Chain-CLI
 - A text editor or IDE
 - An account with `xpx` and at least one namespace
-- Finish [registering a namespace guide](../namespace/registering-a-namespace.md)
+- Finish [registering a namespace guide](./registering-a-namespace.md)
 
 ## Getting into some code
 
@@ -90,5 +90,5 @@ if err != nil {
 
 ## What’s next?
 
-When the transaction is confirmed, link a namespace with a [mosaic](./linking-a-namespace-to-a-mosaic.md) or [address](../linking-a-namespace-to-account.md).
+When the transaction is confirmed, link a namespace with a [mosaic](./linking-a-namespace-to-a-mosaic.md) or [address](./linking-a-namespace-to-account.md).
 

@@ -55,55 +55,44 @@
     ]
   },
   "guides": {
-    "Overview": [
-      "guides/overview"
-    ],
     "Account": [
-      "guides/account/overview-account",
       "guides/account/creating-and-opening-an-account",
       "guides/account/getting-account-information",
       "guides/account/getting-the-amount-of-xpx-sent-to-an-account",
       "guides/account/reading-transactions-from-an-account"
     ],
     "Account Restriction": [
-      "guides/account-restriction/overview-account-restrictions",
       "guides/account-restriction/preventing-spam-attack"
     ],
     "Aggregate Transaction": [
-      "guides/aggregate-transaction/overview-aggregate-transaction",
       "guides/aggregate-transaction/sending-payouts-with-aggregate-complete-transaction",
       "guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction",
       "guides/aggregate-transaction/asking-for-mosaics-with-aggregate-bonded-transaction",
       "guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions"
     ],
     "Block": [
-      "guides/block/overview-block",
       "guides/block/listening-new-blocks",
       "guides/block/getting-block-by-height"
     ],
     "Cross Chain Swaps": [
-      "guides/cross-chain-swaps/overview-cross-chain-swaps",
       "guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain"
     ],
     "Monitoring": [
       "guides/monitoring/monitoring-a-transaction-status"
     ],
     "Mosaic": [
-      "guides/mosaic/overview-mosaic",
       "guides/mosaic/creating-a-mosaic",
       "guides/mosaic/getting-mosaic-information",
       "guides/mosaic/getting-the-mosaic-identifier-behind-a-namespace-with-recepits",
       "guides/mosaic/modifying-mosaic-supply"
     ],
     "Multisig Account": [
-      "guides/multisig-account/overview-multisig-account",
       "guides/multisig-account/converting-an-account-to-multisig",
       "guides/multisig-account/modifying-a-multisig-account",
       "guides/multisig-account/creating-a-multi-level-multisig-account",
       "guides/multisig-account/sending-a-multisig-transaction"
     ],
     "Namespace": [
-      "guides/namespace/overview-namespace",
       "guides/namespace/registering-a-namespace",
       "guides/namespace/registering-a-subnamespace",
       "guides/namespace/getting-the-namespace-information",
@@ -111,7 +100,6 @@
       "guides/namespace/linking-a-namespace-to-account"
     ],
     "Transfer Transaction": [
-      "guides/transaction/overview-transfer-transaction",
       "guides/transaction/sending-a-transfer-transaction",
       "guides/transaction/sending-an-encrypted-message"
     ]
