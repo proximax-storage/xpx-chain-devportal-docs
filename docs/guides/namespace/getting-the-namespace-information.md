@@ -19,7 +19,6 @@ Call `getNamespace` function, passing the namespace identifier you want to check
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-// Catapult-api-rest server.
 baseUrl = "http://localhost:3000"
 // Types of network.
 networkType = sdk.MijinTest

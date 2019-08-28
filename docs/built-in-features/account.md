@@ -41,7 +41,7 @@ Accounts become truly smart when configured with special rules – directly on t
 One crucial type of rule is [multisig](./multisig-account.md) control that allows ownership of account based assets to be shared in a variety of ways between multiple parties.
 
 ## Restrictions
-Accounts may configure a set of smart rules to block announcing or receiving transactions [given a series of restrictions](./account-restrictions.md).
+Accounts may configure a set of smart rules to block announcing or receiving transactions [given a series of restrictions](./account-restriction.md).
 
 ## Guides
 
@@ -53,7 +53,7 @@ Accounts may configure a set of smart rules to block announcing or receiving tra
 
     Get the public key and balance of an [account](./account.md).
 
-- [Getting the amount of XPX sent to an account](../guides/account/getting-the-amount-of-XPX-sent-to-an-account.md)
+- [Getting the amount of xpx sent to an account](../guides/account/getting-the-amount-of-xpx-sent-to-an-account.md)
 
     Check the amount of XPX you have sent to any [account](./account.md).
 
@@ -61,7 +61,7 @@ Accounts may configure a set of smart rules to block announcing or receiving tra
 
     Get the list of transactions where an [account](./account.md) is involved.
 
-- [Linking a namespace to an address](../guides/namespace/linking-namespace-to-account.md)
+- [Linking a namespace to an address](../guides/namespace/linking-a-namespace-to-account.md)
 
     Link a [namespace](./namespace.md) to an [account](./account.md).
 

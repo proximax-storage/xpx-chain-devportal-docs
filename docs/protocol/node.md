@@ -13,7 +13,7 @@ The four-layered architecture allows developers to update any of these tiers wit
 
 ## Peer node
 
-**Repository**: [Catapult Server](https://github.com/proximax-storage/cpp-xpx-chain)
+**Repository**: [Sirius-chain Server](https://github.com/proximax-storage/cpp-xpx-chain)
 
 ![Peer Node](/img/node-peer.jpg "Peer Node")
 <p class="caption">Peer node communication</p>
@@ -38,14 +38,14 @@ Storing the state in memory is usually faster than using RocksDB. However, stori
 
 ## API node
 
-**Repository**: [Catapult Server](https://github.com/proximax-storage/cpp-xpx-chain)
+**Repository**: [Sirius-Chain Server](https://github.com/proximax-storage/cpp-xpx-chain)
 
 ![API Node](/img/node-api.jpg "API Node")
 <p class="caption">API node communication</p>
 
-The catapult-server software allows you to configure peer nodes as API nodes. The primary responsibility of an API node is to store the data in a readable form in MongoDB.
+The Sirius-Chain software allows you to configure peer nodes as API nodes. The primary responsibility of an API node is to store the data in a readable form in MongoDB.
 
-Instead of writing the data directly into MongoDB, the nodes write it into a file-based queue called `spool`. A broker service consumes the data from the spool and updates MongoDB accordingly. Once a block is processed, the broker service notifies the changes to catapult-rest instances using ZMQ.
+Instead of writing the data directly into MongoDB, the nodes write it into a file-based queue called `spool`. A broker service consumes the data from the spool and updates MongoDB accordingly. Once a block is processed, the broker service notifies the changes to sirius-chain-rest instances using ZMQ.
 
 API nodes are also responsible for collecting the cosignatures of [aggregated bonded](../built-in-features/aggregate-transaction.md) transactions, which are only processed once they are complete.
 
@@ -64,11 +64,11 @@ The broker service updates the linked MongoDB instance when:
 
 ## ZMQ
 
-[ZeroMQ](https://en.wikipedia.org/wiki/ZeroMQ) is an asynchronous messaging library, which enables real-time subscriptions. It transports notifications from the API node to the ZMQ endpoint, where Catapult REST listens. It is an alternative to REST WebSockets, aimed to be used when performance is critical.
+[ZeroMQ](https://en.wikipedia.org/wiki/ZeroMQ) is an asynchronous messaging library, which enables real-time subscriptions. It transports notifications from the API node to the ZMQ endpoint, where Sirius-Chain REST listens. It is an alternative to REST WebSockets, aimed to be used when performance is critical.
 
 ## REST node
 
-**Repository**: [Catapult REST](https://github.com/proximax-storage/js-xpx-chain-rest)
+**Repository**: [Sirius-Chain REST](https://github.com/proximax-storage/js-xpx-chain-rest)
 
 ![REST Node](/img/node-rest.jpg "REST Node")
 <p class="caption">REST node communication</p>
@@ -79,9 +79,9 @@ Each REST node connects to one API instance to send new transactions requests tr
 
 ## Guides
 
-- Running Catapult locally
+- Running Sirius-Chain locally
 
-Deploy a Catapult full node for learning and development purposes.
+Deploy a Sirius-Chain full node for learning and development purposes.
 
 - Deploying a test net node (upcoming)
 - Configuring a private network (upcoming)
@@ -127,7 +127,7 @@ Deploy a Catapult full node for learning and development purposes.
 
 ## P2P Component
 
-**Repository**: [Sirius-Chain Server](https://github.com/proximax-storage/catapult-server)
+**Repository**: [Sirius-Chain Server](https://github.com/proximax-storage/cpp-xpx-chain)
 
 The P2P nodes form the backbone of the blockchain, making the network robust since it cannot be shut down by eliminating a single entity. The role of the node is to [verify transactions](./transaction.md#announcing-a-transaction) and [blocks](./block.md), run the consensus algorithm, create new blocks, and propagate the changes through the network.
 
@@ -164,7 +164,7 @@ Persisting the state is convenient in networks with a large number of accounts.
 
 ## API Component
 
-**Repository**: [Sirius-Chain REST](https://github.com/proximax-storage/catapult-rest)
+**Repository**: [Sirius-Chain REST](https://github.com/proximax-storage/js-xpx-chain-rest)
 
 The primary responsibility of the API is to store the data in a readable form. Each API instance maintains a MongoDB, and optionally a RocksDB to save the state.
 
@@ -198,7 +198,7 @@ MongoDB should not be accessed externally.
 
 ## REST Component
 
-**Repository**: [Sirius-Chain REST](https://github.com/proximax-storage/catapult-rest)
+**Repository**: [Sirius-Chain REST](https://github.com/proximax-storage/js-xpx-chain-rest)
 
 The REST component handles JSON API client requests. This reads from MongoDB, formats the response, and returns it to the client. This component is responsible as well to return events to the client using [WebSockets](../rest-api/websockets.md).
 

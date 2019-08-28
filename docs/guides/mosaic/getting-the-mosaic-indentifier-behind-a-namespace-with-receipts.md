@@ -7,7 +7,7 @@ Get the ownership, divisibility, duration, and flags for a given [mosaic](../../
 
 ## Background
 
-In Catapult, accounts can link their registered namespaces to other accounts or mosaics by announcing an [alias transaction](../../built-in-features/namespace.md#mosaic-alias-transaction). This feature allows you to replace long and complex identifiers with short and familiar names for your accounts and mosaics.
+In Sirius-Chain, accounts can link their registered namespaces to other accounts or mosaics by announcing an [alias transaction](../../built-in-features/namespace.md#mosaic-alias-transaction). This feature allows you to replace long and complex identifiers with short and familiar names for your accounts and mosaics.
 
 Imagine a ticket vendor sending tickets to their customers on the NEM blockchain. The company needs to send `1 0dc67fbe1cad29e3` to `SCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6`. With aliases, it can define the same transaction as sending `1 ticketsales.event1.ticket` to `@alice` instead.
 

@@ -187,5 +187,5 @@ Enumeration: uint8
 [Transaction-type]: ../protocol/transaction.md#transaction-types
 [Account]: ./account.md
 [Mosaic]: ./mosaic.md
-[Server-configurable]: https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties
+[Server-configurable]: https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties
 [Multisig]: ./multisig-account.md

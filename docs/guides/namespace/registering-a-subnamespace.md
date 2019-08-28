@@ -90,5 +90,5 @@ if err != nil {
 
 ## What’s next?
 
-When the transaction is confirmed, link a namespace with a [mosaic](./linking-a-namespace-to-a-mosaic.md) or [address](../linking-a-namespace-to-an-address.md).
+When the transaction is confirmed, link a namespace with a [mosaic](./linking-a-namespace-to-a-mosaic.md) or [address](../linking-a-namespace-to-account.md).
 

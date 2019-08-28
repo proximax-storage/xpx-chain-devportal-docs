@@ -85,7 +85,7 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 **Note**
 
-Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) . Public network configuration may differ.
+Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 
@@ -158,7 +158,6 @@ Enumeration: uint8
 0x00 |	No flags present.
 0x01 |	The mosaic supply is mutable.
 0x02 |	The mosaic is transferable.
-0x04 |	The mosaic levy is mutable
 
 ### MosaicSupplyChangeDirection
 

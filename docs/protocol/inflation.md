@@ -3,7 +3,7 @@ id: inflation
 title: Inflation
 ---
 
-Catapult engine supports increasing the native currency supply as time passes. The creation of an **inflationary mosaic** empowers consortium and private networks to apply new token economic models that suit their needs.
+Sirius-Chain engine supports increasing the native currency supply as time passes. The creation of an **inflationary mosaic** empowers consortium and private networks to apply new token economic models that suit their needs.
 
 ## Distribution
 

@@ -94,6 +94,7 @@ Sirius-Chain mainly works with absolute amounts. To get an absolute amount, mult
 2. Sign the transaction with Alice account.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
 ```go
 signedTransaction, err := account.sign(transferTransaction)
 if err != nil {

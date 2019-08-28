@@ -74,7 +74,7 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 **Note**
 
-Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) . Public network configuration may differ.
+Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 

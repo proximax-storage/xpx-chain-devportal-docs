@@ -63,7 +63,7 @@ The client-side handles the encryption and decryption of the message. You can fi
 
 **Note**
 
-Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) . Public network configuration may differ.
+Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 

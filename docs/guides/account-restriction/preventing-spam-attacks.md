@@ -1,5 +1,5 @@
 ---
-id: preventing-spam-attacks-with-account-restriction
+id: preventing-spam-attacks
 title: Preventing spam attacks with account restrictions
 ---
 

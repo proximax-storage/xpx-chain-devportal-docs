@@ -169,7 +169,7 @@ mosaic |	[Mosaic][Mosaic#mosaic] |	Locked mosaic, must be at least `10 prx:xpx`.
 duration |	uint64 |	The lock duration.
 hash |	32 bytes (binary) |	The aggregate bonded transaction hash that has to be confirmed before unlocking the mosaics.
 
-[Server-configurable]: https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties
+[Server-configurable]: https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties
 [Mosaic#mosaic]: ./mosaic.md#mosaic
 [Transaction]: ../protocol/transaction.md#transaction
 [EmbeddedTransaction]: ../protocol/transaction.md#embeddedtransaction

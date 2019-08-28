@@ -8,7 +8,7 @@ This section describes the error messages that can be returned via status channe
 
 **Note**
 
-Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties). Public network configuration may differ.
+Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties). Public network configuration may differ.
 
 </div>
 
@@ -97,7 +97,7 @@ Failure_Namespace_Expired |	Validation failed because the namespace has expired.
 Failure_Namespace_Owner_Conflict |	Validation failed because the parent owner conflicts with the child owner.
 Failure_Namespace_Id_Mismatch |	Validation failed because the id is not the expected id generated from signer and nonce.
 Failure_Namespace_Invalid_Namespace_Type |	Validation failed because the namespace type is invalid: rootnamespace (0) and subnamesapce (1).
-Failure_Namespace_Root_Name_Reserved |	Validation failed because the root namespace has a [reserved name](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties#L60).
+Failure_Namespace_Root_Name_Reserved |	Validation failed because the root namespace has a [reserved name](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties#L60).
 Failure_Namespace_Too_Deep |	Validation failed because the resulting namespace would exceed the maximum allowed namespace depth. Namespaces can have up to `3` nested levels.
 Failure_Namespace_Parent_Unknown |	Validation failed because the namespace parent is unknown.
 Failure_Namespace_Already_Exists |	Validation failed because the namespace already exists.

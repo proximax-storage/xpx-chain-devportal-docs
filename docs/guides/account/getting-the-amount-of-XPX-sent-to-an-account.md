@@ -1,5 +1,5 @@
 ---
-id: getting-xpx-amount-sent-to-account
+id: getting-the-amount-of-xpx-sent-to-an-account
 title: Getting the amount of XPX sent to an account
 ---
 Check the amount of XPX you have sent to any account.

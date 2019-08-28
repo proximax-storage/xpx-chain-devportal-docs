@@ -22,7 +22,7 @@ Namespaces can have up to `3` levels, a namespace and its two levels of subnames
 
 ## Alias
 
-[Alias transactions](#address-alias-transaction) link namespaces to accounts and mosaics.
+Alias transactions link namespaces to [accounts](../guides/namespace/linking-a-namespace-to-account.md) and [mosaics](../guides/namespace/linking-a-namespace-to-a-mosaic.md).
 
 An alias or its linked asset can be used interchangeably when sending a transaction. Using the alias makes long addresses rememberable and mosaics recognizable.
 
@@ -33,7 +33,7 @@ The block [receipts](../protocol/receipt.md) store the resolution of the alias f
 Restrictions:
 
 - An account can only associate a name with one account or mosaic, but those can have many aliases linked.
-- An account can assign a name to any account that permits receiving [AddressNamespaceTransactions](./account-restriction.md). In contrast, if the account wants to assign the alias to a mosaicId, it should be the creator of the mosaic.
+- An account can assign a name to any account that [permits receiving](./account-restriction.md) AddressNamespaceTransactions. In contrast, if the account wants to assign the alias to a mosaicId, it should be the creator of the mosaic.
 - An account can only link the alias to a mosaicId when the account is the creator of the mosaic.
 
 ## Duration
@@ -49,13 +49,13 @@ The maximum namespace duration is `365` days. By default, the network is configu
 
 During the renting period, the namespace owner can create subnamespaces, alias accounts and mosaics. The owner can also **extend the rental** by sending a [register namespace transaction](../guides/namespace/registering-a-namespace.md) with the desired number of additional blocks.
 
-The network [can define](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) a **grace period** that enables the namespace owner to renew the namespace past the expiration date before it becomes publicly available for registration.
+The network [can define](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) a **grace period** that enables the namespace owner to renew the namespace past the expiration date before it becomes publicly available for registration.
 
 When the grace period ends, the existing aliases and subnamespaces are pruned, becoming **inactive**. Hence, other accounts can now register the namespace again.
 
 ## Cost
 
-The cost of creating a namespace is [configurable per network](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties). By default, registering a namespace costs `1 cat.currency per block` plus transactions fees. Registering a subnamespace has a fixed cost of `100 cat.currency` plus transaction fees.
+The cost of creating a namespace is [configurable per network](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties). By default, registering a namespace costs `1 cat.currency per block` plus transactions fees. Registering a subnamespace has a fixed cost of `100 cat.currency` plus transaction fees.
 
 
 ## Example
@@ -97,7 +97,7 @@ The ticket vendor can send 1 `ticketsales.event1.ticket` to `alice` instead of 1
 
     Link a namespace to a mosaic.
 
-- [Linking a namespace to an address](../guides/namespace/linking-a-namespace-to-an-address.md)
+- [Linking a namespace to an address](../guides/namespace/linking-a-namespace-to-account.md)
 
     Link a namespace to an account.
 
@@ -105,9 +105,6 @@ The ticket vendor can send 1 `ticketsales.event1.ticket` to `alice` instead of 1
 
     Get the ownership and duration for a given namespace identifier.
 
-- [Extending a namespace registration period](../guides/namespace/extending-a-namespace-registration-period.md)
-
-    Extend a namespace registration period.
 
 ## Schemas
 
@@ -115,7 +112,7 @@ The ticket vendor can send 1 `ticketsales.event1.ticket` to `alice` instead of 1
 
 **Note**
 
-Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) . Public network configuration may differ.
+Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 

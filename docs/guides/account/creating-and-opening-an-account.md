@@ -1,5 +1,5 @@
 ---
-id: create-open-account
+id: creating-and-opening-an-account
 title: Creating and opening an account
 ---
 Create a new [account](../../built-in-features/account.md) and open it.
