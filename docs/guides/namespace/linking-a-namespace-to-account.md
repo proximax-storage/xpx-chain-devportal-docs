@@ -1,9 +1,9 @@
 ---
-id: linking-namespace-to-account
-title: Linking namespace to Account
+id: linking-a-namespace-to-account
+title: Linking namespace to account
 ---
 
-Link a [ namespace ](../../built-in-features/namespace.md) to an [ account ](../..built-in-features/account.md).
+Link a [ namespace ](../../built-in-features/namespace.md) to an [ account ](../../built-in-features/account.md).
 
 ## Prerequisites
 
