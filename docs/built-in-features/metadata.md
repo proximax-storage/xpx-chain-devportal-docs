@@ -17,13 +17,19 @@ Metadata can be added, updated and deleted for the following entities:
 Since Address usually represents entities from the real world,
 it can be useful to attach some extra information to the address. 
 
-## Mosaic
+[Guides on account metadata](../guides/metadata/account-metadata.md)
 
-For Mosaic, metadata coudl be used to share where users can obtain or exchange an asset.
+### Mosaic
 
-## Namespace
+For Mosaic, metadata could be used to share where users can obtain or exchange an asset.
 
-`This section is not complete yet.`
+[Guides on mosaic metadata](../guides/metadata/mosaic-metadata.md)
+
+### Namespace
+
+If users own a namespace, they can attach extra details with metadata for their own namespace.
+
+[Guides on namespace metadata](../guides/metadata/namespace-metadata.md)
 
 ## Schemas
 
