@@ -17,13 +17,13 @@ Metadata can be added, updated and deleted for the following entities:
 Since Address usually represents entities from the real world,
 it can be useful to attach some extra information to the address. 
 
-## Mosaic
+### Mosaic
 
-For Mosaic, metadata coudl be used to share where users can obtain or exchange an asset.
+For Mosaic, metadata could be used to share where users can obtain or exchange an asset.
 
-## Namespace
+### Namespace
 
-`This section is not complete yet.`
+If users own a namespace, they can attach extra details with metadata for their own namespace.
 
 ## Schemas
 
