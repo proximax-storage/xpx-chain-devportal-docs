@@ -18,7 +18,7 @@ The final customers can review the product mosaics scanning a QR code. For that 
 <p class=caption>Blocking spam attacks</p>
 
 
-Thus, you opt to configure the product [account restrictions](../../built-in-features/account-restriction.md) to only receive transactions that follow a set of conditions.
+Thus, you opt to configure the product [account filters](../../built-in-features/account-filter.md) to only receive transactions that follow a set of conditions.
 
 ## Prerequisites
 
@@ -41,7 +41,7 @@ xpx2-cli account generate
 
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
 Do you want to save it? [y/n]: y
-Introduce NEM 2 Node URL. (Example: http://localhost:3000): http://localhost:3000
+Introduce Sirius-Chain 2 Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile): product
 
 New Account:    SDFRDC-F6RXWX-EOOTVI-RLCNUK-KYRSU6-MXW2FC-OR4V
@@ -59,7 +59,7 @@ xpx2-cli account generate
 
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
 Do you want to save it? [y/n]: y
-Introduce NEM 2 Node URL. (Example: http://localhost:3000): http://localhost:3000
+Introduce Sirius-Chain 2 Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile): company
 
 New Account:    SBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP
@@ -206,7 +206,7 @@ if err != nil {
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-### Removing a restriction
+### Removing a filter
 
 After the company sells the product to the final client, they want to remove the condition that only allowed the company’s account to send transactions to the product. The account restrictions can be removed as easily as they were set up:
 

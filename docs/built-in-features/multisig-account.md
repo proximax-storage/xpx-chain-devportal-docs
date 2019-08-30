@@ -3,7 +3,7 @@ id: multisig-account
 title: Multisig Account
 ---
 
-Multisig [accounts](./account.md) require additional signatures to initiate actions/transfers.
+Editable on-chain contracts, the most powerful way to secure funds and enable joint accounts.
 
 ## Cosignatories
 
@@ -15,11 +15,11 @@ To record the transaction in the block, the other cosignatories will have to agr
 
 ## Minimum approval and removal
 
-It is not always necessary to force all cosignatories to cosign transactions associated with the multisig account. Sirius-Chain allows to set up the minimum number of cosignatory agreements. These properties can be [edited](../guides/multisig-account/modifying-a-multisig-account.md) afterward to suit almost all needs.
+It is not always necessary to force all cosignatories to cosign transactions associated with the multisig account. Sirius-Chain allows to set up the minimum number of cosignatory agreements. These properties can be [edited](../guides/multisig-account/modifying-a-multisig-account.md#editing-minapproval) afterward to suit almost all needs.
 
 Sirius-Chain’s current implementation of multisig is “M-of-N”. This means that M can be any number equal to or less than N, i.e., 1-of-4, 2-of-2, 4-of-9, 9-of-10 and so on.
 
-Similarly, cosignatories can [invite other accounts to take part in the multisig](../guides/multisig-account/modifying-a-multisig-account.md#adding-a-new-cosignatory), or [propose to remove others](../guides/multisig-account/modifying-a-multisig-account.md#removing-a-cosignatory when the defined conditions are fulfilled.
+Similarly, cosignatories can [invite other accounts to take part in the multisig](../guides/multisig-account/modifying-a-multisig-account.md#adding-a-new-cosignatory), or [propose to remove others](../guides/multisig-account/modifying-a-multisig-account.md#removing-a-cosignatory) when the defined conditions are fulfilled.
 
 <div class=info>
 
@@ -34,7 +34,7 @@ Multisig accounts are a powerful tool, but please use this tool with caution. If
 - Multisig accounts can have up to `10` cosignatories.
 - An account can be cosigner of up to `5` multisig accounts.
 - Multisig accounts can have as a cosigner another multisig, up to `3` levels. Multi-level multisig accounts add “AND/OR” logic to multi-signature transactions.
-- [Multisig modification transactions](./multisig-account.md#modify-multisig-account-transaction) must be wrapped in an [aggregate transaction](./aggregate-transaction.md). New cosignatories added to the multisig must opt-in by cosigning the aggregate.
+- [Multisig modification transactions](../guides/multisig-account/modifying-a-multisig-account.md) must be wrapped in an [aggregate transaction](./aggregate-transaction.md). New cosignatories added to the multisig must opt-in by cosigning the aggregate.
 
 ## Examples
 

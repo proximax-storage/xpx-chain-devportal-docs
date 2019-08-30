@@ -1,37 +1,35 @@
 ---
-id: account-restriction
-title: Account restriction
+id: account-filter
+title: Account filter
 ---
 
-[Accounts](./account.md) may configure a set of smart rules to block announcing or receiving transactions given a series of restrictions.
+[Accounts](./account.md) may configure a set of smart rules to block announcing or receiving transactions given a series of constraints. The editable on-chain constraints are called **account filters**.
 
-The account owners - plural in case of multisig accounts - can edit the account restrictions at a later time announcing the specific [account restriction transaction](./account-restriction.md#account-address-restriction-transaction).
+## Address filters
 
-## Address restrictions
-
-An account can decide to **receive** transactions only from an allowed list of [addresses](./account.md). Similarly, the account can define a list of blocked addresses.
+An account can decide to **receive** transactions only from an allowed list of [addresses](./account.md). Similarly, an account can specify a list of addresses that don’t want to receive transactions from.
 
 ![Account Properties Address](/img/account-properties-address.png "Account Properties Address")
 
-<p class="caption">Address restriction diagram</p>
+<p class="caption">Address filters diagram</p>
 
 <div class="info">
 
 **Note**
 
-Allow and block restrictions are mutually exclusive. In other words, an account can only configure a block or an allow list per type of restriction.
+Allow and block filters are mutually exclusive. In other words, an account can only configure a block or an allow list per type of filter.
 
 </div>
 
-By default, when there are no restrictions set, all the accounts in the network can announce transactions to the unrestricted account.
+By default, when there are no filter set, all the accounts in the network can announce transactions to the stated account.
 
-## Mosaic restriction
+## Mosaic filter
 
 An account can configure a filter to permit **incoming** transactions only if all the [mosaics](./mosaic.md) attached are allowed. On the other hand, the account can refuse to accept transactions containing a mosaic listed as blocked.
 
-## Operation restriction
+## EntityType filter
 
-An account can allow/block announcing **outgoing** transactions with a [determined type](../protocol/transaction.md). By doing so, it increases its security, preventing the announcement by mistake of undesired transactions.
+An account can allow/block announcing **outgoing** transactions with a [determined type](../protocol/transaction.md#transaction-types). By doing so, it increases its security, preventing the announcement by mistake of undesired transactions.
 
 ## Examples
 
@@ -51,13 +49,13 @@ The company opts to configure their product accounts filters, enabling only to r
 
 ## Enhancing the account security
 
-Lately, Alice is only using her main account to cosign aggregate transactions where a [multisig]( ./multisig-account.md ) she is a cosignatory is involved.
+Lately, Alice is only using her main account to cosign aggregate transactions where she is a cosignatory for the [multisig](./multisig-account.md) account.
 
-As a temporary security measure, Alice opts to disable announcing transfer transactions from her main account. Doing so, Alice double-checks that the funds held in the main account are not going to be transferred by mistake.
+As a temporary measure, Alice opts to disable announcing transfer transactions from her main account, double checking that any of the funds she owns will be transferred.
 
 ## Guides
 
-- [Preventing spam attacks with account restrictions](../guides/account-restriction/preventing-spam-attacks.md)
+- [Preventing spam attacks with account filters](../guides/account-filter/preventing-spam-attacks.md)
 
     Send transactions to different accounts atomically, using an aggregate complete transaction.
 

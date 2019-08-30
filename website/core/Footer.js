@@ -51,17 +51,17 @@ class Footer extends React.Component {
         </section>
 
         <section className="sitemap">
-          
+
           <div>
             <h5>Protocol</h5>
             <a href={this.docUrl('protocol/cryptography')}>
               Cryptography
             </a>
-            <a href={this.docUrl('protocol/transaction')}>
-              Transaction
-            </a>
             <a href={this.docUrl('protocol/block')}>
               Block
+            </a>
+            <a href={this.docUrl('protocol/transaction')}>
+              Transaction
             </a>
             <a href={this.docUrl('protocol/harvesting')}>
               Harvesting
@@ -71,6 +71,12 @@ class Footer extends React.Component {
             </a>
             <a href={this.docUrl('protocol/node')}>
               Node
+            </a>
+            <a href={this.docUrl('protocol/proof-of-greed')}>
+              Proof of Greed
+            </a>
+            <a href={this.docUrl('protocol/update-mechanism')}>
+              Update Mechanism
             </a>
           </div>
           <div>
@@ -99,13 +105,18 @@ class Footer extends React.Component {
             <a href={this.docUrl('built-in-features/cross-chain-swaps')}>
               Cross-Chain Swaps
             </a>
+            <a href={this.docUrl('built-in-features/metadata')}>
+              Metadata
+            </a>
+            <a href={this.docUrl('built-in-features/super-contracts')}>
+              Super contract
+            </a>
           </div>
           <div>
 
             <h5>References</h5>
             <a href={this.docUrl('rest-api/rest-api-overview')}>REST API</a>
             <a href={this.docUrl('sdks/languages')}>SDKs</a>
-            <a href={this.docUrl('sdks/extending-ProximaX-capabilities')}>Libraries</a>
             <a href={this.docUrl('client/client-overview')}>XPX-Chain-CLI</a>
             <a
               className="github-button"

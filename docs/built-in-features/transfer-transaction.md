@@ -7,7 +7,7 @@ Transfer transactions are used to send [mosaics](./mosaic.md) between two [accou
 
 ![Transfer Transaction](/img/transfer-transaction.png "Transfer Transaction")
 
-<p class="caption">Alice sends 10 cat.currency to Bob</p>
+<p class="caption">Alice sends 10 `xpx` to Bob</p>
 
 
 ## Recipient
@@ -53,7 +53,7 @@ The client-side handles the encryption and decryption of the message. You can fi
 
     Make sure a [*transaction*](../protocol/transaction.md) gets included in the blockchain after being announced.
 
-- [Sending an encrypted message](../guides/monitoring/sending-an-ecrypted-message.md)
+- [Sending an encrypted message](../guides/transaction/sending-an-encrypted-message.md)
 
     Send an enctypted message that only can be read by the recipient account.
 

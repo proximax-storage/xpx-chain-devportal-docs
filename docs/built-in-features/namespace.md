@@ -3,8 +3,7 @@ id: namespace
 title: Namespace
 ---
 
-Namespaces allow you to [create an on-chain unique place](../guides/namespace/registering-a-namespace.md) for your business and your assets on the NEM blockchain.
-
+Namespaces allow you to [create an on-chain unique place](../guides/namespace/registering-a-namespace.md) for your business and your assets on the Sirius-Chain blockchain.
 
 ## Name
 
@@ -16,7 +15,7 @@ An account can link a registered name (namespace or subnamespace) with an [accou
 
 On the internet, a domain can have a sub-domain. In Sirius-Chain, namespaces can have subnamespaces.
 
-You can [create multiple subnamespaces](../guides/namespace/registering-a-namespace.md) with the same name in different namespaces. For example, you can create the subnamespaces `foo.bar` and `foo2.bar`.
+You can [create multiple subnamespaces](../guides/namespace/registering-a-subnamespace.md) with the same name in different namespaces. For example, you can create the subnamespaces `foo.bar` and `foo2.bar`.
 
 Namespaces can have up to `3` levels, a namespace and its two levels of subnamespace domains. A subnamespaces has the same duration as its parent namespace.
 
@@ -32,8 +31,8 @@ The block [receipts](../protocol/receipt.md) store the resolution of the alias f
 
 Restrictions:
 
-- An account can only associate a name with one account or mosaic, but those can have many aliases linked.
-- An account can assign a name to any account that [permits receiving](./account-restriction.md) AddressNamespaceTransactions. In contrast, if the account wants to assign the alias to a mosaicId, it should be the creator of the mosaic.
+- A namespace can be associated with only one account or mosaic, but each account or mosaic can be linked to multiple namespaces.
+- An account can assign a name to any account that permits receiving `AddressNamespaceTransactions`. In contrast, if the account wants to assign the alias to a mosaicId, it should be the creator of the mosaic.
 - An account can only link the alias to a mosaicId when the account is the creator of the mosaic.
 
 ## Duration
@@ -55,7 +54,7 @@ When the grace period ends, the existing aliases and subnamespaces are pruned, b
 
 ## Cost
 
-The cost of creating a namespace is [configurable per network](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties). By default, registering a namespace costs `1 cat.currency per block` plus transactions fees. Registering a subnamespace has a fixed cost of `100 cat.currency` plus transaction fees.
+The cost of creating a namespace is [configurable per network](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties). By default, registering a namespace costs `1 xpx per block` plus transactions fees. Registering a subnamespace has a fixed cost of `100 xpx` plus transaction fees.
 
 
 ## Example

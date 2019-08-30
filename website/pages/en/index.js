@@ -15,34 +15,34 @@ const GridBlock = CompLibrary.GridBlock;
 
 class HomeSplash extends React.Component {
   render() {
-    const {siteConfig, language = ''} = this.props;
-    const {baseUrl, docsUrl} = siteConfig;
+    const { siteConfig, language = '' } = this.props;
+    const { baseUrl, docsUrl } = siteConfig;
     const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
     const langPart = `${language ? `${language}/` : ''}`;
     const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
 
     return (
-        <div className="home jumbotron text-center gap">
-          <div className="inner">
-            <h1>Start building apps on ProximaX Blockchain Platform</h1>
-            <h6>ProximaX Sirius-Chain gives you direct access to a specialised set of <b>tested</b> and <b>secure on-blockchain features</b> using your favourite <b>programming language</b>.
+      <div className="home jumbotron text-center gap">
+        <div className="inner">
+          <h1>Start building apps on ProximaX Blockchain Platform</h1>
+          <h6>ProximaX Sirius-Chain gives you direct access to a specialised set of <b>tested</b> and <b>secure on-blockchain features</b> using your favourite <b>programming language</b>.
             </h6>
-            <p>ProximaX Sirius-Chain Version <span>0.1.0</span> &mdash; NEW UPDATE! </p>
-          </div>
+          <p>ProximaX Sirius-Chain Version <span>0.2.0</span> &mdash; NEW UPDATE! </p>
         </div>
+      </div>
     );
   }
 }
 
-class BriefDef extends React.Component{
-  render(){
+class BriefDef extends React.Component {
+  render() {
 
     return (
       <section className="container text-center">
         <div className="briefDef ">
           <p>
-            ProximaX Sirius is a <b>developer-friendly blockchain platform</b>. 
-            The latest ProximaX version, Sirius-Chain, gives you direct access 
+            ProximaX Sirius is a <b>developer-friendly blockchain platform</b>.
+            The latest ProximaX version, Sirius-Chain, gives you direct access
             to a specialised set of <b>tested</b> and <b>secure on-blockchain features</b> using your favourite <b>programming languages</b>.
           </p>
         </div>
@@ -51,8 +51,8 @@ class BriefDef extends React.Component{
   }
 }
 
-class ExtraScript extends React.Component{
-  render(){
+class ExtraScript extends React.Component {
+  render() {
 
     return (
       <script src="../../js/custom.js"></script>
@@ -62,8 +62,8 @@ class ExtraScript extends React.Component{
 
 class Index extends React.Component {
   render() {
-    const {config: siteConfig, language = ''} = this.props;
-    const {baseUrl, docsUrl} = siteConfig;
+    const { config: siteConfig, language = '' } = this.props;
+    const { baseUrl, docsUrl } = siteConfig;
 
     const CardBlock_twoColumn = props => (
       <Container
@@ -78,27 +78,27 @@ class Index extends React.Component {
       const cards = cardProps.cardsData
         .map(cardInfo => (
           <a className="blockElement alignCenter imageAlignTop fourByGridBlock" href={cardInfo.link} key={cardInfo.link} >
-              <div className="card">
-                <div className="blockImage">
-                  <img src={cardInfo.image} />
-                </div>
-                <div className="blockContent">
-                  <h2>
-                    <div>
-                      <p>{cardInfo.title}</p>
-                    </div>
-                  </h2>
+            <div className="card">
+              <div className="blockImage">
+                <img src={cardInfo.image} />
+              </div>
+              <div className="blockContent">
+                <h2>
                   <div>
-                    <p>{cardInfo.content}</p>
+                    <p>{cardInfo.title}</p>
                   </div>
+                </h2>
+                <div>
+                  <p>{cardInfo.content}</p>
                 </div>
               </div>
+            </div>
           </a>
         ));
 
-        return (
-          <div className="gridBlock card-container">{cards}</div>
-        );
+      return (
+        <div className="gridBlock card-container">{cards}</div>
+      );
     }
 
     const Cards_firstRow = () => (
@@ -115,7 +115,7 @@ class Index extends React.Component {
             content: 'Easy-to-follow step by step guides with code examples',
             image: `${baseUrl}img/home-guides.png`,
             imageAlign: 'top',
-            link: `${baseUrl + docsUrl}/guides/account/account-overview`,
+            link: `${baseUrl + docsUrl}/guides/guides-overview`,
             title: 'Guides',
           },
           {

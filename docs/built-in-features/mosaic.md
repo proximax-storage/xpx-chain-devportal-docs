@@ -58,7 +58,7 @@ Fractional ownership, along with the ability to trade 24/7, brings additional li
 
 **Note**
 
-We recommend checking out [setting up your workstation][Workstation] before going through the guides.
+We recommend checking out [setting up your workstation](../getting-started/setting-up-workstation.md) before going through the guides.
 
 </div>
 

@@ -27,13 +27,13 @@ An aggregate transaction is **bonded** when it requires signatures from other pa
 
 **Note**
 
-Before announcing an **aggregate bonded transaction**, an account must announce and get confirmed a [hash lock transaction](./aggregate-transaction.md#hash-lock-trahsaction) locking `10 cat.currency`.
+Before announcing an **aggregate bonded transaction**, an account must announce and get confirmed a [hash lock transaction](#hashlocktrahsaction) locking `10 xpx`.
 
 </div>
 
 Once an aggregate bonded is announced, it reaches partial state and notifies its status through WebSockets or HTTP API calls.
 
-Every time a cosignatory signs the transaction and [announces an aggregate bonded cosignature](./aggregate-transaction.md#cosignature), the network checks if all the required cosigners have signed. When all signatures are acquired, the transaction changes to unconfirmed state until the network includes it in a block.
+Every time a cosignatory signs the transaction and [announces an aggregate bonded cosignature](#cosignature), the network checks if all the required cosigners have signed. When all signatures are acquired, the transaction changes to unconfirmed state until the network includes it in a block.
 
 ![Aggregate bonded transaction cycle](/img/aggregate-bonded-transaction-cycle.png "Aggregate bonded transaction cycle")
 <p class="caption">Aggregate bonded transaction cycle</p>
@@ -61,7 +61,7 @@ In this example, Alice is buying tickets with `currency.euro` [mosaic](./mosaic.
 
 Alice sends 10 `currency.euro` to Bob using an app to make payments. But Alice doesn’t own cat.currency to pay the transaction fee.
 
-By creating an aggregate bonded transaction, Alice can convert EUR to `cat.currency` to pay the fee. Now, Alice and Bob can use Sirius-Chain blockchain without ever having to buy or hold `cat.currency`.
+By creating an aggregate bonded transaction, Alice can convert EUR to `xpx` to pay the fee. Now, Alice and Bob can use Sirius-Chain blockchain without ever having to buy or hold `xpx`.
 
 Since the app creator can put their own branding on the open source payment app, Alice and Bob may not even know they are using blockchain.
 
@@ -74,27 +74,27 @@ Since the app creator can put their own branding on the open source payment app,
 
 **Note**
 
-We recommend checking out [setting up your workstation][Workstation] before going through the guides.
+We recommend checking out [setting up your workstation](../getting-started/setting-up-workstation.md) before going through the guides.
 
 </div>
 
-- [Sending payouts with aggregate complete transaction][Aggregate-complete]
+- [Sending payouts with aggregate complete transaction](../guides/aggregate-transaction/sending-payouts-with-aggregate-complete-transaction.md)
 
     Send transactions to different accounts atomically, using an aggregate complete transaction.
 
-- [Creating an escrow with aggregate bonded transaction][Aggregate-escrow]
+- [Creating an escrow with aggregate bonded transaction](../guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction.md)
 
     Learn about aggregate bonded transactions, by creating an escrow.
 
-- [Asking for mosaics with aggregate bonded transaction][Aggregate-ask-mosaic]
+- [Asking for mosaics with aggregate bonded transaction](../guides/aggregate-transaction/asking-for-mosaics-with-aggregate-bonded-transaction.md)
 
     Ask an account to send you funds using an aggregate bonded transaction.
 
-- [Signing announced aggregate bonded transactions][Signing-aggregate]
+- [Signing announced aggregate bonded transactions](../guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions.md)
 
     You have probably announced an aggregate bonded transaction, but all required cosigners have not signed it yet.
 
-- [Sending a multisig transaction][Send-multisig]
+- [Sending a multisig transaction](../guides/multisig-account/sending-a-multisig-transaction.md)
 
     Send a transaction involving a multisig and learn how an aggregate bonded transaction works.
 
@@ -179,5 +179,4 @@ hash |	32 bytes (binary) |	The aggregate bonded transaction hash that has to be 
 [Aggregate-escrow]: ../guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction.md
 [Aggregate-ask-mosaic]: ../guides/aggregate-transaction/asking-for-mosaics-with-aggregate-bonded-transaction.md
 [Signing-aggregate]: ../guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions.md
-[Auto-sign-aggregate]: ../guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions-automatically.md
 [Send-multisig]: ../guides/multisig-account/sending-a-multisig-transaction.md

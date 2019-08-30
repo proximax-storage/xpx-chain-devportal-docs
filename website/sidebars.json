@@ -11,20 +11,22 @@
       "built-in-features/namespace",
       "built-in-features/transfer-transaction",
       "built-in-features/aggregate-transaction",
-      "built-in-features/account-restriction",
+      "built-in-features/account-filter",
       "built-in-features/multisig-account",
       "built-in-features/cross-chain-swaps",
       "built-in-features/metadata",
-      "built-in-features/super-contract"
+      "built-in-features/super-contracts"
     ],
     "Protocol": [
       "protocol/cryptography",
       "protocol/block",
       "protocol/transaction",
-      "protocol/validating",
+      "protocol/harvesting",
+      "protocol/inflation",
       "protocol/receipt",
       "protocol/node",
-      "protocol/proof-of-greed"
+      "protocol/proof-of-greed",
+      "protocol/update-mechanism"
     ],
     "REST API": [
       "rest-api/rest-api-overview",
@@ -61,8 +63,8 @@
       "guides/account/getting-the-amount-of-xpx-sent-to-an-account",
       "guides/account/reading-transactions-from-an-account"
     ],
-    "Account Restriction": [
-      "guides/account-restriction/preventing-spam-attack"
+    "Account Filter": [
+      "guides/account-filter/preventing-spam-attack"
     ],
     "Aggregate Transaction": [
       "guides/aggregate-transaction/sending-payouts-with-aggregate-complete-transaction",

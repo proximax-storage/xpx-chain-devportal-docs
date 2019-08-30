@@ -4,14 +4,14 @@ title: SDK Development
 ---
 A key objective is that interoperability becomes a natural design of the XPX-Chain-SDK. Follow this guideline to collaborate creating a XPX-Chain-SDK, achieving the best quality with the less effort.
 
-## Learning about Sirius-Chain (Sirius-Chain)
+## Learning about Sirius-Chain
 
 In case you haven’t used XPX-Chain-SDK or Sirius-Chain in general, we encourage you to:
 
 1. Review the technical documentation to become familiar with the [Sirius-Chain built-in features](../built-in-features/account.md).
-2. Setup the [Sirius-Chain in local environment via docker](#) or enroll the [beta program](#) to access a Sirius-Chain Test Net without the need to run it yourself.
+2. Setup the [Sirius-Chain in local environment via docker](../getting-started/setting-up-workstation.md) or enroll the [beta program](../getting-started/setting-up-workstation.md) to access a Sirius-Chain Test Net without the need to run it yourself.
 3. [Check the API reference](../rest-api/overview.md#requests) and play with the API endpoints.
-4. Become familiar with the current [xpx-chain-sdk via code examples](../built-in-features/account.md) & [xpx-chain-cli](../client/overview.md) .
+4. Become familiar with the current [xpx-chain-sdk via code examples](../guides/overview.md) & [xpx-chain-cli](../client/overview.md) .
 
 <!-- (5. [Join](https://join.slack.com/t/xpx-chain/shared_invite/enQtMzY4MDc2NTg0ODgyLTFhZjgxM2NhYTQ1MTY1Mjk0ZDE2ZTJlYzUxYWYxYmJlYjAyY2EwNGM5NzgxMjM4MGEzMDc5ZDIwYTgzZjgyODM) our Slack to ask ProximaX Sirius-Chain related questions.)
 -->
@@ -34,9 +34,9 @@ Regularly check the [Changelog](https://github.com/proximax-storage/java-xpx-cha
 
 ## Creating the project
 
-1. Add a README with the instructions to install the SDK. Find `here a template`.
-2. Add a [Code of Conduct](https://help.github.com/articles/adding-a-code-of-conduct-to-your-project/). Find `here an example`.
-3. Add a [Contributors guidelines](https://help.github.com/articles/setting-guidelines-for-repository-contributors/) to help others know how they can help you. Find `here a CONTRIBUTING.md template`.
+1. Add a README with the instructions to install the SDK.
+2. Add a [Code of Conduct](https://help.github.com/articles/adding-a-code-of-conduct-to-your-project/).
+3. Add a [Contributors guidelines](https://help.github.com/articles/setting-guidelines-for-repository-contributors/) to help others know how they can help you.
 4. Setup the Continuous Integration system. We use [travis-ci](https://travis-ci.org/), but feel free to use the one suits you best.
 
 A project with good test coverage is more likely to be used and trusted by the developers.

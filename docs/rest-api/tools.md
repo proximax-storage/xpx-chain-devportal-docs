@@ -9,7 +9,7 @@ Use one of the following tools to interact with Sirius-Chain REST API, particula
 The **Sirius-Chain Software Development Kit** is the primary software development tool to create Sirius-Chain components, such as additional tools, libraries or applications.
 
 - [Reference](../sdks/overview.md)
-- [Guides](../guides/account/overview.md)
+- [Guides](../guides/overview.md)
 
 ## Insomnia REST
 

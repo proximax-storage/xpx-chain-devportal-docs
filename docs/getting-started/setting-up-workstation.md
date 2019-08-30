@@ -25,7 +25,7 @@ Node Description | Network Type| Node REST API URL | Address Prefix (1st Letter)
 -----------------|-------------|-------------------|------------------------
 Public Test Network node | TEST_NET | http://bctestnet1.xpxsirius.io:3000 | V
 Private Test Network node | PRIVATE_TEST | http://bcdev1.xpxsirius.io:3000 | W
-Private Network Node (internal demo node) | PRIVATE | http://siriusapi1.demo.xpxsirius.io <br> Please follow [instruction](#accessing-our-private-net) below to gain access. | Z
+Private Network Node (internal demo node) | PRIVATE | http://siriusapi1.demo.xpxsirius.io <br> Please follow [instruction](#accessing-our-private-net) to gain access. | Z
 
 #
 You can use our Sirius Chain REST API directly with respective url and network type as above. Besides, you can use your own node with your own API URL and network type if you happen to have one.

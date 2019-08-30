@@ -2,21 +2,22 @@
 id: receipt
 title: Receipt
 ---
+
 Conditional state changes in the background enable complex transactions.
 
-For example, a [hash lock](../built-in-features/aggregate-transaction.md#hashlocktransaction) concludes as soon as the [aggregate bonded transaction](../built-in-features/aggregate-transaction.md) is confirmed. When the locked funds are automatically returned to the account, there is no additional [transaction](./transaction.md) recorded. This might appear as a hidden change that increases the [account](../built-in-features/account.md) balance. Receipts provide proof for every hidden change.
+For example, a [hash lock](../built-in-features/aggregate-transaction.md#hashlocktransaction) concludes as soon as the [aggregate bonded transaction](../built-in-features/aggregate-transaction.md#aggregate-bonded) is confirmed. When the locked funds are automatically returned to the account, there is no additional [transaction](./transaction.md) recorded. This might appear as a hidden change that increases the [account](../built-in-features/account.md) balance. Receipts provide proof for every hidden change.
 
 The collection of receipts are hashed into a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree) and linked to a [block](./block.md). The block header stores the root hash, which is different from zero when the block has receipts.
 
 ## Transaction statement
 
-A [transaction statement](./receipt.md) is a collection of receipts linked with a transaction in a particular block. Statements can include receipts with the following basic types:
+A transaction statement is a collection of receipts linked with a transaction in a particular block. Statements can include receipts with the following basic types:
 
 - **Balance Transfer**: A mosaic transfer was triggered.
 - **Balance Change**: A mosaic credit or debit was triggered.
 - **Artifact Expiry**: An artifact (e.g. [namespace](../built-in-features/namespace.md), [mosaic](../built-in-features/mosaic.md)) expired.
 
-## Alias resolution
+## Resolution statement
 
 When a transaction includes an [alias](../built-in-features/namespace.md), a so called [resolution statement](#resolutionstatement) reflects the resolved value for that block:
 
@@ -32,7 +33,7 @@ Sirius-Chain records invisible state changes for the following entities.
 **Id** | 	**Receipt**              |	**Type**                                   |	**Description**
 -------|---------------------------|---------------------------------------------|-------------------
 **Core**      ||||
-0x4321 |	Validate_Fee             |	[BalanceCredit](#balancechangereceipt)     |	The recipient, account and amount of fees received for validating a block. It is recorded when a block is [validated](./validating.md).
+0x4321 |	Validate_Fee             |	[BalanceCredit](#balancechangereceipt)     |	The recipient, account and amount of fees received for validating a block. It is recorded when a block is [harvesting](./harvesting.md).
 0x43F1 |	Address_Alias_Resolution |	[Alias Resolution](#resolutionstatement)   |	The unresolved and resolved [alias](../built-in-features/namespace.md). It is recorded when a transaction indicates a valid address alias instead of an address.
 0x43F2 |	Mosaic_Alias_Resolution  |	[Alias Resolution](#resolutionstatement)   |	The unresolved and resolved alias. It is recorded when a transaction indicates a valid mosaic alias instead of a mosaicId.
 0x43E1 |	Transaction_Group        |	[Aggregate](#transactionstatement)         |	A collection of state changes for a given source. It is recorded when a state change receipt is issued.

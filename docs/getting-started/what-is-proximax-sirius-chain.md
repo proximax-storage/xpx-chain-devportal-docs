@@ -4,7 +4,7 @@ title: What is ProximaX Sirius-Chain
 ---
 ## Blockchain Reimagined and Evolved
 
-[ProximaX](https://proximax.io/) Sirius-Chain is a developer-friendly blockchain platform. Rather than force you to write your own “smart contract” code from scratch, ProximaX gives you direct access to a specialized set of tested and secure on-blockchain ![features](../built-in-features/account.md).
+[ProximaX](https://proximax.io/) Sirius-Chain is a developer-friendly blockchain platform. Rather than force you to write your own “smart contract” code from scratch, ProximaX gives you direct access to a specialized set of tested and secure on-blockchain [features](../built-in-features/account.md).
 
 Sirius-Chain is suitable for an amazing variety of solutions of different classes, such as direct public transactions via a streamlined smartphone app, efficient cloud services that connect client or web applications, or a high-performance permissioned enterprise back-end for business-critical record keeping.
 

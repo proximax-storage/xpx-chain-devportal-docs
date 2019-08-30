@@ -19,10 +19,10 @@ title: Guides
 - [Linking a namespace to an address](./namespace/linking-a-namespace-to-account.md)
   Link a namespace to an account.
 
-## Account Restriction
+## Account Filter
 
-- [Preventing spam attacks with account restrictions](./account-restriction/preventing-spam-attacks.md)
-  Learn how to add and remove account restrictions.
+- [Preventing spam attacks with account filters](./account-filter/preventing-spam-attacks.md)
+  Learn how to add and remove account filters.
 
 ## Aggregate Transaction
 

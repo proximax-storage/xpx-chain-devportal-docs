@@ -13,7 +13,7 @@ The block creating currency mosaics record an inflation receipt. The receipt gat
 
 ## Configuration
 
-The [minimum amount](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-inflation.properties) defines the amount of currency mosaics created per block. Besides, the incrementing ratio can vary depending on the block height. The last height determines the amount of inflation per block that will be created from then on.
+The [inflation configuration](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-inflation.properties) defines the amount of currency mosaics created per block. Besides, the incrementing ratio can vary depending on the block height. The last height determines the amount of inflation per block that will be created from then on.
 
 ```
 starting-at-height-1 = 500
