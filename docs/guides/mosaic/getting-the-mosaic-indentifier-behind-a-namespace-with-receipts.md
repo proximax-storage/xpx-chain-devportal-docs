@@ -1,5 +1,5 @@
 ---
-id: getting-the-mosaic-identifier-begind-a-namespace-with-receipts
+id: getting-the-mosaic-identifier-behind-a-namespace-with-recepits
 title: Getting the asset identifier behind a namespace with receipts
 ---
 

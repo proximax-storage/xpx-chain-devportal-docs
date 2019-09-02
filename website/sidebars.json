@@ -64,7 +64,7 @@
       "guides/account/reading-transactions-from-an-account"
     ],
     "Account Filter": [
-      "guides/account-filter/preventing-spam-attack"
+      "guides/account-filter/preventing-spam-attacks"
     ],
     "Aggregate Transaction": [
       "guides/aggregate-transaction/sending-payouts-with-aggregate-complete-transaction",
