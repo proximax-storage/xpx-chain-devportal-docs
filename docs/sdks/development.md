@@ -18,7 +18,7 @@ In case you haven’t used XPX-Chain-SDK or Sirius-Chain in general, we encourag
 
 ## Development
 
-You can base your work in [TypeScript](https://github.com/proximax-storage/tsjs-xpx-chain-sdk) and [Java](https://github.com/proximax-storage/java-xpx-chain-sdk) SDKs. The TypeScript version is the first SDK getting the latest updates. Meanwhile, Java takes longer to be updated.
+You can base your work in [TypeScript](https://github.com/proximax-storage/tsjs-xpx-chain-sdk) and [Java](https://github.com/proximax-storage/java-xpx-chain-sdk) SDKs. Meanwhile, Java takes longer to be updated.
 
 Unfortunately, TypeScript version has one specific implementation detail: the low level implementation is separated from the SDK, called [js-xpx-chain-library](https://github.com/proximax-storage/js-xpx-chain-library). There was a need to create this low-level library to perform specific chain testing.
 
