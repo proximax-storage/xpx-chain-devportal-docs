@@ -158,7 +158,7 @@ This section is incomplete.
 
 SDKs need to be adopted by other developers. As a contributor, no one knows better than you how a determined SDK works. Consider helping others and spread the usage of the SDK by providing [the following documentation](./documentation.md).
 
-[comment]: # (## Publishing the SDK as official
+### Publishing the SDK as official
 
 When you open-source your code, [submit the repository to this page](./languages.md).
 

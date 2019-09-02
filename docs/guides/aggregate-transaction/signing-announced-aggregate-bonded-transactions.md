@@ -9,7 +9,7 @@ This guide will show you how to cosign aggregate bonded transactions that requir
 
 ## Prerequisites
 
-- Finish [creating an escrow with aggregate bonded transaction guide](https://bcdocs.xpxsirius.io/guides/transaction/creating-an-escrow-with-aggregate-bonded-transaction.html)
+- Finish [creating an escrow with aggregate bonded transaction guide](./creating-an-escrow-with-aggregate-bonded-transaction.md)
 - Have received an aggregate bounded transaction
 - XPX-Chain-SDK
 - A text editor or IDE
