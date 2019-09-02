@@ -52,6 +52,8 @@ blockTransactionHash | 32 bytes (binary) |	The transactions included in a block 
 blockReceiptsHash | 32 bytes (binary) |	The collection of [receipts](./receipt.md) are hashed into a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree) and linked to a [block](#). The block header stores the root hash.
 stateHash |	32 bytes (binary) |	The state of the blockchain is stored in RocksDB for each block, forming a [patricia tree](https://en.wikipedia.org/wiki/Radix_tree). The root of the tree summarises the state of the blockchain for a given block.
 beneficiaryPublicKey | 32 bytes (binary) | The public key of the optional beneficiary designated by validator.
+feeInterest | uint32 | The part of the transaction fee harvester is willing to get. From 0 up to `feeInterestDenominator`. The customer gets (feeInterest / feeInterestDenominator)'th part of the maximum transaction fee.
+feeInterestDenominator | uint32 | Denominator of the transaction fee.
 
 **Version**: The higher byte represents the network identifier.
 
