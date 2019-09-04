@@ -11,7 +11,7 @@ In Sirius-Chain, accounts can link their registered namespaces to other accounts
 
 Imagine a ticket vendor sending tickets to their customers on the NEM blockchain. The company needs to send `1 0dc67fbe1cad29e3` to `SCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6`. With aliases, it can define the same transaction as sending `1 ticketsales.event1.ticket` to `@alice` instead.
 
-![Recognizable mosaics and addresses](img/TODO.png "Recognizable mosaics and addresses")
+![Recognizable mosaics and addresses](img/recognizable-mosaics-and-addresses.png "Recognizable mosaics and addresses")
 
 <p class=caption>Recognizable mosaics and addresses</p>
 

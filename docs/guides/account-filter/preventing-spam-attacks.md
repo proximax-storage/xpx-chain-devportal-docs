@@ -13,7 +13,7 @@ When the quality verification process concludes, an operator sends a [quality se
 
 The final customers can review the product mosaics scanning a QR code. For that reason, the company only wants to show related transactions, avoiding that others spam their products with non-related information.
 
-![Blocking spam attacks](img/TODO.png "Blocking spam attacks")
+![Blocking spam attacks](img/blocking-spam-attacks.png "Blocking spam attacks")
 
 <p class=caption>Blocking spam attacks</p>
 
