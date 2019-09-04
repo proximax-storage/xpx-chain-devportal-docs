@@ -9,12 +9,12 @@
       "built-in-features/account",
       "built-in-features/mosaic",
       "built-in-features/namespace",
+      "built-in-features/metadata",
       "built-in-features/transfer-transaction",
       "built-in-features/aggregate-transaction",
       "built-in-features/account-filter",
       "built-in-features/multisig-account",
       "built-in-features/cross-chain-swaps",
-      "built-in-features/metadata",
       "built-in-features/super-contracts"
     ],
     "Protocol": [
