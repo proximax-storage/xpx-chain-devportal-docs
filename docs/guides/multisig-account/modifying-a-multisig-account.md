@@ -33,18 +33,20 @@ One of the accounts, for example Alice’s, will announce a [modify multisig acc
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig("http://localhost:3000", sdk.MijinTest, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
+
+// Use the default http client
 client := sdk.NewClient(nil, conf)
 
-multisig, err := sdk.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"), networkType)
+multisig, err := client.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatory, err := sdk.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_PRIVATE_KEY"), networkType)
+cosignatory, err := client.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
@@ -57,7 +59,7 @@ if err != nil {
 <!--Golang-->
 ```go
 modifyMultisigAccountTransaction, err := client.NewModifyMultisigAccountTransaction(
-    sdk.NewDeadline(deadline),
+    sdk.NewDeadline(time.Hour),
     1,
     0,
     []*sdk.MultisigCosignatoryModification{ },
@@ -78,19 +80,19 @@ As only one cosignature is required (1-of-2), Alice can sign the transaction and
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-modifyMultisigAccountTransaction.ToAggregate(multisig.PublicAccount)
+modifyMultisigAccountTransaction.ToAggregate(multisig)
 
 aggregateTransaction, err := client.NewCompleteAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{modifyMultisigAccountTransaction})
 if err != nil {
     panic(err)
 }
 
-signedTransaction, err := account.Sign(aggregateTransaction)
+signedTransaction, err := cosignatory.Sign(aggregateTransaction)
 if err != nil {
     panic(err)
 }
 
-_, err = client.Transaction.Announce(ctx, signedTransaction)
+_, err = client.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
     panic(err)
 }
@@ -120,28 +122,31 @@ Alice and Bob want to add Carol as a cosignatory of the multisig account to achi
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig("http://localhost:3000", sdk.MijinTest, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
+
+// Use the default http client
 client := sdk.NewClient(nil, conf)
 
-multisig, err := sdk.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"), networkType)
+
+multisig, err := client.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatory, err := sdk.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_PRIVATE_KEY"), networkType)
+cosignatory, err := client.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
 
-newCosignatory, err := sdk.NewAccountFromPrivateKey(os.Getenv("NEW_COSIGNATORY_PRIVATE_KEY"), networkType)
+newCosignatory, err := client.NewAccountFromPrivateKey(os.Getenv("NEW_COSIGNATORY_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
 
-multisigCosignatoryModification := {sdk.Add, newCosignatory.PublicAccount}
+multisigCosignatoryModification := sdk.MultisigCosignatoryModification{sdk.Add, newCosignatory.PublicAccount}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -151,11 +156,11 @@ multisigCosignatoryModification := {sdk.Add, newCosignatory.PublicAccount}
 <!--Golang-->
 ```go
 modifyMultisigTransaction, err := client.NewModifyMultisigAccountTransaction(
-    sdk.NewDeadline(deadline),
+    sdk.NewDeadline(time.Hour),
     0,
     0,
     []*sdk.MultisigCosignatoryModification{
-        multisigCosignatoryModification
+        &multisigCosignatoryModification,
     },
 )
 if err != nil {
@@ -169,7 +174,7 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-modifyMultisigTransaction.ToAggregate(multisig.PublicAccount)
+modifyMultisigTransaction.ToAggregate(multisig)
 
 aggregateTransaction, err := client.NewBondedAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{modifyMultisigTransaction})
 if err != nil {
@@ -192,7 +197,7 @@ lockFundsTransaction, err := client.NewLockFundsTransaction(
     sdk.NewDeadline(time.Hour),
     sdk.XpxRelative(10),
     sdk.Duration(1000),
-    signedAggregateBoundedTransaction
+    signedAggregateTransaction,
 )
 if err != nil {
     panic(err)
@@ -203,7 +208,7 @@ if err != nil {
     panic(err)
 }
 
-_, err := client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
+_, err = client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
 if err != nil {
     panic(err)
 }
@@ -246,39 +251,41 @@ The `minRemoval` parameter indicates the number of required signatures to delete
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig("http://localhost:3000", sdk.MijinTest, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
+
+// Use the default http client
 client := sdk.NewClient(nil, conf)
 
-multisig, err := sdk.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"), networkType)
+multisig, err := client.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatory, err := sdk.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_PRIVATE_KEY"), networkType)
+cosignatory, err := client.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatoryToRemove, err := sdk.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_PUBLIC_KEY"), networkType)
+cosignatoryToRemove, err := client.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
 
-multisigCosignatoryModification := {sdk.Remove, cosignatoryToRemove}
+multisigCosignatoryModification := sdk.MultisigCosignatoryModification{sdk.Remove, cosignatoryToRemove}
 
 modifyMultisigAccountTransaction, err := client.NewModifyMultisigAccountTransaction(
-    sdk.NewDeadline(deadline),
+    sdk.NewDeadline(time.Hour),
     0,
     0,
-    []*sdk.MultisigCosignatoryModification{ multisigCosignatoryModification },
+    []*sdk.MultisigCosignatoryModification{ &multisigCosignatoryModification },
 )
 if err != nil {
     panic(err)
 }
-modifyMultisigAccountTransaction.ToAggregate(multisig.PublicAccount)
+modifyMultisigAccountTransaction.ToAggregate(multisig)
 
 aggregateTransaction, err := client.NewCompleteAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{modifyMultisigAccountTransaction})
 if err != nil {
@@ -290,7 +297,7 @@ if err != nil {
     panic(err)
 }
 
-_, err = client.Transaction.Announce(ctx, signedTransaction)
+_, err = client.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
     panic(err)
 }

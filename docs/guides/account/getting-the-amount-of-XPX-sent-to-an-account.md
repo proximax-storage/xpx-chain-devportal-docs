@@ -19,14 +19,15 @@ In this example, we are going to check how many assets of a certain type have we
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(baseUrl, networkType, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
+// Use the default http client
 client := sdk.NewClient(nil, conf)
 
-address, err := sdk.NewAddressFromPublicKey("...", sdk.PUBLIC_TEST)
+address, err := sdk.NewAddressFromPublicKey("...", client.NetworkType())
 if err != nil {
     panic(err)
 }

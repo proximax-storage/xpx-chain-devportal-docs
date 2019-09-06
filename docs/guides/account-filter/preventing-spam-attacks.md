@@ -95,7 +95,7 @@ if err != nil {
     panic(err)
 }
 
-modification := { sdk.AddProperty, accountToBlock.Address, }
+modification := sdk.AccountPropertiesAddressModification{ sdk.AddProperty, address, }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -105,9 +105,9 @@ modification := { sdk.AddProperty, accountToBlock.Address, }
 <!--Golang-->
 ```go
 transaction, err := client.NewAccountPropertiesAddressTransaction(
-  sdk.NewDeadline(deadline),
+  sdk.NewDeadline(time.Hour),
   sdk.BlockAddress,
-  []*sdk.AccountPropertiesAddressModification{ modification },
+  []*sdk.AccountPropertiesAddressModification{ &modification },
 )
 if err != nil {
     panic(err)
@@ -120,7 +120,7 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-productAccount, err := sdk.NewAccountPromPrivateKey(os.Getenv("PRODUCT_PRIVATE_KEY"))
+productAccount, err := client.NewAccountFromPrivateKey(os.Getenv("PRODUCT_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
@@ -158,12 +158,17 @@ Thus, you could narrow the type of transactions that the product can receive fro
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-companyShareMosaicId, err := sdk.NewMosaicId(srtconv.ParseUnit("2b890153b7a18ff2", 16, 64))
+id, err := strconv.ParseInt("2b890153b7a18ff2", 16, 64)
 if err != nil {
     panic(err)
 }
 
-modification := { sdk.AddProperty, sdk.XpxNamespaceId, }
+companyShareMosaicId, err := sdk.NewMosaicId(uint64(id))
+if err != nil {
+    panic(err)
+}
+
+modification := &sdk.AccountPropertiesMosaicModification{ sdk.AddProperty, companyShareMosaicId, }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -173,7 +178,7 @@ modification := { sdk.AddProperty, sdk.XpxNamespaceId, }
 <!--Golang-->
 ```go
 transaction, err := client.NewAccountPropertiesMosaicTransaction(
-    sdk.NewDeadline(deadline),
+    sdk.NewDeadline(time.Hour),
     sdk.BlockMosaic,
     []*sdk.AccountPropertiesMosaicModification{modification},
 )
@@ -188,7 +193,7 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-productAccount, err := sdk.NewAccountPromPrivateKey(os.Getenv("PRODUCT_PRIVATE_KEY"))
+productAccount, err := client.NewAccountFromPrivateKey(os.Getenv("PRODUCT_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
@@ -220,7 +225,8 @@ if err != nil {
     panic(err)
 }
 
-modification := { sdk.RemoveProperty, accountToBlock.Address, }
+modification := &sdk.AccountPropertiesAddressModification{ sdk.RemoveProperty, address, }
+
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -230,7 +236,7 @@ modification := { sdk.RemoveProperty, accountToBlock.Address, }
 <!--Golang-->
 ```go
 transaction, err := client.NewAccountPropertiesAddressTransaction(
-  sdk.NewDeadline(deadline),
+  sdk.NewDeadline(time.Hour),
   sdk.AllowAddress,
   []*sdk.AccountPropertiesAddressModification{ modification },
 )
@@ -245,7 +251,7 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-productAccount, err := sdk.NewAccountPromPrivateKey(os.Getenv("PRODUCT_PRIVATE_KEY"))
+productAccount, err := client.NewAccountFromPrivateKey(os.Getenv("PRODUCT_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }

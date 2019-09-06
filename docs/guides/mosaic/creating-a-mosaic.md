@@ -12,7 +12,7 @@ Mosaics can be used to represent any asset in the blockchain such as objects, ti
 ## Prerequisites
 
 - Finish [registering a namespace guide](../namespace/registering-a-namespace.md)
-- have an account with `xpx`
+- have an `account` with `xpx`
 - XPX-Chain-SDK or XPX-Chain-CLI
 - A text editor or IDE
 - An account with XPX and at least one namespace
@@ -39,7 +39,7 @@ mosaicDefinitionTrx, err := client.NewMosaicDefinitionTransaction(
     sdk.NewDeadline(time.Hour),
     nonce,
     account.PublicAccount.PublicKey,
-    sdk.NewMosaicProperties(true, true, 0, sdk.Duration(1000))
+    sdk.NewMosaicProperties(true, true, 0, sdk.Duration(1000)),
 )
 if err != nil {
     panic(err)
@@ -61,7 +61,7 @@ mosaicSupplyChangeTrx, err := client.NewMosaicSupplyChangeTransaction(
     sdk.NewDeadline(time.Hour),
     mosaic,
     sdk.Increase,
-    sdk.Amount(1000000)
+    sdk.Amount(1000000),
 )
 if err != nil {
     panic(err)
@@ -82,20 +82,17 @@ Sirius-Chain mainly works with absolute amounts. To get an absolute amount, mult
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-mosaic, err := sdk.NewMosaicIdFromNonceAndOwner(nonce, account.PublicAccount.PublicKey)
-if err != nil {
-    panic(err)
-}
+// Convert an aggregate transaction to an inner transaction including transaction signer.
+mosaicDefinitionTrx.ToAggregate(account.PublicAccount)
+mosaicSupplyChangeTrx.ToAggregate(account.PublicAccount)
 
-mosaicSupplyChangeTrx, err := client.NewMosaicSupplyChangeTransaction(
+// Create an aggregate complete transaction
+aggregateTransaction, err := client.NewCompleteAggregateTransaction(
+    // The maximum amount of time to include the transaction in the blockchain.
     sdk.NewDeadline(time.Hour),
-    mosaic,
-    sdk.Increase,
-    sdk.Amount(1000000)
+    // Inner transactions
+    []sdk.Transaction{mosaicDefinitionTrx, mosaicSupplyChangeTrx,},
 )
-if err != nil {
-    panic(err)
-}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 

@@ -28,23 +28,31 @@ Following this guide you will learn to create the following 3-level multisig acc
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-multisig2, err := sdk.NewAccountFromPrivateKey(os.Getenv("MULTISIG_2_ACCOUNT_PRIVATE_KEY"), networkType)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
-cosignatory5, err := sdk.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_5_PUBLIC_KEY"), networkType)
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+multisig2, err := client.NewAccountFromPrivateKey(os.Getenv("MULTISIG_2_ACCOUNT_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatory6, err := sdk.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_6_PUBLIC_KEY"), networkType)
+cosignatory5, err := client.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_5_PUBLIC_KEY"))
+if err != nil {
+    panic(err)
+}
+
+cosignatory6, err := client.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_6_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
 
 convertMultisigAccount2Transaction, err := client.NewModifyMultisigAccountTransaction(
-    sdk.NewDeadline(deadline),
+    sdk.NewDeadline(time.Hour),
     1,
     1,
     []*sdk.MultisigCosignatoryModification{
@@ -61,28 +69,28 @@ convertMultisigAccount2Transaction, err := client.NewModifyMultisigAccountTransa
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-multisig3, err := sdk.NewAccountFromPrivateKey(os.Getenv("MULTISIG_3_ACCOUNT_PRIVATE_KEY"), networkType)
+multisig3, err := client.NewAccountFromPrivateKey(os.Getenv("MULTISIG_3_ACCOUNT_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatory7, err := sdk.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_7_PUBLIC_KEY"), networkType)
+cosignatory7, err := client.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_7_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatory8, err := sdk.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_8_PUBLIC_KEY"), networkType)
+cosignatory8, err := client.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_8_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatory4, err := sdk.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_4_PUBLIC_KEY"), networkType)
+cosignatory4, err := client.NewAccountFromPublicKey(os.Getenv("COSIGNATORY_4_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
 
 convertMultisigAccount3Transaction, err := client.NewModifyMultisigAccountTransaction(
-    sdk.NewDeadline(deadline),
+    sdk.NewDeadline(time.Hour),
     2,
     1,
     []*sdk.MultisigCosignatoryModification{
@@ -100,13 +108,13 @@ convertMultisigAccount3Transaction, err := client.NewModifyMultisigAccountTransa
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-multisig1, err := sdk.NewAccountFromPrivateKey(os.Getenv("MULTISIG_1_ACCOUNT_PRIVATE_KEY"), networkType)
+multisig1, err := client.NewAccountFromPrivateKey(os.Getenv("MULTISIG_1_ACCOUNT_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
 
 convertMultisigAccount1Transaction, err := client.NewModifyMultisigAccountTransaction(
-    sdk.NewDeadline(deadline),
+    sdk.NewDeadline(time.Hour),
     3,
     1,
     []*sdk.MultisigCosignatoryModification{
@@ -123,12 +131,12 @@ convertMultisigAccount1Transaction, err := client.NewModifyMultisigAccountTransa
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-convertMultisigAccount1Transaction.ToAggregate(multisig1)
-convertMultisigAccount2Transaction.ToAggregate(multisig2)
-convertMultisigAccount3Transaction.ToAggregate(multisig3)
+convertMultisigAccount1Transaction.ToAggregate(multisig1.PublicAccount)
+convertMultisigAccount2Transaction.ToAggregate(multisig2.PublicAccount)
+convertMultisigAccount3Transaction.ToAggregate(multisig3.PublicAccount)
 aggregateTransaction, err := client.NewCompleteAggregateTransaction(
     sdk.NewDeadline(time.Hour),
-    []sdk.Transaction{convertMultisigAccount1Transaction, convertMultisigAccount2Transaction, convertMultisigAccount3Transaction}
+    []sdk.Transaction{convertMultisigAccount1Transaction, convertMultisigAccount2Transaction, convertMultisigAccount3Transaction},
 )
 if err != nil {
     panic(err)
@@ -143,7 +151,7 @@ lockFundsTransaction, err := client.NewLockFundsTransaction(
     sdk.NewDeadline(time.Hour),
     sdk.XpxRelative(10),
     sdk.Duration(1000),
-    signedAggregateTransaction
+    signedAggregateTransaction,
 )
 if err != nil {
     panic(err)
@@ -154,7 +162,7 @@ if err != nil {
     panic(err)
 }
 
-_, err := client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
+_, err = client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
 if err != nil {
     panic(err)
 }

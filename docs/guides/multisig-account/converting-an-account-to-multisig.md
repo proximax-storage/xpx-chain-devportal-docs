@@ -31,23 +31,25 @@ In this guide, you are going to create a 1-of-2 multisig account. In future guid
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig("http://localhost:3000", sdk.MijinTest, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
+
+// Use the default http client
 client := sdk.NewClient(nil, conf)
 
-multisig, err := sdk.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"), networkType)
+multisig, err := client.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatory1, err := sdk.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_1_PRIVATE_KEY"), networkType)
+cosignatory1, err := client.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_1_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatory2, err := sdk.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_2_PRIVATE_KEY"), networkType)
+cosignatory2, err := client.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_2_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
@@ -60,7 +62,7 @@ if err != nil {
 <!--Golang-->
 ```go
 convertIntoMultisigTransaction, err := client.NewModifyMultisigAccountTransaction(
-    sdk.NewDeadline(deadline),
+    sdk.NewDeadline(time.Hour),
     1,
     1,
     []*sdk.MultisigCosignatoryModification{
@@ -79,7 +81,7 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-convertIntoMultisigTransaction.ToAggregate(multisig.PublicAccount)
+convertIntoMultisigTransaction.ToAggregate(multisig)
 
 aggregateTransaction, err := client.NewBondedAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{convertIntoMultisigTransaction})
 if err != nil {
@@ -101,7 +103,7 @@ To make the transaction only valid for your network, include the first block gen
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-signedAggregateBoundedTransaction, err := account.Sign(aggregateTransaction)
+signedAggregateBoundedTransaction, err := cosignatory1.Sign(aggregateTransaction)
 if err != nil {
     panic(err)
 }
@@ -117,13 +119,13 @@ lockFundsTransaction, err := client.NewLockFundsTransaction(
     sdk.NewDeadline(time.Hour),
     sdk.XpxRelative(10),
     sdk.Duration(1000),
-    signedAggregateBoundedTransaction
+    signedAggregateBoundedTransaction,
 )
 if err != nil {
     panic(err)
 }
 
-signedLockFundsTransaction, err := account.Sign(lockFundsTransaction)
+signedLockFundsTransaction, err := cosignatory1.Sign(lockFundsTransaction)
 if err != nil {
     panic(err)
 }
@@ -132,7 +134,6 @@ _, err := client.Transaction.Announce(context.Background(), signedLockFundsTrans
 if err != nil {
     panic(err)
 }
-
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -159,11 +160,7 @@ xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7C
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-address, err := sdk.NewAddressFromRaw("SCSGBN-HYJD6P-KJHACX-3R2BI3-QUMMOY-QSNW5J-ICLK")
-if err != nil {
-    panic(err)
-}
-multisigInfo, err := client.Account.GetMultisigAccountInfo(ctx, address)
+multisigInfo, err := client.Account.GetMultisigAccountInfo(context.Background(), multisig.Address)
 if err != nil {
     panic(err)
 }

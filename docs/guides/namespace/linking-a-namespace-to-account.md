@@ -22,13 +22,20 @@ An account can link a registered [ name ](../../built-in-features/namespace.md) 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-address, err := sdk.NewAddressFromPublicKey("...", sdk.PUBLIC_TEST)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
-name := "foo"
-namespace, err := sdk.NewNamespaceIdFromName(name)
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+address, err := sdk.NewAddressFromRaw(os.Getenv("ADDRESS"))
+if err != nil {
+    panic(err)
+}
+
+namespace, err := sdk.NewNamespaceIdFromName("foo")
 if err != nil {
     panic(err)
 }
@@ -62,8 +69,7 @@ Now you can send transactions to the namespace linked to the account instead of 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-name := "foo"
-namespace, err := sdk.NewNamespaceIdFromName(name)
+namespace, err := sdk.NewNamespaceIdFromName("foo")
 if err != nil {
     panic(err)
 }

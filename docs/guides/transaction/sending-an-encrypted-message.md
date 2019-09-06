@@ -47,23 +47,28 @@ Insert profile name (blank means default and it could overwrite the previous pro
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-alicePrivateKey := "..."
-aliceAccount, err := sdk.NewAccountFromPrivateKey(alicePrivateKey, sdk.TEST_NET)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
-certificatePublicKey := "..."
-certicicatePublicAccount, err := sdk.NewAccountFromPublicKey(certificatePublicKey, sdk.PUBLIC_TEST)
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+aliceAccount, err := client.NewAccountFromPrivateKey(os.Getenv("ALICE_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
 
-enctyptedMessage, err := aliceAccount.EncryptMessage("This message is secret", certicicatePublicAccount)
+certificateAccount, err := client.NewAccountFromPublicKey(os.Getenv("CERTIFICATE_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
 
+encryptedMessage, err := aliceAccount.EncryptMessage("This message is secret", certificateAccount)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -73,10 +78,10 @@ if err != nil {
 <!--Golang-->
 ```go
 transferTransaction, err := client.NewTransferTransaction(
-  sdk.NewDeadline(time.Hour),
-  recipient1,
-  []*sdk.Mosaic{sdk.XpxRelative(10)},
-  enctyptedMessage
+    sdk.NewDeadline(time.Hour),
+    certificateAccount.Address,
+    []*sdk.Mosaic{sdk.XpxRelative(10)},
+    encryptedMessage,
 )
 if err != nil {
     panic(err)
@@ -89,7 +94,7 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-aliceAccount, err := account.sign(transferTransaction)
+signedTransaction, err := aliceAccount.Sign(transferTransaction)
 if err != nil {
     panic(err)
 }
@@ -101,7 +106,7 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-transactionHash, err = client.Transaction.Announce(context.Background(), signedTransaction)
+transactionHash, err := client.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
     panic(err)
 }

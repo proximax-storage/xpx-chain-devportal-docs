@@ -19,7 +19,7 @@ Get the list of [transactions](../../protocol/transaction.md) where an [account]
 ```go
 publicKey := "..."
 
-conf, err := sdk.NewConfig(baseUrl, networkType, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }

@@ -23,12 +23,31 @@ An account can link a registered name (namespace or subnamespace) with a mosaic.
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-mosaic, err := sdk.NewMosaicIdFromNonceAndOwner(nonce, account.PublicAccount.PublicKey)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+mosaicId, err := sdk.NewMosaicIdFromNonceAndOwner(nonce, account.PublicAccount.PublicKey)
 if err != nil {
     panic(err)
 }
 
 namespace, _ := sdk.NewNamespaceIdFromName("foo")
+if err != nil {
+    panic(err)
+}
+
+transaction, err := client.NewMosaicAliasTransaction(
+    sdk.NewDeadline(time.Hour),
+    mosaicId,
+    namespace,
+    sdk.AliasLink,
+  )
+
 if err != nil {
     panic(err)
 }
@@ -40,9 +59,9 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-transaction, err := client.NewAddressAliasTransaction(
+transaction, err := client.NewMosaicAliasTransaction(
     sdk.NewDeadline(time.Hour),
-    mosaic,
+    mosaicId,
     namespace,
     sdk.AliasLink,
   )

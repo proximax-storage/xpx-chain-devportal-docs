@@ -18,11 +18,12 @@ Are you curious to see what happened in the genesis block?
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig("http://localhost:3000", sdk.PUBLIC_TEST, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
+// Use the default http client
 client := sdk.NewClient(nil, conf)
 
 block, err := client.Blockchain.GetBlockByHeight(context.Background(), sdk.Height(1))
@@ -38,11 +39,12 @@ The following snippet returns the height of the latest block.
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig("http://localhost:3000", sdk.PUBLIC_TEST, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
+// Use the default http client
 client := sdk.NewClient(nil, conf)
 
 height, err := client.Blockchain.GetBlockchainHeight(context.Background())

@@ -16,12 +16,12 @@ Get notified when a new [block](../../protocol/block.md) is included.
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-config, err = sdk.NewConfig(ctx, []string{"..."})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
-  panic(err)
+    panic(err)
 }
 
-wsClient, err = websocket.NewClient(ctx, config)
+wsClient, err := websocket.NewClient(context.Background(), conf)
 if err != nil {
   panic(err)
 }

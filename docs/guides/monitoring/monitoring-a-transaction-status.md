@@ -34,7 +34,15 @@ To make sure the transaction is added in a block, you must track the [transactio
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-address, err := sdk.NewAddressFromRaw('SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54')
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+address, err := sdk.NewAddressFromRaw("SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54")
 if err != nil {
     panic(err)
 }
@@ -51,7 +59,7 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-signer, err := sdk.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"))
+signer, err := client.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
@@ -68,12 +76,7 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-config, err = sdk.NewConfig(ctx, []string{"..."})
-if err != nil {
-    panic(err)
-}
-
-wsClient, err = websocket.NewClient(ctx, config)
+wsClient, err := websocket.NewClient(context.Background(), conf)
 if err != nil {
     panic(err)
 }
@@ -86,10 +89,11 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-err := wsClient.AddBlockHandlers(func(block *sdk.BlockInfo) bool {
-    fmt.Println("New block created:", block.Height)
+err = wsClient.AddBlockHandlers(func (info *sdk.BlockInfo) bool {
+    fmt.Printf("Block received with height: %v \n", info.Height)
     return true
 })
+
 if err != nil {
     panic(err)
 }
@@ -101,11 +105,10 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-wsClient.AddStatusHandlers(signer.Address, func(info *sdk.StatusInfo) bool {
-  if info.Hash.Equal(transferTransaction.Hash) {
-      fmt.Println(info.Status)
-  }
-  return true
+err = wsClient.AddStatusHandlers(signer.Address, func (info *sdk.StatusInfo) bool {
+    fmt.Printf("Status: %v \n", info.Status)
+    fmt.Printf("Hash: %v \n", info.Hash)
+    return true
 })
 if err != nil {
     panic(err)
@@ -118,10 +121,8 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-err := wsClient.AddUnconfirmedAddedHandlers(signer.Address, func(info sdk.Transaction) bool {
-    if info.GetAbstractTransaction().TransactionHash.Equal(transferTransaction.Hash) {
-        fmt.Println("Transaction status changed to unconfirmed")
-    }
+err = wsClient.AddUnconfirmedAddedHandlers(signer.Address, func (info sdk.Transaction) bool {
+    fmt.Printf("UnconfirmedAdded Tx Hash: %v \n", info.GetAbstractTransaction().TransactionHash)
     return true
 })
 if err != nil {
@@ -135,10 +136,8 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-err := wsClient.AddConfirmedAddedHandlers(signer.Address, func(info sdk.Transaction) bool {
-    if info.GetAbstractTransaction().TransactionHash.Equal(transferTransaction.Hash) {
-        fmt.Println("Transaction confirmed")
-    }
+err = wsClient.AddConfirmedAddedHandlers(signer.Address, func (info sdk.Transaction) bool {
+    fmt.Printf("ConfirmedAdded Tx Hash: %v \n", info.GetAbstractTransaction().TransactionHash)
     return true
 })
 if err != nil {

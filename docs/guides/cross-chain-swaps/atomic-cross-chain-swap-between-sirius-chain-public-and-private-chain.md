@@ -45,33 +45,33 @@ For that reason, each actor involved should have at least one account in each bl
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-alicePublicChainAccount, err := sdk.NewAccountFromPrivateKey("...")
-if err != nil {
-    panic(err)
-}
-alicePrivateChainAccount, err := sdk.NewAccountFromPrivateKey("...")
-if err != nil {
-    panic(err)
-}
-bobPublicChainAccount, err := sdk.NewAccountFromPrivateKey("...")
-if err != nil {
-    panic(err)
-}
-bobPrivateChainAccount, err := sdk.NewAccountFromPrivateKey("...")
-if err != nil {
-    panic(err)
-}
-
-privateChainConf, err := sdk.NewConfig("http://localhost:3001", sdk.MijinTest, time.Second * 10)
+privateChainConf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 privateChainClient := sdk.NewClient(nil, privateChainConf)
-publicChainConf, err := sdk.NewConfig("http://localhost:3000", sdk.MijinTest, time.Second * 10)
+publicChainConf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3001"})
 if err != nil {
     panic(err)
 }
 publicChainClient := sdk.NewClient(nil, publicChainConf)
+
+alicePublicChainAccount, err := publicChainClient.NewAccountFromPrivateKey("...")
+if err != nil {
+    panic(err)
+}
+alicePrivateChainAccount, err := privateChainClient.NewAccountFromPrivateKey("...")
+if err != nil {
+    panic(err)
+}
+bobPublicChainAccount, err := publicChainClient.NewAccountFromPrivateKey("...")
+if err != nil {
+    panic(err)
+}
+bobPrivateChainAccount, err := privateChainClient.NewAccountFromPrivateKey("...")
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -81,7 +81,7 @@ publicChainClient := sdk.NewClient(nil, publicChainConf)
 <!--Golang-->
 ```go
 proofB := make([]byte, 8)
-_, _ := rand.Read(proofB)
+_, _ = rand.Read(proofB)
 proof := sdk.NewProofFromBytes(proofB)
 secret, err := proof.Secret(sdk.SHA3_256)
 if err != nil {
@@ -106,12 +106,16 @@ mosaicId, err := sdk.NewMosaicId(1234)
 if err != nil {
     panic(err)
 }
-tx1, err := client.NewSecretLockTransaction(
+mosaic, err := sdk.NewMosaic(mosaicId, 10)
+if err != nil {
+    panic(err)
+}
+tx1, err := privateChainClient.NewSecretLockTransaction(
     sdk.NewDeadline(time.Hour),
-    sdk.NewMosaic(sdk.NewMosaic(mosaicId, 10)),
+    mosaic,
     sdk.Duration(96 * 3600 / 15),
     secret,
-    bobPrivateChainAccount.PublicAccount.Address
+    bobPrivateChainAccount.PublicAccount.Address,
 )
 if err != nil {
     panic(err)
@@ -127,7 +131,7 @@ Once announced, this transaction will remain locked until someone discovers the 
 <!--Golang-->
 ```go
 signedTransaction, err := alicePrivateChainAccount.Sign(tx1)
-_, err := client.Transaction.Announce(context.Background(), signedTransaction)
+_, err = privateChainClient.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
     panic(err)
 }
@@ -148,16 +152,21 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-mosaicId, err := sdk.NewMosaicId(4321)
+mosaicId, err = sdk.NewMosaicId(4321)
 if err != nil {
     panic(err)
 }
-tx2, err := client.NewSecretLockTransaction(
+mosaic, err = sdk.NewMosaic(mosaicId, 10)
+if err != nil {
+    panic(err)
+}
+
+tx2, err := publicChainClient.NewSecretLockTransaction(
     sdk.NewDeadline(time.Hour),
-    sdk.NewMosaic(sdk.NewMosaic(mosaicId, 10)),
+    mosaic,
     sdk.Duration(96 * 3600 / 15),
     secret,
-    alicePublicChainAccount.PublicAccount.Address
+    alicePublicChainAccount.PublicAccount.Address,
 )
 if err != nil {
     panic(err)
@@ -178,11 +187,11 @@ The amount of time in which funds can be unlocked should be a smaller time frame
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-signedTransaction, err := bobPublicChainAccount.Sign(tx2)
+signedTransaction, err = bobPublicChainAccount.Sign(tx2)
 if err != nil {
     panic(err)
 }
-_, err := client.Transaction.Announce(context.Background(), signedTransaction)
+_, err = publicChainClient.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
     panic(err)
 }
@@ -194,21 +203,21 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-tx3, err := client.NewSecretProofTransaction(
+tx3, err := publicChainClient.NewSecretProofTransaction(
     sdk.NewDeadline(time.Hour),
     sdk.SHA3_256,
     proof,
-    alicePrivateChainAccount.PublicAccount.Address
+    alicePrivateChainAccount.PublicAccount.Address,
 )
 if err != nil {
     panic(err)
 }
 
-signedTransaction, err := bobPublicChainAccount.Sign(tx3)
+signedTransaction, err = bobPublicChainAccount.Sign(tx3)
 if err != nil {
     panic(err)
 }
-_, err := client.Transaction.Announce(context.Background(), signedTransaction)
+_, err = publicChainClient.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
     panic(err)
 }
@@ -220,21 +229,21 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-tx4, err := client.NewSecretProofTransaction(
+tx4, err := privateChainClient.NewSecretProofTransaction(
     sdk.NewDeadline(time.Hour),
     sdk.SHA3_256,
     proof,
-    bobPrivateChainAccount.PublicAccount.Address
+    bobPrivateChainAccount.PublicAccount.Address,
 )
 if err != nil {
     panic(err)
 }
 
-signedTransaction, err := bobPrivateChainAccount.Sign(tx4)
+signedTransaction, err = bobPrivateChainAccount.Sign(tx4)
 if err != nil {
     panic(err)
 }
-_, err := client.Transaction.Announce(context.Background(), signedTransaction)
+_, err = privateChainClient.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
     panic(err)
 }

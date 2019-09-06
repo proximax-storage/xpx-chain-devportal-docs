@@ -17,14 +17,14 @@ Get the public key and balance of an [account](../../built-in-features/account.m
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(baseUrl, networkType, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
 client := sdk.NewClient(nil, conf)
 
-address, err := sdk.NewAddressFromPublicKey("...", sdk.PUBLIC_TEST)
+address, err := sdk.NewAddressFromPublicKey("...", client.NetworkType())
 if err != nil {
     panic(err)
 }
@@ -35,6 +35,7 @@ if err != nil {
 }
 
 fmt.Printf(accountInfo.String())
+
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -49,14 +50,14 @@ The balance is the amount of the different mosaics owned by the account. How man
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(baseUrl, networkType, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
 client := sdk.NewClient(nil, conf)
 
-address, err := sdk.NewAddressFromPublicKey("...", sdk.PUBLIC_TEST)
+address, err := sdk.NewAddressFromPublicKey("...", client.NetworkType())
 if err != nil {
     panic(err)
 }
@@ -66,7 +67,7 @@ if err != nil {
     panic(err)
 }
 
-fmt.Println(accountInfo.Mosaic[0].Amount())
+fmt.Println(accountInfo.Mosaics[0].Amount)
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 

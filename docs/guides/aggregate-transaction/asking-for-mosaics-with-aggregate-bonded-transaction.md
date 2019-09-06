@@ -18,25 +18,32 @@ Ask an account to send you funds using an [aggregate bonded transaction](../../b
 
 <p class=caption>Asking for mosaics with an aggregate bonded transaction</p>
 
-Alice wants to ask Bob for `20 xpx`.
+Bob wants to ask Alice for `20 xpx`.
 
 1. Set up both Alice’s and Bob’s accounts.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig("http://localhost:3000", sdk.PUBLIC_TEST, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
+// Use the default http client
 client := sdk.NewClient(nil, conf)
 
-alicePrivateKey := os.GetEnv("PRIVATE_KEY")
-aliceAccount := sdk.NewAccountFromPrivateKey(alicePrivateKey, sdk.PUBLIC_TEST)
+alicePrivateKey := os.Getenv("PRIVATE_KEY")
+aliceAccount, err := client.NewAccountFromPrivateKey(alicePrivateKey)
+if err != nil {
+    panic(err)
+}
 
-bobPublicKey := 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D';
-bobAccount := sdk.NewAccountFromPublicKey(bobPublicKey, sdk.PUBLIC_TEST)
+bobPublicKey := "F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D";
+bobAccount, err := client.NewAccountFromPublicKey(bobPublicKey)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -44,32 +51,34 @@ bobAccount := sdk.NewAccountFromPublicKey(bobPublicKey, sdk.PUBLIC_TEST)
 
 <div class=cap-alpha-ol>
 
-1. From Alice to Bob with the message `send me 20 xpx`
+1. From Bob to Alice with the message `send me 20 xpx`
 
 </div>
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-transferTransaction1, err := client.NewTransferTransaction(sdk.NewDeadline(2), bobAccount.PublicAccount.Address, []*sdk.Mosaic{}, sdk.NewPlainMessage("send me 20 XPX"))
+transferTransaction1, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), aliceAccount.PublicAccount.Address, []*sdk.Mosaic{}, sdk.NewPlainMessage("send me 20 XPX"))
 if err != nil {
     panic(err)
 }
+transferTransaction1.ToAggregate(bobAccount)
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 <div class=cap-alpha-ol>
 
-2. From Bob to Alice sentind `20 xpx`
+2. From Alice to Bob sending `20 xpx`
 
 </div>
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-transferTransaction2, err := client.NewTransferTransaction(sdk.NewDeadline(2), aliceAccount.Address, []*sdk.Mosaic{sdk.XpxRelative(20)}, sdk.NewPlainMessage(""))
+transferTransaction2, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), bobAccount.Address, []*sdk.Mosaic{sdk.XpxRelative(20)}, sdk.NewPlainMessage(""))
 if err != nil {
     panic(err)
 }
+transferTransaction2.ToAggregate(aliceAccount.PublicAccount)
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -78,7 +87,7 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-aggregateTransaction, err := client.NewBondedAggregateTransaction(sdk.NewDeadline(10), []sdk.Transaction{transferTransaction1, transferTransaction2})
+aggregateTransaction, err := client.NewBondedAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{transferTransaction1, transferTransaction2})
 if err != nil {
     panic(err)
 }
@@ -110,14 +119,14 @@ if err != nil {
     panic(err)
 }
 
-_, err := client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
+_, err = client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
 if err != nil {
     panic(err)
 }
 
 time.Sleep(time.Second * 30)
 
-_, err := client.Transaction.AnnounceAggregateBonded(context.Background(), signedAggregateBoundedTransaction)
+_, err = client.Transaction.AnnounceAggregateBonded(context.Background(), signedAggregateBoundedTransaction)
 if err != nil {
     panic(err)
 }

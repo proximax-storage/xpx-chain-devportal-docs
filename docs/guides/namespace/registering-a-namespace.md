@@ -28,7 +28,15 @@ An account can link a registered name (namespace or subnamespace) with an accoun
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-namespace, err := sdk.NewNamespaceIdFromName("foo")
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+namespaceId, err := sdk.NewNamespaceIdFromName("foo")
 if err != nil {
     panic(err)
 }
@@ -53,53 +61,35 @@ In Sirius-Chain, blocks are complete every `15` seconds in average. You will hav
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-networkType := sdk.MijinTest
-privateKey := "3B9670B5CB19C893694FC49B461CE489BF9588BE16DBE8DC29CF06338133DEE6"
-namespaceName := "foo"
-
-conf, err := sdk.NewConfig(baseUrl, networkType, time.Second * 10)
-if err != nil {
-    fmt.Printf("NewConfig returned error: %s", err)
-    return
-}
-
-// Use the default http client
-client := sdk.NewClient(nil, conf)
-
 // Create an account from a private key
-account, err := sdk.NewAccountFromPrivateKey(privateKey, networkType)
+account, err := client.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"))
 if err != nil {
-    fmt.Printf("NewAccountFromPrivateKey returned error: %s", err)
-    return
+    panic(err)
 }
 
 // Create a new namespace type transaction
-transaction, err := sdk.NewRegisterRootNamespaceTransaction(
+transaction, err := client.NewRegisterRootNamespaceTransaction(
     // The maximum amount of time to include the transaction in the blockchain.
     sdk.NewDeadline(time.Hour),
     // Name of namespace
-    namespaceName,
+    "foo",
     // Duration of namespace life in blocks
     sdk.Duration(1000),
-    networkType,
 )
 if err != nil {
-    fmt.Printf("NewRegisterRootNamespaceTransaction returned error: %s", err)
-    return
+    panic(err)
 }
 
 // Sign transaction
 signedTransaction, err := account.Sign(transaction)
 if err != nil {
-    fmt.Printf("Sign returned error: %s", err)
-    return
+    panic(err)
 }
 
 // Announce transaction
 _, err = client.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
-    fmt.Printf("Transaction.Announce returned error: %s", err)
-    return
+    panic(err)
 }
 ```
 

@@ -78,14 +78,20 @@ The museum ticket does not have the id 7cdf3b117a3c40cc in your network. Replace
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-alicePrivateKey = "..."
-aliceAccount, err := sdk.NewAccountFromPrivateKey(alicePrivateKey, sdk.MijinTest)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
-ticketDistributorPublicKey = "..."
-ticketDistributorPublicAccount, err := sdk.NewAccountFromPublicKey(ticketDistributorPublicKey, sdk.MijinTest)
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+aliceAccount, err := client.NewAccountFromPrivateKey(os.Getenv("ALICE_PRIVATE_KEY"))
+if err != nil {
+    panic(err)
+}
+
+ticketDistributorPublicAccount, err := client.NewAccountFromPublicKey(os.Getenv("TICKET_DISTRIBUTOR_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
@@ -95,7 +101,20 @@ if err != nil {
     panic(err)
 }
 
-ticketDistributorTransferTransaction, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), aliceAccount.PublicAccount.Address, []*sdk.Mosaic{sdk.NewMosaicId(srtconv.ParseUnit("7cdf3b117a3c40cc", 16, 64))}, sdk.NewPlainMessage("send 1 museum ticket to alice"))
+id, err := strconv.ParseInt("7cdf3b117a3c40cc", 16, 64)
+if err != nil {
+    panic(err)
+}
+mosaicId, err := sdk.NewMosaicId(uint64(id))
+if err != nil {
+    panic(err)
+}
+mosaic, err := sdk.NewMosaic(mosaicId, 1)
+if err != nil {
+    panic(err)
+}
+
+ticketDistributorTransferTransaction, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), aliceAccount.PublicAccount.Address, []*sdk.Mosaic{mosaic}, sdk.NewPlainMessage("send 1 museum ticket to alice"))
 if err != nil {
     panic(err)
 }
@@ -114,7 +133,7 @@ In case that signatures are required from other participants and the transaction
 aliceTransferTransaction.ToAggregate(aliceAccount.PublicAccount)
 ticketDistributorTransferTransaction.ToAggregate(ticketDistributorPublicAccount)
 
-aggregateTransaction, err := client.NewAggregateBoundedTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{aliceTransferTransaction, ticketDistributorTransferTransaction})
+aggregateTransaction, err := client.NewBondedAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{aliceTransferTransaction, ticketDistributorTransferTransaction})
 if err != nil {
     panic(err)
 }
@@ -135,7 +154,7 @@ lockFundsTransaction, err := client.NewLockFundsTransaction(
     sdk.NewDeadline(time.Hour),
     sdk.XpxRelative(10),
     sdk.Duration(1000),
-    signedAggregateBoundedTransaction
+    signedAggregateBoundedTransaction,
 )
 if err != nil {
     panic(err)
@@ -146,7 +165,7 @@ if err != nil {
     panic(err)
 }
 // Announce transaction
-_, err := client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
+_, err = client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
 if err != nil {
     panic(err)
 }

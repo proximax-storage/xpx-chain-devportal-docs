@@ -31,28 +31,39 @@ As one private key can sign all the transactions in the aggregate, define the ag
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-alicePrivateKey = "..."
-aliceAccount, err := sdk.NewAccountFromPrivateKey(alicePrivateKey, sdk.MijinTest)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
-bobPrivateKey = "..."
-bobAccount, err := sdk.NewAccountFromPrivateKey(bobPrivateKey, sdk.MijinTest)
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+
+sender, err := client.NewAccountFromPrivateKey(os.Getenv("SENDER_PRIVATE_KEY"))
+if err != nil {
+    panic(err)
+}
+aliceAccount, err := client.NewAccountFromPublicKey(os.Getenv("ALICE_PUBLIC_KEY"))
+if err != nil {
+    panic(err)
+}
+
+bobAccount, err := client.NewAccountFromPublicKey(os.Getenv("BOB_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
 
 amount := []*sdk.Mosaic{sdk.XpxRelative(10)}
 
-aliceTransferTransaction, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), aliceAccount.PublicAccount.Address, amount, sdk.NewPlainMessage("payout"))
-aliceTransferTransaction.ToAggregate(account.PublicAccount)
+aliceTransferTransaction, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), aliceAccount.Address, amount, sdk.NewPlainMessage("payout"))
+aliceTransferTransaction.ToAggregate(sender.PublicAccount)
 if err != nil {
     panic(err)
 }
 
-bobTransferTransaction, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), bobAccount.PublicAccount.Address, amount, sdk.NewPlainMessage("payout"))
-bobTransferTransaction.ToAggregate(account.PublicAccount)
+bobTransferTransaction, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), bobAccount.Address, amount, sdk.NewPlainMessage("payout"))
+bobTransferTransaction.ToAggregate(sender.PublicAccount)
 if err != nil {
     panic(err)
 }
@@ -65,11 +76,10 @@ if err != nil {
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Sign and announce the transaction.
-
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-signedTransaction, err := account.Sign(aggregateTransaction)
+signedTransaction, err := sender.Sign(aggregateTransaction)
 if err != nil {
     panic(err)
 }

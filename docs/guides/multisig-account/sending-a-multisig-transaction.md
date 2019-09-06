@@ -43,12 +43,20 @@ Let’s develop the piece of code present in Bob’s mobile wallet that enables 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-cosignatureAccount, err := sdk.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_PRIVATE_KEY"))
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
-multisigAccount, err := sdk.NewAccountFromPublicKey(os.Getenv("MULTISIG_PUBLIC_KEY"))
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+cosignatureAccount, err := client.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_PRIVATE_KEY"))
+if err != nil {
+    panic(err)
+}
+
+multisigAccount, err := client.NewAccountFromPublicKey(os.Getenv("MULTISIG_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
@@ -71,10 +79,10 @@ if err != nil {
 <!--Golang-->
 ```go
 transferTransaction, err := client.NewTransferTransaction(
-  sdk.NewDeadline(time.Hour),
-  recipientAddress,
-  []*sdk.Mosaic{sdk.XpxRelative(10)},
-  sdk.NewPlainMessage("sending 10 xpx")
+    sdk.NewDeadline(time.Hour),
+    recipientAddress,
+    []*sdk.Mosaic{sdk.XpxRelative(10)},
+    sdk.NewPlainMessage("sending 10 xpx"),
 )
 if err != nil {
     panic(err)
@@ -157,12 +165,11 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-lockFundsTransaction, err := sdk.NewLockFundsTransaction(
+lockFundsTransaction, err := client.NewLockFundsTransaction(
     sdk.NewDeadline(time.Hour),
     sdk.XpxRelative(10),
     sdk.Duration(480),
     signedAggregateBoundedTransaction,
-    networkType
 )
 if err != nil {
     panic(err)
@@ -173,7 +180,7 @@ if err != nil {
     panic(err)
 }
 
-_, err := client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
+_, err = client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
 if err != nil {
     panic(err)
 }

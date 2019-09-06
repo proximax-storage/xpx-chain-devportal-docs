@@ -50,16 +50,28 @@ xpx2-cli monitor confirmed
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+account, err := client.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"))
+if err != nil {
+    panic(err)
+}
 address, err := sdk.NewAddressFromRaw("SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54")
 if err != nil {
     panic(err)
 }
 
 transferTransaction, err := client.NewTransferTransaction(
-  sdk.NewDeadline(time.Hour),
-  recipient,
-  []*sdk.Mosaic{sdk.XpxRelative(10)},
-  sdk.NewPlainMessage("Welcome to Sirius-Chain")
+    sdk.NewDeadline(time.Hour),
+    address,
+    []*sdk.Mosaic{sdk.XpxRelative(10)},
+    sdk.NewPlainMessage("Welcome to Sirius-Chain"),
 )
 if err != nil {
     panic(err)
@@ -74,12 +86,17 @@ If you own more than one mosaic, you can send them together in the same transact
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-mosaic, err := sdk.NewMosaicIdFromNonceAndOwner(nonce, account.PublicAccount.PublicKey)
+mosaicId, err := sdk.NewMosaicIdFromNonceAndOwner(nonce, account.PublicAccount.PublicKey)
 if err != nil {
     panic(err)
 }
 
-[]*sdk.Mosaic{sdk.XpxRelative(10), sdk.NewMosaic(mosaic, 10)},
+myMosaic, err := sdk.NewMosaic(mosaicId, 10)
+if err != nil {
+    panic(err)
+}
+
+mosaics := []*sdk.Mosaic{sdk.XpxRelative(10), myMosaic}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -96,7 +113,7 @@ Sirius-Chain mainly works with absolute amounts. To get an absolute amount, mult
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-signedTransaction, err := account.sign(transferTransaction)
+signedTransaction, err := account.Sign(transferTransaction)
 if err != nil {
     panic(err)
 }
@@ -109,7 +126,7 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-_, err = client.Transaction.Announce(ctx, signedTransaction)
+_, err = client.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
     panic(err)
 }

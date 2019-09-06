@@ -20,23 +20,25 @@ To ensure the transactions are being sent to the correct place with the correct 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig("http://localhost:3000", sdk.PUBLIC_TEST, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
     panic(err)
 }
 
+// Use the default http client
 client := sdk.NewClient(nil, conf)
 
-namespace, err := sdk.NewNamespaceIdFromName("cat.currency")
+namespaceId, err := sdk.NewNamespaceIdFromName("cat.currency")
 if err != nil {
     panic(err)
 }
 
-mosaicId, err := client.Namespace.GetLinkedMosaicId(namespace)
+mosaicId, err := client.Namespace.GetLinkedMosaicId(context.Background(), namespaceId)
 if err != nil {
     panic(err)
 }
 fmt.Println(mosaicId.String())
+
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -64,6 +66,14 @@ In this example, we are going to announce a transfer transaction using `cat.curr
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
 namespaceId, err := sdk.NewNamespaceIdFromName("cat.currency")
 if err != nil {
   panic(err)
@@ -90,7 +100,7 @@ if err != nil {
   panic(err)
 }
 
-account, err := sdk.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"))
+account, err := client.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"))
 if err != nil {
   panic(err)
 }
@@ -109,21 +119,14 @@ fmt.Println("Transaction hash:", signedTransaction.Hash)
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig("http://localhost:3000", sdk.PUBLIC_TEST, time.Second * 10)
-if err != nil {
-    panic(err)
-}
-
-client := sdk.NewClient(nil, conf)
-
-_, err := client.Transaction.Announce(context.Background(), signedTransaction)
+_, err = client.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
     panic(err)
 }
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-4. Then, retrieve the receipts attached to the block where the receipt was confirmed. The RxJs filters will look for the namespace resolution inside the mosaicResolutionStatements collection.
+4. Then, retrieve the receipts attached to the block where the receipt was confirmed.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->

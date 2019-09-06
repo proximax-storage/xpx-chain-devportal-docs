@@ -19,14 +19,9 @@ Call `getNamespace` function, passing the namespace identifier you want to check
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-baseUrl = "http://localhost:3000"
-// Types of network.
-networkType = sdk.MijinTest
-
-conf, err := sdk.NewConfig(baseUrl, networkType, time.Second * 10)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
 if err != nil {
-    fmt.Printf("NewConfig returned error: %s", err)
-    return
+    panic(err)
 }
 
 // Use the default http client
@@ -37,8 +32,7 @@ namespaceId, _ := sdk.NewNamespaceIdFromName("foo")
 
 namespace, err := client.Namespace.GetNamespaceInfo(context.Background(), namespaceId)
 if err != nil {
-    fmt.Printf("Namespace.GetNamespaceInfo returned error: %s", err)
-    return
+	panic(err)
 }
 fmt.Printf("%s\n", namespace.String())
 ```

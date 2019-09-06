@@ -22,16 +22,24 @@ To increase the initial supply to `2.000.000`, define a [mosaic supply change tr
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-mosaic, err := sdk.NewMosaicIdFromNonceAndOwner(nonce, account.PublicAccount.PublicKey)
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+mosaicId, err := sdk.NewMosaicIdFromNonceAndOwner(nonce, account.PublicKey)
 if err != nil {
     panic(err)
 }
 
 mosaicSupplyChangeTrx, err := client.NewMosaicSupplyChangeTransaction(
     sdk.NewDeadline(time.Hour),
-    mosaic,
+    mosaicId,
     sdk.Increase,
-    sdk.Amount(2000000)
+    sdk.Amount(2000000),
 )
 if err != nil {
     panic(err)
