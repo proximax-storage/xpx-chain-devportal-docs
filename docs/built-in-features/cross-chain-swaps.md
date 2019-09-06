@@ -117,7 +117,7 @@ recipient |	25 bytes (binary) |	The address who will receive the funds once unlo
 
 Use a secret proof transaction to unlock [secret lock transactions](#secretlocktransaction).
 
-The transaction must prove that knows the proof that unlocks the mosaics.
+The transaction must prove that knows the proof that unlocks the mosaics for recipient.
 
 **Version**: 0x01
 
@@ -131,6 +131,7 @@ The transaction must prove that knows the proof that unlocks the mosaics.
 -------------|-----------|--------------------
 hashAlgorithm |	[LockHashAlgorithm](#lockhashalgorithm) |	The algorithm used to hash the proof.
 secret |	64 bytes (binary) |	The proof hashed.
+recipient |	25 bytes (binary) |	The address who will receive the funds once unlocked.
 proofSize |	uint16 |	The proof size in bytes.
 proof |	array(byte, proofSize) |	The original proof.
 
