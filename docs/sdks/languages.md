@@ -25,3 +25,4 @@ Swift SDK |	[Repository](https://github.com/proximax-storage/swift-xpx-chain-sdk
 Rust SDK 	| [Repository](https://github.com/proximax-storage/rust-xpx-chain-sdk/) | [Documentation](https://github.com/proximax-storage/rust-xpx-chain-sdk/wiki) | [@proximax-storage](https://github.com/proximax-storage)
 Python SDK 	| [Repository](https://github.com/proximax-storage/python-xpx-chain-sdk/) | [Documentation](https://github.com/proximax-storage/python-xpx-chain-sdk/wiki) | [@proximax-storage](https://github.com/proximax-storage)
 
+

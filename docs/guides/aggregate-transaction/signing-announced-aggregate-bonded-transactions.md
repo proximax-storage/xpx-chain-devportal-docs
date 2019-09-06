@@ -39,7 +39,7 @@ func cosignAggregateBoundedTransaction(signedAggregateBoundedTransaction *sdk.Si
 
 <div class=info>
 
-**Note**
+**Note:**
 
 To fetch aggregate bonded transactions that must be signed by multisig cosignatories, refer to the multisig public key instead. See [how to get multisig accounts where an account is cosignatory](../multisig-account/converting-an-account-to-multisig.md#guide-get-multisig-account-info).
 

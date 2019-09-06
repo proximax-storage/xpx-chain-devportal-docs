@@ -16,6 +16,7 @@ A transaction statement is a collection of receipts linked with a transaction in
 - **Balance Transfer**: A mosaic transfer was triggered.
 - **Balance Change**: A mosaic credit or debit was triggered.
 - **Artifact Expiry**: An artifact (e.g. [namespace](../built-in-features/namespace.md), [mosaic](../built-in-features/mosaic.md)) expired.
+- **Inflation Receipt**: Native currency mosaics were created due to [inflation][inflation].
 
 ## Resolution statement
 
@@ -52,6 +53,7 @@ Sirius-Chain records invisible state changes for the following entities.
 0x5231 |	LockSecret_Created       |	[BalanceDebit](#balancetransferreceipt)    |	The secretlock sender, mosaicId and amount locked. It is recorded when a valid [SecretLockTransaction](../built-in-features/cross-chain-swaps.md#secretlocktransaction) is announced.
 0x5222 |	LockSecret_Completed     |	[BalanceCredit](#balancechangereceipt)     |	The secretlock sender, mosaicId and amount locked. It is recorded when a secretlock is proved.
 0x5223 |	LockSecret_Expired       |	[BalanceCredit](#balancechangereceipt)     |	The account receiving the locked mosaic, the mosaicId and the amount. It is recorded when a secretlock expires.
+
 
 ## Schemas
 
@@ -151,3 +153,19 @@ amount |	uint64 |	The amount of the mosaic.
 **Property** |	**Type** |	**Description**
 -------------|-----------|------------------
 artifactId 	| uint64  |	The id of the artifact (eg. namespace, mosaic).
+
+### InflationReceipt
+
+- **version**: 0x1
+- **basicType**: 0x5
+
+**Inlines**:
+
+- [Receipt](#receipt)
+
+**Property** |	**Type** |	**Description**
+-------------|-----------|------------------
+mosaicId |	uint64 |	Identifier of the mosaic that has been created.
+amount |	uint64 |	Number of mosaics created.
+
+[inflation]: ./inflation.md

@@ -9,7 +9,7 @@ A cross-chain swap enables **trading tokens** across **different blockchains**, 
 
 <p class=caption>Atomic cross-chain swap between public and private network</p>
 
-In order to create a trustless environment for an exchange, a specific transaction type is required that is commonly referred to as **Hashed TimeLock Contract** (HTLC). Two additional components characterise this transaction type: hashlocks and timelocks. A thorough explanation can be found on the [Bitcoin Wiki](https://en.bitcoin.it/wiki/Hashed_Timelock_Contracts).
+In order to create a trustless environment for an exchange, a specific transaction type is required that is commonly referred to as **Hashed TimeLock Contract** (HTLC). Two additional components characterize this transaction type: hashlocks and timelocks. A thorough explanation can be found on the [Bitcoin Wiki](https://en.bitcoin.it/wiki/Hashed_Timelock_Contracts).
 
 In other words, to reduce counterparty risk, the receiver of a payment needs to present a proof for the transaction to execute. Failing to do so, the locked funds are released after the deadline is reached, even if just one actor does not agree.
 
@@ -64,34 +64,34 @@ The amount of time in which funds can be unlocked should be a smaller time frame
 
 <div class=info>
 
-**Note**
+**Note:**
 
 We recommend checking out [setting up your workstation](../getting-started/setting-up-workstation.md) before going through the guides.
 
 </div>
 
-- [Atomic cross-chain swap between Sirius-Chain public and private chain](../guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain.md)
+- [Atomic cross-chain swap between Sirius Chain public and private chain](../guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain.md)
 
-    Cross-chain swaps enable trading tokens between different blockchains, without using an intermediary party in the process.
+    How to swap cross-chain swaps to enable trading tokens between different blockchains, without using an intermediary party in the process.
 
 ## Schemas
 
 <div class=info>
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 
-### SecretLockTransaction
+### Secret Lock Transaction
 
 Use a secret lock transaction to start the cross-chain swap:
 
 1. Define the mosaic units you want to transfer to a determined account.
 2. Generate a random set of bytes called `proof`.
 3. Hash the obtained proof with one of the available algorithms to generate the `secret`.
-4. Select during how much time the mosaics will be locked and announce the transaction.
+4. Select how much time the mosaics will be locked and announce the transaction.
 
 The specified mosaics remain locked until a valid [Secret Proof Transaction](#secretprooftransaction) unlocks them.
 
@@ -113,7 +113,7 @@ hashAlgorithm |	[LockHashAlgorithm](#lockhashalgorithm) |	The algorithm used to 
 secret |	64 bytes (binary) |	The proof hashed.
 recipient |	25 bytes (binary) |	The address who will receive the funds once unlocked.
 
-### SecretProofTransaction
+### Secret Proof Transaction
 
 Use a secret proof transaction to unlock [secret lock transactions](#secretlocktransaction).
 
@@ -135,7 +135,7 @@ recipient |	25 bytes (binary) |	The address who will receive the funds once unlo
 proofSize |	uint16 |	The proof size in bytes.
 proof |	array(byte, proofSize) |	The original proof.
 
-### LockHashAlgorithm
+### Lock Hash Algorithm
 
 Enumeration: uint8
 

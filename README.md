@@ -37,7 +37,7 @@ Feel free to start an issue or create a pull request. Check [CONTRIBUTING](CONTR
 
 ## License
 
-Copyright (c) 2019 proximaX
+Copyright (c) 2019 ProximaX
 Licensed under the [Apache License 2.0](LICENSE)
 
 ## Acknowledgement

@@ -18,7 +18,7 @@ It is possible to send mosaics to any valid address, even if the address has not
 
 <div class="info">
 
-**Note**
+**Note:**
 
 If nobody owns the private key of the recipient’s account, the funds are most likely lost forever.
 </div>
@@ -47,11 +47,11 @@ The client-side handles the encryption and decryption of the message. You can fi
 
 - [Sending a transfer transaction](../guides/transaction/sending-a-transfer-transaction.md)
 
-    Transfer [*mosaics*](./mosaic.md) and messages between two accounts.
+    How to transfer [*mosaics*](./mosaic.md) and messages between two accounts.
 
 - [Monitoring a transaction status](../guides/monitoring/monitoring-a-transaction-status.md)
 
-    Make sure a [*transaction*](../protocol/transaction.md) gets included in the blockchain after being announced.
+    How to ensure a [*transaction*](../protocol/transaction.md) gets included in the blockchain after being announced.
 
 - [Sending an encrypted message](../guides/transaction/sending-an-encrypted-message.md)
 
@@ -61,13 +61,13 @@ The client-side handles the encryption and decryption of the message. You can fi
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 
-### TransferTransaction
+### Transfer Transaction
 
 Announce a transfer transaction to send [mosaics](./mosaic.md) or messages between two [accounts](./account.md).
 

@@ -72,7 +72,7 @@ Since the app creator can put their own branding on the open source payment app,
 
 <div class=info>
 
-**Note**
+**Note:**
 
 We recommend checking out [setting up your workstation](../getting-started/setting-up-workstation.md) before going through the guides.
 
@@ -80,19 +80,19 @@ We recommend checking out [setting up your workstation](../getting-started/setti
 
 - [Sending payouts with aggregate complete transaction](../guides/aggregate-transaction/sending-payouts-with-aggregate-complete-transaction.md)
 
-    Send transactions to different accounts atomically, using an aggregate complete transaction.
+    HOw to seend transactions to different accounts atomically using an aggregate complete transaction.
 
 - [Creating an escrow with aggregate bonded transaction](../guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction.md)
 
-    Learn about aggregate bonded transactions, by creating an escrow.
+    How to create an escrow with aggregate bonded transactions.
 
 - [Asking for mosaics with aggregate bonded transaction](../guides/aggregate-transaction/asking-for-mosaics-with-aggregate-bonded-transaction.md)
 
-    Ask an account to send you funds using an aggregate bonded transaction.
+    How to ask an account to send you funds using an aggregate bonded transaction.
 
 - [Signing announced aggregate bonded transactions](../guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions.md)
 
-    You have probably announced an aggregate bonded transaction, but all required cosigners have not signed it yet.
+    How to sign announced aggregate bonded transaction that all required co-signers have not signed it yet.
 
 - [Sending a multisig transaction](../guides/multisig-account/sending-a-multisig-transaction.md)
 
@@ -102,7 +102,7 @@ We recommend checking out [setting up your workstation](../getting-started/setti
 
 <div class=info>
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable][Server-configurable] . Public network configuration may differ.
 
@@ -120,7 +120,7 @@ Configuration parameters are [editable][Server-configurable] . Public network co
 
 **Property** |	**Type** |	**Description**
 -------------|-----------|--------------------
-payloadSize |	uint8 |	The transaction payload size in bytes. In other words, the total number of bytes occupied by all inner transactions.
+payloadSize |	uint8 |	The transaction payload size in bytes. In other words, the total number of bytes was occupied by all inner transactions.
 transactions |	array(byte, payloadSize) |	The array of transactions initiated by different accounts. An aggregate transaction can contain up to `1000` inner transactions involving up to `15` different cosignatories. Other aggregate transactions are not allowed as inner transactions.
 cosignatures |	array(byte, size - payloadSize) |	An array of transaction [cosignatures](#detachedcosignature).
 
@@ -153,7 +153,7 @@ Announce a hash lock transaction before sending a signed [aggregate bonded trans
 
 Once the related aggregate bonded transaction is confirmed, locked funds become available again in the account that signed the initial hash lock transaction.
 
-If the aggregate bonded transaction duration is reached without being signed by all cosignatories, the locked amount is collected by the block validator at the height where the lock expires.
+If the aggregate bonded transaction duration is reached without being signed by all cosignatories, the locked amount is collected by the block Validator at the height where the lock expires.
 
 **Version**: 0x01
 

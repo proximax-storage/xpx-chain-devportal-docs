@@ -10,16 +10,17 @@ This first guide will walk you through a step-by-step installation of the requir
 ![Sirius-Chain Layer](/img/four-layer-architecture-basic.png "Sirius-Chain Layer")
 
 
-**Sirius-Chain Server nodes** (layer 1) build the peer-to-peer blockchain network. **Sirius-Chain Rest nodes** (layer 2) provide the API gateway that the applications may use to access the blockchain and its features.
+**Sirius Chain Server nodes** (layer 1) build the peer-to-peer blockchain network. 
+**Sirius Chain Rest nodes** (layer 2) provide the API gateway that the applications may use to access the blockchain and its features.
 
-### Using your local environment and setup local Node
+### Using your local environment and setup local node
 
 ```
-This section is still work in progress.
+This section is still a work in progress.
 ```
 
 
-### Access our existing testing network without setup local node
+### Access our existing testing network without setting up a local node
 
 Node Description | Network Type| Node REST API URL | Address Prefix (1st Letter)
 -----------------|-------------|-------------------|------------------------
@@ -28,7 +29,7 @@ Private Test Network node | PRIVATE_TEST | http://bcdev1.xpxsirius.io:3000 | W
 Private Network Node (internal demo node) | PRIVATE | http://siriusapi1.demo.xpxsirius.io <br> Please follow [instruction](#accessing-our-private-net) to gain access. | Z
 
 #
-You can use our Sirius Chain REST API directly with respective url and network type as above. Besides, you can use your own node with your own API URL and network type if you happen to have one.
+You can use our Sirius Chain REST API directly with your respective URL and network type as above. Besides, you can use your own node with your own API URL and network type if you happen to have one.
 
 To get first block information
 
@@ -68,13 +69,13 @@ Use `save flag` to store the account on your computer. XPX-Chain-CLI uses stored
 
 ## What is XPX and how to get it?
 
-The underlying cryptocurrency of the Sirius-Chain network is called **XPX**. Every action on the Sirius-Chain costs XPX, in order to provide an incentive for those who validate and secure the network.
+The underlying cryptocurrency of the Sirius Chain network is called **XPX**. Every action on the Sirius Chain costs XPX, in order to provide an incentive for those who validate and secure the network.
 
 Let’s use an account which already has XPX. We will need it to register the namespace and mosaic.
 
-### Use nemesis address (for those who hosting local node)
+### Use nemesis address (for those who are hosting a local node)
 
-1. Open a terminal, and go to the directory where you have download Sirius-Chain Bootstrap Service.
+1. Open a terminal, and go to the directory where you have download Sirius Chain Bootstrap Service.
 
 ```
 $> cd  build/generated-addresses/
@@ -91,10 +92,10 @@ Introduce Sirius-Chain Node URL. (Example: http://localhost:3000): http://localh
 Insert profile name (blank means default and it could overwrite the previous profile):
 ```
 
-### Use our faucet to get testing XPX
+### Use our faucet to get test-XPX
 
-For `testnet` you can get testing XPX from our online faucet.
-Simply go to our [faucet](https://bctestnetfaucet.xpxsirius.io/) to get your testing XPX.
+For `testnet` you can get test-XPX from our online faucet.
+Simply go to our [faucet](https://bctestnetfaucet.xpxsirius.io/) to get your test-XPX.
 
 ## Accessing our PRIVATE Net
 

@@ -8,9 +8,10 @@ Learn about [aggregate bonded transactions](../../built-in-features/aggregate-tr
 
 ## Background
 
-An **escrow** is a `contractual arrangement` in which a `third party receives and disburses money` or documents for the `primary transacting parties`, with the disbursement dependent on `conditions agreed to by the transacting parties`, or an `account established by a broker for holding funds` on behalf of the broker’s principal or some other person `until the consummation or termination of a transaction`; or, a trust account held in the borrower’s name to pay obligations such as property taxes and insurance premiums.
+An **escrow** is a `contractual arrangement` in which a `third party receives and disburses money` or documents for the `primary transacting parties`. Transacting parties will agree to the conditions in which the disbursement depend on. For example, it can be an `account established by a broker for holding funds` on behalf of the broker’s principal or some other person `until the consummation or termination of a transaction.` An escrow can also be a trust account held in the borrower’s name to pay obligations such as property taxes and insurance premiums.
 
-See full description at [Wikipedia](https://en.wikipedia.org/wiki/Escrow).
+**Reference:**
+- Wikipedia Contributors. "Escrow." Wikipedia, Wikipedia Foundation, 25 June 2019. en.wikipedia.org/wiki/Escrow.
 
 For this example, imagine the two parties agree on a virtual service, implying that the escrow can be executed immediately:
 
@@ -20,9 +21,9 @@ For this example, imagine the two parties agree on a virtual service, implying t
 4. Buyer approves goods or service.
 5. Escrow releases payment to the seller.
 
-**How is it applied to Proximax Sirius-Chain?**
+**How is it applied to Proximax Sirius Chain?**
 
-Normalising the language into Sirius-Chain related concepts:
+Normalizing the language into Sirius Chain related concepts:
 
 - **contractual arrangement**: A new type of transaction called Aggregate Transaction.
 - **third party receives and disburses money**: There is no third party, we are going to use blockchain technology.

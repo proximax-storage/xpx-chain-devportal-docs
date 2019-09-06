@@ -6,9 +6,9 @@ sidebar_label: Monitor transaction
 
 Make sure a [transaction](../../protocol/transaction.md) gets included in the blockchain after being announced.
 
-## Background
+## Background Information 
 
-After calling an API method that changes the database state, you usually will receive a response if the change has been applied or failed due to some constraint. The application spends precious time waiting for the response, in the meanwhile other actions can be processed.
+After calling an API method that changes the database state, you usually will receive a responsible if the change has been applied or failed due to some constraint. The application spends precious time waiting for the response, in the meanwhile other actions can be processed.
 
 When working with blockchain technology, it is interesting to “fire” the transaction, let the node process it, and receive a notification if it succeeded or failed. Differently, from a traditional database, the average confirmation time of modification is higher, passing from milliseconds to seconds - or minutes in the worst case.
 
@@ -20,11 +20,11 @@ When working with blockchain technology, it is interesting to “fire” the tra
 
 ## Getting into some code
 
-Sirius-Chain enables asynchronous transaction announcement. After you publish a transaction, the API node will always accept it if it is well-formed.
+Sirius Chain enables asynchronous transaction announcement. After you publish a transaction, the API node will always accept it if it is well-formed.
 
-At this time, the server does not ensure that the transaction is valid - for example, you don’t have the amount of asset units you want to send-, hence is not sure it will be added in a block.
+At this time, the server does not ensure that the transaction is valid. For example, you don’t have the amount of asset units you want to send, hence, it is not certain it will be added in a block.
 
-To make sure the transaction is added in a block, you must track the [transaction status](../../protocol/transaction.md) using [Listeners](../../rest-api/websockets.md).
+To ensure the transaction is added in a block, you must track the [transaction status](../../protocol/transaction.md) using [Listeners](../../rest-api/websockets.md).
 
 [Listeners](../../rest-api/websockets.md) enable receiving notifications possible when a change in the blockchain occurs. The notification is received in real time without having to poll the API waiting for a reply.
 
@@ -131,7 +131,7 @@ if err != nil {
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-7. Monitor when the transaction gets included in a block. When included, [transaction](../../protocol/transaction.md) can still be rolled-back because of forks. You can decide for yourself that after e.g. 6 blocks the [transaction is secured](https://gist.github.com/aleixmorgadas/3d856d318e60f901be09dbd23467b374).
+7. Monitor when the transaction gets included in a block. When included, the [transaction](../../protocol/transaction.md) can still be rolled-back because of forks. You can decide for yourself that after e.g. 6 blocks the [transaction is secured](https://gist.github.com/aleixmorgadas/3d856d318e60f901be09dbd23467b374).
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->

@@ -3,21 +3,21 @@ id: rest-api-overview
 title: REST API Overview
 sidebar_label: Overview
 ---
-**Sirius-Chain REST API** combines HTTP and WebSockets to perform read and write actions in the Sirius-Chain.
+**Sirius Chain REST API** combines HTTP and Web Sockets to perform read and write actions in the Sirius Chain.
 
 ## Requests
 
-Sirius-Chain REST uses port `3000`. It accepts both HTTP **GET**, **PUT** and **POST** requests.
+Sirius Chain REST uses port `3000`. It accepts both HTTP **GET**, **PUT** and **POST** requests.
 
-Assuming that Sirius-Chain REST is running locally, HTTP GET requests can be executed from a browser and have the form:
+Assuming that Sirius Chain REST is running locally, HTTP GET requests can be executed from a browser and have the form:
 
 [http://localhost:3000/](http://localhost:3000/)<path-to-API-request>
 
-HTTP PUT and POST requests use JSON structures in the request body. Request returns data (if any is returned) using JSON structures. This kind of request cannot usually be executed from within the browser unless you use a [plugin](./tools.md) which enables you to do it.
+HTTP PUT and POST requests use JSON structures in the request body. Request returns data (if any is returned) using JSON structures. This request cannot usually be executed from within the browser unless you use a [plugin](./tools.md) which enables you to do it.
 
-[Sirius-Chain REST API Endpoints](/endpoints)
+[Sirius Chain REST API Endpoints](/endpoints)
 
-## Http errors
+## HTTP Errors
 
 **Status code** |	**Description**
 ----------------|-------------------

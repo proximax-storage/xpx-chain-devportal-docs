@@ -2,11 +2,11 @@
 id: sdk-development
 title: SDK Development
 ---
-A key objective is that interoperability becomes a natural design of the XPX-Chain-SDK. Follow this guideline to collaborate creating a XPX-Chain-SDK, achieving the best quality with the less effort.
+A key objective in SDK Development is the interoperability that becomes a natural design of the XPX-Chain-SDK. This guideline will show how to collaborate creating a XPX-Chain-SDK, achieving the best quality with the less effort.
 
 ## Learning about Sirius-Chain
 
-In case you haven’t used XPX-Chain-SDK or Sirius-Chain in general, we encourage you to:
+In case you haven’t used XPX-Chain-SDK or Sirius Chain in general, you need to do the following:
 
 1. Review the technical documentation to become familiar with the [Sirius-Chain built-in features](../built-in-features/account.md).
 2. Setup the [Sirius-Chain in local environment via docker](../getting-started/setting-up-workstation.md) or enroll the [beta program](../getting-started/setting-up-workstation.md) to access a Sirius-Chain Test Net without the need to run it yourself.
@@ -27,9 +27,9 @@ The structure of SDK is not defined, but you can find [implementation of all tra
 
 Regularly check the [releases](https://github.com/proximax-storage/go-xpx-chain-sdk/releases) to be sure you didn’t miss any code change update.
 
-## Before starting
+## Precautions:
 
-1. Be sure no one is already working on the SDK you want to create. Check the [repository list](./languages.md), if someone is already working on it, we suggest you collaborate with him/her.
+1. Be sure no one is already working on the SDK you want to create. Check the [repository list](./languages.md), if someone is already working on it, we suggest you collaborate with that person. 
 2. Claim the SDK [forking this repository](https://help.github.com/articles/creating-a-pull-request/) and adding a new entry to the [repository list](./languages.md).
 3. Consider using one of the suggested [licenses](#recommended-licenses).
 
@@ -42,7 +42,7 @@ Regularly check the [releases](https://github.com/proximax-storage/go-xpx-chain-
 
 A project with good test coverage is more likely to be used and trusted by the developers.
 
-We **strongly** suggest you to do [Test-Driven Development](https://en.wikipedia.org/wiki/Test-driven_development) or Unit-Testing (test last). If you need inspiration, you can adapt the same [tests we did](https://github.com/proximax-storage/tsjs-xpx-chain-sdk/tree/master/test).
+We **strongly** suggest you that you do the [Test-Driven Development](https://en.wikipedia.org/wiki/Test-driven_development) or Unit-Testing (test last). You can check the [tests we did](https://github.com/proximax-storage/tsjs-xpx-chain-sdk/tree/master/test).
 
 ## API Wrapper
 
@@ -63,13 +63,13 @@ List of interfaces:
 - [NamespaceRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/NamespaceHttp.java)
 - [TransferRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/TransactionHttp.java)
 
-Check the [Http implementations](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/AccountHttp.java) in case you doubt about some API endpoint.
+Check the [HTTP implementations](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/AccountHttp.java) in case you doubt about some API endpoint.
 
 <div class=info>
 
-**Warning**
+**Note:**
 
-The repositories return Models instead of DTOs. You will need to code the [Models](#models) before finish the API wrapper.
+The repositories return Models instead of DTOs. You will need to code the [Models](#models) before finishing the API wrapper.
 
 </div>
 
@@ -79,25 +79,25 @@ The repositories return Models instead of DTOs. You will need to code the [Model
 
 The models are by default immutable. The models aim to hide the complexity, like type conversion or relationship between objects.
 
-You will find in the different implementations different invariants to ensure the object is well constructed and a nicer API is published.
+You will find in the different implementations different invariants to ensure the object is well constructed.
 
 Particular decisions to consider:
 
-- `uint64` support: meanwhile [Java supports big numbers](https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html), for example JavaScript doesn’t. The JavaScript SDK has a custom class to handle the [uint64 types](https://github.com/proximax-storage/tsjs-xpx-chain-sdk/blob/master/src/model/UInt64.ts). If your language supports `uint64` use that implementation. Otherwise, adapt the `UInt64.ts` implementation to your language.
+- `uint64` support: meanwhile [Java supports big numbers](https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html), for example, JavaScript does not. The JavaScript SDK has a custom class to handle the [uint64 types](https://github.com/proximax-storage/tsjs-xpx-chain-sdk/blob/master/src/model/UInt64.ts). If your language supports `uint64` use that implementation. Otherwise, adapt the `UInt64.ts` implementation to your language.
 - API conversions: The API returns the data sometimes compressed, you might need to convert that types for the user.
-- [Mosaics](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/model/mosaic/MosaicId.java) & [Namespaces IDs](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/model/namespace/NamespaceId.java): The namespaces and mosaics aren’t strings any more compared to NIS1. As you can see in the class, the `string` name is optional. At creation time you add the string name, but when you receive the Namespace/Mosaic from the network, it comes in formatted as `uint64` ID. A specific endpoint returns the Namespace/Mosaic `string` name. We did a Service to return the Mosaic with the `string` name automatically for the user, check the [implementation here](https://github.com/proximax-storage/tsjs-xpx-chain-sdk/blob/master/src/service/MosaicService.ts) (only available in TypeScript SDK version).
+- [Mosaics](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/model/mosaic/MosaicId.java) & [Namespaces IDs](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/model/namespace/NamespaceId.java): The namespaces and mosaics are not strings any more compared to NIS1. As you can see in the class, the `string` name is optional. At creation time you add the string name, but when you receive the Namespace/Mosaic from the network, it comes in formatted as `uint64` ID. A specific endpoint returns the Namespace/Mosaic `string` name. We created a service to return the Mosaic with the `string` name automatically for the user, check the [implementation here](https://github.com/proximax-storage/tsjs-xpx-chain-sdk/blob/master/src/service/MosaicService.ts) (only available in TypeScript SDK version).
 
 ## Transaction Serialization
 
 <div class=info>
 
-**Warning**
+**Note:**
 
 The Transaction Serialization will change when [catbuffer](https://github.com/proximax-storage/catbuffer) tool is finished. Meanwhile, we will use [flatbuffers](https://google.github.io/flatbuffers/).
 
 </div>
 
-A Transaction needs a particular serialization schema in binary optimised in size. The transaction serialization has multiple steps to keep easy to create transactions and maintain the schema serialization.
+A Transaction needs a particular serialization schema in binary optimized in size. The transaction serialization has multiple steps to keep easy to create transactions and maintain the schema serialization.
 
 **Generating the buffer classes: The easy part**
 
@@ -117,7 +117,7 @@ A Transaction needs a particular serialization schema in binary optimised in siz
 
 **Creating the Transaction Schemas**
 
-Each transaction has a Schema. It has the same type as `flatbuffer schemas` but using the `Schema` class. It’s used to know where each component is located in the `flatbuffer schema` and remove the unnecessary bytes to create the optimised serialization.
+Each transaction has a Schema. It has the same type as `flatbuffer schemas` but using the `Schema` class. It is used to know where each component is located in the `flatbuffer schema` and remove the unnecessary bytes to create the optimised serialization.
 
 11. [AggregateTransactionSchema](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/model/transaction/AggregateTransactionSchema.java).
 12. [LockFundsTransactionSchema](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/model/transaction/LockFundsTransactionSchema.java).
@@ -149,7 +149,7 @@ The Transaction class has the abstract method [generateBytes()](https://github.c
 
 <div class=info>
 
-**Warning**
+**Note:**
 
 This section is incomplete.
 
@@ -157,7 +157,7 @@ This section is incomplete.
 
 ## Documenting your SDK
 
-SDKs need to be adopted by other developers. As a contributor, no one knows better than you how a determined SDK works. Consider helping others and spread the usage of the SDK by providing [the following documentation](./documentation.md).
+SDKs need to be adopted by other developers. As a contributor, no one knows better than you how a determined SDK works. Provide the content for its documentation to help spread the use of your SDK. [the following documentation](./documentation.md).
 
 ### Publishing the SDK as official
 
@@ -165,9 +165,9 @@ When you open-source your code, [submit the repository to this page](./languages
 
 To become an accepted SDK, it should be proposed as a [NIP](https://github.com/proximax-storage/NIP/blob/master/NIPs/nip-0001.md). The reason behind the XPX Improvement Proposal is to ensure that the new libraries are reviewed, tested and shared among Sirius-Chain developers.)
 
-## Future work
+## SDK Updates
 
-The current guideline shows what is done up to today since the SDK isn’t complete. It will get updates according to the latest architecture/features.
+The current guideline shows what is done up to the time of writing since all the SDK are not complete. It will get updates according to the latest architecture/features.
 
 ## Recommended Licenses
 

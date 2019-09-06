@@ -1,6 +1,6 @@
 ---
 id: what-is-proximax-sirius-chain
-title: What is ProximaX Sirius-Chain
+title: What is ProximaX Sirius Chain
 ---
 ## Blockchain Reimagined and Evolved
 
@@ -13,7 +13,7 @@ Sirius-Chain is suitable for an amazing variety of solutions of different classe
 
 ## Architecting on Sirius-Chain
 
-Sirius-Chain [nodes](../protocol/node.md) provide a powerful, stable and secure platform where smart asset transactions are conducted, searched, and immutably logged to the blockchain ledger.
+Sirius Chain [nodes](../protocol/node.md) provide a powerful, stable and secure platform where smart asset transactions are conducted, searched, and immutably logged to the blockchain ledger.
 
 All the features are available through the API interface on each node in the network itself. This means that the blockchain can be used to create a variety of architecture solutions with lightweight [code in any language](../sdks/languages.md).
 

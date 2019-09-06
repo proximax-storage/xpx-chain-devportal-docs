@@ -7,10 +7,10 @@ Get the list of [transactions](../../protocol/transaction.md) where an [account]
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- Text editor or IDE
-- XPX-Chain-SDK or XPX-Chain-CLI
-- An account that has received some transaction
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
+- Text editor or IDE.
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- An account that has received some transaction.
 
 ## Getting into some code
 
@@ -41,7 +41,7 @@ for _, transaction := range transactions {
 
 <div class="info">
 
-**Note**
+**Note:**
 
 By default, the SDK provides up to 10 transactions. The page size can be increased up to 100 transactions.
 

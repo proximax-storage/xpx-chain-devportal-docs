@@ -2,7 +2,7 @@
 id: transaction
 title: Transaction
 ---
-A transaction generally represents a unit of work within a database system. In the case of blockchain, that is when an action signed by an [account](../built-in-features/account.md) changes its state.
+A transaction generally represents a unit of work within a database system. In the case of blockchain, a transaction is when an action signed by an [account](../built-in-features/account.md) changes its state.
 
 Transactions accepted by the network are stored permanently on [blocks](./block.md).
 
@@ -47,13 +47,13 @@ We recommend to [use the xpx-chain-sdk to define](../sdks/overview.md) transacti
 
 Transactions have an associated cost. This cost is necessary to provide an incentive for the [harvesting](./harvesting.md) who secure the network and run the infrastructure.
 
-The fee associated with a transaction primarily depends on the transaction’s size. The effective fee is the product of the size of the transaction, and a fee multiplier set by the validator. The node owner can configure the latter value to all positive values, including zero.
+The fee associated with a transaction primarily depends on the transaction’s size. The effective fee is the product of the size of the transaction, and a fee multiplier set by the Validator. The node owner can configure the latter value to all positive values, including zero.
 
 > effective_fee = transaction::size * block::fee_multiplier
 
 A sender of a transaction must specify during the transaction definition a `max_fee`, meaning the maximum fee the account allows to spend for this transaction.
 
-If the `effective_fee` is smaller or equal to the `max_fee`, the validator can opt to include the transaction in the block. The `fee_multiplier` is stored in the [block header](./block.md#blockheader), permitting to resolve which was the effective fee paid for every transaction included.
+If the `effective_fee` is smaller or equal to the `max_fee`, the Validator can opt to include the transaction in the block. The `fee_multiplier` is stored in the [block header](./block.md#blockheader), permitting to resolve which was the effective fee paid for every transaction included.
 
 The validating nodes can decide their transaction inclusion strategy:
 
@@ -101,7 +101,7 @@ Blockchains are designed in a way that under certain circumstances recent blocks
 
 The `rewrite limit` is the maximum number of blocks that can be rolled back. Hence, forks can only be resolved up to a certain depth too.
 
-Sirius-Chain has a rewrite limit of `360` blocks. Once a transaction has more than 360 confirmations, it cannot be reversed.
+Sirius Chain has a rewrite limit of `360` blocks. Once a transaction has more than 360 confirmations, it cannot be reversed.
 
 From experience, forks that are deeper than 20 blocks do not happen, unless there is a severe problem with the blockchain due to a bug in the code or an attack.
 

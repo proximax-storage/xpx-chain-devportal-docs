@@ -5,15 +5,15 @@ title: Block
 
 The central element of every cryptocurrency is a public ledger called the blockchain, which links blocks together.
 
-Since the blocks in the chain are ordered, the complete transaction history is held in the blockchain. Subsequent blocks in the blockchain have increasing heights that differ by one.
+Since the blocks in the chain are ordered, the complete transaction history is held in the blockchain. Subsequent blocks in the blockchain have increased heights that differ by one.
 
-Blocks are stored in a database as permanent medium. Sirius-Chain calls the first block in the chain the nemesis block.
+Blocks are stored in a database as a permanent medium. Sirius Chain calls the first block in the chain the nemesis block.
 
-Sirius-Chain blocks complete every `15` seconds, making transactions confirm quickly enough for everyday use.
+Sirius Chain blocks complete every `15` seconds, making transactions confirm quickly enough for everyday use.
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties). Public network configuration may differ.
 </div>
@@ -48,9 +48,9 @@ timestamp |	uint64 | The number of seconds elapsed since the creation of the nem
 difficulty | uint64 | The block difficulty.
 feeMultiplier | uint32 | The fee multiplier applied to transactions contained in block.
 previousBlockHash |	32 bytes (binary) |	The hash of the previous block.
-blockTransactionHash | 32 bytes (binary) |	The transactions included in a block are hashed forming a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree). The root of the tree summarises them.
+blockTransactionHash | 32 bytes (binary) |	The transactions included in a block are hashed forming a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree). The root of the tree summarizes them.
 blockReceiptsHash | 32 bytes (binary) |	The collection of [receipts](./receipt.md) are hashed into a [merkle tree](https://en.wikipedia.org/wiki/Merkle_tree) and linked to a [block](#). The block header stores the root hash.
-stateHash |	32 bytes (binary) |	The state of the blockchain is stored in RocksDB for each block, forming a [patricia tree](https://en.wikipedia.org/wiki/Radix_tree). The root of the tree summarises the state of the blockchain for a given block.
+stateHash |	32 bytes (binary) |	The state of the blockchain is stored in RocksDB for each block, forming a [patricia tree](https://en.wikipedia.org/wiki/Radix_tree). The root of the tree summarizes the state of the blockchain for a given block.
 beneficiaryPublicKey | 32 bytes (binary) | The public key of the optional beneficiary designated by validator.
 feeInterest | uint32 | The part of the transaction fee harvester is willing to get. From 0 up to `feeInterestDenominator`. The customer gets (feeInterest / feeInterestDenominator)'th part of the maximum transaction fee.
 feeInterestDenominator | uint32 | Denominator of the transaction fee.

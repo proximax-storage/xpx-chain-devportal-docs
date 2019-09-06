@@ -7,7 +7,7 @@ The Sirius-Chain platform is built from a network of nodes. These nodes provide 
 
 ![Four Layer Architecture](/img/four-layer-architecture.png "Four Layer Architecture")
 
-<p class="caption">Sirius-Chain’s Performance Advantage: A Four-Layered Architecture</p>
+<p class="caption">What is the Sirius Chain’s Performance Advantage?</p>
 
 The four-layered architecture allows developers to update any of these tiers without disrupting the others, which improves security.
 

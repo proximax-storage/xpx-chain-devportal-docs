@@ -13,7 +13,7 @@ An account can link a registered name (namespace or subnamespace) with an [accou
 
 ## Subnamespaces
 
-On the internet, a domain can have a sub-domain. In Sirius-Chain, namespaces can have subnamespaces.
+In the internet, a domain name can have a sub-domain name. In Sirius Chain, namespaces can have subnamespaces.
 
 You can [create multiple subnamespaces](../guides/namespace/registering-a-subnamespace.md) with the same name in different namespaces. For example, you can create the subnamespaces `foo.bar` and `foo2.bar`.
 
@@ -86,11 +86,11 @@ The ticket vendor can send 1 `ticketsales.event1.ticket` to `alice` instead of 1
 
 - [Registering a namespace](../guides/namespace/registering-a-namespace.md)
 
-    Rregister your own namespace.
+    How to register your own namespace.
 
 - [Registering a subnamespace](../guides/namespace/registering-a-subnamespace.md)
 
-    Register a subnamespace following this guide.
+    How to register a subnamespace.
 
 - [Linking a namespace to a mosaic](../guides/namespace/linking-a-namespace-to-a-mosaic.md)
 
@@ -109,15 +109,15 @@ The ticket vendor can send 1 `ticketsales.event1.ticket` to `alice` instead of 1
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 
-### RegisterNamespaceTransaction
+### Register Namespace Transaction
 
-Announce a register namespace transaction to register and re-rent a namespace.
+Announce a register namespace transaction to register and rent a namespace again.
 
 **Version**: 0x02
 

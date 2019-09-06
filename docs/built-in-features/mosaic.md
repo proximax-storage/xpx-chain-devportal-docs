@@ -56,7 +56,7 @@ Fractional ownership, along with the ability to trade 24/7, brings additional li
 
 <div class=info>
 
-**Note**
+**Note:**
 
 We recommend checking out [setting up your workstation](../getting-started/setting-up-workstation.md) before going through the guides.
 
@@ -81,7 +81,7 @@ We recommend checking out [setting up your workstation](../getting-started/setti
 
 <div class="info">
 
-**Note**
+**Note:**
 
 Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 

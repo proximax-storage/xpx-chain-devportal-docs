@@ -1,6 +1,6 @@
 ---
 id: modifying-a-multisig-account
-title: Modifying a multisig-account
+title: Modifying a multisig account
 ---
 
 Modify an existing [multisig account](../../built-in-features/multisig-account.md).
@@ -103,7 +103,7 @@ Once confirmed, the `minApproval` value of the multisig will be set to 2, having
 
 <div class=info>
 
-**Note**
+**Note:**
 
 If you want to decrease the `minApproval` parameter, set `minApprovalDelta` with a negative value. In this case `-1`.
 
@@ -242,7 +242,7 @@ The following code shows how to remove a cosignatory of a 2-of-3 multisig accoun
 
 <div class=info>
 
-**Note**
+**Note:**
 
 The `minRemoval` parameter indicates the number of required signatures to delete an account from the multisig. You can increase or decrease it the same way you [modify minApproval parameter](./modifying-a-multisig-account.md#guide-modify-a-multisig-account-min-approval).
 

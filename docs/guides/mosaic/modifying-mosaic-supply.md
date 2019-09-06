@@ -1,6 +1,6 @@
 ---
 id: modifying-mosaic-supply
-title: Modifying mosaic supply
+title: Modifying Mosaic Supply
 ---
 
 Alter the supply of a mosaic following this guide.

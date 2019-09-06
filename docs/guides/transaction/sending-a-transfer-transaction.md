@@ -13,7 +13,7 @@ Transfer [mosaics](../../built-in-features/mosaic.md) and messages between two a
 - A text editor or IDE
 - An account with `xpx`
 
-## Background
+## Background Information 
 
 ![Transfer Transaction](/img/transfer-transaction1.png "Transfer Transaction")
 
@@ -134,7 +134,7 @@ if err != nil {
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-4. Open the terminal where you are monitoring account transactions `status`. It should be empty. If there is an error, you can [check the error code here](../../rest-api/status-errors.md).
+4. Open the terminal where you are monitoring account transactions `status`. It should be vacant. If there is an error, you can [check the error code here](../../rest-api/status-errors.md).
 
 A new transaction should have appeared in the terminal where you are monitoring `unconfirmed`. At this point, the transaction has reached the network, but it is not clear if it will get included in a block.
 

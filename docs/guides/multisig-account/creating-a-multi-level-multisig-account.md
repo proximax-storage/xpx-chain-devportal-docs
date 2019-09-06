@@ -11,7 +11,7 @@ Following this guide you will learn to create the following 3-level multisig acc
 
 <p class=caption>Three-level multisig account example</p>
 
-## Background
+## Background Information 
 
 [Multisig accounts](../../built-in-features/multisig-account.md) can have as cosignatories other multisig accounts. Multi-level multisig accounts add “AND/OR” logic to multi-signature transactions.
 
@@ -178,7 +178,7 @@ xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7C
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## What’s next?
+**Note:**
 
 If the account #5 initiates an aggregate bonded transaction involving the account #1, which accounts should cosign the transaction?
 

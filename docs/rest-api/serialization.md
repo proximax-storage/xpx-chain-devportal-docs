@@ -12,7 +12,7 @@ The library accomplishes the following properties:
 
 ## Memory Efficiency
 
-Large networks compute a large number of transactions. Working with binary optimised in size makes the communication faster. Furthermore, reading entities from memory buffers -or just a part of them - is memory efficient.
+Large networks comprise a large number of transactions. Working with binary optimized in size makes the communication faster. Furthermore, reading entities from memory buffers or just a part of them, is memory efficient.
 
 ## Flexibility
 
@@ -24,7 +24,7 @@ You can generate transaction's serializer by using the same [defined schema](htt
 
 <div class=info>
 
-**Note**
+**Note:**
 
 This section is incomplete. More information will be published once the XPX-Chain-SDK is updated.
 

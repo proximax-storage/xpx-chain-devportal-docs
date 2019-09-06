@@ -5,9 +5,9 @@ title: Converting an account to multisig
 
 Create a 1-of-2 [multisig account](../../built-in-features/multisig-account.md), by adding two cosignatories.
 
-## Background
+## Background Information
 
-Alice and Bob live together and have separate [accounts](../../built-in-features/account.md). They also have a shared account so that if Bob is out shopping, he can buy groceries for both himself and Alice.
+Alice and Bob live together and have separate [accounts](../../built-in-features/account.md). They also have a shared account so that if Bob is shopping, he can buy groceries for both himself and Alice.
 
 This shared account appears in Sirius-Chain as **1-of-2 multisig**. Multisig accounts permit Alice and Bob sharing funds in a separate account, requiring only the signature from one of them to transact.
 
@@ -94,7 +94,7 @@ if err != nil {
 
 <div class=info>
 
-**Note**
+**Note:**
 
 To make the transaction only valid for your network, include the first block generation hash. Open `http://localhost:3000/block/1` in a new tab and copy the `meta.generationHash` value.
 

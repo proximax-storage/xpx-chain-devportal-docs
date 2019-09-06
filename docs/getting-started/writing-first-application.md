@@ -5,11 +5,11 @@ title: Writing your first application
 
 This guide will take you through the Sirius-Chain development cycle. You will send your first transaction to the blockchain after combining some Sirius-Chain [built-in features](../built-in-features/account.md).
 
-## Background
+## Background Information
 
 The secondary ticket market, also known as the resale market, is the exchange of tickets that happens between individuals after they have purchased a ticket from an initial vendor. The initial vendor could be the event website, an online ticket vending platform, a shop or a stall at the entrance of the event.
 
-Buying a ticket from someone that is not the initial vendor does not necessarily only mean to pay more for the ticket. The is the chance to be a victim of buying a fake or duplicate ticket, where the initial original vendor can’t do anything to solve the issue.
+Buying a ticket from someone that is not the initial vendor does not necessarily only mean the buyer needs to pay more for the ticket. There is the chance that the buyer can become a victim of buying a fake or duplicate ticket, where the initial original vendor can’t do anything to solve the issue.
 
 **What do we want to solve?**
 
@@ -28,7 +28,7 @@ The ticket vendor wants to set up a system to:
 3. Avoid non-authentic tickets and duplicate ones.
 </div>
 
-**Why should we use Sirius-Chain?**
+**Why should we use Sirius Chain?**
 
 Blockchain technology makes sense in cases where:
 
@@ -36,7 +36,7 @@ Blockchain technology makes sense in cases where:
 - These participants need to trust each other.
 - There is the need to keep track of an immutable set of events.
 
-Sirius-Chain is a **flexible blockchain** technology. Instead of uploading all the application logic into the blockchain, you can use its tested features through **API calls** for transfer and storage of value, authorisation, traceability, and identification.
+Sirius Chain is a **flexible blockchain** technology. Instead of uploading all the application logic into the blockchain, you can use its tested features through **API calls** for transfer and storage of value, authorization, traceability, and identification.
 
 The rest of the code remains **off-chain**. This reduces the inherent immutability risk, as you could change the process when necessary.
 
@@ -85,7 +85,7 @@ $> xpx2-cli account generate --network TEST_NET --save --url http://localhost:30
 
 Accounts change the blockchain state through transactions. Once an account announces a transaction, if properly formed, the server will return an OK response.
 
-Receiving an OK response does not mean the transaction is valid, which means it is still not included in a block. A good practice is to monitor transactions before being announced.
+Receiving an OK response does not mean the transaction is valid, as it may not be included in a block. A good practice is to monitor transactions before being announced.
 
 We suggest opening three new terminals:
 
@@ -107,7 +107,7 @@ $> xpx2-cli monitor confirmed
 
 ### Creating the ticket
 
-We are representing the ticket as a mosaic. [Mosaics](../built-in-features/mosaic.md) can be used to represent any asset in the blockchain, such as objects, tickets, coupons, stock share representation, and even your cryptocurrency. They have configurable properties, which are defined at the moment of their creation. For example, we opt to set **transferable property to false**. This means that the ticket buyer can only send back the ticket to the creator of the mosaic, avoiding the ticket reselling.
+We are representing the ticket as a mosaic. [Mosaics](../built-in-features/mosaic.md) can be used to represent any asset in the blockchain, such as objects, tickets, coupons, stock share representation, and even cryptocurrency. They have configurable properties, which are defined at the moment of their creation. For example, we opt to set **transferable property to false**. This means that the ticket buyer can only send back the ticket to the creator of the mosaic, avoiding the ticket reselling.
 
 1. Create a mosaic named `ticket`.
 
@@ -218,7 +218,7 @@ $> xpx2-cli account info --profile buyer
 
 Did you solve the proposed use case?
 
-- Identify each ticket buyer: Creating Sirius-Chain accounts for each buyer.
+- Identify each ticket buyer: Creating Sirius Chain accounts for each buyer.
 - Avoid ticket reselling: Creating a non-transferable mosaic.
 - Avoid non-authentic tickets and duplicate ones: Creating a unique mosaic named `company:ticket`.
 

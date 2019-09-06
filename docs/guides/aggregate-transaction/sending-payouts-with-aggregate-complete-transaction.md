@@ -5,7 +5,7 @@ title: Sending payouts with aggregate-complete transaction
 
 Send transactions to different accounts atomically, using an [aggregate complete transaction](../../built-in-features/aggregate-transaction.md#examples).
 
-## Background
+## Background Information 
 
 Dan wants to send mosaics to Alice and Bob. He chooses to send an aggregate complete transaction, so both will receive the funds at the same time.
 
@@ -13,7 +13,7 @@ Dan wants to send mosaics to Alice and Bob. He chooses to send an aggregate comp
 
 <p class=caption>Sending transactions to different recipients atomically</p>
 
-He chooses to send an aggregate complete transaction, so both will receive the funds at the same time.
+Dan chooses to send an aggregate complete transaction, so both will receive the funds at the same time.
 
 ## Prerequisites
 
@@ -94,5 +94,5 @@ if err != nil {
 
 ## What’s next?
 
-Send an aggregate bonded transaction by following [creating an escrow with aggregate bonded transaction](./creating-an-escrow-with-aggregate-bonded-transaction.md) guide.
+Send an aggregate bonded transaction by following the [creating an escrow with aggregate bonded transaction](./creating-an-escrow-with-aggregate-bonded-transaction.md) guide.
 

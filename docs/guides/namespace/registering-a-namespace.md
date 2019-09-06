@@ -5,7 +5,7 @@ title: Registering a namespace
 
 Register your own [namespace](../../built-in-features/namespace.md).
 
-## Background
+## Background Information 
 
 Namespaces allow you to create an on-chain **unique place** for your business and your assets on the Sirius-Chain.
 
@@ -15,10 +15,10 @@ An account can link a registered name (namespace or subnamespace) with an accoun
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- XPX-Chain-SDK or XPX-Chain-CLI
-- A text editor or IDE
-- An account with XPX
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- A text editor or IDE.
+- An account with XPX.
 
 ## Getting into some code
 
@@ -52,7 +52,7 @@ if err != nil {
 
 <div class=info>
 
-**Note**
+**Note:**
 
 In Sirius-Chain, blocks are complete every `15` seconds in average. You will have to renew your namespace before it expires.
 
