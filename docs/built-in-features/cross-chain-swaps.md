@@ -2,6 +2,7 @@
 id: cross-chain-swaps
 title: Cross-Chain Swaps
 ---
+
 A cross-chain swap enables **trading tokens** across **different blockchains**, without using an intermediary party (eg. an exchange service) in the process.
 
 ![Cross-chain swap](/img/cross-chain-swap.png "Cross-chain swap")
@@ -10,21 +11,62 @@ A cross-chain swap enables **trading tokens** across **different blockchains**, 
 
 In order to create a trustless environment for an exchange, a specific transaction type is required that is commonly referred to as **Hashed TimeLock Contract** (HTLC). Two additional components characterize this transaction type: hashlocks and timelocks. A thorough explanation can be found on the [Bitcoin Wiki](https://en.bitcoin.it/wiki/Hashed_Timelock_Contracts).
 
-In other words, to reduce counterparty risk, the receiver of a payment needs to present a proof for the transaction to execute. Failing to do so, the locked funds are released after the deadline is reached, even if just one actor does not agree. The figure below illustrates the cross-chain swap protocol.
+In other words, to reduce counterparty risk, the receiver of a payment needs to present a proof for the transaction to execute. Failing to do so, the locked funds are released after the deadline is reached, even if just one actor does not agree.
+
+## Protocol
+
+Alice and Bob want to exchange `10 alice tokens for 10 bob tokens`. The problem is that they are not in the same blockchain: alice token is defined in Sirius-Chain public chain, whereas bob token is only present in a private chain using Catapult technology.
+
+<div class="info">
+
+**Note**
+
+Sirius-Chain’s private and future public chain share the SDK. You could implement atomic cross-chain swap between blockchains that use different technologies if they permit the [secret lock/proof mechanism](#lockhashalgorithm).
+</div>
 
 ![Cross-chain swap cycle](/img/cross-chain-swap-cycle.png "Cross-chain swap cycle")
 
 <p class=caption>Atomic cross-chain swap sequence diagram</p>
 
-When talking about tokens in Sirius-Chain, we are actually referring to [mosaics](./mosaic.md). Sirius Chain enables atomic swaps through [secret lock](#secretlocktransaction) or [secret proof transaction](#secretprooftransaction) mechanism.
+1. Alice generates a random set of bytes called `proof`. The proof should have a size between `10` and `1000` bytes.
+2. Alice hashes the obtained proof with one of the [available algorithms](#lockhashalgorithm) to generate the `secret`.
+3. Alice defines the secret lock transaction `TX1`:
 
-## Guides on Cross-Chain Swaps
+- Mosaic: 10 alice token
+- Recipient: Bob’s address (Private Chain)
+- Algorithm: h
+- Secret: h(proof)
+- Duration: 96h
+- Network: Private Chain
+
+4. Alice announces TX1 to the private network and shares with Bob the secret.
+5. Bob defines announces the following [secret lock transaction](#secretlocktransaction) `TX2` to the public network:
+
+- Mosaic: 10 bob token
+- Recipient: Alice’s address (Public Chain)
+- Algorithm: h
+- Secret: h(proof)
+- Duration: 84h
+- Network: Public Chain
+
+<div class="info">
+
+**Note**
+
+The amount of time in which funds can be unlocked should be a smaller time frame than TX1’s. Alice knows the secret, so Bob must be sure he will have some time left after Alice releases the secret.
+</div>
+
+6. Alice announces the [secret proof transaction](#secretprooftransaction) TX3 to the public network. This transaction defines the encrypting algorithm used, the original proof and the secret.
+7. Once TX3 is confirmed, the proof is revealed. TX2 transaction is unlocked and Alice receives the locked funds.
+8. Bob picks the proof and announces the [secret proof transaction](#secretprooftransaction) TX4 to the private network, receiving the locked funds from TX1.
+
+## Guides
 
 <div class=info>
 
 **Note:**
 
-We recommend checking out [setting up your workstation][Workstation] before going through the guides.
+We recommend checking out [setting up your workstation](../getting-started/setting-up-workstation.md) before going through the guides.
 
 </div>
 
@@ -38,7 +80,7 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 **Note:**
 
-Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) . Public network configuration may differ.
+Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 
@@ -75,7 +117,7 @@ recipient |	25 bytes (binary) |	The address who will receive the funds once unlo
 
 Use a secret proof transaction to unlock [secret lock transactions](#secretlocktransaction).
 
-The transaction must prove that knows the proof that unlocks the mosaics.
+The transaction must prove that knows the proof that unlocks the mosaics for recipient.
 
 **Version**: 0x01
 
@@ -89,6 +131,7 @@ The transaction must prove that knows the proof that unlocks the mosaics.
 -------------|-----------|--------------------
 hashAlgorithm |	[LockHashAlgorithm](#lockhashalgorithm) |	The algorithm used to hash the proof.
 secret |	64 bytes (binary) |	The proof hashed.
+recipient |	25 bytes (binary) |	The address who will receive the funds once unlocked.
 proofSize |	uint16 |	The proof size in bytes.
 proof |	array(byte, proofSize) |	The original proof.
 

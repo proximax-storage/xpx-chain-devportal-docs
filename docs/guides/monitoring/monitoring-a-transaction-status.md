@@ -3,6 +3,7 @@ id: monitoring-a-transaction-status
 title: Monitoring a transaction status
 sidebar_label: Monitor transaction
 ---
+
 Make sure a [transaction](../../protocol/transaction.md) gets included in the blockchain after being announced.
 
 ## Background Information 
@@ -13,11 +14,11 @@ When working with blockchain technology, it is interesting to “fire” the tra
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
-- Text editor or IDE.
-- XPX-Chain-SDK or XPX-Chain-CLI.
+- Text editor or IDE
+- XPX-Chain-SDK or XPX-Chain-CLI
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
 
-## Let’s do some coding!
+## Getting into some code
 
 Sirius Chain enables asynchronous transaction announcement. After you publish a transaction, the API node will always accept it if it is well-formed.
 
@@ -31,43 +32,54 @@ To ensure the transaction is added in a block, you must track the [transaction s
 
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const recipientAddress = Address.createFromRawAddress("SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54");
-const transferTransaction = TransferTransaction.create(
-    Deadline.create(),
-    recipientAddress,
-    [],
-    PlainMessage.create('Test'),
-    NetworkType.TEST_NET);
-```
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
 
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+address, err := sdk.NewAddressFromRaw("SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54")
+if err != nil {
+    panic(err)
+}
+
+transferTransaction, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), address, []*sdk.Mosaic{}, sdk.NewPlainMessage("Test"))
+if err != nil {
+    panic(err)
+}
+```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Sign the transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const privateKey = process.env.PRIVATE_KEY as string;
-const signer = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-const signedTransaction = signer.sign(transferTransaction);
-```
+<!--Golang-->
+```go
+signer, err := client.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"))
+if err != nil {
+    panic(err)
+}
 
+signedTransaction, err := signer.Sign(transferTransaction)
+if err != nil {
+    panic(err)
+}
+```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-3. Open a new [Listeners](../../rest-api/websockets.md). This communicates with the API WebSocket, who will communicate you asynchronously the status of the transaction.
+3. Open a new [Listener](../../rest-api/websockets.md). This communicates with the API WebSocket, who will communicate you asynchronously the status of the transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const url = 'http://localhost:3000';
-const listener = new Listener(url);
-const transactionHttp = new TransactionHttp(url);
-
-const amountOfConfirmationsToSkip = 5;
-
-listener.open().then(() => {
+<!--Golang-->
+```go
+wsClient, err := websocket.NewClient(context.Background(), conf)
+if err != nil {
+    panic(err)
+}
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -75,144 +87,80 @@ listener.open().then(() => {
 4. Start monitoring if the WebSocket connection is alive. [Blocks](../../protocol/block.md) are generated every `15` seconds in average, so a timeout can be raised if there is no response after 30 seconds approximately.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-    const newBlockSubscription = listener
-        .newBlock()
-        .pipe(timeout(30000)) // time in milliseconds when to timeout.
-        .subscribe(block => {
-            console.log("New block created:" + block.height.compact());
-        },
-        error => {
-            console.error(error);
-            listener.terminate();
-        });
-```
+<!--Golang-->
+```go
+err = wsClient.AddBlockHandlers(func (info *sdk.BlockInfo) bool {
+    fmt.Printf("Block received with height: %v \n", info.Height)
+    return true
+})
 
-<!--Bash-->
+if err != nil {
+    panic(err)
+}
 ```
-xpx2-cli monitor block
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 5. Monitor if there is some validation error with the transaction issued. When you receive a message from status WebSocket channel, it always means the transaction did not meet the requirements. You need to handle the error accordingly, by reviewing the [error status list](../../rest-api/status-errors.md).
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-    listener
-        .status(signer.address)
-        .pipe(filter(error => error.hash === signedTransaction.hash))
-        .subscribe(error => {
-            console.log("❌:" + error.status);
-            newBlockSubscription.unsubscribe();
-            listener.close();
-        },
-        error => console.error(error));
+<!--Golang-->
+```go
+err = wsClient.AddStatusHandlers(signer.Address, func (info *sdk.StatusInfo) bool {
+    fmt.Printf("Status: %v \n", info.Status)
+    fmt.Printf("Hash: %v \n", info.Hash)
+    return true
+})
+if err != nil {
+    panic(err)
+}
 ```
-
-<!--Bash-->
-```
-xpx2-cli monitor status --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 6. Monitor as well if the transaction reaches the network. When you receive a message from unconfirmed WebSocket channel, the transaction is valid and is waiting to be included in a block. This does not mean necessarily that the transaction will be included, as a second validation happens before being finally confirmed.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-    listener
-        .unconfirmedAdded(signer.address)
-        .pipe(filter(transaction => (transaction.transactionInfo !== undefined
-            && transaction.transactionInfo.hash === signedTransaction.hash)))
-        .subscribe(ignored => console.log("⏳: Transaction status changed to unconfirmed"),
-            error => console.error(error));
+<!--Golang-->
+```go
+err = wsClient.AddUnconfirmedAddedHandlers(signer.Address, func (info sdk.Transaction) bool {
+    fmt.Printf("UnconfirmedAdded Tx Hash: %v \n", info.GetAbstractTransaction().TransactionHash)
+    return true
+})
+if err != nil {
+    panic(err)
+}
 ```
-
-<!--Bash-->
-```
-xpx2-cli monitor unconfirmed --address SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 7. Monitor when the transaction gets included in a block. When included, the [transaction](../../protocol/transaction.md) can still be rolled-back because of forks. You can decide for yourself that after e.g. 6 blocks the [transaction is secured](https://gist.github.com/aleixmorgadas/3d856d318e60f901be09dbd23467b374).
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-    listener
-        .confirmed(signer.address)
-        .pipe(
-            filter(transaction =>(transaction.transactionInfo !== undefined
-                && transaction.transactionInfo.hash === signedTransaction.hash)),
-            mergeMap(transaction => {
-                return listener.newBlock()
-                    .pipe(
-                        skip(amountOfConfirmationsToSkip),
-                        first(),
-                        map( ignored => transaction))
-            })
-        )
-        .subscribe(ignored => {
-            console.log("✅: Transaction confirmed");
-            newBlockSubscription.unsubscribe();
-            listener.close();
-        }, error => console.error(error));
+<!--Golang-->
+```go
+err = wsClient.AddConfirmedAddedHandlers(signer.Address, func (info sdk.Transaction) bool {
+    fmt.Printf("ConfirmedAdded Tx Hash: %v \n", info.GetAbstractTransaction().TransactionHash)
+    return true
+})
+if err != nil {
+    panic(err)
+}
 ```
-
-<!--Bash-->
-```
-xpx2-cli monitor confirmed --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 8. Finally, announce the transaction to the network.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-    transactionHttp
-        .announce(signedTransaction)
-        .subscribe(x => console.log(x),
-            error => console.error(error));
-});
+<!--Golang-->
+```go
+_, err = client.Transaction.Announce(ctx, signedTransaction)
+if err != nil {
+    panic(err)
+}
 ```
-
-<!--Bash-->
-```
-xpx2-cli transaction transfer --recipient VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --mosaics prx:xpx::10000000 --message "Welcome to Sirius-Chain"
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 If you missed the WebSocket response, check the transaction status after by calling the [transaction status endpoint](../../../endpoints#operation/getTransaction). The status of failed transactions is not persistent, meaning that eventually is pruned.
-
-<div class=info>
-
-**Note:**
-
-If you are developing a small application, and monitoring asynchronous transactions adds too much overhead to your project, consider [turning asynchronous transactions announcement into synchronous](../monitoring/turning-the-asynchronous-transaction-announcement-into-synchronous.md).
-
-</div>
-
-## Troubleshooting: Monitoring transactions on the client side
-
-The xpx-chain-sdk for typescript base Listener was designed to work on Node.js backend environments.
-
-To make the code work on the client side (e.g., Angular, React, Vue.), pass the browser implementation of the WebSocket to the Listener.
-
-```js
-const listener = new Listener('ws://localhost:3000', WebSocket);
-listener.open().then(() => ...
-```
 
 ## What’s next?
 
 Run your application and try to [send a transfer transaction](../transaction/sending-a-transfer-transaction.html) to the selected account. If all goes well, you will see the transaction information in your terminal.
 
-<!--Author: [jorisadri](https://bcdocs.xpxsirius.io/guides/author/jorisadri.html)

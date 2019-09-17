@@ -2,221 +2,98 @@
 id: creating-a-mosaic
 title: Creating a mosaic
 ---
-This guide will help you create a[mosaic](../../built-in-features/mosaic.md) after creating a namespace.
 
-## Background Information 
+Follow this guide to create a [mosaic](../../built-in-features/mosaic.md).
+
+## Background
 
 Mosaics can be used to represent any asset in the blockchain such as objects, tickets, coupons, stock share representation, and even your cryptocurrency.
 
-A mosaic is like a file hosted on a domain and it represents an asset. Like a website and directory, a mosaic can have the same name as other files on other domains. However, a namespace  and a mosaic is always unique.
-
 ## Prerequisites
 
-- Finish [registering a namespace guide](../namespace/registering-a-namespace.md).
-- XPX-Chain-SDK or XPX-Chain-CLI.
-- A text editor or IDE.
-- An account with XPX and at least one namespace.
+- Finish [registering a namespace guide](../namespace/registering-a-namespace.md)
+- have an `account` with `xpx`
+- XPX-Chain-SDK or XPX-Chain-CLI
+- A text editor or IDE
+- An account with XPX and at least one namespace
 
-## Let’s do some coding!
+## Getting into some code
 
-The first step is to choose a name for your mosaic. The name of the mosaic, up to a size limit of `64` characters, must be unique under the domain name.
+Define two transactions to create a mosaic:
 
-Our mosaic will be called `token`, and its parent namespace will be called `foo`.
+1. A [mosaic definition transaction](../../built-in-features/mosaic.md#mosaicdefinitiontransaction), to create the mosaic, with the following properties:
+
+**Property**   |**Value**|**Description**
+---------------|---------|---------------
+Divisibility   |0        | The mosaic won’t be divisible. Determines up to what decimal place the mosaic can be divided.
+Duration       |1000     | The mosaic will be created for the next 1000 blocks. If you want to create a non-expiring mosaic, do not set this property.
+Supply mutable |true     | The mosaic supply can change at a later point.
+Transferable   |true     | The mosaic can be transferred between arbitrary accounts. Otherwise, the mosaic can be only transferred back to the mosaic creator.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+<!--Golang-->
+```go
+nonce := rand.New(rand.NewSource(time.Now().UTC().UnixNano())).Uint32()
 
-const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-// Replace with namespace name and mosaic name
-const namespaceName = 'foo';
-const mosaicName = 'token';
-```
-
-<!--JavaScript-->
-```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
-
-const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-// Replace with namespace name and mosaic name
-const namespaceName = 'foo';
-const mosaicName = 'token';
-```
-
-<!--Java-->
-```java
-    // Replace with private key
-    final String privateKey = "";
-
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-    // Replace with namespace name and mosaic name
-    final String namespaceName = "foo";
-    final String mosaicName = "token";
+mosaicDefinitionTrx, err := client.NewMosaicDefinitionTransaction(
+    sdk.NewDeadline(time.Hour),
+    nonce,
+    account.PublicAccount.PublicKey,
+    sdk.NewMosaicProperties(true, true, 0, sdk.Duration(1000)),
+)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-It is necessary to announce two transactions when creating a mosaic:
-
-1. A [mosaic definition transaction](../../built-in-features/mosaic.md#mosaicdefinitiontransaction) is announced to create the mosaic.
-
-Under mosaic properties, we define a mosaic with `supplyMutable`, `transferable` among accounts other than the creator and registered for `1000 blocks`. `foo:token` won’t be `divisible`.
+2. A [mosaic supply change transaction](../../built-in-features/mosaic.md#mosaicsupplychangetransaction), to set the supply. We are going to create 1.000.000 mosaic units.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const mosaicDefinitionTransaction = MosaicDefinitionTransaction.create(
-    Deadline.create(),
-    mosaicName,
-    namespaceName,
-    MosaicProperties.create({
-        supplyMutable: true,
-        transferable: true,
-        levyMutable: false,
-        divisibility: 0,
-        duration: UInt64.fromUint(1000)
-    }),
-    NetworkType.TEST_NET);
-```
+<!--Golang-->
+```go
+mosaic, err := sdk.NewMosaicIdFromNonceAndOwner(nonce, account.PublicAccount.PublicKey)
+if err != nil {
+    panic(err)
+}
 
-<!--JavaScript-->
-```js
-const mosaicDefinitionTransaction = MosaicDefinitionTransaction.create(
-    Deadline.create(),
-    mosaicName,
-    namespaceName,
-    MosaicProperties.create({
-        supplyMutable: true,
-        transferable: true,
-        levyMutable: false,
-        divisibility: 0,
-        duration: UInt64.fromUint(1000)
-    }),
-    NetworkType.TEST_NET);
-```
-
-<!--Java-->
-```js
-MosaicDefinitionTransaction mosaicDefinitionTransaction = MosaicDefinitionTransaction.create(
-    new Deadline(2, ChronoUnit.HOURS),
-    mosaicName,
-    namespaceName,
-    new MosaicProperties(true, true, false, 0, BigInteger.valueOf(1000)),
-    NetworkType.TEST_NET
-);
+mosaicSupplyChangeTrx, err := client.NewMosaicSupplyChangeTransaction(
+    sdk.NewDeadline(time.Hour),
+    mosaic,
+    sdk.Increase,
+    sdk.Amount(1000000),
+)
+if err != nil {
+    panic(err)
+}
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
-
-2. A [mosaic supply change transaction](../../built-in-features/mosaic.md#mosaicsupplychangetransaction) is announced to set the supply. `foo:token` initial supply is 1.000.000
-
 <div class=info>
 
 **Note:**
 
-Once you announce a MosaicSupplyChangeTransaction, you cannot change mosaic properties for this mosaic.
+Sirius-Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to create by 10divisibility. For example, if the mosaic has divisibility 2, to create 10 units (relative) you should define 1000 (absolute) instead.
 
 </div>
 
-<!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
-    Deadline.create(),
-    mosaicDefinitionTransaction.mosaicId,
-    MosaicSupplyType.Increase,
-    UInt64.fromUint(1000000),
-    NetworkType.TEST_NET);
-```
-
-<!--JavaScript-->
-```js
-const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
-    Deadline.create(),
-    mosaicDefinitionTransaction.mosaicId,
-    MosaicSupplyType.Increase,
-    UInt64.fromUint(1000000),
-    NetworkType.TEST_NET);
-```
-
-<!--Java-->
-```java
-MosaicSupplyChangeTransaction mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
-    new Deadline(2, ChronoUnit.HOURS),
-    mosaicDefinitionTransaction.getMosaicId(),
-    MosaicSupplyType.INCREASE,
-    BigInteger.valueOf(1000000),
-    NetworkType.TEST_NET
-);
-```
-<!--END_DOCUSAURUS_CODE_TABS-->
 
 3. Both transactions can be announced together using an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples).
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```js
-const aggregateTransaction = AggregateTransaction.createComplete(
-    Deadline.create(),
-    [
-        mosaicDefinitionTransaction.toAggregate(account.publicAccount),
-        mosaicSupplyChangeTransaction.toAggregate(account.publicAccount)
-    ],
-    NetworkType.TEST_NET,
-    []);
+<!--Golang-->
+```go
+// Convert an aggregate transaction to an inner transaction including transaction signer.
+mosaicDefinitionTrx.ToAggregate(account.PublicAccount)
+mosaicSupplyChangeTrx.ToAggregate(account.PublicAccount)
 
-const signedTransaction = account.sign(aggregateTransaction);
-
-transactionHttp
-    .announce(signedTransaction)
-    .subscribe(x=> console.log(x),err => console.error(err));
+// Create an aggregate complete transaction
+aggregateTransaction, err := client.NewCompleteAggregateTransaction(
+    // The maximum amount of time to include the transaction in the blockchain.
+    sdk.NewDeadline(time.Hour),
+    // Inner transactions
+    []sdk.Transaction{mosaicDefinitionTrx, mosaicSupplyChangeTrx,},
+)
 ```
-
-<!--JavaScript-->
-```js
-const aggregateTransaction = AggregateTransaction.createComplete(
-    Deadline.create(),
-    [
-        mosaicDefinitionTransaction.toAggregate(account.publicAccount),
-        mosaicSupplyChangeTransaction.toAggregate(account.publicAccount)
-    ],
-    NetworkType.TEST_NET,
-    []);
-
-const signedTransaction = account.sign(aggregateTransaction);
-
-transactionHttp
-    .announce(signedTransaction)
-    .subscribe(x=> console.log(x),err => console.error(err));
-```
-
-<!--Java-->
-```java
-AggregateTransaction aggregateTransaction = AggregateTransaction.createComplete(
-    new Deadline(2, ChronoUnit.HOURS),
-    Arrays.asList(
-        mosaicDefinitionTransaction.toAggregate(account.getPublicAccount()),
-        mosaicSupplyChangeTransaction.toAggregate(account.getPublicAccount())
-    ),
-    NetworkType.TEST_NET
-);
-
-final SignedTransaction signedTransaction = account.sign(aggregateTransaction);
-
-final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
-
-transactionHttp.announce(signedTransaction).toFuture().get();
-```
-
-<!--Bash-->
-```
-xpx2-cli transaction mosaic --mosaicname token --namespacename foo --amount 1000000 --transferable --supplymutable --divisibility 0 --duration 1000
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ## What’s next?

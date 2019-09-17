@@ -2,11 +2,12 @@
 id: sending-payouts-with-aggregate-complete-transaction
 title: Sending payouts with aggregate-complete transaction
 ---
-This guide will help you send transactions to different accounts atomically, using an [aggregate complete transaction](../../built-in-features/aggregate-transaction.md#examples).
+
+Send transactions to different accounts atomically, using an [aggregate complete transaction](../../built-in-features/aggregate-transaction.md#examples).
 
 ## Background Information 
 
-Dan wants to send mosaics to Alice and Bob.
+Dan wants to send mosaics to Alice and Bob. He chooses to send an aggregate complete transaction, so both will receive the funds at the same time.
 
 ![Aggregate Sending Payout](/img/aggregate-sending-payouts.png "Aggregate Sending Payout")
 
@@ -16,148 +17,82 @@ Dan chooses to send an aggregate complete transaction, so both will receive the 
 
 ## Prerequisites
 
-- Finish [sending a transfer transaction guide](../transaction/sending-a-transfer-transaction.md).
-- XPX-Chain-SDK.
-- A text editor or IDE.
-- An account with XPX.
+- XPX-Chain-SDK
+- A text editor or IDE
+- Finish [sending a transfer transaction guide](../transaction/sending-a-transfer-transaction.md)
+- An account with `xpx`
 
-## Let’s do some coding!
+## Geting into some code
 
-1. Dan creates two [transfer transaction](../../built-in-features/transfer-transaction.md) with two different recipients, and wrap them in an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples).
+1. Create two [transfer transaction](../../built-in-features/transfer-transaction.md) with two different recipients, wrapping them in an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples).
+
+As one private key can sign all the transactions in the aggregate, define the aggregate as complete. That means that there is no need to lock funds to send the transaction. If valid, it will be accepted by the network.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
 
-```ts
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+// Use the default http client
+client := sdk.NewClient(nil, conf)
 
-const privateKey = process.env.PRIVATE_KEY as string;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-const brotherAddress = 'VDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG';
-const brotherAccount = Address.createFromRawAddress(brotherAddress);
+sender, err := client.NewAccountFromPrivateKey(os.Getenv("SENDER_PRIVATE_KEY"))
+if err != nil {
+    panic(err)
+}
+aliceAccount, err := client.NewAccountFromPublicKey(os.Getenv("ALICE_PUBLIC_KEY"))
+if err != nil {
+    panic(err)
+}
 
-const sisterAddress = 'VCGPXB-2A7T4I-W5MQCX-FQY4UQ-W5JNU5-F55HGK-HBUN';
-const sisterAccount = Address.createFromRawAddress(sisterAddress);
+bobAccount, err := client.NewAccountFromPublicKey(os.Getenv("BOB_PUBLIC_KEY"))
+if err != nil {
+    panic(err)
+}
 
-const amount = NetworkCurrencyMosaic.createRelative(10); // 10 xpx represent 10 000 000 micro xpx
+amount := []*sdk.Mosaic{sdk.XpxRelative(10)}
 
-const brotherTransferTransaction = TransferTransaction.create(Deadline.create(), brotherAccount, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
-const sisterTransferTransaction = TransferTransaction.create(Deadline.create(), sisterAccount, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
+aliceTransferTransaction, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), aliceAccount.Address, amount, sdk.NewPlainMessage("payout"))
+aliceTransferTransaction.ToAggregate(sender.PublicAccount)
+if err != nil {
+    panic(err)
+}
 
-const aggregateTransaction = AggregateTransaction.createComplete(
-    Deadline.create(),
-    [brotherTransferTransaction.toAggregate(account.publicAccount),
-        sisterTransferTransaction.toAggregate(account.publicAccount)],
-    NetworkType.TEST_NET,
-    []
-);
+bobTransferTransaction, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), bobAccount.Address, amount, sdk.NewPlainMessage("payout"))
+bobTransferTransaction.ToAggregate(sender.PublicAccount)
+if err != nil {
+    panic(err)
+}
+
+aggregateTransaction, err := client.NewCompleteAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{aliceTransferTransaction, bobTransferTransaction})
+if err != nil {
+    panic(err)
+}
 ```
-
-<!--JavaScript-->
-```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
-
-const privateKey = process.env.PRIVATE_KEY;
-const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-const brotherAddress = 'VDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG';
-const brotherAccount = Address.createFromRawAddress(brotherAddress);
-
-const sisterAddress = 'VCGPXB-2A7T4I-W5MQCX-FQY4UQ-W5JNU5-F55HGK-HBUN';
-const sisterAccount = Address.createFromRawAddress(sisterAddress);
-
-const amount = NetworkCurrencyMosaic.createRelative(10); // 10 xpx represent 10 000 000 micro xpx
-
-const brotherTransferTransaction = TransferTransaction.create(Deadline.create(), brotherAccount, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
-const sisterTransferTransaction = TransferTransaction.create(Deadline.create(), sisterAccount, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
-
-const aggregateTransaction = AggregateTransaction.createComplete(
-    Deadline.create(),
-    [brotherTransferTransaction.toAggregate(account.publicAccount),
-        sisterTransferTransaction.toAggregate(account.publicAccount)],
-    NetworkType.TEST_NET,
-    []
-);
-```
-
-<!--Java-->
-```java
-        // Replace with private key
-        final String privateKey = "";
-
-        final Address brotherAddress = Address.createFromRawAddress("SDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG");
-        final Address sisterAddress = Address.createFromRawAddress("SCGPXB-2A7T4I-W5MQCX-FQY4UQ-W5JNU5-F55HGK-HBUN");
-
-        final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-        final NetworkCurrencyMosaic xpx = NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)); // 10 xpx represent 10 000 000 micro xpx
-
-        final TransferTransaction brotherTransferTransaction = TransferTransaction.create(
-                Deadline.create(2, HOURS),
-                brotherAddress,
-                Collections.singletonList(xpx),
-                PlainMessage.create("payout"),
-                NetworkType.TEST_NET
-        );
-
-        final TransferTransaction sisterTransferTransaction = TransferTransaction.create(
-                Deadline.create(2, HOURS),
-                sisterAddress,
-                Collections.singletonList(xpx),
-                PlainMessage.create("payout"),
-                NetworkType.TEST_NET
-        );
-
-        final AggregateTransaction aggregateTransaction = AggregateTransaction.createComplete(
-                Deadline.create(2, HOURS),
-                Arrays.asList(
-                        brotherTransferTransaction.toAggregate(account.getPublicAccount()),
-                        sisterTransferTransaction.toAggregate(account.getPublicAccount())
-                ),
-                NetworkType.TEST_NET
-        );
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
-<br>
-**Note:**
-Do you know the difference between aggregate complete and aggregate bonded? In this case, one private key can sign all the transactions in the aggregate, so it is aggregate complete.
-
-This means that there is no need to lock funds to send the transaction. If it is valid, it will be accepted by the network.
 
 2. Sign and announce the transaction.
-
 <!--DOCUSAURUS_CODE_TABS-->
-<!--TypeScript-->
-```ts
-const signedTransaction = account.sign(aggregateTransaction);
+<!--Golang-->
+```go
+signedTransaction, err := sender.Sign(aggregateTransaction)
+if err != nil {
+    panic(err)
+}
 
-transactionHttp
-    .announce(signedTransaction)
-    .subscribe(x => console.log(x), err => console.error(err));
+_, err = client.Transaction.Announce(context.Background(), signedTransaction)
+if err != nil {
+    panic(err)
+}
 ```
-<!--JavaScript-->
-```js
-const signedTransaction = account.sign(aggregateTransaction);
-
-transactionHttp
-    .announce(signedTransaction)
-    .subscribe(x => console.log(x), err => console.error(err));
-```
-
-<!--Java-->
-```java
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
-
-    final SignedTransaction signedTransaction = account.sign(aggregateTransaction);
-
-    transactionHttp.announce(signedTransaction).toFuture().get();
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
 ## What’s next?
 
 Send an aggregate bonded transaction by following the [creating an escrow with aggregate bonded transaction](./creating-an-escrow-with-aggregate-bonded-transaction.md) guide.
+

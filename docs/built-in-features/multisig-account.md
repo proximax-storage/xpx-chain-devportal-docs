@@ -2,40 +2,47 @@
 id: multisig-account
 title: Multisig Account
 ---
-Editing on-chain contracts is the most powerful way to secure funds and enable joint accounts.
 
-A Sirius Chain [account](./account.md) can be [converted to  multisig](../guides/multisig-account/converting-an-account-to-multisig.md). Once converted, the account cannot announce transactions by itself but rather, the converted account will require other accounts to announce transactions for them. These other accounts are the multisig cosignatories.
+Editable on-chain contracts, the most powerful way to secure funds and enable joint accounts.
 
-A multisig cosignatory has to propose a transaction involving the multisig, wrapping it in an [aggregate transaction](./aggregate-transaction.md).
+## Cosignatories
 
-It is not always necessary to force all cosignatories to co-sign the transaction. Sirius Chain allows for there to be a minimum number of co-signatory agreements. These properties can be edited afterwards to suit most needs. 
+A Sirius-Chain [account](./account.md) can be [converted to multisig](../guides/multisig-account/converting-an-account-to-multisig.md). The cosignatories - other accounts - of the multisig will become the account managers.
 
-Sirius Chain's current implementation of multisig is “M-of-N”. This means that M can be any number equal to or less than N, i.e., 1-of-4, 2-of-2, 4-of-9, 9-of-10 and so on.
+From that moment on, the multisig account cannot announce transactions by itself. A multisig cosignatory has to propose a transaction involving the multisig, wrapping it in an [aggregate transaction](./aggregate-transaction.md).
 
-The number of minimum cosignatures to approve transactions and remove cosignatories is editable.
+To record the transaction in the block, the other cosignatories will have to agree.
+
+## Minimum approval and removal
+
+It is not always necessary to force all cosignatories to cosign transactions associated with the multisig account. Sirius-Chain allows to set up the minimum number of cosignatory agreements. These properties can be [edited](../guides/multisig-account/modifying-a-multisig-account.md#editing-minapproval) afterward to suit almost all needs.
+
+Sirius-Chain’s current implementation of multisig is “M-of-N”. This means that M can be any number equal to or less than N, i.e., 1-of-4, 2-of-2, 4-of-9, 9-of-10 and so on.
+
+Similarly, cosignatories can [invite other accounts to take part in the multisig](../guides/multisig-account/modifying-a-multisig-account.md#adding-a-new-cosignatory), or [propose to remove others](../guides/multisig-account/modifying-a-multisig-account.md#removing-a-cosignatory) when the defined conditions are fulfilled.
 
 <div class=info>
 
 **Note:**
 
-Multisig is a powerful tool, but users are advised to use this tool with caution. If cosignatories' keys get lost and the minimum approval is not reached, it would result in the permanent loss of access to the funds held by the multisig account. Users must choose wisely the `minimum removal` parameter to avoid this situation from occuring.
+Multisig accounts are a powerful tool, but please use this tool with caution. If the cosignatories keys get lost and minimum approval is not reached, it would result in the permanent loss of access to the funds held by the multisig account. Choose wisely `minimum removal` parameter to avoid this situation.
 
 </div>
 
-Some important considerations to keep in mind:
+## Constraints
 
 - Multisig accounts can have up to `10` cosignatories.
 - An account can be cosigner of up to `5` multisig accounts.
 - Multisig accounts can have as a cosigner another multisig, up to `3` levels. Multi-level multisig accounts add “AND/OR” logic to multi-signature transactions.
-- [Multisig modification transactions](#modifymultisigtransaction) must be wrapped in an [aggregate transaction](./aggregate-transaction.md). New cosignatories added to the multisig must opt-in by cosigning the aggregate.
+- [Multisig modification transactions](../guides/multisig-account/modifying-a-multisig-account.md) must be wrapped in an [aggregate transaction](./aggregate-transaction.md). New cosignatories added to the multisig must opt-in by cosigning the aggregate.
 
 ## Examples of Using Multisig Accounts
 
 There is a broad range of useful applications for multisig accounts. Let’s take a look at some of the most common use cases.
 
-Shared accounts
+## Shared accounts
 
-Alice, Bob and Carol are members of a charity group for educating disadvantaged children in the city. They use a shared account to buy materials for their weekly class. 
+Several families are members of the local philatelist society and use a shared account to buy stamps.
 
 To ensure that all agree on which educational material they should buy and at the right price, they use a multisig account. This way, all members need to approve the transaction before it is included in the blockchain.
 
@@ -43,7 +50,7 @@ To ensure that all agree on which educational material they should buy and at th
 
 <p class="caption">M-of-N multisig account</p>
 
-## Example of Using Multi-Factor Authorisation
+## Multi-factor authorization
 
 Alice wants to make sure her funds are not totally compromised. Therefore, she sets up a multisig account with her funds and attaches two accounts called "signer accounts" to control her multisig account as a form of two-factor authentication.
 
@@ -57,13 +64,13 @@ Both of her "signer accounts" need to approve the transaction, and her signer ac
 
 Multisig accounts can be used to represent the ownership of assets.
 
-A company could create a one-of-one multisig account for each of its products, adding themselves as the cosignatories. When the company sells the product to Alice, she becomes the owner and the company will be removed as a cosigner.
+A company could create a 1-of-1 multisig account for each of their products, adding themselves as the cosignatory. When the company sells the product to Alice, she becomes the owner through the action of being added as the cosigner, and the company is removed in the same transaction.
 
 ![Multisig asset ownership](/img/multisig-asset-ownership.png "Multisig asset ownership")
 
 <p class="caption">Transferring an account</p>
 
-## Example in Manufacturing and Supply Chains Industries
+## Manufacturing and supply chains
 
 A manufacturer delivers a a pharmaceutical product by freight.
 
@@ -85,7 +92,7 @@ Transactions are only approved from a hardware wallet or your phone and a fraud 
 
 ## Guides for Using Multisig Accounts
 
-- [Signing announced aggregate bonded transactions](../guides/multisig-account/signing-announced-aggregate-bonded-transactions.md)
+- [Signing announced aggregate bonded transactions](../guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions.md)
 
     What to do when all required consigners have not signed the aggregate bonded transaction.
 
@@ -112,7 +119,7 @@ Transactions are only approved from a hardware wallet or your phone and a fraud 
 
 **Note:**
 
-Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) . Public network configuration may differ.
+Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 

@@ -2,37 +2,80 @@
 id: mosaic
 title: Mosaic
 ---
-Mosaics are part of what makes the Smart Asset System unique and flexible. They are **fixed assets** on the Sirius Chain that can represent a set of multiple identical assets that do not change.
+
+Mosaics are part of what makes the Smart Asset System unique and flexible. They are *fixed assets* on the Sirius-Chain blockchain that can represent a set of multiple identical things that do not change.
 
 A mosaic could be a token, but it could also be a collection of more specialized assets such as reward points, shares of stock, signatures, status flags, votes or even other currencies.
 
-Each mosaic has a set of configurable properties. During the mosaic creation, you can define:
+## Properties
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-Divisibility |	Integer |	Determines up to what decimal place the mosaic can be divided. Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics. The divisibility must be in the range of 0 and `6`.
-Duration |	Integer |	Specifies the number of confirmed blocks the mosaic is rented for. Mosaics can be configured to not expire.
-Initial supply |	Integer |	Indicates the amount of mosaic in circulation. The initial supply must be in the range of 0 and `9,000,000,000`.
-Supply mutable |	Boolean |	If set to true, the mosaic supply can change at a later point. Otherwise, the mosaic supply remains immutable.
+Each mosaic has a unique identifier and a set of configurable properties. During the [mosaic creation](../guides/mosaic/creating-a-mosaic.md), you can define:
+
+**Property**    |**Type** |	**Description**
+----------------|---------|--------------------
+Divisibility    |	Integer |	Determines up to what decimal place the mosaic can be divided. Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics. The divisibility must be in the range of `0` and `6`.
+Duration        |	Integer |	Specifies the number of confirmed blocks the mosaic is rented for. Duration is allowed to lie up to `3650` days (10 years). To create non-expiring mosaics, leave this property undefined.
+Supply mutable  |	Boolean |	If set to true, the mosaic supply can change at a later point. Otherwise, the mosaic supply remains immutable.
 Transferability |	Boolean |	If set to true, the mosaic can be transferred between arbitrary accounts. Otherwise, the mosaic can be only transferred back to the mosaic creator.
 
-## Guides in Using Mosaics
+## Absolute and relative amounts
+
+Sirius-Chain works with absolute amounts, removing the comma when the mosaic can be divisible. To get an absolute amount, multiply the amount of assets you want to create or send by ![](http://latex.codecogs.com/gif.latex?10^{divisibility}).
+
+For example, if the mosaic has divisibility 2, to create or send 10 units (relative) you should define 1000 (absolute) instead.
+
+## Cost
+
+The cost of creating a mosaic is configurable per network. By default, it has a cost of `500 cat.currency` plus transaction fees.
+
+## Example
+A private company, ComfyClothingCompany, decides that it wants to go public. Instead of a traditional IPO, the company decides to do an STO to issue tokens through the Sirius-Chain platform.
+
+Thus, the company must create a mosaic to represent shares to their company. Here is how the company might configure the mosaic properties:
+
+ **Property**  | **Configuration**
+---------------|------------------------------
+Duration       | undefined
+Divisibility   | 2
+Supply mutable | true
+Transferable   | true
+
+*Duration*: Shares of the company should exist as long as the company is in business. The ComfyClothingCompany leaves this property *undefined*, creating a non-expiring mosaic representing their assets.
+
+*Divisibility*: Although brokerages and investment firms can fractionalize shares, the traditional minimum number of shares an investor can purchase from the open market is 1.
+
+However, Sirius-Chain mosaics offer more flexibility in tokenizing their company shares. ComfyClothingCompany chooses the divisibility to be `2`, allowing the smallest fraction of their shares to be 0.01.
+
+Fractional ownership, along with the ability to trade 24/7, brings additional liquidity to the market. These same characteristics also open up the market to smaller investors.
+
+*Supply*: ComfyClothingCompany sets the initial supply of the mosaic to a typical startup amount of `10,000,000` authorized shares. As the company grows, it could choose to increase the number of shares, so the supply mutable is set to `true`.
+
+*Transferable*: Once the initial shares are distributed, the shares will be on the market to be traded in public. Thus, the transferability property needs to be set to `true`.
+
+## Guides
 
 <div class=info>
 
 **Note:**
 
-We recommend checking out [setting up your workstation][Workstation] before going through the guides.
+We recommend checking out [setting up your workstation](../getting-started/setting-up-workstation.md) before going through the guides.
 
 </div>
 
 - [Creating a mosaic](../guides/mosaic/creating-a-mosaic.md)
-
-    How to create a mosaic after creating a namespace.
+  After creating a namespace, follow this guide to create a mosaic.
 
 - [Modifying mosaic supply](../guides/mosaic/modifying-mosaic-supply.md)
+  Alter the supply of a mosaic following this guide.
 
-    How to increase or decrease the mosaic after registering a mosaic with supply Mutable option set to true. 
+- [Linking a namespace to a mosaic](../guides/namespace/linking-a-namespace-to-a-mosaic.md)
+  Link a namespace to a mosaic.
+
+- [Getting the mosaic information](../guides/mosaic/getting-mosaic-information.md)
+  Get the ownership, divisibility, duration, and flags for a given mosaic identifier.
+
+- [Getting the asset identifier behind a namespace with receipts](../guides/mosaic/getting-the-mosaic-indentifier-behind-a-namespace-with-receipts.md)
+  Get the resolution for a given alias and transaction using receipts.
 
 ## Schemas
 
@@ -40,7 +83,7 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 **Note:**
 
-Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) . Public network configuration may differ.
+Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 
@@ -113,7 +156,6 @@ Enumeration: uint8
 0x00 |	No flags present.
 0x01 |	The mosaic supply is mutable.
 0x02 |	The mosaic is transferable.
-0x04 |	The mosaic levy is mutable
 
 ### MosaicSupplyChangeDirection
 

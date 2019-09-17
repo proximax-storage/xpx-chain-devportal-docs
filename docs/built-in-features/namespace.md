@@ -2,34 +2,87 @@
 id: namespace
 title: Namespace
 ---
-Namespaces allow you to create an on-chain **unique place** for your business and your assets on the Sirius Chain.
 
-A namespace starts with a name that you choose, similar to an internet domain name. If one [account](./account.md) creates a namespace, that will appear as unique in the Sirius Chain ecosystem.
+Namespaces allow you to [create an on-chain unique place](../guides/namespace/registering-a-namespace.md) for your business and your assets on the Sirius-Chain blockchain.
 
-You can associate a name with an account address or a [mosaic](./mosaic.md) identifier by announcing an [alias transaction](#addressaliastransaction). What binds namespaces and assets are called "long account addresses" and recognizable "mosaics identifiers."
+## Name
+
+A namespace starts with a name that you choose, similar to an internet domain name. The name must appear as unique in the network, and may have a maximum length of `64` characters. Allowed characters are a, b, c, …, z, 0, 1, 2, …, 9, _ , -.
+
+An account can link a registered name (namespace or subnamespace) with an [account](./account.md) or a [mosaic](./mosaic.md) identifier.
 
 ## Subnamespaces
 
 In the internet, a domain name can have a sub-domain name. In Sirius Chain, namespaces can have subnamespaces.
 
-It is possible to create multiple subnamespaces with the same name. For example, if a domain name is `foo.bar` and another domain name is `foo2.bar`, the `bar` is the sub-domain. Namespaces can have up to three levels, which consists of a namespace and two levels of subnamespace domains.
+You can [create multiple subnamespaces](../guides/namespace/registering-a-subnamespace.md) with the same name in different namespaces. For example, you can create the subnamespaces `foo.bar` and `foo2.bar`.
 
-Namespaces can have up to `3` levels, a namespace and its two levels of subnamespace domains.
+Namespaces can have up to `3` levels, a namespace and its two levels of subnamespace domains. A subnamespaces has the same duration as its parent namespace.
 
-## Examples of Namespaces
-## Identifying an account
+## Alias
 
-Every time a customer buys a ticket for an event, the ticket sales company sends a ticket to the customer account.
+Alias transactions link namespaces to [accounts](../guides/namespace/linking-a-namespace-to-account.md) and [mosaics](../guides/namespace/linking-a-namespace-to-a-mosaic.md).
 
-The seller company has assigned the namespace “ticketsales” to its vendo account. Customers can quickly recognize incoming transactions from the vendor account.
+An alias or its linked asset can be used interchangeably when sending a transaction. Using the alias makes long addresses rememberable and mosaics recognizable.
 
-## Organizing mosaics
+Only the creator of the namespace can link the namespace to an account or mosaic. This link will be editable, so the creator may unlink a previously set alias.
 
-A distributor sells tickets for an event organized in different venues. The distributing company registers a non-transferable mosaic for each function. 
+The block [receipts](../protocol/receipt.md) store the resolution of the alias for a given transaction.
 
-Namespaces and subnamespaces are used to organize the different mosaics. 
+Restrictions:
 
-## Guides on Namespaces 
+- A namespace can be associated with only one account or mosaic, but each account or mosaic can be linked to multiple namespaces.
+- An account can assign a name to any account that permits receiving `AddressNamespaceTransactions`. In contrast, if the account wants to assign the alias to a mosaicId, it should be the creator of the mosaic.
+- An account can only link the alias to a mosaicId when the account is the creator of the mosaic.
+
+## Duration
+
+![Namespace life cycle](/img/namespace-life-cycle.png "Namespace life cycle")
+<p class="caption">Namespace life-cycle</p>
+
+At the time of the namespace **registration**, you must set the number of confirmed blocks you would like to rent the namespace for.
+
+The maximum namespace duration is `365` days. By default, the network is configured to generate a block every `15` seconds. You can use the following formula to convert approximately days to blocks:
+
+> duration ≈ numberOfDays * 86400 / blockGenerationTargetTimeInSeconds
+
+During the renting period, the namespace owner can create subnamespaces, alias accounts and mosaics. The owner can also **extend the rental** by sending a [register namespace transaction](../guides/namespace/registering-a-namespace.md) with the desired number of additional blocks.
+
+The network [can define](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) a **grace period** that enables the namespace owner to renew the namespace past the expiration date before it becomes publicly available for registration.
+
+When the grace period ends, the existing aliases and subnamespaces are pruned, becoming **inactive**. Hence, other accounts can now register the namespace again.
+
+## Cost
+
+The cost of creating a namespace is [configurable per network](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties). By default, registering a namespace costs `1 xpx per block` plus transactions fees. Registering a subnamespace has a fixed cost of `100 xpx` plus transaction fees.
+
+
+## Example
+
+A customer buys a ticket for an event. The ticket sales company sends a ticket to the customer account.
+
+![Recognizable mosaics and addresses](/img/namespace-tickets.png "Recognizable mosaics and addresses")
+<p class="caption">Recognizable mosaics and addresses</p>
+
+### Identifying the sender
+
+The ticket seller has registered the namespace `ticketsales` to link it to its account as an alias. Customers can quickly recognize incoming transactions from the vendor account.
+
+### Identifying the ticket
+
+The same company sells tickets for events organized in different venues. The company registers a non-transferable [mosaic](./mosaic.md) for each actuation.
+
+The ticket seller adds a series of subdomains on top of the root domain of `ticketsales`. The root plus subdomains are `ticketsales.event<ID>.ticket`.
+
+The company links one registered mosaic with `ticketsales.event1.ticket` namespace name.
+
+### Identifying the buyer
+
+Alice, who wants to buy the ticket, has registered the namespace `alice` and assigned it to her account as an alias.
+
+The ticket vendor can send 1 `ticketsales.event1.ticket` to `alice` instead of 1 `0dc67fbe1cad29e3` to `SCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6`.
+
+## Guides
 
 - [Registering a namespace](../guides/namespace/registering-a-namespace.md)
 
@@ -39,13 +92,26 @@ Namespaces and subnamespaces are used to organize the different mosaics.
 
     How to register a subnamespace.
 
+- [Linking a namespace to a mosaic](../guides/namespace/linking-a-namespace-to-a-mosaic.md)
+
+    Link a namespace to a mosaic.
+
+- [Linking a namespace to an address](../guides/namespace/linking-a-namespace-to-account.md)
+
+    Link a namespace to an account.
+
+- [Getting the namespace information](../guides/namespace/getting-the-namespace-information.md)
+
+    Get the ownership and duration for a given namespace identifier.
+
+
 ## Schemas
 
 <div class="info">
 
 **Note:**
 
-Configuration parameters are [editable](https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties) . Public network configuration may differ.
+Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) . Public network configuration may differ.
 
 </div>
 

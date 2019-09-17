@@ -5,36 +5,36 @@
       "getting-started/setting-up-workstation",
       "getting-started/writing-first-application"
     ],
+    "Built-in Features": [
+      "built-in-features/account",
+      "built-in-features/mosaic",
+      "built-in-features/namespace",
+      "built-in-features/metadata",
+      "built-in-features/transfer-transaction",
+      "built-in-features/aggregate-transaction",
+      "built-in-features/account-filter",
+      "built-in-features/multisig-account",
+      "built-in-features/cross-chain-swaps",
+      "built-in-features/super-contracts"
+    ],
     "Protocol": [
       "protocol/cryptography",
       "protocol/block",
       "protocol/transaction",
-      "protocol/validating",
+      "protocol/harvesting",
       "protocol/inflation",
       "protocol/receipt",
       "protocol/node",
       "protocol/proof-of-greed"
     ],
-    "Built-in Features": [
-      "built-in-features/account",
-      "built-in-features/account-restriction",
-      "built-in-features/multisig-account",
-      "built-in-features/namespace",
-      "built-in-features/mosaic",
-      "built-in-features/transfer-transaction",
-      "built-in-features/aggregate-transaction",
-      "built-in-features/cross-chain-swaps",
-      "built-in-features/metadata",
-      "built-in-features/contract"
-    ],
-    "REST API":[
+    "REST API": [
       "rest-api/rest-api-overview",
       "rest-api/tools",
       "rest-api/serialization",
       "rest-api/websockets",
       "rest-api/status-errors"
     ],
-    "SDKs":[
+    "SDKs": [
       "sdks/sdks-overview",
       "sdks/architecture",
       "sdks/languages",
@@ -42,11 +42,11 @@
       "sdks/sdk-development",
       "sdks/sdk-documentation"
     ],
-    "Client":[
+    "Client": [
       "client/client-overview",
       "client/commands"
     ],
-    "Support":[
+    "Support": [
       "support/community",
       "support/guidelines",
       "support/suggesting-changes"
@@ -59,67 +59,54 @@
       "extensions/dfms-version1-extension"
     ]
   },
-  "guides":{
-    "Account":[
-      "guides/account/account-overview",
-      "guides/account/create-open-account",
+  "guides": {
+    "Account": [
+      "guides/account/creating-and-opening-an-account",
       "guides/account/getting-account-information",
-      "guides/account/getting-xpx-amount-sent-to-account",
-      "guides/account/reading-account-transactions",
-      "guides/account/preventing-spam-attacks-with-account-restrictions"
-      ],
-    "Aggregate Transaction" : [
-        "guides/aggregate-transaction/aggreagte-transaction-overview",
-        "guides/aggregate-transaction/sending-payouts-with-aggregate-complete-transaction",
-        "guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction",
-        "guides/aggregate-transaction/asking-for-mosaics-with-aggregate-bonded-transaction",
-        "guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions",
-        "guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions-automatically",
-        "guides/aggregate-transaction/sending-a-multisig-transaction"
-      ],
-    "Block" : [
-        "guides/block/block-overview",
-        "guides/block/listening-new-blocks",
-        "guides/block/getting-block-by-height"
-      ],
-    "Cross Chain Swaps" : [
-        "guides/cross-chain-swaps/cross-chain-swaps-overview",
-        "guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain"
-      ],
-    "Metadata": [
-      "guides/metadata/metadata-overview",
-      "guides/metadata/account-metadata",
-      "guides/metadata/mosaic-metadata",
-      "guides/metadata/namespace-metadata"
+      "guides/account/getting-the-amount-of-xpx-sent-to-an-account",
+      "guides/account/reading-transactions-from-an-account"
     ],
-    "Monitoring" : [
-        "guides/monitoring/monitoring-overview",
-        "guides/monitoring/monitoring-a-transaction-status"
-      ],
-    "Mosaic" : [
-        "guides/mosaic/mosaic-overview",
-        "guides/mosaic/creating-a-mosaic",
-        "guides/mosaic/modifying-mosaic-supply"
-      ],
-    "Multisig Account" : [
-        "guides/multisig-account/multisig-account-overview",
-        "guides/multisig-account/signing-announced-aggregate-bonded-transactions",
-        "guides/multisig-account/converting-an-account-to-multisig",
-        "guides/multisig-account/modifying-a-multisig-account",
-        "guides/multisig-account/creating-a-multi-level-multisig-account",
-        "guides/multisig-account/sending-a-multisig-transaction"
-      ],
-    "Namespace" : [
-        "guides/namespace/namespace-overview",
-        "guides/namespace/registering-a-namespace",
-        "guides/namespace/registering-a-subnamespace"
-      ],
-    "Tools" : [
-        "guides/tools/tools-overview"
-      ],
-    "Transfer Transaction" : [
-        "guides/transaction/transaction-overview",
-        "guides/transaction/sending-a-transfer-transaction"
-      ]
+    "Account Filter": [
+      "guides/account-filter/preventing-spam-attacks"
+    ],
+    "Aggregate Transaction": [
+      "guides/aggregate-transaction/sending-payouts-with-aggregate-complete-transaction",
+      "guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction",
+      "guides/aggregate-transaction/asking-for-mosaics-with-aggregate-bonded-transaction",
+      "guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions"
+    ],
+    "Block": [
+      "guides/block/listening-new-blocks",
+      "guides/block/getting-block-by-height"
+    ],
+    "Cross Chain Swaps": [
+      "guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain"
+    ],
+    "Monitoring": [
+      "guides/monitoring/monitoring-a-transaction-status"
+    ],
+    "Mosaic": [
+      "guides/mosaic/creating-a-mosaic",
+      "guides/mosaic/getting-mosaic-information",
+      "guides/mosaic/getting-the-mosaic-identifier-behind-a-namespace-with-recepits",
+      "guides/mosaic/modifying-mosaic-supply"
+    ],
+    "Multisig Account": [
+      "guides/multisig-account/converting-an-account-to-multisig",
+      "guides/multisig-account/modifying-a-multisig-account",
+      "guides/multisig-account/creating-a-multi-level-multisig-account",
+      "guides/multisig-account/sending-a-multisig-transaction"
+    ],
+    "Namespace": [
+      "guides/namespace/registering-a-namespace",
+      "guides/namespace/registering-a-subnamespace",
+      "guides/namespace/getting-the-namespace-information",
+      "guides/namespace/linking-a-namespace-to-a-mosaic",
+      "guides/namespace/linking-a-namespace-to-account"
+    ],
+    "Transfer Transaction": [
+      "guides/transaction/sending-a-transfer-transaction",
+      "guides/transaction/sending-an-encrypted-message"
+    ]
   }
 }
