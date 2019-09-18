@@ -15,13 +15,13 @@ In other words, to reduce counterparty risk, the receiver of a payment needs to 
 
 ## Protocol
 
-Alice and Bob want to exchange `10 alice tokens for 10 bob tokens`. The problem is that they are not in the same blockchain: alice token is defined in Sirius-Chain public chain, whereas bob token is only present in a private chain using Catapult technology.
+Alice and Bob want to exchange `10 alice tokens for 10 bob tokens`. The problem is that they are not in the same blockchain: alice token is defined in Sirius Chain public chain, whereas bob token is only present in a private chain using Sirius Chain technology.
 
 <div class="info">
 
 **Note**
 
-Sirius-Chain’s private and future public chain share the SDK. You could implement atomic cross-chain swap between blockchains that use different technologies if they permit the [secret lock/proof mechanism](#lockhashalgorithm).
+Sirius Chain’s private and future public chain share the SDK. You could implement atomic cross-chain swap between blockchains that use different technologies if they permit the [secret lock/proof mechanism](#lockhashalgorithm).
 </div>
 
 ![Cross-chain swap cycle](/img/cross-chain-swap-cycle.png "Cross-chain swap cycle")
@@ -66,7 +66,7 @@ The amount of time in which funds can be unlocked should be a smaller time frame
 
 **Note:**
 
-We recommend checking out [setting up your workstation](../getting-started/setting-up-workstation.md) before going through the guides.
+We recommend checking out [setting up your workstation][Workstation] before going through the guides.
 
 </div>
 

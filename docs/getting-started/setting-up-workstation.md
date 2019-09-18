@@ -3,11 +3,11 @@ id: setting-up-workstation
 title: Setting up your workstation
 ---
 
-This first guide will walk you through a step-by-step installation of the required tools to start developing on Sirius-Chain.
+This first guide will walk you through a step-by-step installation of the required tools to start developing on Sirius Chain.
 
-## Running Sirius-Chain Service Bootstrap
+## Running Sirius Chain Service Bootstrap
 
-![Sirius-Chain Layer](/img/four-layer-architecture-basic.png "Sirius-Chain Layer")
+![Sirius Chain Layer](/img/four-layer-architecture-basic.png "Sirius Chain Layer")
 
 
 **Sirius Chain Server nodes** (layer 1) build the peer-to-peer blockchain network. 
@@ -39,11 +39,11 @@ $> {API URL}/block/1
 
 ## Creating a test account
 
-An account is a key pair (private and public key) associated to a mutable state stored in the Sirius-Chain. In other words, you have a deposit box on the blockchain, which only you can modify with your key pair. As the name suggests, the private key has to be kept secret at all times. Anyone with access to the private key ultimately has control over the account.
+An account is a key pair (private and public key) associated to a mutable state stored in the Sirius Chain. In other words, you have a deposit box on the blockchain, which only you can modify with your key pair. As the name suggests, the private key has to be kept secret at all times. Anyone with access to the private key ultimately has control over the account.
 
 The **public key** is cryptographically derived from the private key. It would take millions of years to do the reverse process and therefore, the public key is safe to be shared.
 
-Finally, the account address is generated with the public key, following the Sirius-Chain protocol. Share this address instead of the public key, as it contains more information, such as a validity check or which network it uses (public, testnet or private).
+Finally, the account address is generated with the public key, following the Sirius Chain protocol. Share this address instead of the public key, as it contains more information, such as a validity check or which network it uses (public, testnet or private).
 
 [XPX-Chain-CLI](../client/overview.md) conveniently allows you to perform the most commonly used commands from your terminal i.e. using it to interact with the blockchain, setting up an account, sending funds, etc.
 
@@ -59,7 +59,7 @@ $> sudo npm install --global xpx2-cli
 $> xpx2-cli account generate --network {Network Type} --save --url {API URL}
 ```
 
-The `network flag` is set to TEST_NET. Test network is an alternative Sirius-Chain used for development and testing purposes.
+The `network flag` is set to TEST_NET. Test network is an alternative Sirius Chain used for development and testing purposes.
 
 Use `save flag` to store the account on your computer. XPX-Chain-CLI uses stored account to sign the transactions that you start.
 
@@ -88,7 +88,7 @@ $> xpx2-cli profile create
 
 Introduce network type (PRIVATE_TEST, PRIVATE, MAIN_NET, TEST_NET): TEST_NET
 Introduce your private key: 41************************************************************FF
-Introduce Sirius-Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
+Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile):
 ```
 
@@ -104,7 +104,50 @@ For our `Private` net, please send an email to devops@proximax.io to gain access
 ## Setting up the development environment
 It is time to choose a programming language. Pick the one you feel most comfortable with, or follow your project requirements.
 
-Create a folder for your new project and run the instructions for the Golang:
+Create a folder for your new project and run the instructions for the selected languages:
 
+<!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```
 `go get github.com/proximax-storage/go-xpx-chain-sdk`
+```
+
+<!--TypeScript-->
+
+1. Create a `package.json` file. The minimum required Node.js version is 8.9.X.
+```
+$> npm init
+```
+2. Install tsjs-xpx-chain-sdk and rxjs library.
+```
+$> npm install tsjs-xpx-chain-sdk rxjs
+```
+
+3. tsjs-xpx-chain-sdk is build with TypeScript language. It is recommended to use TypeScript instead of JavaScript when building applications for Sirius Chain.
+
+Make sure you have at least version 2.5.X installed.
+```
+$> sudo npm install --global typescript
+$> typescript --version
+```
+
+4. Use ts-node to execute TypeScript files with node.
+```
+$> sudo npm install --global ts-node
+```
+
+<!--JavaScript-->
+
+1. Create a `package.json` file. The minimum required Node.js version is 8.9.X.
+```
+$> npm init
+```
+2. Install tsjs-xpx-chain-sdk and rxjs library.
+```
+$> npm install tsjs-xpx-chain-sdk rxjs
+```
+
+<!--END_DOCUSAURUS_CODE_TABS-->
+
+
 

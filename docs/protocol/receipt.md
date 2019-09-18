@@ -29,7 +29,7 @@ The alias receipts record the first occurrence of an (unresolved, resolved) alia
 
 ## Recorded receipts
 
-Sirius-Chain records invisible state changes for the following entities.
+Sirius Chain records invisible state changes for the following entities.
 
 **Id** | 	**Receipt**              |	**Type**                                   |	**Description**
 -------|---------------------------|---------------------------------------------|-------------------

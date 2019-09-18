@@ -3,7 +3,7 @@ id: writing-first-application
 title: Writing your first application
 ---
 
-This guide will take you through the Sirius-Chain development cycle. You will send your first transaction to the blockchain after combining some Sirius-Chain [built-in features](../built-in-features/account.md).
+This guide will take you through the Sirius Chain development cycle. You will send your first transaction to the blockchain after combining some Sirius Chain [built-in features](../built-in-features/account.md).
 
 ## Background Information
 
@@ -131,7 +131,7 @@ Transferability |false    |	The mosaic can be only transferred back to the mosai
 
 ### Sending the ticket
 
-Send one `company:ticket` to the ticket vendor account announcing a [transfer transaction](../built-in-features/transfer-transaction.md), one of the most commonly used actions in Sirius-Chain.
+Send one `company:ticket` to the ticket vendor account announcing a [transfer transaction](../built-in-features/transfer-transaction.md), one of the most commonly used actions in Sirius Chain.
 
 1. Prepare the transfer transaction. Three main attributes form a transfer transaction:
 
@@ -167,6 +167,52 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+
+```ts
+import {
+    Account, Address, Deadline, UInt64, NetworkType, PlainMessage, TransferTransaction, Mosaic, MosaicId,
+    TransactionHttp
+} from 'tsjs-xpx-chain-sdk';
+
+var mosaicId = new MosaicId("7CDF3B117A3C40CC");
+
+const transferTransaction = TransferTransaction.create(
+    Deadline.create(),
+    Address.createFromRawAddress('VC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU'),
+    [new Mosaic(mosaicId, UInt64.fromUint(1))],
+    PlainMessage.create('enjoy your ticket'),
+    NetworkType.TEST_NET
+);
+```
+
+<!--java-->
+```java
+import io.proximax.sdk.model.account.Address;
+import io.proximax.sdk.model.blockchain.NetworkType;
+import io.proximax.sdk.model.mosaic.Mosaic;
+import io.proximax.sdk.model.mosaic.MosaicId;
+import io.proximax.sdk.model.transaction.Deadline;
+import io.proximax.sdk.model.transaction.PlainMessage;
+import io.proximax.sdk.model.transaction.TransferTransaction;
+
+import java.math.BigInteger;
+import java.util.Arrays;
+
+import static java.time.temporal.ChronoUnit.HOURS;
+
+BigInteger mosaicId = new MosaicId("7CDF3B117A3C40CC").getId();
+
+final TransferTransaction transferTransaction = TransferTransaction.create(
+    Deadline.create(2, HOURS),
+    Address.createFromRawAddress("VC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU"),
+    Arrays.asList(new Mosaic(mosaicId, BigInteger.valueOf(1))),
+    PlainMessage.create("enjoy your ticket"),
+    NetworkType.TEST_NET
+);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 Although the transaction is created, it has not been announced to the network yet.
@@ -183,7 +229,7 @@ To make the transaction only valid for your network, include the first block gen
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-account, err := sdk.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"), networkType)
+account, err := sdk.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"), networkType, generationHash)
 if err != nil {
     panic(err)
 }
@@ -193,6 +239,25 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```ts
+const privateKey = "<private_key>";
+
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+const signedTransaction = account.sign(transferTransaction, generationHash);
+```
+
+<!--Java-->
+```java
+final String privateKey = "<private_key>";
+
+final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+final SignedTransaction signedTransaction = account.sign(transferTransaction, generationHash);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 3. Once signed, announce the transaction to the network.
@@ -206,6 +271,23 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```ts
+const transactionHttp = new TransactionHttp('http://localhost:3000');
+
+transactionHttp.announce(signedTransaction).subscribe(
+    x => console.log(x),
+    err => console.log(err)
+);
+```
+<!--Java-->
+```java
+final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+
+transactionHttp.announceTransaction(signedTransaction).toFuture().get();
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 4. When the transaction is confirmed, check that the ticket buyer has received the ticket.
@@ -222,4 +304,4 @@ Did you solve the proposed use case?
 - Avoid ticket reselling: Creating a non-transferable mosaic.
 - Avoid non-authentic tickets and duplicate ones: Creating a unique mosaic named `company:ticket`.
 
-Continue learning about more [Sirius-Chain built-in features](../built-in-features/account.md).
+Continue learning about more [Sirius Chain built-in features](../built-in-features/account.md).

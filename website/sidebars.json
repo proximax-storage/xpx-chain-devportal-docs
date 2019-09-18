@@ -12,7 +12,7 @@
       "built-in-features/metadata",
       "built-in-features/transfer-transaction",
       "built-in-features/aggregate-transaction",
-      "built-in-features/account-filter",
+      "built-in-features/account-restriction",
       "built-in-features/multisig-account",
       "built-in-features/cross-chain-swaps",
       "built-in-features/super-contracts"
@@ -21,7 +21,7 @@
       "protocol/cryptography",
       "protocol/block",
       "protocol/transaction",
-      "protocol/harvesting",
+      "protocol/validating",
       "protocol/inflation",
       "protocol/receipt",
       "protocol/node",
@@ -66,14 +66,15 @@
       "guides/account/getting-the-amount-of-xpx-sent-to-an-account",
       "guides/account/reading-transactions-from-an-account"
     ],
-    "Account Filter": [
-      "guides/account-filter/preventing-spam-attacks"
+    "Account Restriction": [
+      "guides/account-restriction/preventing-spam-attacks"
     ],
     "Aggregate Transaction": [
       "guides/aggregate-transaction/sending-payouts-with-aggregate-complete-transaction",
       "guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction",
       "guides/aggregate-transaction/asking-for-mosaics-with-aggregate-bonded-transaction",
-      "guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions"
+      "guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions",
+      "guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions-automatically"
     ],
     "Block": [
       "guides/block/listening-new-blocks",

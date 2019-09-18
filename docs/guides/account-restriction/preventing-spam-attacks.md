@@ -1,7 +1,8 @@
 ---
-id: preventing-spam-attacks-with-account-restrictions
+id: preventing-spam-attacks
 title: Preventing spam attacks with account restrictions
 ---
+
 Learn how to add and remove account restrictions.
 
 ## Background
@@ -12,28 +13,64 @@ When the quality verification process concludes, an operator sends a [quality se
 
 The final customers can review the product mosaics scanning a QR code. For that reason, the company only wants to show related transactions, avoiding that others spam their products with non-related information.
 
-![Blocking spam transactions](/img/account-restrictions-spam.png "Blocking spam transactions")
+![Blocking spam attacks](img/blocking-spam-attacks.png "Blocking spam attacks")
 
-<p class="caption">Blocking spam attacks</p>
+<p class=caption>Blocking spam attacks</p>
+
 
 Thus, you opt to configure the product [account restrictions][Account-restriction] to only receive transactions that follow a set of conditions.
 
-
 ## Prerequisites
 
-- Finish [sending a transfer transaction guide][transfer-transaction-guide]
+- XPX-Chain-SDK
+- A text editor or IDE
+- Finish sending a [transfer transaction guide][transfer-transaction-guide]
 - Finish [creating a mosaic guide][mosaic-guide]
+- An [account][Account] with `xpx`
 
 ## Getting into some code
 
-Before starting solving the use case, you will need to set up two accounts.
+Before starting solving the use case, you will need to set up two accounts with `xpx2-cli`.
 
 1. Create an account to represent the product.
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--CLI-->
+```sh
+xpx2-cli account generate
+
+Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
+Do you want to save it? [y/n]: y
+Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
+Insert profile name (blank means default and it could overwrite the previous profile): product
+
+New Account:    SDFRDC-F6RXWX-EOOTVI-RLCNUK-KYRSU6-MXW2FC-OR4V
+Public Key:     8DC55282AC40307C230F432EE29E52BD93860C167011B11FA1BAEE124B76AB19
+Private Key:    123..456
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
+
 2. Create another account for the company.
+
+<!--DOCUSAURUS_CODE_TABS-->
+<!--CLI-->
+```sh
+xpx2-cli account generate
+
+Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
+Do you want to save it? [y/n]: y
+Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
+Insert profile name (blank means default and it could overwrite the previous profile): company
+
+New Account:    VBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP
+Public Key:     DBA5A88911D01CE951A5DEAFD86108A029EA359BB211B399FC53B8908D6AE272
+Private Key:    654..321
+```
+<!--END_DOCUSAURUS_CODE_TABS-->
 
 Next, you will configure the product’s account to only accept receiving transfer transactions that contain a specific mosaic.
 
-### Blocking transactions by address
+### Blocking transaction by address
 
 An account can decide to receive transactions only from an allowed list of [addresses][Account]. Similarly, an account can specify a blocked list of addresses to block transactions from.
 
@@ -49,9 +86,19 @@ By default, when there is no restriction set, all the accounts in the network ca
 
 Returning to our previous example, let us imagine that you want to configure the product account to only accept receiving transactions that come from the company’s account. You might take the following steps to do so:
 
-1. Define the account restriction modification. Add to the company’s address `VBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP` to the allowed list.
+1. Define the account restriction modification. Add to the company’s address `SBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP` to the allowed list.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+address, err := sdk.NewAddressFromRaw("VBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP")
+if err != nil {
+    panic(err)
+}
+
+modification := sdk.AccountPropertiesAddressModification{ sdk.AddProperty, address, }
+```
+
 <!--TypeScript-->
 ```js
 const companyAddress = Address.createFromRawAddress('VBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP');
@@ -63,12 +110,23 @@ const addressRestriction = AccountRestrictionModification.createForAddress(Restr
 const companyAddress = Address.createFromRawAddress('VBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP');
 const addressRestriction = AccountRestrictionModification.createForAddress(RestrictionModificationType.Add, companyAddress);
 ```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-2. Create an `AccountRestrictionTransaction`, with restrictionType “AllowAddress”. Add to the array the modification created in the previous step.
+2. Create `AccountRestrictionTransaction`, with restriction type "AllowAddress". Add to the array the modification created in the previous step.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+transaction, err := client.NewAccountPropertiesAddressTransaction(
+  sdk.NewDeadline(time.Hour),
+  sdk.BlockAddress,
+  []*sdk.AccountPropertiesAddressModification{ &modification },
+)
+if err != nil {
+    panic(err)
+}
+```
+
 <!--TypeScript-->
 ```js
 const transaction = AccountRestrictionTransaction
@@ -94,6 +152,24 @@ const transaction = AccountRestrictionTransaction
 3. Sign and announce the transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+productAccount, err := client.NewAccountFromPrivateKey(os.Getenv("PRODUCT_PRIVATE_KEY"))
+if err != nil {
+    panic(err)
+}
+
+signedTransaction, err := productAccount.Sign(transaction)
+if err != nil {
+    panic(err)
+}
+
+_, err = client.Transaction.Announce(context.Background(), signedTransaction)
+if err != nil {
+    panic(err)
+}
+```
+
 <!--TypeScript-->
 ```js
 const productPrivateKey = process.env.PRIVATE_KEY as string;
@@ -122,7 +198,7 @@ transactionHttp
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-Now, if you send a [transfer transaction][transfer-transaction-guide] from another account, you will get an error as only `VBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP` is allowed to send the transactions to the product.
+Now, if you send a [transfer transaction][transfer-transaction] from another account, you will get an error as only `VBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP` is allowed to send the transactions to the product.
 
 On the other hand, if you send a transaction from your company account, you will receive a confirmation message as you would normally.
 
@@ -141,6 +217,21 @@ Thus, you could narrow the type of transactions that the product can receive fro
 1. Define the account restriction modification. Add the mosaic id you want to block to the blocked list.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+id, err := strconv.ParseInt("2b890153b7a18ff2", 16, 64)
+if err != nil {
+    panic(err)
+}
+
+companyShareMosaicId, err := sdk.NewMosaicId(uint64(id))
+if err != nil {
+    panic(err)
+}
+
+modification := &sdk.AccountPropertiesMosaicModification{ sdk.AddProperty, companyShareMosaicId, }
+```
+
 <!--TypeScript-->
 ```js
 const companyShareMosaicId = new MosaicId('2b890153b7a18ff2'); // Replace with the mosaic id representing the company share.
@@ -155,9 +246,21 @@ const mosaicRestriction = AccountRestrictionModification.createForMosaic(Restric
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-2. Create an `AccountRestrictionTransaction`, with restrictionType `BlockMosaic`. Add to the array the modification created in the previous step.
+2. Create an `AccountRestrictionTransaction`, with restriction type `BlockMosaic`. Add to the array the modification created in the previous step.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+transaction, err := client.NewAccountPropertiesMosaicTransaction(
+    sdk.NewDeadline(time.Hour),
+    sdk.BlockMosaic,
+    []*sdk.AccountPropertiesMosaicModification{modification},
+)
+if err != nil {
+    panic(err)
+}
+```
+
 <!--TypeScript-->
 ```js
 const transaction = AccountRestrictionTransaction
@@ -183,6 +286,24 @@ const transaction = AccountRestrictionTransaction
 3. Sign and announce the transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+productAccount, err := client.NewAccountFromPrivateKey(os.Getenv("PRODUCT_PRIVATE_KEY"))
+if err != nil {
+    panic(err)
+}
+
+signedTransaction, err := productAccount.Sign(transaction)
+if err != nil {
+    panic(err)
+}
+
+_, err = client.Transaction.Announce(context.Background(), signedTransaction)
+if err != nil {
+    panic(err)
+}
+```
+
 <!--TypeScript-->
 ```js
 const productPrivateKey = process.env.PRIVATE_KEY;
@@ -211,7 +332,6 @@ transactionHttp
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-If the process was successful, the product account can now only receive transactions from the company’s account that does not include any `company.share` mosaic.
 
 ### Removing a restriction
 
@@ -220,6 +340,17 @@ After the company sells the product to the final client, they want to remove the
 1. Define the account restriction modification. Remove from the allowed list the company’s address.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+address, err := sdk.NewAddressFromRaw("VBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP")
+if err != nil {
+    panic(err)
+}
+
+modification := &sdk.AccountPropertiesAddressModification{ sdk.RemoveProperty, address, }
+
+```
+
 <!--TypeScript-->
 ```js
 const companyAddress = Address.createFromRawAddress('VBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP');
@@ -237,6 +368,18 @@ const addressRestriction = AccountRestrictionModification.createForAddress(Restr
 2. Create an `AccountRestrictionTransaction`, setting the type `AllowAddress`. Add as well the modification created.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+transaction, err := client.NewAccountPropertiesAddressTransaction(
+  sdk.NewDeadline(time.Hour),
+  sdk.AllowAddress,
+  []*sdk.AccountPropertiesAddressModification{ modification },
+)
+if err != nil {
+    panic(err)
+}
+```
+
 <!--TypeScript-->
 ```js
 const transaction = AccountRestrictionTransaction
@@ -262,6 +405,24 @@ const transaction = AccountRestrictionTransaction
 3. Sign and announce the transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+productAccount, err := client.NewAccountFromPrivateKey(os.Getenv("PRODUCT_PRIVATE_KEY"))
+if err != nil {
+    panic(err)
+}
+
+signedTransaction, err := productAccount.Sign(transaction)
+if err != nil {
+    panic(err)
+}
+
+_, err = client.Transaction.Announce(context.Background(), signedTransaction)
+if err != nil {
+    panic(err)
+}
+```
+
 <!--TypeScript-->
 ```js
 const productPrivateKey = process.env.PRIVATE_KEY as string;
@@ -290,10 +451,9 @@ transactionHttp
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-After the transaction gets confirmed, you should be able to send transactions from any account to the product account once again.
-
 [Account]: ../../built-in-features/account.md
 [Mosaic]: ../../built-in-features/mosaic.md
 [Account-restriction]: ../../built-in-features/account-restriction.md
 [transfer-transaction-guide]: ../transaction/sending-a-transfer-transaction.md
 [mosaic-guide]: ../mosaic/creating-a-mosaic.md
+[transfer-transaction]: ../../built-in-features/transfer-transaction.md

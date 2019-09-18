@@ -3,7 +3,7 @@ id: node
 title: Node
 ---
 
-The Sirius-Chain platform is built from a network of nodes. These nodes provide a powerful, stable, and secure platform where Smart Assets transactions are conducted, searched, and immutably logged to the blockchain ledger.
+The Sirius Chain platform is built from a network of nodes. These nodes provide a powerful, stable, and secure platform where Smart Assets transactions are conducted, searched, and immutably logged to the blockchain ledger.
 
 ![Four Layer Architecture](/img/four-layer-architecture.png "Four Layer Architecture")
 
@@ -13,7 +13,7 @@ The four-layered architecture allows developers to update any of these tiers wit
 
 ## P2P Component
 
-**Repository**: [Sirius-chain Server](https://github.com/proximax-storage/cpp-xpx-chain)
+**Repository**: [Sirius Chain Server](https://github.com/proximax-storage/cpp-xpx-chain)
 
 ![Peer Node](/img/node-peer.jpg "Peer Node")
 <p class="caption">Peer node communication</p>
@@ -38,7 +38,7 @@ Storing the state in memory is usually faster than using RocksDB. However, stori
 
 ## API Component
 
-**Repository**: [Sirius-Chain Server](https://github.com/proximax-storage/cpp-xpx-chain)
+**Repository**: [Sirius Chain Server](https://github.com/proximax-storage/cpp-xpx-chain)
 
 ![API Node](/img/node-api.jpg "API Node")
 <p class="caption">API node communication</p>
@@ -64,11 +64,11 @@ The broker service updates the linked MongoDB instance when:
 
 ## ZMQ
 
-[ZeroMQ](https://en.wikipedia.org/wiki/ZeroMQ) is an asynchronous messaging library, which enables real-time subscriptions. It transports notifications from the API node to the ZMQ endpoint, where Sirius-Chain REST listens. It is an alternative to REST WebSockets, aimed to be used when performance is critical.
+[ZeroMQ](https://en.wikipedia.org/wiki/ZeroMQ) is an asynchronous messaging library, which enables real-time subscriptions. It transports notifications from the API node to the ZMQ endpoint, where Sirius Chain REST listens. It is an alternative to REST WebSockets, aimed to be used when performance is critical.
 
 ## REST node
 
-**Repository**: [Sirius-Chain REST](https://github.com/proximax-storage/js-xpx-chain-rest)
+**Repository**: [Sirius Chain REST](https://github.com/proximax-storage/js-xpx-chain-rest)
 
 ![REST Node](/img/node-rest.jpg "REST Node")
 <p class="caption">REST node communication</p>
@@ -79,9 +79,9 @@ Each REST node connects to one API instance to send new transactions requests tr
 
 ## Guides
 
-- Running Sirius-Chain locally (upcoming)
+- Running Sirius Chain locally (upcoming)
 
-Deploy a Sirius-Chain full node for learning and development purposes.
+Deploy a Sirius Chain full node for learning and development purposes.
 
 - Deploying a test net node (upcoming)
 - Configuring a private network (upcoming)

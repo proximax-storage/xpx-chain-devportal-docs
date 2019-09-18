@@ -37,6 +37,45 @@ if err != nil {
 fmt.Printf(accountInfo.String())
 
 ```
+
+<!--TypeScript-->
+
+```ts
+const accountHttp = new AccountHttp('http://localhost:3000');
+const address = Address.createFromRawAddress('VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
+
+accountHttp
+    .getAccountInfo(address)
+    .subscribe(accountInfo => console.log(accountInfo), err => console.error(err));
+```
+
+<!--JavaScript-->
+```js
+const accountHttp = new AccountHttp('http://localhost:3000');
+const address = Address.createFromRawAddress('VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
+
+accountHttp
+    .getAccountInfo(address)
+    .subscribe(accountInfo => console.log(accountInfo), err => console.error(err));
+```
+
+<!--CLI-->
+```sh
+xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
+```
+
+<!--Java-->
+```java
+    final AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
+
+    // Replace with address
+    final String address = "VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54";
+
+    final AccountInfo accountInfo = accountHttp.getAccountInfo(Address.createFromRawAddress(address)).toFuture().get();
+
+    System.out.println(accountInfo);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 Can you determine the account’s public key? The **public key** identifies your account publicly in the network. Your **address** is derived from it, which contains further information such as network and validity check.
@@ -69,5 +108,59 @@ if err != nil {
 
 fmt.Println(accountInfo.Mosaics[0].Amount)
 ```
+
+<!--TypeScript-->
+
+```ts
+
+import { mergeMap, map } from 'rxjs/operators';
+
+const url = 'http://localhost:3000';
+const accountHttp = new AccountHttp(url);
+const mosaicHttp = new MosaicHttp(url);
+const namespaceHttp = new NamespaceHttp(url);
+const mosaicService = new MosaicService(accountHttp, mosaicHttp, namespaceHttp);
+
+const address = Address.createFromRawAddress("VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54");
+
+mosaicService
+    .mosaicsAmountViewFromAddress(address)
+    .pipe(
+        mergeMap((_) => _)
+    )
+    .subscribe(mosaic => console.log('You have', mosaic.relativeAmount(), mosaic.fullName()),
+        err => console.error(err));
+```
+
+<!--JavaScript-->
+```js
+// es5
+var { mergeMap, map } = require('rxjs/operators'); 
+
+// es6
+import { mergeMap, map } from 'rxjs/operators';
+
+const url = 'http://localhost:3000';
+const accountHttp = new AccountHttp(url);
+const mosaicHttp = new MosaicHttp(url);
+const namespaceHttp = new NamespaceHttp(url);
+const mosaicService = new MosaicService(accountHttp, mosaicHttp, namespaceHttp);
+
+const address = Address.createFromRawAddress("VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54");
+
+mosaicService
+    .mosaicsAmountViewFromAddress(address)
+    .pipe(
+        mergeMap((_) => _)
+    )
+    .subscribe(mosaic => console.log('You have', mosaic.relativeAmount(), mosaic.fullName()),
+        err => console.error(err));
+```
+
+<!--CLI-->
+```sh
+xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 

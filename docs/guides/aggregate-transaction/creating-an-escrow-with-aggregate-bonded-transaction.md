@@ -27,7 +27,7 @@ Normalizing the language into Sirius Chain related concepts:
 
 - **contractual arrangement**: A new type of transaction called Aggregate Transaction.
 - **third party receives and disburses money**: There is no third party, we are going to use blockchain technology.
-- **primary transacting parties**: Sirius-Chain accounts will represent the participants.
+- **primary transacting parties**: Sirius Chain accounts will represent the participants.
 - **conditions agreed to by the transacting parties**: Whe nevery participant signs the aggregate transaction.
 - **account established by a broker for holding funds**: There will not be an intermediate account, the exchange will happen atomically using an aggregate transaction.
 - **until the consummation or termination of a transaction**: The transaction gets included in a block or expires.

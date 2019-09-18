@@ -72,7 +72,7 @@ if err != nil {
 
 **Note:**
 
-Sirius-Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to create by 10divisibility. For example, if the mosaic has divisibility 2, to create 10 units (relative) you should define 1000 (absolute) instead.
+Sirius Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to create by 10divisibility. For example, if the mosaic has divisibility 2, to create 10 units (relative) you should define 1000 (absolute) instead.
 
 </div>
 

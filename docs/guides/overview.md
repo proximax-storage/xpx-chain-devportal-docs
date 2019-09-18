@@ -19,10 +19,10 @@ title: Guides
 - [Linking a namespace to an address](./namespace/linking-a-namespace-to-account.md)
   Link a namespace to an account.
 
-## Account Filter
+## Account Restriction
 
-- [Preventing spam attacks with account filters](./account-filter/preventing-spam-attacks.md)
-  Learn how to add and remove account filters.
+- [Preventing spam attacks with account filters](./account-restriction/preventing-spam-attacks.md)
+  Learn how to add and remove account restrictions.
 
 ## Aggregate Transaction
 
@@ -51,7 +51,7 @@ title: Guides
 
 ## Cross-Chain Swaps
 
-- [Atomic cross-chain swap between Sirius-Chain public and private chain](./cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain.md)
+- [Atomic cross-chain swap between Sirius Chain public and private chain](./cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain.md)
   Cross-chain swaps enable trading tokens between different blockchains, without using an intermediary party in the process.
 
 ## Monitoring
@@ -113,10 +113,10 @@ title: Guides
 ## Network
 
 - [Setting up your workstation](../getting-started/setting-up-workstation.md)
-  This first guide will walk you through a step-by-step installation of the required tools to start developing on Sirius-Chain.
+  This first guide will walk you through a step-by-step installation of the required tools to start developing on Sirius Chain.
 
 - [Writing your first application](../getting-started/writing-first-application.md)
-  Write an real application using Sirius-Chain technology.
+  Write an real application using Sirius Chain technology.
 
 ## Transfer Transaction
 

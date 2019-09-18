@@ -3,7 +3,7 @@ id: extension-overview
 title: Extension Overview
 sidebar_label: Overview
 ---
-Sirius-Chain comes with a predefined set of built-in features and there's a great deal of integration that can be done with it.
+Sirius Chain comes with a predefined set of built-in features and there's a great deal of integration that can be done with it.
 
 **Extension** |	**Reference** 
 -------------|-----------------

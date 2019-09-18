@@ -1,5 +1,5 @@
 ---
-id: atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain
+id: atomic-cross-chain-swap-between-Sirius Chain-public-and-private-chain
 title: Atomic cross-chain swap between Sirius public and private chains
 ---
 
@@ -7,7 +7,7 @@ title: Atomic cross-chain swap between Sirius public and private chains
 
 This exchange of tokens will succeed atomically. If some of the actors do not agree, each of them will receive the locked tokens back after a determined amount of time.
 
-When talking about tokens in Sirius-Chain, we are actually referring to [mosaics](../../built-in-features/mosaic.md). Sirius-Chain enables atomic swaps through [secret lock](../../built-in-features/cross-chain-swaps.md#secretlocktransaction) / [secret proof transaction](../../built-in-features/cross-chain-swaps.md#secretprooftransaction) mechanism.
+When talking about tokens in Sirius Chain, we are actually referring to [mosaics](../../built-in-features/mosaic.md). Sirius Chain enables atomic swaps through [secret lock](../../built-in-features/cross-chain-swaps.md#secretlocktransaction) / [secret proof transaction](../../built-in-features/cross-chain-swaps.md#secretprooftransaction) mechanism.
 
 ## Background Information 
 

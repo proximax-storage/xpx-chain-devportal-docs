@@ -9,7 +9,7 @@ Create a 1-of-2 [multisig account](../../built-in-features/multisig-account.md),
 
 Alice and Bob live together and have separate [accounts](../../built-in-features/account.md). They also have a shared account so that if Bob is shopping, he can buy groceries for both himself and Alice.
 
-This shared account appears in Sirius-Chain as **1-of-2 multisig**. Multisig accounts permit Alice and Bob sharing funds in a separate account, requiring only the signature from one of them to transact.
+This shared account appears in Sirius Chain as **1-of-2 multisig**. Multisig accounts permit Alice and Bob sharing funds in a separate account, requiring only the signature from one of them to transact.
 
 ![Multisig 1 of 2](/img/multisig-1-of-2.png "Multisig 1 of 2")
 

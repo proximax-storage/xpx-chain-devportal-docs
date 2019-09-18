@@ -9,7 +9,7 @@ The harvesting [account](../built-in-features/account.md) - called the harvester
 
 ## Harvesting mosaic
 
-Sirius-Chain software allows the [definition](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) of any [mosaic](../built-in-features/mosaic.md) for harvesting purposes to fit the business needs. The Sirius-Chain test network names this mosaic `xpx.harvest`.
+Sirius Chain software allows the [definition](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties) of any [mosaic](../built-in-features/mosaic.md) for harvesting purposes to fit the business needs. The Sirius Chain test network names this mosaic `xpx.harvest`.
 
 For example, consortium networks can distribute harvesting mosaics between the companies that are running the infrastructure, while other participants need to pay fees in the form of [currency mosaic](./transaction.md#fees) to consume services.
 

@@ -71,7 +71,7 @@ transferTransaction, err := client.NewTransferTransaction(
     sdk.NewDeadline(time.Hour),
     address,
     []*sdk.Mosaic{sdk.XpxRelative(10)},
-    sdk.NewPlainMessage("Welcome to Sirius-Chain"),
+    sdk.NewPlainMessage("Welcome to Sirius Chain"),
 )
 if err != nil {
     panic(err)
@@ -104,7 +104,7 @@ mosaics := []*sdk.Mosaic{sdk.XpxRelative(10), myMosaic}
 
 **Note**
 
-Sirius-Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to send by 10divisibility. For example, if the mosaic has divisibility 2, to send 10 units (relative) you should define 1000 (absolute) instead.
+Sirius Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to send by 10divisibility. For example, if the mosaic has divisibility 2, to send 10 units (relative) you should define 1000 (absolute) instead.
 
 </div>
 

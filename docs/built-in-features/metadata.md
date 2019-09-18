@@ -3,7 +3,7 @@ id: metadata
 title: Metadata
 ---
 
-Sirius-Chain provides you with an option to associate metadata to an [account](./account.md), [mosaic](./mosaic.md) or [namespace](./namespace.md) with a transaction.
+Sirius Chain provides you with an option to associate metadata to an [account](./account.md), [mosaic](./mosaic.md) or [namespace](./namespace.md) with a transaction.
 
 The most common uses of metadata are:
 
@@ -34,9 +34,9 @@ The target account should cosign the aggregate to record the metadata on the blo
 
 <p class=caption>Metadata used to attach relevant information to an asset</p>
 
-Bob works as a digital notary that stamp accounts on the Sirius-Chain. When a customer comes to Bob to notarize a document, he checks the authentication of the customer’s documents then `tags the account with a MetadataTransaction`.
+Bob works as a digital notary that stamp accounts on the Sirius Chain. When a customer comes to Bob to notarize a document, he checks the authentication of the customer’s documents then `tags the account with a MetadataTransaction`.
 
-Alice a recent graduate and wants her educational certificate accredited to her Sirius-Chain account to avoid the hassle of repeatedly providing verification of her degree. So she goes to Bob and provides him with proof of her degree. Once Alice pays Bob a fee, Bob verifies the authenticity and stamps Alice’s account with metadata that signifies her degree.
+Alice a recent graduate and wants her educational certificate accredited to her Sirius Chain account to avoid the hassle of repeatedly providing verification of her degree. So she goes to Bob and provides him with proof of her degree. Once Alice pays Bob a fee, Bob verifies the authenticity and stamps Alice’s account with metadata that signifies her degree.
 
 ### Access management
 
@@ -44,13 +44,34 @@ Alice a recent graduate and wants her educational certificate accredited to her 
 
 <p class=caption>Validating metadata to restrict performing an off-chain action</p>
 
-The HR department of the SneakersCompany uses the Sirius-Chain for `access management` of sensitive work resources. Each account is tagged with the metadata that regulates its access to the company apps suite.
+The HR department of the SneakersCompany uses the Sirius Chain for `access management` of sensitive work resources. Each account is tagged with the metadata that regulates its access to the company apps suite.
 
 When a new employee, Carol, is hired, the HR department creates a new work account for her. For security reasons, HR sets the metadata of the account to `{company, ACCESS, 9-18}`.
 
 Each time Carol attempts to access the company apps suite, the company app validates that Carol has permission and that the time falls under 9:00-18:00 before granting her admission.
 
 On the other hand, if Derek, who has no permissions, attempts to access the company apps suite, the company app will reject his request.
+
+## Type of Metadata
+
+### Address
+
+Since Address usually represents entities from the real world,
+it can be useful to attach some extra information to the address. 
+
+[Guides on account metadata](../guides/metadata/account-metadata.md)
+
+### Mosaic
+
+For Mosaic, metadata could be used to share where users can obtain or exchange an asset.
+
+[Guides on mosaic metadata](../guides/metadata/mosaic-metadata.md)
+
+### Namespace
+
+If users own a namespace, they can attach extra details with metadata for their own namespace.
+
+[Guides on namespace metadata](../guides/metadata/namespace-metadata.md)
 
 ## Schemas
 

@@ -13,7 +13,7 @@ Send a transaction involving a [multisig](../../built-in-features/multisig-accou
 
 Alice and Bob have separate [accounts](../../built-in-features/account.md). They also want to have a shared account to buy groceries, so that if Bob is out shopping, he can buy groceries for both himself and Alice.
 
-This shared account appears in Sirius-Chain as **1-of-2 multisig**. Multisig accounts permit Alice and Bob sharing funds in a separate account, requiring only the signature from one of them to transact.
+This shared account appears in Sirius Chain as **1-of-2 multisig**. Multisig accounts permit Alice and Bob sharing funds in a separate account, requiring only the signature from one of them to transact.
 
 ![1-of-2 multisig account example](/img/multisig-1-of-2.png "1-of-2 multisig account example")
 

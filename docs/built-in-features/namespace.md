@@ -3,7 +3,7 @@ id: namespace
 title: Namespace
 ---
 
-Namespaces allow you to [create an on-chain unique place](../guides/namespace/registering-a-namespace.md) for your business and your assets on the Sirius-Chain blockchain.
+Namespaces allow you to [create an on-chain unique place](../guides/namespace/registering-a-namespace.md) for your business and your assets on the Sirius Chain.
 
 ## Name
 

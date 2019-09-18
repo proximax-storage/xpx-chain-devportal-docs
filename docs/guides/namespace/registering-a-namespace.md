@@ -7,7 +7,7 @@ Register your own [namespace](../../built-in-features/namespace.md).
 
 ## Background Information 
 
-Namespaces allow you to create an on-chain **unique place** for your business and your assets on the Sirius-Chain.
+Namespaces allow you to create an on-chain **unique place** for your business and your assets on the Sirius Chain.
 
 A namespace starts with a name that you choose, similar to an internet domain name. If one [account](../../built-in-features/account.md) creates a namespace, that will appear as unique in the network.
 
@@ -54,7 +54,7 @@ if err != nil {
 
 **Note:**
 
-In Sirius-Chain, blocks are complete every `15` seconds in average. You will have to renew your namespace before it expires.
+In Sirius Chain, blocks are complete every `15` seconds in average. You will have to renew your namespace before it expires.
 
 </div>
 

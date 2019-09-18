@@ -29,7 +29,7 @@ nem2-cli account generate --save
 
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
 Do you want to save it? [y/n]: y
-Introduce Sirius-Chain 2 Node URL. (Example: http://localhost:3000): http://localhost:3000
+Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile): alice
 ```
 
@@ -38,7 +38,7 @@ nem2-cli account generate --save
 
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
 Do you want to save it? [y/n]: y
-Introduce Sirius-Chain 2 Node URL. (Example: http://localhost:3000): http://localhost:3000
+Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile): certificate
 ```
 
