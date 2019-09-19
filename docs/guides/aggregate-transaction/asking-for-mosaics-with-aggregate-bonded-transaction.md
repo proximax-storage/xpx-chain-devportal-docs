@@ -114,6 +114,38 @@ if err != nil {
 }
 transferTransaction1.ToAggregate(bobAccount)
 ```
+
+<!--TypeScript-->
+```js
+const transferTransaction1 = TransferTransaction.create(
+    Deadline.create(),
+    bobAccount.address,
+    [],
+    PlainMessage.create('send me 20 XPX'),
+    NetworkType.TEST_NET);
+```
+
+<!--JavaScript-->
+```js
+const transferTransaction1 = TransferTransaction.create(
+    Deadline.create(),
+    bobAccount.address,
+    [],
+    PlainMessage.create('send me 20 XPX'),
+    NetworkType.TEST_NET);
+```
+
+<!--Java-->
+```java
+    final TransferTransaction transferTransaction1 = TransferTransaction.create(
+        Deadline.create(2, HOURS),
+        bobPublicAccount.getAddress(),
+        Collections.emptyList(),
+        PlainMessage.create("send me 20 XPX"),
+        NetworkType.TEST_NET
+    );
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 <div class=cap-alpha-ol>
@@ -183,7 +215,7 @@ const aggregateTransaction = AggregateTransaction.createBonded(
         transferTransaction2.toAggregate(bobAccount)],
     NetworkType.TEST_NET);
 
-const signedTransaction = aliceAccount.sign(aggregateTransaction);
+const signedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
 ```
 
 <!--JavaScript-->
@@ -194,18 +226,18 @@ const aggregateTransaction = AggregateTransaction.createBonded(
         transferTransaction2.toAggregate(bobAccount)],
     NetworkType.TEST_NET);
 
-const signedTransaction = aliceAccount.sign(aggregateTransaction);
+const signedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
 ```
 
 <!--Java-->
 ```java
-    final TransferTransaction transferTransaction2 = TransferTransaction.create(
-        Deadline.create(2, HOURS),
-        aliceAccount.getAddress(),
-        Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(20))),
-        PlainMessage.Empty,
-        NetworkType.TEST_NET
-    );
+    final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateBonded()
+            .innerTransactions(Arrays.asList(
+                    transferTransaction1.toAggregate(aliceAccount.getPublicAccount()),
+                    transferTransaction2.toAggregate(bobPublicAccount)
+            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
+
+    final SignedTransaction aggregateSignedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

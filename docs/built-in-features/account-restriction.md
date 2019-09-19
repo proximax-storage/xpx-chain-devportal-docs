@@ -164,6 +164,6 @@ value | (Address, MosaicId or [Transaction Type][TransactionSchema]) | Modificat
 [Mosaic]: ./mosaic.md
 [Multisig]: ./multisig-account.md
 [TransactionType]: ../protocol/transaction#transaction-types
-[Prevent Spam]: ../guides/account/preventing-spam-attacks-with-account-restrictions.md
+[Prevent Spam]: ../guides/account-restriction/preventing-spam-attacks.md
 [Embedded-transactionSchema]: ../protocol/transaction#embeddedtransaction
 [TransactionSchema]: ../protocol/transaction#transaction

@@ -9,41 +9,41 @@ info:
 tags:
 - name: Account routes
   description: |
-    [Account](https://nemtech.github.io/concepts/account.html) related
+    [Account](https://bcdocs.xpxsirius.io/docs/built-in-features/account) related
     endpoints.
 - name: Block routes
   description: |
-    [Block](https://nemtech.github.io/concepts/block.html) related endpoints.
+    [Block](https://bcdocs.xpxsirius.io/docs/protocol/block) related endpoints.
 - name: Contract routes
   description: |
-    [Contract TODO](https://nemtech.github.io/concepts/mosaic.html) related endpoints.
+    [Contract TODO](https://bcdocs.xpxsirius.io/docs/built-in-features/super-contracts) related endpoints.
 - name: Chain routes
   description: |
-    [Chain](https://nemtech.github.io/concepts/block.html) related endpoints.
+    [Chain](https://bcdocs.xpxsirius.io/docs/protocol/block) related endpoints.
 - name: Diagnostic routes
   description: |
-    [Diagnostic](https://nemtech.github.io/concepts/node.html) related
+    [Diagnostic](https://bcdocs.xpxsirius.io/docs/protocol/node) related
     endpoints.
 - name: Metadata routes
   description: |
-    [Metadata TODO](https://nemtech.github.io/concepts/mosaic.html) related endpoints.
+    [Metadata](https://bcdocs.xpxsirius.io/docs/built-in-features/metadata) related endpoints.
 - name: Mosaic routes
   description: |
-    [Mosaic](https://nemtech.github.io/concepts/mosaic.html) related endpoints.
+    [Mosaic](https://bcdocs.xpxsirius.io/docs/built-in-features/mosaic) related endpoints.
 - name: Namespace routes
   description: |
-    [Namespace](https://nemtech.github.io/concepts/mosaic.html) related
+    [Namespace](https://bcdocs.xpxsirius.io/docs/built-in-features/namespace) related
     endpoints.
 - name: Transaction routes
   description: |
-    [Transaction](https://nemtech.github.io/concepts/transaction.html) related
+    [Transaction](https://bcdocs.xpxsirius.io/docs/protocol/transaction) related
     endpoints.
 - name: Network routes
   description: |
     Network related endpoints.
 - name: Node routes
   description: |
-    [Node](https://nemtech.github.io/concepts/node.html) related endpoints.
+    [Node](https://bcdocs.xpxsirius.io/docs/protocol/node) related endpoints.
 paths:
   "/account/{accountId}":
     get:
@@ -303,7 +303,7 @@ paths:
       - Account routes
       summary: Get aggregate bonded transactions information
       description: |
-        Gets an array of [aggregate bonded transactions](https://nemtech.github.io/concepts/aggregate-transaction.html)
+        Gets an array of [aggregate bonded transactions](https://bcdocs.xpxsirius.io/docs/built-in-features/aggregate-transaction)
         where the account is the sender or requires to cosign the transaction.
       operationId: partialTransactions
       parameters:
@@ -355,7 +355,7 @@ paths:
       summary: Get account configurable properties information
       description: |
         Returns the [configurable
-        properties](https://nemtech.github.io/concepts/account-filter.html) for
+        properties](https://bcdocs.xpxsirius.io/docs/built-in-features/account-restriction) for
         a given account.
       operationId: getAccountProperties
       parameters:
@@ -383,7 +383,7 @@ paths:
       summary: Get account properties for given array of addresses
       description: |
         Returns the [configurable
-        properties](https://nemtech.github.io/concepts/account-filter.html) for
+        properties](https://bcdocs.xpxsirius.io/docs/built-in-features/account-restriction) for
         a given array of addresses.
       operationId: getAccountPropertiesFromAccounts
       requestBody:
@@ -408,7 +408,7 @@ paths:
       - Account routes
       summary: Get multisig account information
       description: Returns the [multisig
-        account](https://nemtech.github.io/concepts/multisig-account.html)
+        account](https://bcdocs.xpxsirius.io/docs/built-in-features/multisig-account)
         information.
       operationId: getAccountMultisig
       parameters:
@@ -435,7 +435,7 @@ paths:
       - Account routes
       summary: Get multisig account graph information
       description: Returns the [multisig
-        account](https://nemtech.github.io/concepts/multisig-account.html)
+        account](https://bcdocs.xpxsirius.io/docs/built-in-features/multisig-account)
         graph.
       operationId: getAccountMultisigGraph
       parameters:
@@ -531,7 +531,7 @@ paths:
       - Block routes
       summary: Get transactions from a block
       description: Returns an array of
-        [transactions](https://nemtech.github.io/concepts/transaction.html)
+        [transactions](https://bcdocs.xpxsirius.io/docs/protocol/transaction)
                      included in a block for a given block height.
       operationId: getBlockTransactions
       parameters:
@@ -576,7 +576,7 @@ paths:
       - Block routes
       summary: Get the merkle path for a given a transaction and block
       description: Returns the merkle path for a
-        [transaction](https://nemtech.github.io/concepts/transaction.html)
+        [transaction](https://bcdocs.xpxsirius.io/docs/protocol/transaction)
                      included in a block. The path is the complementary data needed to
                      calculate the merkle root. A client can compare if the calculated root
                      equals the one recorded in the block header, verifying that the
@@ -613,7 +613,7 @@ paths:
       tags:
       - Block routes
       summary: Get receipts from a block
-      description: Returns the [receipts](https://nemtech.github.io/concepts/receipt.html)
+      description: Returns the [receipts](https://bcdocs.xpxsirius.io/docs/protocol/receipt)
         linked to a block.
       operationId: getBlockReceipts
       parameters:
@@ -642,7 +642,7 @@ paths:
       - Block routes
       summary: Get the merkle path for a given a receipt statement hash and block
       description: Returns the merkle path for a [receipt statement or
-        resolution](https://nemtech.github.io/concepts/receipt.html) linked to a
+        resolution](https://bcdocs.xpxsirius.io/docs/protocol/receipt) linked to a
         block. The path is the complementary data needed to calculate the merkle
         root. A client can compare if the calculated root equals the one
         recorded in the block header, verifying that the receipt was linked with
@@ -1230,8 +1230,8 @@ paths:
       - Transaction routes
       summary: Announce a new transaction
       description: Announces a transaction to the network. It is recommended to use the
-                     NEM2-SDK to announce transactions as they should be
-        [serialized](https://nemtech.github.io/concepts/transaction.html#defining-a-transaction).
+                     ProximaX XPX Chain SDK to announce transactions as they should be
+        [serialized](https://bcdocs.xpxsirius.io/docs/protocol/transaction#transaction).
       operationId: announceTransaction
       requestBody:
         $ref: "#/components/requestBodies/transactionPayload"
@@ -1252,7 +1252,7 @@ paths:
       - Transaction routes
       summary: Announce an aggregate bonded transaction
       description: Announces an [aggregate bonded
-        transaction](https://nemtech.github.io/concepts/aggregate-transaction.html#aggregate-bonded)
+        transaction](https://bcdocs.xpxsirius.io/docs/guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction)
         to the network.
       operationId: announcePartialTransaction
       requestBody:
@@ -1274,7 +1274,7 @@ paths:
       - Transaction routes
       summary: Announce a cosignature transaction
       description: Announces a [cosignature
-        transaction](https://nemtech.github.io/concepts/aggregate-transaction.html#cosignature-transaction)
+        transaction](https://bcdocs.xpxsirius.io/docs/guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions)
         to the network.
       operationId: announceCosignatureTransaction
       requestBody:
@@ -1387,8 +1387,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/NodeTimeDTO"
 externalDocs:
-  description: ProximaX Developer Center
-  url: 'https://proximax.io/'
+  description: ProximaX Sirius Chain Developer Center
+  url: 'https://bcdocs.xpxsirius.io/'
 servers:
 - url: http://localhost:3000
 components:
@@ -1439,9 +1439,9 @@ components:
       description: |
         The account link types:
         * 0 -  Unlinked. Account is not linked to another account.
-        * 1 -  Main. Account is a balance-holding account that is linked to a remote harvester account.
-        * 2 -  Remote. Account is a remote harvester account that is linked to a balance-holding account.
-        * 3 -  Remote_Unlinked. Account is a remote harvester eligible account that is unlinked.
+        * 1 -  Main. Account is a balance-holding account that is linked to a remote validator account.
+        * 2 -  Remote. Account is a remote validator account that is linked to a balance-holding account.
+        * 3 -  Remote_Unlinked. Account is a remote validator eligible account that is unlinked.
       example: 0
     AliasActionEnum:
       type: integer
@@ -1629,7 +1629,7 @@ components:
         The type of the receipt:
         * 0x134D (4941 decimal) - Mosaic_Rental_Fee.
         * 0x124E (4686 decimal) - Namespace_Rental_Fee.
-        * 0x2143 (8515 decimal) - Harvest_Fee.
+        * 0x2143 (8515 decimal) - Validate_Fee.
         * 0x2248 (8776 decimal) - LockHash_Completed.
         * 0x2348 (9032 decimal) - LockHash_Expired.
         * 0x2252 (8786 decimal) - LockSecret_Completed.
@@ -1741,7 +1741,7 @@ components:
           $ref: "#/components/schemas/AccountLinkTypeEnum"
         linkedAccountKey:
           description: |
-            The public key of a linked account. The linked account can use|provide balance for delegated harvesting.
+            The public key of a linked account. The linked account can use|provide balance for delegated validating.
           type: string
           example: AC1A6E1D8DE5B17D2C6B1293F1CAD3829EEACF38D09311BB3C8E5A880092DE26
     AccountNamesDTO:
@@ -2069,11 +2069,11 @@ components:
           beneficiary:
             type: string
             description: The public key of the optional beneficiary designated by
-              harvester.
+              validator.
             example: 0
           feeInterest:
             type: integer
-            description: The part of the transaction fee harvester is willing to get.
+            description: The part of the transaction fee validator is willing to get.
               From 0 up to FeeInterestDenominator. The customer gets
               (FeeInterest / FeeInterestDenominator)'th part of the maximum transaction fee.
             example: 0

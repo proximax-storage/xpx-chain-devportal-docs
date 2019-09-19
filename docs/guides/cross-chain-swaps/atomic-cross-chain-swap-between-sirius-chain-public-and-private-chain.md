@@ -1,5 +1,5 @@
 ---
-id: atomic-cross-chain-swap-between-Sirius Chain-public-and-private-chain
+id: atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain
 title: Atomic cross-chain swap between Sirius public and private chains
 ---
 
@@ -73,6 +73,19 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const alicePublicChainAccount = Account.createFromPrivateKey('', NetworkType.MAIN_NET);
+const alicePrivateChainAccount = Account.createFromPrivateKey('', NetworkType.PRIVATE);
+
+const bobPublicChainAccount = Account.createFromPrivateKey('', NetworkType.MAIN_NET);
+const bobPrivateChainAccount = Account.createFromPrivateKey('', NetworkType.PRIVATE);
+
+const privateChainTransactionHttp = new TransactionHttp('http://localhost:3000');
+const publicChainTransactionHttp = new TransactionHttp('http://localhost:3001');
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 1. Alice picks a random number, called `proof`. Then, applies a Sha3-256 hash algorithm to it, obtaining the `secret`.
@@ -88,6 +101,17 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+import {sha3_256} from 'js-sha3';
+
+const random = crypto.randomBytes(8);
+const hash = sha3_256.create();
+const secret = hash.update(random).hex().toUpperCase();
+const proof = random.toString('hex');
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Alice creates a secret lock transaction TX1, including:
@@ -121,6 +145,19 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const tx1 = SecretLockTransaction.create(
+    Deadline.create(),
+    new Mosaic(new MosaicId([1234,0]), UInt64.fromUint(10)),
+    UInt64.fromUint(96 * 3600 / 15),
+    HashType.SHA3_256,
+    secret,
+    bobPrivateChainAccount.address,
+    NetworkType.PRIVATE);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 Once announced, this transaction will remain locked until someone discovers the proof that matches the secret. If after a determined period no one proved it, the locked funds will be returned to Alice.
@@ -135,6 +172,14 @@ _, err = privateChainClient.Transaction.Announce(context.Background(), signedTra
 if err != nil {
     panic(err)
 }
+```
+
+<!--TypeScript-->
+```js
+const tx1Signed = alicePrivateChainAccount.sign(tx1);
+privateChainTransactionHttp
+    .announce(tx1Signed)
+    .subscribe(x => console.log(x),err => console.error(err));
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -172,6 +217,19 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const tx2 = SecretLockTransaction.create(
+    Deadline.create(),
+    new Mosaic(new MosaicId([4321,0]), UInt64.fromUint(10)),
+    UInt64.fromUint(96 * 3600 / 15),
+    HashType.SHA3_256,
+    secret,
+    alicePublicChainAccount.address,
+    NetworkType.MAIN_NET);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 <div class=info>
@@ -196,6 +254,15 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const tx2Signed = bobPublicChainAccount.sign(tx2);
+publicChainTransactionHttp
+    .announce(tx2Signed)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 7. Alice can announce the secret proof transaction TX3 to the public network. This transaction defines the encrypting algorithm used, the original proof and the secret. It will unlock TX2 transaction.
@@ -222,6 +289,22 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const tx3 = SecretProofTransaction.create(
+    Deadline.create(),
+    HashType.SHA3_256,
+    secret,
+    proof,
+    NetworkType.MAIN_NET);
+
+const tx3Signed = alicePublicChainAccount.sign(tx3);
+publicChainTransactionHttp
+    .announce(tx3Signed)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 8. The proof is revealed in the public chain. Bob does the same by announcing a secret proof transaction TX4 in the private chain.
@@ -248,6 +331,22 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const tx4 = SecretProofTransaction.create(
+    Deadline.create(),
+    HashType.SHA3_256,
+    secret,
+    proof,
+    NetworkType.PRIVATE);
+
+const tx4Signed = bobPrivateChainAccount.sign(tx4);
+privateChainTransactionHttp
+    .announce(tx4Signed)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 Bob receives TX1 funds, and the atomic cross-chain swap concludes.

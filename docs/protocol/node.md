@@ -20,7 +20,7 @@ The four-layered architecture allows developers to update any of these tiers wit
 
 The P2P nodes form the backbone of the blockchain, making the network robust since it cannot be shut down by eliminating a single entity. The role of the node is to [verify transactions](./transaction.md#transaction-validation) and [blocks](./block.md), run the consensus algorithm, create new blocks, and propagate the changes through the network.
 
-The API nodes push new transactions to the P2P network, where they are [included in a block](./harvesting.md) or discarded. After the block is processed, the node saves:
+The API nodes push new transactions to the P2P network, where they are [included in a block](./validating.md) or discarded. After the block is processed, the node saves:
 
 - The binary of each block as a flat-file on disk.
 - The updated chain state in memory or RocksDB (configurable).

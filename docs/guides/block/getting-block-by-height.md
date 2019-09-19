@@ -32,6 +32,41 @@ if err != nil {
 }
 fmt.Printf(block.String())
 ```
+
+<!--TypeScript-->
+```js
+const blockchainHttp = new BlockchainHttp('http://localhost:3000');
+
+const height = 1;
+
+blockchainHttp
+    .getBlockByHeight(height)
+    .subscribe(block => console.log(block), err => console.error(err));
+```
+
+<!--JavaScript-->
+```js
+const blockchainHttp = new BlockchainHttp('http://localhost:3000');
+
+const height = 1;
+
+blockchainHttp
+    .getBlockByHeight(height)
+    .subscribe(block => console.log(block), err => console.error(err));
+```
+
+<!--Java-->
+```java
+    final BlockchainHttp blockchainHttp = new BlockchainHttp("http://localhost:3000");
+
+    // Replace with block height
+    final BigInteger blockHeight = BigInteger.valueOf(1);
+
+    final BlockInfo blockInfo = blockchainHttp.getBlockByHeight(blockHeight).toFuture().get();
+
+    System.out.print(blockInfo);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 The following snippet returns the height of the latest block.
@@ -53,5 +88,38 @@ if err != nil {
 }
 fmt.Printf("%s\n", height)
 ```
+
+<!--TypeScript-->
+```js
+const blockchainHttp = new BlockchainHttp('http://localhost:3000');
+
+blockchainHttp
+    .getBlockchainHeight()
+    .subscribe(height => console.log(height.compact()), err => console.error(err));
+```
+
+<!--JavaScript-->
+```js
+const blockchainHttp = new BlockchainHttp('http://localhost:3000');
+
+blockchainHttp
+    .getBlockchainHeight()
+    .subscribe(height => console.log(height.compact()), err => console.error(err));
+```
+
+<!--Java-->
+```java
+    final BlockchainHttp blockchainHttp = new BlockchainHttp("http://localhost:3000");
+
+    final BigInteger blockchainHeight = blockchainHttp.getBlockchainHeight().toFuture().get();
+
+    System.out.print(blockchainHeight);
+```
+
+<!--CLI-->
+```sh
+xpx2-cli blockchain height
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 

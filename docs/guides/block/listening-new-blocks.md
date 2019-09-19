@@ -31,6 +31,49 @@ err := wsClient.AddBlockHandlers(func(block *sdk.BlockInfo) bool {
   return true
 })
 ```
+
+<!--TypeScript-->
+```js
+const listener = new Listener('http://localhost:3000');
+
+listener.open().then(() => {
+
+    listener
+        .newBlock()
+        .subscribe(block => console.log(block), err => console.error(err));
+
+});
+```
+
+<!--JavaScript-->
+```js
+const listener = new Listener('http://localhost:3000');
+
+listener.open().then(() => {
+
+    listener
+        .newBlock()
+        .subscribe(block => console.log(block), err => console.error(err));
+
+});
+```
+
+<!--Java-->
+```java
+    Listener listener = new Listener("http://localhost:3000");
+
+    listener.open().get();
+
+    BlockInfo blockInfo = listener.newBlock().take(1).toFuture().get();
+
+    System.out.println(blockInfo);
+```
+
+<!--CLI-->
+```sh
+xpx2-cli monitor block
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 

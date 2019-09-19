@@ -45,6 +45,35 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--JavaScript-->
+```js
+    const nodeURL = "http://localhost:3000";
+
+    const transactionHttp = new TransactionHttp(nodeURL);
+
+    var mosaicDuration = (1 * 365 * 24 * 60 * 4 ); // 1 year - 15 sec per block 
+
+    const privateKey = process.env.PRIVATE_KEY;
+    const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+    const nonce = MosaicNonce.createRandom();
+    var mosaicId = MosaicId.createFromNonce(nonce, account.publicAccount);
+
+    const mosaicDefinitionTransaction = MosaicDefinitionTransaction.create(
+        Deadline.create(),
+        nonce,
+        mosaicId,
+        MosaicProperties.create({
+            supplyMutable: true,
+            transferable: true,
+            divisibility: 0,
+            duration: UInt64.fromUint(mosaicDuration),
+        }),
+        NetworkType.TEST_NET
+    )
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. A [mosaic supply change transaction](../../built-in-features/mosaic.md#mosaicsupplychangetransaction), to set the supply. We are going to create 1.000.000 mosaic units.
@@ -67,6 +96,18 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--JavaScript-->
+```js
+const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
+    Deadline.create(),
+    mosaicId,
+    MosaicSupplyType.Increase,
+    UInt64.fromUint(1000000),
+    NetworkType.TEST_NET
+);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 <div class=info>
 
@@ -94,11 +135,22 @@ aggregateTransaction, err := client.NewCompleteAggregateTransaction(
     []sdk.Transaction{mosaicDefinitionTrx, mosaicSupplyChangeTrx,},
 )
 ```
+
+<!--JavaScript-->
+```js
+const aggregateTransaction = AggregateTransaction.createComplete(
+        Deadline.create(),
+        [
+            mosaicDefinitionTransaction.toAggregate(account.publicAccount),
+            mosaicSupplyChangeTransaction.toAggregate(account.publicAccount)
+        ],
+        NetworkType.TEST_NET,
+        []);
+
+```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ## What’s next?
 
 [Transfer](../transaction/sending-a-transfer-transaction.md) one mosaic created to another account or modify its properties following the next guide.
-
-
 

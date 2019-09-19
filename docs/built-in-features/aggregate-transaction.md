@@ -99,10 +99,6 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
     Send a transaction involving a multisig and learn how an aggregate bonded transaction works.
 
-- [Signing announced aggregate bonded transactions automatically][Auto-sign-aggregate]
-
-    How to sign automatically transactions pending to be co-signed.
-
 ## Schemas
 
 <div class=info>
@@ -170,7 +166,7 @@ If the aggregate bonded transaction duration is reached without being signed by 
 
 **Property** |	**Type** |	**Description**
 -------------|-----------|--------------------
-mosaic |	[Mosaic][Mosaic#mosaic] |	Locked mosaic, must be at least `10 prx:xpx`.
+mosaic |	[Mosaic][Mosaic#mosaic] |	Locked mosaic, must be at least `10 xpx`.
 duration |	uint64 |	The lock duration.
 hash |	32 bytes (binary) |	The aggregate bonded transaction hash that has to be confirmed before unlocking the mosaics.
 
@@ -184,5 +180,4 @@ hash |	32 bytes (binary) |	The aggregate bonded transaction hash that has to be 
 [Aggregate-escrow]: ../guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction.md
 [Aggregate-ask-mosaic]: ../guides/aggregate-transaction/asking-for-mosaics-with-aggregate-bonded-transaction.md
 [Signing-aggregate]: ../guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions.md
-[Auto-sign-aggregate]: ../guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions-automatically.md
 [Send-multisig]: ../guides/multisig-account/sending-a-multisig-transaction.md

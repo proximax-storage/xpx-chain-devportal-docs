@@ -73,6 +73,100 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const transactionHttp = new TransactionHttp('http://localhost:3000');
+
+const privateKey = process.env.PRIVATE_KEY as string;
+const danAccount = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+const aliceAddress = 'VDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG';
+const aliceAccount = Address.createFromRawAddress(aliceAddress);
+
+const bobAddress = 'VCGPXB-2A7T4I-W5MQCX-FQY4UQ-W5JNU5-F55HGK-HBUN';
+const bobAccount = Address.createFromRawAddress(bobAddress);
+
+const amount = NetworkCurrencyMosaic.createRelative(10); // 10 xpx represent 10 000 000 micro xpx
+
+const aliceTransferTransaction = TransferTransaction.create(Deadline.create(), aliceAccount, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
+const bobTransferTransaction = TransferTransaction.create(Deadline.create(), bobAddress, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
+
+const aggregateTransaction = AggregateTransaction.createComplete(
+    Deadline.create(),
+    [
+        aliceTransferTransaction.toAggregate(danAccount.publicAccount),
+        bobTransferTransaction.toAggregate(danAccount.publicAccount)
+    ],
+    NetworkType.TEST_NET
+);
+```
+
+<!--JavaScript-->
+```js
+const transactionHttp = new TransactionHttp('http://localhost:3000');
+
+const privateKey = process.env.PRIVATE_KEY;
+const danAccount = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+const aliceAddress = 'VDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG';
+const aliceAccount = Address.createFromRawAddress(aliceAddress);
+
+const bobAddress = 'VCGPXB-2A7T4I-W5MQCX-FQY4UQ-W5JNU5-F55HGK-HBUN';
+const bobAccount = Address.createFromRawAddress(bobAddress);
+
+const amount = NetworkCurrencyMosaic.createRelative(10); // 10 xpx represent 10 000 000 micro xpx
+
+const aliceTransferTransaction = TransferTransaction.create(Deadline.create(), aliceAccount, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
+const bobTransferTransaction = TransferTransaction.create(Deadline.create(), bobAddress, [amount], PlainMessage.create('payout'), NetworkType.TEST_NET);
+
+const aggregateTransaction = AggregateTransaction.createComplete(
+    Deadline.create(),
+    [
+        aliceTransferTransaction.toAggregate(danAccount.publicAccount),
+        bobTransferTransaction.toAggregate(danAccount.publicAccount)
+    ],
+    NetworkType.TEST_NET
+);
+```
+
+<!--Java-->
+```java
+        // Replace with private key
+        final String privateKey = "<privateKey>";
+
+        final Address aliceAddress = Address.createFromRawAddress("VDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG");
+        final Address bobAddress = Address.createFromRawAddress("VCGPXB-2A7T4I-W5MQCX-FQY4UQ-W5JNU5-F55HGK-HBUN");
+
+        final Account danAccount = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+        final NetworkCurrencyMosaic xpx = NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)); // 10 xpx represent 10 000 000 micro xpx
+
+        final TransferTransaction aliceTransferTransaction = TransferTransaction.create(
+                Deadline.create(2, HOURS),
+                aliceAddress,
+                Collections.singletonList(xpx),
+                PlainMessage.create("payout"),
+                NetworkType.TEST_NET
+        );
+
+        final TransferTransaction bobTransferTransaction = TransferTransaction.create(
+                Deadline.create(2, HOURS),
+                bobAddress,
+                Collections.singletonList(xpx),
+                PlainMessage.create("payout"),
+                NetworkType.TEST_NET
+        );
+
+        final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateComplete()
+            .innerTransactions(Arrays.asList(
+                    aliceTransferTransaction.toAggregate(danAccount.getPublicAccount()),
+                    bobTransferTransaction.toAggregate(danAccount.getPublicAccount())
+            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
+
+
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Sign and announce the transaction.
@@ -89,6 +183,33 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const signedTransaction = danAccount.sign(aggregateTransaction, generationHash);
+
+transactionHttp
+    .announce(signedTransaction)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+<!--JavaScript-->
+```js
+const signedTransaction = danAccount.sign(aggregateTransaction, generationHash);
+
+transactionHttp
+    .announce(signedTransaction)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+
+<!--Java-->
+```java
+    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+
+    final SignedTransaction signedTransaction = danAccount.sign(aggregateTransaction, generationHash);
+
+    transactionHttp.announce(signedTransaction).toFuture().get();
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 

@@ -63,8 +63,8 @@ class Footer extends React.Component {
             <a href={this.docUrl('protocol/transaction')}>
               Transaction
             </a>
-            <a href={this.docUrl('protocol/harvesting')}>
-              Harvesting
+            <a href={this.docUrl('protocol/validating')}>
+              Validating
             </a>
             <a href={this.docUrl('protocol/receipt')}>
               Receipt
