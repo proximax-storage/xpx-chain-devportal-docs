@@ -15,12 +15,13 @@ Accounts have the following properties:
 
 ***Private key***
 
-A [private key](../protocol/cryptography.md#key-pair) is a key to an account. Anyone with access to the private key, ultimately has control over the account. **Private key** <br>
+A [private key](../protocol/cryptography.md#key-pair) is a key to an account. Anyone with access to the private key, ultimately has control over the account. 
 
->  <div class="info">
-> **Note** <br>
->    The private key must be kept secret at all costs. Make sure your private key is backed up safely somewhere offline.
-> </div><br>
+<div class="info">
+
+**Note** <br>
+    The private key must be kept secret at all costs. Make sure your private key is backed up safely somewhere offline.
+</div><br>
 
 ***Public key***
 

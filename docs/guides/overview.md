@@ -54,6 +54,17 @@ title: Guides
 - [Atomic cross-chain swap between Sirius Chain public and private chain](./cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain.md)
   Cross-chain swaps enable trading tokens between different blockchains, without using an intermediary party in the process.
 
+## Metadata
+
+- [Add and remove account metadata](./metadata/account-metadata.md)
+  Add and remove metadata to account 
+
+- [Add and remove mosaic metadata](./metadata/mosaic-metadata.md)
+  Add and remove metadata to mosaic 
+
+- [Add and remove metadata namespace metadata](./metadata/namespace-metadata.md)
+  Add and remove metadata to namespace
+
 ## Monitoring
 
 - [Monitoring a transaction status](./monitoring/monitoring-a-transaction-status.md)

@@ -36,4 +36,31 @@ if err != nil {
 }
 fmt.Printf("%s\n", namespace.String())
 ```
+<!--TypeScript-->
+```js
+const namespaceHttp = new NamespaceHttp('http://localhost:3000');
+const namespaceId = new NamespaceId('foo');
+
+namespaceHttp
+    .getNamespace(namespaceId)
+    .subscribe(namespaceInfo => console.log(namespaceInfo), err => console.error(err));
+```
+
+<!--JavaScript-->
+```js
+const namespaceHttp = new NamespaceHttp('http://localhost:3000');
+const namespaceId = new NamespaceId('foo');
+
+namespaceHttp
+    .getNamespace(namespaceId)
+    .subscribe(namespaceInfo => console.log(namespaceInfo), err => console.error(err));
+```
+
+<!--CLI-->
+```bash
+xpx2-cli namespace info --name foo
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+You can search subnamespace with the same way, by passing the subnamespace such as `foo.bar`.

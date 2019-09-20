@@ -141,7 +141,7 @@ Deadline     |1 Hour               |	The maximum amount of time to include the t
 Recipient    |SC7A4H…2VBU          |	The recipient account address.
 Mosaics      |[1 7cdf3b117a3c40cc] |	The array of mosaics to send.
 Message      |enjoy your ticket    |	The attached message.
-Network      |MIJIN_TEST           |	The local network identifier.
+Network      |TEST_NET             |	The local network identifier.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -302,6 +302,6 @@ Did you solve the proposed use case?
 
 - Identify each ticket buyer: Creating Sirius Chain accounts for each buyer.
 - Avoid ticket reselling: Creating a non-transferable mosaic.
-- Avoid non-authentic tickets and duplicate ones: Creating a unique mosaic named `company:ticket`.
+- Avoid non-authentic tickets and duplicate ones: Creating a unique mosaic named `company.ticket`.
 
 Continue learning about more [Sirius Chain built-in features](../built-in-features/account.md).

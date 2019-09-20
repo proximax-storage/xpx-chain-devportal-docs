@@ -31,6 +31,11 @@ if err != nil {
 // Use the default http client
 client := sdk.NewClient(nil, conf)
 
+account, err := client.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"))
+if err != nil {
+    panic(err)
+}
+
 mosaicId, err := sdk.NewMosaicIdFromNonceAndOwner(nonce, account.PublicAccount.PublicKey)
 if err != nil {
     panic(err)
@@ -52,6 +57,49 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const namespaceId = new NamespaceId('foo');
+const mosaicId = new MosaicId('7cdf3b117a3c40cc');
+
+const mosaicAliasTransaction = AliasTransaction.createForMosaic(
+    Deadline.create(),
+    AliasActionType.Link,
+    namespaceId,
+    mosaicId,
+    NetworkType.TEST_NET
+);
+
+const privateKey = process.env.PRIVATE_KEY as string;
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+const networkGenerationHash = process.env.NETWORK_GENERATION_HASH as string;
+
+const signedTransaction = account.sign(mosaicAliasTransaction, networkGenerationHash);
+
+```
+
+<!--JavaScript-->
+```js
+const namespaceId = new NamespaceId('foo');
+const mosaicId = new MosaicId('7cdf3b117a3c40cc');
+
+const mosaicAliasTransaction = AliasTransaction.createForMosaic(
+    Deadline.create(),
+    AliasActionType.Link,
+    namespaceId,
+    mosaicId,
+    NetworkType.TEST_NET
+);
+
+const privateKey = process.env.PRIVATE_KEY;
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+const networkGenerationHash = process.env.NETWORK_GENERATION_HASH;
+
+const signedTransaction = account.sign(mosaicAliasTransaction, networkGenerationHash);
+
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Announce the alias transaction.
@@ -59,17 +107,38 @@ if err != nil {
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-transaction, err := client.NewMosaicAliasTransaction(
-    sdk.NewDeadline(time.Hour),
-    mosaicId,
-    namespace,
-    sdk.AliasLink,
-  )
 
+signedTransaction, err := account.Sign(transaction)
+if err != nil {
+    panic(err)
+}
+
+_, err = client.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+
+const transactionHttp = new TransactionHttp('http://localhost:3000');
+
+transactionHttp
+    .announce(signedTransaction)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+
+<!--JavaScript-->
+```js
+
+const transactionHttp = new TransactionHttp('http://localhost:3000');
+
+transactionHttp
+    .announce(signedTransaction)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 If you want to unlink the alias, change alias action type to `AliasActionType.Unlink`.

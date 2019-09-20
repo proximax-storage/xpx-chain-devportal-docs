@@ -96,7 +96,7 @@ accountHttp
     .aggregateBondedTransactions(account.publicAccount)
     .pipe(
         mergeMap((_) => _),
-        filter((_)=> _.hash === signedAggregateBoundedTransaction.hash ),
+        filter((_)=> _.transactionInfo.hash === signedAggregateBoundedTransaction.hash ),
         filter((_) => !_.signedByAccount(account.publicAccount)),
         map(signedAggregateBoundedTransaction => cosignAggregateBondedTransaction(signedAggregateBoundedTransaction, account, generationHash)),
         mergeMap(cosignatureSignedTransaction => transactionHttp.announceAggregateBondedCosignature(cosignatureSignedTransaction))
@@ -127,7 +127,7 @@ accountHttp
     .aggregateBondedTransactions(account.publicAccount)
     .pipe(
         mergeMap((_) => _),
-        filter((_)=> _.hash === signedAggregateBoundedTransaction.hash ),
+        filter((_)=> _.transactionInfo.hash === signedAggregateBoundedTransaction.hash ),
         filter((_) => !_.signedByAccount(account.publicAccount)),
         map(signedAggregateBoundedTransaction => cosignAggregateBondedTransaction(signedAggregateBoundedTransaction, account, generationHash)),
         mergeMap(cosignatureSignedTransaction => transactionHttp.announceAggregateBondedCosignature(cosignatureSignedTransaction))

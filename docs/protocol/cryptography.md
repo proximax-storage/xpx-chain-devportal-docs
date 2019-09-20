@@ -7,7 +7,7 @@ title: Cryptography
 
 The key pair pair consists of a private key and a public key:
 
-- **Private key**: A random 256-bit integer used to sign [entities](./block.md#verifiable-entity).
+- **Private key**: A random 256-bit integer used to sign [entities](./block.md#verifiableentity).
 - **Public key**: The public identifier of the key pair. Proves that the entity was signed with the paired private key.
 
 The public key is cryptographically derived from the private key. Sirius Chain uses the [Twisted Edwards curve](https://en.wikipedia.org/wiki/Twisted_Edwards_curve/) with the digital signature algorithm called [Ed25519](https://ed25519.cr.yp.to/).

@@ -39,7 +39,7 @@ Before starting solving the use case, you will need to set up two accounts with 
 ```sh
 xpx2-cli account generate
 
-Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
+Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): TEST_NET
 Do you want to save it? [y/n]: y
 Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile): product
@@ -57,7 +57,7 @@ Private Key:    123..456
 ```sh
 xpx2-cli account generate
 
-Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
+Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): TEST_NET
 Do you want to save it? [y/n]: y
 Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile): company

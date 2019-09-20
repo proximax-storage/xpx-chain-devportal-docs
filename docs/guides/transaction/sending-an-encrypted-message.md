@@ -25,18 +25,18 @@ Thus, Alice sends an encrypted message that is only readable by herself and thos
 1. Create an account for Alice, and another for the certificate using `xpx2-cli`.
 
 ```sh
-nem2-cli account generate --save
+xpx2-cli account generate --save
 
-Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
+Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): TEST_NET
 Do you want to save it? [y/n]: y
 Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile): alice
 ```
 
 ```sh
-nem2-cli account generate --save
+xpx2-cli account generate --save
 
-Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): MIJIN_TEST
+Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): TEST_NET
 Do you want to save it? [y/n]: y
 Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
 Insert profile name (blank means default and it could overwrite the previous profile): certificate
@@ -60,7 +60,7 @@ if err != nil {
     panic(err)
 }
 
-certificateAccount, err := client.NewAccountFromPublicKey(os.Getenv("CERTIFICATE_PRIVATE_KEY"))
+certificateAccount, err := client.NewAccountFromPublicKey(os.Getenv("CERTIFICATE_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
@@ -70,6 +70,20 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+
+const privateKey = '<privateKey>';
+const aliceAccount = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+const certificateAccountPublicKey = '<publicKey>';
+const certificatePublicAccount = PublicAccount.createFromPublicKey(certificateAccountPublicKey, NetworkType.TEST_NET);
+
+const networkGenerationHash = process.env.NETWORK_GENERATION_HASH as string;
+
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 3. Attach the encrypted message to a transfer transaction, setting the certificate address as the recipient.
@@ -87,6 +101,19 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+
+const transferTransaction = TransferTransaction.create(
+    Deadline.create(),
+    certificatePublicAccount.address,
+    [],
+    aliceAccount.encryptMessage('This message is secret', certificatePublicAccount),
+    NetworkType.TEST_NET);
+
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 4. Sign the transaction with Alice’s account.
@@ -99,6 +126,12 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const signedTransaction = aliceAccount.sign(transferTransaction, networkGenerationHash);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 5. Once signed, announce the transaction to the network.
@@ -111,6 +144,18 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const transactionHttp = new TransactionHttp('http://localhost:3000');
+
+var transactionHash = signedTransaction.hash;
+
+transactionHttp
+    .announce(signedTransaction)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 6. After the transaction gets confirmed, fetch it using the transaction hash output from (5). You can now decrypt the message using either the certificate account or address account.
@@ -123,6 +168,22 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+
+const certificatePrivateKey = '<privateKey>';
+const certificateAccount = Account.createFromPrivateKey(certificatePrivateKey, NetworkType.TEST_NET);
+
+const alicePublicKey = '<publicKey>';
+const alicePublicAccount = PublicAccount.createFromPublicKey(alicePublicKey, NetworkType.TEST_NET);
+
+transactionHttp.getTransaction(transactionHash)
+    .subscribe((transaction) => {
+        var plainMessage = certificateAccount.decryptMessage(new EncryptedMessage(transaction.message), alicePublicAccount);
+    });
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 If you managed to read the message, try to decrypt it using another unrelated account to ensure that only the defined participants can read the encrypted content.

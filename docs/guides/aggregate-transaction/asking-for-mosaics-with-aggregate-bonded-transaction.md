@@ -340,14 +340,12 @@ listener.open().then(() => {
 
 <!--Java-->
 ```java
-    final SignedTransaction pullTransactionSigned = aliceAccount.sign(pullTransaction, generationHash);
-
     // Creating the lock funds transaction and announce it
     final LockFundsTransaction lockFundsTransaction = LockFundsTransaction.create(
         Deadline.create(2, HOURS),
         NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
-        BigInteger.valueOf(480),
-        pullTransactionSigned,
+        BigInteger.valueOf(1000),
+        aggregateSignedTransaction,
         NetworkType.TEST_NET
     );
 
@@ -365,7 +363,7 @@ listener.open().then(() => {
 
     final Transaction transaction = listener.confirmed(aliceAccount.getAddress()).take(1).toFuture().get();
 
-    transactionHttp.announceAggregateBonded(pullTransactionSigned).toFuture().get();
+    transactionHttp.announceAggregateBonded(aggregateSignedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
