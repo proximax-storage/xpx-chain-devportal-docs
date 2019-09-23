@@ -138,7 +138,7 @@ Send one `company:ticket` to the ticket vendor account announcing a [transfer tr
 **Property** |**Type**             |	**Description**
 -------------|---------------------|--------------------
 Deadline     |1 Hour               |	The maximum amount of time to include the transaction in the blockchain.
-Recipient    |SC7A4H…2VBU          |	The recipient account address.
+Recipient    |VC7A4H…2VBU          |	The recipient account address.
 Mosaics      |[1 7cdf3b117a3c40cc] |	The array of mosaics to send.
 Message      |enjoy your ticket    |	The attached message.
 Network      |TEST_NET             |	The local network identifier.

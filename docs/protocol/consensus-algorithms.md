@@ -1,5 +1,5 @@
 ---
-id: Consensus-Algorithms
+id: consensus-algorithms
 title: Consensus Algorithms
 ---
 

@@ -57,7 +57,7 @@ namespaceHttp
 ```
 
 <!--CLI-->
-```bash
+```sh
 xpx2-cli namespace info --name foo
 ```
 

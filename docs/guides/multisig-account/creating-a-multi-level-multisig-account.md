@@ -581,7 +581,7 @@ listener.open().then(() => {
 5. The cosignatories must opt-in to become cosignatories. [Cosign the announced aggregate transaction](../aggregate-transaction/signing-announced-aggregate-bonded-transactions.md) with the accounts #5, #6, #7, #8, and #4.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--Bash-->
+<!--CLI-->
 ```sh
 xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7CCBE29C47D07086E068C --profile <account>
 ```

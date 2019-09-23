@@ -28,7 +28,7 @@ An aggregate transaction is **bonded** when it requires signatures from other pa
 
 **Note**
 
-Before announcing an **aggregate bonded transaction**, an account must announce and get confirmed a [hash lock transaction](#hashlocktrahsaction) locking `10 xpx`.
+Before announcing an **aggregate bonded transaction**, an account must announce and get confirmed a [hash lock transaction](#hashlocktransaction) locking `10 xpx`.
 
 </div>
 

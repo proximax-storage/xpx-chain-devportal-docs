@@ -59,10 +59,10 @@ feeInterestDenominator | uint32 | Denominator of the transaction fee.
 
 **Id** | **Description**
 -------|----------------
-0x68 (MAIN_NET) | Public main network
-0x98 (TEST_NET) | Public test network
-0x60 (PRIVATE) | Private network
-0x90 (PRIVATE_TEST) | Private test network
+0xB8 (MAIN_NET) | Public main network
+0xA8 (TEST_NET) | Public test network
+0xC8 (PRIVATE) | Private network
+0xB0 (PRIVATE_TEST) | Private test network
 
 **Type**: The type of the block.
 

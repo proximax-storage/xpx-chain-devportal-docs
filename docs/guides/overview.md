@@ -62,7 +62,7 @@ title: Guides
 - [Add and remove mosaic metadata](./metadata/mosaic-metadata.md)
   Add and remove metadata to mosaic 
 
-- [Add and remove metadata namespace metadata](./metadata/namespace-metadata.md)
+- [Add and remove namespace metadata](./metadata/namespace-metadata.md)
   Add and remove metadata to namespace
 
 ## Monitoring

@@ -530,7 +530,7 @@ listener.open().then(() => {
 5. [Cosign the aggregate transaction](../aggregate-transaction/signing-announced-aggregate-bonded-transactions.md) hash with Carols’s account. She has to opt-in to become a multisig cosignatory.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--Bash-->
+<!--CLI-->
 ```sh
 xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7CCBE29C47D07086E068C --profile carol
 ```
@@ -539,7 +539,7 @@ xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7C
 6. [Cosign the aggregate transaction](../aggregate-transaction/signing-announced-aggregate-bonded-transactions.md) with Bob’s account. The amount of cat.currency locked becomes available again on Alice’s account and Carol is added to the multisig.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--Bash-->
+<!--CLI-->
 ```sh
 xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7CCBE29C47D07086E068C --profile bob
 ```

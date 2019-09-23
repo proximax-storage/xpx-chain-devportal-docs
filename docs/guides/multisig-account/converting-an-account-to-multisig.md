@@ -274,7 +274,7 @@ transactionHttp
 6. [Cosign the aggregate transaction](../aggregate-transaction/signing-announced-aggregate-bonded-transactions.md) with Alice’s account.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--Bash-->
+<!--CLI-->
 ```sh
 xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7CCBE29C47D07086E068C --profile alice
 ```
@@ -283,7 +283,7 @@ xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7C
 7. [Cosign the aggregate transaction](../aggregate-transaction/signing-announced-aggregate-bonded-transactions.md) with Bob’s account.
 
 <!--DOCUSAURUS_CODE_TABS-->
-<!--Bash-->
+<!--CLI-->
 ```sh
 xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7CCBE29C47D07086E068C --profile bob
 ```

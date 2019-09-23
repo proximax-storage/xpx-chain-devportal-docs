@@ -80,7 +80,7 @@ The company links one registered mosaic with `ticketsales.event1.ticket` namespa
 
 Alice, who wants to buy the ticket, has registered the namespace `alice` and assigned it to her account as an alias.
 
-The ticket vendor can send 1 `ticketsales.event1.ticket` to `alice` instead of 1 `0dc67fbe1cad29e3` to `SCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6`.
+The ticket vendor can send 1 `ticketsales.event1.ticket` to `alice` instead of 1 `0dc67fbe1cad29e3` to `VCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6`.
 
 ## Guides
 

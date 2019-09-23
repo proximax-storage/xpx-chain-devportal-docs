@@ -28,7 +28,7 @@ To ensure the transaction is added in a block, you must track the [transaction s
 
 [Listeners](../../rest-api/websockets.md) enable receiving notifications possible when a change in the blockchain occurs. The notification is received in real time without having to poll the API waiting for a reply.
 
-1. Define the transaction you want to announce. In this case, we are going to send the message `Test` to `SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54`.
+1. Define the transaction you want to announce. In this case, we are going to send the message `Test` to `VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54`.
 
 
 <!--DOCUSAURUS_CODE_TABS-->
@@ -291,5 +291,5 @@ If you missed the WebSocket response, check the transaction status after by call
 
 ## What’s next?
 
-Run your application and try to [send a transfer transaction](../transaction/sending-a-transfer-transaction.html) to the selected account. If all goes well, you will see the transaction information in your terminal.
+Run your application and try to [send a transfer transaction](../transaction/sending-a-transfer-transaction) to the selected account. If all goes well, you will see the transaction information in your terminal.
 

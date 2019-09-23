@@ -156,8 +156,8 @@ transactionHttp
     transactionHttp.announce(signedTransaction).toFuture().get();
 ```
 
-<!--Bash-->
-```bash
+<!--CLI-->
+```sh
 xpx2-cli transaction namespace --subnamespace --parentname foo --name bar
 ```
 

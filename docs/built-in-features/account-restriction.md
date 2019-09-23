@@ -4,7 +4,7 @@ title: Account Restriction
 ---
 [Accounts][Account] may configure a set of smart rules to block announcing or receiving transactions given a series of restrictions.
 
-The account owners - plural in case of multisig accounts - can edit the account restrictions at a later time announcing the specific [account restriction transaction](#accountaddressrestrictiontransaction).
+The account owners - plural in case of multisig accounts - can edit the account restrictions at a later time announcing the specific [account restriction transaction](#accountaddressrestrictionmodificationtransaction).
 
 `Restriction types`
 

@@ -75,74 +75,55 @@ If users own a namespace, they can attach extra details with metadata for their 
 
 ## Schemas
 
-<div class="info">
+### ModifyMetadataTransaction
 
-**Note**
-
-Configuration parameters are [editable](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties). Public network configuration may differ.
-
-</div>
-
-
-## AccountMetadataTransaction
-
-Announce an AccountMetadataTransaction to associate a key-value state to an account.
+Announce an modify metadata transaction to associate a key-value state to an account, mosaic or namespace.
 
 **Version**: 0x01
 
-**Entity type**: 0x4144
+**Entity type**| **Description**
+---------------|-----------------
+0x413D         | Modify account metadata
+0x423D         | Modify mosaic metadata
+0x433D         | Modify namespace metadata
 
-**Inlines**:
+Inlines:
 
-- [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
-
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-targetPublicKey | Key |	Metadata target public key.
-scopedMetadataKey	| uint64	| Metadata key scoped to source, target and type.
-valueSizeDelta	| int16 |	Change in value size in bytes.
-valueSize	| uint16 |	Value size in bytes. The maximum size is `1024`.
-value	| array(byte, valueSize) |	Difference between the previous value and new value. You can calculate value as `xor(previous-value, new-value)`. If there is no previous value, use directly the new value.
-
-## MosaicMetadataTransaction
-
-Announce a MosaicMetadataTransaction to associate a key-value state to a mosaic.
-
-**Version**: 0x01
-
-**Entity type**: 0x4244
-
-**Inlines**:
-
-- [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
+- [Transaction][TransactionSchema] or [EmbeddedTransaction][Embedded-transactionSchema]
 
 **Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-targetPublicKey | Key |	Metadata target public key.
-scopedMetadataKey	| uint64	| Metadata key scoped to source, target and type.
-targetId	| UnresolvedMosaicId	| Target mosaic identifier.
-valueSizeDelta	| int16 |	Change in value size in bytes.
-valueSize	| uint16 |	Value size in bytes. The maximum size is `1024`.
-value	| array(byte, valueSize) |	Difference between the previous value and new value. You can calculate value as `xor(previous-value, new-value)`. If there is no previous value, use directly the new value.
+-------------|-----------|---------------------
+metadataType | uint8 [MetadataType](#metadatatype)  |	Type of the metadata to be associated.
+metadataId |	array(bytes) |	It can be plain address, mosaicId in hex and namespaceId in hex. Depend on the metadataType.
+modifications |	array([MetadataModification](#metadatamodification)) |	Array of metadata modifications.
 
-## NamespaceMetadataTransaction
+### MetadataType
 
-Announce a NamespaceMetadataTransaction to associate a key-value state to a namespace.
+**Id** |	**Type**
+-------|---------------------
+0x00 | None
+0x01 | Address
+0x02 | Mosaic
+0x03 | Namespace
 
-**Version**: 0x01
-
-**Entity type**: 0x4344
-
-**Inlines**:
-
-- [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
+### MetadataModification
 
 **Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-targetPublicKey | Key |	Metadata target public key.
-scopedMetadataKey	| uint64	| Metadata key scoped to source, target and type.
-targetId	| NamespaceId	| Target namespace identifier.
-valueSizeDelta	| int16 |	Change in value size in bytes.
-valueSize	| uint16 |	Value size in bytes. The maximum size is `1024`.
-value	| array(byte, valueSize) |	Difference between the previous value and new value. You can calculate value as `xor(previous-value, new-value)`. If there is no previous value, use directly the new value.
+-------------|-----------|---------------------
+modificationSize | uint32 (4 bytes)  | The total size of the modification.
+type |	[MetadataModificationType](#metadatamodificationtype) |	Type of the metadata modification.
+keySize | uint8 | The size of the key 
+valueSize | uint16 | The size of the value
+key |	array(bytes) |	Key of the metadata.
+value |	array(bytes) | Value to be associate to the key.
+
+### MetadataModificationType
+
+**Id** |	**Type** | **Description**
+-------|-------------|--------
+0x00 | uint8  | Add
+0x01 | uint8 | Remove
+
+[Embedded-transactionSchema]: ../protocol/transaction#embeddedtransaction
+[TransactionSchema]: ../protocol/transaction#transaction
 
