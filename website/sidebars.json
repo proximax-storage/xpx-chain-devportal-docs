@@ -9,23 +9,23 @@
       "built-in-features/account",
       "built-in-features/mosaic",
       "built-in-features/namespace",
-      "built-in-features/metadata",
       "built-in-features/transfer-transaction",
       "built-in-features/aggregate-transaction",
-      "built-in-features/account-restriction",
       "built-in-features/multisig-account",
+      "built-in-features/metadata",
+      "built-in-features/account-restriction",
       "built-in-features/cross-chain-swaps",
       "built-in-features/super-contracts"
     ],
     "Protocol": [
-      "protocol/cryptography",
+      "protocol/node",
       "protocol/block",
+      "protocol/cryptography",
       "protocol/transaction",
       "protocol/validating",
-      "protocol/inflation",
+      "protocol/consensus-algorithms",
       "protocol/receipt",
-      "protocol/node",
-      "protocol/consensus-algorithms"
+      "protocol/inflation"
     ],
     "REST API": [
       "rest-api/rest-api-overview",
@@ -45,11 +45,6 @@
     "Client": [
       "client/client-overview",
       "client/commands"
-    ],
-    "Support": [
-      "support/community",
-      "support/guidelines",
-      "support/suggesting-changes"
     ],
     "Wallets & Explorers": [
       "wallets-explorers"
