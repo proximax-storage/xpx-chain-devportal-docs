@@ -19,7 +19,7 @@ Transfer [mosaics](../../built-in-features/mosaic.md) and messages between two a
 
 <p class=caption>Sending a transfer Transaction</p>
 
-Alice wants to send 10 `xpx` to Bob, whose address is `SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54`.
+Alice wants to send 10 `xpx` to Bob, whose address is `VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54`.
 
 ### Monitoring the transaction
 
@@ -62,7 +62,7 @@ account, err := client.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
-address, err := sdk.NewAddressFromRaw("SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54")
+address, err := sdk.NewAddressFromRaw("VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54")
 if err != nil {
     panic(err)
 }
@@ -71,12 +71,50 @@ transferTransaction, err := client.NewTransferTransaction(
     sdk.NewDeadline(time.Hour),
     address,
     []*sdk.Mosaic{sdk.XpxRelative(10)},
-    sdk.NewPlainMessage("Welcome to Sirius-Chain"),
+    sdk.NewPlainMessage("Welcome to Sirius Chain"),
 )
 if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const recipientAddress = Address.createFromRawAddress('VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
+
+const transferTransaction = TransferTransaction.create(
+    Deadline.create(),
+    recipientAddress,
+    [NetworkCurrencyMosaic.createRelative(10)],
+    PlainMessage.create('Welcome To Sirius Chain'),
+    NetworkType.TEST_NET);
+```
+
+<!--JavaScript-->
+```js
+const recipientAddress = Address.createFromRawAddress('VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
+
+const transferTransaction = TransferTransaction.create(
+    Deadline.create(),
+    recipientAddress,
+    [NetworkCurrencyMosaic.createRelative(10)],
+    PlainMessage.create('Welcome To Sirius Chain'),
+    NetworkType.TEST_NET);
+```
+
+<!--Java-->
+```java
+    final String recipientAddress = "VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54";
+
+    final TransferTransaction transferTransaction = TransferTransaction.create(
+        Deadline.create(2, HOURS),
+        Address.createFromRawAddress(recipientAddress),
+        Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10))),
+        PlainMessage.create("Welcome To Sirius Chain"),
+        NetworkType.TEST_NET
+    );
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 As you may have noticed, transfer transactions require an array of mosaics as a parameter, allowing to send transfer transactions with multiple mosaics at the same time.
@@ -98,13 +136,51 @@ if err != nil {
 
 mosaics := []*sdk.Mosaic{sdk.XpxRelative(10), myMosaic}
 ```
+
+<!--TypeScript-->
+```js
+var myMosaicId = new MosaicId("<MosaicHexString>");
+
+var myMosaic = new Mosaic(myMosaicId, UInt64.fromUint(10));
+
+var mosaics = [ 
+        myMosaic,
+        NetworkCurrencyMosaic.createRelative(10)
+    ];
+```
+
+<!--JavaScript-->
+```js
+var myMosaicId = new MosaicId("<MosaicHexString>");
+
+var myMosaic = new Mosaic(myMosaicId, UInt64.fromUint(10));
+
+var mosaics = [ 
+        myMosaic,
+        NetworkCurrencyMosaic.createRelative(10)
+    ];
+```
+
+<!--Java-->
+```java
+
+    MosaicId myMosaicId = new MosaicId("<MosaicHexString>");
+
+    Mosaic myMosaic = new Mosaic(myMosaicId, BigInteger.valueOf(10));
+
+    List<Mosaic> mosaics = Arrays.asList(
+        myMosaic,
+        NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10))
+    );
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 <div class=info>
 
 **Note**
 
-Sirius-Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to send by 10divisibility. For example, if the mosaic has divisibility 2, to send 10 units (relative) you should define 1000 (absolute) instead.
+Sirius Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to send by 10divisibility. For example, if the mosaic has divisibility 2, to send 10 units (relative) you should define 1000 (absolute) instead.
 
 </div>
 
@@ -118,6 +194,35 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const privateKey = process.env.PRIVATE_KEY as string;
+
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+const signedTransaction = account.sign(transferTransaction, generationHash);
+```
+
+<!--JavaScript-->
+```js
+const privateKey = process.env.PRIVATE_KEY;
+
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+const signedTransaction = account.sign(transferTransaction, generationHash);
+```
+
+<!--Java-->
+```java
+    // Replace with private key
+    final String privateKey = "<privateKey>";
+
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+    final SignedTransaction signedTransaction = account.sign(transferTransaction, generationHash);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
@@ -131,6 +236,32 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const transactionHttp = new TransactionHttp('http://localhost:3000');
+
+transactionHttp
+    .announce(signedTransaction)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+
+<!--JavaScript-->
+```js
+const transactionHttp = new TransactionHttp('http://localhost:3000');
+
+transactionHttp
+    .announce(signedTransaction)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+
+<!--Java-->
+```java
+    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+
+    transactionHttp.announce(signedTransaction).toFuture().get();
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 

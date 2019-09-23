@@ -39,7 +39,7 @@ The messages attached are visible by default to all network participants.
 
 Encrypted messages are only accessible by the sender and the recipient.
 
-Sirius-Chain uses Bouncy Castle’s AES block cipher implementation in [CBC](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CBC) mode to encrypt and decrypt messages.
+Sirius Chain uses Bouncy Castle’s AES block cipher implementation in [CBC](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CBC) mode to encrypt and decrypt messages.
 
 The client-side handles the encryption and decryption of the message. You can find under the `crypto` module how to encode and decode encrypted messages, but we recommend you to use the available SDK public methods instead.
 

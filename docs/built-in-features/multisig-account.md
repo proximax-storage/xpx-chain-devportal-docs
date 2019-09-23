@@ -7,7 +7,7 @@ Editable on-chain contracts, the most powerful way to secure funds and enable jo
 
 ## Cosignatories
 
-A Sirius-Chain [account](./account.md) can be [converted to multisig](../guides/multisig-account/converting-an-account-to-multisig.md). The cosignatories - other accounts - of the multisig will become the account managers.
+A Sirius Chain [account](./account.md) can be [converted to multisig](../guides/multisig-account/converting-an-account-to-multisig.md). The cosignatories - other accounts - of the multisig will become the account managers.
 
 From that moment on, the multisig account cannot announce transactions by itself. A multisig cosignatory has to propose a transaction involving the multisig, wrapping it in an [aggregate transaction](./aggregate-transaction.md).
 
@@ -15,9 +15,9 @@ To record the transaction in the block, the other cosignatories will have to agr
 
 ## Minimum approval and removal
 
-It is not always necessary to force all cosignatories to cosign transactions associated with the multisig account. Sirius-Chain allows to set up the minimum number of cosignatory agreements. These properties can be [edited](../guides/multisig-account/modifying-a-multisig-account.md#editing-minapproval) afterward to suit almost all needs.
+It is not always necessary to force all cosignatories to cosign transactions associated with the multisig account. Sirius Chain allows to set up the minimum number of cosignatory agreements. These properties can be [edited](../guides/multisig-account/modifying-a-multisig-account.md#editing-minapproval) afterward to suit almost all needs.
 
-Sirius-Chain’s current implementation of multisig is “M-of-N”. This means that M can be any number equal to or less than N, i.e., 1-of-4, 2-of-2, 4-of-9, 9-of-10 and so on.
+Sirius Chain’s current implementation of multisig is “M-of-N”. This means that M can be any number equal to or less than N, i.e., 1-of-4, 2-of-2, 4-of-9, 9-of-10 and so on.
 
 Similarly, cosignatories can [invite other accounts to take part in the multisig](../guides/multisig-account/modifying-a-multisig-account.md#adding-a-new-cosignatory), or [propose to remove others](../guides/multisig-account/modifying-a-multisig-account.md#removing-a-cosignatory) when the defined conditions are fulfilled.
 

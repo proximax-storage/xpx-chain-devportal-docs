@@ -1,0 +1,1726 @@
+openapi: 3.0.1
+info:
+  title: Sirius-Chain REST API Reference
+  description: ""
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.1.0
+externalDocs:
+  description: ProximaX Sirius-Chain Developer Center
+  url: https://bcdocs.xpxsirius.io/
+servers:
+- url: http://localhost:3000/
+tags:
+- name: Account routes
+  description: |
+    [Account](https://bcdocs.xpxsirius.io/docs/built-in-features/account) related endpoints.
+- name: Blockchain routes
+  description: |
+    [Block](https://bcdocs.xpxsirius.io/docs/protocol/block) related endpoints.
+- name: Mosaic routes
+  description: |
+    [Mosaic](https://bcdocs.xpxsirius.io/docs/built-in-features/mosaic) related endpoints.
+- name: Namespace routes
+  description: |
+    [Namespace](https://bcdocs.xpxsirius.io/docs/built-in-features/namespace) related endpoints.
+- name: Transaction routes
+  description: |
+    [Transaction](https://bcdocs.xpxsirius.io/docs/protocol/transaction/) related endpoints.
+- name: Network routes
+  description: |
+    Network related endpoints.
+- name: Node routes
+  description: |
+    [Node](https://bcdocs.xpxsirius.io/docs/protocol/node) related endpoints.
+paths:
+  /account/{accountId}:
+    get:
+      tags:
+      - Account routes
+      summary: Get account information
+      description: Returns the account information.
+      operationId: getAccountInfo
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInfoDTO'
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /account:
+    post:
+      tags:
+      - Account routes
+      summary: Get accounts information
+      description: Returns the account information for an array of accounts.
+      operationId: getAccountsInfo
+      requestBody:
+        description: An array of addresses.
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/addresses'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountInfoDTO'
+        400:
+          description: invalid content
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /account/{publicKey}/transactions:
+    get:
+      tags:
+      - Account routes
+      summary: Get confirmed transactions
+      description: Gets an array of transactions for which an account is the sender
+        or receiver.
+      operationId: transactions
+      parameters:
+      - name: publicKey
+        in: path
+        description: The public key of the account.
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        description: The number of transactions to return for each request.
+        schema:
+          maximum: 100
+          minimum: 10
+          type: integer
+          default: 10
+      - name: id
+        in: query
+        description: |
+          The transaction id up to which transactions are returned.
+        schema:
+          type: string
+      - name: ordering
+        in: query
+        description: |
+          The ordering criteria.
+          * -id: Descending order by id.
+          * id: Ascending order by id.
+        schema:
+          type: string
+          default: -id
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+        409:
+          description: invalid argument
+          content: {}
+  /account/{publicKey}/transactions/incoming:
+    get:
+      tags:
+      - Account routes
+      summary: Get incoming transactions
+      description: |
+        Gets an array of incoming transactions. A transaction is said to be incoming with respect to an account if the account is the recipient of the transaction.
+      operationId: incomingTransactions
+      parameters:
+      - name: publicKey
+        in: path
+        description: The public key of the account.
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        description: The number of transactions to return for each request.
+        schema:
+          maximum: 100
+          minimum: 10
+          type: integer
+          default: 10
+      - name: id
+        in: query
+        description: |
+          The transaction id up to which transactions are returned.
+        schema:
+          type: string
+      - name: ordering
+        in: query
+        description: |
+          The ordering criteria.
+          * -id: Descending order by id.
+          * id: Ascending order by id.
+        schema:
+          type: string
+          default: -id
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+        409:
+          description: invalid argument
+          content: {}
+  /account/{publicKey}/transactions/outgoing:
+    get:
+      tags:
+      - Account routes
+      summary: Get outgoing transactions
+      description: Gets an array of outgoing transactions. A transaction is said to
+        be outgoing with respect to an account if the account is the sender of the
+        transaction.
+      operationId: outgoingTransactions
+      parameters:
+      - name: publicKey
+        in: path
+        description: The public key of the account.
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        description: The number of transactions to return for each request.
+        schema:
+          maximum: 100
+          minimum: 10
+          type: integer
+          default: 10
+      - name: id
+        in: query
+        description: |
+          The transaction id up to which transactions are returned.
+        schema:
+          type: string
+      - name: ordering
+        in: query
+        description: |
+          The ordering criteria.
+          * -id: Descending order by id.
+          * id: Ascending order by id.
+        schema:
+          type: string
+          default: -id
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+        409:
+          description: invalid argument
+          content: {}
+  /account/{publicKey}/transactions/unconfirmed:
+    get:
+      tags:
+      - Account routes
+      summary: Get unconfirmed transactions
+      description: |
+        Gets the array of transactions not included in a block where an account is the sender or receiver.
+      operationId: unconfirmedTransactions
+      parameters:
+      - name: publicKey
+        in: path
+        description: The public key of the account.
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        description: The number of transactions to return for each request.
+        schema:
+          maximum: 100
+          minimum: 10
+          type: integer
+          default: 10
+      - name: id
+        in: query
+        description: |
+          The transaction id up to which transactions are returned.
+        schema:
+          type: string
+      - name: ordering
+        in: query
+        description: |
+          The ordering criteria.
+          * -id: Descending order by id.
+          * id: Ascending order by id.
+        schema:
+          type: string
+          default: -id
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+        409:
+          description: invalid argument
+          content: {}
+  /account/{publicKey}/transactions/partial:
+    get:
+      tags:
+      - Account routes
+      summary: Get aggregate bonded transactions information
+      description: |
+        Gets an array of [aggregate bonded transactions](https://bcdocs.xpxsirius.io/docs/built-in-features/aggregate-transaction) where the account is the sender or requires to cosign the transaction.
+      operationId: partialTransactions
+      parameters:
+      - name: publicKey
+        in: path
+        description: The public key of the account.
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        description: The number of transactions to return for each request.
+        schema:
+          maximum: 100
+          minimum: 10
+          type: integer
+          default: 10
+      - name: id
+        in: query
+        description: |
+          The transaction id up to which transactions are returned.
+        schema:
+          type: string
+      - name: ordering
+        in: query
+        description: |
+          The ordering criteria.
+          * -id: Descending order by id.
+          * id: Ascending order by id.
+        schema:
+          type: string
+          default: -id
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+        409:
+          description: invalid argument
+          content: {}
+  /account/properties/{accountId}:
+    get:
+      tags:
+      - Account routes
+      summary: Get account configurable properties information
+      description: |
+        Returns the [configurable properties](https://bcdocs.xpxsirius.io/docs/built-in-features/account-filter) for a given account.
+      operationId: getAccountProperties
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPropertiesInfoDTO'
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /account/properties:
+    post:
+      tags:
+      - Account routes
+      summary: Get account properties for given array of addresses
+      description: |
+        Returns the [configurable properties](https://bcdocs.xpxsirius.io/docs/built-in-features/account-filter) for a given array of addresses.
+      operationId: getAccountPropertiesFromAccounts
+      requestBody:
+        description: An array of addresses.
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/addresses'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountPropertiesInfoDTO'
+        400:
+          description: invalid content
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /account/{accountId}/multisig:
+    get:
+      tags:
+      - Account routes
+      summary: Get multisig account information
+      description: Returns the [multisig account](https://bcdocs.xpxsirius.io/docs/built-in-features/multisig-account)
+        information.
+      operationId: getAccountMultisig
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultisigAccountInfoDTO'
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /account/{accountId}/multisig/graph:
+    get:
+      tags:
+      - Account routes
+      summary: Get multisig account graph information
+      description: Returns the [multisig account](https://bcdocs.xpxsirius.io/docs/built-in-features/multisig-account)
+        graph.
+      operationId: getAccountMultisigGraph
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MultisigAccountGraphInfoDTO'
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /blocks/{height}/limit/{limit}:
+    get:
+      tags:
+      - Blockchain routes
+      summary: Get blocks information
+      description: Gets up to limit number of blocks after given block height.
+      operationId: getBlocksByHeightWithLimit
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block. If height -1 is not a multiple of the
+          limit provided, the inferior closest multiple + 1 is used instead.
+        required: true
+        schema:
+          type: integer
+      - name: limit
+        in: path
+        description: The number of blocks to be returned.
+        required: true
+        schema:
+          type: integer
+          enum:
+          - 25
+          - 50
+          - 75
+          - 100
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BlockInfoDTO'
+        409:
+          description: invalid argument
+          content: {}
+  /block/{height}:
+    get:
+      tags:
+      - Blockchain routes
+      summary: Get block information
+      description: Gets a block from the chain that has the given height.
+      operationId: getBlockByHeight
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockInfoDTO'
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /block/{height}/transactions:
+    get:
+      tags:
+      - Blockchain routes
+      summary: Get transactions from a block
+      description: Returns an array of [transactions](https://bcdocs.xpxsirius.io/docs/protocol/transaction)
+        included in a block for a given block height.
+      operationId: getBlockTransactions
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+      - name: pageSize
+        in: query
+        description: The number of transactions to return for each request.
+        schema:
+          maximum: 100
+          minimum: 10
+          type: integer
+          default: 10
+      - name: id
+        in: query
+        description: The transaction id up to which transactions are returned.
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /block/{height}/transaction/{hash}/merkle:
+    get:
+      tags:
+      - Blockchain routes
+      summary: Get the merkle path for a given a transaction and block
+      description: Returns the merkle path for a [transaction](https://bcdocs.xpxsirius.io/docs/protocol/transaction)
+        included in a block. The path is the complementary data needed to calculate
+        the merkle root. A client can compare if the calculated root equals the one
+        recorded in the block header, verifying that the transaction was included
+        in the block.
+      operationId: getMerkleTransaction
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          type: integer
+      - name: hash
+        in: path
+        description: The hash of the transaction.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerkleProofInfoDTO'
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /block/{height}/receipts:
+    get:
+      tags:
+      - Blockchain routes
+      summary: Get receipts from a block
+      description: Returns the [receipts](https://bcdocs.xpxsirius.io/docs/protocol/receipt)
+        linked to a block.
+      operationId: getBlockReceipts
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /block/{height}/receipt/{hash}/merkle:
+    get:
+      tags:
+      - Blockchain routes
+      summary: Get the merkle path for a given a receipt statement hash and block
+      description: Returns the merkle path for a [receipt statement or resolution](https://bcdocs.xpxsirius.io/docs/protocol/receipt)
+        linked to a block. The path is the complementary data needed to calculate
+        the merkle root. A client can compare if the calculated root equals the one
+        recorded in the block header, verifying that the receipt was linked with the
+        block.
+      operationId: getMerkleReceipts
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          type: integer
+      - name: hash
+        in: path
+        description: The hash of the receipt statement or resolution.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerkleProofInfoDTO'
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /chain/height:
+    get:
+      tags:
+      - Blockchain routes
+      summary: Get the current height of the chain
+      description: Returns the current height of the block chain.
+      operationId: getBlockchainHeight
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeightDTO'
+  /chain/score:
+    get:
+      tags:
+      - Blockchain routes
+      summary: Get the current score of the chain
+      description: |
+        Gets the current score of the block chain. The higher the score, the better the chain. During synchronisation, nodes try to get the best block chain in the network.
+      operationId: getBlockchainScore
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockchainScoreDTO'
+  /diagnostic/storage:
+    get:
+      tags:
+      - Blockchain routes
+      summary: Get the storage information
+      description: Returns statistical information about the blockchain.
+      operationId: getDiagnosticStorage
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockchainStorageInfoDTO'
+  /mosaic/{mosaicId}:
+    get:
+      tags:
+      - Mosaic routes
+      summary: Get mosaic information
+      description: Gets the mosaic definition for a given mosaicId.
+      operationId: getMosaic
+      parameters:
+      - name: mosaicId
+        in: path
+        description: The mosaic identifier.
+        required: true
+        schema:
+          type: string
+          format: hex
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MosaicInfoDTO'
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /mosaic:
+    post:
+      tags:
+      - Mosaic routes
+      summary: Get mosaics information for an array of mosaics
+      description: Gets an array of mosaic definition.
+      operationId: getMosaics
+      requestBody:
+        description: An array of mosaicIds.
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/mosaicIds'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MosaicInfoDTO'
+        400:
+          description: invalid content
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /mosaic/names:
+    post:
+      tags:
+      - Mosaic routes
+      summary: Get readable names for a set of mosaics
+      description: Returns friendly names for mosaics.
+      operationId: getMosaicsName
+      requestBody:
+        description: An array of mosaicIds.
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/mosaicIds'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MosaicNameDTO'
+        400:
+          description: invalid content
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /namespace/{namespaceId}:
+    get:
+      tags:
+      - Namespace routes
+      summary: Get namespace information
+      description: Gets the namespace for a given namespaceId.
+      operationId: getNamespace
+      parameters:
+      - name: namespaceId
+        in: path
+        description: The namespace identifier.
+        required: true
+        schema:
+          type: string
+          format: hex
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NamespaceInfoDTO'
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /account/{accountId}/namespaces:
+    get:
+      tags:
+      - Namespace routes
+      summary: Get namespaces owned by an account
+      description: Gets an array of namespaces for a given account address.
+      operationId: getNamespacesFromAccount
+      parameters:
+      - name: accountId
+        in: path
+        description: The address or public key of the account.
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        description: The number of namespaces to return.
+        schema:
+          type: integer
+      - name: id
+        in: query
+        description: The namespace id up to which namespace objects are returned.
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NamespaceInfoDTO'
+        409:
+          description: invalid argument
+          content: {}
+  /account/namespaces:
+    post:
+      tags:
+      - Namespace routes
+      summary: Get namespaces for given array of addresses
+      description: Gets namespaces for a given array of addresses.
+      operationId: getNamespacesFromAccounts
+      parameters:
+      - name: pageSize
+        in: query
+        description: The number of namespaces to return.
+        schema:
+          type: integer
+      - name: id
+        in: query
+        description: The namespace id up to which namespace objects are returned.
+        schema:
+          type: string
+      requestBody:
+        description: An array of addresses.
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/addresses'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NamespaceInfoDTO'
+        400:
+          description: invalid content
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /namespace/names:
+    post:
+      tags:
+      - Namespace routes
+      summary: Get readable names for a set of namespaces
+      description: Returns friendly names for mosaics.
+      operationId: getNamespacesNames
+      requestBody:
+        description: An array of namespaceIds.
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/namespaceIds'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NamespaceNameDTO'
+        400:
+          description: invalid content
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /transaction/{transactionId}:
+    get:
+      tags:
+      - Transaction routes
+      summary: Get transaction information
+      description: Returns transaction information given a transactionId or hash.
+      operationId: getTransaction
+      parameters:
+      - name: transactionId
+        in: path
+        description: The transaction id or hash.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /transaction:
+    put:
+      tags:
+      - Transaction routes
+      summary: Announce a new transaction
+      description: Announces a transaction to the network. It is recommended to use
+        the XPX-Chain-SDK to announce transactions as they should be [serialized](https://bcdocs.xpxsirius.io/docs/rest-api/serialization/).
+      operationId: announceTransaction
+      requestBody:
+        description: The transaction [payload](https://bcdocs.xpxsirius.io/docs/rest-api/serialization/).
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/transactionPayload'
+        required: true
+      responses:
+        202:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: invalid content
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+    post:
+      tags:
+      - Transaction routes
+      summary: Get transactions information
+      description: Returns transactions information for a given array of transactionIds.
+      operationId: getTransactions
+      requestBody:
+        description: An array of transaction ids or hashes.
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/transactionIds'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: {}
+        400:
+          description: invalid content
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /transaction/partial:
+    put:
+      tags:
+      - Transaction routes
+      summary: Announce an aggregate bonded transaction
+      description: Announces an [aggregate bonded transaction](https://bcdocs.xpxsirius.io/docs/built-in-features/aggregate-transaction/#aggregate-bonded)
+        to the network.
+      operationId: announcePartialTransaction
+      requestBody:
+        description: The transaction [payload](https://bcdocs.xpxsirius.io/docs/rest-api/serialization/).
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/transactionPayload'
+        required: true
+      responses:
+        202:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: invalid content
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /transaction/cosignature:
+    put:
+      tags:
+      - Transaction routes
+      summary: Announce a cosignature transaction
+      description: Announces a [cosignature transaction](https://bcdocs.xpxsirius.io/docs/built-in-features/aggregate-transaction/#cosignature)
+        to the network.
+      operationId: announceCosignatureTransaction
+      requestBody:
+        description: The transaction [payload](https://bcdocs.xpxsirius.io/docs/rest-api/serialization/).
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/transactionPayload'
+        required: true
+      responses:
+        202:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: invalid content
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /transaction/{hash}/status:
+    get:
+      tags:
+      - Transaction routes
+      summary: Get transaction status
+      description: Returns the transaction status for a given hash.
+      operationId: getTransactionStatus
+      parameters:
+      - name: hash
+        in: path
+        description: The transaction hash.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionStatusDTO'
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /transaction/statuses:
+    post:
+      tags:
+      - Transaction routes
+      summary: Get transactions status.
+      description: Returns an array of transaction statuses for a given array of transaction
+        hashes.
+      operationId: getTransactionsStatuses
+      requestBody:
+        description: An array of transaction hashes.
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/transactionHashes'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionStatusDTO'
+        400:
+          description: invalid content
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
+  /network:
+    get:
+      tags:
+      - Network routes
+      summary: Get the current network type of the chain
+      description: Returns the current network type.
+      operationId: getNetworkType
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkTypeDTO'
+  /node/info:
+    get:
+      tags:
+      - Node routes
+      summary: Get the node information
+      description: |
+        Supplies additional information about the application running on a node.
+      operationId: getNodeInfo
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeInfoDTO'
+  /node/time:
+    get:
+      tags:
+      - Node routes
+      summary: Get the node time
+      description: Supplies additional information about the application running on
+        a node.
+      operationId: getNodeTime
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeTimeDTO'
+components:
+  schemas:
+    BlockchainScoreDTO:
+      required:
+      - scoreHigh
+      - scoreLow
+      type: object
+      properties:
+        scoreHigh:
+          $ref: '#/components/schemas/UInt64DTO'
+        scoreLow:
+          $ref: '#/components/schemas/UInt64DTO'
+    AccountInfoDTO:
+      required:
+      - account
+      - meta
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/AccountMetaDTO'
+        account:
+          $ref: '#/components/schemas/AccountDTO'
+    transactionIds:
+      type: object
+      properties:
+        transactionIds:
+          type: array
+          example:
+          - 59B8DA0F0CB2720001103922
+          - 59B8D8E60CB2720001103904
+          items:
+            type: string
+    TransactionStatusDTO:
+      required:
+      - status
+      type: object
+      properties:
+        group:
+          type: string
+        status:
+          type: string
+        hash:
+          type: string
+        deadline:
+          $ref: '#/components/schemas/UInt64DTO'
+        height:
+          $ref: '#/components/schemas/UInt64DTO'
+    addresses:
+      type: object
+      properties:
+        addresses:
+          type: array
+          example:
+          - SDRDGFTDLLCB67D4HPGIMIHPNSRYRJRT7DOBGWZY
+          - SBCPGZ3S2SCC3YHBBTYDCUZV4ZZEPHM2KGCP4QXX
+          items:
+            type: string
+    MultisigDTO:
+      required:
+      - account
+      - cosignatories
+      - minApproval
+      - minRemoval
+      - multisigAccounts
+      type: object
+      properties:
+        account:
+          type: string
+        accountAddress:
+          type: string
+        minApproval:
+          type: integer
+        minRemoval:
+          type: integer
+        cosignatories:
+          type: array
+          items:
+            type: string
+        multisigAccounts:
+          type: array
+          items:
+            type: string
+    BlockInfoDTO:
+      required:
+      - block
+      - meta
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/BlockMetaDTO'
+        block:
+          $ref: '#/components/schemas/BlockDTO'
+    NamespaceInfoDTO:
+      required:
+      - namespace
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/NamespaceMosaicMetaDTO'
+        namespace:
+          $ref: '#/components/schemas/NamespaceDTO'
+    AliasDTO:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: integer
+        mosaicId:
+          type: string
+        address:
+          type: string
+    MosaicNameDTO:
+      required:
+      - mosaicId
+      - name
+      - parentId
+      type: object
+      properties:
+        parentId:
+          $ref: '#/components/schemas/UInt64DTO'
+        mosaicId:
+          $ref: '#/components/schemas/UInt64DTO'
+        name:
+          type: string
+    NodeInfoDTO:
+      required:
+      - friendlyName
+      - host
+      - networkIdentifier
+      - port
+      - publicKey
+      - roles
+      - version
+      type: object
+      properties:
+        publicKey:
+          type: string
+          example: EB6839C7E6BD0031FDD5F8CB5137E9BC950D7EE7756C46B767E68F3F58C24390
+        port:
+          type: integer
+          format: int32
+          example: 7900
+        networkIdentifier:
+          type: integer
+          format: int32
+          example: 144
+        version:
+          type: integer
+          format: int32
+          example: 0
+        roles:
+          type: integer
+          format: int32
+          example: 2
+        host:
+          type: string
+          example: api-node-0
+        friendlyName:
+          type: string
+          example: api-node-0
+    AccountMetaDTO:
+      type: object
+    MosaicDefinitionDTO:
+      required:
+      - height
+      - mosaicId
+      - owner
+      - properties
+      - supply
+      type: object
+      properties:
+        mosaicId:
+          $ref: '#/components/schemas/UInt64DTO'
+        supply:
+          $ref: '#/components/schemas/UInt64DTO'
+        height:
+          $ref: '#/components/schemas/UInt64DTO'
+        owner:
+          type: string
+        properties:
+          $ref: '#/components/schemas/MosaicPropertiesDTO'
+    BlockDTO:
+      required:
+      - beneficiaryPublicKey
+      - blockReceiptsHash
+      - blockTransactionsHash
+      - difficulty
+      - feeMultiplier
+      - height
+      - previousBlockHash
+      - signature
+      - signer
+      - stateHash
+      - timestamp
+      - type
+      - version
+      type: object
+      properties:
+        signature:
+          type: string
+        signer:
+          type: string
+        version:
+          type: number
+        type:
+          type: number
+        height:
+          $ref: '#/components/schemas/UInt64DTO'
+        timestamp:
+          $ref: '#/components/schemas/UInt64DTO'
+        difficulty:
+          $ref: '#/components/schemas/UInt64DTO'
+        feeMultiplier:
+          type: integer
+        previousBlockHash:
+          type: string
+        blockTransactionsHash:
+          type: string
+        blockReceiptsHash:
+          type: string
+        stateHash:
+          type: string
+        beneficiaryPublicKey:
+          type: string
+    NamespaceNameDTO:
+      required:
+      - name
+      - namespaceId
+      type: object
+      properties:
+        parentId:
+          $ref: '#/components/schemas/UInt64DTO'
+        namespaceId:
+          $ref: '#/components/schemas/UInt64DTO'
+        name:
+          type: string
+    MosaicInfoDTO:
+      required:
+      - meta
+      - mosaic
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/NamespaceMosaicMetaDTO'
+        mosaic:
+          $ref: '#/components/schemas/MosaicDefinitionDTO'
+    namespaceIds:
+      type: object
+      properties:
+        namespaceIds:
+          type: array
+          example:
+          - 84b3552d375ffa4b
+          items:
+            type: string
+            format: hex
+    MosaicPropertiesDTO:
+      type: array
+      example:
+      - - 0
+        - 0
+      - - 0
+        - 0
+      - - 0
+        - 0
+      items:
+        $ref: '#/components/schemas/UInt64DTO'
+    transactionPayload:
+      type: object
+      properties:
+        payload:
+          type: string
+          example: example
+          default: payload
+    AnnounceTransactionInfoDTO:
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+    MultisigAccountGraphInfoDTO:
+      required:
+      - level
+      - multisigEntries
+      type: object
+      properties:
+        level:
+          type: integer
+        multisigEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MultisigAccountInfoDTO'
+    mosaicIds:
+      type: object
+      properties:
+        mosaicIds:
+          type: array
+          example:
+          - d525ad41d95fcf29
+          items:
+            type: string
+            format: hex
+    MerkleProofInfoDTO:
+      required:
+      - payload
+      - type
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/merkleProofInfoPayload'
+        type:
+          type: string
+          example: merkleProofInfo
+    NamespaceMosaicMetaDTO:
+      required:
+      - active
+      - id
+      - index
+      type: object
+      properties:
+        active:
+          type: boolean
+        index:
+          type: integer
+        id:
+          type: string
+    merkleProofInfoPayload:
+      type: object
+      properties:
+        merklePath:
+          type: array
+          items:
+            $ref: '#/components/schemas/merklePathItem'
+    AccountPropertiesInfoDTO:
+      required:
+      - accountProperties
+      - meta
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/AccountPropertiesMetaDTO'
+        accountProperties:
+          $ref: '#/components/schemas/AccountPropertiesDTO'
+    BlockchainStorageInfoDTO:
+      required:
+      - numAccounts
+      - numBlocks
+      - numTransactions
+      type: object
+      properties:
+        numBlocks:
+          type: integer
+        numTransactions:
+          type: integer
+        numAccounts:
+          type: integer
+    AccountPropertiesMetaDTO:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: string
+          example: 00000000000000000000032f
+    HeightDTO:
+      required:
+      - height
+      type: object
+      properties:
+        height:
+          $ref: '#/components/schemas/UInt64DTO'
+    NodeTimeDTO:
+      required:
+      - communicationTimestamps
+      type: object
+      properties:
+        communicationTimestamps:
+          $ref: '#/components/schemas/communicationTimestamps'
+    BlockMetaDTO:
+      required:
+      - generationHash
+      - hash
+      - numTransactions
+      - totalFee
+      type: object
+      properties:
+        hash:
+          type: string
+        generationHash:
+          type: string
+        totalFee:
+          $ref: '#/components/schemas/UInt64DTO'
+        numTransactions:
+          type: number
+    NamespaceDTO:
+      required:
+      - alias
+      - depth
+      - endHeight
+      - level0
+      - owner
+      - parentId
+      - startHeight
+      - type
+      type: object
+      properties:
+        owner:
+          type: string
+        ownerAddress:
+          type: string
+        startHeight:
+          $ref: '#/components/schemas/UInt64DTO'
+        endHeight:
+          $ref: '#/components/schemas/UInt64DTO'
+        depth:
+          type: integer
+        level0:
+          $ref: '#/components/schemas/UInt64DTO'
+        level1:
+          $ref: '#/components/schemas/UInt64DTO'
+        level2:
+          $ref: '#/components/schemas/UInt64DTO'
+        type:
+          type: integer
+        alias:
+          $ref: '#/components/schemas/AliasDTO'
+        parentId:
+          $ref: '#/components/schemas/UInt64DTO'
+    MosaicDTO:
+      required:
+      - amount
+      - id
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UInt64DTO'
+        amount:
+          $ref: '#/components/schemas/UInt64DTO'
+    merklePathItem:
+      type: object
+      properties:
+        position:
+          type: integer
+          example: 1
+        hash:
+          type: string
+    NetworkTypeDTO:
+      required:
+      - description
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+          example: privateTest
+        description:
+          type: string
+          example: Sirius-Chain development network
+    transactionHashes:
+      type: object
+      properties:
+        hashes:
+          type: array
+          example:
+          - 5AF72FE39C0515E823903918A0BFE9625DD752C7BD63969C8869F25E9D155DE5
+          items:
+            type: string
+    UInt64DTO:
+      type: array
+      example:
+      - lower
+      - higher
+      items:
+        type: integer
+        format: int32
+    AccountPropertyDTO:
+      required:
+      - propertyType
+      - values
+      type: object
+      properties:
+        propertyType:
+          type: integer
+          example: 1
+        values:
+          type: array
+          example:
+          - C14+w2br1wkUdGm/SNSlBwCvcksjWBkBXg==
+          - Ul6vmYP5TAEIOMMcDoHz6sn7bCdpjBaE+Q==
+          items:
+            type: object
+            properties: {}
+    communicationTimestamps:
+      type: object
+      properties:
+        sendTimestamp:
+          $ref: '#/components/schemas/UInt64DTO'
+        receiveTimestamp:
+          $ref: '#/components/schemas/UInt64DTO'
+    AccountDTO:
+      required:
+      - address
+      - addressHeight
+      - mosaics
+      - publicKey
+      - publicKeyHeight
+      type: object
+      properties:
+        address:
+          type: string
+        addressHeight:
+          $ref: '#/components/schemas/UInt64DTO'
+        publicKey:
+          type: string
+        publicKeyHeight:
+          $ref: '#/components/schemas/UInt64DTO'
+        mosaics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MosaicDTO'
+    AccountPropertiesDTO:
+      required:
+      - address
+      - properties
+      type: object
+      properties:
+        address:
+          type: string
+          example: U0RSREdGVERMTENCNjdENEhQR0lNSUhQTlNSWVJKUlQ3RE9CR1daWQ==
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountPropertyDTO'
+    MultisigAccountInfoDTO:
+      required:
+      - multisig
+      type: object
+      properties:
+        multisig:
+          $ref: '#/components/schemas/MultisigDTO'

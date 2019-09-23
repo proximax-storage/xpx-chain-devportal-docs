@@ -13,29 +13,29 @@ There are different types of transactions. For example, you can transfer [mosaic
 |**Id** | 	**Type** | **Description**|
 |-------|-------------|----------------|
 |**Mosaic** |  |  |
-|0x414D | [Mosaic Definition Transaction](../built-in-features/mosaic#mosaicdefinitiontransaction) | Register a new [mosaic](../built-in-features/mosaic.md).|
-|0x424D | [Mosaic Supply Change Transaction](../built-in-features/mosaic#mosaicsupplychangetransaction) | Change an existent mosaic supply.|
+|0x414D | [Mosaic Definition Transaction](#mosaic-definition-transaction) | Register a new [mosaic](../built-in-features/mosaic.md).|
+|0x424D | [Mosaic Supply Change Transaction](#mosaic-supply-change-transaction) | Change an existent mosaic supply.|
 |**Namespace** |  | |
-|0x414E |	[Register Namespace Transaction](../built-in-features/namespace.md#registernamespacetransaction) | Register a [namespace](../built-in-features/namespace.md) to organise your assets. |
-|0x424E | [Address Alias Transaction](../built-in-features/namespace.md#addressaliastransaction) |	Attach a namespace name to an account.|
-|0x434E | [Mosaic Alias Transaction](../built-in-features/namespace.md#mosaicaliastransaction) |	Attach a namespace name to a mosaic.|
+|0x414E |	[Register Namespace Transaction](#register-namespace-transaction) | Register a [namespace](../built-in-features/namespace.md) to organize your assets. |
+|0x424E | [Address Alias Transaction](#address-alias-transaction) |	Attach a namespace name to an account.|
+|0x434E | [Mosaic Alias Transaction](#mosaic-alias-transaction) |	Attach a namespace name to a mosaic.|
 |**Transfer** | | |
 |0x4154 | [Transfer Transaction](../built-in-features/transfer-transaction.md#transfertransaction) | Send mosaics and messages between two accounts.|
 |**Multisignature** 	| | 	 |
-|0x4155 |	[Modify Multisig Account Transaction](../built-in-features/multisig-account.md#modifymultisigtransaction) |	Create or modify a [multisig contract](../built-in-features/multisig-account.md).|
-|0x4141 |	[Aggregate Complete Transaction](../built-in-features/aggregate-transaction.md#aggregate-complete) |	Send transactions in batches to different accounts.|
-|0x4241 |	[Aggregate Bonded Transaction](../built-in-features/aggregate-transaction.md#aggregate-bonded) |	Propose many transactions between different accounts.|
+|0x4155 |	[Modify Multisig Account Transaction](../built-in-features/multisig-account.md#modify-multisig-account-transaction) |	Create or modify a [multisig contract](../built-in-features/multisig-account.md).|
+|0x4141 |	[Aggregate Complete Transaction](../built-in-features/aggregate-transaction.md) |	Send transactions in batches to different accounts.|
+|0x4241 |	[Aggregate Bonded Transaction](../built-in-features/aggregate-transaction.md) |	Propose many transactions between different accounts.|
 |0x4148 |	[Hash Lock Transaction](../built-in-features/aggregate-transaction.md#hashlocktransaction) | A deposit before announcing aggregate bonded transactions.|
 |– |	[Cosignature Transaction](../built-in-features/aggregate-transaction.md#detachedcosignature) |	Cosign an aggregate bonded transaction.|
-|**Account filters** |	 | 	 |
-|0x4150 |	[Account Properties Address Transaction](../built-in-features/account-filter.md#accountpropertiesaddresstransaction) |	Allow or block incoming transactions for a given set of addresses.|
-|0x4250 |	[Account Properties Mosaic Transaction](../built-in-features/account-filter.md#accountpropertiesmosaictransaction) |	Allow or block incoming transactions containing a given set of mosaics.|
-|0x4350 |	[Account Properties Entity Type Transaction](../built-in-features/account-filter.md#accountpropertiesentitytypetransaction) |	Allow or block outgoing transactions by transaction type.|
-|**Cross-chain swaps** | | |
+|**Account restrictions** |	 | 	 |
+|0x4150 |	[Account Properties Address Transaction](../built-in-features/account-restriction.md#accountpropertiesaddresstransaction) |	Allow or block incoming transactions for a given set of addresses.|
+|0x4250 |	[Account Properties Mosaic Transaction](../built-in-features/account-restriction.md#accountpropertiesmosaictransaction) |	Allow or block incoming transactions containing a given set of mosaics.|
+|0x4350 |	[Account Properties Entity Type Transaction](../built-in-features/account-restriction.md#accountpropertiesentitytypetransaction) |	Allow or block outgoing transactions by transaction type.|
+|**Cross-chain swaps** | | |	  	 
 |0x4152 |	[Secret Lock Transaction](../built-in-features/cross-chain-swaps.md#secretlocktransaction)  |	Start a [token swap](../built-in-features/cross-chain-swaps.md) between different chains.|
 |0x4252 |	[Secret Proof Transaction](../built-in-features/cross-chain-swaps.md#secretprooftransaction)  |	Conclude a token swap between different chains. |
-|**Remote validating** | | |
-|0x414C |	[Account Link Transaction](./harvesting.md#accountlinktransaction) |	Delegates the account to a proxy account to enable [delegated validating](./harvesting.md).|
+|**Remote validating** | | |	  	 
+|0x414C |	[Account Link Transaction](./validating.md#accountlinktransaction) |	Delegates the account to a proxy account to enable [delegated validating](./validating.md).|
 
 ## Defining a transaction
 
@@ -45,7 +45,7 @@ We recommend to [use the xpx-chain-sdk to define](../sdks/overview.md) transacti
 
 ## Fees
 
-Transactions have an associated cost. This cost is necessary to provide an incentive for the [harvesting](./harvesting.md) who secure the network and run the infrastructure.
+Transactions have an associated cost. This cost is necessary to provide an incentive for the [validating](./validating.md) who secure the network and run the infrastructure.
 
 The fee associated with a transaction primarily depends on the transaction’s size. The effective fee is the product of the size of the transaction, and a fee multiplier set by the Validator. The node owner can configure the latter value to all positive values, including zero.
 
@@ -61,7 +61,7 @@ The validating nodes can decide their transaction inclusion strategy:
 - **Minimise-fees**: Philanthropic nodes. Include first transactions that other nodes do not want to include.
 - **Maximise-fees**: Most common in public networks. Include first transactions with higher fees.
 
-By default, the fee is paid in `xpx`, the underlying currency of the Sirius-Chain network. Private chains can edit the configuration of the network to eliminate fees, or use another [mosaic](../built-in-features/mosaic.md) that better suits their needs.
+By default, the fee is paid in `xpx`, the underlying currency of the Sirius Chain network. Private chains can edit the configuration of the network to eliminate fees, or use another [mosaic](../built-in-features/mosaic.md) that better suits their needs.
 
 ## Signing a transaction
 
@@ -89,7 +89,7 @@ After announcing a transaction, the REST API will always return an OK response i
 
 The first stage of validation happens in the API nodes. If the transaction presents some error, the WebSocket throws a notification through the status channel. In the positive case, the transaction reaches the P2P network with an **unconfirmed** status. Never rely on a transaction which has an unconfirmed state. It is not clear if it will get included in a block, as it should pass a second validation.
 
-The second validation is done before the transaction is added in a harvested block. If valid, the harvester stores the transaction in a block, and it reaches the **confirmed** status.
+The second validation is done before the transaction is added in a validated block. If valid, the validator stores the transaction in a block, and it reaches the **confirmed** status.
 
 Continuing the previous example, the transaction gets processed and the amount stated gets transferred from the signer's account to the recipient's account. Additionally, the transaction fee is deducted from the signer's account.
 

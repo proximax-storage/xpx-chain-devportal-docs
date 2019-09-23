@@ -28,7 +28,7 @@ To ensure the transaction is added in a block, you must track the [transaction s
 
 [Listeners](../../rest-api/websockets.md) enable receiving notifications possible when a change in the blockchain occurs. The notification is received in real time without having to poll the API waiting for a reply.
 
-1. Define the transaction you want to announce. In this case, we are going to send the message `Test` to `SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54`.
+1. Define the transaction you want to announce. In this case, we are going to send the message `Test` to `VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54`.
 
 
 <!--DOCUSAURUS_CODE_TABS-->
@@ -42,7 +42,7 @@ if err != nil {
 // Use the default http client
 client := sdk.NewClient(nil, conf)
 
-address, err := sdk.NewAddressFromRaw("SD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54")
+address, err := sdk.NewAddressFromRaw("VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54")
 if err != nil {
     panic(err)
 }
@@ -52,6 +52,18 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const recipientAddress = Address.createFromRawAddress("VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54");
+const transferTransaction = TransferTransaction.create(
+    Deadline.create(),
+    recipientAddress,
+    [],
+    PlainMessage.create('Test'),
+    NetworkType.TEST_NET);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Sign the transaction.
@@ -69,6 +81,14 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const privateKey = process.env.PRIVATE_KEY as string;
+const signer = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+const signedTransaction = signer.sign(transferTransaction, generationHash);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 3. Open a new [Listener](../../rest-api/websockets.md). This communicates with the API WebSocket, who will communicate you asynchronously the status of the transaction.
@@ -80,6 +100,17 @@ wsClient, err := websocket.NewClient(context.Background(), conf)
 if err != nil {
     panic(err)
 }
+```
+
+<!--TypeScript-->
+```js
+const url = 'http://localhost:3000';
+const listener = new Listener(url);
+const transactionHttp = new TransactionHttp(url);
+
+const amountOfConfirmationsToSkip = 5;
+
+listener.open().then(() => {
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -98,6 +129,26 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+    const newBlockSubscription = listener
+        .newBlock()
+        .pipe(timeout(30000)) // time in milliseconds when to timeout.
+        .subscribe(block => {
+            console.log("New block created:" + block.height.compact());
+        },
+        error => {
+            console.error(error);
+            listener.terminate();
+        });
+```
+
+<!--CLI-->
+```
+xpx2-cli monitor block
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 5. Monitor if there is some validation error with the transaction issued. When you receive a message from status WebSocket channel, it always means the transaction did not meet the requirements. You need to handle the error accordingly, by reviewing the [error status list](../../rest-api/status-errors.md).
@@ -114,6 +165,25 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+    listener
+        .status(signer.address)
+        .pipe(filter(error => error.hash === signedTransaction.hash))
+        .subscribe(error => {
+            console.log("❌:" + error.status);
+            newBlockSubscription.unsubscribe();
+            listener.close();
+        },
+        error => console.error(error));
+```
+
+<!--CLI-->
+```
+xpx2-cli monitor status --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 6. Monitor as well if the transaction reaches the network. When you receive a message from unconfirmed WebSocket channel, the transaction is valid and is waiting to be included in a block. This does not mean necessarily that the transaction will be included, as a second validation happens before being finally confirmed.
@@ -129,6 +199,22 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+    listener
+        .unconfirmedAdded(signer.address)
+        .pipe(filter(transaction => (transaction.transactionInfo !== undefined
+            && transaction.transactionInfo.hash === signedTransaction.hash)))
+        .subscribe(ignored => console.log("⏳: Transaction status changed to unconfirmed"),
+            error => console.error(error));
+```
+
+<!--CLI-->
+```
+xpx2-cli monitor unconfirmed --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 7. Monitor when the transaction gets included in a block. When included, the [transaction](../../protocol/transaction.md) can still be rolled-back because of forks. You can decide for yourself that after e.g. 6 blocks the [transaction is secured](https://gist.github.com/aleixmorgadas/3d856d318e60f901be09dbd23467b374).
@@ -144,6 +230,34 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+listener
+    .confirmed(signer.address)
+    .pipe(
+        filter(transaction =>(transaction.transactionInfo !== undefined
+            && transaction.transactionInfo.hash === signedTransaction.hash)),
+        mergeMap(transaction => {
+            return listener.newBlock()
+                .pipe(
+                    skip(amountOfConfirmationsToSkip),
+                    first(),
+                    map( ignored => transaction))
+        })
+    )
+    .subscribe(ignored => {
+        console.log("✅: Transaction confirmed");
+        newBlockSubscription.unsubscribe();
+        listener.close();
+    }, error => console.error(error));
+```
+
+<!--CLI-->
+```
+xpx2-cli monitor confirmed --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 8. Finally, announce the transaction to the network.
@@ -156,11 +270,26 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+    transactionHttp
+        .announce(signedTransaction)
+        .subscribe(x => console.log(x),
+            error => console.error(error));
+});
+```
+
+<!--CLI-->
+```
+xpx2-cli transaction transfer --recipient VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54 --message "Test"
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 If you missed the WebSocket response, check the transaction status after by calling the [transaction status endpoint](../../../endpoints#operation/getTransaction). The status of failed transactions is not persistent, meaning that eventually is pruned.
 
 ## What’s next?
 
-Run your application and try to [send a transfer transaction](../transaction/sending-a-transfer-transaction.html) to the selected account. If all goes well, you will see the transaction information in your terminal.
+Run your application and try to [send a transfer transaction](../transaction/sending-a-transfer-transaction) to the selected account. If all goes well, you will see the transaction information in your terminal.
 

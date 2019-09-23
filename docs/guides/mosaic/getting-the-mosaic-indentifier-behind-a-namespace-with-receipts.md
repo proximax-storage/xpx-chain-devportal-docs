@@ -7,7 +7,7 @@ Get the ownership, divisibility, duration, and flags for a given [mosaic](../../
 
 ## Background
 
-In Sirius-Chain, accounts can link their registered namespaces to other accounts or mosaics by announcing an [alias transaction](../../built-in-features/namespace.md#mosaic-alias-transaction). This feature allows you to replace long and complex identifiers with short and familiar names for your accounts and mosaics.
+In Sirius Chain, accounts can link their registered namespaces to other accounts or mosaics by announcing an [alias transaction](../../built-in-features/namespace.md#mosaic-alias-transaction). This feature allows you to replace long and complex identifiers with short and familiar names for your accounts and mosaics.
 
 Imagine a ticket vendor sending tickets to their customers on the NEM blockchain. The company needs to send `1 0dc67fbe1cad29e3` to `SCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6`. With aliases, it can define the same transaction as sending `1 ticketsales.event1.ticket` to `@alice` instead.
 
@@ -48,7 +48,7 @@ However, the same method cannot be used to verify transactions of the past. This
 - Links are editable. The namespace owner can link its namespace to another asset.
 - Namespaces expire. The namespace link could be deleted.
 
-At this point, you might be wondering: how then can we get the accurate relation between a namespace and its real identifier for a past transaction? The answer lies with [receipts](../../protocol/receipt.md). For each block, Sirius-Chain nodes store receipts that contain every invisible state change that cannot be retrieved directly from the transaction or block header.
+At this point, you might be wondering: how then can we get the accurate relation between a namespace and its real identifier for a past transaction? The answer lies with [receipts](../../protocol/receipt.md). For each block, Sirius Chain nodes store receipts that contain every invisible state change that cannot be retrieved directly from the transaction or block header.
 
 ## Prerequisites
 

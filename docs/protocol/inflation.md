@@ -3,11 +3,11 @@ id: inflation
 title: Inflation
 ---
 
-Sirius-Chain engine supports increasing the native currency supply as time passes. The creation of an **inflationary mosaic** empowers consortium and private networks to apply new token economic models that suit their needs.
+Sirius Chain engine supports increasing the native currency supply as time passes. The creation of an **inflationary mosaic** empowers consortium and private networks to apply new token economic models that suit their needs.
 
 ## Distribution
 
-Networks with inflation configured can increase the currency mosaic **per block**. In this case, the block reward includes the mosaics created due to inflation. The [harvester](./harvesting.md) collects the newly created mosaics, sharing them with the beneficiary when set.
+Networks with inflation configured can increase the currency mosaic **per block**. In this case, the block reward includes the mosaics created due to inflation. The [validator](./validating.md) collects the newly created mosaics, sharing them with the beneficiary when set.
 
 The block creating currency mosaics record an inflation receipt. The receipt gathers the amount of mosaics created.
 

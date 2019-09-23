@@ -2,7 +2,7 @@
 id: serialization
 title: Serialization
 ---
-[Flatbuffer library](https://google.github.io/flatbuffers/) defines the protocol to serialize and deserialize Sirius-Chain entities. The library comes with code generators for different languages. SDKs and applications use the generated code to interact with REST transaction endpoint.
+[Flatbuffer library](https://google.github.io/flatbuffers/) defines the protocol to serialize and deserialize Sirius Chain entities. The library comes with code generators for different languages. SDKs and applications use the generated code to interact with REST transaction endpoint.
 
 ![Flatbuffer](/img/catbuffer.png "Flatbuffer")
 

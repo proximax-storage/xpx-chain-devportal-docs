@@ -15,13 +15,13 @@ In other words, to reduce counterparty risk, the receiver of a payment needs to 
 
 ## Protocol
 
-Alice and Bob want to exchange `10 alice tokens for 10 bob tokens`. The problem is that they are not in the same blockchain: alice token is defined in Sirius-Chain public chain, whereas bob token is only present in a private chain using Catapult technology.
+Alice and Bob want to exchange `10 alice tokens for 10 bob tokens`. The problem is that they are not in the same blockchain: alice token is defined in Sirius Chain public chain, whereas bob token is only present in a private chain using Sirius Chain technology.
 
 <div class="info">
 
 **Note**
 
-Sirius-Chain’s private and future public chain share the SDK. You could implement atomic cross-chain swap between blockchains that use different technologies if they permit the [secret lock/proof mechanism](#lockhashalgorithm).
+Sirius Chain’s private and future public chain share the SDK. You could implement atomic cross-chain swap between blockchains that use different technologies if they permit the [secret lock/proof mechanism](#lock-hash-algorithm).
 </div>
 
 ![Cross-chain swap cycle](/img/cross-chain-swap-cycle.png "Cross-chain swap cycle")
@@ -29,7 +29,7 @@ Sirius-Chain’s private and future public chain share the SDK. You could implem
 <p class=caption>Atomic cross-chain swap sequence diagram</p>
 
 1. Alice generates a random set of bytes called `proof`. The proof should have a size between `10` and `1000` bytes.
-2. Alice hashes the obtained proof with one of the [available algorithms](#lockhashalgorithm) to generate the `secret`.
+2. Alice hashes the obtained proof with one of the [available algorithms](#lock-hash-algorithm) to generate the `secret`.
 3. Alice defines the secret lock transaction `TX1`:
 
 - Mosaic: 10 alice token
@@ -66,7 +66,7 @@ The amount of time in which funds can be unlocked should be a smaller time frame
 
 **Note:**
 
-We recommend checking out [setting up your workstation](../getting-started/setting-up-workstation.md) before going through the guides.
+We recommend checking out [setting up your workstation][Workstation] before going through the guides.
 
 </div>
 
@@ -84,7 +84,7 @@ Configuration parameters are [editable](https://github.com/proximax-storage/cpp-
 
 </div>
 
-### Secret Lock Transaction
+### SecretLockTransaction
 
 Use a secret lock transaction to start the cross-chain swap:
 
@@ -109,11 +109,11 @@ If the transaction duration is reached without being proved, the locked amount g
 -------------|-----------|--------------------
 mosaic |	[Mosaic](./mosaic.md#mosaic) |	Locked mosaic.
 duration |	uint64 |	The lock duration. If reached, the mosaics will be returned to the initiator.
-hashAlgorithm |	[LockHashAlgorithm](#lockhashalgorithm) |	The algorithm used to hash the proof.
+hashAlgorithm |	[LockHashAlgorithm](#lock-hash-algorithm) |	The algorithm used to hash the proof.
 secret |	64 bytes (binary) |	The proof hashed.
 recipient |	25 bytes (binary) |	The address who will receive the funds once unlocked.
 
-### Secret Proof Transaction
+### SecretProofTransaction
 
 Use a secret proof transaction to unlock [secret lock transactions](#secretlocktransaction).
 
@@ -129,7 +129,7 @@ The transaction must prove that knows the proof that unlocks the mosaics for rec
 
 **Property** |	**Type** |	**Description**
 -------------|-----------|--------------------
-hashAlgorithm |	[LockHashAlgorithm](#lockhashalgorithm) |	The algorithm used to hash the proof.
+hashAlgorithm |	[LockHashAlgorithm](#lock-hash-algorithm) |	The algorithm used to hash the proof.
 secret |	64 bytes (binary) |	The proof hashed.
 recipient |	25 bytes (binary) |	The address who will receive the funds once unlocked.
 proofSize |	uint16 |	The proof size in bytes.

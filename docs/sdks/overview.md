@@ -22,4 +22,4 @@ XPX-Chain-SDK shares the same design/architecture between programming languages 
 - **Fast SDK updates**: Migrating any improvement from a XPX-Chain-SDK implementation to the rest is faster.
 - **Fewer bugs**: If any bug appears in one language, it is faster to check and fix it.
 
-The best way to learn about the SDKs is through [Guides](../built-in-features/account.md).
+The best way to learn about the SDKs is through [Guides](../guides/overview.md).

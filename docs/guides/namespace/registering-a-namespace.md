@@ -7,7 +7,7 @@ Register your own [namespace](../../built-in-features/namespace.md).
 
 ## Background Information 
 
-Namespaces allow you to create an on-chain **unique place** for your business and your assets on the Sirius-Chain.
+Namespaces allow you to create an on-chain **unique place** for your business and your assets on the Sirius Chain.
 
 A namespace starts with a name that you choose, similar to an internet domain name. If one [account](../../built-in-features/account.md) creates a namespace, that will appear as unique in the network.
 
@@ -46,6 +46,45 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const namespaceHttp = new NamespaceHttp('http://localhost:3000');
+
+const namespace = new NamespaceId('foo');
+
+namespaceHttp
+    .getNamespace(namespace)
+    .subscribe(namespace => console.log(namespace), err => console.error(err));
+```
+
+<!--JavaScript-->
+```js
+const namespaceHttp = new NamespaceHttp('http://localhost:3000');
+
+const namespace = new NamespaceId('foo');
+
+namespaceHttp
+    .getNamespace(namespace)
+    .subscribe(namespace => console.log(namespace), err => console.error(err));
+```
+
+<!--Java-->
+```java
+final NamespaceId namespaceId = new NamespaceId("foo");
+
+final NamespaceHttp namespaceHttp = new NamespaceHttp("http://localhost:3000");
+
+final NamespaceInfo namespaceInfo = namespaceHttp.getNamespace(namespaceId).toFuture().get();
+
+System.out.println(namespaceInfo);
+```
+
+<!--CLI-->
+```sh
+xpx2-cli namespace info --name foo
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Is the namespace available? Try to register it before someone else does it! Announce a [register namespace transaction](../../built-in-features/namespace.md#registernamespacetransaction) with the chosen name and renting duration expressed in blocks.
@@ -54,7 +93,7 @@ if err != nil {
 
 **Note:**
 
-In Sirius-Chain, blocks are complete every `15` seconds in average. You will have to renew your namespace before it expires.
+In Sirius Chain, blocks are complete every `15` seconds in average. You will have to renew your namespace before it expires.
 
 </div>
 
@@ -91,6 +130,73 @@ _, err = client.Transaction.Announce(context.Background(), signedTransaction)
 if err != nil {
     panic(err)
 }
+```
+
+<!--TypeScript-->
+```js
+const transactionHttp = new TransactionHttp('http://localhost:3000');
+
+const privateKey = process.env.PRIVATE_KEY as string;
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+const namespaceName = "foo"; //Replace with an unique namespace name
+
+const registerNamespaceTransaction = RegisterNamespaceTransaction.createRootNamespace(
+    Deadline.create(),
+    namespaceName,
+    UInt64.fromUint(1000),
+    NetworkType.TEST_NET);
+
+const signedTransaction = account.sign(registerNamespaceTransaction, generationHash);
+
+transactionHttp
+    .announce(signedTransaction)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+
+<!--JavaScript-->
+```js
+const transactionHttp = new TransactionHttp('http://localhost:3000');
+
+const privateKey = process.env.PRIVATE_KEY;
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+const namespaceName = "foo"; //Replace with an unique namespace name
+
+const registerNamespaceTransaction = RegisterNamespaceTransaction.createRootNamespace(
+    Deadline.create(),
+    namespaceName,
+    UInt64.fromUint(1000),
+    NetworkType.TEST_NET);
+
+const signedTransaction = account.sign(registerNamespaceTransaction, generationHash);
+
+transactionHttp
+    .announce(signedTransaction)
+    .subscribe(x => console.log(x), err => console.error(err));
+```
+
+<!--Java-->
+```java
+    // Replace with private key
+    final String privateKey = "<privateKey>";
+
+    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+    // Replace with namespace name
+    final String namespaceName = "foo";
+
+    final RegisterNamespaceTransaction registerNamespaceTransaction = new TransactionBuilderFactory()
+            .registerNamespace().rootNamespace(namespaceName)
+            .duration(BigInteger.valueOf(1000))
+            .deadline(new Deadline(2, ChronoUnit.HOURS))
+            .networkType(NetworkType.TEST_NET).build();
+
+    final SignedTransaction signedTransaction = account.sign(registerNamespaceTransaction, generationHash);
+
+    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+
+    transactionHttp.announce(signedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

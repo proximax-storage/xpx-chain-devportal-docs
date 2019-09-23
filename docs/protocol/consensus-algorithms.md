@@ -1,5 +1,5 @@
 ---
-id: Consensus-Algorithms
+id: consensus-algorithms
 title: Consensus Algorithms
 ---
 
@@ -23,7 +23,7 @@ In PoG, instead of indicating a fixed transaction fee, an end-user that wants to
 
 PoG also solves another major problem found in other blockchain networks, this being that there is no fee adjustment framework.  With PoG, the fee size is adjustable for both consumers end-users and Validators.
 
-## Zero-free Attack
+## Zero-fee Attack
 
 If PoG’s focus is on penalizing greedy Validators, then the question that arises is whether there is a potential vulnerability if Validators behave in a complete opposite manner, by validating transactions for free.  The scenario of a Zero-fee Attack is where malicious Validators attempt to manipulate the PoG algorithm by taking zero fees, and as a result, forging the most blocks and potentially taking control of the network.  
 

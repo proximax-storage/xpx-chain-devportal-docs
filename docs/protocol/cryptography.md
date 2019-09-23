@@ -7,16 +7,16 @@ title: Cryptography
 
 The key pair pair consists of a private key and a public key:
 
-- **Private key**: A random 256-bit integer used to sign [entities](./block.md#verifiable-entity).
+- **Private key**: A random 256-bit integer used to sign [entities](./block.md#verifiableentity).
 - **Public key**: The public identifier of the key pair. Proves that the entity was signed with the paired private key.
 
-The public key is cryptographically derived from the private key. Sirius-Chain uses the [Twisted Edwards curve](https://en.wikipedia.org/wiki/Twisted_Edwards_curve/) with the digital signature algorithm called [Ed25519](https://ed25519.cr.yp.to/).
+The public key is cryptographically derived from the private key. Sirius Chain uses the [Twisted Edwards curve](https://en.wikipedia.org/wiki/Twisted_Edwards_curve/) with the digital signature algorithm called [Ed25519](https://ed25519.cr.yp.to/).
 
 You can find the [implementation](https://github.com/proximax-storage/cpp-xpx-chain/blob/master/src/catapult/crypto/KeyGenerator.cpp#L31) under the `crypto` module of cpp-xpx-chain.
 
 ## Address
 
-A Sirius-Chain address is a base-32 encoded triplet consisting of:
+A Sirius Chain address is a base-32 encoded triplet consisting of:
 
 - The network byte.
 - The 160-bit hash of the account’s public key.

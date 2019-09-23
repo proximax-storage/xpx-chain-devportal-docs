@@ -27,7 +27,7 @@ Normalizing the language into Sirius Chain related concepts:
 
 - **contractual arrangement**: A new type of transaction called Aggregate Transaction.
 - **third party receives and disburses money**: There is no third party, we are going to use blockchain technology.
-- **primary transacting parties**: Sirius-Chain accounts will represent the participants.
+- **primary transacting parties**: Sirius Chain accounts will represent the participants.
 - **conditions agreed to by the transacting parties**: Whe nevery participant signs the aggregate transaction.
 - **account established by a broker for holding funds**: There will not be an intermediate account, the exchange will happen atomically using an aggregate transaction.
 - **until the consummation or termination of a transaction**: The transaction gets included in a block or expires.
@@ -120,6 +120,90 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const nodeUrl = 'http://localhost:3000';
+const transactionHttp = new TransactionHttp(nodeUrl);
+const listener = new Listener(nodeUrl);
+
+const alicePrivateKey = '<privateKey>';
+const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.TEST_NET);
+
+const ticketDistributorPublicKey = '<publicKey>';
+const ticketDistributorPublicAccount = PublicAccount.createFromPublicKey(ticketDistributorPublicKey, NetworkType.TEST_NET);
+
+const aliceToTicketDistributorTx = TransferTransaction.create(
+    Deadline.create(),
+    ticketDistributorPublicAccount.address,
+    [NetworkCurrencyMosaic.createRelative(100)],
+    PlainMessage.create('send 100 xpx to distributor'),
+    NetworkType.TEST_NET);
+
+const ticketDistributorToAliceTx = TransferTransaction.create(
+    Deadline.create(),
+    aliceAccount.address,
+    [new Mosaic(new MosaicId('7cdf3b117a3c40cc'), UInt64.fromUint(1))],
+    PlainMessage.create('send 1 museum ticket to alice'),
+    NetworkType.TEST_NET);
+```
+
+<!--JavaScript-->
+```js
+const nodeUrl = 'http://localhost:3000';
+const transactionHttp = new TransactionHttp(nodeUrl);
+const listener = new Listener(nodeUrl);
+
+const alicePrivateKey = '<privateKey>';
+const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.TEST_NET);
+
+const ticketDistributorPublicKey = '<publicKey>';
+const ticketDistributorPublicAccount = PublicAccount.createFromPublicKey( ticketDistributorPublicKey, NetworkType.TEST_NET);
+
+const aliceToTicketDistributorTx = TransferTransaction.create(
+    Deadline.create(),
+    ticketDistributorPublicAccount.address,
+    [NetworkCurrencyMosaic.createRelative(100)],
+    PlainMessage.create('send 100 xpx to distributor'),
+    NetworkType.TEST_NET);
+
+const ticketDistributorToAliceTx = TransferTransaction.create(
+    Deadline.create(),
+    aliceAccount.address,
+    [new Mosaic( new MosaicId('7cdf3b117a3c40cc'), UInt64.fromUint(1))],
+    PlainMessage.create('send 1 museum ticket to alice'),
+    NetworkType.TEST_NET);
+```
+
+<!--Java-->
+```java
+    // Replace with private key
+    final String alicePrivateKey = "<privateKey>";
+
+    // Replace with public key
+    final String ticketDistributorPublicKey = "<publicKey>";
+
+    final Account aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.TEST_NET);
+    final PublicAccount ticketDistributorPublicAccount = PublicAccount.createFromPublicKey(ticketDistributorPublicKey, NetworkType.TEST_NET);
+
+    final TransferTransaction aliceToTicketDistributorTx = TransferTransaction.create(
+            Deadline.create(2, HOURS),
+            ticketDistributorPublicAccount.getAddress(),
+            Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(100))),
+            PlainMessage.create("send 100 xpx to distributor"),
+            NetworkType.TEST_NET
+    );
+
+    final TransferTransaction ticketDistributorToAliceTx = TransferTransaction.create(
+            Deadline.create(2, HOURS),
+            aliceAccount.getAddress(),
+            Collections.singletonList(new Mosaic(new MosaicId("7cdf3b117a3c40cc"), BigInteger.valueOf(1))),
+            PlainMessage.create("send 1 museum ticket to alice"),
+            NetworkType.TEST_NET
+    );
+
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Wrap the defined transactions in an [aggregate transaction](../../built-in-features/aggregate-transaction.md) sign it.
@@ -144,9 +228,44 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const aggregateTransaction = AggregateTransaction.createBonded(Deadline.create(),
+    [aliceToTicketDistributorTx.toAggregate(aliceAccount.publicAccount),
+        ticketDistributorToAliceTx.toAggregate(ticketDistributorPublicAccount)],
+    NetworkType.TEST_NET);
+
+const signedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
+
+```
+
+<!--JavaScript-->
+```js
+const aggregateTransaction = AggregateTransaction.createBonded(Deadline.create(),
+    [aliceToTicketDistributorTx.toAggregate(aliceAccount.publicAccount),
+        ticketDistributorToAliceTx.toAggregate(ticketDistributorPublicAccount)],
+    NetworkType.TEST_NET);
+
+const signedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
+
+```
+
+<!--Java-->
+```java
+
+    final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateBonded()
+            .innerTransactions(Arrays.asList(
+                    aliceToTicketDistributorTx.toAggregate(aliceAccount.getPublicAccount()),
+                    ticketDistributorToAliceTx.toAggregate(ticketDistributorPublicAccount)
+            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
+
+    final SignedTransaction aggregateSignedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-3. When an aggregate transaction is bonded, Alice will need to [lock](../../built-in-features/aggregate-transaction.md#hash-lock-transaction) at least 10 `xpx`. Once the ticket distributor signs the aggregate transaction, the amount of locked cat.currency becomes available again on Alice’s account, and the exchange will get through.
+3. When an aggregate transaction is bonded, Alice will need to [lock](../../built-in-features/aggregate-transaction.md#hashlocktransaction) at least 10 `xpx`. Once the ticket distributor signs the aggregate transaction, the amount of locked cat.currency becomes available again on Alice’s account, and the exchange will get through.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -171,6 +290,94 @@ if err != nil {
     panic(err)
 }
 ```
+
+<!--TypeScript-->
+```js
+const lockFundsTransaction = LockFundsTransaction.create(
+    Deadline.create(),
+    NetworkCurrencyMosaic.createRelative(10),
+    UInt64.fromUint(1000),
+    signedTransaction,
+    NetworkType.TEST_NET);
+
+const lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction, generationHash);
+
+listener.open().then(() => {
+
+    transactionHttp
+        .announce(lockFundsTransactionSigned)
+        .subscribe(x => console.log(x), err => console.error(err));
+
+    listener
+        .confirmed(aliceAccount.address)
+        .pipe(
+            filter((transaction) => transaction.transactionInfo !== undefined
+                && transaction.transactionInfo.hash === lockFundsTransactionSigned.hash),
+            mergeMap(ignored => transactionHttp.announceAggregateBonded(signedTransaction))
+        )
+        .subscribe(announcedAggregateBonded => console.log(announcedAggregateBonded),
+            err => console.error(err));
+});
+```
+
+<!--JavaScript-->
+```js
+const lockFundsTransaction = LockFundsTransaction.create(
+    Deadline.create(),
+    NetworkCurrencyMosaic.createRelative(10),
+    UInt64.fromUint(480),
+    signedTransaction,
+    NetworkType.TEST_NET);
+
+const lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction, generationHash);
+
+listener.open().then(() => {
+
+    transactionHttp
+        .announce(lockFundsTransactionSigned)
+        .subscribe(x => console.log(x), err => console.error(err));
+
+    listener
+        .confirmed(aliceAccount.address)
+        .pipe(
+            filter((transaction) => transaction.transactionInfo !== undefined
+                && transaction.transactionInfo.hash === lockFundsTransactionSigned.hash),
+            mergeMap(ignored => transactionHttp.announceAggregateBonded(signedTransaction))
+        )
+        .subscribe(announcedAggregateBonded => console.log(announcedAggregateBonded),
+            err => console.error(err));
+});
+```
+
+<!--Java-->
+```java
+ // Creating the lock funds transaction and announce it
+
+        final LockFundsTransaction lockFundsTransaction = LockFundsTransaction.create(
+                Deadline.create(2, HOURS),
+                NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
+                BigInteger.valueOf(480),
+                aggregateSignedTransaction,
+                NetworkType.TEST_NET
+        );
+
+        final SignedTransaction lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction, generationHash);
+
+        final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+
+        transactionHttp.announce(lockFundsTransactionSigned).toFuture().get();
+
+        System.out.println(lockFundsTransactionSigned.getHash());
+
+        final Listener listener = new Listener("http://localhost:3000");
+
+        listener.open().get();
+
+        final Transaction transaction = listener.confirmed(aliceAccount.getAddress()).take(1).toFuture().get();
+
+        transactionHttp.announceAggregateBonded(aggregateSignedTransaction).toFuture().get();
+```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 The distributor has not signed the aggregate bonded transaction yet, so the exchange has not been completed.
