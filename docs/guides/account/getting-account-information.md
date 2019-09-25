@@ -10,13 +10,34 @@ This guide will help you get the public key and balance of an [account](../../bu
 - Text editor or IDE.
 - XPX-Chain-SDK or XPX-Chain-CLI.
 
-## Let's do some coding!
+## Getting into some code
 
-The **public key** identifies your account publicly in the network. Your **address** is derived from it, which contains further information such as network and validity check.
-
-To get more information about your account passing the address and network as a parameter, enter the following code:
+1. Call `getAccountInfo` function, passing your account's address as a parameter.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+client := sdk.NewClient(nil, conf)
+
+address, err := sdk.NewAddressFromPublicKey("...", client.NetworkType())
+if err != nil {
+    panic(err)
+}
+
+accountInfo, err := client.Account.GetAccountInfo(context.Background(), address)
+if err != nil {
+    panic(err)
+}
+
+fmt.Printf(accountInfo.String())
+
+```
+
 <!--TypeScript-->
 
 ```ts
@@ -38,7 +59,7 @@ accountHttp
     .subscribe(accountInfo => console.log(accountInfo), err => console.error(err));
 ```
 
-<!--bash-->
+<!--CLI-->
 ```sh
 xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 ```
@@ -57,16 +78,43 @@ xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-Can you determine the account’s public key? Which was the first block where this account appeared?
+Can you determine the account’s public key? The **public key** identifies your account publicly in the network. Your **address** is derived from it, which contains further information such as network and validity check.
 
-### Checking the account’s balance
+If you don’t have a public key assigned, that means that your account has not announced or received any transaction yet. The `addressHeight` and `publicKeyHeight` specify the block where your address and public key first appeared.
+
+2. How many different mosaics does your account hold? Call `mosaicsAmountViewFromAddress` function, passing your account’s address as a parameter.
 
 The balance is the amount of the different mosaics owned by the account. How many different mosaics does your account own?
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+client := sdk.NewClient(nil, conf)
+
+address, err := sdk.NewAddressFromPublicKey("...", client.NetworkType())
+if err != nil {
+    panic(err)
+}
+
+accountInfo, err := client.Account.GetAccountInfo(context.Background(), address)
+if err != nil {
+    panic(err)
+}
+
+fmt.Println(accountInfo.Mosaics[0].Amount)
+```
+
 <!--TypeScript-->
 
 ```ts
+
+import { mergeMap, map } from 'rxjs/operators';
+
 const url = 'http://localhost:3000';
 const accountHttp = new AccountHttp(url);
 const mosaicHttp = new MosaicHttp(url);
@@ -86,6 +134,12 @@ mosaicService
 
 <!--JavaScript-->
 ```js
+// es5
+var { mergeMap, map } = require('rxjs/operators'); 
+
+// es6
+import { mergeMap, map } from 'rxjs/operators';
+
 const url = 'http://localhost:3000';
 const accountHttp = new AccountHttp(url);
 const mosaicHttp = new MosaicHttp(url);
@@ -103,13 +157,10 @@ mosaicService
         err => console.error(err));
 ```
 
-<!--Bash-->
+<!--CLI-->
 ```sh
 xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## What’s next?
-
-Retrieve the balance by only [filtering the prx:xpx](https://www.learnrxjs.io/operators/filtering/filter.html) amount.

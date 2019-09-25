@@ -51,26 +51,32 @@ class Footer extends React.Component {
         </section>
 
         <section className="sitemap">
-          
+
           <div>
             <h5>Protocol</h5>
-            <a href={this.docUrl('protocol/cryptography')}>
-              Cryptography
-            </a>
-            <a href={this.docUrl('protocol/transaction')}>
-              Transaction
-            </a>
             <a href={this.docUrl('protocol/block')}>
               Block
             </a>
-            <a href={this.docUrl('protocol/harvesting')}>
-              Harvesting
+            <a href={this.docUrl('protocol/consensus-algorithms')}>
+              Consensus Algorithms
+            </a>
+            <a href={this.docUrl('protocol/cryptography')}>
+              Cryptography
+            </a>
+            <a href={this.docUrl('protocol/inflation')}>
+              Inflation
+            </a>
+            <a href={this.docUrl('protocol/node')}>
+              Node
             </a>
             <a href={this.docUrl('protocol/receipt')}>
               Receipt
             </a>
-            <a href={this.docUrl('protocol/node')}>
-              Node
+            <a href={this.docUrl('protocol/transaction')}>
+              Transaction
+            </a>
+            <a href={this.docUrl('protocol/validating')}>
+              Validating
             </a>
           </div>
           <div>
@@ -81,23 +87,29 @@ class Footer extends React.Component {
             <a href={this.docUrl('built-in-features/account-filter')}>
               Account Filter
             </a>
+            <a href={this.docUrl('built-in-features/aggregate-transaction')}>
+              Aggregate Transaction
+            </a>
+            <a href={this.docUrl('built-in-features/cross-chain-swaps')}>
+              Cross-Chain Swaps
+            </a>
+            <a href={this.docUrl('built-in-features/metadata')}>
+              Metadata
+            </a>
+            <a href={this.docUrl('built-in-features/mosaic')}>
+              Mosaic
+            </a>
             <a href={this.docUrl('built-in-features/multisig-account')}>
               Multisig Account
             </a>
             <a href={this.docUrl('built-in-features/namespace')}>
               Namespace
             </a>
-            <a href={this.docUrl('built-in-features/mosaic')}>
-              Mosaic
+            <a href={this.docUrl('built-in-features/super-contracts')}>
+              Super contract
             </a>
             <a href={this.docUrl('built-in-features/transfer-transaction')}>
               Transfer Transaction
-            </a>
-            <a href={this.docUrl('built-in-features/aggregate-transaction')}>
-              Aggregate Transaction
-            </a>
-            <a href={this.docUrl('built-in-features/cross-chain-swaps')}>
-              Cross-Chain Swaps
             </a>
           </div>
           <div>
@@ -105,18 +117,7 @@ class Footer extends React.Component {
             <h5>References</h5>
             <a href={this.docUrl('rest-api/rest-api-overview')}>REST API</a>
             <a href={this.docUrl('sdks/languages')}>SDKs</a>
-            <a href={this.docUrl('sdks/extending-ProximaX-capabilities')}>Libraries</a>
             <a href={this.docUrl('client/client-overview')}>XPX-Chain-CLI</a>
-            <a
-              className="github-button"
-              href={this.props.config.repoUrl}
-              data-icon="octicon-star"
-              data-count-href="/facebook/docusaurus/stargazers"
-              data-show-count="true"
-              data-count-aria-label="# stargazers on GitHub"
-              aria-label="Star this project on GitHub">
-              Star
-            </a>
           </div>
         </section>
 

@@ -2,15 +2,16 @@
 id: registering-a-namespace
 title: Registering a namespace
 ---
-This guide will help you register your own [namespace](../../built-in-features/namespace.md).
+
+Register your own [namespace](../../built-in-features/namespace.md).
 
 ## Background Information 
 
-A [namespace](../../built-in-features/namespace.md) is an on-chain unique domain for your assets. The easiest way to understand it is by means of the domain-file analogy on the internet.
+Namespaces allow you to create an on-chain **unique place** for your business and your assets on the Sirius Chain.
 
-A mosaic is like a file hosted on a domain and represents an asset. Like a website and directory, a mosaic can have the same name as other files on other domains. However, a namespace and a mosaic is always unique.
+A namespace starts with a name that you choose, similar to an internet domain name. If one [account](../../built-in-features/account.md) creates a namespace, that will appear as unique in the network.
 
-If an [account](../../built-in-features/account.md) creates a namespace, that namespace will appear as unique in the Sirius Chain ecosystem. For example, if one were to create a namespace called `foo`, a second person cannot create the same namespace.
+An account can link a registered name (namespace or subnamespace) with an account or a [ mosaic ](../../built-in-features/mosaic.md) identifier.
 
 ## Prerequisites
 
@@ -19,13 +20,33 @@ If an [account](../../built-in-features/account.md) creates a namespace, that na
 - A text editor or IDE.
 - An account with XPX.
 
-## Let’s do some coding!
+## Getting into some code
 
-Register your namespace by choosing a name you like. One common option is to use your company’s or own name. In this example, we will register a namespace called `foo`.
-
-1. Check if this nampespace name is available.
+1. Choose a name you like. One common option is to use your company’s or own name. In this example, we will register a namespace called `foo`.
+2. Check if this namespace name is available.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+namespaceId, err := sdk.NewNamespaceIdFromName("foo")
+if err != nil {
+    panic(err)
+}
+
+namespaceInfo, err := client.Namespace.GetNamespaceInfo(context.Background(), namespaceId)
+if err != nil {
+    panic(err)
+}
+```
+
 <!--TypeScript-->
 ```js
 const namespaceHttp = new NamespaceHttp('http://localhost:3000');
@@ -52,15 +73,15 @@ namespaceHttp
 ```java
 final NamespaceId namespaceId = new NamespaceId("foo");
 
-        final NamespaceHttp namespaceHttp = new NamespaceHttp("http://localhost:3000");
+final NamespaceHttp namespaceHttp = new NamespaceHttp("http://localhost:3000");
 
-        final NamespaceInfo namespaceInfo = namespaceHttp.getNamespace(namespaceId).toFuture().get();
+final NamespaceInfo namespaceInfo = namespaceHttp.getNamespace(namespaceId).toFuture().get();
 
-        System.out.println(namespaceInfo);
+System.out.println(namespaceInfo);
 ```
 
-<!--Bash-->
-```bash
+<!--CLI-->
+```sh
 xpx2-cli namespace info --name foo
 ```
 
@@ -72,11 +93,45 @@ xpx2-cli namespace info --name foo
 
 **Note:**
 
-In Sirius Chain, Sirius Chain blocks are complete every `15` seconds in average.
+In Sirius Chain, blocks are complete every `15` seconds in average. You will have to renew your namespace before it expires.
 
 </div>
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+// Create an account from a private key
+account, err := client.NewAccountFromPrivateKey(os.Getenv("PRIVATE_KEY"))
+if err != nil {
+    panic(err)
+}
+
+// Create a new namespace type transaction
+transaction, err := client.NewRegisterRootNamespaceTransaction(
+    // The maximum amount of time to include the transaction in the blockchain.
+    sdk.NewDeadline(time.Hour),
+    // Name of namespace
+    "foo",
+    // Duration of namespace life in blocks
+    sdk.Duration(1000),
+)
+if err != nil {
+    panic(err)
+}
+
+// Sign transaction
+signedTransaction, err := account.Sign(transaction)
+if err != nil {
+    panic(err)
+}
+
+// Announce transaction
+_, err = client.Transaction.Announce(context.Background(), signedTransaction)
+if err != nil {
+    panic(err)
+}
+```
+
 <!--TypeScript-->
 ```js
 const transactionHttp = new TransactionHttp('http://localhost:3000');
@@ -92,7 +147,7 @@ const registerNamespaceTransaction = RegisterNamespaceTransaction.createRootName
     UInt64.fromUint(1000),
     NetworkType.TEST_NET);
 
-const signedTransaction = account.sign(registerNamespaceTransaction);
+const signedTransaction = account.sign(registerNamespaceTransaction, generationHash);
 
 transactionHttp
     .announce(signedTransaction)
@@ -114,7 +169,7 @@ const registerNamespaceTransaction = RegisterNamespaceTransaction.createRootName
     UInt64.fromUint(1000),
     NetworkType.TEST_NET);
 
-const signedTransaction = account.sign(registerNamespaceTransaction);
+const signedTransaction = account.sign(registerNamespaceTransaction, generationHash);
 
 transactionHttp
     .announce(signedTransaction)
@@ -124,37 +179,29 @@ transactionHttp
 <!--Java-->
 ```java
     // Replace with private key
-    final String privateKey = "";
+    final String privateKey = "<privateKey>";
 
     final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
     // Replace with namespace name
     final String namespaceName = "foo";
 
-    final RegisterNamespaceTransaction registerNamespaceTransaction = RegisterNamespaceTransaction.createRootNamespace(
-        Deadline.create(2, ChronoUnit.HOURS),
-        namespaceName,
-        BigInteger.valueOf(1000),
-        NetworkType.TEST_NET
-    );
+    final RegisterNamespaceTransaction registerNamespaceTransaction = new TransactionBuilderFactory()
+            .registerNamespace().rootNamespace(namespaceName)
+            .duration(BigInteger.valueOf(1000))
+            .deadline(new Deadline(2, ChronoUnit.HOURS))
+            .networkType(NetworkType.TEST_NET).build();
 
-    final SignedTransaction signedTransaction = account.sign(registerNamespaceTransaction);
+    final SignedTransaction signedTransaction = account.sign(registerNamespaceTransaction, generationHash);
 
     final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
 
     transactionHttp.announce(signedTransaction).toFuture().get();
 ```
 
-<!--Bash-->
-```bash
-xpx2-cli transaction namespace --name foo --rootnamespace --duration 1000
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ## What’s next?
 
-Now that you have registered your namespace, check how you can [create mosaics](../mosaic/creating-a-mosaic.md).
-
-When the transaction is confirmed, you can [register a subnamespace](../namespace/registering-a-subnamespace.md) following the next guide.
+When the transaction is confirmed, [register a subnamespace](../namespace/registering-a-subnamespace.md) following the next guide.
 

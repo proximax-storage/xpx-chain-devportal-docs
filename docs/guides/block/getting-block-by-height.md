@@ -2,19 +2,37 @@
 id: getting-block-by-height
 title: Getting block by height
 ---
-This guide will help you get the [block](../../protocol/block.md) information given a height.
+
+Get the [block](../../protocol/block.md) information given a height.
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
-- Text editor or IDE.
-- XPX-Chain-SDK or XPX-Chain-CLI.
+- Text editor or IDE
+- XPX-Chain-SDK or XPX-Chain-CLI
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
 
-## Let’s do some coding!
+## Getting into some code
 
 Are you curious to see what happened in the genesis block?
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+block, err := client.Blockchain.GetBlockByHeight(context.Background(), sdk.Height(1))
+if err != nil {
+    panic(err)
+}
+fmt.Printf(block.String())
+```
+
 <!--TypeScript-->
 ```js
 const blockchainHttp = new BlockchainHttp('http://localhost:3000');
@@ -48,11 +66,29 @@ blockchainHttp
 
     System.out.print(blockInfo);
 ```
+
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 The following snippet returns the height of the latest block.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+height, err := client.Blockchain.GetBlockchainHeight(context.Background())
+if err != nil {
+    panic(err)
+}
+fmt.Printf("%s\n", height)
+```
+
 <!--TypeScript-->
 ```js
 const blockchainHttp = new BlockchainHttp('http://localhost:3000');
@@ -80,9 +116,10 @@ blockchainHttp
     System.out.print(blockchainHeight);
 ```
 
-<!--Bash-->
+<!--CLI-->
 ```sh
 xpx2-cli blockchain height
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
+

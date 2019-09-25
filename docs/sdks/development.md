@@ -4,27 +4,28 @@ title: SDK Development
 ---
 A key objective in SDK Development is the interoperability that becomes a natural design of the XPX-Chain-SDK. This guideline will show how to collaborate creating a XPX-Chain-SDK, achieving the best quality with the less effort.
 
-## Learning about Sirius Chain (Sirius Chain)
+## Learning about Sirius Chain
 
 In case you haven’t used XPX-Chain-SDK or Sirius Chain in general, you need to do the following:
 
 1. Review the technical documentation to become familiar with the [Sirius Chain built-in features](../built-in-features/account.md).
-2. Setup the [Sirius Chain in local environment via docker](#) or enroll the [beta program](#) to access a Sirius Chain Test Net without the need to run it yourself.
+2. Setup the [Sirius Chain in local environment via docker](../getting-started/setting-up-workstation.md) or enroll the [beta program](../getting-started/setting-up-workstation.md) to access a Sirius Chain Test Net without the need to run it yourself.
 3. [Check the API reference](../rest-api/overview.md#requests) and play with the API endpoints.
-4. Become familiar with the current [xpx-chain-sdk via code examples](../built-in-features/account.md) and [xpx-chain-cli](../client/overview.md) .
+4. Become familiar with the current [xpx-chain-sdk via code examples](../guides/overview.md) & [xpx-chain-cli](../client/overview.md) .
 
-<!-- (5. [Join](https://join.slack.com/t/xpx-chain/shared_invite/enQtMzY4MDc2NTg0ODgyLTFhZjgxM2NhYTQ1MTY1Mjk0ZDE2ZTJlYzUxYWYxYmJlYjAyY2EwNGM5NzgxMjM4MGEzMDc5ZDIwYTgzZjgyODM) our Slack to ask ProximaX Sirius-Chain related questions.)
+<!-- (5. [Join](https://join.slack.com/t/xpx-chain/shared_invite/enQtMzY4MDc2NTg0ODgyLTFhZjgxM2NhYTQ1MTY1Mjk0ZDE2ZTJlYzUxYWYxYmJlYjAyY2EwNGM5NzgxMjM4MGEzMDc5ZDIwYTgzZjgyODM) our Slack to ask ProximaX Sirius Chain related questions.)
 -->
 
 ## Development
 
-You can base your work in [TypeScript](https://github.com/proximax-storage/tsjs-xpx-chain-sdk) and [Java](https://github.com/proximax-storage/java-xpx-chain-sdk) SDKs. The TypeScript version is the first SDK to receive the latest updates. Meanwhile, Java takes longer to be updated.
+You can base your work in [GO](https://github.com/proximax-storage/go-xpx-chain-sdk) and [Java](https://github.com/proximax-storage/java-xpx-chain-sdk) SDKs. Meanwhile, Java takes longer to be updated.
 
-Unfortunately, TypeScript version has one specific implementation detail, the low level implementation is separated from the SDK, called [js-xpx-chain-library](https://github.com/proximax-storage/js-xpx-chain-library). There is a need to create this low-level library to perform specific chain testing.
+GO sdk uses [crypto library](https://github.com/proximax-storage/go-xpx-crypto) to sign transactions and [utils](https://github.com/proximax-storage/go-xpx-utils) to simplify usage of some commands.
+The structure of SDK is not defined, but you can find [implementation of all transactions](https://github.com/proximax-storage/go-xpx-chain-sdk/blob/master/sdk/transaction_model.go), [websockets and notifications](https://github.com/proximax-storage/go-xpx-chain-sdk/tree/master/sdk/websocket), [examples transaction's usage](https://github.com/proximax-storage/go-xpx-chain-sdk/tree/master/test/integration) and [sdk's API](https://github.com/proximax-storage/go-xpx-chain-sdk/blob/master/sdk/sdk.go).
 
 **The SDKs you create does not require this separate implementation.**
 
-Regularly check the [Changelog](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/CHANGELOG.md) to be sure you have not missed any code change update.
+Regularly check the [releases](https://github.com/proximax-storage/go-xpx-chain-sdk/releases) to be sure you didn’t miss any code change update.
 
 ## Precautions:
 
@@ -34,9 +35,9 @@ Regularly check the [Changelog](https://github.com/proximax-storage/java-xpx-cha
 
 ## Creating the project
 
-1. Add a README with the instructions to install the SDK. Find `here a template`.
-2. Add a [Code of Conduct](https://help.github.com/articles/adding-a-code-of-conduct-to-your-project/). Find `here an example`.
-3. Add a [Contributors guidelines](https://help.github.com/articles/setting-guidelines-for-repository-contributors/) to help others know how they can help you. Find `here a CONTRIBUTING.md template`.
+1. Add a README with the instructions to install the SDK.
+2. Add a [Code of Conduct](https://help.github.com/articles/adding-a-code-of-conduct-to-your-project/).
+3. Add a [Contributors guidelines](https://help.github.com/articles/setting-guidelines-for-repository-contributors/) to help others know how they can help you.
 4. Setup the Continuous Integration system. We use [travis-ci](https://travis-ci.org/), but feel free to use the one suits you best.
 
 A project with good test coverage is more likely to be used and trusted by the developers.
@@ -47,7 +48,7 @@ We **strongly** suggest you that you do the [Test-Driven Development](https://en
 
 The API generation can be done with [Swagger Codegen](https://swagger.io/tools/swagger-codegen/). It supports multiple languages. Hopefully, yours in the list.
 
-The API swagger file definition can be found [here](/download/swagger.yaml).
+The API swagger file definition can be found [here](https://github.com/proximax-storage/js-xpx-chain-rest/blob/master/swagger.yaml).
 
 [Java example](https://github.com/proximax-storage/java-xpx-chain-sdk/tree/master/src/main/java/io/proximax/sdk/infrastructure). The code generated by swagger are the `DTOs`.
 
@@ -55,12 +56,12 @@ We drop the client classes and instead we implement them using the [Repository p
 
 List of interfaces:
 
-- [AccountRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/AccountRepository.java)
-- [BlockchainRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/BlockchainRepository.java)
-- [MosaicRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/MosaicRepository.java)
-- [NamespaceRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/NamespaceRepository.java)
-- [NetworkRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/NetworkRepository.java)
-- [TransferRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/TransactionRepository.java)
+- [AccountRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/AccountHttp.java)
+- [BlockchainRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/BlockchainHttp.java)
+- [MetadataRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/MetadataHttp.java)
+- [MosaicRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/MosaicHttp.java)
+- [NamespaceRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/NamespaceHttp.java)
+- [TransferRepository](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/TransactionHttp.java)
 
 Check the [HTTP implementations](https://github.com/proximax-storage/java-xpx-chain-sdk/blob/master/src/main/java/io/proximax/sdk/infrastructure/AccountHttp.java) in case you doubt about some API endpoint.
 
@@ -158,11 +159,11 @@ This section is incomplete.
 
 SDKs need to be adopted by other developers. As a contributor, no one knows better than you how a determined SDK works. Provide the content for its documentation to help spread the use of your SDK. [the following documentation](./documentation.md).
 
-[comment]: # (## Publishing the SDK as official
+### Publishing the SDK as official
 
 When you open-source your code, [submit the repository to this page](./languages.md).
 
-To become an accepted SDK, it should be proposed as a [NIP](https://github.com/proximax-storage/NIP/blob/master/NIPs/nip-0001.md). The reason behind the XPX Improvement Proposal is to ensure that the new libraries are reviewed, tested and shared among Sirius-Chain developers.)
+To become an accepted SDK, it should be proposed as a [NIP](https://github.com/proximax-storage/NIP/blob/master/NIPs/nip-0001.md). The reason behind the XPX Improvement Proposal is to ensure that the new libraries are reviewed, tested and shared among Sirius Chain developers.)
 
 ## SDK Updates
 

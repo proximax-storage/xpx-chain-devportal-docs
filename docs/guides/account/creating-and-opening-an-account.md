@@ -1,5 +1,5 @@
 ---
-id: create-open-account
+id: creating-and-opening-an-account
 title: Creating and opening an account
 ---
 This guide will help you create a new [account](../../built-in-features/account.md) and open it.
@@ -10,27 +10,48 @@ This guide will help you create a new [account](../../built-in-features/account.
 - Text editor or IDE.
 - XPX-Chain-SDK or XPX-Chain-CLI.
 
-## Let’s do some coding!
+## Getting into some code
 
-An account is a key pair, private and public key, associated to a mutable state stored in the Sirius Chain.
+An account is a key pair (private and public key) associated with a mutable state stored in the Sirius Chain.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+keyPair, _ := crypto.NewRandomKeyPair()
+
+fmt.Printf("PublicKey:\t%x\n", keyPair.PublicKey.Raw)
+fmt.Printf("PrivateKey:\t%x", keyPair.PrivateKey.Raw)
+```
+
 <!--TypeScript-->
 
 ```ts
 const account = Account.generateNewAccount(NetworkType.TEST_NET);
 
-console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
+console.log('Address:', account.address.pretty());
+console.log('PrivateKey:', account.privateKey);
+console.log('PublicKey:', account.publicKey);
 ```
 
 <!--JavaScript-->
 ```js
 const account = Account.generateNewAccount(NetworkType.TEST_NET);
 
-console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
+console.log('Address:', account.address.pretty());
+console.log('PrivateKey:', account.privateKey);
+console.log('PublicKey:', account.publicKey);
 ```
 
-<!--Bash-->
+<!--Java-->
+```java
+final Account account = Account.generateNewAccount(NetworkType.TEST_NET);
+
+System.out.printf("Address: '%S' %n", account.getAddress());
+System.out.printf("PrivateKey: '%S' %n", account.getPrivateKey());
+System.out.printf("PublicKey: '%S' %n", account.getPublicKey());
+```
+
+<!--CLI-->
 ```sh
 xpx2-cli account generate --network TEST_NET
 ```
@@ -44,6 +65,15 @@ The **public key** is cryptographically derived from the private key and safe to
 If you already have a private key, it is not necessary to generate a new account:
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+account, _ := sdk.NewAccountFromPrivateKey("...", sdk.TEST_NET)
+
+fmt.Printf("Address:\t%v\n", account.Address)
+fmt.Printf("PrivateKey:\t%x\n", account.KeyPair.PrivateKey.Raw)
+fmt.Printf("PublicKey:\t%x", account.KeyPair.PublicKey.Raw)
+```
+
 <!--TypeScript-->
 
 ```ts
@@ -52,7 +82,9 @@ const privateKey = process.env.PRIVATE_KEY as string;
 
 const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
+console.log('Address:', account.address.pretty());
+console.log('PrivateKey:', account.privateKey);
+console.log('PublicKey:', account.publicKey);
 ```
 
 <!--JavaScript-->
@@ -62,15 +94,21 @@ const privateKey = process.env.PRIVATE_KEY;
 
 const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
+console.log('Address:', account.address.pretty());
+console.log('PrivateKey:', account.privateKey);
+console.log('PublicKey:', account.publicKey);
 ```
 
 <!--Java-->
 ```java
     // Replace with a private key
-    final String privateKey = "";
+    final String privateKey = "<private_key>";
 
     final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+    System.out.printf("Address: '%S' %n", account.getAddress());
+    System.out.printf("PrivateKey: '%S' %n", account.getPrivateKey());
+    System.out.printf("PublicKey: '%S' %n", account.getPublicKey());
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -105,11 +143,6 @@ const account = wallet.open(password);
 console.log('Your new account address is:', account.address.pretty(), 'and its private key', account.privateKey);
 ```
 
-<!--Bash-->
-```sh
-xpx2-cli account generate --network TEST_NET --save --url http://localhost:3000 --profile test
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 Do you have a private key? You can create and open a wallet importing your private key.
@@ -142,11 +175,6 @@ const wallet = SimpleWallet.createFromPrivateKey('wallet-name', password, privat
 const account = wallet.open(password);
 
 console.log('Your account address is:', account.address.pretty(), 'and its private key', account.privateKey);
-```
-
-<!--Bash-->
-```sh
-xpx2-cli profile create --privatekey your_private_key --network TEST_NET --url http://localhost:3000 --profile test
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

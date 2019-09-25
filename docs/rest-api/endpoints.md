@@ -9,7 +9,7 @@ title: Endpoints
 <div id="redoc"></div>
 
 <script>
-Redoc.init('../../downloads/openapi3.yaml', {
+Redoc.init('../../downloads/swagger.yaml', {
       scrollYOffset: '101',
       hideLoading: true,
       suppressWarnings: true,

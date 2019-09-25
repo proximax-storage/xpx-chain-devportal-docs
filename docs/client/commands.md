@@ -211,7 +211,7 @@ $> xpx2-cli transaction info --hash AF92D0A1DC40F786DF455A54F3754E6ACBCEC1B59064
 
 To announce a [transfer transaction](../built-in-features/transfer-transaction.md#transfertransaction) to an account exchanging value and/or data. For this transaction provide recipient, message and [mosaics](../built-in-features/mosaic.md).
 
-You can send `multiple mosaics` splitting them with a comma, e.g: prx:xpx::10,nps:msc::10. The `mosaic amount` after :: is in `absolute value` so 1 XPX is 1000000.
+You can send `multiple mosaics` splitting them with a comma, e.g: xpx::10,nps:msc::10. The `mosaic amount` after :: is in `absolute value` so 1 XPX is 1000000.
 
 **Options**
 
@@ -221,7 +221,7 @@ You can send `multiple mosaics` splitting them with a comma, e.g: prx:xpx::10,np
 
 **Command**
 ```
-$> xpx2-cli transaction transfer --recipient SDBDG4-IT43MP-CW2W4C-BBCSJJ-T42AYA-LQN7A4-VVWL --message "payout of 10 xpx" --mosaics prx:xpx::10000000
+$> xpx2-cli transaction transfer --recipient SDBDG4-IT43MP-CW2W4C-BBCSJJ-T42AYA-LQN7A4-VVWL --message "payout of 10 xpx" --mosaics xpx::10000000
 ```
 
 ### Send pull transaction
@@ -237,7 +237,7 @@ To request [mosaics](../built-in-features/mosaic.md) from an account. The other 
 **Command**
 
 ```
-$> xpx2-cli transaction pullfunds --recipient SDBDG4-IT43MP-CW2W4C-BBCSJJ-T42AYA-LQN7A4-VVWL --message "invoice 10 xpx" --mosaic prx:xpx::10000000
+$> xpx2-cli transaction pullfunds --recipient SDBDG4-IT43MP-CW2W4C-BBCSJJ-T42AYA-LQN7A4-VVWL --message "invoice 10 xpx" --mosaic xpx::10000000
 ```
 
 ### Register root namespace
@@ -314,7 +314,7 @@ $> xpx2-cli namespace info --uint [929036875,2226345261]
 
 ### Info
 
-To get information from a [mosaic](../built-in-features/mosaic.md), use this command providing the mosaic identifier name in the form of namespaceName:mosaicName (ex: prx:xpx) or the mosaic uint ID in the form of [3646934825,3576016193].
+To get information from a [mosaic](../built-in-features/mosaic.md), use this command providing the mosaic identifier name in the form of namespaceName:mosaicName (ex: xpx) or the mosaic uint ID in the form of [3646934825,3576016193].
 
 **Options**
 
@@ -323,7 +323,7 @@ To get information from a [mosaic](../built-in-features/mosaic.md), use this com
 
 **Command**
 ```
-$> xpx2-cli mosaic info --name prx:xpx
+$> xpx2-cli mosaic info --name xpx
 ```
 
 ## Monitoring

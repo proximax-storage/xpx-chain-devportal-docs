@@ -2,25 +2,50 @@
 id: asking-for-mosaics-with-aggregate-bonded-transaction
 title: Asking for mosaics with aggregate-bonded transaction
 ---
-This guide will help you ask an account to send you funds using an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md).
+
+Ask an account to send you funds using an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md).
 
 ## Prerequisites
 
-- Finish [creating an escrow with aggregate bonded transaction guide](./creating-an-escrow-with-aggregate-bonded-transaction.md).
-- A text editor or IDE.
-- An account with XPX.
+- A text editor or IDE
+- An account with XPX
+- Finish [creating an escrow with aggregate bonded transaction guide](./creating-an-escrow-with-aggregate-bonded-transaction.md)
+- Have account with `xpx`
 
-## Let’s do some coding!
+## Getting into some code
 
 ![Aggregate asking for mosaics](/img/aggregate-asking-for-mosaics.png "Aggregate asking for mosaics")
 
 <p class=caption>Asking for mosaics with an aggregate bonded transaction</p>
 
-Alice wants to ask Bob for 20 XPX.
+Bob wants to ask Alice for `20 xpx`.
 
 1. Set up both Alice’s and Bob’s accounts.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+alicePrivateKey := os.Getenv("PRIVATE_KEY")
+aliceAccount, err := client.NewAccountFromPrivateKey(alicePrivateKey)
+if err != nil {
+    panic(err)
+}
+
+bobPublicKey := "F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D";
+bobAccount, err := client.NewAccountFromPublicKey(bobPublicKey)
+if err != nil {
+    panic(err)
+}
+```
+
 <!--TypeScript-->
 ```js
 const nodeUrl = 'http://localhost:3000';
@@ -72,19 +97,23 @@ class AskingForMosaicsWithAggregateBondedTransaction {
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-2. Alice creates an aggregate bonded transaction with two inner transactions:
+2. Create an aggregate bonded transaction with two inner transactions:
 
 <div class=cap-alpha-ol>
 
-- Define the first inner [transfer transaction](../../built-in-features/transfer-transaction.md#transfertransaction):
+1. From Bob to Alice with the message `send me 20 xpx`
 
 </div>
 
-- message: “message reason” (custom, but not empty)
-- receiver: Bob address
-- signer: Alice
-
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+transferTransaction1, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), aliceAccount.PublicAccount.Address, []*sdk.Mosaic{}, sdk.NewPlainMessage("send me 20 XPX"))
+if err != nil {
+    panic(err)
+}
+transferTransaction1.ToAggregate(bobAccount)
+```
 
 <!--TypeScript-->
 ```js
@@ -121,16 +150,18 @@ const transferTransaction1 = TransferTransaction.create(
 
 <div class=cap-alpha-ol>
 
-- Define the second inner [transfer transaction](../../built-in-features/transfer-transaction.md#transfertransaction):
+2. From Alice to Bob sending `20 xpx`
 
 </div>
-
-- message: empty
-- receiver: Alice address
-- mosaics: 20 XPX
-- signer: Bob
-
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+transferTransaction2, err := client.NewTransferTransaction(sdk.NewDeadline(time.Hour), bobAccount.Address, []*sdk.Mosaic{sdk.XpxRelative(20)}, sdk.NewPlainMessage(""))
+if err != nil {
+    panic(err)
+}
+transferTransaction2.ToAggregate(aliceAccount.PublicAccount)
+```
 
 <!--TypeScript-->
 ```js
@@ -165,9 +196,17 @@ const transferTransaction2 = TransferTransaction.create(
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-3. Wrap the defined transactions in an aggregate bonded transaction:
+3. Wrap the defined transactions in an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md):
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+aggregateTransaction, err := client.NewBondedAggregateTransaction(sdk.NewDeadline(time.Hour), []sdk.Transaction{transferTransaction1, transferTransaction2})
+if err != nil {
+    panic(err)
+}
+```
+
 <!--TypeScript-->
 ```js
 const aggregateTransaction = AggregateTransaction.createBonded(
@@ -176,7 +215,7 @@ const aggregateTransaction = AggregateTransaction.createBonded(
         transferTransaction2.toAggregate(bobAccount)],
     NetworkType.TEST_NET);
 
-const signedTransaction = aliceAccount.sign(aggregateTransaction);
+const signedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
 ```
 
 <!--JavaScript-->
@@ -187,25 +226,60 @@ const aggregateTransaction = AggregateTransaction.createBonded(
         transferTransaction2.toAggregate(bobAccount)],
     NetworkType.TEST_NET);
 
-const signedTransaction = aliceAccount.sign(aggregateTransaction);
+const signedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
 ```
 
 <!--Java-->
 ```java
-    final TransferTransaction transferTransaction2 = TransferTransaction.create(
-        Deadline.create(2, HOURS),
-        aliceAccount.getAddress(),
-        Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(20))),
-        PlainMessage.Empty,
-        NetworkType.TEST_NET
-    );
+    final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateBonded()
+            .innerTransactions(Arrays.asList(
+                    transferTransaction1.toAggregate(aliceAccount.getPublicAccount()),
+                    transferTransaction2.toAggregate(bobPublicAccount)
+            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
+
+    final SignedTransaction aggregateSignedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-4. Alice signs the aggregate bonded transaction and announces it to the network, locking first 10 XPX.
+4. Sign the aggregate bonded transaction with Alice’s account and announce it to the network. Remember to [lock 10 nativeCurrency](../../built-in-features/aggregate-transaction.md#hashlocktransaction) first. Alice will recover the locked mosaics if the aggregate transaction completes.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+signedAggregateBoundedTransaction, err := aliceAccount.Sign(aggregateTransaction)
+if err != nil {
+    panic(err)
+}
+
+lockFundsTransaction, err := client.NewLockFundsTransaction(
+    sdk.NewDeadline(time.Hour),
+    sdk.XpxRelative(10),
+    sdk.Duration(1000),
+    signedAggregateBoundedTransaction
+)
+if err != nil {
+    panic(err)
+}
+
+signedLockFundsTransaction, err := aliceAccount.Sign(lockFundsTransaction)
+if err != nil {
+    panic(err)
+}
+
+_, err = client.Transaction.Announce(context.Background(), signedLockFundsTransaction)
+if err != nil {
+    panic(err)
+}
+
+time.Sleep(time.Second * 30)
+
+_, err = client.Transaction.AnnounceAggregateBonded(context.Background(), signedAggregateBoundedTransaction)
+if err != nil {
+    panic(err)
+}
+```
+
 <!--TypeScript-->
 ```js
 const lockFundsTransaction = LockFundsTransaction.create(
@@ -215,7 +289,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
     signedTransaction,
     NetworkType.TEST_NET);
 
-const lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction);
+const lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction, generationHash);
 
 listener.open().then(() => {
 
@@ -244,7 +318,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
     signedTransaction,
     NetworkType.TEST_NET);
 
-const lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction);
+const lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction, generationHash);
 
 listener.open().then(() => {
 
@@ -266,18 +340,16 @@ listener.open().then(() => {
 
 <!--Java-->
 ```java
-    final SignedTransaction pullTransactionSigned = aliceAccount.sign(pullTransaction);
-
     // Creating the lock funds transaction and announce it
     final LockFundsTransaction lockFundsTransaction = LockFundsTransaction.create(
         Deadline.create(2, HOURS),
         NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
-        BigInteger.valueOf(480),
-        pullTransactionSigned,
+        BigInteger.valueOf(1000),
+        aggregateSignedTransaction,
         NetworkType.TEST_NET
     );
 
-    final SignedTransaction lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction);
+    final SignedTransaction lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction, generationHash);
 
     final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
 
@@ -291,25 +363,10 @@ listener.open().then(() => {
 
     final Transaction transaction = listener.confirmed(aliceAccount.getAddress()).take(1).toFuture().get();
 
-    transactionHttp.announceAggregateBonded(pullTransactionSigned).toFuture().get();
+    transactionHttp.announceAggregateBonded(aggregateSignedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-<div class=info>
+5. If all goes well, [Bob receives a notification to cosign the transaction](../monitoring/monitoring-a-transaction-status.md). Check how to [cosign the transaction](./signing-announced-aggregate-bonded-transactions.md) with Bob's account in the following guide.
 
-**Note:**
-
-The [listener implementation changes](../monitoring/monitoring-a-transaction-status.md#troubleshooting-monitoring-transactions-on-the-client-side) when used on the client side (e.g., Angular, React, Vue).
-
-</div>
-
-If all goes well, [Bob receives a notification](../monitoring/monitoring-a-transaction-status.md).
-
-## What’s next?
-
-Bob has not cosigned the transaction yet. Consider reading [signing announced aggregate bonded transactions](./signing-announced-aggregate-bonded-transactions.md) guide.
-
-After receiving the transaction, Bob signs the `transaction hash` and announces the cosignature signed transaction.
-
-As the aggregate bonded transaction has all the cosignatures required, it will be included in a block.

@@ -2,17 +2,36 @@
 id: listening-new-blocks
 title: Listening New Blocks
 ---
-This guide will help you get notified when a new [block](../../protocol/block.md) is included.
+
+Get notified when a new [block](../../protocol/block.md) is included.
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
-- Text editor or IDE.
-- XPX-Chain-SDK or XPX-Chain-CLI.
+- Text editor or IDE
+- XPX-Chain-SDK or XPX-Chain-CLI
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
 
-## Let’s do some coding!
+## Getting into some code
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+wsClient, err := websocket.NewClient(context.Background(), conf)
+if err != nil {
+  panic(err)
+}
+
+err := wsClient.AddBlockHandlers(func(block *sdk.BlockInfo) bool {
+  fmt.Println(block.String())
+  return true
+})
+```
+
 <!--TypeScript-->
 ```js
 const listener = new Listener('http://localhost:3000');
@@ -50,19 +69,11 @@ listener.open().then(() => {
     System.out.println(blockInfo);
 ```
 
-<!--Bash-->
+<!--CLI-->
 ```sh
 xpx2-cli monitor block
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-
-<div class=info>
-
-**Note**
-
-The [listener implementation changes](../monitoring/monitoring-a-transaction-status.md#troubleshooting-monitoring-transactions-on-the-client-side) when used on the client side (e.g., Angular, React, Vue).
-
-</div>
 

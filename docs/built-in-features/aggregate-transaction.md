@@ -2,69 +2,74 @@
 id: aggregate-transaction
 title: Aggregate Transaction
 ---
-Aggregate Transactions merge multiple transactions into one, allowing **trustless swaps**, and other advanced logic. Sirius Chain does this by generating a one-time disposable smart contract. When all involved [accounts][Account] have cosigned the aggregate transaction, all the inner transactions are executed simultaneously.
- 
-## Examples of Aggregate Transacitons
-## Sending payouts
 
-Dan announces an aggregate transaction that merges two transfer transactions.
+Aggregated Transactions merge multiple transactions into one, allowing **trustless swaps**, and other advanced logic. Sirius Chain does this by generating a one-time disposable smart contract.
 
-As he is the only required signed, we say the aggregate transaction it is complete. After announcing it to the network, Alice and Bob will receive the mosaics at the same time.
+![Trustless swap](/img/aggregate-trustless-swap.png)
 
-![Aggregate sending payouts](/img/aggregate-sending-payouts.png "Aggregate sending payouts")
+<p class="caption">Example of an aggregate transaction between two participants</p>
 
-<p class="caption">Sending payouts with aggregate complete transactions</p>
+When all involved [accounts](./account.md) have cosigned the aggregate transaction, all the inner transactions are executed at the same time.
 
-## Example of Multi-Asset Escrowed Transactions
 
-Alice buys tickets. When the ticket distributor co-signs the aggregate transaction, the swap will happen atomically.
+## Aggregate complete
 
-![Aggregate escrow](/img/aggregate-escrow-1.png "Aggregate escrow")
+An aggregate transaction is *complete* when all the required participants have signed it.
 
-<p class="caption">Multi-Asset Escrowed Transactions</p>
+The cosigners can sign the transaction without using the blockchain. Once it has all the required signatures, one of them can announce it to the network. If the inner transaction setup is valid, and there is no validation error, the transactions will get executed at the same time.
 
-## Example of Paying For Others Fees
+Aggregate complete transactions enable adding more transactions per block by gathering multiple inner transactions.
 
-Alice sends ten dollars to Bob using an app that makes payments. But she doesn’t have any XPX tokens to pay the blockchain transaction fee.
-
-By creating an aggregate bonded transaction, Alice can convert USD to XPX to pay the fee. Now, Alice and Bob can use Sirius Chain without ever having to buy or hold XPX.
-
-Since the app creator can put their own branding on the open source payment app, Alice and Bob may not even know they are using blockchain.
-
-![Aggregate paying for others fees](/img/aggregate-paying-for-others-fees.png "Aggregate paying for others fees")
-
-<p class="caption">Paying for others fees</p>
-
-## Aggregate Complete
-
-The aggregate transaction is **complete** when all co-signers have signed it.
-
-Once it has all the required signatures, one of those who signed can announce it to the network. If the setup of the inner transaction setup is valid, and there is no validation error, the transactions will be executed at the same time.
-
-Aggregate complete transactions enable more transactions to be added per block by gathering multiple inner transactions between different participants in the same operation.
-
-## Aggregate Bonded
+## Aggregate bonded
 
 An aggregate transaction is **bonded** when it requires signatures from other participants.
 
-<div class=info>
+<div class="info">
 
-**Note:**
+**Note**
 
-When sending an **aggregate bonded transaction**, an account must first announce and confirm a [hash lock transaction](#hashlocktransaction) for this aggregate with at least `10` XPX.
+Before announcing an **aggregate bonded transaction**, an account must announce and get confirmed a [hash lock transaction](#hashlocktransaction) locking `10 xpx`.
 
 </div>
 
 Once an aggregate bonded is announced, it reaches partial state and notifies its status through WebSockets or HTTP API calls.
 
-Every time a cosignatory signs the transaction and [announces an aggregate bonded cosignature](#cosignature), the network checks if all the required cosigners have already signed. In this situation, the transaction changes to an unconfirmed state until the network accepts it, and it is included in a block once processed.
+Every time a cosignatory signs the transaction and [announces an aggregate bonded cosignature](#cosignature), the network checks if all the required cosigners have signed. When all signatures are acquired, the transaction changes to unconfirmed state until the network includes it in a block.
 
 ![Aggregate bonded transaction cycle](/img/aggregate-bonded-transaction-cycle.png "Aggregate bonded transaction cycle")
+<p class="caption">Aggregate bonded transaction cycle</p>
 
-<p class=caption>Aggregate bonded transaction cycle</p>
 
+## Examples
 
-## Guides on Aggregate Transactions
+### Sending payouts
+
+Dan announces an aggregate transaction that merges two transfer transactions.
+
+As Dan is the only required signatory, the transaction is considered complete after he signed. After announcing it to the network, Alice and Bob will receive the mosaics at the same time.
+
+![Aggregate sending payouts](/img/aggregate-sending-payouts.png "Aggregate sending payouts")
+<p class="caption">Sending payouts with aggregate complete transactions</p>
+
+### Multi-Asset Escrowed Transactions
+
+In this example, Alice is buying tickets with `currency.euro` [mosaic](./mosaic.md). When the ticket distributor cosigns the aggregate transaction, the swap will happen atomically.
+
+![Multi-Asset Escrowed Transactions](/img/aggregate-trustless-swap.png)
+<p class="caption">Multi-Asset Escrowed Transaction</p>
+
+### Paying for others fees
+
+Alice sends 10 `currency.euro` to Bob using an app to make payments. But Alice doesn’t own cat.currency to pay the transaction fee.
+
+By creating an aggregate bonded transaction, Alice can convert EUR to `xpx` to pay the fee. Now, Alice and Bob can use Sirius Chain without ever having to buy or hold `xpx`.
+
+Since the app creator can put their own branding on the open source payment app, Alice and Bob may not even know they are using blockchain.
+
+![Paying for others fees](/img/aggregate-paying-for-others-fees.png "Paying for others fees")
+<p class="caption">Paying for other fees</p>
+
+## Guides
 
 <div class=info>
 
@@ -90,13 +95,9 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
     How to sign announced aggregate bonded transaction that all required co-signers have not signed it yet.
 
-- [Signing announced aggregate bonded transactions automatically][Auto-sign-aggregate]
-
-    How to sign automatically transactions pending to be co-signed.
-
 - [Sending a multisig transaction][Send-multisig]
 
-    How to send a transaction involving a multisig and learn how an aggregate bonded transaction works.
+    Send a transaction involving a multisig and learn how an aggregate bonded transaction works.
 
 ## Schemas
 
@@ -165,11 +166,11 @@ If the aggregate bonded transaction duration is reached without being signed by 
 
 **Property** |	**Type** |	**Description**
 -------------|-----------|--------------------
-mosaic |	[Mosaic][Mosaic#mosaic] |	Locked mosaic, must be at least `10 prx:xpx`.
+mosaic |	[Mosaic][Mosaic#mosaic] |	Locked mosaic, must be at least `10 xpx`.
 duration |	uint64 |	The lock duration.
 hash |	32 bytes (binary) |	The aggregate bonded transaction hash that has to be confirmed before unlocking the mosaics.
 
-[Server-configurable]: https://github.com/proximax-storage/catapult-server/blob/master/resources/config-network.properties
+[Server-configurable]: https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties
 [Mosaic#mosaic]: ./mosaic.md#mosaic
 [Transaction]: ../protocol/transaction.md#transaction
 [EmbeddedTransaction]: ../protocol/transaction.md#embeddedtransaction
@@ -179,5 +180,4 @@ hash |	32 bytes (binary) |	The aggregate bonded transaction hash that has to be 
 [Aggregate-escrow]: ../guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction.md
 [Aggregate-ask-mosaic]: ../guides/aggregate-transaction/asking-for-mosaics-with-aggregate-bonded-transaction.md
 [Signing-aggregate]: ../guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions.md
-[Auto-sign-aggregate]: ../guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions-automatically.md
 [Send-multisig]: ../guides/multisig-account/sending-a-multisig-transaction.md

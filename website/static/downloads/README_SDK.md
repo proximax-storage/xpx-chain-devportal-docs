@@ -2,7 +2,7 @@
 
 # xpx-chain-sdk for <LANGUAGE_NAME>
 
-xpx-chain-sdk for <LANGUAGE_NAME> to interact with ProximaX Sirius-Chain.
+xpx-chain-sdk for <LANGUAGE_NAME> to interact with ProximaX Sirius Chain.
 
 ## Requirements
 

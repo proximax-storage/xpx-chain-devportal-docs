@@ -1,8 +1,9 @@
 ---
-id: reading-account-transactions
+id: reading-transactions-from-an-account
 title: Reading transactions from an account
 ---
-This guide will help you get the list of [transactions](../../protocol/transaction.md) where an [account](../../built-in-features/account.md) is involved.
+
+Get the list of [transactions](../../protocol/transaction.md) where an [account](../../built-in-features/account.md) is involved.
 
 ## Prerequisites
 
@@ -11,13 +12,32 @@ This guide will help you get the list of [transactions](../../protocol/transacti
 - XPX-Chain-SDK or XPX-Chain-CLI.
 - An account that has received some transaction.
 
-## Let’s do some coding!
-
-In this example, you will fetch the latest confirmed transactions for a given account using the `accountHttp` repository.
-
-By default, the SDK provides up to 10 transactions. The page size can be increased up to 100 transactions.
+## Getting into some code
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+publicKey := "..."
+
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+// Get transaction informations for transactionIds or transactionHashes
+transactions, err := client.Transaction.GetTransactions(context.Background(), []string{publicKey})
+if err != nil {
+    panic(err)
+}
+
+for _, transaction := range transactions {
+    fmt.Printf("%s\n\n", transaction.String())
+}
+```
+
 <!--TypeScript-->
 
 ```ts
@@ -47,7 +67,7 @@ accountHttp
     .subscribe(transactions => console.log(transactions), err => console.error(err));
 ```
 
-<!--Bash-->
+<!--CLI-->
 ```sh
 xpx2-cli account transactions --publickey 7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246 --numtransactions 10
 ```
@@ -75,14 +95,9 @@ System.out.print(transactions);
 
 **Note:**
 
-To filter the transactions received (incoming) from the ones sent (outgoing), check the complete [accountHttp definition](https://proximax-storage.github.io/tsjs-xpx-chain-sdk/classes/_infrastructure_accounthttp_.accounthttp.html).
+By default, the SDK provides up to 10 transactions. The page size can be increased up to 100 transactions.
 
 </div>
 
-## What’s next?
+To get more than 100 transactions, you will have to make further requests. For each additional call, add to the `QueryParams` the optional parameter `transactionId` with the latest transaction identifier known returned by the previous request.
 
-To [get more than 100 transactions](https://github.com/proximax-storage/proximax-bc-docs/blob/master/source/resources/examples/typescript/account/GettingAllConfirmedTransactions.ts), you will have to make further requests. For each additional call, add to the `QueryParams` the optional parameter `transactionId` with the latest transaction identifier known returned by the previous request.
-
-```js
-  new QueryParams(pageSize, transactions[transactions.length - 1].transactionInfo.id))
-```

@@ -1,21 +1,55 @@
 ---
-id: getting-xpx-amount-sent-to-account
+id: getting-the-amount-of-xpx-sent-to-an-account
 title: Getting the amount of XPX sent to an account
 ---
 This guide will help you check the amount of XPX you have sent to any account.
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
-- Text editor or IDE.
-- XPX-Chain-SDK or XPX-Chain-CLI.
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
+- have one account with `xpx` currency
+- have [sent mosaics](../../guides/transaction/sending-a-transfer-transaction.md) to another account
+- Text editor or IDE
+- XPX-Chain-SDK or XPX-Chain-CLI
 
-## Let’s do some coding!
+## Getting into some code
+
+In this example, we are going to check how many assets of a certain type have we sent to an account.
 
 <!--DOCUSAURUS_CODE_TABS-->
+<!--Golang-->
+```go
+conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+if err != nil {
+    panic(err)
+}
+
+// Use the default http client
+client := sdk.NewClient(nil, conf)
+
+address, err := sdk.NewAddressFromPublicKey("...", client.NetworkType())
+if err != nil {
+    panic(err)
+}
+
+accountInfo, err := client.Account.GetAccountInfo(context.Background(), address)
+if err != nil {
+    panic(err)
+}
+
+for _, mosaic := range accountInfo.Mosaics {
+    if mosaic.AssetId == sdk.XpxNamespaceId {
+      fmt.Println(mosaic.String())
+    }
+}
+```
+
 <!--TypeScript-->
 
 ```javascript
+
+import { mergeMap, map, filter, toArray } from 'rxjs/operators';
+
 const accountHttp = new AccountHttp('http://localhost:3000');
 
 const originPublicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
@@ -42,10 +76,44 @@ accountHttp
     );
 ```
 
-<!--Java-->
+<!--JavaScript-->
+
 ```javascript
+// es5
+var { mergeMap, map, filter, toArray } = require('rxjs/operators');
+
+// es6
+import { mergeMap, map, filter, toArray } from 'rxjs/operators';
+
+const accountHttp = new AccountHttp('http://localhost:3000');
+
+const originPublicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
+const originAccount = PublicAccount.createFromPublicKey(originPublicKey, NetworkType.TEST_NET);
+
+const recipientAddress = 'VDG4WG-FS7EQJ-KFQKXM-4IUCQG-PXUW5H-DJVIJB-OXJG';
+const address = Address.createFromRawAddress(recipientAddress);
+
+accountHttp
+    .outgoingTransactions(originAccount)
+    .pipe(
+        mergeMap((_) => _), // Transform transaction array to single transactions to process them
+        filter((_) => _.type === TransactionType.TRANSFER), // Filter transfer transactions
+        filter((_) => _.recipient.equals(address)), // Filter transactions from to account
+        filter((_) => _.mosaics.length === 1 && _.mosaics[0].id.equals(NetworkCurrencyMosaic.MOSAIC_ID)), // Filter xpx transactions
+        map((_) => _.mosaics[0].amount.compact() / Math.pow(10, NetworkCurrencyMosaic.DIVISIBILITY)), // Map only amount in xpx
+        toArray(), // Add all mosaics amounts into one array
+        map((_) => _.reduce((a, b) => a + b, 0))
+    )
+    .subscribe(
+        total => console.log('Total xpx send to account', address.pretty(), 'is:', total),
+        err => console.error(err)
+    );
+```
+
+<!--Java-->
+```java
         // Replace with public key
-        final String originPublicKey = "";
+        final String originPublicKey = "<public_key>";
 
         // Replace with recipient address
         final String recipientAddress = "VB2RPH-EMTFMB-KELX2Y-Q3MZTD-RV7DQG-UZEADV-CYKC";
@@ -75,7 +143,5 @@ accountHttp
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-The amount of XPX sent is displayed in your terminal.
-What’s next?
+If you want to check another mosaic different than the native currency, change `mosaicId` for the target mosaic.
 
-Repeat the example by changing filter for another [mosaic](../../built-in-features/mosaic.md).
