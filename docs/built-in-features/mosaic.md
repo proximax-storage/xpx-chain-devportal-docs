@@ -52,6 +52,16 @@ Fractional ownership, along with the ability to trade 24/7, brings additional li
 
 *Transferable*: Once the initial shares are distributed, the shares will be on the market to be traded in public. Thus, the transferability property needs to be set to `true`.
 
+## Tips 
+
+<div class="info">
+
+MosaicId is lower bracket of uint64, therefore the first mosaicId hex is represented by `00` to `7F`. 
+
+Eg. All mosaicId hex will start from `00XXXXXXXXXXXXXX` to `7FXXXXXXXXXXXXXX`.
+
+</div>
+
 ## Guides
 
 <div class=info>
