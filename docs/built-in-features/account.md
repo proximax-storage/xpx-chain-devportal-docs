@@ -15,7 +15,7 @@ Accounts have the following properties:
 
 ***Private key***
 
-A [private key](../protocol/cryptography.md#key-pair) is a key to an account. Anyone with access to the private key, ultimately has control over the account. 
+A [private key](../protocol/cryptography.md#key-pair) is a key to an account. Anyone with access to the private key, ultimately has control over the account.
 
 <div class="info">
 

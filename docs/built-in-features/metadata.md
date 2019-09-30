@@ -30,7 +30,7 @@ The target account should cosign the aggregate to record the metadata on the blo
 
 ### Adding a certificate to an account
 
-![Metadata used to attach relevant information to an asset](img/TODO.png "Metadata used to attach relevant information to an asset")
+![Metadata used to attach relevant information to an asset](/img/metadata-certificate.png "Metadata used to attach relevant information to an asset")
 
 <p class=caption>Metadata used to attach relevant information to an asset</p>
 
@@ -40,7 +40,7 @@ Alice a recent graduate and wants her educational certificate accredited to her 
 
 ### Access management
 
-![Validating metadata to restrict performing an off-chain action](img/TODO.png "Validating metadata to restrict performing an off-chain action")
+![Validating metadata to restrict performing an off-chain action](/img/metadata-access-control.png "Validating metadata to restrict performing an off-chain action")
 
 <p class=caption>Validating metadata to restrict performing an off-chain action</p>
 
