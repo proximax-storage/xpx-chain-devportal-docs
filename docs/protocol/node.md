@@ -15,7 +15,7 @@ The four-layered architecture allows developers to update any of these tiers wit
 
 **Repository**: [Sirius Chain Server](https://github.com/proximax-storage/cpp-xpx-chain)
 
-![Peer Node](/img/node-peer.jpg "Peer Node")
+![Peer Node](/img/PEER-node.jpg "Peer Node")
 <p class="caption">Peer node communication</p>
 
 The P2P nodes form the backbone of the blockchain, making the network robust since it cannot be shut down by eliminating a single entity. The role of the node is to [verify transactions](./transaction.md#transaction-validation) and [blocks](./block.md), run the consensus algorithm, create new blocks, and propagate the changes through the network.
@@ -40,7 +40,7 @@ Storing the state in memory is usually faster than using RocksDB. However, stori
 
 **Repository**: [Sirius Chain Server](https://github.com/proximax-storage/cpp-xpx-chain)
 
-![API Node](/img/node-api.jpg "API Node")
+![API Node](/img/API-node.jpg "API Node")
 <p class="caption">API node communication</p>
 
 P2P nodes can be configured to have an API layer. The primary responsibility of the API is to store the data in a readable form in MongoDB.
@@ -70,7 +70,7 @@ The broker service updates the linked MongoDB instance when:
 
 **Repository**: [Sirius Chain REST](https://github.com/proximax-storage/js-xpx-chain-rest)
 
-![REST Node](/img/node-rest.jpg "REST Node")
+![REST Node](/img/REST-node.jpg "REST Node")
 <p class="caption">REST node communication</p>
 
 The REST nodes handle [JSON API](../rest-api/overview.md) client requests. A node reads from MongoDB, formats the response, and returns it to the client. This component is also responsible for returning events to the client using [WebSockets](../rest-api/websockets.md).
