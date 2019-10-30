@@ -33,6 +33,9 @@ tags:
 - name: Node routes
   description: |
     [Node](https://bcdocs.xpxsirius.io/docs/protocol/node) related endpoints.
+- name: Config routes
+  description: |
+    Network config related endpoints
 paths:
   /account/{accountId}:
     get:
@@ -1182,6 +1185,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NodeTimeDTO'
+  /config/{height}:
+    get:
+      tags:
+      - Config routes
+      summary: Get network config information
+      description: Get network config from the chain at the given height.
+      operationId: getNetworkConfig
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          minimum: 1
+          type: integer
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetowrkConfigDTO'
+        404:
+          description: resource not found
+          content: {}
+        409:
+          description: invalid argument
+          content: {}
 components:
   schemas:
     BlockchainScoreDTO:
@@ -1724,3 +1755,20 @@ components:
       properties:
         multisig:
           $ref: '#/components/schemas/MultisigDTO'
+    NetowrkConfigDTO:
+      required:
+      - height
+      - networkConfig
+      - supportedEntityVersions
+      type: object
+      properties:
+        height:
+          $ref: '#/components/schemas/UInt64DTO' 
+        networkConfig:
+          type: string
+          description: The configuration of the network
+          example: file string...
+        supportedEntityVersions:
+          type: string
+          description: Supported Transaction Types
+          example: file string...
