@@ -28,7 +28,7 @@ if err != nil {
 // Use the default http client
 client := sdk.NewClient(nil, conf)
 
-namespaceId, err := sdk.NewNamespaceIdFromName("cat.currency")
+namespaceId, err := sdk.NewNamespaceIdFromName("xpx")
 if err != nil {
     panic(err)
 }
@@ -59,9 +59,9 @@ At this point, you might be wondering: how then can we get the accurate relation
 
 ## Getting into some code
 
-In this example, we are going to announce a transfer transaction using `cat.currency` instead of the native currency mosaic id. Once the network confirms the transaction, we will get the block height where the transaction has been recorded. With this information, we will then get the namespace-mosaic relation by looking into the block receipts’.
+In this example, we are going to announce a transfer transaction using `xpx` instead of the native currency mosaic id. Once the network confirms the transaction, we will get the block height where the transaction has been recorded. With this information, we will then get the namespace-mosaic relation by looking into the block receipts’.
 
-1. Define the mosaic you want to send. Use a linked namespace identifier (e.g. cat.currency) instead of the mosaic identifier.
+1. Define the mosaic you want to send. Use a linked namespace identifier (e.g. xpx) instead of the mosaic identifier.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -74,7 +74,7 @@ if err != nil {
 // Use the default http client
 client := sdk.NewClient(nil, conf)
 
-namespaceId, err := sdk.NewNamespaceIdFromName("cat.currency")
+namespaceId, err := sdk.NewNamespaceIdFromName("xpx")
 if err != nil {
   panic(err)
 }
@@ -135,7 +135,7 @@ if err != nil {
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-The previous snippet outputs the resolved mosaic identifier for the namespace `cat.currency` and the transaction you have just sent.
+The previous snippet outputs the resolved mosaic identifier for the namespace `xpx` and the transaction you have just sent.
 
 ```
 Resolved MosaicId:  0dc67fbe1cad29e3

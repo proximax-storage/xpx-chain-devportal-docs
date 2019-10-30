@@ -5,7 +5,7 @@ title: Consensus Algorithms
 
 ## Background Information 
 
-Like any blockchain implementation, a fair and autonomous network ecosystem will always have a consensus mechanism that determines the different participating actors for a service. Sirius- Chain uses Proof-of-Stake and Proof-of-Greed.
+Like any blockchain implementation, a fair and autonomous network ecosystem will always have a consensus mechanism that determines the different participating actors for a service. Sirius Chain uses Proof-of-Stake and Proof-of-Greed.
 
 ## NXT's Proof-of-Stake Optimisation
 
@@ -13,7 +13,7 @@ ProximaX has selected Proof-of-Stake (“PoS”) as its consensus algorithm for 
 
 ProximaX has used NXT’s PoS as a reference, as it is arguable one of the most established and mature forms of a PoS implementation.  Sirius Chain has an enhanced version of NXT’s consensus mechanism.  Firstly, parameters were discovered that gave better control over the duration required to sign (validate) a block.  And secondly, its further expansion has solved the problem of long blocks by providing a more "concentrated" block time.  The selected parameters also helps prevent zero-fee Aattacks and encourage nodes to take an average commission fee for creating a block. 
 
-In the standard version, Nxt blocks are generated every 60 seconds on average.  With ProximaX's modification, blocks are generated every 15 seconds on average.  Given that the full token supply already exists after the genesis block is validated, the blockchain state is redistributed through the inclusion of transaction fees which are awarded to an account when it successfully creates and validates a block.  This process is known as “validating”, and is similar to the mining concept found in PoW.
+In the standard version, Nxt blocks are generated every 60 seconds on average.  With ProximaX's modification, blocks are generated every `15` seconds on average.  Given that the full token supply already exists after the genesis block is validated, the blockchain state is redistributed through the inclusion of transaction fees which are awarded to an account when it successfully creates and validates a block.  This process is known as “validating”, and is similar to the mining concept found in PoW.
 
 ## Proof-of-Greed Extension
 
@@ -25,15 +25,15 @@ PoG also solves another major problem found in other blockchain networks, this b
 
 ## Zero-fee Attack
 
-If PoG’s focus is on penalizing greedy Validators, then the question that arises is whether there is a potential vulnerability if Validators behave in a complete opposite manner, by validating transactions for free.  The scenario of a Zero-fee Attack is where malicious Validators attempt to manipulate the PoG algorithm by taking zero fees, and as a result, forging the most blocks and potentially taking control of the network.  
+If PoG’s focus is on penalizing greedy *validators*, then the question that arises is whether there is a potential vulnerability if *validators* behave in a complete opposite manner, by validating transactions for free.  The scenario of a Zero-fee Attack is where malicious *validators* attempt to manipulate the PoG algorithm by taking zero fees, and as a result, forging the most blocks and potentially taking control of the network.  
 
-To combat this, mathematical parameters have been included in the PoG algorithm to ensure that Validators that take an average fee have a higher chance of forging a block.  This eliminates the possibility of a Zero-fee Attack.   
+To combat this, mathematical parameters have been included in the PoG algorithm to ensure that *validators* that take an average fee have a higher chance of forging a block.  This eliminates the possibility of a Zero-fee Attack.   
 
 ## Large-stake Attack
 
-In PoS, the wealthiest and oldest Vvalidators are more likely to be selected for validating transactions.  This could become a vulnerability for the network if a Validator with a 51% stake decides to launch a Large-stake Attack by maliciously attempting to take control of the network, earn the majority of fees, and even reverse transactions.  
+In PoS, the wealthiest and oldest *validators* are more likely to be selected for validating transactions.  This could become a vulnerability for the network if a *validator* with a 51% stake decides to launch a Large-stake Attack by maliciously attempting to take control of the network, earn the majority of fees, and even reverse transactions.  
 
-With PoG, this can be prevented.  PoG ensures that there is a fair spread when it comes to selecting and rewarding Validators, meaning that even a Validators with a small stake has a chance of having their block recorded on the blockchain. 
+With PoG, this can be prevented.  PoG ensures that there is a fair spread when it comes to selecting and rewarding *validators*, meaning that even a *validator* with a small stake has a chance of having their block recorded on the blockchain. 
 
 ![](http://latex.codecogs.com/gif.latex?N) - the number of nodes.
 
@@ -50,7 +50,7 @@ With PoG, this can be prevented.  PoG ensures that there is a fair spread when i
 where ![](http://latex.codecogs.com/gif.latex?\epsilon) is the average cost of block recording in blockchain for a validator.
 
 If ![](http://latex.codecogs.com/gif.latex?\sum^{numTr_i}_{j=1}maxFee_ij) is less than or close to the ![](http://latex.codecogs.com/gif.latex?\epsilon), then ![](http://latex.codecogs.com/gif.latex?g_i\approx1).
-In this case, the validator's behaviour strategy can be arbitrary, that is, it can take any
+In this case, the *validator*'s behaviour strategy can be arbitrary, that is, it can take any
 percentage of the maximum possible commission without reducing its probability of creating the next block.
 
 The parameter ![](http://latex.codecogs.com/gif.latex?g_i) is set by the node for the whole block in the form of two variables ![](http://latex.codecogs.com/gif.latex?\sum^{numTr_i}_{j=1}actFee_ij) and ![](http://latex.codecogs.com/gif.latex?\sum^{numTr_i}_{j=1}maxFee_ij).

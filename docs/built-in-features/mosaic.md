@@ -26,7 +26,7 @@ For example, if the mosaic has divisibility 2, to create or send 10 units (relat
 
 ## Cost
 
-The cost of creating a mosaic is configurable per network. By default, it has a cost of `500 cat.currency` plus transaction fees.
+The cost of creating a mosaic is configurable per network. By default, it has a cost of `500 xpx` plus transaction fees.
 
 ## Example
 A private company, ComfyClothingCompany, decides that it wants to go public. Instead of a traditional IPO, the company decides to do an STO to issue tokens through the Sirius Chain platform.

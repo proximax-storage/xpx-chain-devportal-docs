@@ -265,7 +265,7 @@ const signedTransaction = aliceAccount.sign(aggregateTransaction, generationHash
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-3. When an aggregate transaction is bonded, Alice will need to [lock](../../built-in-features/aggregate-transaction.md#hashlocktransaction) at least 10 `xpx`. Once the ticket distributor signs the aggregate transaction, the amount of locked cat.currency becomes available again on Alice’s account, and the exchange will get through.
+3. When an aggregate transaction is bonded, Alice will need to [lock](../../built-in-features/aggregate-transaction.md#hashlocktransaction) at least 10 `xpx`. Once the ticket distributor signs the aggregate transaction, the amount of locked xpx becomes available again on Alice’s account, and the exchange will get through.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
