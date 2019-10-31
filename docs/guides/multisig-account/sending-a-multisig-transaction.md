@@ -318,7 +318,7 @@ final SignedTransaction aggregateSignedTransaction = cosignatoryAccount.sign(agg
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-3. When an aggregate transaction is bonded, Bob needs to lock at least `10` xpx to avoid network spamming. Once all cosigners sign the transaction, the amount of cat.currency locked becomes available again in Bob’s account. After [hash lock](../../built-in-features/aggregate-transaction.md#hash-lock-transaction) transaction has been confirmed, [announce the aggregate bonded transaction](../../built-in-features/aggregate-transaction.md).
+3. When an aggregate transaction is bonded, Bob needs to lock at least `10` xpx to avoid network spamming. Once all cosigners sign the transaction, the amount of xpx locked becomes available again in Bob’s account. After [hash lock](../../built-in-features/aggregate-transaction.md#hash-lock-transaction) transaction has been confirmed, [announce the aggregate bonded transaction](../../built-in-features/aggregate-transaction.md).
 
 
 <!--DOCUSAURUS_CODE_TABS-->

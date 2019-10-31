@@ -52,6 +52,9 @@
     "Extensions": [
       "extensions/extension-overview",
       "extensions/dfms-version1-extension"
+    ],
+    "Cheat Sheet":[
+      "cheatsheet"
     ]
   },
   "guides": {

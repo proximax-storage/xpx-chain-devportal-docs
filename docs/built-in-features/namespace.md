@@ -82,6 +82,16 @@ Alice, who wants to buy the ticket, has registered the namespace `alice` and ass
 
 The ticket vendor can send 1 `ticketsales.event1.ticket` to `alice` instead of 1 `0dc67fbe1cad29e3` to `VCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6`.
 
+## Tips
+
+<div class="info">
+
+NamespaceId is upper bracket of uint64, therefore the first namespaceId hex is represented by `80` to `FF`. 
+
+Eg. All namespaceId hex will start from `80XXXXXXXXXXXXXX` to `FFXXXXXXXXXXXXXX`.
+
+</div>
+
 ## Guides
 
 - [Registering a namespace](../guides/namespace/registering-a-namespace.md)

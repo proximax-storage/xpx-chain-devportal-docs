@@ -26,7 +26,7 @@ For example, if the mosaic has divisibility 2, to create or send 10 units (relat
 
 ## Cost
 
-The cost of creating a mosaic is configurable per network. By default, it has a cost of `500 cat.currency` plus transaction fees.
+The cost of creating a mosaic is configurable per network. By default, it has a cost of `500 xpx` plus transaction fees.
 
 ## Example
 A private company, ComfyClothingCompany, decides that it wants to go public. Instead of a traditional IPO, the company decides to do an STO to issue tokens through the Sirius Chain platform.
@@ -51,6 +51,16 @@ Fractional ownership, along with the ability to trade 24/7, brings additional li
 *Supply*: ComfyClothingCompany sets the initial supply of the mosaic to a typical startup amount of `10,000,000` authorized shares. As the company grows, it could choose to increase the number of shares, so the supply mutable is set to `true`.
 
 *Transferable*: Once the initial shares are distributed, the shares will be on the market to be traded in public. Thus, the transferability property needs to be set to `true`.
+
+## Tips 
+
+<div class="info">
+
+MosaicId is lower bracket of uint64, therefore the first mosaicId hex is represented by `00` to `7F`. 
+
+Eg. All mosaicId hex will start from `00XXXXXXXXXXXXXX` to `7FXXXXXXXXXXXXXX`.
+
+</div>
 
 ## Guides
 

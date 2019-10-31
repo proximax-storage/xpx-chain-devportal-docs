@@ -23,5 +23,5 @@ In order to integrate this two technologies, we developed software development k
 TypeScript & JS |	[Repository](https://github.com/proximax-storage/tsjs-chain-xipfs-sdk ) |[Documentation](https://github.com/proximax-storage/tsjs-chain-xipfs-sdk/wiki) |	[@proximax-storage](https://github.com/proximax-storage)
 Java |	[Repository](https://github.com/proximax-storage/java-chain-xipfs-sdk) |	[Documentation](https://github.com/proximax-storage/java-chain-xipfs-sdk/wiki) |	[@proximax-storage](https://github.com/proximax-storage)
 C# 	| [Repository](https://github.com/proximax-storage/csharp-chain-xipfs-sdk/ ) 	| [Documentation](https://github.com/proximax-storage/csharp-chain-xipfs-sdk/wiki) | 	[@proximax-storage](https://github.com/proximax-storage)
-Dart | [Repository](https://github.com/proximax-storage/dart-chain-xipfs-sdk/) | [Documentation](https://github.com/proximax-storage/dart-chain-xipfs-sdk/wiki) | [@proximax-storage](https://github.com/proximax-storage)
+Dart | Not available | - | - 
 Java IPFS API | [Repository](https://github.com/proximax-storage/java-xpx-ipfs-api/) | [Documentation](https://github.com/proximax-storage/java-xpx-ipfs-api/wiki) | [@proximax-storage](https://github.com/proximax-storage)

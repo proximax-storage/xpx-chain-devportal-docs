@@ -65,7 +65,7 @@ accountHttp
         filter((_) => _.type === TransactionType.TRANSFER), // Filter transfer transactions
         map((_) => _ as TransferTransaction), // Map transaction as transfer transaction
         filter((_) => _.recipient.equals(address)), // Filter transactions from to account
-        filter((_) => _.mosaics.length === 1 && _.mosaics[0].id.equals(NetworkCurrencyMosaic.MOSAIC_ID)), // Filter xpx transactions
+        filter((_) => _.mosaics.length === 1 && _.mosaics[0].id.equals(NetworkCurrencyMosaic.NAMESPACE_ID)), // Filter xpx transactions
         map((_) => _.mosaics[0].amount.compact() / Math.pow(10, NetworkCurrencyMosaic.DIVISIBILITY)), // Map only amount in xpx
         toArray(), // Add all mosaics amounts into one array
         map((_) => _.reduce((a, b) => a + b, 0))
@@ -99,7 +99,7 @@ accountHttp
         mergeMap((_) => _), // Transform transaction array to single transactions to process them
         filter((_) => _.type === TransactionType.TRANSFER), // Filter transfer transactions
         filter((_) => _.recipient.equals(address)), // Filter transactions from to account
-        filter((_) => _.mosaics.length === 1 && _.mosaics[0].id.equals(NetworkCurrencyMosaic.MOSAIC_ID)), // Filter xpx transactions
+        filter((_) => _.mosaics.length === 1 && _.mosaics[0].id.equals(NetworkCurrencyMosaic.NAMESPACE_ID)), // Filter xpx transactions
         map((_) => _.mosaics[0].amount.compact() / Math.pow(10, NetworkCurrencyMosaic.DIVISIBILITY)), // Map only amount in xpx
         toArray(), // Add all mosaics amounts into one array
         map((_) => _.reduce((a, b) => a + b, 0))
@@ -131,7 +131,7 @@ accountHttp
                 .filter(tx -> tx.getType().equals(TransactionType.TRANSFER)) // Filter transfer transactions
                 .map(tx -> (TransferTransaction) tx) // Map transaction as transfer transaction
                 .filter(tx -> tx.getRecipient().equals(address)) // Filter transactions from to account
-                .filter(tx -> tx.getMosaics().size() == 1 && tx.getMosaics().get(0).getId().equals(NetworkCurrencyMosaic.MOSAICID)) // Filter xpx transactions
+                .filter(tx -> tx.getMosaics().size() == 1 && tx.getMosaics().get(0).getId().equals(NetworkCurrencyMosaic.ID)) // Filter xpx transactions
                 .map(tx -> tx.getMosaics().get(0).getAmount().divide(BigDecimal.valueOf(Math.pow(10, NetworkCurrencyMosaic.DIVISIBILITY)).toBigInteger())) // Map only amount in xpx
                 .toList() // Add all mosaics amounts into one array
                 .map(amounts -> amounts.stream().reduce(BigInteger.ZERO, BigInteger::add))

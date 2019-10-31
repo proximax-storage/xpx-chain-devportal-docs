@@ -118,6 +118,7 @@ class Footer extends React.Component {
             <a href={this.docUrl('rest-api/rest-api-overview')}>REST API</a>
             <a href={this.docUrl('sdks/languages')}>SDKs</a>
             <a href={this.docUrl('client/client-overview')}>XPX-Chain-CLI</a>
+            <a href={this.docUrl('cheatsheet')}>Cheat Sheet</a>
           </div>
         </section>
 

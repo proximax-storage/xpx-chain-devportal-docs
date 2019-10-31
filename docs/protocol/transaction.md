@@ -45,15 +45,17 @@ We recommend to [use the xpx-chain-sdk to define](../sdks/overview.md) transacti
 
 ## Fees
 
-Transactions have an associated cost. This cost is necessary to provide an incentive for the [validating](./validating.md) who secure the network and run the infrastructure.
+Transactions have an associated cost. This cost is necessary to provide an incentive for the [validator](./validating.md) who secure the network and run the infrastructure.
 
 The fee associated with a transaction primarily depends on the transaction’s size. The effective fee is the product of the size of the transaction, and a fee multiplier set by the Validator. The node owner can configure the latter value to all positive values, including zero.
 
-> effective_fee = transaction::size * block::fee_multiplier
+> effective_fee = transaction::bytes_size_to_be_validated * block::fee_multiplier
 
-A sender of a transaction must specify during the transaction definition a `max_fee`, meaning the maximum fee the account allows to spend for this transaction.
+A sender of a transaction must specify `max_fee` during the transaction definition, meaning the maximum fee the account allows to spend for this transaction.
 
-If the `effective_fee` is smaller or equal to the `max_fee`, the Validator can opt to include the transaction in the block. The `fee_multiplier` is stored in the [block header](./block.md#blockheader), permitting to resolve which was the effective fee paid for every transaction included.
+If the `effective_fee` is smaller or equal to the `max fee`, the validator can opt to include the transaction in the block.
+
+The `fee_multiplier` is defined by validators, it is an integer value. It is stored in the [block header](./block.md#blockheader), permitting to resolve which was the effective fee paid for every transaction included.
 
 The validating nodes can decide their transaction inclusion strategy:
 
@@ -61,7 +63,19 @@ The validating nodes can decide their transaction inclusion strategy:
 - **Minimise-fees**: Philanthropic nodes. Include first transactions that other nodes do not want to include.
 - **Maximise-fees**: Most common in public networks. Include first transactions with higher fees.
 
-By default, the fee is paid in `xpx`, the underlying currency of the Sirius Chain network. Private chains can edit the configuration of the network to eliminate fees, or use another [mosaic](../built-in-features/mosaic.md) that better suits their needs.
+By default, the fee is paid in `xpx`, the underlying currency of the Sirius Chain network. Private chains can edit the configuration of the network to eliminate fees, or use another [mosaic](../built-in-features/mosaic.md) and [namespace](../built-in-features/namespace.md) that better suits their needs.
+
+### Fee Tips 
+
+<div class="info">
+
+In short, validators need to define *fee_multiplier*, which considered as fee per byte. 
+
+Max fee value is the lowest currency absolute value. eg. `5000 max fee = 0.005000 xpx`.
+
+The final transaction size might be increase from client/user site due to more complex transaction such as transaction with multisig account with extra cosigner information. Fee_multiplier will calculate with the final transaction size.
+
+</div>
 
 ## Signing a transaction
 

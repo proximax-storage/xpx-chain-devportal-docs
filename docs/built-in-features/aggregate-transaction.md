@@ -60,7 +60,7 @@ In this example, Alice is buying tickets with `currency.euro` [mosaic](./mosaic.
 
 ### Paying for others fees
 
-Alice sends 10 `currency.euro` to Bob using an app to make payments. But Alice doesn’t own cat.currency to pay the transaction fee.
+Alice sends 10 `currency.euro` to Bob using an app to make payments. But Alice doesn’t own xpx to pay the transaction fee.
 
 By creating an aggregate bonded transaction, Alice can convert EUR to `xpx` to pay the fee. Now, Alice and Bob can use Sirius Chain without ever having to buy or hold `xpx`.
 

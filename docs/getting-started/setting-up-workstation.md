@@ -24,8 +24,7 @@ This section is still a work in progress.
 
 Node Description | Network Type| Node REST API URL | Address Prefix (1st Letter)
 -----------------|-------------|-------------------|------------------------
-Public Test Network node | TEST_NET | http://bctestnet1.xpxsirius.io:3000 | V
-Private Test Network node | PRIVATE_TEST | http://bcdev1.xpxsirius.io:3000 | W
+Public Test Network node | TEST_NET | https://bctestnet1.brimstone.xpxsirius.io | V
 Private Network Node (internal demo node) | PRIVATE | http://siriusapi1.demo.xpxsirius.io <br> Please follow [instruction](#accessing-our-private-net) to gain access. | Z
 
 #
