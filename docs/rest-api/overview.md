@@ -47,4 +47,5 @@ message |	Error explained in human-readable format.
 
 Javascript operate on 32 bit values. To enable representation up to 64 bits, the API returns numbers encoded in two parts: `lower` and `higher`.
 
-Check [how to compact lower and higher into a single value](https://github.com/proximax-storage/js-xpx-chain-library/blob/f171afb516a282f698081aea407339cfcd21cd63/src/coders/uint64.js#L37).
+Check [how to compact lower and higher into a single value](https://github.com/proximax-storage/tsjs-xpx-chain-sdk/blob/322960aab44b4e1d0485920c697b85a88e548674/src/core/format/RawUInt64.ts#L34).
+

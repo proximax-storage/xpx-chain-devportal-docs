@@ -68,7 +68,7 @@ The broker service updates the linked MongoDB instance when:
 
 ## REST node
 
-**Repository**: [Sirius Chain REST](https://github.com/proximax-storage/js-xpx-chain-rest)
+**Repository**: Sirius Chain REST (Repo is not yet ready open to public)
 
 ![REST Node](/img/node-rest.jpg "REST Node")
 <p class="caption">REST node communication</p>
