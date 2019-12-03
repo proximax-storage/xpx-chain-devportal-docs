@@ -36,17 +36,17 @@ func cosignAggregateBoundedTransaction(signedAggregateBoundedTransaction *sdk.Si
 
 <!--TypeScript-->
 ```js
-const cosignAggregateBondedTransaction = (signedAggregateBoundedTransaction: AggregateTransaction, account: Account, generationHash : String): CosignatureSignedTransaction => {
-    const cosignatureTransaction = CosignatureTransaction.create(signedAggregateBoundedTransaction);
-    return account.sign(cosignatureTransaction, generationHash);
+const cosignAggregateBondedTransaction = (signedAggregateBondedTransaction: AggregateTransaction, account: Account): CosignatureSignedTransaction => {
+    const cosignatureTransaction = CosignatureTransaction.create(signedAggregateBondedTransaction);
+    return account.signCosignatureTransaction(cosignatureTransaction);
 };
 ```
 
 <!--JavaScript-->
 ```js
-const cosignAggregateBondedTransaction = (signedAggregateBoundedTransaction, account, generationHash)  => {
-    const cosignatureTransaction = CosignatureTransaction.create(signedAggregateBoundedTransaction);
-    return account.sign(cosignatureTransaction, generationHash);
+const cosignAggregateBondedTransaction = (signedAggregateBondedTransaction, account)  => {
+    const cosignatureTransaction = CosignatureTransaction.create(signedAggregateBondedTransaction);
+    return account.signCosignatureTransaction(cosignatureTransaction);
 };
 ```
 
@@ -84,7 +84,7 @@ const nodeUrl = 'http://localhost:3000';
 
 const transactionHttp = new TransactionHttp(nodeUrl);
 
-const signedCosignatureTransaction = cosignAggregateBondedTransaction(signedAggregateBoundedTransaction, account, generationHash);
+const signedCosignatureTransaction = cosignAggregateBondedTransaction(signedAggregateBoundedTransaction, account);
 
 transactionHttp.announceAggregateBondedCosignature(signedCosignatureTransaction);
 
@@ -98,7 +98,7 @@ accountHttp
         mergeMap((_) => _),
         filter((_)=> _.transactionInfo.hash === signedAggregateBoundedTransaction.hash ),
         filter((_) => !_.signedByAccount(account.publicAccount)),
-        map(signedAggregateBoundedTransaction => cosignAggregateBondedTransaction(signedAggregateBoundedTransaction, account, generationHash)),
+        map(signedAggregateBoundedTransaction => cosignAggregateBondedTransaction(signedAggregateBoundedTransaction, account)),
         mergeMap(cosignatureSignedTransaction => transactionHttp.announceAggregateBondedCosignature(cosignatureSignedTransaction))
     )
     .subscribe(announcedTransaction => console.log(announcedTransaction),
@@ -115,7 +115,7 @@ const nodeUrl = 'http://localhost:3000';
 
 const transactionHttp = new TransactionHttp(nodeUrl);
 
-const signedCosignatureTransaction = cosignAggregateBondedTransaction(signedAggregateBoundedTransaction, account, generationHash);
+const signedCosignatureTransaction = cosignAggregateBondedTransaction(signedAggregateBoundedTransaction, account);
 
 transactionHttp.announceAggregateBondedCosignature(signedCosignatureTransaction);
 
@@ -129,7 +129,7 @@ accountHttp
         mergeMap((_) => _),
         filter((_)=> _.transactionInfo.hash === signedAggregateBoundedTransaction.hash ),
         filter((_) => !_.signedByAccount(account.publicAccount)),
-        map(signedAggregateBoundedTransaction => cosignAggregateBondedTransaction(signedAggregateBoundedTransaction, account, generationHash)),
+        map(signedAggregateBoundedTransaction => cosignAggregateBondedTransaction(signedAggregateBoundedTransaction, account)),
         mergeMap(cosignatureSignedTransaction => transactionHttp.announceAggregateBondedCosignature(cosignatureSignedTransaction))
     )
     .subscribe(announcedTransaction => console.log(announcedTransaction),
