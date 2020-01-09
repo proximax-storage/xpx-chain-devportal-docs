@@ -4,7 +4,7 @@ title: Exchange Market
 ---
 
 # Overview
-A user can create an [exchange](exchange-market.md#exchange) offer. Also, any user can select a suitable offer and [exchange](exchange-market.md#exchange) its [mosaics](mosaic.md) for others using ProximaX Exchange Market. The market always has the ProximaX permanent offer for buying and selling any offical mosaic.
+A user can create an [exchange](exchange-market.md#exchange) offer. Also, any user can select a suitable offer and [exchange](exchange-market.md#exchange) its [mosaics](mosaic.md) for others using ProximaX Exchange Market. The market always has the ProximaX permanent offer for buying and selling any official mosaic.
 
 <div class="info">
 
