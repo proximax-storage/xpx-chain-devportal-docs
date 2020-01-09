@@ -15,6 +15,7 @@
       "built-in-features/metadata",
       "built-in-features/account-restriction",
       "built-in-features/cross-chain-swaps",
+      "built-in-features/exchange-market",
       "built-in-features/super-contracts"
     ],
     "Protocol": [

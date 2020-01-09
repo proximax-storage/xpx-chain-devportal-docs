@@ -93,6 +93,9 @@ class Footer extends React.Component {
             <a href={this.docUrl('built-in-features/cross-chain-swaps')}>
               Cross-Chain Swaps
             </a>
+            <a href={this.docUrl('built-in-features/exchange-market')}>
+              Exchange Market
+            </a>
             <a href={this.docUrl('built-in-features/metadata')}>
               Metadata
             </a>
