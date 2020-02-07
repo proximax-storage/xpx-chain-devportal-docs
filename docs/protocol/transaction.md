@@ -13,29 +13,48 @@ There are different types of transactions. For example, you can transfer [mosaic
 |**Id** | 	**Type** | **Description**|
 |-------|-------------|----------------|
 |**Mosaic** |  |  |
-|0x414D | [Mosaic Definition Transaction](#mosaic-definition-transaction) | Register a new [mosaic](../built-in-features/mosaic.md).|
-|0x424D | [Mosaic Supply Change Transaction](#mosaic-supply-change-transaction) | Change an existent mosaic supply.|
+|0x414D | [Mosaic Definition Transaction](../built-in-features/mosaic.md#mosaicdefinitiontransaction) | Register a new [mosaic](../built-in-features/mosaic.md).|
+|0x424D | [Mosaic Supply Change Transaction](../built-in-features/mosaic.md#mosaicsupplychangetransaction) | Change an existent mosaic supply.|
 |**Namespace** |  | |
-|0x414E |	[Register Namespace Transaction](#register-namespace-transaction) | Register a [namespace](../built-in-features/namespace.md) to organize your assets. |
-|0x424E | [Address Alias Transaction](#address-alias-transaction) |	Attach a namespace name to an account.|
-|0x434E | [Mosaic Alias Transaction](#mosaic-alias-transaction) |	Attach a namespace name to a mosaic.|
+|0x414E |	[Register Namespace Transaction](../built-in-features/namespace.md#register-namespace-transaction) | Register a [namespace](../built-in-features/namespace.md) to organize your assets. |
+|0x424E | [Address Alias Transaction](../built-in-features/namespace.md#addressaliastransaction) |	Attach a namespace name to an account.|
+|0x434E | [Mosaic Alias Transaction](../built-in-features/namespace.md#mosaicaliastransaction) |	Attach a namespace name to a mosaic.|
 |**Transfer** | | |
-|0x4154 | [Transfer Transaction](../built-in-features/transfer-transaction.md#transfertransaction) | Send mosaics and messages between two accounts.|
+|0x4154 | [Transfer Transaction](../built-in-features/transfer-transaction.md#transfer-transaction) | Send mosaics and messages between two accounts.|
 |**Multisignature** 	| | 	 |
-|0x4155 |	[Modify Multisig Account Transaction](../built-in-features/multisig-account.md#modify-multisig-account-transaction) |	Create or modify a [multisig contract](../built-in-features/multisig-account.md).|
-|0x4141 |	[Aggregate Complete Transaction](../built-in-features/aggregate-transaction.md) |	Send transactions in batches to different accounts.|
-|0x4241 |	[Aggregate Bonded Transaction](../built-in-features/aggregate-transaction.md) |	Propose many transactions between different accounts.|
+|0x4155 |	[Modify Multisig Account Transaction](../built-in-features/multisig-account.md#modify-multisig-transaction) |	Create or modify a [multisig contract](../built-in-features/multisig-account.md).|
+|0x4141 |	[Aggregate Complete Transaction](../built-in-features/aggregate-transaction.md#aggregate-complete) |	Send transactions in batches to different accounts.|
+|0x4241 |	[Aggregate Bonded Transaction](../built-in-features/aggregate-transaction.md#aggregate-bonded) |	Propose many transactions between different accounts.|
 |0x4148 |	[Hash Lock Transaction](../built-in-features/aggregate-transaction.md#hashlocktransaction) | A deposit before announcing aggregate bonded transactions.|
 |– |	[Cosignature Transaction](../built-in-features/aggregate-transaction.md#detachedcosignature) |	Cosign an aggregate bonded transaction.|
 |**Account restrictions** |	 | 	 |
-|0x4150 |	[Account Properties Address Transaction](../built-in-features/account-restriction.md#accountpropertiesaddresstransaction) |	Allow or block incoming transactions for a given set of addresses.|
-|0x4250 |	[Account Properties Mosaic Transaction](../built-in-features/account-restriction.md#accountpropertiesmosaictransaction) |	Allow or block incoming transactions containing a given set of mosaics.|
-|0x4350 |	[Account Properties Entity Type Transaction](../built-in-features/account-restriction.md#accountpropertiesentitytypetransaction) |	Allow or block outgoing transactions by transaction type.|
+|0x4150 |	[Account Properties Address Transaction](../built-in-features/account-restriction.md#accountaddressrestrictionmodificationtransaction) |	Allow or block incoming transactions for a given set of addresses.|
+|0x4250 |	[Account Properties Mosaic Transaction](../built-in-features/account-restriction.md#accountmosaicrestrictionmodificationtransaction) |	Allow or block incoming transactions containing a given set of mosaics.|
+|0x4350 |	[Account Properties Entity Type Transaction](../built-in-features/account-restriction.md#accountoperationrestrictionmodificationtransaction) |	Allow or block outgoing transactions by transaction type.|
 |**Cross-chain swaps** | | |	  	 
 |0x4152 |	[Secret Lock Transaction](../built-in-features/cross-chain-swaps.md#secretlocktransaction)  |	Start a [token swap](../built-in-features/cross-chain-swaps.md) between different chains.|
 |0x4252 |	[Secret Proof Transaction](../built-in-features/cross-chain-swaps.md#secretprooftransaction)  |	Conclude a token swap between different chains. |
 |**Remote validating** | | |	  	 
 |0x414C |	[Account Link Transaction](./validating.md#accountlinktransaction) |	Delegates the account to a proxy account to enable [delegated validating](./validating.md).|
+|**Exchange** | | |
+| 0x415D | [Add Exchange Offer Transaction](../built-in-features/exchange-market.md#addexchangeoffertransaction) | Create a new exhange offer.|
+| 0x425D | [Exchange Offer Transaction](../built-in-features/exchange-market.md#exchangeoffertransaction) | Make exchanging.|
+| 0x435D | [Remove Exchange Offer Transaction](../built-in-features/exchange-market.md#removeexchangeoffertransaction) | Remove a new exhange offer.|
+|**Drive** | | |
+|0x415A | [Prepare Drive Transaction](../built-in-features/drive.md#preparedrivetransaction) | Preparing a new drive.|
+|0x425A | [Join To Drive Transaction](../built-in-features/drive.md#jointodrivetransaction) | Send a new join transaction to drive.|
+|0x435A | [Drive File System Transaction](../built-in-features/drive.md#drivefilesystemtransaction) | Change a drive file system.|
+|0x445A | [Files Deposit Transaction](../built-in-features/drive.md#filesdeposittransaction) | Block mocaics at the rate of a file size.|
+|0x455A | [End Drive Transaction](../built-in-features/drive.md#enddrivetransaction) | Terminate a drive execution.|
+|0x465A | [Drive Files Reward Transaction](../built-in-features/drive.md#drivefilesrewardtransaction) | Send rewarding for files.|
+|0x475A | [Start Drive Verification Transaction](../built-in-features/drive.md#startdriveverificationtransaction) | Start verifying files storing.|
+|0x485A | [End Drive Verification Transaction](../built-in-features/drive.md#enddriveverificationtransaction) | End verifying files storing.|
+|**Super Contract** | | |
+|- | [Deploy Transaction]() | Deploying super contract.|
+|- | [Execute Transaction]() | Start contract executing.|
+|- | [Start Operation Transaction]() | Starting executing operation.|
+|- | [End Operation Transaction]() | Ending executing operation.|
+|- | [Operation Identify Transaction]() | Identifying execute operation.|
 
 ## Defining a transaction
 

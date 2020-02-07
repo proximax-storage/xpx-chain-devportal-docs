@@ -14,22 +14,22 @@ Configuration parameters are [editable](https://github.com/proximax-storage/cpp-
 
 **Status** |	**Description**
 -------------|---------------------
-Success |	Validation result is success.
+Success | Validation result is success.
 Neutral	| Validation result is neither success nor failure.
-Failure |	Validation result is failure.
-Failure_Core_Past_Deadline | 	Validation failed because the deadline passed.
-Failure_Core_Future_Deadline |	Validation failed because the deadline is too far in the future. Deadlines are only allowed to lie up to `24` hours ahead.
+Failure | Validation result is failure.
+Failure_Core_Past_Deadline | Validation failed because the deadline passed.
+Failure_Core_Future_Deadline | Validation failed because the deadline is too far in the future. Deadlines are only allowed to lie up to `24` hours ahead.
 Failure_Core_Insufficient_Balance |	Validation failed because the account has an insufficient balance.
-Failure_Core_Too_Many_Transactions |	Validation failed because there are too many transactions in a block.
-Failure_Core_Nemesis_Account_Signed_After_Nemesis_Block |	Validation failed because an entity originated from the nemesis account after the nemesis block.
-Failure_Core_Wrong_Network |	Validation failed because the entity has the wrong network specified.
-Failure_Core_Invalid_Address |	Validation failed because an address is invalid.
+Failure_Core_Too_Many_Transactions | Validation failed because there are too many transactions in a block.
+Failure_Core_Nemesis_Account_Signed_After_Nemesis_Block | Validation failed because an entity originated from the nemesis account after the nemesis block.
+Failure_Core_Wrong_Network | Validation failed because the entity has the wrong network specified.
+Failure_Core_Invalid_Address | Validation failed because an address is invalid.
 Failure_Core_Invalid_Version | Validation failed because the version of a block or a tranaction is invalid.
 Failure_Core_Invalid_Transaction_Fee | Validation failed because the transaction fee is invalid.
-Failure_Core_Block_Harvester_Ineligible |	Validation failed because a block was validated by an ineligible validator.
+Failure_Core_Block_Harvester_Ineligible | Validation failed because a block was validated by an ineligible validator.
 Failure_Core_Invalid_FeeInterest | Validation failed because the fee interest coefficient is invalid.
 Failure_Core_Invalid_FeeInterestDenominator | Validation failed because the denominator of fee interest coefficient is invalid.
-Failure_Hash_Exists |	Validation failed because the entity hash is already known.
+Failure_Hash_Exists | Validation failed because the entity hash is already known.
 Failure_Signature_Not_Verifiable | Validation failed because the verification of the signature failed.
 Failure_AccountLink_Invalid_Action 	| Validation failed because the account link action is invalid: link (0) and unlink (1).
 Failure_AccountLink_Link_Already_Exists |	Validation failed because the main account is already linked to another account.
