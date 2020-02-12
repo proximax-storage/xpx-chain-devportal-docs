@@ -21,16 +21,17 @@ Sends a new transaction for preparing a new drive with defined parameters.
 
 **Signer**: owner
 
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
-| owner | 32 bytes | the PublicAccount of an owner who want to create drive |
-| duration | uint64 | drive duration |
-| billingPeriod | uint64 | payout frequency |
-| billingPrice | uint64 | price of one billing period |
-| driveSize | uint64 | size of drive |
-| replicas | uint16 | The count of drive copies|
-| minReplicators | uint16 | the minimum count of replicators for starting to execute drive |
-| percentApprovers | uint8 | the percentage of signatures for accepting any transaction (recommended 67) |
+|   **Property**   | **Type** |                               **Description**                               |
+| :--------------: | :------: | :-------------------------------------------------------------------------: |
+|      owner       | 32 bytes |           the PublicAccount of an owner who want to create drive            |
+|     duration     |  uint64  |                               drive duration                                |
+|  billingPeriod   |  uint64  |                              payout frequency                               |
+|   billingPrice   |  uint64  |                         price of one billing period                         |
+|    driveSize     |  uint64  |                                size of drive                                |
+|     replicas     |  uint16  |                          The count of drive copies                          |
+|  minReplicators  |  uint16  |       the minimum count of replicators for starting to execute drive        |
+| percentApprovers |  uint8   | the percentage of signatures for accepting any transaction (recommended 67) |
+
 
 ## JoinToDriveTransaction
 Sends a new join transaction to drive.
@@ -41,9 +42,9 @@ Sends a new join transaction to drive.
 
 **Signer**: replicator
 
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
-| driveKey | 32 bytes | Key of a drive |
+| **Property** | **Type** | **Description** |
+| :----------: | :------: | :-------------: |
+|   driveKey   | 32 bytes | Key of a drive  |
 
 
 ## DriveFileSystemTransaction
@@ -55,13 +56,13 @@ Changes a drive file system.
 
 **Signer**: driveAccount
 
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
-| driveKey | 32 bytes | Key of a drive |
-|  RootHash | Hash256 | a new file system hash after changes |
-| XorRootHash | Hash256 | an old file system hash before changes |
-| AddActionsCount | uint16 | count of add actions |
-| RemoveActionsCount | uint16 | count of remove actions |
+|    **Property**    | **Type** |            **Description**             |
+| :----------------: | :------: | :------------------------------------: |
+|      driveKey      | 32 bytes |             Key of a drive             |
+|      RootHash      | Hash256  |  a new file system hash after changes  |
+|    XorRootHash     | Hash256  | an old file system hash before changes |
+|  AddActionsCount   |  uint16  |          count of add actions          |
+| RemoveActionsCount |  uint16  |        count of remove actions         |
 
 ## FilesDepositTransaction
 Blocks mocaics at the rate of a file size.
@@ -72,10 +73,10 @@ Blocks mocaics at the rate of a file size.
 
 **Signer**: driveAccount
 
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
-| driveKey | 32 bytes | Key of a drive |
-| FilesCount | uint16 | count of new files |
+| **Property** | **Type** |  **Description**   |
+| :----------: | :------: | :----------------: |
+|   driveKey   | 32 bytes |   Key of a drive   |
+|  FilesCount  |  uint16  | count of new files |
 
 ## EndDriveTransaction
 Terminates a drive execution.
@@ -86,9 +87,9 @@ Terminates a drive execution.
 
 **Signer**: driveAccount or owner
 
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
-| driveKey | 32 bytes | Key of a drive |
+| **Property** | **Type** | **Description** |
+| :----------: | :------: | :-------------: |
+|   driveKey   | 32 bytes | Key of a drive  |
 
 ## DriveFilesRewardTransaction
 Sends rewarding for files.
@@ -99,9 +100,9 @@ Sends rewarding for files.
 
 **Signer**: driveAccount
 
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
-| UploadInfosCount | uint16 | count of uploaded files |
+|   **Property**   | **Type** |     **Description**     |
+| :--------------: | :------: | :---------------------: |
+| UploadInfosCount |  uint16  | count of uploaded files |
 
 
 ## StartDriveVerificationTransaction
@@ -113,9 +114,9 @@ Starts verifying files storing.
 
 **Signer**: replicator or owner
 
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
-| driveKey | 32 bytes | Key of a drive |
+| **Property** | **Type** | **Description** |
+| :----------: | :------: | :-------------: |
+|   driveKey   | 32 bytes | Key of a drive  |
 
 
 ## EndDriveVerificationTransaction
