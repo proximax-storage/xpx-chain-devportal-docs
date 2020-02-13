@@ -1365,7 +1365,7 @@ paths:
       parameters:
       - name: accountId
         in: path
-        description: The public key or address of the account.
+        description: The public key or address of an account.
         required: true
         schema:
           type: string
@@ -1375,9 +1375,10 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/AccountExchangesDTO"
+                type: object
+                properties:
+                  exchange:
+                    $ref: "#/components/schemas/AccountExchangeDTO"
         "404":
           description: resource not found
         "409":
@@ -1392,7 +1393,7 @@ paths:
       parameters:
       - name: offerType
         in: path
-        description: The of exchange offer.
+        description: The type of exchange offer.
         required: true
         schema:
           type: string
@@ -2432,13 +2433,13 @@ components:
     RolesTypeEnum:
       type: integer
       enum:
-      - 1
-      - 2
+      - owner
+      - replicator
       description: |
         The role of the node:
-        * 1 - A peer node.
-        * 2 - An api node.
-      example: 2
+        * owner - show drives where an account is a participant as owner
+        * replicator - show drives where an account is a participant as replicators
+      example: owner
     OfferTypeEnum:
       type: integer
       enum:
@@ -4135,13 +4136,30 @@ components:
           $ref: "#/components/schemas/UInt64DTO"
         type:
           $ref: "#/components/schemas/OfferTypeEnum"
-    AccountExchangesDTO:
+    AccountExchangeDTO:
       type: object
       required:
-        - exchange
+        - owner
+        - ownerAddress
+        - buyOffers
+        - sellOffers
       properties:
-        exchange:
-          $ref: "#/components/schemas/ExchangeDTO"
+        owner:
+          type: string
+          description: The public key (accountId) of the owner.
+          example: "EFF9BC7472263D03EF6362B1F200FD3061BCD1BABE78F82119FB88811227CE85"
+        ownerAddress:
+          type: string
+          description: The address of the owner.
+          example: "906CBD9B8EC88014F7A4181B00C1837646BD46E504E3D72C44"
+        buyOffers:
+          type: array
+          items:
+            $ref: "#/components/schemas/OfferInfoDTO"
+        sellOffers:
+          type: array
+          items:
+            $ref: "#/components/schemas/OfferInfoDTO"
     ExchangesDTO:
       type: object
       required:
@@ -4183,31 +4201,7 @@ components:
           example: "D9A659A3AA42FD62BE88E1D96B0F10EB91F6097F8D24EC8FD7C94EC6455735EC"
         type:
           type: integer
-          example: 0
-    ExchangeDTO:
-      type: object
-      required:
-        - owner
-        - ownerAddress
-        - buyOffers
-        - sellOffers
-      properties:
-        owner:
-          type: string
-          description: The public key of the owner of the namespace.
-          example: "EFF9BC7472263D03EF6362B1F200FD3061BCD1BABE78F82119FB88811227CE85"
-        ownerAddress:
-          type: string
-          description: The address of the owner of the namespace in hexadecimal.
-          example: "906CBD9B8EC88014F7A4181B00C1837646BD46E504E3D72C44"
-        buyOffers:
-          type: array
-          items:
-            $ref: "#/components/schemas/OfferInfoDTO"
-        sellOffers:
-          type: array
-          items:
-            $ref: "#/components/schemas/OfferInfoDTO"
+          example: 0      
     OfferInfoDTO:
       type: object
       required: 
