@@ -40,6 +40,12 @@ If 1 [XPX](https://storagedocs.xpxsirius.io/docs/getting_started/economy/#xpx) c
 
 </div>
 
+<div class="info">
+
+**Note**
+Any user can create an exchange offer with a max duration of 10 days. But ProximaX can create offers with unlimited duration.
+</div>
+
 ## Schemas
 
 ### AddExchangeOfferTransaction

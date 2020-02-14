@@ -358,7 +358,7 @@ paths:
                   $ref: "#/components/schemas/TransactionInfoDTO"
         "409":
           description: invalid argument
-  "/account/{accountId}/properties/":
+  "/account/{accountId}/properties":
     get:
       tags:
       - Account routes
@@ -1712,7 +1712,6 @@ components:
         - Failure_Aggregate_Ineligible_Cosigners
         - Failure_Aggregate_Missing_Cosigners
         - Failure_Aggregate_Plugin_Config_Malformed
-        - Failure_Aggregate_Bonded_Not_Enabled
         - Failure_NetworkConfig_Invalid_Signer
         - Failure_NetworkConfig_BlockChain_Config_Too_Large
         - Failure_NetworkConfig_Config_Redundant
@@ -2431,7 +2430,7 @@ components:
         * 0x90 (MIJIN_TEST) - Private test network.
       example: 36867
     RolesTypeEnum:
-      type: integer
+      type: string
       enum:
       - owner
       - replicator
