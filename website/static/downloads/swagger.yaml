@@ -1708,23 +1708,10 @@ components:
         - Failure_Aggregate_No_Transactions
         - Failure_Aggregate_Too_Many_Cosignatures
         - Failure_Aggregate_Redundant_Cosignatures
-        - Failure_Aggregate_Bonded_Not_Enabled
         - Failure_Aggregate_Ineligible_Cosigners
         - Failure_Aggregate_Missing_Cosigners
         - Failure_Aggregate_Plugin_Config_Malformed
-        - Failure_NetworkConfig_Invalid_Signer
-        - Failure_NetworkConfig_BlockChain_Config_Too_Large
-        - Failure_NetworkConfig_Config_Redundant
-        - Failure_NetworkConfig_BlockChain_Config_Malformed
-        - Failure_NetworkConfig_Plugin_Config_Malformed
-        - Failure_NetworkConfig_SupportedEntityVersions_Config_Too_Large
-        - Failure_NetworkConfig_SupportedEntityVersions_Config_Malformed
-        - Failure_NetworkConfig_Catapult_Config_Trx_Cannot_Be_Unsupported
-        - Failure_NetworkConfig_Plugin_Config_Missing
-        - Failure_NetworkConfig_ImportanceGrouping_Less_Or_Equal_Half_MaxRollbackBlocks
-        - Failure_NetworkConfig_HarvestBeneficiaryPercentage_Exceeds_One_Hundred
-        - Failure_NetworkConfig_MaxMosaicAtomicUnits_Invalid
-        - Failure_NetworkConfig_ApplyHeightDelta_Zero
+        - Failure_Aggregate_Bonded_Not_Enabled
         - Failure_LockHash_Invalid_Mosaic_Id
         - Failure_LockHash_Invalid_Mosaic_Amount
         - Failure_LockHash_Hash_Exists
@@ -1742,23 +1729,6 @@ components:
         - Failure_LockSecret_Hash_Algorithm_Mismatch
         - Failure_LockSecret_Invalid_Duration
         - Failure_LockSecret_Plugin_Config_Malformed
-        - Failure_Metadata_Invalid_Metadata_Type
-        - Failure_Metadata_Modification_Type_Invalid
-        - Failure_Metadata_Modification_Key_Invalid
-        - Failure_Metadata_Modification_Value_Invalid
-        - Failure_Metadata_Modification_Key_Redundant
-        - Failure_Metadata_Modification_Value_Redundant
-        - Failure_Metadata_Remove_Not_Existing_Key
-        - Failure_Metadata_Address_Modification_Not_Permitted
-        - Failure_Metadata_Mosaic_Modification_Not_Permitted
-        - Failure_Metadata_Namespace_Modification_Not_Permitted
-        - Failure_Metadata_Address_Not_Found
-        - Failure_Metadata_Mosaic_Not_Found
-        - Failure_Metadata_Namespace_Not_Found
-        - Failure_Metadata_Too_Much_Keys
-        - Failure_Metadata_Plugin_Config_Malformed
-        - Failure_Metadata_MosaicId_Malformed
-        - Failure_Metadata_NamespaceId_Malformed
         - Failure_Mosaic_Invalid_Duration
         - Failure_Mosaic_Invalid_Name
         - Failure_Mosaic_Name_Id_Mismatch
@@ -1832,6 +1802,61 @@ components:
         - Failure_Property_Mosaic_Transfer_Not_Allowed
         - Failure_Property_Transaction_Type_Not_Allowed
         - Failure_Property_Plugin_Config_Malformed
+        - Failure_Transfer_Message_Too_Large
+        - Failure_Transfer_Out_Of_Order_Mosaics
+        - Failure_Transfer_Plugin_Config_Malformed
+        - Failure_Transfer_Too_Many_Mosaics
+        - Failure_Transfer_Zero_Amount
+        - Failure_NetworkConfig_Invalid_Signer
+        - Failure_NetworkConfig_BlockChain_Config_Too_Large
+        - Failure_NetworkConfig_Config_Redundant
+        - Failure_NetworkConfig_BlockChain_Config_Malformed
+        - Failure_NetworkConfig_Plugin_Config_Malformed
+        - Failure_NetworkConfig_SupportedEntityVersions_Config_Too_Large
+        - Failure_NetworkConfig_SupportedEntityVersions_Config_Malformed
+        - Failure_NetworkConfig_Network_Config_Trx_Cannot_Be_Unsupported
+        - Failure_NetworkConfig_Plugin_Config_Missing
+        - Failure_NetworkConfig_ImportanceGrouping_Less_Or_Equal_Half_MaxRollbackBlocks
+        - Failure_NetworkConfig_HarvestBeneficiaryPercentage_Exceeds_One_Hundred
+        - Failure_NetworkConfig_MaxMosaicAtomicUnits_Invalid
+        - Failure_NetworkConfig_ApplyHeightDelta_Zero
+        - Failure_BlockchainUpgrade_Invalid_Signer
+        - Failure_BlockchainUpgrade_Upgrade_Period_Too_Low
+        - Failure_BlockchainUpgrade_Redundant
+        - Failure_BlockchainUpgrade_Invalid_Current_Version
+        - Failure_BlockchainUpgrade_Plugin_Config_Malformed
+        - Failure_Metadata_Invalid_Metadata_Type
+        - Failure_Metadata_Modification_Type_Invalid
+        - Failure_Metadata_Modification_Key_Invalid
+        - Failure_Metadata_Modification_Value_Invalid
+        - Failure_Metadata_Modification_Key_Redundant
+        - Failure_Metadata_Modification_Value_Redundant
+        - Failure_Metadata_Remove_Not_Existing_Key
+        - Failure_Metadata_Address_Modification_Not_Permitted
+        - Failure_Metadata_Mosaic_Modification_Not_Permitted
+        - Failure_Metadata_Namespace_Modification_Not_Permitted
+        - Failure_Metadata_Address_Not_Found
+        - Failure_Metadata_Mosaic_Not_Found
+        - Failure_Metadata_Namespace_Not_Found
+        - Failure_Metadata_Too_Much_Keys
+        - Failure_Metadata_Plugin_Config_Malformed
+        - Failure_Metadata_MosaicId_Malformed
+        - Failure_Metadata_NamespaceId_Malformed
+        - Failure_Exchange_Offer_Doesnt_Exist
+        - Failure_Exchange_Zero_Amount
+        - Failure_Exchange_Zero_Price
+        - Failure_Exchange_No_Offers
+        - Failure_Exchange_Mosaic_Not_Allowed
+        - Failure_Exchange_Buying_Own_Units_Is_Not_Allowed
+        - Failure_Exchange_Not_Enough_Units_In_Offer
+        - Failure_Exchange_Invalid_Price
+        - Failure_Exchange_Account_Doesnt_Have_Any_Offer
+        - Failure_Exchange_Offer_Duration_Too_Large
+        - Failure_Exchange_Plugin_Config_Malformed
+        - Failure_Exchange_No_Offered_Mosaics_To_Remove
+        - Failure_Exchange_Duplicated_Offer_In_Request
+        - Failure_Exchange_Offer_Exists
+        - Failure_Exchange_Zero_Offer_Duration
         - Failure_Service_Drive_Duration_Is_Not_Multiple_Of_BillingPeriod
         - Failure_Service_Wrong_Percent_Approvers
         - Failure_Service_Min_Replicators_More_Than_Replicas
@@ -1862,7 +1887,7 @@ components:
         - Failure_Service_Zero_Upload_Info
         - Failure_Service_Participant_Redundant
         - Failure_Service_Participant_Is_Not_Registered_To_Drive
-        - Failure_Service_Zero_Deleted_Files
+        - Failure_Service_No_Files_To_Download
         - Failure_Service_Zero_Infos
         - Failure_Service_File_Deposit_Is_Zero
         - Failure_Service_Verification_Already_In_Progress
@@ -1871,22 +1896,33 @@ components:
         - Failure_Service_Verification_Has_Not_Timed_Out
         - Failure_Service_Drive_Is_Not_In_Progress
         - Failure_Service_Replicator_Has_Active_File_Without_Deposit
-        - Failure_Service_Remove_Files_Not_Same_File_Size
+        - Failure_Service_File_Size_Invalid
         - Failure_Service_Doesnt_Contain_Streaming_Tokens
         - Failure_Service_Drive_Size_Exceeded
         - Failure_Service_Failed_Block_Hashes_Missing
         - Failure_Service_Duplicate_Failed_Block_Hashes
-        - Failure_Transfer_Message_Too_Large
-        - Failure_Transfer_Out_Of_Order_Mosaics
-        - Failure_Transfer_Plugin_Config_Malformed
-        - Failure_Transfer_Too_Many_Mosaics
-        - Failure_Transfer_Zero_Amount
-        - Failure_BlockChainUpgrade_Invalid_Signer
-        - Failure_BlockChainUpgrade_Upgrade_Period_Too_Low
-        - Failure_BlockChainUpgrade_Redundant
-        - Failure_BlockChainUpgrade_Invalid_Version
-        - Failure_BlockChainUpgrade_Plugin_Config_Malformed
-        - Failure_BlockChainUpgrade_Version_Lower_Than_Current
+        - Failure_Service_Max_Replicators_Reached
+        - Failure_Service_Invalid_File_Recipient
+        - Failure_Service_File_Download_Not_In_Progress
+        - Failure_Operation_Plugin_Config_Malformed
+        - Failure_Operation_Token_Invalid
+        - Failure_Operation_Expired
+        - Failure_Operation_Invalid_Duration
+        - Failure_Operation_Executor_Redundant
+        - Failure_Operation_Mosaic_Redundant
+        - Failure_Operation_Mosaic_Invalid
+        - Failure_Operation_Zero_Mosaic_Amount
+        - Failure_Operation_Invalid_Mosaic_Amount
+        - Failure_Operation_Invalid_Executor
+        - Failure_Operation_Identify_Transaction_Misplaced
+        - Failure_Operation_End_Transaction_Misplaced
+        - Failure_Operation_Identify_Transaction_Aggregated_With_End_Operation
+        - Failure_SuperContract_Super_Contract_Already_Exists
+        - Failure_SuperContract_Operation_Is_Not_Permitted
+        - Failure_SuperContract_File_Is_Not_Exist
+        - Failure_SuperContract_Remove_Super_Contract_File
+        - Failure_SuperContract_Drive_Has_Ended
+        - Failure_SuperContract_SuperContract_Is_Not_Exist
         - Failure_Chain_Unlinked
         - Failure_Chain_Block_Not_Hit
         - Failure_Chain_Block_Inconsistent_State_Hash
@@ -1905,21 +1941,6 @@ components:
         - Failure_Consumer_Remote_Chain_Too_Far_In_Future
         - Failure_Extension_Partial_Transaction_Cache_Prune
         - Failure_Extension_Partial_Transaction_Dependency_Removed
-        - Failure_Exchange_Offer_Doesnt_Exist
-        - Failure_Exchange_Zero_Amount
-        - Failure_Exchange_Zero_Price
-        - Failure_Exchange_No_Offers
-        - Failure_Exchange_Mosaic_Not_Allowed
-        - Failure_Exchange_Buying_Own_Units_Is_Not_Allowed
-        - Failure_Exchange_Not_Enough_Units_In_Offer
-        - Failure_Exchange_Invalid_Price
-        - Failure_Exchange_Account_Doesnt_Have_Any_Offer
-        - Failure_Exchange_Offer_Duration_Too_Large
-        - Failure_Exchange_Plugin_Config_Malformed
-        - Failure_Exchange_No_Offered_Mosaics_To_Remove
-        - Failure_Exchange_Duplicated_Offer_In_Request
-        - Failure_Exchange_Offer_Exists
-        - Failure_Exchange_Zero_Offer_Duration
       description: |
         * Success - Validation result is success.
         * Neutral - Validation result is neither success nor failure.
@@ -1953,19 +1974,6 @@ components:
         * Failure_Aggregate_Missing_Cosigners - Validation failed because at least one required cosigner is missing. The tranaction was announced as complete but had missing cosignatures.
         * Failure_Aggregate_Plugin_Config_Malformed - Validation failed because the aggregate transaction plugin configuration is malformed.
         * Failure_Aggregate_Bonded_Not_Enabled - Validation failed because aggregate bonded tranaction is not enabled.
-        * Failure_NetworkConfig_Invalid_Signer - Validation failed because the transaction signer is not nemesis account.
-        * Failure_NetworkConfig_BlockChain_Config_Too_Large - Validation failed because the network configuration size exceeded the limit.
-        * Failure_NetworkConfig_Config_Redundant - Validation failed because a network configuration has already been set up at the height.
-        * Failure_NetworkConfig_BlockChain_Config_Malformed - Validation failed because the network configuration is malformed.
-        * Failure_NetworkConfig_Plugin_Config_Malformed - Validation failed because the configuration of network configuration plugin is malformed.
-        * Failure_NetworkConfig_SupportedEntityVersions_Config_Too_Large - Validation failed because the supported entity configuration exceeded the limit.
-        * Failure_NetworkConfig_SupportedEntityVersions_Config_Malformed - Validation failed because the supported entity configuration is malformed.
-        * Failure_NetworkConfig_Catapult_Config_Trx_Cannot_Be_Unsupported - Validation failed because the supported entity versions configuration has no version of the network config transaction.
-        * Failure_NetworkConfig_Plugin_Config_Missing - Validation failed because some plugin config missing.
-        * Failure_NetworkConfig_ImportanceGrouping_Less_Or_Equal_Half_MaxRollbackBlocks - Validation failed because of the importance grouping (block) less or equal half max rollback blocks.
-        * Failure_NetworkConfig_HarvestBeneficiaryPercentage_Exceeds_One_Hundred - Validation failed because of harvest beneficiary more than 100%.
-        * Failure_NetworkConfig_MaxMosaicAtomicUnits_Invalid - Validation failed because the max mosaic amount units is invelid.
-        * Failure_NetworkConfig_ApplyHeightDelta_Zero - Validation failed because the height delta is zero.
         * Failure_LockHash_Invalid_Mosaic_Id - Validation failed because the lock does not allow the specified mosaic. The only mosaic allowed is `xpx`.
         * Failure_LockHash_Invalid_Mosaic_Amount - Validation failed because the lock does not allow the specified amount. The minimum amount is `10`.
         * Failure_LockHash_Hash_Exists - Validation failed because the hash is already present in cache.
@@ -1983,23 +1991,6 @@ components:
         * Failure_LockSecret_Hash_Algorithm_Mismatch - Validation failed because the hash algorithm does not match.
         * Failure_LockSecret_Invalid_Duration - Validation failed because the duration is too long. Duration is allowed to lie up to `30` days.
         * Failure_LockSecret_Plugin_Config_Malformed - Validation failed because the locksecret plugin configuration is malformed.
-        * Failure_Metadata_Invalid_Metadata_Type - Validation failed because the metadata type is invalid.
-        * Failure_Metadata_Modification_Type_Invalid - Validation failed because a modification type is invalid.
-        * Failure_Metadata_Modification_Key_Invalid - Validation failed because a key has wrong size.
-        * Failure_Metadata_Modification_Value_Invalid - Validation failed because a modification value is invalid.
-        * Failure_Metadata_Modification_Key_Redundant - Validation failed because a key already exists.
-        * Failure_Metadata_Modification_Value_Redundant - Validation failed because there is already modification with the same key and value.
-        * Failure_Metadata_Remove_Not_Existing_Key - Validation failed because of an attempt to remove not existing key.
-        * Failure_Metadata_Address_Modification_Not_Permitted - Validation failed because a modification of address is not permitted.
-        * Failure_Metadata_Mosaic_Modification_Not_Permitted - Validation failed because a modification of mosaic is not permitted.
-        * Failure_Metadata_Namespace_Modification_Not_Permitted - Validation failed because a modification of namespace is not permitted.
-        * Failure_Metadata_Address_Not_Found - Validation failed because address is not found.
-        * Failure_Metadata_Mosaic_Not_Found - Validation failed because mosaic is not found.
-        * Failure_Metadata_Namespace_Not_Found - Validation failed because namespace is not found.
-        * Failure_Metadata_Too_Much_Keys - Validation failed because the number of keys exceeded the limit.
-        * Failure_Metadata_Plugin_Config_Malformed - Validation failed because the metadata plugin configuration is malformed.
-        * Failure_Metadata_MosaicId_Malformed - Validation failed because the mosaic id is malformed.
-        * Failure_Metadata_NamespaceId_Malformed - Validation failed because the namespace id is malformed.
         * Failure_Mosaic_Invalid_Duration - Validation failed because the duration has an invalid value. Duration is allowed to lie up to `365` days.
         * Failure_Mosaic_Invalid_Name - Validation failed because the name is invalid. The mosaic name may have a maximum length of `64` characters. Allowed characters are a-to-z; 0-to-9 and the following special characters: `_-
         * Failure_Mosaic_Name_Id_Mismatch - Validation failed because the name and id don’t match.
@@ -2073,6 +2064,61 @@ components:
         * Failure_Property_Mosaic_Transfer_Not_Allowed - Validation failed because the mosaic transfer is prohibited by the recipient.
         * Failure_Property_Transaction_Type_Not_Allowed - Validation failed because the transaction type is not allowed to be initiated by the signer.
         * Failure_Property_Plugin_Config_Malformed - Validation failed because the property plugin configuration is malformed.
+        * Failure_Transfer_Message_Too_Large - Validation failed because the message is too large. It exceeds the limit of `1024` bytes.
+        * Failure_Transfer_Out_Of_Order_Mosaics - Validation failed because the mosaics are out of order. Mosaics on a transfer transaction should be ordered by id value.
+        * Failure_Transfer_Plugin_Config_Malformed - Validation failed because the transfer plugin configuration is malformed.
+        * Failure_Transfer_Too_Many_Mosaics - Validation failed because there are too many mosaics.
+        * Failure_Transfer_Zero_Amount - Validation failed because there is zero amount of mosaics.
+        * Failure_NetworkConfig_Invalid_Signer - Validation failed because the transaction signer is not nemesis account.
+        * Failure_NetworkConfig_BlockChain_Config_Too_Large - Validation failed because the network configuration size exceeded the limit.
+        * Failure_NetworkConfig_Config_Redundant - Validation failed because a network configuration has already been set up at the height.
+        * Failure_NetworkConfig_BlockChain_Config_Malformed - Validation failed because the network configuration is malformed.
+        * Failure_NetworkConfig_Plugin_Config_Malformed - Validation failed because the configuration of network configuration plugin is malformed.
+        * Failure_NetworkConfig_SupportedEntityVersions_Config_Too_Large - Validation failed because the supported entity configuration exceeded the limit.
+        * Failure_NetworkConfig_SupportedEntityVersions_Config_Malformed - Validation failed because the supported entity configuration is malformed.
+        * Failure_NetworkConfig_Network_Config_Trx_Cannot_Be_Unsupported - Validation failed because the supported entity versions configuration has no version of the network config transaction.
+        * Failure_NetworkConfig_Plugin_Config_Missing - Validation failed because some plugin config missing.
+        * Failure_NetworkConfig_ImportanceGrouping_Less_Or_Equal_Half_MaxRollbackBlocks - Validation failed because of the importance grouping (block) less or equal half max rollback blocks.
+        * Failure_NetworkConfig_HarvestBeneficiaryPercentage_Exceeds_One_Hundred - Validation failed because of harvest beneficiary more than 100%.
+        * Failure_NetworkConfig_MaxMosaicAtomicUnits_Invalid - Validation failed because the max mosaic amount units is invelid.
+        * Failure_NetworkConfig_ApplyHeightDelta_Zero - Validation failed because the height delta is zero.
+        * Failure_BlockchainUpgrade_Invalid_Signer - Validation failed because the blockchain upgrade transaction signer is not nemesis account.
+        * Failure_BlockchainUpgrade_Upgrade_Period_Too_Low - Validation failed because the blockchain upgrade period is too low.
+        * Failure_BlockchainUpgrade_Redundant - Validation failed because a blockchain upgrade has already been set up at the height.
+        * Failure_BlockchainUpgrade_Invalid_Current_Version - Validation failed because the current blockchain version is invalid.
+        * Failure_BlockchainUpgrade_Plugin_Config_Malformed - Validation failed because the blockchain upgrade plugin configuration is malformed.
+        * Failure_Metadata_Invalid_Metadata_Type - Validation failed because the metadata type is invalid.
+        * Failure_Metadata_Modification_Type_Invalid - Validation failed because a modification type is invalid.
+        * Failure_Metadata_Modification_Key_Invalid - Validation failed because a key has wrong size.
+        * Failure_Metadata_Modification_Value_Invalid - Validation failed because a modification value is invalid.
+        * Failure_Metadata_Modification_Key_Redundant - Validation failed because a key already exists.
+        * Failure_Metadata_Modification_Value_Redundant - Validation failed because there is already modification with the same key and value.
+        * Failure_Metadata_Remove_Not_Existing_Key - Validation failed because of an attempt to remove not existing key.
+        * Failure_Metadata_Address_Modification_Not_Permitted - Validation failed because a modification of address is not permitted.
+        * Failure_Metadata_Mosaic_Modification_Not_Permitted - Validation failed because a modification of mosaic is not permitted.
+        * Failure_Metadata_Namespace_Modification_Not_Permitted - Validation failed because a modification of namespace is not permitted.
+        * Failure_Metadata_Address_Not_Found - Validation failed because address is not found.
+        * Failure_Metadata_Mosaic_Not_Found - Validation failed because mosaic is not found.
+        * Failure_Metadata_Namespace_Not_Found - Validation failed because namespace is not found.
+        * Failure_Metadata_Too_Much_Keys - Validation failed because the number of keys exceeded the limit.
+        * Failure_Metadata_Plugin_Config_Malformed - Validation failed because the metadata plugin configuration is malformed.
+        * Failure_Metadata_MosaicId_Malformed - Validation failed because the mosaic id is malformed.
+        * Failure_Metadata_NamespaceId_Malformed - Validation failed because the namespace id is malformed.
+        * Failure_Exchange_Offer_Doesnt_Exist - Validation failed because the offer does not exist.
+        * Failure_Exchange_Zero_Amount - Validation failed because the amount is zero.
+        * Failure_Exchange_Zero_Price - Validation failed because the price is zero.
+        * Failure_Exchange_No_Offers - Validation failed because there are no offers.
+        * Failure_Exchange_Mosaic_Not_Allowed - Validation failed because mosaic is not allowed.
+        * Failure_Exchange_Buying_Own_Units_Is_Not_Allowed - Validation failed because there is no possibility of buying own units.
+        * Failure_Exchange_Not_Enough_Units_In_Offer - Validation failed because of not enough units in the offer.
+        * Failure_Exchange_Invalid_Price - Validation failed because of the price is invalid.
+        * Failure_Exchange_Account_Doesnt_Have_Any_Offer - Validation failed because the account does not have any offers.
+        * Failure_Exchange_Offer_Duration_Too_Large - Validation failed because the offer duration is too large.
+        * Failure_Exchange_Plugin_Config_Malformed - Validation failed because the exchange plugin configuration is malformed.
+        * Failure_Exchange_No_Offered_Mosaics_To_Remove - Validation failed because there are no offered mosaics to remove.
+        * Failure_Exchange_Duplicated_Offer_In_Request - Validation failed because the offer is duplicated in the request.
+        * Failure_Exchange_Offer_Exists - Validation failed because the offer already exists.
+        * Failure_Exchange_Zero_Offer_Duration - Validation failed because the offer duration is zero.
         * Failure_Service_Drive_Duration_Is_Not_Multiple_Of_BillingPeriod - Validation failed because the duration multiple of is not billing period.
         * Failure_Service_Wrong_Percent_Approvers - Validation failed because the percentage of approvers is wrong.
         * Failure_Service_Min_Replicators_More_Than_Replicas - Validation failed because the minimum number of replicates more than the number of replicas.
@@ -2103,7 +2149,7 @@ components:
         * Failure_Service_Zero_Upload_Info - Validation failed because there is no upload info.
         * Failure_Service_Participant_Redundant - Validation failed because the participant is redundant.
         * Failure_Service_Participant_Is_Not_Registered_To_Drive - Validation failed because the participant is not registered to the drive.
-        * Failure_Service_Zero_Deleted_Files - Validation failed because there are zero deleted files.
+        * Failure_Service_No_Files_To_Download - Validation failed because there are zero files to download.
         * Failure_Service_Zero_Infos - Validation failed because there is no info.
         * Failure_Service_File_Deposit_Is_Zero - Validation failed because no deposit is zero.
         * Failure_Service_Verification_Already_In_Progress - Validation failed because of the verification already in progress..
@@ -2112,22 +2158,33 @@ components:
         * Failure_Service_Verification_Has_Not_Timed_Out - Validation failed because of the verification has not timed out.
         * Failure_Service_Drive_Is_Not_In_Progress - Validation failed because the drive is not in the progress state.
         * Failure_Service_Replicator_Has_Active_File_Without_Deposit - Validation failed because the replicator has an active file without deposit.
-        * Failure_Service_Remove_Files_Not_Same_File_Size - Validation failed because the removing files have a different file size.
+        * Failure_Service_File_Size_Invalid - Validation failed because the removing files have a different file size.
         * Failure_Service_Doesnt_Contain_Streaming_Tokens - Validation failed because it does not contain streaming tokens.
         * Failure_Service_Drive_Size_Exceeded - Validation failed because the drive size is exceeded.
         * Failure_Service_Failed_Block_Hashes_Missing - Validation failed because block hashes are missing.
         * Failure_Service_Duplicate_Failed_Block_Hashes - Validation failed because block hashes are duplicated.
-        * Failure_Transfer_Message_Too_Large - Validation failed because the message is too large. It exceeds the limit of `1024` bytes.
-        * Failure_Transfer_Out_Of_Order_Mosaics - Validation failed because the mosaics are out of order. Mosaics on a transfer transaction should be ordered by id value.
-        * Failure_Transfer_Plugin_Config_Malformed - Validation failed because the transfer plugin configuration is malformed.
-        * Failure_Transfer_Too_Many_Mosaics - Validation failed because there are too many mosaics.
-        * Failure_Transfer_Zero_Amount - Validation failed because there is zero amount of mosaics.
-        * Failure_BlockChainUpgrade_Invalid_Signer - Validation failed because the blockchain upgrade transaction signer is not nemesis account.
-        * Failure_BlockChainUpgrade_Upgrade_Period_Too_Low - Validation failed because the blockchain upgrade period is too low.
-        * Failure_BlockChainUpgrade_Redundant - Validation failed because a blockchain upgrade has already been set up at the height.
-        * Failure_BlockChainUpgrade_Invalid_Version - Validation failed because the current blockchain version is invalid.
-        * Failure_BlockChainUpgrade_Plugin_Config_Malformed - Validation failed because the blockchain upgrade plugin configuration is malformed.
-        * Failure_BlockChainUpgrade_Version_Lower_Than_Current - Validation failed because the blockchain version is lower than the current one.
+        * Failure_Service_Max_Replicators_Reached - Validation failed because the max count of replicators is reached.
+        * Failure_Service_Invalid_File_Recipient - Validation failed because the recipient of the file is invalid.
+        * Failure_Service_File_Download_Not_In_Progress - Validation failed because the file download not in progress.
+        * Failure_Operation_Plugin_Config_Malformed - Validation failed because the operation plugin configuration is malformed.
+        * Failure_Operation_Token_Invalid - Validation failed because the token is invalid.
+        * Failure_Operation_Expired - Validation failed because the operation is expired.
+        * Failure_Operation_Invalid_Duration - Validation failed because the duration is invalid.
+        * Failure_Operation_Executor_Redundant - Validation failed because the operation plugin configuration is malformed.
+        * Failure_Operation_Mosaic_Redundant - Validation failed because the mosaic is redundant.
+        * Failure_Operation_Mosaic_Invalid - Validation failed because the mosaic is invalid.
+        * Failure_Operation_Zero_Mosaic_Amount - Validation failed because the amount of mosaic is zero.
+        * Failure_Operation_Invalid_Mosaic_Amount - Validation failed because the amount of mosaic is invalid.
+        * Failure_Operation_Invalid_Executor - Validation failed because the executor is invalid.
+        * Failure_Operation_Identify_Transaction_Misplaced - Validation failed because the identify transaction is misplaced.
+        * Failure_Operation_End_Transaction_Misplaced - Validation failed because the end transaction is misplaced.
+        * Failure_Operation_Identify_Transaction_Aggregated_With_End_Operation - Validation failed because the identify transaction aggregated with the end operation.
+        * Failure_SuperContract_Super_Contract_Already_Exists - Validation failed because the super contract already exists.
+        * Failure_SuperContract_Operation_Is_Not_Permitted - Validation failed because the operation is not permited.
+        * Failure_SuperContract_File_Is_Not_Exist - Validation failed because the file is not exist.
+        * Failure_SuperContract_Remove_Super_Contract_File - Validation failed because the super contract executing and there is no possibility to remove the file.
+        * Failure_SuperContract_Drive_Has_Ended - Validation failed because the drive has ended (finished or terminated).
+        * Failure_SuperContract_SuperContract_Is_Not_Exist - Validation failed because the super contract is not exist.
         * Failure_Chain_Unlinked - Validation failed because a block was received that did not link with the existing chain.
         * Failure_Chain_Block_Not_Hit - Validation failed because a block was received that is not a hit.
         * Failure_Chain_Block_Inconsistent_State_Hash - Validation failed because a block was received that has an inconsistent state hash.
@@ -2146,21 +2203,6 @@ components:
         * Failure_Consumer_Remote_Chain_Too_Far_In_Future - Validation failed because the remote chain timestamp is too far in the future.
         * Failure_Extension_Partial_Transaction_Cache_Prune - Validation failed because the partial transaction was pruned from the temporal cache.
         * Failure_Extension_Partial_Transaction_Dependency_Removed - Validation failed because the partial transaction was pruned from the temporal cache due to its dependency being removed.
-        * Failure_Exchange_Offer_Doesnt_Exist - Validation failed because the offer does not exist.
-        * Failure_Exchange_Zero_Amount - Validation failed because the amount is zero.
-        * Failure_Exchange_Zero_Price - Validation failed because the price is zero.
-        * Failure_Exchange_No_Offers - Validation failed because there are no offers.
-        * Failure_Exchange_Mosaic_Not_Allowed - Validation failed because mosaic is not allowed.
-        * Failure_Exchange_Buying_Own_Units_Is_Not_Allowed - Validation failed because there is no possibility of buying own units.
-        * Failure_Exchange_Not_Enough_Units_In_Offer - Validation failed because of not enough units in the offer.
-        * Failure_Exchange_Invalid_Price - Validation failed because of the price is invalid.
-        * Failure_Exchange_Account_Doesnt_Have_Any_Offer - Validation failed because the account does not have any offers.
-        * Failure_Exchange_Offer_Duration_Too_Large - Validation failed because the offer duration is too large.
-        * Failure_Exchange_Plugin_Config_Malformed - Validation failed because the exchange plugin configuration is malformed.
-        * Failure_Exchange_No_Offered_Mosaics_To_Remove - Validation failed because there are no offered mosaics to remove.
-        * Failure_Exchange_Duplicated_Offer_In_Request - Validation failed because the offer is duplicated in the request.
-        * Failure_Exchange_Offer_Exists - Validation failed because the offer already exists.
-        * Failure_Exchange_Zero_Offer_Duration - Validation failed because the offer duration is zero.
     AccountLinkTypeEnum:
       type: integer
       enum:
