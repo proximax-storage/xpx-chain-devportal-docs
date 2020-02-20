@@ -922,6 +922,46 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
+  "/mosaic/{mosaicId}/richlist":
+    get:
+      tags:
+      - Mosaic routes
+      summary: Get mosaic information
+      description: Retrieve owners of a given mosaic sorted on descending order based on amount. (REST only)
+      operationId: getMosaic
+      parameters:
+      - name: mosaicId
+        in: path
+        description: The mosaic identifier.
+        required: true
+        schema:
+          type: string
+          format: hex
+      - name: page
+        in: query
+        description: The page of list (starts at 0).
+        required: false
+        schema:
+          type: integer
+      - name: pageSize
+        in: query
+        description: The count of items on a page (max 100, default 25).
+        required: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MosaicRichListDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
   /mosaic:
     post:
       tags:
@@ -3259,6 +3299,17 @@ components:
       properties:
         id:
           $ref: "#/components/schemas/UInt64DTO"
+        amount:
+          $ref: "#/components/schemas/UInt64DTO"
+    MosaicRichListDTO:
+      type: object
+      required:
+      - address
+      - amount
+      properties:
+        address:
+          type: string
+          example: 9081FCCB41F8C8409A9B99E485E0E28D23BD6304EF7215E01A
         amount:
           $ref: "#/components/schemas/UInt64DTO"
     MosaicInfoDTO:
