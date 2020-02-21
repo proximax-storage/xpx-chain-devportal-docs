@@ -40,6 +40,12 @@ If 1 [XPX](https://storagedocs.xpxsirius.io/docs/getting_started/economy/#xpx) c
 
 </div>
 
+<div class="info">
+
+**Note**
+Any user can create an exchange offer with a max duration of 10 days. But ProximaX can create offers with unlimited duration.
+</div>
+
 ## Schemas
 
 ### AddExchangeOfferTransaction
@@ -49,9 +55,9 @@ Announces a new exchange offer transaction.
 
 **Entity type**: 0x415D
 
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
-| AddOffer | array([OfferWithDuration](#offerwithduration), count) | A new offer that will be announced |
+| **Property** |                       **Type**                        |          **Description**           |
+| :----------: | :---------------------------------------------------: | :--------------------------------: |
+|   AddOffer   | array([OfferWithDuration](#offerwithduration), count) | A new offer that will be announced |
 
 ### ExchangeOfferTransaction
 Announces an exchange transaction.
@@ -60,8 +66,8 @@ Announces an exchange transaction.
 
 **Entity type**: 0x425D
 
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
+| **Property**  |                  **Type**                   |       **Description**        |
+| :-----------: | :-----------------------------------------: | :--------------------------: |
 | confirmations | array([MatchedOffer](#matchedoffer), count) | Exchange offer confirmations |
 
 ### RemoveExchangeOfferTransaction
@@ -71,41 +77,41 @@ Announces a new remove exchange offer transaction.
 
 **Entity type**: 0x435D
 
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
+| **Property** |                 **Type**                  |       **Description**       |
+| :----------: | :---------------------------------------: | :-------------------------: |
 | removeOffers | array([OfferMosaic](#offermosaic), count) | Offers that will be removed |
 
 
 ### OfferWithDuration
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
-| Offer | [Offer](#offer) | Extends offer. |
-| Duration | uint64 | The duration of the offer. |
+| **Property** |    **Type**     |      **Description**       |
+| :----------: | :-------------: | :------------------------: |
+|    Offer     | [Offer](#offer) |       Extends offer.       |
+|   Duration   |     uint64      | The duration of the offer. |
 
 
 ### MatchedOffer
-**Property**    |**Type** | **Description**
-----------------|---------|--------------------
-| Offer | [Offer](#offer) | Extends offer. |
-| Owner | 32 bytes | The owner of the matched offer |
+| **Property** |    **Type**     |        **Description**         |
+| :----------: | :-------------: | :----------------------------: |
+|    Offer     | [Offer](#offer) |         Extends offer.         |
+|    Owner     |    32 bytes     | The owner of the matched offer |
 
 ### OfferMosaic
-**Name**    |**Value** |
-----------------|---------|
-| MosaicId | UnresolvedMosaicId | Mosaic id of the offer.
-| OfferType | [OfferType](#offer-types) | Offer type. |
+| **Name**  |         **Value**         |     **Description**     |
+| :-------: | :-----------------------: | :---------------------: |
+| MosaicId  |    UnresolvedMosaicId     | Mosaic id of the offer. |
+| OfferType | [OfferType](#offer-types) |       Offer type.       |
 
 ### Offer
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
-| Mosaic | UnresolvedMosaic | Mosaic for exchange. |
-| Cost | uint64 | Sum of XPX suggested to be paid for mosaic. |
-| Type | [OfferType](#offer-types) | Offer type. |
+| **Property** |         **Type**          |               **Description**               |
+| :----------: | :-----------------------: | :-----------------------------------------: |
+|    Mosaic    |     UnresolvedMosaic      |            Mosaic for exchange.             |
+|     Cost     |          uint64           | Sum of XPX suggested to be paid for mosaic. |
+|     Type     | [OfferType](#offer-types) |                 Offer type.                 |
 
 ### Offer types
 Enumeration: uint8
 
-**Name**    |**Value** |
-----------------|---------|
-| SellOffer | 0 |
-| BuyOffer | 1 |
+| **Name**  | **Value** |
+| :-------: | :-------: |
+| SellOffer |     0     |
+| BuyOffer  |     1     |
