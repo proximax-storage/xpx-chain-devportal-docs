@@ -928,7 +928,7 @@ paths:
       - Mosaic routes
       summary: Get mosaic information
       description: Retrieve owners of a given mosaic sorted on descending order based on amount. (REST only)
-      operationId: getMosaic
+      operationId: getMosaicRichList
       parameters:
       - name: mosaicId
         in: path
