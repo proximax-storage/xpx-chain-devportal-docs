@@ -3310,6 +3310,9 @@ components:
         address:
           type: string
           example: 9081FCCB41F8C8409A9B99E485E0E28D23BD6304EF7215E01A
+        publicKey:
+          type: string
+          example: AC1A6E1D8DE5B17D2C6B1293F1CAD3829EEACF38D09311BB3C8E5A880092DE26
         amount:
           $ref: "#/components/schemas/UInt64DTO"
     MosaicInfoDTO:
