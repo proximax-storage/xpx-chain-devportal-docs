@@ -15,7 +15,7 @@ In other words, to reduce counterparty risk, the receiver of a payment needs to 
 
 ## Protocol
 
-Alice and Bob want to exchange `10 alice tokens for 10 bob tokens`. The problem is that they are not in the same blockchain: alice token is defined in Sirius Chain public chain, whereas bob token is only present in a private chain using Sirius Chain technology.
+Alice and Bob want to exchange `10 alice tokens for 10 bob tokens`. The problem is that they are not in the same blockchain: alice token is defined in Sirius private chain, whereas bob token is only present in Sirius public chain.
 
 <div class="info">
 
@@ -33,7 +33,7 @@ Sirius Chain’s private and future public chain share the SDK. You could implem
 3. Alice defines the secret lock transaction `TX1`:
 
 - Mosaic: 10 alice token
-- Recipient: Bob’s address (Private Chain)
+- Recipient: Bob’s address (Public Chain)
 - Algorithm: h
 - Secret: h(proof)
 - Duration: 96h
@@ -43,7 +43,7 @@ Sirius Chain’s private and future public chain share the SDK. You could implem
 5. Bob defines announces the following [secret lock transaction](#secretlocktransaction) `TX2` to the public network:
 
 - Mosaic: 10 bob token
-- Recipient: Alice’s address (Public Chain)
+- Recipient: Alice’s address (Private Chain)
 - Algorithm: h
 - Secret: h(proof)
 - Duration: 84h
@@ -105,13 +105,13 @@ If the transaction duration is reached without being proved, the locked amount g
 
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-mosaic |	[Mosaic](./mosaic.md#mosaic) |	Locked mosaic.
-duration |	uint64 |	The lock duration. If reached, the mosaics will be returned to the initiator.
-hashAlgorithm |	[LockHashAlgorithm](#lock-hash-algorithm) |	The algorithm used to hash the proof.
-secret |	64 bytes (binary) |	The proof hashed.
-recipient |	25 bytes (binary) |	The address who will receive the funds once unlocked.
+| **Property**  | **Type**                                  | **Description**                                                               |
+| ------------- | ----------------------------------------- | ----------------------------------------------------------------------------- |
+| mosaic        | [Mosaic](./mosaic.md#mosaic)              | Locked mosaic.                                                                |
+| duration      | uint64                                    | The lock duration. If reached, the mosaics will be returned to the initiator. |
+| hashAlgorithm | [LockHashAlgorithm](#lock-hash-algorithm) | The algorithm used to hash the proof.                                         |
+| secret        | 64 bytes (binary)                         | The proof hashed.                                                             |
+| recipient     | 25 bytes (binary)                         | The address who will receive the funds once unlocked.                         |
 
 ### SecretProofTransaction
 
@@ -127,23 +127,23 @@ The transaction must prove that knows the proof that unlocks the mosaics for rec
 
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-hashAlgorithm |	[LockHashAlgorithm](#lock-hash-algorithm) |	The algorithm used to hash the proof.
-secret |	64 bytes (binary) |	The proof hashed.
-recipient |	25 bytes (binary) |	The address who will receive the funds once unlocked.
-proofSize |	uint16 |	The proof size in bytes.
-proof |	array(byte, proofSize) |	The original proof.
+| **Property**  | **Type**                                  | **Description**                                       |
+| ------------- | ----------------------------------------- | ----------------------------------------------------- |
+| hashAlgorithm | [LockHashAlgorithm](#lock-hash-algorithm) | The algorithm used to hash the proof.                 |
+| secret        | 64 bytes (binary)                         | The proof hashed.                                     |
+| recipient     | 25 bytes (binary)                         | The address who will receive the funds once unlocked. |
+| proofSize     | uint16                                    | The proof size in bytes.                              |
+| proof         | array(byte, proofSize)                    | The original proof.                                   |
 
 ### Lock Hash Algorithm
 
 Enumeration: uint8
 
-**Id** | **Description**
-------|----------------------
-0 (SHA_3) |	Input is hashed using sha3 256.
-1 (Keccak) | Input is hashed using Keccak.
-2 (Hash_160) | Input is hashed twice: first with Sha-256 and then with RIPEMD-160 (bitcoin’s OP_HASH160).
-3 (Hash_256) |	Input is hashed twice with Sha-256 (bitcoin’s OP_HASH256).
+| **Id**       | **Description**                                                                            |
+| ------------ | ------------------------------------------------------------------------------------------ |
+| 0 (SHA_3)    | Input is hashed using sha3 256.                                                            |
+| 1 (Keccak)   | Input is hashed using Keccak.                                                              |
+| 2 (Hash_160) | Input is hashed twice: first with Sha-256 and then with RIPEMD-160 (bitcoin’s OP_HASH160). |
+| 3 (Hash_256) | Input is hashed twice with Sha-256 (bitcoin’s OP_HASH256).                                 |
 
 [Workstation]: ../getting-started/setting-up-workstation.md
