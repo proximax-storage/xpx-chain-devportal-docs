@@ -13,6 +13,7 @@ Below are described only schemas of transactions related with Drive. For more de
 ## Schemas
 
 ## PrepareDriveTransaction
+
 Sends a new transaction for preparing a new drive with defined parameters.
 
 **Version**: 0x01
@@ -32,8 +33,8 @@ Sends a new transaction for preparing a new drive with defined parameters.
 |  minReplicators  |  uint16  |       the minimum count of replicators for starting to execute drive        |
 | percentApprovers |  uint8   | the percentage of signatures for accepting any transaction (recommended 67) |
 
-
 ## JoinToDriveTransaction
+
 Sends a new join transaction to drive.
 
 **Version**: 0x01
@@ -46,13 +47,13 @@ Sends a new join transaction to drive.
 | :----------: | :------: | :-------------: |
 |   driveKey   | 32 bytes | Key of a drive  |
 
-
 ## DriveFileSystemTransaction
+
 Changes a drive file system.
 
 **Version**: 0x01
 
-**Entity type**: 0x435A 
+**Entity type**: 0x435A
 
 **Signer**: driveAccount
 
@@ -65,6 +66,7 @@ Changes a drive file system.
 | RemoveActionsCount |  uint16  |        count of remove actions         |
 
 ## FilesDepositTransaction
+
 Blocks mocaics at the rate of a file size.
 
 **Version**: 0x01
@@ -79,6 +81,7 @@ Blocks mocaics at the rate of a file size.
 |  FilesCount  |  uint16  | count of new files |
 
 ## EndDriveTransaction
+
 Terminates a drive execution.
 
 **Version**: 0x01
@@ -92,6 +95,7 @@ Terminates a drive execution.
 |   driveKey   | 32 bytes | Key of a drive  |
 
 ## DriveFilesRewardTransaction
+
 Sends rewarding for files.
 
 **Version**: 0x01
@@ -104,8 +108,8 @@ Sends rewarding for files.
 | :--------------: | :------: | :---------------------: |
 | UploadInfosCount |  uint16  | count of uploaded files |
 
-
 ## StartDriveVerificationTransaction
+
 Starts verifying files storing.
 
 **Version**: 0x01
@@ -118,8 +122,8 @@ Starts verifying files storing.
 | :----------: | :------: | :-------------: |
 |   driveKey   | 32 bytes | Key of a drive  |
 
-
 ## EndDriveVerificationTransaction
+
 Ends verifying files storing.
 
 **Version**: 0x01
