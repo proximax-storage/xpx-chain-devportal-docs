@@ -9,7 +9,7 @@ Super Contract (SC) guarantees that executors will get rewards if they completel
 
 ### DeployTransaction
 
-SC transactions suggest that an owner has an active drive with replicators who become SC executors. Then the owner can add a SC file to the drive with [`DriveFileSystemTransaction`](drive#drivefilesystemtransaction) and after that, the SC can be deployed with **DeployTransaction**. Deployed SC means that in BC there is the multisig account. This SC contains info about SC file hash, Virtual Machine version, info about the drive account to witch it linked, and other info.
+Any file on a drive can be presented like a SC with **DeployTransaction**. This will mark the file in blockchain as the new SC. Also, it will be created a new multisig account where the participants are replicators from a drive.
 
 **Version**: 0x01
 
@@ -43,7 +43,7 @@ Any user (initiator) can start SC execution. This should be created and announce
 
 ### EndExecuteTransaction
 
-A SC can have many operations, they can be started by [`StartExecuteTransaction`](#startexecutetransaction) without function name and ended by **EndOperationTransaction**
+A new operation can be started by [`StartExecuteTransaction`](#startexecutetransaction) with function name and possible arguments and ended by **EndOperationTransaction**
 
 **Version**: 0x01
 
@@ -52,6 +52,8 @@ A SC can have many operations, they can be started by [`StartExecuteTransaction`
 **Signer**: SC account
 
 ### OperationIdentifyTransaction
+
+During SC execution can be generated a range of transactions. With **OperationIdentifyTransaction** the transactions can be marked by identifier as related to some certain function (StartExecutionTransaction).
 
 **Version**: 0x01
 
