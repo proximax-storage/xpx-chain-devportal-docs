@@ -33,7 +33,7 @@ Sirius Chain’s private and future public chain share the SDK. You could implem
 3. Alice defines the secret lock transaction `TX1`:
 
 - Mosaic: 10 alice token
-- Recipient: Bob’s address (Public Chain)
+- Recipient: Bob’s address (Private Chain)
 - Algorithm: h
 - Secret: h(proof)
 - Duration: 96h
@@ -43,7 +43,7 @@ Sirius Chain’s private and future public chain share the SDK. You could implem
 5. Bob defines announces the following [secret lock transaction](#secretlocktransaction) `TX2` to the public network:
 
 - Mosaic: 10 bob token
-- Recipient: Alice’s address (Private Chain)
+- Recipient: Alice’s address (Public Chain)
 - Algorithm: h
 - Secret: h(proof)
 - Duration: 84h
