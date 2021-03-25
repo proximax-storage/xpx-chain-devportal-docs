@@ -41,7 +41,7 @@ xpx2-cli account generate
 
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): TEST_NET
 Do you want to save it? [y/n]: y
-Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
+Introduce Sirius Chain Node URL. (Example: http://bctestnet1.brimstone.xpxsirius.io:3000): http://bctestnet1.brimstone.xpxsirius.io:3000
 Insert profile name (blank means default and it could overwrite the previous profile): product
 
 New Account:    VDFRDC-F6RXWX-EOOTVI-RLCNUK-KYRSU6-MXW2FC-OR4V
@@ -59,7 +59,7 @@ xpx2-cli account generate
 
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): TEST_NET
 Do you want to save it? [y/n]: y
-Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
+Introduce Sirius Chain Node URL. (Example: http://bctestnet1.brimstone.xpxsirius.io:3000): http://bctestnet1.brimstone.xpxsirius.io:3000
 Insert profile name (blank means default and it could overwrite the previous profile): company
 
 New Account:    VBI774-YMFDZI-FPEPC5-4EKRC2-5DKDZJ-H2QVRW-4HBP
@@ -177,7 +177,7 @@ const networkGenerationHash = process.env.NETWORK_GENERATION_HASH as string;
 const productAccount = Account.createFromPrivateKey(productPrivateKey, NetworkType.TEST_NET);
 const signedTransaction = productAccount.sign(transaction, networkGenerationHash);
 
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 transactionHttp
     .announce(signedTransaction)
     .subscribe(x => console.log(x), err => console.error(err));
@@ -190,7 +190,7 @@ const networkGenerationHash = process.env.NETWORK_GENERATION_HASH;
 const productAccount = Account.createFromPrivateKey(productPrivateKey, NetworkType.TEST_NET);
 const signedTransaction = productAccount.sign(transaction, networkGenerationHash);
 
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 transactionHttp
     .announce(signedTransaction)
     .subscribe(x => console.log(x), err => console.error(err));
@@ -311,7 +311,7 @@ const networkGenerationHash = process.env.NETWORK_GENERATION_HASH;
 const productAccount = Account.createFromPrivateKey(productPrivateKey, NetworkType.TEST_NET);
 const signedTransaction = productAccount.sign(transaction, networkGenerationHash);
 
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 transactionHttp
     .announce(signedTransaction)
     .subscribe(x => console.log(x), err => console.error(err));
@@ -324,7 +324,7 @@ const networkGenerationHash = process.env.NETWORK_GENERATION_HASH;
 const productAccount = Account.createFromPrivateKey(productPrivateKey, NetworkType.TEST_NET);
 const signedTransaction = productAccount.sign(transaction, networkGenerationHash);
 
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 transactionHttp
     .announce(signedTransaction)
     .subscribe(x => console.log(x), err => console.error(err));
@@ -430,7 +430,7 @@ const networkGenerationHash = process.env.NETWORK_GENERATION_HASH as string;
 const productAccount = Account.createFromPrivateKey(productPrivateKey, NetworkType.TEST_NET);
 const signedTransaction = productAccount.sign(transaction,networkGenerationHash);
 
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 transactionHttp
     .announce(signedTransaction)
     .subscribe(x => console.log(x), err => console.error(err));
@@ -443,7 +443,7 @@ const networkGenerationHash = process.env.NETWORK_GENERATION_HASH;
 const productAccount = Account.createFromPrivateKey(productPrivateKey, NetworkType.TEST_NET);
 const signedTransaction = productAccount.sign(transaction,networkGenerationHash);
 
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 transactionHttp
     .announce(signedTransaction)
     .subscribe(x => console.log(x), err => console.error(err));

@@ -16,7 +16,7 @@ Get notified when a new [block](../../protocol/block.md) is included.
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -34,7 +34,7 @@ err := wsClient.AddBlockHandlers(func(block *sdk.BlockInfo) bool {
 
 <!--TypeScript-->
 ```js
-const listener = new Listener('http://localhost:3000');
+const listener = new Listener('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 listener.open().then(() => {
 
@@ -47,7 +47,7 @@ listener.open().then(() => {
 
 <!--JavaScript-->
 ```js
-const listener = new Listener('http://localhost:3000');
+const listener = new Listener('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 listener.open().then(() => {
 
@@ -60,7 +60,7 @@ listener.open().then(() => {
 
 <!--Java-->
 ```java
-    Listener listener = new Listener("http://localhost:3000");
+    Listener listener = new Listener("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     listener.open().get();
 

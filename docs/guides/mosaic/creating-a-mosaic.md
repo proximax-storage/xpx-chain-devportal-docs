@@ -48,7 +48,7 @@ if err != nil {
 
 <!--JavaScript-->
 ```js
-    const nodeURL = "http://localhost:3000";
+    const nodeURL = "http://bctestnet1.brimstone.xpxsirius.io:3000";
 
     const transactionHttp = new TransactionHttp(nodeURL);
 
@@ -113,7 +113,7 @@ const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
 
 **Note:**
 
-Sirius Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to create by 10divisibility. For example, if the mosaic has divisibility 2, to create 10 units (relative) you should define 1000 (absolute) instead.
+Sirius Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to create by power of 10 with divisibility as exponent. For example, if the mosaic has divisibility 2, to create 10 units (relative) you should define 1000 (absolute) instead.
 
 </div>
 

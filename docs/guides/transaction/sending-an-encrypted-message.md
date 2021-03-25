@@ -29,7 +29,7 @@ xpx2-cli account generate --save
 
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): TEST_NET
 Do you want to save it? [y/n]: y
-Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
+Introduce Sirius Chain Node URL. (Example: http://bctestnet1.brimstone.xpxsirius.io:3000): http://bctestnet1.brimstone.xpxsirius.io:3000
 Insert profile name (blank means default and it could overwrite the previous profile): alice
 ```
 
@@ -38,7 +38,7 @@ xpx2-cli account generate --save
 
 Introduce network type (MIJIN_TEST, MIJIN, MAIN_NET, TEST_NET): TEST_NET
 Do you want to save it? [y/n]: y
-Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
+Introduce Sirius Chain Node URL. (Example: http://bctestnet1.brimstone.xpxsirius.io:3000): http://bctestnet1.brimstone.xpxsirius.io:3000
 Insert profile name (blank means default and it could overwrite the previous profile): certificate
 ```
 
@@ -47,7 +47,7 @@ Insert profile name (blank means default and it could overwrite the previous pro
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -147,7 +147,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 var transactionHash = signedTransaction.hash;
 

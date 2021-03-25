@@ -28,7 +28,7 @@ Following this guide you will learn to create the following 3-level multisig acc
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -475,7 +475,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
 
 const lockFundsTransactionSigned = multisigAccount1.sign(lockFundsTransaction, generationHash);
 
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 listener.open().then(() => {
 
@@ -518,7 +518,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
 
 const lockFundsTransactionSigned = multisigAccount1.sign(lockFundsTransaction, generationHash);
 
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 listener.open().then(() => {
 
@@ -561,13 +561,13 @@ listener.open().then(() => {
 
     final SignedTransaction lockFundsTransactionSigned = multisigAccount1.sign(lockFundsTransaction, generationHash);
 
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     transactionHttp.announce(lockFundsTransactionSigned).toFuture().get();
 
     System.out.println(lockFundsTransactionSigned.getHash());
 
-    final Listener listener = new Listener("http://localhost:3000");
+    final Listener listener = new Listener("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     listener.open().get();
 

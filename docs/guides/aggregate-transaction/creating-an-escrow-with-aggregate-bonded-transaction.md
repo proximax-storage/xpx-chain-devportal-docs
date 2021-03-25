@@ -79,7 +79,7 @@ The museum ticket does not have the id 7cdf3b117a3c40cc in your network. Replace
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -123,7 +123,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const nodeUrl = 'http://localhost:3000';
+const nodeUrl = 'http://bctestnet1.brimstone.xpxsirius.io:3000';
 const transactionHttp = new TransactionHttp(nodeUrl);
 const listener = new Listener(nodeUrl);
 
@@ -150,7 +150,7 @@ const ticketDistributorToAliceTx = TransferTransaction.create(
 
 <!--JavaScript-->
 ```js
-const nodeUrl = 'http://localhost:3000';
+const nodeUrl = 'http://bctestnet1.brimstone.xpxsirius.io:3000';
 const transactionHttp = new TransactionHttp(nodeUrl);
 const listener = new Listener(nodeUrl);
 
@@ -363,13 +363,13 @@ listener.open().then(() => {
 
         final SignedTransaction lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction, generationHash);
 
-        final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+        final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
         transactionHttp.announce(lockFundsTransactionSigned).toFuture().get();
 
         System.out.println(lockFundsTransactionSigned.getHash());
 
-        final Listener listener = new Listener("http://localhost:3000");
+        final Listener listener = new Listener("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
         listener.open().get();
 

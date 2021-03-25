@@ -31,7 +31,7 @@ In this guide, you are going to create a 1-of-2 multisig account. In future guid
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -39,17 +39,17 @@ if err != nil {
 // Use the default http client
 client := sdk.NewClient(nil, conf)
 
-multisig, err := client.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PUBLIC_KEY"))
+accToMultisig, err := client.NewAccountFromPublicKey(os.Getenv("MULTISIG_ACCOUNT_PRIVATE_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatory1, err := client.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_1_PRIVATE_KEY"))
+cosignatory1, err := client.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_1_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
 
-cosignatory2, err := client.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_2_PRIVATE_KEY"))
+cosignatory2, err := client.NewAccountFromPrivateKey(os.Getenv("COSIGNATORY_2_PUBLIC_KEY"))
 if err != nil {
     panic(err)
 }
@@ -57,10 +57,10 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string; // Private key of the account to convert into multisig
-const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+const accToMultisig = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const cosignatory1PublicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
 const cosignatory1 = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.TEST_NET);
@@ -70,10 +70,10 @@ const cosignatory2 = PublicAccount.createFromPublicKey(cosignatory2PublicKey, Ne
 
 <!--JavaScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const privateKey = process.env.PRIVATE_KEY; // Private key of the account to convert into multisig
-const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+const accToMultisig = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
 const cosignatory1PublicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
 const cosignatory1 = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.TEST_NET);
@@ -90,7 +90,7 @@ const cosignatory2 = PublicAccount.createFromPublicKey(cosignatory2PublicKey, Ne
     final String cosignatory1PublicKey = "7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246";
     final String cosignatory2PublicKey = "F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D";
 
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+    final Account accToMultisig = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
     final PublicAccount cosignatory1PublicAccount = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.TEST_NET);
     final PublicAccount cosignatory2PublicAccount = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.TEST_NET);
@@ -192,7 +192,7 @@ if err != nil {
 ```js
 const aggregateTransaction = AggregateTransaction.createBonded(
     Deadline.create(),
-    [convertIntoMultisigTransaction],
+    [convertIntoMultisigTransaction.toAggregate(accToMultisig.publicAccount)],
     NetworkType.TEST_NET
 );
 
@@ -206,14 +206,14 @@ const aggregateTransaction = AggregateTransaction.createBonded(
 
 **Note:**
 
-To make the transaction only valid for your network, include the first block generation hash. Open `http://localhost:3000/block/1` in a new tab and copy the `meta.generationHash` value.
+To make the transaction only valid for your network, include the first block generation hash. Open `http://bctestnet1.brimstone.xpxsirius.io:3000/block/1` in a new tab and copy the `meta.generationHash` value.
 
 </div>
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-signedAggregateBoundedTransaction, err := cosignatory1.Sign(aggregateTransaction)
+signedAggregateBoundedTransaction, err := accToMultisig.Sign(aggregateTransaction)
 if err != nil {
     panic(err)
 }
@@ -221,7 +221,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const signedAggregateBoundedTransaction = cosignatory1.sign(aggregateTransaction, generationHash);
+const signedAggregateBoundedTransaction = accToMultisig.sign(aggregateTransaction, generationHash);
 
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -241,6 +241,7 @@ if err != nil {
     panic(err)
 }
 
+// cosignatory1 will pay for the lock fund
 signedLockFundsTransaction, err := cosignatory1.Sign(lockFundsTransaction)
 if err != nil {
     panic(err)
@@ -261,6 +262,7 @@ const lockFundsTransaction = LockFundsTransaction.create(
     signedAggregateBoundedTransaction,
     NetworkType.TEST_NET);
 
+// // cosignatory1 will pay for the lock fund
 const lockFundsTransactionSigned = cosignatory1.sign(lockFundsTransaction, generationHash);
 
 transactionHttp

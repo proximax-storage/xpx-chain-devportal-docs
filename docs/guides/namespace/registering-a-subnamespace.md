@@ -29,7 +29,7 @@ In this example, we have registered a subnamespace called `bar` under `foo` name
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -80,7 +80,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string;
 const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
@@ -103,7 +103,7 @@ transactionHttp
 
 <!--JavaScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const privateKey = process.env.PRIVATE_KEY;
 const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
@@ -151,7 +151,7 @@ transactionHttp
 
     final SignedTransaction signedTransaction = account.sign(registerNamespaceTransaction, generationHash);
 
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     transactionHttp.announce(signedTransaction).toFuture().get();
 ```

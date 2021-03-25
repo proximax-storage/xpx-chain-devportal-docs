@@ -1678,7 +1678,7 @@ externalDocs:
   description: ProximaX Developer Center
   url: 'https://proximax.io/'
 servers:
-- url: http://localhost:3000
+- url: http://bctestnet1.brimstone.xpxsirius.io:3000
 components:
   requestBodies:
     metadataIds:

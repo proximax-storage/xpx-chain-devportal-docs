@@ -11,7 +11,7 @@ Sirius Chain REST uses port `3000`. It accepts both HTTP **GET**, **PUT** and **
 
 Assuming that Sirius Chain REST is running locally, HTTP GET requests can be executed from a browser and have the form:
 
-[http://localhost:3000/](http://localhost:3000/)<path-to-API-request>
+[http://bctestnet1.brimstone.xpxsirius.io:3000/](http://bctestnet1.brimstone.xpxsirius.io:3000/)<path-to-API-request>
 
 HTTP PUT and POST requests use JSON structures in the request body. Request returns data (if any is returned) using JSON structures. This request cannot usually be executed from within the browser unless you use a [plugin](./tools.md) which enables you to do it.
 

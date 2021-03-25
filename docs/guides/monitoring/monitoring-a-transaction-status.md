@@ -34,7 +34,7 @@ To ensure the transaction is added in a block, you must track the [transaction s
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -104,7 +104,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const url = 'http://localhost:3000';
+const url = 'http://bctestnet1.brimstone.xpxsirius.io:3000';
 const listener = new Listener(url);
 const transactionHttp = new TransactionHttp(url);
 

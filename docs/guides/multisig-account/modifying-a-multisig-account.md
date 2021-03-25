@@ -33,7 +33,7 @@ One of the accounts, for example Alice’s, will announce a [modify multisig acc
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -54,7 +54,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const cosignatoryPrivateKey = "<cosignatoryPrivateKey>";
 const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
@@ -65,7 +65,7 @@ const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicK
 
 <!--JavaScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const cosignatoryPrivateKey = "<cosignatoryPrivateKey>";
 const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
@@ -76,7 +76,7 @@ const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicK
 
 <!--Java-->
 ```java
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     final String cosignatoryPrivateKey = "<cosignatoryPrivateKey>";
     final String multisigAccountPublicKey = "<multisigPublicKey>";
@@ -94,8 +94,8 @@ const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicK
 ```go
 modifyMultisigAccountTransaction, err := client.NewModifyMultisigAccountTransaction(
     sdk.NewDeadline(time.Hour),
-    1,
-    0,
+    1, // relative delta
+    0, // relative delta
     []*sdk.MultisigCosignatoryModification{ },
 )
 if err != nil {
@@ -107,8 +107,8 @@ if err != nil {
 ```js
 const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
     Deadline.create(),
-    1, // min to Approve
-    0, // min to remove cosignatory
+    1, // min to Approve - relative delta
+    0, // min to remove cosignatory - relative delta
     [],
     NetworkType.TEST_NET);
 ```
@@ -117,8 +117,8 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
 ```js
 const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
     Deadline.create(),
-    1, // min to Approve
-    0, // min to remove cosignatory
+    1, // min to Approve - relative delta
+    0, // min to remove cosignatory - relative delta
     [],
     NetworkType.TEST_NET);
 ```
@@ -127,8 +127,8 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
 ```java
  final ModifyMultisigAccountTransaction modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
     Deadline.create(2, HOURS),
-    1, // min to Approve
-    0, // min to remove cosignatory
+    1, // min to Approve - relative delta
+    0, // min to remove cosignatory - relative delta
     Collections.emptyList(),
     NetworkType.TEST_NET
 );
@@ -231,7 +231,7 @@ Alice and Bob want to add Carol as a cosignatory of the multisig account to achi
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -260,7 +260,7 @@ multisigCosignatoryModification := sdk.MultisigCosignatoryModification{sdk.Add, 
 
 <!--TypeScript-->
 ```js
-const nodeUrl = 'http://localhost:3000';
+const nodeUrl = 'http://bctestnet1.brimstone.xpxsirius.io:3000';
 const transactionHttp = new TransactionHttp(nodeUrl);
 const listener = new Listener(nodeUrl);
 
@@ -278,7 +278,7 @@ const multisigCosignatoryModification = new MultisigCosignatoryModification(Mult
 
 <!--JavaScript-->
 ```js
-const nodeUrl = 'http://localhost:3000';
+const nodeUrl = 'http://bctestnet1.brimstone.xpxsirius.io:3000';
 const transactionHttp = new TransactionHttp(nodeUrl);
 const listener = new Listener(nodeUrl);
 
@@ -510,11 +510,11 @@ listener.open().then(() => {
 
     final SignedTransaction lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction);
 
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     transactionHttp.announce(lockFundsTransactionSigned).toFuture().get();
 
-    final Listener listener = new Listener("http://localhost:3000");
+    final Listener listener = new Listener("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     listener.open().get();
 
@@ -563,7 +563,7 @@ The `minRemoval` parameter indicates the number of required signatures to delete
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -617,7 +617,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const multisigAccountPublicKey = "<multisigPublicKey>";
 const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
@@ -651,7 +651,7 @@ transactionHttp.announce(signedTransaction)
 
 <!--JavaScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const multisigAccountPublicKey = "<multisigPublicKey>";
 const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
@@ -715,7 +715,7 @@ transactionHttp
 
     final SignedTransaction signedTransaction = cosignatoryAccount.sign(aggregateTransaction, generationHash);
 
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     transactionHttp.announce(signedTransaction).toFuture().get();
 ```

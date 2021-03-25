@@ -22,7 +22,7 @@ To increase the initial supply to `2.000.000`, define a [mosaic supply change tr
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -48,7 +48,7 @@ if err != nil {
 
 <!--JavaScript-->
 ```js
-    const nodeURL = "http://localhost:3000";
+    const nodeURL = "http://bctestnet1.brimstone.xpxsirius.io:3000";
 
     const transactionHttp = new TransactionHttp(nodeURL);
 

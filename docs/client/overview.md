@@ -34,13 +34,13 @@ A profile holds an account and a node URL for a specific network. Profiles are u
 Configure default profile.
 
 ```bash
-$> xpx2-cli profile create --privatekey your_private_key --network TEST_NET --url http://localhost:3000
+$> xpx2-cli profile create --privatekey your_private_key --network TEST_NET --url http://bctestnet1.brimstone.xpxsirius.io:3000
 ```
 
 XPX-Chain-CLI supports named profiles. You can configure additional profiles by using the –profile option.
 
 ```bash
-$> xpx2-cli profile create --privatekey your_private_key --network TEST_NET --url http://localhost:3000 --profile test_net_profile
+$> xpx2-cli profile create --privatekey your_private_key --network TEST_NET --url http://bctestnet1.brimstone.xpxsirius.io:3000 --profile test_net_profile
 ```
 
 By default, XPX-Chain-CLI will always use the default profile. To use a named profile, add the –profile option to the command.
@@ -57,5 +57,5 @@ $> export XPX_PROFILE=_test_net_profile
 If you do not have a private key to create a profile you can generate a new account, add a node url and save it as default or named profile.
 
 ```bash
-$> xpx2-cli account generate --network TEST_NET -s --url http://localhost:3000 --profile test_net_profile
+$> xpx2-cli account generate --network TEST_NET -s --url http://bctestnet1.brimstone.xpxsirius.io:3000 --profile test_net_profile
 ```

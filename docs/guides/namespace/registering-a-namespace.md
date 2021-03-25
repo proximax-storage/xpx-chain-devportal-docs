@@ -28,7 +28,7 @@ An account can link a registered name (namespace or subnamespace) with an accoun
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -49,7 +49,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const namespaceHttp = new NamespaceHttp('http://localhost:3000');
+const namespaceHttp = new NamespaceHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const namespace = new NamespaceId('foo');
 
@@ -60,7 +60,7 @@ namespaceHttp
 
 <!--JavaScript-->
 ```js
-const namespaceHttp = new NamespaceHttp('http://localhost:3000');
+const namespaceHttp = new NamespaceHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const namespace = new NamespaceId('foo');
 
@@ -73,7 +73,7 @@ namespaceHttp
 ```java
 final NamespaceId namespaceId = new NamespaceId("foo");
 
-final NamespaceHttp namespaceHttp = new NamespaceHttp("http://localhost:3000");
+final NamespaceHttp namespaceHttp = new NamespaceHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
 final NamespaceInfo namespaceInfo = namespaceHttp.getNamespace(namespaceId).toFuture().get();
 
@@ -134,7 +134,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string;
 const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
@@ -156,7 +156,7 @@ transactionHttp
 
 <!--JavaScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const privateKey = process.env.PRIVATE_KEY;
 const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
@@ -194,7 +194,7 @@ transactionHttp
 
     final SignedTransaction signedTransaction = account.sign(registerNamespaceTransaction, generationHash);
 
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     transactionHttp.announce(signedTransaction).toFuture().get();
 ```

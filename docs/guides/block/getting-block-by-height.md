@@ -18,7 +18,7 @@ Are you curious to see what happened in the genesis block?
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -35,7 +35,7 @@ fmt.Printf(block.String())
 
 <!--TypeScript-->
 ```js
-const blockchainHttp = new BlockchainHttp('http://localhost:3000');
+const blockchainHttp = new BlockchainHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const height = 1;
 
@@ -46,7 +46,7 @@ blockchainHttp
 
 <!--JavaScript-->
 ```js
-const blockchainHttp = new BlockchainHttp('http://localhost:3000');
+const blockchainHttp = new BlockchainHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const height = 1;
 
@@ -57,7 +57,7 @@ blockchainHttp
 
 <!--Java-->
 ```java
-    final BlockchainHttp blockchainHttp = new BlockchainHttp("http://localhost:3000");
+    final BlockchainHttp blockchainHttp = new BlockchainHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     // Replace with block height
     final BigInteger blockHeight = BigInteger.valueOf(1);
@@ -74,7 +74,7 @@ The following snippet returns the height of the latest block.
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -91,7 +91,7 @@ fmt.Printf("%s\n", height)
 
 <!--TypeScript-->
 ```js
-const blockchainHttp = new BlockchainHttp('http://localhost:3000');
+const blockchainHttp = new BlockchainHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 blockchainHttp
     .getBlockchainHeight()
@@ -100,7 +100,7 @@ blockchainHttp
 
 <!--JavaScript-->
 ```js
-const blockchainHttp = new BlockchainHttp('http://localhost:3000');
+const blockchainHttp = new BlockchainHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 blockchainHttp
     .getBlockchainHeight()
@@ -109,7 +109,7 @@ blockchainHttp
 
 <!--Java-->
 ```java
-    final BlockchainHttp blockchainHttp = new BlockchainHttp("http://localhost:3000");
+    final BlockchainHttp blockchainHttp = new BlockchainHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     final BigInteger blockchainHeight = blockchainHttp.getBlockchainHeight().toFuture().get();
 

@@ -17,7 +17,7 @@ This guide will help you get the public key and balance of an [account](../../bu
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -41,7 +41,7 @@ fmt.Printf(accountInfo.String())
 <!--TypeScript-->
 
 ```ts
-const accountHttp = new AccountHttp('http://localhost:3000');
+const accountHttp = new AccountHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 const address = Address.createFromRawAddress('VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
 
 accountHttp
@@ -51,7 +51,7 @@ accountHttp
 
 <!--JavaScript-->
 ```js
-const accountHttp = new AccountHttp('http://localhost:3000');
+const accountHttp = new AccountHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 const address = Address.createFromRawAddress('VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
 
 accountHttp
@@ -66,7 +66,7 @@ xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 
 <!--Java-->
 ```java
-    final AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
+    final AccountHttp accountHttp = new AccountHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     // Replace with address
     final String address = "VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54";
@@ -89,7 +89,7 @@ The balance is the amount of the different mosaics owned by the account. How man
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -115,7 +115,7 @@ fmt.Println(accountInfo.Mosaics[0].Amount)
 
 import { mergeMap, map } from 'rxjs/operators';
 
-const url = 'http://localhost:3000';
+const url = 'http://bctestnet1.brimstone.xpxsirius.io:3000';
 const accountHttp = new AccountHttp(url);
 const mosaicHttp = new MosaicHttp(url);
 const namespaceHttp = new NamespaceHttp(url);
@@ -140,7 +140,7 @@ var { mergeMap, map } = require('rxjs/operators');
 // es6
 import { mergeMap, map } from 'rxjs/operators';
 
-const url = 'http://localhost:3000';
+const url = 'http://bctestnet1.brimstone.xpxsirius.io:3000';
 const accountHttp = new AccountHttp(url);
 const mosaicHttp = new MosaicHttp(url);
 const namespaceHttp = new NamespaceHttp(url);

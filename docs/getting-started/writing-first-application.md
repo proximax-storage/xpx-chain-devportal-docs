@@ -78,7 +78,7 @@ Mosaics
 2. This account owns 1,000,000 XPX. If your own mosaics is empty, follow the [previous guide instructions](./setting-up-workstation.md).
 3. Create a second account to identify the ticket buyer.
 ```
-$> xpx2-cli account generate --network TEST_NET --save --url http://localhost:3000 --profile buyer
+$> xpx2-cli account generate --network TEST_NET --save --url http://bctestnet1.brimstone.xpxsirius.io:3000 --profile buyer
 ```
 
 ### Monitoring the blockchain
@@ -223,7 +223,7 @@ Although the transaction is created, it has not been announced to the network ye
 
 **Note**
 
-To make the transaction only valid for your network, include the first block generation hash. Open `http://localhost:3000/block/1` in a new tab and copy the `meta.generationHash` value.
+To make the transaction only valid for your network, include the first block generation hash. Open `http://bctestnet1.brimstone.xpxsirius.io:3000/block/1` in a new tab and copy the `meta.generationHash` value.
 </div>
 
 <!--DOCUSAURUS_CODE_TABS-->
@@ -274,7 +274,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```ts
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 transactionHttp.announce(signedTransaction).subscribe(
     x => console.log(x),
@@ -283,7 +283,7 @@ transactionHttp.announce(signedTransaction).subscribe(
 ```
 <!--Java-->
 ```java
-final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
 transactionHttp.announceTransaction(signedTransaction).toFuture().get();
 ```

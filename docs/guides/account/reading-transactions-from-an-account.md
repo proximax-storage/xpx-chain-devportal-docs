@@ -19,7 +19,7 @@ Get the list of [transactions](../../protocol/transaction.md) where an [account]
 ```go
 publicKey := "..."
 
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -41,7 +41,7 @@ for _, transaction := range transactions {
 <!--TypeScript-->
 
 ```ts
-const accountHttp = new AccountHttp('http://localhost:3000');
+const accountHttp = new AccountHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const publicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
 const publicAccount =  PublicAccount.createFromPublicKey(publicKey, NetworkType.TEST_NET);
@@ -55,7 +55,7 @@ accountHttp
 
 <!--JavaScript-->
 ```js
-const accountHttp = new AccountHttp('http://localhost:3000');
+const accountHttp = new AccountHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const publicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
 const publicAccount =  PublicAccount.createFromPublicKey(publicKey, NetworkType.TEST_NET);
@@ -74,7 +74,7 @@ xpx2-cli account transactions --publickey 7D08373CFFE4154E129E04F0827E5F3D690758
 
 <!--Java-->
 ```java
-final AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
+final AccountHttp accountHttp = new AccountHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
 // Replace with public key
 final String publicKey = "";

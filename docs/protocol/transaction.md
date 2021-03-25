@@ -105,7 +105,7 @@ For example, a transfer transaction describes who is the recipient and the quant
 An account has to follow the next steps to sign a transaction :
 
 1. Get the `signing bytes`, which are all the bytes of the transaction except the size, signature and signer.
-2. Get the nemesis block generation hash. You can query `http://localhost:3000/block/1` and copy `meta.generationHash` value.
+2. Get the nemesis block generation hash. You can query `http://bctestnet1.brimstone.xpxsirius.io:3000/block/1` and copy `meta.generationHash` value.
 3. Prepend the nemesis block generation hash to the signing bytes.
 4. Sign the resulting string with the signer's private key. This will give you the transaction `signature`.
 5. Append the signer's signature and public key to the transaction to obtain the `payload`.

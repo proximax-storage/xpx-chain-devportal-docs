@@ -10,7 +10,7 @@ externalDocs:
   description: ProximaX Sirius-Chain Developer Center
   url: https://bcdocs.xpxsirius.io/
 servers:
-- url: http://localhost:3000/
+- url: http://bctestnet1.brimstone.xpxsirius.io:3000/
 tags:
 - name: Account routes
   description: |

@@ -19,7 +19,7 @@ In this example, we are going to check how many assets of a certain type have we
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -50,7 +50,7 @@ for _, mosaic := range accountInfo.Mosaics {
 
 import { mergeMap, map, filter, toArray } from 'rxjs/operators';
 
-const accountHttp = new AccountHttp('http://localhost:3000');
+const accountHttp = new AccountHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const originPublicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
 const originAccount = PublicAccount.createFromPublicKey(originPublicKey, NetworkType.TEST_NET);
@@ -85,7 +85,7 @@ var { mergeMap, map, filter, toArray } = require('rxjs/operators');
 // es6
 import { mergeMap, map, filter, toArray } from 'rxjs/operators';
 
-const accountHttp = new AccountHttp('http://localhost:3000');
+const accountHttp = new AccountHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const originPublicKey = '7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246';
 const originAccount = PublicAccount.createFromPublicKey(originPublicKey, NetworkType.TEST_NET);
@@ -124,7 +124,7 @@ accountHttp
         // Replace with address
         final Address address = Address.createFromRawAddress(recipientAddress);
 
-        final AccountHttp accountHttp = new AccountHttp("http://localhost:3000");
+        final AccountHttp accountHttp = new AccountHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
         final BigInteger total = accountHttp.outgoingTransactions(originAccount)
                 .flatMapIterable(tx -> tx) // Transform transaction array to single transactions to process them

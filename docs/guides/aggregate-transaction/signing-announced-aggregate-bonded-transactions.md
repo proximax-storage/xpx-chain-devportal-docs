@@ -80,7 +80,7 @@ if err != nil {
 const privateKey = process.env.PRIVATE_KEY as string;
 const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-const nodeUrl = 'http://localhost:3000';
+const nodeUrl = 'http://bctestnet1.brimstone.xpxsirius.io:3000';
 
 const transactionHttp = new TransactionHttp(nodeUrl);
 
@@ -111,7 +111,7 @@ accountHttp
 const privateKey = process.env.PRIVATE_KEY;
 const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-const nodeUrl = 'http://localhost:3000';
+const nodeUrl = 'http://bctestnet1.brimstone.xpxsirius.io:3000';
 
 const transactionHttp = new TransactionHttp(nodeUrl);
 
@@ -143,7 +143,7 @@ accountHttp
 
     final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-    final String nodeUrl = 'http://localhost:3000';
+    final String nodeUrl = 'http://bctestnet1.brimstone.xpxsirius.io:3000';
 
     final AccountHttp accountHttp = new AccountHttp(nodeUrl);
 

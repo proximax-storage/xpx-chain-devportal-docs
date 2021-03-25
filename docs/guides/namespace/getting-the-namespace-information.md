@@ -19,7 +19,7 @@ Call `getNamespace` function, passing the namespace identifier you want to check
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -38,7 +38,7 @@ fmt.Printf("%s\n", namespace.String())
 ```
 <!--TypeScript-->
 ```js
-const namespaceHttp = new NamespaceHttp('http://localhost:3000');
+const namespaceHttp = new NamespaceHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 const namespaceId = new NamespaceId('foo');
 
 namespaceHttp
@@ -48,7 +48,7 @@ namespaceHttp
 
 <!--JavaScript-->
 ```js
-const namespaceHttp = new NamespaceHttp('http://localhost:3000');
+const namespaceHttp = new NamespaceHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 const namespaceId = new NamespaceId('foo');
 
 namespaceHttp

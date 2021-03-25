@@ -43,7 +43,7 @@ Let’s develop the piece of code present in Bob’s mobile wallet that enables 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -69,7 +69,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const transactionHttp = new TransactionHttp( 'http://localhost:3000');
+const transactionHttp = new TransactionHttp( 'http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY as string;
 const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
@@ -82,7 +82,7 @@ const recipientAddress = Address.createFromRawAddress('VD5DT3-CH4BLA-BL5HIM-EKP2
 
 <!--JavaScript-->
 ```js
-const transactionHttp = new TransactionHttp( 'http://localhost:3000');
+const transactionHttp = new TransactionHttp( 'http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const cosignatoryPrivateKey = process.env.COSIGNATORY_1_PRIVATE_KEY;
 const cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
@@ -243,7 +243,7 @@ transactionHttp
 ```java
 final SignedTransaction aggregateSignedTransaction = cosignatoryAccount.sign(aggregateTransaction, generationHash);
 
-final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     transactionHttp.announce(aggregateSignedTransaction).toFuture().get();
 ```
@@ -418,13 +418,13 @@ listener.open().then(() => {
 
     final SignedTransaction lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction, generationHash);
 
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     transactionHttp.announce(lockFundsTransactionSigned).toFuture().get();
 
     System.out.println(lockFundsTransactionSigned.getHash());
 
-    final Listener listener = new Listener("http://localhost:3000");
+    final Listener listener = new Listener("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     listener.open().get();
 

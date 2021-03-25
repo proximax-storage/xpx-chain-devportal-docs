@@ -45,12 +45,12 @@ For that reason, each actor involved should have at least one account in each bl
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-privateChainConf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+privateChainConf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
 privateChainClient := sdk.NewClient(nil, privateChainConf)
-publicChainConf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3001"})
+publicChainConf, err := sdk.NewConfig(context.Background(), []string{"http://private.testnet.example.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -82,8 +82,8 @@ const alicePrivateChainAccount = Account.createFromPrivateKey('', NetworkType.PR
 const bobPublicChainAccount = Account.createFromPrivateKey('', NetworkType.MAIN_NET);
 const bobPrivateChainAccount = Account.createFromPrivateKey('', NetworkType.PRIVATE);
 
-const privateChainTransactionHttp = new TransactionHttp('http://localhost:3000');
-const publicChainTransactionHttp = new TransactionHttp('http://localhost:3001');
+const privateChainTransactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
+const publicChainTransactionHttp = new TransactionHttp('http://private.testnet.example.io:3000');
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

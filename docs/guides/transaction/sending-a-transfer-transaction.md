@@ -50,7 +50,7 @@ xpx2-cli monitor confirmed
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -180,7 +180,7 @@ var mosaics = [
 
 **Note**
 
-Sirius Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to send by 10divisibility. For example, if the mosaic has divisibility 2, to send 10 units (relative) you should define 1000 (absolute) instead.
+Sirius Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to send by power of 10 with divisibility as exponent. For example, if the mosaic has divisibility 2, to send 10 units (relative) you should define 1000 (absolute) instead.
 
 </div>
 
@@ -239,7 +239,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 transactionHttp
     .announce(signedTransaction)
@@ -248,7 +248,7 @@ transactionHttp
 
 <!--JavaScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 transactionHttp
     .announce(signedTransaction)
@@ -257,7 +257,7 @@ transactionHttp
 
 <!--Java-->
 ```java
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     transactionHttp.announce(signedTransaction).toFuture().get();
 ```

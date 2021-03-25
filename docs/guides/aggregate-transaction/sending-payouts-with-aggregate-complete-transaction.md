@@ -31,7 +31,7 @@ As one private key can sign all the transactions in the aggregate, define the ag
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -76,7 +76,7 @@ if err != nil {
 
 <!--TypeScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const privateKey = process.env.PRIVATE_KEY as string;
 const danAccount = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
@@ -104,7 +104,7 @@ const aggregateTransaction = AggregateTransaction.createComplete(
 
 <!--JavaScript-->
 ```js
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 const privateKey = process.env.PRIVATE_KEY;
 const danAccount = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
@@ -203,7 +203,7 @@ transactionHttp
 
 <!--Java-->
 ```java
-    final TransactionHttp transactionHttp = new TransactionHttp("http://localhost:3000");
+    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
 
     final SignedTransaction signedTransaction = danAccount.sign(aggregateTransaction, generationHash);
 

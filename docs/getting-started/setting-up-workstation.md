@@ -87,7 +87,7 @@ $> xpx2-cli profile create
 
 Introduce network type (PRIVATE_TEST, PRIVATE, MAIN_NET, TEST_NET): TEST_NET
 Introduce your private key: 41************************************************************FF
-Introduce Sirius Chain Node URL. (Example: http://localhost:3000): http://localhost:3000
+Introduce Sirius Chain Node URL. (Example: http://bctestnet1.brimstone.xpxsirius.io:3000): http://bctestnet1.brimstone.xpxsirius.io:3000
 Insert profile name (blank means default and it could overwrite the previous profile):
 ```
 

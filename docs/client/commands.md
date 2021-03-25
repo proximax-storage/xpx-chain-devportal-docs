@@ -12,12 +12,12 @@ Creates a new profile.
 
     -p, --privatekey <privatekey> - Private key
     -n, --network <network>       - Network Type: MAIN_NET, TEST_NET, PRIVATE, PRIVATE_TEST
-    -u, --url <url>               - Sirius Chain Node URL. Example: http://localhost:3000
+    -u, --url <url>               - Sirius Chain Node URL. Example: http://bctestnet1.brimstone.xpxsirius.io:3000
     --profile <profile>           - (Optional) profile name, if not private key will be stored as default
 
 **Command**
 ```
-$> xpx2-cli profile create -p 206CE7E4B16B48430FD2C216E4BB105564B21E21DEE196267B4B33C54F1023FC -n TEST_NET -u http://localhost:3000
+$> xpx2-cli profile create -p 206CE7E4B16B48430FD2C216E4BB105564B21E21DEE196267B4B33C54F1023FC -n TEST_NET -u http://bctestnet1.brimstone.xpxsirius.io:3000
 ```
 
 ### List

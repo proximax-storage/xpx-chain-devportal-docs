@@ -23,7 +23,7 @@ An account can link a registered name (namespace or subnamespace) with a mosaic.
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
 ```go
-conf, err := sdk.NewConfig(context.Background(), []string{"http://localhost:3000"})
+conf, err := sdk.NewConfig(context.Background(), []string{"http://bctestnet1.brimstone.xpxsirius.io:3000"})
 if err != nil {
     panic(err)
 }
@@ -122,7 +122,7 @@ if err != nil {
 <!--TypeScript-->
 ```js
 
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 transactionHttp
     .announce(signedTransaction)
@@ -132,7 +132,7 @@ transactionHttp
 <!--JavaScript-->
 ```js
 
-const transactionHttp = new TransactionHttp('http://localhost:3000');
+const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsirius.io:3000');
 
 transactionHttp
     .announce(signedTransaction)
