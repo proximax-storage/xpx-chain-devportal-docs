@@ -216,7 +216,7 @@ Refering to the above, the lower and higher, we can represent uint64 id in a hex
 
 ## Our API node
 
-### Main Net
+### Mainnet
 
 - https://arcturus.xpxsirius.io
 
@@ -226,22 +226,26 @@ Refering to the above, the lower and higher, we can represent uint64 id in a hex
 
 - https://bigcalvin.xpxsirius.io
 
-- https://westerlund.xpxsirius.io
-
-- https://canismajor.xpxsirius.io
-
-- https://coronaborealis.xpxsirius.io
-
 - https://delphinus.xpxsirius.io
-
-- https://eridanus.xpxsirius.io
 
 - https://lyrasithara.xpxsirius.io
 
-### Test Net
+### Testnet 1
 
 - https://bctestnet1.brimstone.xpxsirius.io/
 
 - https://bctestnet2.brimstone.xpxsirius.io/
 
 - https://bctestnet3.brimstone.xpxsirius.io/
+
+#### Testnet 1 Faucet
+
+- https://bctestnetfaucet.xpxsirius.io
+
+### Testnet 2
+
+- https://api-1.testnet2.xpxsirius.io
+
+#### Testnet 2 Faucet
+
+- https://bctestnet2faucet.xpxsirius.io

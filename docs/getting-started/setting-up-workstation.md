@@ -94,7 +94,7 @@ Insert profile name (blank means default and it could overwrite the previous pro
 ### Use our faucet to get test-XPX
 
 For `testnet` you can get test-XPX from our online faucet.
-Simply go to our [faucet](https://bctestnetfaucet.xpxsirius.io/) to get your test-XPX.
+Simply go to our [faucet](../cheatsheet.md#testnet-1-faucet) to get your test-XPX.
 
 ## Accessing our PRIVATE Net
 
