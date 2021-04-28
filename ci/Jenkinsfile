@@ -19,7 +19,7 @@ pipeline {
       steps {
 
         echo 'Starting Docker Container'
-        withDockerContainer(image: 'node:8.11.4') {
+        withDockerContainer(image: 'node:10') {
           sh '''
             cd website
             echo 'Installing dependencies'
