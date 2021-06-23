@@ -103,261 +103,6 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  "/account/{publicKey}/transactions":
-    get:
-      tags:
-      - Account routes
-      summary: Get confirmed transactions
-      description: Gets an array of transactions for which an account is the sender or
-        receiver.
-      operationId: transactions
-      parameters:
-      - name: publicKey
-        in: path
-        description: The public key of the account.
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: |
-          The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: |
-          The ordering criteria:
-          * -id - Descending order by id.
-          * id - Ascending order by id.
-        schema:
-          type: string
-          default: -id
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of confirmed transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "409":
-          description: invalid argument
-  "/account/{publicKey}/transactions/incoming":
-    get:
-      tags:
-      - Account routes
-      summary: Get incoming transactions
-      description: |
-        Gets an array of incoming transactions. A transaction is said to be
-        incoming with respect to an account if the account is the recipient of
-        the transaction.
-      operationId: incomingTransactions
-      parameters:
-      - name: publicKey
-        in: path
-        description: The public key of the account.
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: |
-          The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: |
-          The ordering criteria:
-          * -id - Descending order by id.
-          * id - Ascending order by id.
-        schema:
-          type: string
-          default: -id
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of incoming transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "409":
-          description: invalid argument
-  "/account/{publicKey}/transactions/outgoing":
-    get:
-      tags:
-      - Account routes
-      summary: Get outgoing transactions
-      description: Gets an array of outgoing transactions. A transaction is said to be
-        outgoing with respect to an account if the account is the sender of the
-        transaction.
-      operationId: outgoingTransactions
-      parameters:
-      - name: publicKey
-        in: path
-        description: The public key of the account.
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: |
-          The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: |
-          The ordering criteria:
-          * -id - Descending order by id.
-          * id - Ascending order by id.
-        schema:
-          type: string
-          default: -id
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of outgoing transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "409":
-          description: invalid argument
-  "/account/{publicKey}/transactions/unconfirmed":
-    get:
-      tags:
-      - Account routes
-      summary: Get unconfirmed transactions
-      description: |
-        Gets the array of transactions not included in a block where an account
-        is the sender or receiver.
-      operationId: unconfirmedTransactions
-      parameters:
-      - name: publicKey
-        in: path
-        description: The public key of the account.
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: |
-          The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: |
-          The ordering criteria.
-          * -id - Descending order by id.
-          * id - Ascending order by id.
-        schema:
-          type: string
-          default: -id
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of unconfirmed transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "409":
-          description: invalid argument
-  "/account/{publicKey}/transactions/partial":
-    get:
-      tags:
-      - Account routes
-      summary: Get aggregate bonded transactions information
-      description: |
-        Gets an array of [aggregate bonded transactions](https://nemtech.github.io/concepts/aggregate-transaction.html)
-        where the account is the sender or requires to cosign the transaction.
-      operationId: partialTransactions
-      parameters:
-      - name: publicKey
-        in: path
-        description: The public key of the account.
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: |
-          The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: |
-          The ordering criteria.
-          * -id - Descending order by id.
-          * id - Ascending order by id.
-        schema:
-          type: string
-          default: -id
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of aggregate bonded transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "409":
-          description: invalid argument
   "/account/{accountId}/properties":
     get:
       tags:
@@ -1154,58 +899,7 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  "/transaction/{transactionId}":
-    get:
-      tags:
-      - Transaction routes
-      summary: Get transaction information
-      description: Returns transaction information given a transactionId or hash.
-      operationId: getTransaction
-      parameters:
-      - name: transactionId
-        in: path
-        description: The transaction id or hash.
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TransactionInfoDTO"
-        "404":
-          description: resource not found
-        "409":
-          description: invalid argument
-  /transaction:
-    post:
-      tags:
-      - Transaction routes
-      summary: Get transactions information
-      description: Returns transactions information for a given array of transactionIds.
-      operationId: getTransactions
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/transactionIds"
-        required: true
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of transactions information.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "400":
-          description: invalid content
-        "409":
-          description: invalid argument
+  "/transactions":
     put:
       tags:
       - Transaction routes
@@ -1227,7 +921,60 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  /transaction/partial:
+  "/transactions/{group}":
+    get:
+      tags:
+      - Transaction routes
+      summary: Get transactions information
+      description: Returns transactions information by given group.
+      operationId: getTransactionsByGroup
+      parameters:
+      - name: group
+        in: path
+        description: The group of the transaction.
+        required: true
+        schema:
+          type: string
+          enum: [confirmed, unconfirmed, partial]
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                description: The array of transactions information.
+                items:
+                  $ref: "#/components/schemas/TransactionInfoDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/transaction/{group}/{transactionId}":
+    post:
+      tags:
+      - Transaction routes
+      summary: Get transactions information
+      description: Returns transaction information by a given transactionId and group.
+      operationId: getTransactionByGroupAndID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/transactionIds"
+        required: true
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionInfoDTO"
+        "400":
+          description: invalid content
+        "409":
+          description: invalid argument
+  "/transaction/partial":
     put:
       tags:
       - Transaction routes
@@ -1249,7 +996,7 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  /transaction/cosignature:
+  "/transaction/cosignature":
     put:
       tags:
       - Transaction routes
@@ -1271,7 +1018,7 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  "/transaction/{hash}/status":
+  "/transactionStatus/{hash}":
     get:
       tags:
       - Transaction routes
@@ -1296,13 +1043,12 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
-  /transaction/statuses:
+  "/transactionStatus":
     post:
       tags:
       - Transaction routes
       summary: Get transactions status.
-      description: Returns an array of transaction statuses for a given array of
-        transaction hashes.
+      description: Returns an array of transaction statuses for a given array of transaction hashes.
       operationId: getTransactionsStatuses
       requestBody:
         content:
