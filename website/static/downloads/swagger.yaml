@@ -667,6 +667,32 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
+  "/mosaic/{mosaicId}/levy":
+    get:
+      tags:
+      - Mosaic routes
+      summary: Get mosaic levy information
+      description: Gets the mosaic levy definition for a given mosaicId.
+      operationId: getMosaicLevy
+      parameters:
+      - name: mosaicId
+        in: path
+        description: The mosaic identifier.
+        required: true
+        schema:
+          type: string
+          format: hex
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MosaicLevyInfoDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
   "/mosaic/{mosaicId}/richlist":
     get:
       tags:
@@ -3071,6 +3097,22 @@ components:
           $ref: "#/components/schemas/MosaicMetaDTO"
         mosaic:
           $ref: "#/components/schemas/MosaicDefinitionDTO"
+    MosaicLevyInfoDTO:
+      type: object
+      properties:
+        type:
+          type: integer
+          description: The type of levy.
+          example: 1
+          enum: [1, 2]
+        recipient:
+          type: string
+          description: The address of the mosaic levy recipient.
+          example: 906CBD9B8EC88014F7A4181B00C1837646BD46E504E3D72C44
+        mosaicId:
+          $ref: "#/components/schemas/UInt64DTO"
+        fee:
+          $ref: "#/components/schemas/UInt64DTO"
     MosaicDefinitionDTO:
       type: object
       required:
