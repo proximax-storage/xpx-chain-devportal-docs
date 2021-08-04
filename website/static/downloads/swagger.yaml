@@ -26,6 +26,9 @@ tags:
 - name: Metadata routes
   description: |
     Metadata related endpoints.
+- name: Metadata Nem routes
+  description: |
+    Metadata Nem related endpoints.
 - name: Mosaic routes
   description: |
     Mosaic related endpoints.
@@ -641,6 +644,54 @@ paths:
           description: invalid content
         '409':
           description: invalid argument
+  '/metadata_nem/{compositeHash}':
+    get:
+      tags:
+      - Metadata Nem routes
+      summary: Get metadata (namespace/mosaic/account) for an compositeHashes
+      description: Gets an metadata.
+      operationId: getNemMetadata
+      parameters:
+      - name: hash
+        in: path
+        description: The composited hash.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataNemInfoDTO'
+        '400':
+          description: invalid content
+        '409':
+          description: invalid argument
+  '/metadata_nem':
+    post:
+      tags:
+      - Metadata Nem routes
+      summary: Get metadatas (namespace/mosaic/account) for compositeHashes
+      description: Gets metadatas.
+      operationId: getNemMetadatas
+      requestBody:
+        $ref: "#/components/requestBodies/compositeHashes"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                description: The array of mosaic names.
+                items:
+                  $ref: '#/components/schemas/MetadataNemInfoDTO'
+        "400":
+          description: invalid content
+        "409":
+          description: invalid argument        
   "/mosaic/{mosaicId}":
     get:
       tags:
@@ -1486,6 +1537,11 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/mosaicIds"
+    compositeHashes:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/compositeHashes"
       required: true
   schemas:
     # Enumerations
@@ -2975,7 +3031,7 @@ components:
           type: string
           example: 0.7.14
           description: The catapult-sdk component version.
-    # Mosaics endpoints
+    # Metadata endpoints
     MosaicMetaDTO:
       type: object
       required:
@@ -3063,6 +3119,52 @@ components:
             example: 3
           metadataId:
             $ref: '#/components/schemas/UInt64DTO'
+
+    # Metadata Nem enpoints
+    MetadataNemInfoDTO:
+      type: object
+      required:
+      - metadata
+      properties:
+        metadataEntry:
+          $ref: '#/components/schemas/MetadataNemDTO'
+        id:
+            type: string
+            example: "610AB681D05149F167E3EE94"
+          
+    MetadataNemDTO:
+      allOf:
+      - type: object
+        required:
+        - metadataId
+        properties:
+          version:
+            type: integer
+            example: 1
+          compositeHash:
+            type: string
+            example: "764B3AA022FB929CAA204670A817205DC08F2B172D501F36D4F0EC4EA50AFAE9"
+          sourceAddress:
+            type: string
+            example: "90FDBE9800BA25E21C440AF033A51141D8CC012C63327DE2A2"
+          targetKey:
+            type: string
+            example: "570BE65B22A4E52EC3E57421F2E493B32C046B8B795282ED69EA53806F44FFFF"
+          scopedMetadataKey:
+            $ref: '#/components/schemas/UInt64DTO'
+          targetId:
+            $ref: '#/components/schemas/UInt64DTO'
+          metadataType:
+            type: integer
+            example: 0
+          valueSize:
+            type: integer
+            example: 10
+          value:
+            type: string
+            example: "48656C6C6F2068656C6C"
+
+    # Mosaic enpoints
     MosaicDTO:
       type: object
       required:
@@ -4744,3 +4846,13 @@ components:
           $ref: "#/components/schemas/UInt64DTO"
         receiveTimestamp:
           $ref: "#/components/schemas/UInt64DTO"
+    compositeHashes:
+      type: object
+      properties:
+        compositeHashes:
+          type: array
+          description: The array of computed hashes.
+          items:
+            type: string
+          example:
+          - 764b3aa022fb929caa204670a817205dc08f2b172d501f36d4f0ec4ea50afae9
