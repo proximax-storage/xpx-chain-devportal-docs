@@ -649,7 +649,7 @@ paths:
       tags:
       - Metadata Nem routes
       summary: Get metadata (namespace/mosaic/account) for an compositeHashes
-      description: Gets an metadata.
+      description: Gets an nem metadata.
       operationId: getNemMetadata
       parameters:
       - name: hash
@@ -674,7 +674,7 @@ paths:
       tags:
       - Metadata Nem routes
       summary: Get metadatas (namespace/mosaic/account) for compositeHashes
-      description: Gets metadatas.
+      description: Gets nem metadatas.
       operationId: getNemMetadatas
       requestBody:
         $ref: "#/components/requestBodies/compositeHashes"
