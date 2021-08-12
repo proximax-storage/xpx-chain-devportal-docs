@@ -1,6 +1,6 @@
 ---
 id: mosaic-metadata
-title: Mosaic Metadata
+title: Mosaic Metadata (Deprecated since 0.7.0 Sirius Chain release)
 ---
 
 ## Add metadata to mosaic

@@ -3,6 +3,9 @@ id: metadata
 title: Metadata
 ---
 
+> DEPRECATED since 0.7.0 release. There is ability only get alredy exist metadata info
+> Use [new metadata](./metadata_nem.md) since 0.7.0 release.
+
 Sirius Chain provides you with an option to associate metadata to an [account](./account.md), [mosaic](./mosaic.md) or [namespace](./namespace.md) with a transaction.
 
 The most common uses of metadata are:
@@ -14,13 +17,13 @@ Metadata is uniquely identified by the tuple `{ signer, target-id, metadata-key 
 
 The value linked to an identifier is a string up to `1024` characters. The client application is responsible for encrypting the message or keeping it visible for every blockchain participant.
 
-### Persistence¶
+## Persistence
 
 Metadata entries are stored in the blockchain—like the message of a regular [TransferTransaction](./transfer-transaction.md) — but also as a `key-value state`.
 
 This feature reduces the reading time of client applications; metadata allows information to be accessed by keys instead of processing the entire account transaction history off-chain to obtain the latest transaction message value.
 
-### Permissions
+## Permissions
 
 The account, namespace or mosaic owner must `opt-in` to all metadata requests received by giving explicit permission. In practice, this means that all MetadataTransactions must be wrapped in an AggregateTransaction.
 
@@ -52,78 +55,33 @@ Each time Carol attempts to access the company apps suite, the company app valid
 
 On the other hand, if Derek, who has no permissions, attempts to access the company apps suite, the company app will reject his request.
 
-## Type of Metadata
+## Related transactions
+
+| **Id** | **Type**                     | **Description**                             |
+| ------ | ---------------------------- | ------------------------------------------- |
+| 0x413f | AccountMetadataTransaction   | Associate a key-value state to an account.  |
+| 0x423f | MosaicMetadataTransaction    | Associate a key-value state to a mosaic.    |
+| 0x433f | NamespaceMetadataTransaction | Associate a key-value state to a namespace. |
+
+## Guides
 
 ### Address
 
-Since Address usually represents entities from the real world,
-it can be useful to attach some extra information to the address. 
+Since Address usually represents entities from the real world, it can be useful to attach some extra information to the address. 
 
-[Guides on account metadata](../guides/metadata/account-metadata.md)
+[Guides on deprecated account metadata](../guides/metadata-nem/account-nem-metadata.md)
+[Guides on deprecated account metadata](../guides/metadata/account-metadata.md)
 
 ### Mosaic
 
 For Mosaic, metadata could be used to share where users can obtain or exchange an asset.
 
-[Guides on mosaic metadata](../guides/metadata/mosaic-metadata.md)
+[Guides on deprecated mosaic metadata](../guides/metadata-nem/mosaic-nem-metadata.md)
+[Guides on deprecated mosaic metadata](../guides/metadata/mosaic-metadata.md)
 
 ### Namespace
 
 If users own a namespace, they can attach extra details with metadata for their own namespace.
 
-[Guides on namespace metadata](../guides/metadata/namespace-metadata.md)
-
-## Schemas
-
-### ModifyMetadataTransaction
-
-Announce an modify metadata transaction to associate a key-value state to an account, mosaic or namespace.
-
-**Version**: 0x01
-
-**Entity type**| **Description**
----------------|-----------------
-0x413D         | Modify account metadata
-0x423D         | Modify mosaic metadata
-0x433D         | Modify namespace metadata
-
-Inlines:
-
-- [Transaction][TransactionSchema] or [EmbeddedTransaction][Embedded-transactionSchema]
-
-**Property** |	**Type** |	**Description**
--------------|-----------|---------------------
-metadataType | uint8 [MetadataType](#metadatatype)  |	Type of the metadata to be associated.
-metadataId |	array(bytes) |	It can be plain address, mosaicId in hex and namespaceId in hex. Depend on the metadataType.
-modifications |	array([MetadataModification](#metadatamodification)) |	Array of metadata modifications.
-
-### MetadataType
-
-**Id** |	**Type**
--------|---------------------
-0x00 | None
-0x01 | Address
-0x02 | Mosaic
-0x03 | Namespace
-
-### MetadataModification
-
-**Property** |	**Type** |	**Description**
--------------|-----------|---------------------
-modificationSize | uint32 (4 bytes)  | The total size of the modification.
-type |	[MetadataModificationType](#metadatamodificationtype) |	Type of the metadata modification.
-keySize | uint8 | The size of the key 
-valueSize | uint16 | The size of the value
-key |	array(bytes) |	Key of the metadata.
-value |	array(bytes) | Value to be associate to the key.
-
-### MetadataModificationType
-
-**Id** |	**Type** | **Description**
--------|-------------|--------
-0x00 | uint8  | Add
-0x01 | uint8 | Remove
-
-[Embedded-transactionSchema]: ../protocol/transaction#embeddedtransaction
-[TransactionSchema]: ../protocol/transaction#transaction
-
+[Guides on deprecated namespace metadata](../guides/metadata-nem/namespace-nem-metadata.md)
+[Guides on deprecated namespace metadata](../guides/metadata/namespace-metadata.md)
