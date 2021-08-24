@@ -1,6 +1,6 @@
 ---
 id: modify-mosaic-levy
-title: Modify Mmosaic Levy
+title: Modify Mosaic Levy
 ---
 
 Create or modify levy of a [mosaic](../../built-in-features/mosaic.md).

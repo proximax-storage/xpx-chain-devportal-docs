@@ -1,6 +1,6 @@
 ---
 id: remove-mosaic-levy
-title: Remove Mmosaic Levy
+title: Remove Mosaic Levy
 ---
 
 Remove levy of a [mosaic](../../built-in-features/mosaic.md).
