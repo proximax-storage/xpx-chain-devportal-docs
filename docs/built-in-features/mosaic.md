@@ -28,6 +28,10 @@ For example, if the mosaic has divisibility 2, to create or send 10 units (relat
 
 The cost of creating a mosaic is configurable per network. By default, it has a cost of `500 xpx` plus transaction fees.
 
+## Mosaic Levy
+
+A levy allows the creator of a mosaic to set a tax on any subsequent transactions of that mosaic. This levy is sent to an account of the creators choosing. Any mosaic may be used as a levy.
+
 ## Example
 A private company, ComfyClothingCompany, decides that it wants to go public. Instead of a traditional IPO, the company decides to do an STO to issue tokens through the Sirius Chain platform.
 
@@ -86,6 +90,12 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 - [Getting the asset identifier behind a namespace with receipts](../guides/mosaic/getting-the-mosaic-indentifier-behind-a-namespace-with-receipts.md)
   Get the resolution for a given alias and transaction using receipts.
+
+- [Create(modify) and get mosaic levy](../guides/mosaic/modify_mosaic_levy.md)
+  Create a new levy for a mosaic and get a mosaic levy info.
+
+- [Remove mosaic levy](../guides/mosaic/remove_mosaic_levy.md)
+  Remove a mosaic lecy.
 
 ## Schemas
 

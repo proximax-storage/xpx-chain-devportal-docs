@@ -26,6 +26,9 @@ tags:
 - name: Metadata routes
   description: |
     Metadata related endpoints.
+- name: Metadata Nem routes
+  description: |
+    Metadata Nem related endpoints.
 - name: Mosaic routes
   description: |
     Mosaic related endpoints.
@@ -101,261 +104,6 @@ paths:
                   $ref: "#/components/schemas/AccountInfoDTO"
         "400":
           description: invalid content
-        "409":
-          description: invalid argument
-  "/account/{publicKey}/transactions":
-    get:
-      tags:
-      - Account routes
-      summary: Get confirmed transactions
-      description: Gets an array of transactions for which an account is the sender or
-        receiver.
-      operationId: transactions
-      parameters:
-      - name: publicKey
-        in: path
-        description: The public key of the account.
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: |
-          The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: |
-          The ordering criteria:
-          * -id - Descending order by id.
-          * id - Ascending order by id.
-        schema:
-          type: string
-          default: -id
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of confirmed transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "409":
-          description: invalid argument
-  "/account/{publicKey}/transactions/incoming":
-    get:
-      tags:
-      - Account routes
-      summary: Get incoming transactions
-      description: |
-        Gets an array of incoming transactions. A transaction is said to be
-        incoming with respect to an account if the account is the recipient of
-        the transaction.
-      operationId: incomingTransactions
-      parameters:
-      - name: publicKey
-        in: path
-        description: The public key of the account.
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: |
-          The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: |
-          The ordering criteria:
-          * -id - Descending order by id.
-          * id - Ascending order by id.
-        schema:
-          type: string
-          default: -id
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of incoming transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "409":
-          description: invalid argument
-  "/account/{publicKey}/transactions/outgoing":
-    get:
-      tags:
-      - Account routes
-      summary: Get outgoing transactions
-      description: Gets an array of outgoing transactions. A transaction is said to be
-        outgoing with respect to an account if the account is the sender of the
-        transaction.
-      operationId: outgoingTransactions
-      parameters:
-      - name: publicKey
-        in: path
-        description: The public key of the account.
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: |
-          The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: |
-          The ordering criteria:
-          * -id - Descending order by id.
-          * id - Ascending order by id.
-        schema:
-          type: string
-          default: -id
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of outgoing transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "409":
-          description: invalid argument
-  "/account/{publicKey}/transactions/unconfirmed":
-    get:
-      tags:
-      - Account routes
-      summary: Get unconfirmed transactions
-      description: |
-        Gets the array of transactions not included in a block where an account
-        is the sender or receiver.
-      operationId: unconfirmedTransactions
-      parameters:
-      - name: publicKey
-        in: path
-        description: The public key of the account.
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: |
-          The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: |
-          The ordering criteria.
-          * -id - Descending order by id.
-          * id - Ascending order by id.
-        schema:
-          type: string
-          default: -id
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of unconfirmed transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "409":
-          description: invalid argument
-  "/account/{publicKey}/transactions/partial":
-    get:
-      tags:
-      - Account routes
-      summary: Get aggregate bonded transactions information
-      description: |
-        Gets an array of [aggregate bonded transactions](https://nemtech.github.io/concepts/aggregate-transaction.html)
-        where the account is the sender or requires to cosign the transaction.
-      operationId: partialTransactions
-      parameters:
-      - name: publicKey
-        in: path
-        description: The public key of the account.
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: |
-          The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      - name: ordering
-        in: query
-        description: |
-          The ordering criteria.
-          * -id - Descending order by id.
-          * id - Ascending order by id.
-        schema:
-          type: string
-          default: -id
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of aggregate bonded transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
         "409":
           description: invalid argument
   "/account/{accountId}/properties":
@@ -896,6 +644,54 @@ paths:
           description: invalid content
         '409':
           description: invalid argument
+  '/metadata_nem/{compositeHash}':
+    get:
+      tags:
+      - Metadata Nem routes
+      summary: Get metadata (namespace/mosaic/account) for an compositeHashes
+      description: Gets an nem metadata.
+      operationId: getNemMetadata
+      parameters:
+      - name: hash
+        in: path
+        description: The composited hash.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataNemInfoDTO'
+        '400':
+          description: invalid content
+        '409':
+          description: invalid argument
+  '/metadata_nem':
+    post:
+      tags:
+      - Metadata Nem routes
+      summary: Get metadatas (namespace/mosaic/account) for compositeHashes
+      description: Gets nem metadatas.
+      operationId: getNemMetadatas
+      requestBody:
+        $ref: "#/components/requestBodies/compositeHashes"
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                description: The array of mosaic names.
+                items:
+                  $ref: '#/components/schemas/MetadataNemInfoDTO'
+        "400":
+          description: invalid content
+        "409":
+          description: invalid argument        
   "/mosaic/{mosaicId}":
     get:
       tags:
@@ -918,6 +714,32 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MosaicInfoDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/mosaic/{mosaicId}/levy":
+    get:
+      tags:
+      - Mosaic routes
+      summary: Get mosaic levy information
+      description: Gets the mosaic levy definition for a given mosaicId.
+      operationId: getMosaicLevy
+      parameters:
+      - name: mosaicId
+        in: path
+        description: The mosaic identifier.
+        required: true
+        schema:
+          type: string
+          format: hex
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MosaicLevyInfoDTO"
         "404":
           description: resource not found
         "409":
@@ -1154,58 +976,7 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  "/transaction/{transactionId}":
-    get:
-      tags:
-      - Transaction routes
-      summary: Get transaction information
-      description: Returns transaction information given a transactionId or hash.
-      operationId: getTransaction
-      parameters:
-      - name: transactionId
-        in: path
-        description: The transaction id or hash.
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TransactionInfoDTO"
-        "404":
-          description: resource not found
-        "409":
-          description: invalid argument
-  /transaction:
-    post:
-      tags:
-      - Transaction routes
-      summary: Get transactions information
-      description: Returns transactions information for a given array of transactionIds.
-      operationId: getTransactions
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/transactionIds"
-        required: true
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of transactions information.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "400":
-          description: invalid content
-        "409":
-          description: invalid argument
+  "/transactions":
     put:
       tags:
       - Transaction routes
@@ -1227,7 +998,60 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  /transaction/partial:
+  "/transactions/{group}":
+    get:
+      tags:
+      - Transaction routes
+      summary: Get transactions information
+      description: Returns transactions information by given group.
+      operationId: getTransactionsByGroup
+      parameters:
+      - name: group
+        in: path
+        description: The group of the transaction.
+        required: true
+        schema:
+          type: string
+          enum: [confirmed, unconfirmed, partial]
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                description: The array of transactions information.
+                items:
+                  $ref: "#/components/schemas/TransactionInfoDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/transaction/{group}/{transactionId}":
+    post:
+      tags:
+      - Transaction routes
+      summary: Get transactions information
+      description: Returns transaction information by a given transactionId and group.
+      operationId: getTransactionByGroupAndID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/transactionIds"
+        required: true
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionInfoDTO"
+        "400":
+          description: invalid content
+        "409":
+          description: invalid argument
+  "/transaction/partial":
     put:
       tags:
       - Transaction routes
@@ -1249,7 +1073,7 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  /transaction/cosignature:
+  "/transaction/cosignature":
     put:
       tags:
       - Transaction routes
@@ -1271,7 +1095,7 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  "/transaction/{hash}/status":
+  "/transactionStatus/{hash}":
     get:
       tags:
       - Transaction routes
@@ -1296,13 +1120,12 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
-  /transaction/statuses:
+  "/transactionStatus":
     post:
       tags:
       - Transaction routes
       summary: Get transactions status.
-      description: Returns an array of transaction statuses for a given array of
-        transaction hashes.
+      description: Returns an array of transaction statuses for a given array of transaction hashes.
       operationId: getTransactionsStatuses
       requestBody:
         content:
@@ -1714,6 +1537,11 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/mosaicIds"
+    compositeHashes:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/compositeHashes"
       required: true
   schemas:
     # Enumerations
@@ -3203,7 +3031,7 @@ components:
           type: string
           example: 0.7.14
           description: The catapult-sdk component version.
-    # Mosaics endpoints
+    # Metadata endpoints
     MosaicMetaDTO:
       type: object
       required:
@@ -3291,6 +3119,52 @@ components:
             example: 3
           metadataId:
             $ref: '#/components/schemas/UInt64DTO'
+
+    # Metadata Nem enpoints
+    MetadataNemInfoDTO:
+      type: object
+      required:
+      - metadata
+      properties:
+        metadataEntry:
+          $ref: '#/components/schemas/MetadataNemDTO'
+        id:
+            type: string
+            example: "610AB681D05149F167E3EE94"
+          
+    MetadataNemDTO:
+      allOf:
+      - type: object
+        required:
+        - metadataId
+        properties:
+          version:
+            type: integer
+            example: 1
+          compositeHash:
+            type: string
+            example: "764B3AA022FB929CAA204670A817205DC08F2B172D501F36D4F0EC4EA50AFAE9"
+          sourceAddress:
+            type: string
+            example: "90FDBE9800BA25E21C440AF033A51141D8CC012C63327DE2A2"
+          targetKey:
+            type: string
+            example: "570BE65B22A4E52EC3E57421F2E493B32C046B8B795282ED69EA53806F44FFFF"
+          scopedMetadataKey:
+            $ref: '#/components/schemas/UInt64DTO'
+          targetId:
+            $ref: '#/components/schemas/UInt64DTO'
+          metadataType:
+            type: integer
+            example: 0
+          valueSize:
+            type: integer
+            example: 10
+          value:
+            type: string
+            example: "48656C6C6F2068656C6C"
+
+    # Mosaic enpoints
     MosaicDTO:
       type: object
       required:
@@ -3325,6 +3199,22 @@ components:
           $ref: "#/components/schemas/MosaicMetaDTO"
         mosaic:
           $ref: "#/components/schemas/MosaicDefinitionDTO"
+    MosaicLevyInfoDTO:
+      type: object
+      properties:
+        type:
+          type: integer
+          description: The type of levy.
+          example: 1
+          enum: [1, 2]
+        recipient:
+          type: string
+          description: The address of the mosaic levy recipient.
+          example: 906CBD9B8EC88014F7A4181B00C1837646BD46E504E3D72C44
+        mosaicId:
+          $ref: "#/components/schemas/UInt64DTO"
+        fee:
+          $ref: "#/components/schemas/UInt64DTO"
     MosaicDefinitionDTO:
       type: object
       required:
@@ -4956,3 +4846,13 @@ components:
           $ref: "#/components/schemas/UInt64DTO"
         receiveTimestamp:
           $ref: "#/components/schemas/UInt64DTO"
+    compositeHashes:
+      type: object
+      properties:
+        compositeHashes:
+          type: array
+          description: The array of computed hashes.
+          items:
+            type: string
+          example:
+          - 764b3aa022fb929caa204670a817205dc08f2b172d501f36d4f0ec4ea50afae9
