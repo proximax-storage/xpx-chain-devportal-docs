@@ -881,7 +881,7 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  "/transaction/partial":
+  "/transactions/partial":
     put:
       tags:
       - Transaction routes
@@ -903,7 +903,7 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  "/transaction/cosignature":
+  "/transactions/cosignature":
     put:
       tags:
       - Transaction routes
