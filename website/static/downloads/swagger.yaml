@@ -283,51 +283,6 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
-  "/block/{height}/transactions":
-    get:
-      tags:
-      - Block routes
-      summary: Get transactions from a block
-      description: Returns an array of
-        [transactions](https://nemtech.github.io/concepts/transaction.html)
-                     included in a block for a given block height.
-      operationId: getBlockTransactions
-      parameters:
-      - name: height
-        in: path
-        description: The height of the block.
-        required: true
-        schema:
-          type: integer
-          format: int64
-          minimum: 1
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "404":
-          description: resource not found
-        "409":
-          description: invalid argument
   "/block/{height}/transaction/{hash}/merkle":
     get:
       tags:
