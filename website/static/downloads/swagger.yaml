@@ -50,9 +50,6 @@ tags:
 - name: Exchange routes
   description: |
     Exchange related endpoints.
-- name: Service routes
-  description: |
-    Service related endpoints.
     
 paths:
   "/account/{accountId}":
@@ -1130,92 +1127,6 @@ paths:
                     mosaicId:
                       type: string
                       example: "0DE5F42A0A3B4200"
-  '/drive/{accountId}':
-    get:
-      tags:
-      - Service routes
-      summary: Get drive by accountId
-      description: Get drive by accountId. 
-      operationId: getAccountDrives
-      parameters:
-      - name: accountId
-        in: path
-        description: ID of a drive.
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  drive:
-                    $ref: "#/components/schemas/DriveDTO"
-        "404":
-          description: resource not found
-        "409":
-          description: invalid argument
-  '/account/{accountId}/drive':
-    get:
-      tags:
-      - Service routes
-      summary: Get drive by id
-      description: Get drive by id. 
-      operationId: getDrive
-      parameters:
-      - name: accountId
-        in: path
-        description: ID of a drive.
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DrivesArray"
-        "404":
-          description: resource not found
-        "409":
-          description: invalid argument
-  '/account/{accountId}/drive/{role}':
-    get:
-      tags:
-      - Service routes
-      summary: Get drive by id and role
-      description: Get drive by id and role.
-      operationId: getDriveByRole
-      parameters:
-      - name: accountId
-        in: path
-        description: ID of a drive.
-        required: true
-        schema:
-          type: string
-      - name: role
-        in: path
-        description: Role in drive (owner or replicator).
-        required: true
-        schema:
-          $ref: "#/components/schemas/RolesTypeEnum"
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/DrivesArray"
-                
-        "404":
-          description: resource not found
-        "409":
-          description: invalid argument
-
   '/account/{accountId}/lock/hash':
     get:
       tags:
