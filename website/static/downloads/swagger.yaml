@@ -23,9 +23,6 @@ tags:
 - name: Diagnostic routes
   description: |
     Diagnostic related endpoints.
-- name: Metadata routes
-  description: |
-    Metadata related endpoints.
 - name: Metadata Nem routes
   description: |
     Metadata Nem related endpoints.
@@ -283,51 +280,6 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
-  "/block/{height}/transactions":
-    get:
-      tags:
-      - Block routes
-      summary: Get transactions from a block
-      description: Returns an array of
-        [transactions](https://nemtech.github.io/concepts/transaction.html)
-                     included in a block for a given block height.
-      operationId: getBlockTransactions
-      parameters:
-      - name: height
-        in: path
-        description: The height of the block.
-        required: true
-        schema:
-          type: integer
-          format: int64
-          minimum: 1
-      - name: pageSize
-        in: query
-        description: The number of transactions to return for each request.
-        schema:
-          type: integer
-          minimum: 10
-          maximum: 100
-          default: 10
-      - name: id
-        in: query
-        description: The transaction id up to which transactions are returned.
-        schema:
-          type: string
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: The array of transactions.
-                items:
-                  $ref: "#/components/schemas/TransactionInfoDTO"
-        "404":
-          description: resource not found
-        "409":
-          description: invalid argument
   "/block/{height}/transaction/{hash}/merkle":
     get:
       tags:
@@ -520,128 +472,6 @@ paths:
                 $ref: '#/components/schemas/NetworkConfigDTO'
         '404':
           description: resource not found
-        '409':
-          description: invalid argument
-  '/account/{accountId}/metadata':
-    get:
-      tags:
-      - Metadata routes
-      summary: Get metadata of account
-      description: Gets the metadata for a given accountId.
-      operationId: getAccountMetadata
-      parameters:
-      - name: accountId
-        in: path
-        description: The account identifier.
-        schema:
-          type: string
-        required: true
-      responses:
-        '200':
-          description: success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AddressMetadataInfoDTO'
-        '404':
-          description: resource not found
-        '409':
-          description: invalid argument
-  '/mosaic/{mosaicId}/metadata':
-    get:
-      tags:
-      - Metadata routes
-      summary: Get metadata of mosaic
-      description: Gets the metadata for a given mosaicId.
-      operationId: getMosaicMetadata
-      parameters:
-      - name: mosaicId
-        in: path
-        description: The mosaic identifier.
-        schema:
-          type: string
-        required: true
-      responses:
-        '200':
-          description: success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MosaicMetadataInfoDTO'
-        '404':
-          description: resource not found
-        '409':
-          description: invalid argument
-  '/namespace/{namespaceId}/metadata':
-    get:
-      tags:
-      - Metadata routes
-      summary: Get metadata of namespace
-      description: Gets the metadata for a given namespaceId.
-      operationId: getNamespaceMetadata
-      parameters:
-      - name: namespaceId
-        in: path
-        description: The namespace identifier.
-        schema:
-          type: string
-        required: true
-      responses:
-        '200':
-          description: success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NamespaceMetadataInfoDTO'
-        '404':
-          description: resource not found
-        '409':
-          description: invalid argument
-  '/metadata/{metadataId}':
-    get:
-      tags:
-      - Metadata routes
-      summary: Get metadata of namespace/mosaic/account
-      description: Gets the metadata(AccountMetadataIndo, MosaicMetadataInfo or NamespaceMetadataInfo) for a given metadataId.
-      operationId: getMetadata
-      parameters:
-      - name: metadataId
-        in: path
-        description: The metadata identifier.
-        schema:
-          type: string
-        required: true
-      responses:
-        '200':
-          description: success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/NamespaceMetadataInfoDTO'
-        '404':
-          description: resource not found
-        '409':
-          description: invalid argument
-  '/metadata':
-    post:
-      tags:
-      - Metadata routes
-      summary: Get metadatas(namespace/mosaic/account) for an array of metadataids
-      description: Gets an array of metadata.
-      operationId: getMetadatas
-      requestBody:
-        $ref: "#/components/requestBodies/metadataIds"
-      responses:
-        '200':
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AddressMetadataInfoDTO'
-        '400':
-          description: invalid content
         '409':
           description: invalid argument
   '/metadata_nem/{compositeHash}':
@@ -1051,7 +881,7 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  "/transaction/partial":
+  "/transactions/partial":
     put:
       tags:
       - Transaction routes
@@ -1073,7 +903,7 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  "/transaction/cosignature":
+  "/transactions/cosignature":
     put:
       tags:
       - Transaction routes
