@@ -1110,7 +1110,26 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
-   
+  '/exchange/mosaics':
+    get:
+      tags:
+      - Exchange routes
+      summary: Get a list of mosaics id with exchange offers
+      description: Get a list of mosaics id with exchange offer 
+      operationId: getExchangeMosaics
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    mosaicId:
+                      type: string
+                      example: "0DE5F42A0A3B4200"
   '/drive/{accountId}':
     get:
       tags:
