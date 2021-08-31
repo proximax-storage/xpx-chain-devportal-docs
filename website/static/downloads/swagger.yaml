@@ -1125,7 +1125,11 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/MosaicDTO"  
+                  type: object
+                  properties:
+                    mosaicId:
+                      type: string
+                      example: "0DE5F42A0A3B4200"
   '/drive/{accountId}':
     get:
       tags:
