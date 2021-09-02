@@ -82,3 +82,56 @@ If users own a namespace, they can attach extra details with metadata for their 
 
 [Guides on namespace metadata](../guides/metadata-nem/namespace-nem-metadata.md)
 [Guides on deprecated namespace metadata](../guides/metadata/namespace-metadata.md)
+
+## Schemas
+
+### BasicMetadataTransactionBody
+
+| **Property**   | **Type** | **Description**                           |
+| -------------- | -------- | ----------------------------------------- |
+| ValueSizeDelta | int16    | Difference between old and new value size |
+| ValueSize      | uint16   | Value size                                |
+| Value          | uint8    | Value                                     |
+
+### AccountMetadataTransaction
+
+**Version**: 0x01
+
+**Entity type**: 0x413f
+
+| **Property**                                                  | **Type**                     | **Description** |
+| ------------------------------------------------------------- | ---------------------------- | --------------- |
+| [BasicMetadataTransactionBody](#basicmetadatatransactionbody) | BasicMetadataTransactionBody |                 |
+
+### MosaicMetadataTransaction
+
+**Version**: 0x01
+
+**Entity type**: 0x423f
+
+| **Property**                                                  | **Type**                     | **Description**               |
+| ------------------------------------------------------------- | ---------------------------- | ----------------------------- |
+| [BasicMetadataTransactionBody](#basicmetadatatransactionbody) | BasicMetadataTransactionBody |                               |
+| MosaicId                                                      | uint64                       | The id of the affected mosaic |
+
+### NamespaceMetadataTransaction
+
+**Version**: 0x01
+
+**Entity type**: 0x433f
+
+| **Property**                                                  | **Type**                     | **Description**         |
+| ------------------------------------------------------------- | ---------------------------- | ----------------------- |
+| [BasicMetadataTransactionBody](#basicmetadatatransactionbody) | BasicMetadataTransactionBody |                         |
+| NamespaceId                                                   | uint64                       | The id of the namespace |
+
+### MetadataType
+
+| **Id** | **Type**  |
+| ------ | --------- |
+| 0x00   | Address   |
+| 0x01   | Mosaic    |
+| 0x02   | Namespace |
+
+[Embedded-transactionSchema]: ../protocol/transaction#embeddedtransaction
+[TransactionSchema]: ../protocol/transaction#transaction
