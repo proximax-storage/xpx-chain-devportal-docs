@@ -865,6 +865,14 @@ paths:
         schema:
           type: string
           enum: [confirmed, unconfirmed, partial]
+      - $ref: '#/components/parameters/heightQuery'
+      - $ref: '#/components/parameters/fromHeightQuery'
+      - $ref: '#/components/parameters/toHeightQuery'
+      - $ref: '#/components/parameters/addressQuery'
+      - $ref: '#/components/parameters/signerPublicKeyQuery'
+      - $ref: '#/components/parameters/recipientAddressQuery'
+      - $ref: '#/components/parameters/transactionTypeQuery'
+      - $ref: '#/components/parameters/embeddedQuery'
       responses:
         "200":
           description: success
@@ -1366,7 +1374,70 @@ components:
       in: query
       description: Filter by target public key.
       schema:
-        $ref: '#/components/schemas/publicKeys'    
+        $ref: '#/components/schemas/publicKeys'   
+
+    addressQuery:
+      name: address
+      in: query
+      description: Address of the account.
+      schema:
+        type: string
+        format: hex
+    embeddedQuery:
+      name: embedded
+      in: query
+      description: If transaction if embedded.
+      schema:
+        type: boolean
+    fromHeightQuery:
+      name: fromHeight
+      in: query
+      description: The start of height to get transactions information.
+      schema:
+        type: integer
+        format: uint64
+        minimum: 1
+    heightQuery:
+      name: height
+      in: query
+      description: The height of the block to get transactions information.
+      schema:
+        type: integer
+        format: uint64
+        minimum: 1
+    recipientAddressQuery:
+      name: recipientAddress
+      in: query
+      description: Address of transaction's recipient.
+      schema:
+        type: string
+        format: hex
+    signerPublicKeyQuery:
+      name: signerPublicKey
+      in: query
+      description: Public key of signer.
+      schema:
+        type: string 
+        format: hex
+    toHeightQuery:
+      name: toHeight
+      in: query
+      description: The end of height to get transactions information.
+      schema:
+        type: integer
+        format: uint64
+        minimum: 1 
+    transactionTypeQuery:
+      name: type
+      in: query
+      description: The type of transaction
+      schema:
+        type: array
+        items:
+         anyOf:
+         - $ref: '#components/schemas/EntityTypeEnum'
+
+     
 
   requestBodies:
     metadataIds:
