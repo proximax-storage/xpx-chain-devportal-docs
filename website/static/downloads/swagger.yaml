@@ -1428,7 +1428,7 @@ components:
         format: uint64
         minimum: 1 
     transactionTypeQuery:
-      name: type
+      name: type[]
       in: query
       description: The type of transaction
       schema:
