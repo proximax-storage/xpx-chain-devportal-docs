@@ -1386,7 +1386,7 @@ components:
     embeddedQuery:
       name: embedded
       in: query
-      description: If transaction if embedded.
+      description: If transaction is embedded.
       schema:
         type: boolean
     fromHeightQuery:
@@ -1435,9 +1435,9 @@ components:
         type: array
         items:
          anyOf:
-         - $ref: '#components/schemas/EntityTypeEnum'
+         - $ref: '#/components/schemas/EntityTypeEnum'
 
-     
+
 
   requestBodies:
     metadataIds:
