@@ -920,8 +920,7 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-
-  "/transaction/{group}/{transactionId}":
+  "/transactions/{group}/{transactionId}":
     post:
       tags:
       - Transaction routes
@@ -941,6 +940,48 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/TransactionInfoDTO"
+        "400":
+          description: invalid content
+        "409":
+          description: invalid argument
+  "/transactions/count":
+    post:
+      tags:
+      - Transaction routes
+      summary: Get count of Transaction Type
+      description: Returns the number of transactions based on the transaction types.
+      operationId: getTransactionsCount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                transactionTypes:
+                  type: array
+                  description: The array of transaction types.
+                  items:
+                    $ref: "#/components/schemas/EntityTypeEnum"
+        required: true
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                properties:
+                  type: array
+                  description: array of count of a transaction type.
+                  items:
+                    type: object
+                    required:
+                    - count
+                    - type
+                    properties:
+                      count:
+                        type: integer
+                      type:
+                        $ref: "#/components/schemas/EntityTypeEnum"
         "400":
           description: invalid content
         "409":
