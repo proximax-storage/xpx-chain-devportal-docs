@@ -887,6 +887,40 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
+    post:   
+      tags:
+      - Transaction routes
+      summary: Get transactions information
+      description: Return transactions information of given array of transactionsId or transactionsHashes by given transactions group.
+      operationId: getTransactionsByGroupAndId
+      parameters:
+      - name: group
+        in: path
+        description: The group of the transaction 
+        required: true
+        schema:
+          type: string
+          enum: [confirmed, unconfirmed, partial]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+              - $ref: '#/components/schemas/transactionIds'
+              - $ref: '#/components/schemas/transactionHashes'
+        required: true
+      responses:     
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                  $ref: "#/components/schemas/TransactionInfoDTO"
+        "400":
+          description: invalid content
+        "409":
+          description: invalid argument
+
   "/transaction/{group}/{transactionId}":
     post:
       tags:
@@ -1294,6 +1328,7 @@ externalDocs:
   description: ProximaX Developer Center
   url: 'https://proximax.io/'
 servers:
+- url: http://bcstage1.xpxsirius.io:3000
 - url: http://bctestnet1.brimstone.xpxsirius.io:3000
 components:
   parameters:
