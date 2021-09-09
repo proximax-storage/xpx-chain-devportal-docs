@@ -1,6 +1,6 @@
 ---
 id: namespace-metadata
-title: Namespace Metadata
+title: Namespace Metadata (Deprecated since 0.7.0 Sirius Chain release)
 ---
 
 ## Add metadata to namespace

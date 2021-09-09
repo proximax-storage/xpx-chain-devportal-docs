@@ -1,6 +1,6 @@
 ---
 id: account-metadata
-title: Account Metadata
+title: Account Metadata (Deprecated since 0.7.0 Sirius Chain release)
 ---
 
 ## Add metadata to account
