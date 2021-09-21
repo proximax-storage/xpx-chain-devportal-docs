@@ -11,12 +11,12 @@ A mosaic could be a token, but it could also be a collection of more specialized
 
 Each mosaic has a unique identifier and a set of configurable properties. During the [mosaic creation](../guides/mosaic/creating-a-mosaic.md), you can define:
 
-**Property**    |**Type** |	**Description**
-----------------|---------|--------------------
-Divisibility    |	Integer |	Determines up to what decimal place the mosaic can be divided. Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics. The divisibility must be in the range of `0` and `6`.
-Duration        |	Integer |	Specifies the number of confirmed blocks the mosaic is rented for. Duration is allowed to lie up to `3650` days (10 years). To create non-expiring mosaics, leave this property undefined.
-Supply mutable  |	Boolean |	If set to true, the mosaic supply can change at a later point. Otherwise, the mosaic supply remains immutable.
-Transferability |	Boolean |	If set to true, the mosaic can be transferred between arbitrary accounts. Otherwise, the mosaic can be only transferred back to the mosaic creator.
+| **Property**    | **Type** | **Description**                                                                                                                                                                                                 |
+| --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Divisibility    | Integer  | Determines up to what decimal place the mosaic can be divided. Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics. The divisibility must be in the range of `0` and `6`. |
+| Duration        | Integer  | Specifies the number of confirmed blocks the mosaic is rented for. Duration is allowed to lie up to `3650` days (10 years). To create non-expiring mosaics, leave this property undefined.                      |
+| Supply mutable  | Boolean  | If set to true, the mosaic supply can change at a later point. Otherwise, the mosaic supply remains immutable.                                                                                                  |
+| Transferability | Boolean  | If set to true, the mosaic can be transferred between arbitrary accounts. Otherwise, the mosaic can be only transferred back to the mosaic creator.                                                             |
 
 ## Absolute and relative amounts
 
@@ -37,12 +37,12 @@ A private company, ComfyClothingCompany, decides that it wants to go public. Ins
 
 Thus, the company must create a mosaic to represent shares to their company. Here is how the company might configure the mosaic properties:
 
- **Property**  | **Configuration**
----------------|------------------------------
-Duration       | undefined
-Divisibility   | 2
-Supply mutable | true
-Transferable   | true
+ | **Property**   | **Configuration** |
+ | -------------- | ----------------- |
+ | Duration       | undefined         |
+ | Divisibility   | 2                 |
+ | Supply mutable | true              |
+ | Transferable   | true              |
 
 *Duration*: Shares of the company should exist as long as the company is in business. The ComfyClothingCompany leaves this property *undefined*, creating a non-expiring mosaic representing their assets.
 
@@ -119,14 +119,14 @@ Announce a mosaic definition transaction to create a new mosaic.
 
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-mosaicNonce |	uint32 |	Random nonce used to generate the mosaic id.
-mosaicId |	uint64 |	The mosaic Id.
-propertiesCount |	uint8 |	The number of elements in optional properties
-flags |	[MosaicFlag](#mosaicflags) |	The mosaic flags.
-divisibility |	uint8 |	The mosaic divisibility.
-properties |	array([MosaicProperty](#mosaicproperty), count) |	The optional mosaic properties.
+| **Property**    | **Type**                                        | **Description**                               |
+| --------------- | ----------------------------------------------- | --------------------------------------------- |
+| mosaicNonce     | uint32                                          | Random nonce used to generate the mosaic id.  |
+| mosaicId        | uint64                                          | The mosaic Id.                                |
+| propertiesCount | uint8                                           | The number of elements in optional properties |
+| flags           | [MosaicFlag](#mosaicflags)                      | The mosaic flags.                             |
+| divisibility    | uint8                                           | The mosaic divisibility.                      |
+| properties      | array([MosaicProperty](#mosaicproperty), count) | The optional mosaic properties.               |
 
 ### MosaicSupplyChangeTransaction
 
@@ -140,50 +140,108 @@ Announce a supply change transaction to increase or decrease a mosaic’s supply
 
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-mosaicId | uint64 |	The id of the affected mosaic.
-direction |	[MosaicSupplyChangeDirection](#mosaicsupplychangedirection) |	The supply change direction.
-delta |	uint64 |	The amount of supply to increase or decrease.
+| **Property** | **Type**                                                    | **Description**                               |
+| ------------ | ----------------------------------------------------------- | --------------------------------------------- |
+| mosaicId     | uint64                                                      | The id of the affected mosaic.                |
+| direction    | [MosaicSupplyChangeDirection](#mosaicsupplychangedirection) | The supply change direction.                  |
+| delta        | uint64                                                      | The amount of supply to increase or decrease. |
+
+### MosaicModifyLevyTransaction
+
+Add levy to mosaic.
+
+**Version**: 0x01
+
+**Entity type**: 0x434d
+
+**Inlines**:
+
+- [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
+
+| **Property** | **Type**                        | **Description**                |
+| ------------ | ------------------------------- | ------------------------------ |
+| mosaicId     | uint64                          | The id of the affected mosaic. |
+| Levy         | [MosaicLevyRaw](#mosaiclevyraw) | A new levy                     |
+
+### MosaicRemoveLevyTransactionBody
+
+Remove mosaic levy.
+
+**Version**: 0x01
+
+**Entity type**: 0x444d
+
+**Inlines**:
+
+- [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
+
+| **Property** | **Type** | **Description**                |
+| ------------ | -------- | ------------------------------ |
+| mosaicId     | uint64   | The id of the affected mosaic. |
 
 ### MosaicProperty
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-id |	uint8 |	The property id. (0x02) stands for duration.
-mosaicId |	uint64 |	The mosaic property value.
+| **Property** | **Type** | **Description**                              |
+| ------------ | -------- | -------------------------------------------- |
+| id           | uint8    | The property id. (0x02) stands for duration. |
+| mosaicId     | uint64   | The mosaic property value.                   |
 
 ### Mosaic
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-mosaicId |	uint64 |	The mosaic id.
-amount |	uint64 |	The amount of the mosaic.
+| **Property** | **Type** | **Description**           |
+| ------------ | -------- | ------------------------- |
+| mosaicId     | uint64   | The mosaic id.            |
+| amount       | uint64   | The amount of the mosaic. |
 
 ### UnresolvedMosaic
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-mosaicId |	uint64 |	The mosaic id.
-amount |	uint64 |	The amount of the mosaic.
+| **Property** | **Type** | **Description**           |
+| ------------ | -------- | ------------------------- |
+| mosaicId     | uint64   | The mosaic id.            |
+| amount       | uint64   | The amount of the mosaic. |
 
 ### MosaicFlags
 
 Enumeration: uint8
 
-**Id** | **Description**
-------|----------------------
-0x00 |	No flags present.
-0x01 |	The mosaic supply is mutable.
-0x02 |	The mosaic is transferable.
+| **Id** | **Description**               |
+| ------ | ----------------------------- |
+| 0x00   | No flags present.             |
+| 0x01   | The mosaic supply is mutable. |
+| 0x02   | The mosaic is transferable.   |
 
 ### MosaicSupplyChangeDirection
 
 Enumeration: uint8
 
-**Id** | **Description**
-------|----------------------
-0 |	Increase.
-1 |	Decrease.
+| **Id** | **Description** |
+| ------ | --------------- |
+| 0      | Increase.       |
+| 1      | Decrease.       |
+
+### MosaicLevyFeeDecimalPlace
+
+| **Velue** | **Type** | **Description**                    |
+| --------- | -------- | ---------------------------------- |
+| 100'000   | uint64_t | Levy fee effectivve decimal places |
+
+### MosaicLevyRaw
+
+| **Property** | **Type**                    | **Description**       |
+| ------------ | --------------------------- | --------------------- |
+| Type         | [LevyType](#mosaiclevytype) | Levy type             |
+| Recipient    | UnresolvedAddress           | Transaction recipient |
+| MosaicId     | UnresolvedMosaicId          | Levy mosaic currency  |
+| Fee          | Amount                      | The Levy fee          |
+
+### MosaicLevyType
+
+Enumeration: uint8
+
+| **Id** | **Description** |
+| ------ | --------------- |
+| 0      | None            |
+| 1      | Absolute        |
+| 2      | Percentile      |
 
 [Workstation]: ../getting-started/setting-up-workstation.md
