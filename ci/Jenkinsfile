@@ -5,11 +5,6 @@ pipeline {
     }
   }
 
-  environment {
-    npm_config_cache = "npm-cache"
-    nexusAuth = credentials('jenkins-nexus-npm')
-  }
-
   options {
     timestamps()
   }
@@ -19,13 +14,13 @@ pipeline {
       steps {
 
         echo 'Starting Docker Container'
-        withDockerContainer(image: 'node:10') {
+        withDockerContainer(image: 'node:14-alpine') {
           sh '''
             cd website
             echo 'Installing dependencies'
-            yarn install
+            npm install
             echo 'Building'
-            yarn run build
+            npm run build
           '''
         }
 
