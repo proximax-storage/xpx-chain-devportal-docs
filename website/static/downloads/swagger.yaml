@@ -471,7 +471,7 @@ paths:
           description: resource not found
         '409':
           description: invalid argument  
-  '/metadata_nem/{compositeHash}':
+  '/metadata_v2/{compositeHash}':
     get:
       tags:
       - Metadata Nem routes
@@ -496,7 +496,7 @@ paths:
           description: invalid content
         '409':
           description: invalid argument
-  '/metadata_nem':
+  '/metadata_v2':
     get:
       tags:
         - Metadata Nem routes
@@ -961,7 +961,8 @@ paths:
                   type: array
                   description: The array of transaction types.
                   items:
-                    $ref: "#/components/schemas/EntityTypeEnum"
+                    anyOf:
+                      - $ref: '#/components/schemas/EntityTypeEnum'
         required: true
       responses:
         "200":
@@ -969,19 +970,20 @@ paths:
           content:
             application/json:
               schema:
-                properties:
-                  type: array
-                  description: array of count of a transaction type.
-                  items:
-                    type: object
-                    required:
+                type: array
+                description: array of count of a transaction type.
+                items:
+                  type: object
+                  required:
                     - count
                     - type
-                    properties:
-                      count:
-                        type: integer
-                      type:
-                        $ref: "#/components/schemas/EntityTypeEnum"
+                  properties:
+                    count:
+                      type: integer
+                      example: 34
+                    type:
+                      anyOf:
+                        - $ref: '#/components/schemas/EntityTypeEnum'
         "400":
           description: invalid content
         "409":
@@ -2174,6 +2176,31 @@ components:
       - 16716
       - 32835
       - 33091
+      - 16737
+      - 16993
+      - 16703
+      - 16959
+      - 17215
+      - 17229
+      - 17485
+      - 18778
+      - 19034
+      - 16735
+      - 16991
+      - 17247
+      - 16736
+      - 16992
+      - 17248
+      - 17504
+      - 17760
+      - 16738
+      - 16994
+      - 17250
+      - 17506
+      - 17762
+      - 18018
+      - 20066
+
       description: |
         The entity type:
         * 0x4158 (16728 decimal) - Blockchain Upgrade Transaction.
@@ -2211,6 +2238,30 @@ components:
         * 0x465A (18010 decimal) - Drive Files Reward Transaction.
         * 0x475A (18266 decimal) - Start Drive Verification Transaction.
         * 0x485A (18522 decimal) - End Drive Verification Transaction.
+        * 0x4161 (16737 decimal) - Add Harvester Entity Type.
+        * 0x4261 (16993 decimal) - Remove Harvester Entity Type.
+        * 0x413f (16703 decimal) - Account Metadata.
+        * 0x423f (16959 decimal) - Mosaic Metadata.
+        * 0x433f (17215 decimal) - Namespace Metadata.
+        * 0x434d (17229 decimal) - Mosaic Modify Levy.
+        * 0x444d (17485 decimal) - Mosaic Remove Levy.
+        * 0x495A (18778 decimal) - Start File Download.
+        * 0x4A5A (19034 decimal) - End File Download.
+        * 0x415F (16735 decimal) - Operation Identify.
+        * 0x425F (16991 decimal) - Start Operation.
+        * 0x435F (17247 decimal) - End Operation.
+        * 0x4160 (16736 decimal) - Deploy.
+        * 0x4260 (16992 decimal) - Start Execute.
+        * 0x4360 (17248 decimal) - End Execute.
+        * 0x4460 (17504 decimal) - Super Contract File System.
+        * 0x4560 (17760 decimal) - Deactivate.
+        * 0x4162 (16738 decimal) - Prepare Bc Drive.
+        * 0x4262 (16994 decimal) - Data Modification.
+        * 0x4362 (17250 decimal) - Download.
+        * 0x4462 (17506 decimal) - Data Modification Approval.
+        * 0x4562 (17762 decimal) - Data Modification Cancel.
+        * 0x4662 (18018 decimal) - Replicator Onboarding.
+        * 0x4E62 (20066 decimal) - Drive Closure.
 
     HashAlgorithmEnum:
       type: integer
@@ -2237,9 +2288,9 @@ components:
     MetadataTypeEnum:
       type: integer
       enum:
+      - 0
       - 1
       - 2
-      - 3
       description: |
         The type of the metadata:
         * 1 - Address metadata.
