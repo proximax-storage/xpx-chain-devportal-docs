@@ -921,27 +921,42 @@ paths:
         "409":
           description: invalid argument
   "/transactions/{group}/{transactionId}":
-    post:
+    get:
       tags:
       - Transaction routes
       summary: Get transactions information
       description: Returns transaction information by a given transactionId and group.
       operationId: getTransactionByGroupAndID
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/transactionIds"
+      parameters:
+      - name: group
+        in: path
+        description: The group of the transaction.
         required: true
+        schema:
+          type: string
+          enum: [confirmed, unconfirmed, partial]
+      - name: transactionId
+        in: path
+        description: The transactionId or transactionsHash.
+        required: true
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/TransactionId'
+          - $ref: '#/components/schemas/HashDTO'
       responses:
         "200":
           description: success
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TransactionInfoDTO"
+                type: array
+                description: The array of transactions information.
+                items:
+                  $ref: "#/components/schemas/TransactionInfoDTO"
         "400":
           description: invalid content
+        "404":
+          description: resource not found
         "409":
           description: invalid argument
   "/transactions/count":
@@ -1369,6 +1384,7 @@ externalDocs:
   description: ProximaX Developer Center
   url: 'https://proximax.io/'
 servers:
+- url: http://bcstage1.xpxsirius.io:3000
 - url: http://bctestnet1.brimstone.xpxsirius.io:3000
 components:
   parameters:
@@ -2384,6 +2400,11 @@ components:
     HashDTO:
       type: string
       example: "C8FC3FB54FDDFBCE0E8C71224990124E4EEC5AD5D30E592EDFA9524669A23810"
+    TransactionId:
+      type: string
+      example:
+          - 59B8DA0F0CB2720001103922
+          - 59B8D8E60CB2720001103904
     # Account endpoints
     AccountInfoDTO:
       type: object
