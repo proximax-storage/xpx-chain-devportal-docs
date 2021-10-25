@@ -873,6 +873,10 @@ paths:
       - $ref: '#/components/parameters/recipientAddressQuery'
       - $ref: '#/components/parameters/transactionTypeQuery'
       - $ref: '#/components/parameters/embeddedQuery'
+      - $ref: '#/components/parameters/pageSizeQuery'
+      - $ref: '#/components/parameters/pageNumberQuery'
+      - $ref: '#/components/parameters/offsetQuery'
+      - $ref: '#/components/parameters/orderQuery'
       responses:
         "200":
           description: success
@@ -1460,6 +1464,7 @@ components:
       schema:
         type: string
         format: hex
+        example: VCAWORKQTHTWOZ2YWOF5QKBLF7WAAQLMD5FKNEDK
     embeddedQuery:
       name: embedded
       in: query
