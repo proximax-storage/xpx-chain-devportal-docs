@@ -1433,9 +1433,8 @@ components:
       description: Filter by address sending the metadata entry.
       schema:
         type: string
-        format: hex
-        description: Address expressed in hexadecimal base.
-        example: 9081FCCB41F8C8409A9B99E485E0E28D23BD6304EF7215E01A
+        description: Address of the account.
+        example: VCAWORKQTHTWOZ2YWOF5QKBLF7WAAQLMD5FKNEDK
     scopedMetadataKeyQuery:
       name: scopedMetadataKey
       in: query
@@ -1463,7 +1462,6 @@ components:
       description: Address of the account.
       schema:
         type: string
-        format: hex
         example: VCAWORKQTHTWOZ2YWOF5QKBLF7WAAQLMD5FKNEDK
     embeddedQuery:
       name: embedded
@@ -1493,14 +1491,14 @@ components:
       description: Address of transaction's recipient.
       schema:
         type: string
-        format: hex
+        description: Address of the account.
+        example: VCAWORKQTHTWOZ2YWOF5QKBLF7WAAQLMD5FKNEDK
     signerPublicKeyQuery:
       name: signerPublicKey
       in: query
       description: Public key of signer.
       schema:
-        type: string 
-        format: hex
+        type: string
     toHeightQuery:
       name: toHeight
       in: query
