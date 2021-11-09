@@ -66,7 +66,7 @@ On the other hand, if Derek, who has no permissions, attempts to access the comp
 
 Since Address usually represents entities from the real world, it can be useful to attach some extra information to the address. 
 
-[Guides on account metadata](../guides/metadata-nem/account-nem-metadata.md)
+[Guides on account metadata](../guides/metadata-v2/account-metadata-v2.md)
 
 [Guides on deprecated account metadata](../guides/metadata/account-metadata.md)
 
@@ -74,7 +74,7 @@ Since Address usually represents entities from the real world, it can be useful 
 
 For Mosaic, metadata could be used to share where users can obtain or exchange an asset.
 
-[Guides on mosaic metadata](../guides/metadata-nem/mosaic-nem-metadata.md)
+[Guides on mosaic metadata](../guides/metadata-v2/mosaic-metadata-v2.md)
 
 [Guides on deprecated mosaic metadata](../guides/metadata/mosaic-metadata.md)
 
@@ -82,7 +82,7 @@ For Mosaic, metadata could be used to share where users can obtain or exchange a
 
 If users own a namespace, they can attach extra details with metadata for their own namespace.
 
-[Guides on namespace metadata](../guides/metadata-nem/namespace-nem-metadata.md)
+[Guides on namespace metadata](../guides/metadata-v2/namespace-metadata-v2.md)
 
 [Guides on deprecated namespace metadata](../guides/metadata/namespace-metadata.md)
 

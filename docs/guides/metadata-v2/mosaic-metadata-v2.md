@@ -1,9 +1,9 @@
 ---
-id: namespace-nem-metadata
-title: Namespace Metadata
+id: mosaic-metadata-v2
+title: Mosaic Metadata
 ---
 
-## Add metadata to namespace
+## Add metadata to mosaic
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -102,7 +102,7 @@ func main() {
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## Get metadata of namespace
+## Get metadata of mosaic
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -111,8 +111,9 @@ package main
 
 import (
 	"context"
-	"encoding/hex"
 	"fmt"
+	math "math/rand"
+	"time"
 
 	"github.com/proximax-storage/go-xpx-chain-sdk/sdk"
 )
@@ -120,11 +121,13 @@ import (
 const (
 	// Sirius api rest server
 	baseUrl = "http://localhost:3000"
-	// an account that added metadata and mosaic owner. Owner and account that added namespace metadata could be different
+	// an account thad added metadata
 	privateKey = "809CD6699B7F38063E28F606BD3A8AECA6E13B1E688FE8E733D13DB843BC14B7"
+	// another account for which metadata was added
+	mosaicOwnerPrivateKey = "764B3AA022FB929CAA204670A817205DC08F2B172D501F36D4F0EC4EA50AFAE9"
 )
 
-// suppose that namespace already exist
+// suppose that mosaic already exists
 func main() {
 	conf, err := sdk.NewConfig(context.Background(), []string{baseUrl})
 	if err != nil {
@@ -134,25 +137,30 @@ func main() {
 
 	// Use the default http client
 	client := sdk.NewClient(nil, conf)
-
-	owner, err := client.NewAccountFromPrivateKey(privateKey)
+	
+	acc, err := client.NewAccountFromPrivateKey(privateKey)
 	if err != nil {
 		panic(err)
 	}
 
-	nameHex := hex.EncodeToString([]byte("SomeName"))
-
-	namespaceId, err := sdk.NewNamespaceIdFromName(nameHex)
+	mosaicOwner, err := client.NewAccountFromPrivateKey(mosaicOwnerPrivateKey)
 	if err != nil {
 		panic(err)
 	}
 
-	hash, err := sdk.CalculateUniqueNamespaceMetadataId(owner.Address, owner.PublicAccount, 1, namespaceId)
+	r := math.New(math.NewSource(time.Now().UTC().UnixNano()))
+	nonce := r.Uint32()
+	mosaicId, err := sdk.NewMosaicIdFromNonceAndOwner(nonce, mosaicOwner.PublicAccount.PublicKey)
 	if err != nil {
 		panic(err)
 	}
 
-	metadata, err := client.MetadataNem.GetMetadataNemInfo(context.Background(), hash)
+	hash, _ := sdk.CalculateUniqueMosaicMetadataId(acc.Address, mosaicOwner.PublicAccount, 1, mosaicId)
+	if err != nil {
+		panic(err)
+	}
+
+	metadata, err := client.MetadataV2.GetMetadataV2Info(context.Background(), hash)
 	if err != nil {
 		panic(err)
 	}

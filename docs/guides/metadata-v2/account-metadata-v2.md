@@ -1,9 +1,9 @@
 ---
-id: mosaic-nem-metadata
-title: Mosaic Metadata
+id: account-metadata-v2
+title: Account Metadata
 ---
 
-## Add metadata to mosaic
+## Add metadata to account
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -12,7 +12,6 @@ package main
 
 import (
 	"context"
-	"encoding/hex"
 	"fmt"
 	"time"
 
@@ -24,6 +23,8 @@ const (
 	baseUrl = "http://localhost:3000"
 	// an account thad added metadata
 	privateKey = "809CD6699B7F38063E28F606BD3A8AECA6E13B1E688FE8E733D13DB843BC14B7"
+	// another account for which metadata was added
+	anotherPrivateKey = "764B3AA022FB929CAA204670A817205DC08F2B172D501F36D4F0EC4EA50AFAE9"
 )
 
 func main() {
@@ -41,16 +42,14 @@ func main() {
 		panic(err)
 	}
 
-	namespaceId, err := sdk.NewNamespaceIdFromName(hex.EncodeToString([]byte("Name")))
+	metadataRelatedAcc, err := client.NewAccountFromPrivateKey(anotherPrivateKey)
 	if err != nil {
 		panic(err)
 	}
 
-	// NOTE: before NewNamespaceMetadataTransaction namespace should be registered with NewRegisterRootNamespaceTransaction
-	metadataTx, err := client.NewNamespaceMetadataTransaction(
+	metadataTx, err := client.NewAccountMetadataTransaction(
 		sdk.NewDeadline(1*time.Hour),
-		namespaceId,
-		metadataAdder.PublicAccount,
+		metadataRelatedAcc.PublicAccount,
 		1,
 		"Hello world",
 		"",
@@ -97,12 +96,31 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	// Wait for lock funds transaction to be harvested
+	time.Sleep(30 * time.Second)
+
+	_, err = client.Transaction.AnnounceAggregateBonded(context.Background(), signedAbt)
+	if err != nil {
+		panic(err)
+	}
+
+	cosigTrx := sdk.NewCosignatureTransactionFromHash(signedAbt.Hash)
+	signedCosigTrx, err := metadataRelatedAcc.SignCosignatureTransaction(cosigTrx)
+	if err != nil {
+		panic(err)
+	}
+
+	_, err = client.Transaction.AnnounceAggregateBondedCosignature(context.Background(), signedCosigTrx)
+	if err != nil {
+		panic(err)
+	}
 }
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## Get metadata of mosaic
+## Get metadata of account
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -112,8 +130,6 @@ package main
 import (
 	"context"
 	"fmt"
-	math "math/rand"
-	"time"
 
 	"github.com/proximax-storage/go-xpx-chain-sdk/sdk"
 )
@@ -124,10 +140,9 @@ const (
 	// an account thad added metadata
 	privateKey = "809CD6699B7F38063E28F606BD3A8AECA6E13B1E688FE8E733D13DB843BC14B7"
 	// another account for which metadata was added
-	mosaicOwnerPrivateKey = "764B3AA022FB929CAA204670A817205DC08F2B172D501F36D4F0EC4EA50AFAE9"
+	anotherPrivateKey = "764B3AA022FB929CAA204670A817205DC08F2B172D501F36D4F0EC4EA50AFAE9"
 )
 
-// suppose that mosaic already exists
 func main() {
 	conf, err := sdk.NewConfig(context.Background(), []string{baseUrl})
 	if err != nil {
@@ -137,30 +152,23 @@ func main() {
 
 	// Use the default http client
 	client := sdk.NewClient(nil, conf)
-	
+
 	acc, err := client.NewAccountFromPrivateKey(privateKey)
 	if err != nil {
 		panic(err)
 	}
 
-	mosaicOwner, err := client.NewAccountFromPrivateKey(mosaicOwnerPrivateKey)
+	anotherAcc, err := client.NewAccountFromPrivateKey(anotherPrivateKey)
 	if err != nil {
 		panic(err)
 	}
 
-	r := math.New(math.NewSource(time.Now().UTC().UnixNano()))
-	nonce := r.Uint32()
-	mosaicId, err := sdk.NewMosaicIdFromNonceAndOwner(nonce, mosaicOwner.PublicAccount.PublicKey)
+	hash, err := sdk.CalculateUniqueAccountMetadataId(acc.Address, anotherAcc.PublicAccount, 1)
 	if err != nil {
 		panic(err)
 	}
 
-	hash, _ := sdk.CalculateUniqueMosaicMetadataId(acc.Address, mosaicOwner.PublicAccount, 1, mosaicId)
-	if err != nil {
-		panic(err)
-	}
-
-	metadata, err := client.MetadataNem.GetMetadataNemInfo(context.Background(), hash)
+	metadata, err := client.MetadataV2.GetMetadataV2Info(context.Background(), hash)
 	if err != nil {
 		panic(err)
 	}

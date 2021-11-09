@@ -1,9 +1,10 @@
 ---
-id: account-nem-metadata
-title: Account Metadata
+id: namespace-metadata-v2
+id: namespace-metadata-v2
+title: Namespace Metadata
 ---
 
-## Add metadata to account
+## Add metadata to namespace
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -12,6 +13,7 @@ package main
 
 import (
 	"context"
+	"encoding/hex"
 	"fmt"
 	"time"
 
@@ -23,8 +25,6 @@ const (
 	baseUrl = "http://localhost:3000"
 	// an account thad added metadata
 	privateKey = "809CD6699B7F38063E28F606BD3A8AECA6E13B1E688FE8E733D13DB843BC14B7"
-	// another account for which metadata was added
-	anotherPrivateKey = "764B3AA022FB929CAA204670A817205DC08F2B172D501F36D4F0EC4EA50AFAE9"
 )
 
 func main() {
@@ -42,14 +42,16 @@ func main() {
 		panic(err)
 	}
 
-	metadataRelatedAcc, err := client.NewAccountFromPrivateKey(anotherPrivateKey)
+	namespaceId, err := sdk.NewNamespaceIdFromName(hex.EncodeToString([]byte("Name")))
 	if err != nil {
 		panic(err)
 	}
 
-	metadataTx, err := client.NewAccountMetadataTransaction(
+	// NOTE: before NewNamespaceMetadataTransaction namespace should be registered with NewRegisterRootNamespaceTransaction
+	metadataTx, err := client.NewNamespaceMetadataTransaction(
 		sdk.NewDeadline(1*time.Hour),
-		metadataRelatedAcc.PublicAccount,
+		namespaceId,
+		metadataAdder.PublicAccount,
 		1,
 		"Hello world",
 		"",
@@ -96,31 +98,12 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
-	// Wait for lock funds transaction to be harvested
-	time.Sleep(30 * time.Second)
-
-	_, err = client.Transaction.AnnounceAggregateBonded(context.Background(), signedAbt)
-	if err != nil {
-		panic(err)
-	}
-
-	cosigTrx := sdk.NewCosignatureTransactionFromHash(signedAbt.Hash)
-	signedCosigTrx, err := metadataRelatedAcc.SignCosignatureTransaction(cosigTrx)
-	if err != nil {
-		panic(err)
-	}
-
-	_, err = client.Transaction.AnnounceAggregateBondedCosignature(context.Background(), signedCosigTrx)
-	if err != nil {
-		panic(err)
-	}
 }
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-## Get metadata of account
+## Get metadata of namespace
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -129,6 +112,7 @@ package main
 
 import (
 	"context"
+	"encoding/hex"
 	"fmt"
 
 	"github.com/proximax-storage/go-xpx-chain-sdk/sdk"
@@ -137,12 +121,11 @@ import (
 const (
 	// Sirius api rest server
 	baseUrl = "http://localhost:3000"
-	// an account thad added metadata
+	// an account that added metadata and mosaic owner. Owner and account that added namespace metadata could be different
 	privateKey = "809CD6699B7F38063E28F606BD3A8AECA6E13B1E688FE8E733D13DB843BC14B7"
-	// another account for which metadata was added
-	anotherPrivateKey = "764B3AA022FB929CAA204670A817205DC08F2B172D501F36D4F0EC4EA50AFAE9"
 )
 
+// suppose that namespace already exist
 func main() {
 	conf, err := sdk.NewConfig(context.Background(), []string{baseUrl})
 	if err != nil {
@@ -153,22 +136,24 @@ func main() {
 	// Use the default http client
 	client := sdk.NewClient(nil, conf)
 
-	acc, err := client.NewAccountFromPrivateKey(privateKey)
+	owner, err := client.NewAccountFromPrivateKey(privateKey)
 	if err != nil {
 		panic(err)
 	}
 
-	anotherAcc, err := client.NewAccountFromPrivateKey(anotherPrivateKey)
+	nameHex := hex.EncodeToString([]byte("SomeName"))
+
+	namespaceId, err := sdk.NewNamespaceIdFromName(nameHex)
 	if err != nil {
 		panic(err)
 	}
 
-	hash, err := sdk.CalculateUniqueAccountMetadataId(acc.Address, anotherAcc.PublicAccount, 1)
+	hash, err := sdk.CalculateUniqueNamespaceMetadataId(owner.Address, owner.PublicAccount, 1, namespaceId)
 	if err != nil {
 		panic(err)
 	}
 
-	metadata, err := client.MetadataNem.GetMetadataNemInfo(context.Background(), hash)
+	metadata, err := client.MetadataV2.GetMetadataV2Info(context.Background(), hash)
 	if err != nil {
 		panic(err)
 	}
