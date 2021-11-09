@@ -23,9 +23,9 @@ tags:
 - name: Diagnostic routes
   description: |
     Diagnostic related endpoints.
-- name: Metadata Nem routes
+- name: Metadata V2 routes
   description: |
-    Metadata Nem related endpoints.
+    Metadata V2 related endpoints.
 - name: Mosaic routes
   description: |
     Mosaic related endpoints.
@@ -474,9 +474,9 @@ paths:
   '/metadata_v2/{compositeHash}':
     get:
       tags:
-      - Metadata Nem routes
+      - Metadata V2 routes
       summary: Get metadata (namespace/mosaic/account) for an compositeHashes
-      description: Gets an nem metadata.
+      description: Gets an V2 metadata.
       operationId: getNemMetadata
       parameters:
       - name: hash
@@ -499,7 +499,7 @@ paths:
   '/metadata_v2':
     get:
       tags:
-        - Metadata Nem routes
+        - Metadata V2 routes
       summary: Search metadata entries
       description: Returns an array of metadata.
       operationId: searchMetadataEntries
@@ -524,9 +524,9 @@ paths:
           description: invalid argument
     post:
       tags:
-      - Metadata Nem routes
+      - Metadata V2 routes
       summary: Get metadatas (namespace/mosaic/account) for compositeHashes
-      description: Gets nem metadatas.
+      description: Gets v2 metadatas.
       operationId: getNemMetadatas
       requestBody:
         $ref: "#/components/requestBodies/compositeHashes"
@@ -834,8 +834,7 @@ paths:
       - Transaction routes
       summary: Announce a new transaction
       description: Announces a transaction to the network. It is recommended to use the
-                     NEM2-SDK to announce transactions as they should be
-        [serialized](https://nemtech.github.io/concepts/transaction.html#defining-a-transaction).
+                    SDK to announce transactions as they should be.
       operationId: announceTransaction
       requestBody:
         $ref: "#/components/requestBodies/transactionPayload"
@@ -3203,7 +3202,7 @@ components:
           metadataId:
             $ref: '#/components/schemas/UInt64DTO'
 
-    # Metadata Nem enpoints
+    # Metadata V2 enpoints
     MetadataNemPage:
       type: object
       required:
