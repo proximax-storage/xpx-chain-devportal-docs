@@ -119,11 +119,11 @@ Configuration parameters are [editable][Server-configurable] . Public network co
 
 - [Transaction][Transaction]
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-payloadSize |	uint8 |	The transaction payload size in bytes. In other words, the total number of bytes was occupied by all inner transactions.
-transactions |	array(byte, payloadSize) |	The array of transactions initiated by different accounts. An aggregate transaction can contain up to `1000` inner transactions involving up to `15` different cosignatories. Other aggregate transactions are not allowed as inner transactions.
-cosignatures |	array(byte, size - payloadSize) |	An array of transaction [cosignatures](#detachedcosignature).
+| **Property** | **Type**                        | **Description**                                                                                                                                                                                                                                   |
+| ------------ | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| payloadSize  | uint8                           | The transaction payload size in bytes. In other words, the total number of bytes was occupied by all inner transactions.                                                                                                                          |
+| transactions | array(byte, payloadSize)        | The array of transactions initiated by different accounts. An aggregate transaction can contain up to `1000` inner transactions involving up to `15` different cosignatories. Other aggregate transactions are not allowed as inner transactions. |
+| cosignatures | array(byte, size - payloadSize) | An array of transaction [cosignatures](#detachedcosignature).                                                                                                                                                                                     |
 
 ### DetachedCosignature
 
@@ -133,18 +133,18 @@ Cosignature transactions are used to sign [announced aggregate bonded transactio
 
 - [Cosignature](#cosignature)
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-parentHash |	32 bytes (binary) |	The aggregate bonded transaction hash to cosign.
+| **Property** | **Type**          | **Description**                                  |
+| ------------ | ----------------- | ------------------------------------------------ |
+| parentHash   | 32 bytes (binary) | The aggregate bonded transaction hash to cosign. |
 
 ### Cosignature
 
 - [Transaction][Transaction] or [EmbeddedTransaction][EmbeddedTransaction]
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-signer |	32 bytes (binary) |	The cosigner public key.
-signature |	64 bytes (binary) |	The transaction signature.
+| **Property** | **Type**          | **Description**            |
+| ------------ | ----------------- | -------------------------- |
+| signer       | 32 bytes (binary) | The cosigner public key.   |
+| signature    | 64 bytes (binary) | The transaction signature. |
 
 ### HashLockTransaction
 
@@ -164,11 +164,11 @@ If the aggregate bonded transaction duration is reached without being signed by 
 
 - [Transaction][Transaction] or [EmbeddedTransaction][EmbeddedTransaction]
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-mosaic |	[Mosaic][Mosaic#mosaic] |	Locked mosaic, must be at least `10 xpx`.
-duration |	uint64 |	The lock duration.
-hash |	32 bytes (binary) |	The aggregate bonded transaction hash that has to be confirmed before unlocking the mosaics.
+| **Property** | **Type**                | **Description**                                                                              |
+| ------------ | ----------------------- | -------------------------------------------------------------------------------------------- |
+| mosaic       | [Mosaic][Mosaic#mosaic] | Locked mosaic, must be at least `10 xpx`.                                                    |
+| duration     | uint64                  | The lock duration.                                                                           |
+| hash         | 32 bytes (binary)       | The aggregate bonded transaction hash that has to be confirmed before unlocking the mosaics. |
 
 [Server-configurable]: https://github.com/proximax-storage/cpp-xpx-chain/blob/master/resources/config-network.properties
 [Mosaic#mosaic]: ./mosaic.md#mosaic

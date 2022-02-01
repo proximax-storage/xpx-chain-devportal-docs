@@ -79,11 +79,11 @@ Announce a transfer transaction to send [mosaics](./mosaic.md) or messages betwe
 
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-recipient |	25 bytes (binary) |	The address of the recipient account.
-messageSize |	uint16 |	The size of the attached message.
-mosaicsCount |	uint8 |	The number of attached mosaics.
-message |	array(byte, messageSize) |	The message type (0) and a payload of up to `1023` bytes.
-mosaics |	array([UnresolvedMosaic](./mosaic.md#unresolvedmosaic), mosaicsCount) |	The different mosaic to be sent.
+| **Property** | **Type**                                                              | **Description**                                           |
+| ------------ | --------------------------------------------------------------------- | --------------------------------------------------------- |
+| recipient    | 25 bytes (binary)                                                     | The address of the recipient account.                     |
+| messageSize  | uint16                                                                | The size of the attached message.                         |
+| mosaicsCount | uint8                                                                 | The number of attached mosaics.                           |
+| message      | array(byte, messageSize)                                              | The message type (0) and a payload of up to `1023` bytes. |
+| mosaics      | array([UnresolvedMosaic](./mosaic.md#unresolvedmosaic), mosaicsCount) | The different mosaic to be sent.                          |
 

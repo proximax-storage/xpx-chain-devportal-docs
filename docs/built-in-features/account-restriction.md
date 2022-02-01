@@ -8,11 +8,11 @@ The account owners - plural in case of multisig accounts - can edit the account 
 
 `Restriction types`
 
-**Restriction** |	**Incoming Transactions** |	**Outgoing Transactions**
-------------------------------------|----------------|-------------------------
-AccountAddressRestriction |	✔️ |	❌
-AccountMosaicRestriction  |	✔️ |	❌
-AccountOperationRestriction |	❌ |	✔️
+| **Restriction**             | **Incoming Transactions** | **Outgoing Transactions** |
+| --------------------------- | ------------------------- | ------------------------- |
+| AccountAddressRestriction   | ✔️                         | ❌                         |
+| AccountMosaicRestriction    | ✔️                         | ❌                         |
+| AccountOperationRestriction | ❌                         | ✔️                         |
 
 ## Address restriction
 
@@ -92,11 +92,11 @@ Inlines:
 
 - [Transaction][TransactionSchema] or [EmbeddedTransaction][Embedded-transactionSchema]
 
-**Property** |	**Type** |	**Description**
--------------|-----------|---------------------
-restrictionType |	[RestrictionType](#restrictiontype) |	Type of the account restriction.
-modificationsCount |	uint8 |	Number of modifications in the transaction. A maximum of `255` modifications per transaction is allowed.
-modifications |	array([AccountRestrictionModification](#accountrestrictionmodification)) |	Array of account address restriction modifications.
+| **Property**       | **Type**                                                                 | **Description**                                                                                          |
+| ------------------ | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| restrictionType    | [RestrictionType](#restrictiontype)                                      | Type of the account restriction.                                                                         |
+| modificationsCount | uint8                                                                    | Number of modifications in the transaction. A maximum of `255` modifications per transaction is allowed. |
+| modifications      | array([AccountRestrictionModification](#accountrestrictionmodification)) | Array of account address restriction modifications.                                                      |
 
 ### AccountMosaicRestrictionModificationTransaction
 
@@ -110,11 +110,11 @@ Inlines:
 
 - [Transaction][TransactionSchema] or [EmbeddedTransaction][Embedded-transactionSchema]
 
-**Property** |	**Type** |	**Description**
--------------|-----------|---------------------
-restrictionType |	[RestrictionType](#restrictiontype) |	Type of the account restriction.
-modificationsCount |	uint8 |	Number of modifications in the transaction. A maximum of `255` modifications per transaction is allowed.
-modifications |	array([AccountRestrictionModification](#accountrestrictionmodification)) |	Array of account mosaic restriction modifications.
+| **Property**       | **Type**                                                                 | **Description**                                                                                          |
+| ------------------ | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| restrictionType    | [RestrictionType](#restrictiontype)                                      | Type of the account restriction.                                                                         |
+| modificationsCount | uint8                                                                    | Number of modifications in the transaction. A maximum of `255` modifications per transaction is allowed. |
+| modifications      | array([AccountRestrictionModification](#accountrestrictionmodification)) | Array of account mosaic restriction modifications.                                                       |
 
 ### AccountOperationRestrictionModificationTransaction
 
@@ -128,37 +128,37 @@ Inlines:
 
 - [Transaction][TransactionSchema] or [EmbeddedTransaction][Embedded-transactionSchema]
 
-**Property** |	**Type** |	**Description**
--------------|-----------|---------------------
-restrictionType |	[RestrictionType](#restrictiontype) |	Type of the account restriction.
-modificationsCount |	uint8 |	Number of modifications in the transaction. A maximum of `255` modifications per transaction is allowed.
-modifications |	array([AccountRestrictionModification](#accountrestrictionmodification)) |	Array of account operation restriction modifications.
+| **Property**       | **Type**                                                                 | **Description**                                                                                          |
+| ------------------ | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| restrictionType    | [RestrictionType](#restrictiontype)                                      | Type of the account restriction.                                                                         |
+| modificationsCount | uint8                                                                    | Number of modifications in the transaction. A maximum of `255` modifications per transaction is allowed. |
+| modifications      | array([AccountRestrictionModification](#accountrestrictionmodification)) | Array of account operation restriction modifications.                                                    |
 
 ### AccountRestrictionModification
 
-**Property** |	**Type** |	**Description**
--------------|-----------|---------------------
-restrictionModificationType |	[RestrictionModificationType](#restrictionmodificationtype) |	Type of the restriction modification, add or remove.
-value | (Address, MosaicId or [Transaction Type][TransactionSchema]) | Modification value (Address, Mosaic or Transaction Type)
+| **Property**                | **Type**                                                     | **Description**                                          |
+| --------------------------- | ------------------------------------------------------------ | -------------------------------------------------------- |
+| restrictionModificationType | [RestrictionModificationType](#restrictionmodificationtype)  | Type of the restriction modification, add or remove.     |
+| value                       | (Address, MosaicId or [Transaction Type][TransactionSchema]) | Modification value (Address, Mosaic or Transaction Type) |
 
 ## RestrictionModificationType 
 
-**Id** |	**Description**
------------|---------------------
-  0x00     | Add the selected restriction
-  0x01     | Remove the selected restriction                 
+| **Id** | **Description**                 |
+| ------ | ------------------------------- |
+| 0x00   | Add the selected restriction    |
+| 0x01   | Remove the selected restriction |
 
 ## RestrictionType 
 
- **Id** |	**Description**
--------|---------------------
-  0x01     | Allow only incoming transactions from a given address.
-  0x02     | Allow only incoming transactions containing a given mosaic identifier. 
- 0x04         |  Allow only outgoing transactions with a given transaction type.
- 0x05     |   Account restriction sentinel.
- 0x81     |  Block incoming transactions from a given address.
- 0x82    | Block incoming transactions containing a given mosaic identifier.
- 0x84 |  Block outgoing transactions with a given transaction type.
+ | **Id** | **Description**                                                        |
+ | ------ | ---------------------------------------------------------------------- |
+ | 0x01   | Allow only incoming transactions from a given address.                 |
+ | 0x02   | Allow only incoming transactions containing a given mosaic identifier. |
+ | 0x04   | Allow only outgoing transactions with a given transaction type.        |
+ | 0x05   | Account restriction sentinel.                                          |
+ | 0x81   | Block incoming transactions from a given address.                      |
+ | 0x82   | Block incoming transactions containing a given mosaic identifier.      |
+ | 0x84   | Block outgoing transactions with a given transaction type.             |
 
 [Account]: ./account.md
 [Mosaic]: ./mosaic.md

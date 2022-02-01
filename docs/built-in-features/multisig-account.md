@@ -143,24 +143,24 @@ Ways of how announcing a modify multisig account transaction to:
 
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-**Property** |	**Type** |	**Description**
--------------|-----------|---------------------
-minRemovalDelta |	int8 |	The number of signatures needed to remove a cosignatory. If we are modifying an existing multisig account, this indicates the relative change of the minimum cosignatories.
-minApprovalDelta |	int8 |	The number of signatures needed to approve a transaction. If we are modifying an existing multisig account, this indicates the relative change of the minimum cosignatories.
-modificationsCount |	uint8 |	The number of modifications.
-modification |	array([CosignatoryModification](#cosignatorymodification), modificationsCount) |	The array of cosignatory [accounts](./account.md) to add or delete.
+| **Property**       | **Type**                                                                       | **Description**                                                                                                                                                              |
+| ------------------ | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| minRemovalDelta    | int8                                                                           | The number of signatures needed to remove a cosignatory. If we are modifying an existing multisig account, this indicates the relative change of the minimum cosignatories.  |
+| minApprovalDelta   | int8                                                                           | The number of signatures needed to approve a transaction. If we are modifying an existing multisig account, this indicates the relative change of the minimum cosignatories. |
+| modificationsCount | uint8                                                                          | The number of modifications.                                                                                                                                                 |
+| modification       | array([CosignatoryModification](#cosignatorymodification), modificationsCount) | The array of cosignatory [accounts](./account.md) to add or delete.                                                                                                          |
 
 ### CosignatoryModification
 
-**Property** |	**Type** |	**Description**
--------------|-----------|---------------------
-modificationType |	[CosignatoryModificationType](#cosignatorymodificationtype) |	The cosignatory modification type.
-cosignatoryPublicKey |	32 bytes (binary) |	The public key of the cosignatory.
+| **Property**         | **Type**                                                    | **Description**                    |
+| -------------------- | ----------------------------------------------------------- | ---------------------------------- |
+| modificationType     | [CosignatoryModificationType](#cosignatorymodificationtype) | The cosignatory modification type. |
+| cosignatoryPublicKey | 32 bytes (binary)                                           | The public key of the cosignatory. |
 
 ### CosignatoryModificationType
 
 Enumeration: uint8
-**Id** | 	**Description**
--------|----------------------
-0 |	Add cosignatory.
-1 |	Remove cosignatory.
+| **Id** | **Description**     |
+| ------ | ------------------- |
+| 0      | Add cosignatory.    |
+| 1      | Remove cosignatory. |

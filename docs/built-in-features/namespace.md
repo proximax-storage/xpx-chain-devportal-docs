@@ -137,14 +137,14 @@ Announce a register namespace transaction to register and rent a namespace again
 
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-namespaceType |	[NamespaceType](#namespacetype) |	The type of the registered namespace.
-duration | uint64 |	The renting duration represents the number of confirmed blocks we would like to rent our namespace for. During the renting period, it is possible to extend the rental by sending a [register namespace transaction](#registernamespacetransaction) with the extra-confirmed block to rent the namespace. When a renting period ends, the namespace will become inactive.
-parentId |	uint64 |	If it is a subdomain, a reference to parent namespace name is required.
-namespaceId |	uint64 |	The id of the namespace.
-namespaceNameSize |	uint8 |	The size of the namespace name.
-name |	array(bytes, namespaceNameSize) |	A namespace name must be unique and may have a maximum length of `64` characters. Allowed characters are a, b, c, …, z, 0, 1, 2, …, 9, ‘, _ , -.
+| **Property**      | **Type**                        | **Description**                                                                                                                                                                                                                                                                                                                                                           |
+| ----------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| namespaceType     | [NamespaceType](#namespacetype) | The type of the registered namespace.                                                                                                                                                                                                                                                                                                                                     |
+| duration          | uint64                          | The renting duration represents the number of confirmed blocks we would like to rent our namespace for. During the renting period, it is possible to extend the rental by sending a [register namespace transaction](#registernamespacetransaction) with the extra-confirmed block to rent the namespace. When a renting period ends, the namespace will become inactive. |
+| parentId          | uint64                          | If it is a subdomain, a reference to parent namespace name is required.                                                                                                                                                                                                                                                                                                   |
+| namespaceId       | uint64                          | The id of the namespace.                                                                                                                                                                                                                                                                                                                                                  |
+| namespaceNameSize | uint8                           | The size of the namespace name.                                                                                                                                                                                                                                                                                                                                           |
+| name              | array(bytes, namespaceNameSize) | A namespace name must be unique and may have a maximum length of `64` characters. Allowed characters are a, b, c, …, z, 0, 1, 2, …, 9, ‘, _ , -.                                                                                                                                                                                                                          |
 
 ### AddressAliasTransaction
 
@@ -158,11 +158,11 @@ Announce an alias transaction to attach a namespace to an account. A namespace c
 
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-aliasAction |	[AliasAction](#alias-action) |	The alias action.
-namespaceId |	uint64 |	The id of the namespace that will become an alias.
-address |	25 bytes (binary) |	The aliased address.
+| **Property** | **Type**                     | **Description**                                    |
+| ------------ | ---------------------------- | -------------------------------------------------- |
+| aliasAction  | [AliasAction](#alias-action) | The alias action.                                  |
+| namespaceId  | uint64                       | The id of the namespace that will become an alias. |
+| address      | 25 bytes (binary)            | The aliased address.                               |
 
 ### MosaicAliasTransaction
 
@@ -177,26 +177,26 @@ Announce an alias transaction to attach a namespace to a mosaic. Setting an alia
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
 
-**Property** |	**Type** |	**Description**
--------------|-----------|--------------------
-aliasAction |	[AliasAction](#alias-action) |	The alias action.
-namespaceId |	uint64 |	The id of the namespace that will become an alias.
-mosaicId |	uint64 |	The aliased mosaic id.
+| **Property** | **Type**                     | **Description**                                    |
+| ------------ | ---------------------------- | -------------------------------------------------- |
+| aliasAction  | [AliasAction](#alias-action) | The alias action.                                  |
+| namespaceId  | uint64                       | The id of the namespace that will become an alias. |
+| mosaicId     | uint64                       | The aliased mosaic id.                             |
 
 ### NamespaceType
 
 Enumeration: uint8
 
-**Id** |	**Description**
--------|-------------------
-0 |	Root namespace.
-1 |	Child namespace.
+| **Id** | **Description**  |
+| ------ | ---------------- |
+| 0      | Root namespace.  |
+| 1      | Child namespace. |
 
 ### Alias Action
 
 Enumeration: uint8
 
-**Id** |	**Description**
--------|-------------------
-0 |	Link alias.
-1 |	Unlink alias.
+| **Id** | **Description** |
+| ------ | --------------- |
+| 0      | Link alias.     |
+| 1      | Unlink alias.   |
