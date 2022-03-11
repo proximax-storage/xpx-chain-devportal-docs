@@ -479,7 +479,7 @@ paths:
       description: Gets an V2 metadata.
       operationId: getNemMetadata
       parameters:
-      - name: hash
+      - name: compositeHash
         in: path
         description: The composited hash.
         required: true
