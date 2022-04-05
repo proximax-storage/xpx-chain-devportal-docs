@@ -122,12 +122,12 @@ TODO
 
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-| **Property**      | **Type** | **Description**                         |
-| ----------------- | -------- | --------------------------------------- |
-| DriveKey          | 32 bytes | Public key of the drive                 |
-| DownloadDataCdi   | 32 bytes | Download data CDI of modification       |
-| UploadSize        | uint64   | Size of upload                          |
-| FeedbackFeeAmount | uint64   | Amount of XPXs to transfer to the drive |
+| **Property**        | **Type** | **Description**                         |
+| ------------------- | -------- | --------------------------------------- |
+| DriveKey            | 32 bytes | Public key of the drive                 |
+| DownloadDataCdi     | 32 bytes | Download data CDI of modification       |
+| UploadSizeMegabytes | uint64   | Size of upload in MB                    |
+| FeedbackFeeAmount   | uint64   | Amount of XPXs to transfer to the drive |
 
 ### DataModificationCancelTransaction
 
@@ -154,13 +154,13 @@ TODO
 
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-| **Property**         | **Type** | **Description**                     |
-| -------------------- | -------- | ----------------------------------- |
-| DriveKey             | 32 bytes | Public key of the drive             |
-| DownloadSize         | uint64   | Prepaid Download Size               |
-| FeedbackFeeAmount    | uint64   | XPXs to lock for future payment for |
-| ListOfPublicKeysSize | uint16   | Size of the list of public keys     |
-| ListOfPublicKeys     | 32 bytes | List of public keys                 |
+| **Property**          | **Type** | **Description**                     |
+| --------------------- | -------- | ----------------------------------- |
+| DriveKey              | 32 bytes | Public key of the drive             |
+| DownloadSizeMegabytes | uint64   | Prepaid Download Size in Mb         |
+| FeedbackFeeAmount     | uint64   | XPXs to lock for future payment for |
+| ListOfPublicKeysSize  | uint16   | Size of the list of public keys     |
+| ListOfPublicKeys      | 32 bytes | List of public keys                 |
 
 ### DownloadPaymentTransaction
 
@@ -172,11 +172,11 @@ TODO
 
 - [Transaction](../protocol/transaction.md#transaction) or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-| **Property**      | **Type** | **Description**                                                  |
-| ----------------- | -------- | ---------------------------------------------------------------- |
-| DownloadChannelId | 32 bytes | The identifier of the download channel                           |
-| DownloadSize      | uint64   | Download size to add to the prepaid size of the download channel |
-| FeedbackFeeAmount | uint64   | Amount of XPXs to transfer to the download channel               |
+| **Property**          | **Type** | **Description**                                                        |
+| --------------------- | -------- | ---------------------------------------------------------------------- |
+| DownloadChannelId     | 32 bytes | The identifier of the download channel                                 |
+| DownloadSizeMegabytes | uint64   | Download size in Mb to add to the prepaid size of the download channel |
+| FeedbackFeeAmount     | uint64   | Amount of XPXs to transfer to the download channel                     |
 
 ### FinishDownloadTransaction
 
