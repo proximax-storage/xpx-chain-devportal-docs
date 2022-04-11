@@ -56,14 +56,23 @@ title: Guides
 
 ## Metadata
 
-- [Add and remove account metadata](./metadata/account-metadata.md)
-  Add and remove metadata to account 
+- [(Deprecated) Add and remove account metadata](./metadata/account-metadata.md)
+  (Deprecated) Add and remove metadata to account 
 
-- [Add and remove mosaic metadata](./metadata/mosaic-metadata.md)
-  Add and remove metadata to mosaic 
+- [(Deprecated) Add and remove mosaic metadata](./metadata/mosaic-metadata.md)
+  (Deprecated) Add and remove metadata to mosaic 
 
-- [Add and remove namespace metadata](./metadata/namespace-metadata.md)
-  Add and remove metadata to namespace
+- [(Deprecated) Add and remove namespace metadata](./metadata/namespace-metadata.md)
+  (Deprecated) Add and remove metadata to namespace
+
+- [Add and remove account metadata](./metadata-v2/account-metadata-v2.md)
+  Add and remove account metadata
+
+- [Add and remove mosaic metadata](./metadata-v2/mosaic-metadata-v2.md)
+  Add and remove mosaic metadata
+
+- [Add and remove namespace metadata](./metadata-v2/namespace-metadata-v2.md)
+  Add and remove namespace metadata
 
 ## Monitoring
 
@@ -139,3 +148,37 @@ title: Guides
 
 - [Sending an encrypted message](./transaction/sending-an-encrypted-message.md)
   Send an encrypted message that only can be read by the recipient account.
+
+## Storage
+- [Send Data Modification Cancel Transaction](./storage/data-modification-cancel)
+  Close an existing Data Modification
+
+- [Send Data Modification Transaction](./storage/data-modification)
+  Send a new Data Modification
+
+- [Send Download Transaction](./storage/download)
+  Create a New Download
+
+- [Send Download Payment Transaction](./storage/download-payment)
+  Pay to a Download Channel
+
+- [Send Drive Closure Transaction](./storage/drive-closure)
+  Closure a Drive
+
+- [Send Finish Download Transaction](./storage/finish-download)
+  Finish a Download Channel
+
+- [Send Prepare Drive Transaction](./storage/prepare-bc-drive)
+  Prepare a New Drive
+
+- [Send Replicator Offboarding Transaction](./storage/replicator-offboarding)
+  Offboard a Replicator from a Drive
+
+- [Send Replicator Onboarding Transaction](./storage/replicator-onboarding)
+  Onboard a New Replicator
+
+- [Send Storage Payment Transaction](./storage/storage-payment)
+  Pay to a Drive for Billing Period
+
+- [Send Verification Payment Transaction](./storage/verification-payment)
+  Pay to a Drive for Verification

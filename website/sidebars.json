@@ -16,8 +16,7 @@
       "built-in-features/account-restriction",
       "built-in-features/cross-chain-swaps",
       "built-in-features/exchange-market",
-      "built-in-features/drive",
-      "built-in-features/super-contracts"
+      "built-in-features/storage"
     ],
     "Protocol": [
       "protocol/node",
@@ -84,6 +83,9 @@
       "guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain"
     ],
     "Metadata":[
+      "guides/metadata-v2/account-metadata-v2",
+      "guides/metadata-v2/mosaic-metadata-v2",
+      "guides/metadata-v2/namespace-metadata-v2",
       "guides/metadata/account-metadata",
       "guides/metadata/mosaic-metadata",
       "guides/metadata/namespace-metadata"
@@ -113,6 +115,19 @@
     "Transfer Transaction": [
       "guides/transaction/sending-a-transfer-transaction",
       "guides/transaction/sending-an-encrypted-message"
+    ],
+    "Storage": [
+      "guides/storage/data-modification-cancel",
+      "guides/storage/data-modification",
+      "guides/storage/download",
+      "guides/storage/download-payment",
+      "guides/storage/drive-closure",
+      "guides/storage/finish-download",
+      "guides/storage/prepare-bc-drive",
+      "guides/storage/replicator-offboarding",
+      "guides/storage/replicator-onboarding",
+      "guides/storage/storage-payment",
+      "guides/storage/verification-payment"
     ]
   }
 }
