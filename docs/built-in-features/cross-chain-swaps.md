@@ -62,6 +62,8 @@ The amount of time in which funds can be unlocked should be a smaller time frame
 
 ## Concept Notes
 
+The concept of a cross-chain swap is an open swap that involves a sender and a recipient. There could be multiple actors in the swap. An example is, there may be an intermediary in the swap that does the swapping. It is important to note from the above cross-chain swap sequence diagram, TX2, TX3, and TX4 are three transactions after TX1 that can be fulfilled by any random signer. However, in order to generate 
+
 ## Guides
 
 <div class=info>
