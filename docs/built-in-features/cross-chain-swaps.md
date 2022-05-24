@@ -60,6 +60,8 @@ The amount of time in which funds can be unlocked should be a smaller time frame
 7. Once TX3 is confirmed, the proof is revealed. TX2 transaction is unlocked and Alice receives the locked funds.
 8. Bob picks the proof and announces the [secret proof transaction](#secretprooftransaction) TX4 to the private network, receiving the locked funds from TX1.
 
+## Concept Notes
+
 ## Guides
 
 <div class=info>
