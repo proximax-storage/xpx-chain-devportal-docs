@@ -2194,14 +2194,6 @@ components:
       - 16733
       - 16989
       - 17245
-      - 16727
-      - 16730
-      - 16986
-      - 17242
-      - 17498
-      - 17754
-      - 18010
-      - 18266
       - 18522
       - 16737
       - 16993
@@ -2210,16 +2202,6 @@ components:
       - 17215
       - 17229
       - 17485
-      - 18778
-      - 19034
-      - 16735
-      - 16991
-      - 17247
-      - 16736
-      - 16992
-      - 17248
-      - 17504
-      - 17760
       - 16738
       - 16994
       - 17250
@@ -2251,19 +2233,11 @@ components:
         * 0x4152 (16722 decimal) - Secret Lock Transaction.
         * 0x4252 (16978 decimal) - Secret Proof Transaction.
         * 0x414C (16716 decimal) - Account Link Transaction.
-        * 0x8043 (32835 decimal) - Nemesis Block Transaction.
-        * 0x8143 (33091 decimal) - Regular Block Transaction.
+        * 0x8043 (32835 decimal) - Nemesis Block.
+        * 0x8143 (33091 decimal) - Regular Block.
         * 0x415D (16733 decimal) - Add Exchange Offer Transaction.
         * 0x425D (16989 decimal) - Exchange Offer Transaction.
         * 0x435D (17245 decimal) - Remove Exchange Offer Transaction.
-        * 0x4157 (16727 decimal) - Modify Contract Transaction.
-        * 0x415A (16730 decimal) - Prepare Drive Transaction.
-        * 0x425A (16986 decimal) - Join To Drive Transaction.
-        * 0x435A (17242 decimal) - Drive File System Transaction.
-        * 0x445A (17498 decimal) - Files Deposit Transaction.
-        * 0x455A (17754 decimal) - End Drive Transaction.
-        * 0x465A (18010 decimal) - Drive Files Reward Transaction.
-        * 0x475A (18266 decimal) - Start Drive Verification Transaction.
         * 0x485A (18522 decimal) - End Drive Verification Transaction.
         * 0x4161 (16737 decimal) - Add Harvester Entity Type Transaction.
         * 0x4261 (16993 decimal) - Remove Harvester Entity Type Transaction.
@@ -2272,16 +2246,6 @@ components:
         * 0x433f (17215 decimal) - Namespace Metadata Transaction.
         * 0x434d (17229 decimal) - Mosaic Modify Levy Transaction.
         * 0x444d (17485 decimal) - Mosaic Remove Levy Transaction.
-        * 0x495A (18778 decimal) - Start File Download Transaction.
-        * 0x4A5A (19034 decimal) - End File Download Transaction.
-        * 0x415F (16735 decimal) - Operation Identify Transaction.
-        * 0x425F (16991 decimal) - Start Operation Transaction.
-        * 0x435F (17247 decimal) - End Operation Transaction.
-        * 0x4160 (16736 decimal) - Deploy Transaction.
-        * 0x4260 (16992 decimal) - Start Execute Transaction.
-        * 0x4360 (17248 decimal) - End Execute Transaction.
-        * 0x4460 (17504 decimal) - Super Contract File System Transaction.
-        * 0x4560 (17760 decimal) - Deactivate Transaction.
         * 0x4162 (16738 decimal) - Prepare Drive Transaction.
 
     HashAlgorithmEnum:
