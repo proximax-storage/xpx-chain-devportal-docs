@@ -2231,7 +2231,7 @@ components:
         * 0x4161 (16737 decimal) - Add Harvester Transaction.
         * 0x425D (16989 decimal) - Exchange Offer Transaction.
         * 0x435D (17245 decimal) - Remove Exchange Offer Transaction.
-        * 0x4261 (16993 decimal) - Remove Harvester Entity Type Transaction.
+        * 0x4261 (16993 decimal) - Remove Harvester Transaction.
         * 0x8043 (32835 decimal) - Nemesis Block.
         * 0x8143 (33091 decimal) - Regular Block.
         * 0x4158 (16728 decimal) - Blockchain Upgrade Transaction.
