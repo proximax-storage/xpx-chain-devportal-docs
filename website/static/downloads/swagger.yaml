@@ -2238,8 +2238,6 @@ components:
         * 0x4159 (16729 decimal) - Network Config Transaction.
         * 0x414C (16716 decimal) - Account Link Transaction.
         * 0x4148 (16712 decimal) - Hash Lock Transaction.
-        * 0x4152 (16722 decimal) - Secret Lock Transaction.
-        * 0x4252 (16978 decimal) - Secret Proof Transaction.
         * 0x413D (16701 decimal) - Metadata Address Transaction.
         * 0x423D (16957 decimal) - Metadata Mosaic Transaction.
         * 0x433D (17213 decimal) - Metadata Namespace Transaction.
@@ -2253,6 +2251,8 @@ components:
         * 0x434d (17229 decimal) - Mosaic Modify Levy Transaction.
         * 0x444d (17485 decimal) - Mosaic Remove Levy Transaction.
         * 0x414E (16718 decimal) - Register Namespace Transaction.
+        * 0x4152 (16722 decimal) - Secret Lock Transaction.
+        * 0x4252 (16978 decimal) - Secret Proof Transaction.
         * 0x4154 (16724 decimal) - Transfer Transaction.
         * 0x4662 (17520 decimal) - Replicator Onboarding Transaction.
         * 0x4162 (16738 decimal) - Prepare Blockchain Drive Transaction.
@@ -2265,7 +2265,7 @@ components:
         * 0x4362 (17250 decimal) - Download Transaction.
         * 0x4862 (18530 decimal) - Finish Download Transaction.
         * 0x4C62 (19554 decimal) - Verification Payment Transaction.
-        * 0x4F62 (20322 decimal) - End Drive Verificatio V2 Transaction.
+        * 0x4F62 (20322 decimal) - End Drive Verification V2 Transaction.
         * 0x4D62 (19810 decimal) - Download Approval Transaction.
         * 0x4E62 (20066 decimal) - Drive Closure Transaction.
         * 0x4762 (18274 decimal) - Replicator Offboarding Transaction.
