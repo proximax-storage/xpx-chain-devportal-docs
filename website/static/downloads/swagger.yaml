@@ -2187,9 +2187,6 @@ components:
       - 16712
       - 16722
       - 16978
-      - 16701
-      - 16957
-      - 17213
       - 16703
       - 16959
       - 17215
@@ -2238,9 +2235,6 @@ components:
         * 0x4159 (16729 decimal) - Network Config Transaction.
         * 0x414C (16716 decimal) - Account Link Transaction.
         * 0x4148 (16712 decimal) - Hash Lock Transaction.
-        * 0x413D (16701 decimal) - Metadata Address Transaction.
-        * 0x423D (16957 decimal) - Metadata Mosaic Transaction.
-        * 0x433D (17213 decimal) - Metadata Namespace Transaction.
         * 0x413f (16703 decimal) - Account Metadata Transaction.
         * 0x423f (16959 decimal) - Mosaic Metadata Transaction.
         * 0x433f (17215 decimal) - Namespace Metadata Transaction.
