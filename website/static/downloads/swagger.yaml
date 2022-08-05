@@ -479,7 +479,7 @@ paths:
       description: Gets an V2 metadata.
       operationId: getNemMetadata
       parameters:
-      - name: hash
+      - name: compositeHash
         in: path
         description: The composited hash.
         required: true
@@ -682,6 +682,35 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
+  /mosaics:
+    get:
+      tags:
+      - Mosaic routes
+      summary: Search list of mosaics information
+      description: Search mosaics based on query parameters
+      operationId: searchMosaics
+      parameters:
+      - $ref: "#/components/parameters/ownerPubKeyQuery"
+      - $ref: "#/components/parameters/supplyQuery"
+      - $ref: "#/components/parameters/mutableQuery"
+      - $ref: "#/components/parameters/transferableQuery"
+      - $ref: '#/components/parameters/pageSizeQuery'
+      - $ref: '#/components/parameters/pageNumberQuery'
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Array of mosaics
+                items:
+                  $ref: "#/components/schemas/MosaicInfoDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+
   "/namespace/{namespaceId}":
     get:
       tags:
@@ -1528,7 +1557,31 @@ components:
         items:
          anyOf:
          - $ref: '#/components/schemas/EntityTypeEnum'
-
+    ownerPubKeyQuery:
+      name: ownerPubKey
+      in: query
+      description: Public key of asset owner
+      schema:
+        type: string
+    supplyQuery:
+      name: supply
+      in: query
+      description: Asset supply
+      schema:
+        type: integer
+        format: uint64
+    mutableQuery:
+      name: mutable
+      in: query
+      description: Asset supply mutability
+      schema:
+        type: boolean
+    transferableQuery:
+      name: transferable
+      in: query
+      description: Asset transferability
+      schema:
+        type: boolean
 
 
   requestBodies:
