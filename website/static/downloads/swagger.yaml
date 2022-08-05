@@ -479,7 +479,7 @@ paths:
       description: Gets an V2 metadata.
       operationId: getNemMetadata
       parameters:
-      - name: hash
+      - name: compositeHash
         in: path
         description: The composited hash.
         required: true
@@ -686,14 +686,16 @@ paths:
     get:
       tags:
       - Mosaic routes
-      summary: Get list of mosaics
+      summary: Search list of mosaics information
       description: Search mosaics based on query parameters
-      operationId: getMosaics
+      operationId: searchMosaics
       parameters:
       - $ref: "#/components/parameters/ownerPubKeyQuery"
       - $ref: "#/components/parameters/supplyQuery"
       - $ref: "#/components/parameters/mutableQuery"
       - $ref: "#/components/parameters/transferableQuery"
+      - $ref: '#/components/parameters/pageSizeQuery'
+      - $ref: '#/components/parameters/pageNumberQuery'
       responses:
         "200":
           description: success
@@ -1571,7 +1573,7 @@ components:
     mutableQuery:
       name: mutable
       in: query
-      description: Asset mutability
+      description: Asset supply mutability
       schema:
         type: boolean
     transferableQuery:
