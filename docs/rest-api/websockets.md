@@ -46,4 +46,4 @@ The cosignature channel notifies when a cosignature signed transaction relates t
 
 **status/<ADDRESS>**
 
-The status channel notifies when a transaction related to an address rises an [errors](./status-errors.md). The message contains the error message and the transaction hash.
+The status channel notifies when a transaction relates to an address rises an [errors](./status-errors.md). The message contains the error message and the transaction hash.

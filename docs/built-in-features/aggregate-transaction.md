@@ -105,7 +105,7 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 **Note:**
 
-Configuration parameters are [editable][Server-configurable] . Public network configuration may differ.
+Configuration parameters are [editable][Server-configurable]. Public network configuration may differ.
 
 </div>
 

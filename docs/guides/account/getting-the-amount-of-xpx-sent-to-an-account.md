@@ -7,8 +7,8 @@ This guide will help you check the amount of XPX you have sent to any account.
 ## Prerequisites
 
 - Finish the [getting started section](../../getting-started/setting-up-workstation.md).
-- have one account with `xpx` currency.
-- have [sent mosaics](../../guides/transaction/sending-a-transfer-transaction.md) to another account.
+- Have one account with `xpx` currency.
+- Have [sent mosaics](../../guides/transaction/sending-a-transfer-transaction.md) to another account.
 - Text editor or IDE.
 - XPX-Chain-SDK or XPX-Chain-CLI.
 

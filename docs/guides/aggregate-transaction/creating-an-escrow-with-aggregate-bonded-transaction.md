@@ -43,7 +43,7 @@ Normalizing the language into Sirius Chain related concepts:
 
 ## Getting into some code
 
-![Aggregate Escrow](/img/aggregate-escrow-1.png "Aggregate Escrow")
+![Aggregate Escrow](/img/aggregate-trustless-swap.png "Aggregate Escrow")
 
 <p class=caption>Multi-Asset Escrowed Transactions</p>
 

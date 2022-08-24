@@ -19,7 +19,7 @@ title: Sirius Chain Cheat Sheet
 
 ## Sirius Chain
 
-- Use Proof-of-Stake and Proof-of-Greed consensus algorithms. [Read more].(./protocol/consensus-algorithms.md)
+- Use Proof-of-Stake and Proof-of-Greed consensus algorithms. [Read more](./protocol/consensus-algorithms.md).
 
 - Each block will be generated every 15 seconds on average.
 
@@ -41,7 +41,7 @@ title: Sirius Chain Cheat Sheet
 
 - You can use the websocket listener and services provided in the SDKs to ease your development.
 
-- If your transaction is not getting confirmed.
+- If your transaction is not getting confirmed,
 
     - please check the transaction status with the REST API or websocket listening to your public key for transaction status. For REST API, you can check the status at `{API_URL}/transaction/{transaction_hash}/status`
 
@@ -131,7 +131,7 @@ Refering to the above, the lower and higher, we can represent uint64 id in a hex
 
 - The default max duration is 3650 days or approximately 10 years.
   
-  - Furation is calculated by block, so 1 minute = 4 blocks and an average block generation is 15 seconds.
+  - Duration is calculated by block, so 1 minute = 4 blocks and an average block generation is 15 seconds.
 
 
 ## Namespace
@@ -180,7 +180,7 @@ Refering to the above, the lower and higher, we can represent uint64 id in a hex
 
 - Use AliasTransaction to link or unlink the namespace to address or mosaic.
 
-- You can send transaction to linked namespace directly instead of using addresses or mosaic ids.
+- You can send transactions to linked namespace directly instead of using addresses or mosaic ids.
 
 - eg.
   - `mycompany.address` can be linked to mycompany's address
