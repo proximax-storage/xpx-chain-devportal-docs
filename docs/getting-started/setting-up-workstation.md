@@ -30,7 +30,7 @@ Private Network Node (internal demo node) | PRIVATE | http://siriusapi1.demo.xpx
 #
 You can use our Sirius Chain REST API directly with your respective URL and network type as above. Besides, you can use your own node with your own API URL and network type if you happen to have one.
 
-To get first block information
+To get first block information:
 
 ```
 $> {API URL}/block/1
@@ -74,7 +74,7 @@ Let’s use an account which already has XPX. We will need it to register the na
 
 ### Use nemesis address (for those who are hosting a local node)
 
-1. Open a terminal, and go to the directory where you have download Sirius Chain Bootstrap Service.
+1. Open a terminal, and go to the directory where you have  downloaded Sirius Chain Bootstrap Service.
 
 ```
 $> cd  build/generated-addresses/

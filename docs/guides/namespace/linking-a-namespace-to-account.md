@@ -7,11 +7,11 @@ Link a [ namespace ](../../built-in-features/namespace.md) to an [ account ](../
 
 ## Prerequisites
 
-- XPX-Chain-SDK or XPX-Chain-CLI
-- A text editor or IDE
-- Have registered one [ namespace ](../../built-in-features/namespace.md)
-- Have one account with name `xpx`
-- Have namespace with name `foo`
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- A text editor or IDE.
+- Have registered one [ namespace ](../../built-in-features/namespace.md).
+- Have one account with the name `XPX`.
+- Have namespace with name `foo`.
 
 ## Getting into some code
 
