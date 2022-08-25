@@ -60,6 +60,16 @@ The amount of time in which funds can be unlocked should be a smaller time frame
 7. Once TX3 is confirmed, the proof is revealed. TX2 transaction is unlocked and Alice receives the locked funds.
 8. Bob picks the proof and announces the [secret proof transaction](#secretprooftransaction) TX4 to the private network, receiving the locked funds from TX1.
 
+## Concept Notes
+
+The concept of a cross-chain swap is an open swap that involves a sender and a recipient. The secret is derived from the proof. There could be multiple actors in a swap. An example is, there may be an intermediary that does the swapping. It is important to note from the above cross-chain swap sequence diagram, TX2 and TX4 are two transactions after TX1 that can be fulfilled by any random signer. In other words, the random signer could be an intermediary or Alice herself. However, in order to generate a complete swap, particularly for TX2, the requisite number of assets should be locked for swap and fulfil the request of TX1 as sent by Alice. If in the event that this is not what Alice asked for, she does not sign TX3. TX3 is actually a step to announce the proof publicly so that the asset in the second chain is released to the recipient. Alice could also sign and announce TX4 herself as a single party transaction.
+
+A critical step would be TX2 where Alice will check if the recipient and the amount is right in the public chain. If it is right, then Alice issues TX3 and announces the proof publicly, at the same time the chain releases the asset into Alice's account in the public chain unconditionally.
+
+This concept of cross-chain swap gives us some flexibility with the use of an intermediary. A use case could be, Alice wishes to send an asset to Bob in the public chain from a prior agreement and arrangement. Bob does not want to receive Alice coin in the private chain as he has provided some services and wish to receive only Bob coin in the public chain. Intermediary John comes into the picture. Alice would lock Alice coin to be sent into John's account in the private chain and John will in turn lock Bob coin to be sent into Bob's account in the public chain. The signing parties are now Alice and John with Bob being the recipient in the public chain and John, the recipient in the private chain.
+
+At TX1, Alice would announce and lock a quantity of Alice coin to be sent to John's account in the private chain plus the secret into the private chain. John sees the secret in the private chain, checks that the secret given to him and the requisite amount of Alice coin locked in the private chain are in order, and announces the TX2 transaction locking the number of Bob coin to be sent to Bob's account together with the secret. Alice sees the transaction in the public chain and check likewise. Once in order and Alice agrees to the amount of Bob coin to be unlocked, she announces TX3 with the proof in the public chain, thereby activating the release of Bob coin into Bob's account. John, upon sighting the proof, makes a TX4 with the proof into the private chain to unlock the Alice coin.
+
 ## Guides
 
 <div class=info>
