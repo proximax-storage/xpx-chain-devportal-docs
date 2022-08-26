@@ -468,7 +468,222 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
-          
+  "/account/{accountId}/operations":
+      get:
+       tags:
+      - Account routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: //To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+   "/operation/{hash256}":
+      get:
+       tags:
+      - Account routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: //To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/drive/{accountId}":
+      get:
+       tags:
+      - Account routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: //To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/drives":
+      get:
+       tags:
+      - Account routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: //To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/account/{accountId}/drive${state.routePostfix}":
+      get:
+       tags:
+      - Account routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: //To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+   "/drive/{accountId}/downloads":
+      get:
+       tags:
+      - Account routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: //To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+   "/account/{accountId}/downloads":
+      get:
+       tags:
+      - Account routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: //To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+   "/downloads/{operationToken}":
+      get:
+       tags:
+      - Account routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: //To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
   "/blocks/{height}/limit/{limit}":
     get:
       tags:
