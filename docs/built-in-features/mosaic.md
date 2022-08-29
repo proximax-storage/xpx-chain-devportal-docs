@@ -77,25 +77,25 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 </div>
 
 - [Creating a mosaic](../guides/mosaic/creating-a-mosaic.md)
- -After creating a namespace, follow this guide to create a mosaic.
+  After creating a namespace, follow this guide to create a mosaic.
 
 - [Modifying mosaic supply](../guides/mosaic/modifying-mosaic-supply.md)
- -After the supply of a mosaic following this guide.
+  Alter the supply of a mosaic following this guide.
 
 - [Linking a namespace to a mosaic](../guides/namespace/linking-a-namespace-to-a-mosaic.md)
- -Link a namespace to a mosaic.
+  Link a namespace to a mosaic.
 
 - [Getting the mosaic information](../guides/mosaic/getting-mosaic-information.md)
- -Get the ownership, divisibility, duration, and flags for a given mosaic identifier.
+  Get the ownership, divisibility, duration, and flags for a given mosaic identifier.
 
 - [Getting the asset identifier behind a namespace with receipts](../guides/mosaic/getting-the-mosaic-indentifier-behind-a-namespace-with-receipts.md)
- -Get the resolution for a given alias and transaction using receipts.
+  Get the resolution for a given alias and transaction using receipts.
 
 - [Create(modify) and get mosaic levy](../guides/mosaic/modify_mosaic_levy.md)
- -Create a new levy for a mosaic and get a mosaic levy info.
+  Create a new levy for a mosaic and get a mosaic levy info.
 
 - [Remove mosaic levy](../guides/mosaic/remove_mosaic_levy.md)
- -Remove a mosaic levy.
+  Remove a mosaic lecy.
 
 ## Schemas
 
@@ -161,7 +161,7 @@ Add levy to mosaic.
 | **Property** | **Type**                        | **Description**                |
 | ------------ | ------------------------------- | ------------------------------ |
 | mosaicId     | uint64                          | The id of the affected mosaic. |
-| Levy         | [MosaicLevyRaw](#mosaiclevyraw) | A new levy.                     |
+| Levy         | [MosaicLevyRaw](#mosaiclevyraw) | A new levy                     |
 
 ### MosaicRemoveLevyTransactionBody
 
@@ -221,9 +221,9 @@ Enumeration: uint8
 
 ### MosaicLevyFeeDecimalPlace
 
-| **Value** | **Type** | **Description**                    |
+| **Velue** | **Type** | **Description**                    |
 | --------- | -------- | ---------------------------------- |
-| 100'000   | uint64_t | Levy fee effective decimal places |
+| 100'000   | uint64_t | Levy fee effectivve decimal places |
 
 ### MosaicLevyRaw
 

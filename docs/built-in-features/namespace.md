@@ -13,11 +13,11 @@ An account can link a registered name (namespace or subnamespace) with an [accou
 
 ## Subnamespaces
 
-On the internet, a domain name can have a sub-domain name. In Sirius Chain, namespaces can have subnamespaces.
+In the internet, a domain name can have a sub-domain name. In Sirius Chain, namespaces can have subnamespaces.
 
 You can [create multiple subnamespaces](../guides/namespace/registering-a-subnamespace.md) with the same name in different namespaces. For example, you can create the subnamespaces `foo.bar` and `foo2.bar`.
 
-Namespaces can have up to `3` levels, a namespace and its two levels of subnamespace domains. A subnamespace has the same duration as its parent namespace.
+Namespaces can have up to `3` levels, a namespace and its two levels of subnamespace domains. A subnamespaces has the same duration as its parent namespace.
 
 ## Alias
 
@@ -42,10 +42,9 @@ Restrictions:
 
 At the time of the namespace **registration**, you must set the number of confirmed blocks you would like to rent the namespace for.
 
-The maximum namespace duration is `365` days. By default, the network is configured to generate a block every `15` seconds. You can use the following formula to approximately convert days to blocks:
+The maximum namespace duration is `365` days. By default, the network is configured to generate a block every `15` seconds. You can use the following formula to convert approximately days to blocks:
 
 > duration ≈ numberOfDays * 86400 / blockGenerationTargetTimeInSeconds
-<br>
 
 During the renting period, the namespace owner can create subnamespaces, alias accounts and mosaics. The owner can also **extend the rental** by sending a [register namespace transaction](../guides/namespace/registering-a-namespace.md) with the desired number of additional blocks.
 

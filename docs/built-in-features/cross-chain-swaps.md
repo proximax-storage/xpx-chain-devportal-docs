@@ -3,15 +3,15 @@ id: cross-chain-swaps
 title: Cross-Chain Swaps
 ---
 
-A cross-chain swap enables **token trading** across **different blockchains**, without using an intermediary party (eg. an exchange service) in the process.
+A cross-chain swap enables **trading tokens** across **different blockchains**, without using an intermediary party (eg. an exchange service) in the process.
 
 ![Cross-chain swap](/img/cross-chain-swap.png "Cross-chain swap")
 
 <p class=caption>Atomic cross-chain swap between public and private network</p>
 
-In order to create a trustless environment for an exchange, a specific transaction type is required and is commonly referred to as **Hashed TimeLock Contract** (HTLC). Two additional components characterize this transaction type: hashlocks and timelocks. A thorough explanation can be found on the [Bitcoin Wiki](https://en.bitcoin.it/wiki/Hashed_Timelock_Contracts).
+In order to create a trustless environment for an exchange, a specific transaction type is required that is commonly referred to as **Hashed TimeLock Contract** (HTLC). Two additional components characterize this transaction type: hashlocks and timelocks. A thorough explanation can be found on the [Bitcoin Wiki](https://en.bitcoin.it/wiki/Hashed_Timelock_Contracts).
 
-In other words, to reduce counterparty risk, the receiver of a payment needs to present a proof for the transaction to be executed. Failure to do so will cause the locked funds to be released after the deadline is reached, despite even just one actor disagreeing.
+In other words, to reduce counterparty risk, the receiver of a payment needs to present a proof for the transaction to execute. Failing to do so, the locked funds are released after the deadline is reached, even if just one actor does not agree.
 
 ## Protocol
 
@@ -40,7 +40,7 @@ Sirius Chain’s private and future public chain share the SDK. You could implem
 - Network: Private Chain
 
 4. Alice announces TX1 to the private network and shares with Bob the secret.
-5. Bob defines and announces the following [secret lock transaction](#secretlocktransaction) `TX2` to the public network:
+5. Bob defines announces the following [secret lock transaction](#secretlocktransaction) `TX2` to the public network:
 
 - Mosaic: 10 bob token
 - Recipient: Alice’s address (Public Chain)
@@ -62,13 +62,13 @@ The amount of time in which funds can be unlocked should be a smaller time frame
 
 ## Concept Notes
 
-The concept of a cross-chain swap is an open swap that involves a sender and a recipient. The secret is derived from the proof. There could be multiple actors in a swap. An example is, there may be an intermediary that does the swapping. It is important to note from the above cross-chain swap sequence diagram, TX2 and TX4 are two transactions after TX1 that can be fulfilled by any random signer. In other words, the random signer could be an intermediary or Alice herself. However, in order to generate a complete swap, particularly for TX2, the requisite number of assets should be locked for swap to fulfil the request of TX1 as sent by Alice. If in the event that this is not what Alice asked for, she does not sign TX3. TX3 is actually a step to announce the proof publicly so that the asset in the second chain is released to the recipient. Alice could also sign and announce TX4 herself as a single party transaction.
+The concept of a cross-chain swap is an open swap that involves a sender and a recipient. The secret is derived from the proof. There could be multiple actors in a swap. An example is, there may be an intermediary that does the swapping. It is important to note from the above cross-chain swap sequence diagram, TX2 and TX4 are two transactions after TX1 that can be fulfilled by any random signer. In other words, the random signer could be an intermediary or Alice herself. However, in order to generate a complete swap, particularly for TX2, the requisite number of assets should be locked for swap and fulfil the request of TX1 as sent by Alice. If in the event that this is not what Alice asked for, she does not sign TX3. TX3 is actually a step to announce the proof publicly so that the asset in the second chain is released to the recipient. Alice could also sign and announce TX4 herself as a single party transaction.
 
 A critical step would be TX2 where Alice will check if the recipient and the amount is right in the public chain. If it is right, then Alice issues TX3 and announces the proof publicly, at the same time the chain releases the asset into Alice's account in the public chain unconditionally.
 
 This concept of cross-chain swap gives us some flexibility with the use of an intermediary. A use case could be, Alice wishes to send an asset to Bob in the public chain from a prior agreement and arrangement. Bob does not want to receive Alice coin in the private chain as he has provided some services and wish to receive only Bob coin in the public chain. Intermediary John comes into the picture. Alice would lock Alice coin to be sent into John's account in the private chain and John will in turn lock Bob coin to be sent into Bob's account in the public chain. The signing parties are now Alice and John with Bob being the recipient in the public chain and John, the recipient in the private chain.
 
-At TX1, Alice would announce and lock a quantity of Alice coin to be sent to John's account in the private chain plus the secret into the private chain. John sees the secret in the private chain, checks that the secret given to him and the requisite amount of Alice coin locked in the private chain are in order, and announces the TX2 transaction locking the number of Bob coin to be sent to Bob's account together with the secret. Alice sees the transaction in the public chain and checks likewise. Once in order and Alice agrees to the amount of Bob coin to be unlocked, she announces TX3 with the proof in the public chain, thereby activating the release of Bob coin into Bob's account. John, upon sighting the proof, makes a TX4 with the proof into the private chain to unlock the Alice coin.
+At TX1, Alice would announce and lock a quantity of Alice coin to be sent to John's account in the private chain plus the secret into the private chain. John sees the secret in the private chain, checks that the secret given to him and the requisite amount of Alice coin locked in the private chain are in order, and announces the TX2 transaction locking the number of Bob coin to be sent to Bob's account together with the secret. Alice sees the transaction in the public chain and check likewise. Once in order and Alice agrees to the amount of Bob coin to be unlocked, she announces TX3 with the proof in the public chain, thereby activating the release of Bob coin into Bob's account. John, upon sighting the proof, makes a TX4 with the proof into the private chain to unlock the Alice coin.
 
 ## Guides
 
@@ -82,7 +82,7 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 - [Atomic cross-chain swap between Sirius Chain public and private chain](../guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain.md)
 
-    How to swap cross-chain swaps to enable token trading between different blockchains, without using an intermediary party in the process.
+    How to swap cross-chain swaps to enable trading tokens between different blockchains, without using an intermediary party in the process.
 
 ## Schemas
 
@@ -127,7 +127,7 @@ If the transaction duration is reached without being proved, the locked amount g
 
 Use a secret proof transaction to unlock [secret lock transactions](#secretlocktransaction).
 
-The transaction must prove that it knows the proof that unlocks the mosaics for the recipient.
+The transaction must prove that knows the proof that unlocks the mosaics for recipient.
 
 **Version**: 0x01
 

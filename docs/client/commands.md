@@ -42,7 +42,7 @@ By default, XPX-Chain-CLI will always use the default profile to connect to a no
 
 ### Generate new account
 
-To generate a new account, follow the [account](../built-in-features/account.md) guide. This command generates a private key, public key and address.
+To generates a new account, follow the [account](../built-in-features/account.md) guide. This command generates a private key, public key and address.
 
 Generated accounts can be stored as named profiles by adding a node URL.
 
@@ -161,7 +161,7 @@ $> xpx2-cli account aggregatebonded --publickey C811AC654B77522D5283640CDA7A222A
 
 ### Blockchain height
 
-Returns the current height of the blockchain.
+Returns the current height of the block chain.
 
 **Command**
 ```
@@ -169,7 +169,7 @@ $> xpx2-cli blockchain height
 ```
 ### Blockchain score
 
-Gets the current score of the blockchain. The higher the score, the better the chain. During synchronization, nodes try to get the best blockchain in the network.
+Gets the current score of the block chain. The higher the score, the better the chain. During synchronization, nodes try to get the best block chain in the network.
 
 **Command**
 ```
@@ -209,7 +209,7 @@ $> xpx2-cli transaction info --hash AF92D0A1DC40F786DF455A54F3754E6ACBCEC1B59064
 
 ### Send transfer transaction
 
-To announce a [transfer transaction](../built-in-features/transfer-transaction.md#transfertransaction) to an account exchanging value and/or data. For this transaction, provide the recipient, message and [mosaics](../built-in-features/mosaic.md).
+To announce a [transfer transaction](../built-in-features/transfer-transaction.md#transfertransaction) to an account exchanging value and/or data. For this transaction provide recipient, message and [mosaics](../built-in-features/mosaic.md).
 
 You can send `multiple mosaics` splitting them with a comma, e.g: xpx::10,nps:msc::10. The `mosaic amount` after :: is in `absolute value` so 1 XPX is 1000000.
 
@@ -367,7 +367,7 @@ $> xpx2-cli monitor unconfirmed --address SCEKUG-H2IJBF-7JZRNK-ECMW52-E66SZ6-ODL
 
 ### Aggregate bonded transactions
 
-To monitor new [aggregate transactions](../built-in-features/aggregate-transaction.md) with missing signatures added to an [account](../built-in-features/account.md).
+To monitors new [aggregate transactions](../built-in-features/aggregate-transaction.md) with missing signatures added to an [account](../built-in-features/account.md).
 
 **Options**
 

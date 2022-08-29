@@ -34,9 +34,9 @@ The target account should cosign the aggregate to record the metadata on the blo
 
 <p class=caption>Metadata used to attach relevant information to an asset</p>
 
-Bob works as a digital notary that stamps accounts on the Sirius Chain. When a customer comes to Bob to notarize a document, he checks the authentication of the customer’s documents then `tags the account with a MetadataTransaction`.
+Bob works as a digital notary that stamp accounts on the Sirius Chain. When a customer comes to Bob to notarize a document, he checks the authentication of the customer’s documents then `tags the account with a MetadataTransaction`.
 
-Alice is a recent graduate and wants her educational certificate accredited to her Sirius Chain account to avoid the hassle of repeatedly providing verification of her degree. So, she goes to Bob and provides him with proof of her degree. Once Alice pays Bob a fee, Bob verifies the authenticity and stamps Alice’s account with metadata that signifies her degree.
+Alice a recent graduate and wants her educational certificate accredited to her Sirius Chain account to avoid the hassle of repeatedly providing verification of her degree. So she goes to Bob and provides him with proof of her degree. Once Alice pays Bob a fee, Bob verifies the authenticity and stamps Alice’s account with metadata that signifies her degree.
 
 ### Access management
 

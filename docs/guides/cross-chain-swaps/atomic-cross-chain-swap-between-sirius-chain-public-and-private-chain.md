@@ -3,11 +3,11 @@ id: atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain
 title: Atomic cross-chain swap between Sirius public and private chains
 ---
 
-[Cross-chain swaps](../../built-in-features/cross-chain-swaps.md) enable the trading of tokens between different blockchains, without using an intermediary party in the process.
+[Cross-chain swaps](../../built-in-features/cross-chain-swaps.md) enable trading tokens between different blockchains, without using an intermediary party in the process.
 
 This exchange of tokens will succeed atomically. If some of the actors do not agree, each of them will receive the locked tokens back after a determined amount of time.
 
-When talking about tokens in Sirius Chain, we are actually referring to [mosaics](../../built-in-features/mosaic.md). Sirius Chain enables atomic swaps through the [secret lock](../../built-in-features/cross-chain-swaps.md#secretlocktransaction) / [secret proof transaction](../../built-in-features/cross-chain-swaps.md#secretprooftransaction) mechanism.
+When talking about tokens in Sirius Chain, we are actually referring to [mosaics](../../built-in-features/mosaic.md). Sirius Chain enables atomic swaps through [secret lock](../../built-in-features/cross-chain-swaps.md#secretlocktransaction) / [secret proof transaction](../../built-in-features/cross-chain-swaps.md#secretprooftransaction) mechanism.
 
 ## Background Information 
 
@@ -15,24 +15,24 @@ Alice and Bob want to exchange **10 alice:token for 10 bob:token**. The problem 
 
 One non-atomic solution could be:
 
-1. Alice sends 10 alice:token to Bob (private chain).
-2. Bob receives the transaction.
-3. Bob sends 10 bob:token to Alice (public chain).
-4. Alice receives the transaction.
+1. Alice sends 10 alice:token to Bob (private chain)
+2. Bob receives the transaction
+3. Bob sends 10 bob:token to Alice (public chain)
+4. Alice receives the transaction
 
 However, they do not trust each other that much. Bob could decide not to send his mosaics to Alice. Following this guide, you will observe how to make this swap possible using Sirius technology to remove the need for trust. 
 
 ## Prerequisites
 
-- XPX-Chain-SDK.
-- A text editor or IDE.
-- Finish [getting started section](../../getting-started/setting-up-workstation.md).
+- XPX-Chain-SDK
+- A text editor or IDE
+- Finish [getting started section](../../getting-started/setting-up-workstation.md)
 
 ## Getting into some code
 
-Trading tokens directly from one blockchain to the other is not possible, due to the technological differences between each of them.
+Trading tokens directly from one blockchain to the other is not possible, due to the technological differences between each them.
 
-In the case of Sirius public and private chains, the same mosaic name could have a different definition and distribution, or even not exist. Between Bitcoin and Sirius Chain, the difference is even more evident, as both blockchains use an entirely different technology.
+In the case of Sirius public and private chains, the same mosaic name could have a different definition and distribution, or even not exist. Between Bitcoin and Sirius Chain, the difference is even more evident, as each blockchain uses an entirely different technology.
 
 Instead of transferring tokens between different chains, the trade will be performed inside each chain. The Secret proof or secret lock mechanism guarantees the token swap occurs atomically.
 
@@ -88,7 +88,7 @@ const publicChainTransactionHttp = new TransactionHttp('http://private.testnet.e
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-1. Alice picks a random number, called `proof`. Then, she applies a Sha3-256 hash algorithm to it, obtaining the `secret`.
+1. Alice picks a random number, called `proof`. Then, applies a Sha3-256 hash algorithm to it, obtaining the `secret`.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -160,7 +160,7 @@ const tx1 = SecretLockTransaction.create(
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-Once announced, this transaction will remain locked until someone discovers the proof that matches the secret. If no one proves it after a determined period, the locked funds will be returned to Alice.
+Once announced, this transaction will remain locked until someone discovers the proof that matches the secret. If after a determined period no one proved it, the locked funds will be returned to Alice.
 
 3. Alice signs and announces TX1 to the private chain.
 
@@ -358,8 +358,8 @@ Consider the following scenarios:
 <div class=cap-alpha-ol>
 
 1. Bob does not want to announce TX2. Alice will receive her funds back after 94 hours.
-2. Alice does not want to swap tokens by signing TX3. Bob will receive his refund after 84h. Alice will unlock her funds as well after 94 hours.
-3. Alice signs and announces TX3, receiving Bob’s funds. Bob will have time to sign TX4, as Tx1 validity is longer than TX2.
+2. Alice does not want to swap tokens by signing Tx3. Bob will receive his refund after 84h. Alice will unlock her funds as well after 94 hours.
+3. Alice signs and announces TX3, receiving Bob’s funds. Bob will have time to sign TX4, as Tx1 validity is longer than Tx2.
 
 The process is atomic but should be completed with lots of time before the deadlines.
 

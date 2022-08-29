@@ -5,7 +5,7 @@ title: Creating a multi-level multisig-account
 
 Create a [multi-level multisig account](../../built-in-features/multisig-account.md).
 
-Following this guide, you will learn to create the following 3-level multisig account.
+Following this guide you will learn to create the following 3-level multisig account.
 
 ![Multi-level multisig-account](/img/mlma-complex-1.png "Multi-level multisig-account")
 
@@ -13,17 +13,17 @@ Following this guide, you will learn to create the following 3-level multisig ac
 
 ## Background Information 
 
-[Multisig accounts](../../built-in-features/multisig-account.md) can be cosignatories for other multisig accounts. Multi-level multisig accounts add “AND/OR” logic to multi-signature transactions.
+[Multisig accounts](../../built-in-features/multisig-account.md) can have as cosignatories other multisig accounts. Multi-level multisig accounts add “AND/OR” logic to multi-signature transactions.
 
 ## Prerequisites
 
-- Text editor or IDE.
-- XPX-Chain-SDK or XPX-Chain-CLI.
-- Finish [converting an account to multisig guide](./converting-an-account-to-multisig.md).
+- Text editor or IDE
+- XPX-Chain-SDK or XPX-Chain-CLI
+- Finish [converting an account to multisig guide](./converting-an-account-to-multisig.md)
 
 ## Getting into some code
 
-1. Define multisig account #2.
+1. Define the multisig account #2
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -155,7 +155,7 @@ const convertMultisigAccount2Transaction = ModifyMultisigAccountTransaction.crea
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-2. Create multisig account #3.
+2. Create multisig account #3
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -304,7 +304,7 @@ const convertMultisigAccount3Transaction = ModifyMultisigAccountTransaction.crea
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
-3. Create multisig account #1.
+3. Create multisig account #1
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
