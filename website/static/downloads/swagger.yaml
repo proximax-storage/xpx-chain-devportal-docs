@@ -367,8 +367,7 @@ paths:
         "409":
           description: invalid argument      
    
-  
-  "/account/{accountId}/metadata":
+   "/account/{accountId}/metadata":
       get:
        tags:
       - Account routes
