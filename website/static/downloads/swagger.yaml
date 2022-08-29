@@ -366,7 +366,6 @@ paths:
           description: invalid content
         "409":
           description: invalid argument      
-   
    "/account/{accountId}/metadata":
       get:
        tags:
