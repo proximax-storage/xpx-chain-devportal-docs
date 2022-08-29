@@ -7,10 +7,10 @@ Ask an account to send you funds using an [aggregate bonded transaction](../../b
 
 ## Prerequisites
 
-- A text editor or IDE
-- An account with XPX
-- Finish [creating an escrow with aggregate bonded transaction guide](./creating-an-escrow-with-aggregate-bonded-transaction.md)
-- Have account with `xpx`
+- A text editor or IDE.
+- An account with XPX.
+- Finish [creating an escrow with aggregate bonded transaction guide](./creating-an-escrow-with-aggregate-bonded-transaction.md).
+- Have an account with `xpx`.
 
 ## Getting into some code
 
