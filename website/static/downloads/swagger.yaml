@@ -50,6 +50,12 @@ tags:
 - name: Exchange routes
   description: |
     Exchange related endpoints.
+- name: Liquidity provider routes
+  description: |
+    Liquidity provider related endpoints.
+- name: Supercontract routes
+  description: |
+    Supercontract related endpoints.
     
 paths:
   "/account/{accountId}":
@@ -1809,6 +1815,154 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
+          
+   "/liquidity_providers":
+      get:
+       tags:
+      - Liquidity providers routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: // To Be Updated
+        in: path
+        description: // To Be Updated
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: //To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+   "/liquidity_providers/{providerKey}":
+    get:
+      tags:
+      - Liquidity providers routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: providerKey
+        in: path
+        description: // To Be Updated
+        required: true
+        schema:
+          type: string
+          enum: // To Be Updated
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: // To Be Updated
+                description: // To Be Updated
+                items:
+                  $ref: // To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+    
+   "/drive/{publicKey}/supercontracts":
+    get:
+      tags:
+      - Supercontract routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: publicKey
+        in: path
+        description: // To Be Updated
+        required: true
+        schema:
+          type: string
+          enum: // To Be Updated
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: // To Be Updated
+                description: // To Be Updated
+                items:
+                  $ref: // To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+    
+   "/supercontract/{accountId}":
+    get:
+      tags:
+      - Supercontract routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: accountId
+        in: path
+        description: // To Be Updated
+        required: true
+        schema:
+          type: string
+          enum: // To Be Updated
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: // To Be Updated
+                description: // To Be Updated
+                items:
+                  $ref: // To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+   "/account/{publicKey}/supercontracts":
+    get:
+      tags:
+      - Supercontract routes
+      summary: // To Be Updated
+      description: // To Be Updated
+      operationId: // To Be Updated
+      parameters:
+      - name: publicKey
+        in: path
+        description: // To Be Updated
+        required: true
+        schema:
+          type: string
+          enum: // To Be Updated
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: // To Be Updated
+                description: // To Be Updated
+                items:
+                  $ref: // To Be Updated
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+
+
   
 externalDocs:
   description: ProximaX Developer Center
