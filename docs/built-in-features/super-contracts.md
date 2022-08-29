@@ -26,7 +26,7 @@ Any file on a drive can be presented like a SC with **DeployTransaction**. This 
 
 ### StartExecuteTransaction
 
-Any user (initiator) can start SC execution. This should be created and announced as a **StartExecuteTransaction** with a SC public account and a reward that will be charged and transferred to the SC account. During execution mosaics are not enough, the SC will be terminated with the corresponding error. Note that in this case, spent mosaics will not be returned.
+Any user (initiator) can start SC execution. This should be created and announced as a **StartExecuteTransaction** with a SC public account, and a reward that will be charged and transferred to the SC account. During execution, if mosaics are not enough, the SC will be terminated with the corresponding error. Note that in this case, spent mosaics will not be returned.
 
 **Version**: 0x01
 
@@ -90,7 +90,7 @@ This is the alias for [`DriveFileSystemTransaction`](drive#drivefilesystemtransa
 
 ### DeactivateTransaction
 
-When a SC is no longer needed the owner can deactivate it with the **DeactivateTransaction** transaction. After that this SC cannot be executed
+When a SC is no longer needed, the owner can deactivate it with the **DeactivateTransaction** transaction. After that, this SC cannot be executed.
 
 **Version**: 0x01
 
