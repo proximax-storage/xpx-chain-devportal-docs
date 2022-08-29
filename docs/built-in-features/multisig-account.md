@@ -25,7 +25,7 @@ Similarly, cosignatories can [invite other accounts to take part in the multisig
 
 **Note:**
 
-Multisig accounts are a powerful tool, but please use this tool with caution. If the cosignatories keys get lost and minimum approval is not reached, it would result in the permanent loss of access to the funds held by the multisig account. Choose wisely `minimum removal` parameter to avoid this situation.
+Multisig accounts are a powerful tool, but please use this tool with caution. If the cosignatories' keys get lost and minimum approval is not reached, it would result in the permanent loss of access to the funds held by the multisig account. Choose wisely `minimum removal` parameter to avoid this situation.
 
 </div>
 
