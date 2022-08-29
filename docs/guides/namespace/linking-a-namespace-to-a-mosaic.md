@@ -7,11 +7,11 @@ Link a [namespace](../../built-in-features/namespace.md) to a [ mosaic ](../../b
 
 ## Prerequisites
 
-- XPX-Chain-SDK or XPX-Chain-CLI.
-- A text editor or IDE.
-- Have one [namespace](../../built-in-features/namespace.md) registered.
-- Have one [mosaic](../../built-in-features/mosaic.md) registered.
-- Have one account with `xpx`.
+- XPX-Chain-SDK or XPX-Chain-CLI
+- A text editor or IDE
+- Have registered one [namespace](../../built-in-features/namespace.md)
+- Have registered one [mosaic](../../built-in-features/mosaic.md)
+- Have one account with `xpx`
 
 ## Getting into some code
 

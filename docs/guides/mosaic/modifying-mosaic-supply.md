@@ -7,11 +7,11 @@ Alter the supply of a mosaic following this guide.
 
 ## Prerequisites
 
-- XPX-Chain-SDK or XPX-Chain-CLI.
-- A text editor or IDE.
-- Finish [creating a mosaic guide](./creating-a-mosaic.md).
-- Have a supply mutable mosaic registered.
-- An account with `xpx`.
+- XPX-Chain-SDK or XPX-Chain-CLI
+- A text editor or IDE
+- Finish [creating a mosaic guide](./creating-a-mosaic.md)
+- Have registered a supply mutable mosaic
+- An account with `xpx`
 
 ## Getting into some code
 

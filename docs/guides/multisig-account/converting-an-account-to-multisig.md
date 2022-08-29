@@ -19,14 +19,14 @@ In this guide, you are going to create a 1-of-2 multisig account. In future guid
 
 ## Prerequisites
 
-- Text editor or IDE.
-- XPX-Chain-SDK or XPX-Chain-CLI.
-- Finish [creating and opening accounts guide](../account/creating-and-opening-an-account.md).
-- Have one account with `xpx`.
+- Text editor or IDE
+- XPX-Chain-SDK or XPX-Chain-CLI
+- Finish [creating and opening accounts guide](../account/creating-and-opening-an-account.md)
+- Have one account with `xpx`
 
 ## Getting into some code
 
-1. First, define the accounts that will be cosignatories of the multisig account. In our case, these are Alice and Bob's addresses. Then, open the account that will be converted into multisig using its private key.
+1. First, define the accounts that will be cosginatories of the multisig account. In our case, these are Alice and Bob addresses. Then, open the account that will be converted into multisig using its private key.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -291,7 +291,7 @@ xpx2-cli transaction cosign --hash A6A374E66B32A3D5133018EFA9CD6E3169C8EEA339F7C
 ```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-8. If everything goes well, the account is now multisig, with Alice and Bob being the cosignatories. You can get the list of the multisig accounts where Alice or Bob are cosignatories using the `getMultisigAccountInfo` function.
+8. If everything goes well, the account is now multisig, being Alice and Bob cosignatories. You can get the list of the multisig accounts where Alice or Bob are cosignatories using `getMultisigAccountInfo` function.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->

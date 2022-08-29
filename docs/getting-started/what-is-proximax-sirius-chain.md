@@ -4,9 +4,9 @@ title: What is ProximaX Sirius Chain
 ---
 ## Blockchain Reimagined and Evolved
 
-[ProximaX](https://proximax.io/) Sirius Chain is a developer-friendly blockchain platform. Rather than forcing you to write your own “smart contract” code from scratch, ProximaX gives you direct access to a specialized set of tested and secure on-blockchain [features](../built-in-features/account.md).
+[ProximaX](https://proximax.io/) Sirius Chain is a developer-friendly blockchain platform. Rather than force you to write your own “smart contract” code from scratch, ProximaX gives you direct access to a specialized set of tested and secure on-blockchain [features](../built-in-features/account.md).
 
-Sirius Chain is suitable for an amazing variety of solutions of different classes, such as direct public transactions via a streamlined smartphone app, efficient cloud services that connect client or web applications, as well as a high-performance permissioned enterprise back-end for business-critical record keeping.
+Sirius Chain is suitable for an amazing variety of solutions of different classes, such as direct public transactions via a streamlined smartphone app, efficient cloud services that connect client or web applications, or a high-performance permissioned enterprise back-end for business-critical record keeping.
 
 ![Smart Assets System](/img/smart-assets-system.png "Smart Assets System")
 <p class="caption">The Smart Asset System</p>
@@ -35,4 +35,4 @@ A gateway server links existing business contract logic, systems, or databases t
 
 ![Public Private Blockchain](/img/public-private-blockchain.png "Public Private Blockchain")
 
-Sirius Chain provides both a decentralized, open and self-sustaining **public blockchain** that can be used by anyone – as well as a **permissioned/private blockchain solution** that can be provisioned specifically for your use on your servers when speed and privacy are the priorities.
+Sirius Chain provides both a decentralized, open and self-sustaining **public blockchain** that can be used by anyone – as well as a **permissioned/private blockchain solution** that can be provisioned specifically for your use on your servers when speed and privacy are the priority.

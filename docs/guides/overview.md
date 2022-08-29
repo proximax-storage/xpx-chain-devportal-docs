@@ -127,7 +127,7 @@ title: Guides
   This first guide will walk you through a step-by-step installation of the required tools to start developing on Sirius Chain.
 
 - [Writing your first application](../getting-started/writing-first-application.md)
-  Write a real application using Sirius Chain technology.
+  Write an real application using Sirius Chain technology.
 
 ## Transfer Transaction
 

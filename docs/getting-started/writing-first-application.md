@@ -9,7 +9,7 @@ This guide will take you through the Sirius Chain development cycle. You will se
 
 The secondary ticket market, also known as the resale market, is the exchange of tickets that happens between individuals after they have purchased a ticket from an initial vendor. The initial vendor could be the event website, an online ticket vending platform, a shop or a stall at the entrance of the event.
 
-Buying a ticket from someone that is not the initial vendor does not necessarily mean that the buyer needs to pay more for the ticket; there is a chance that the buyer can become a victim of buying a fake or duplicate ticket, where the initial original vendor cannot do anything to solve the issue.
+Buying a ticket from someone that is not the initial vendor does not necessarily only mean the buyer needs to pay more for the ticket. There is the chance that the buyer can become a victim of buying a fake or duplicate ticket, where the initial original vendor can’t do anything to solve the issue.
 
 **What do we want to solve?**
 
@@ -38,7 +38,7 @@ Blockchain technology makes sense in cases where:
 
 Sirius Chain is a **flexible blockchain** technology. Instead of uploading all the application logic into the blockchain, you can use its tested features through **API calls** for transfer and storage of value, authorization, traceability, and identification.
 
-The rest of the code remains **off-chain**. This reduces the inherent immutability risk, as you can change the process when necessary.
+The rest of the code remains **off-chain**. This reduces the inherent immutability risk, as you could change the process when necessary.
 
 ## Prerequisites
 
@@ -85,7 +85,7 @@ $> xpx2-cli account generate --network TEST_NET --save --url http://bctestnet1.b
 
 Accounts change the blockchain state through transactions. Once an account announces a transaction, if properly formed, the server will return an OK response.
 
-However, receiving an OK response does not mean the transaction is valid, as it may not be included in a block. A good practice is to monitor transactions before being announced.
+Receiving an OK response does not mean the transaction is valid, as it may not be included in a block. A good practice is to monitor transactions before being announced.
 
 We suggest opening three new terminals:
 
@@ -119,7 +119,7 @@ $> xpx2-cli transaction mosaic --mosaicname ticket--namespacename company--amoun
 ----------------|---------|--------------------
 Divisibility    |0        |	The mosaic won’t be divisible, no one should be able to send “0.5 tickets”.
 Duration        |1000     |	The mosaic will be registered for 1000 blocks.
-Initial supply  |1000000  |	The number of tickets you are going to create.
+Initial supply  |1000000  |	The number of tickets you are going to create
 Supply mutable  |true     |	The mosaic supply can change at a later point.
 Transferability |false    |	The mosaic can be only transferred back to the mosaic creator.
 

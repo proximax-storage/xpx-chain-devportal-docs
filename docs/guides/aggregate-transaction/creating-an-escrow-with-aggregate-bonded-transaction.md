@@ -8,7 +8,7 @@ Learn about [aggregate bonded transactions](../../built-in-features/aggregate-tr
 
 ## Background
 
-An **escrow** is a `contractual arrangement` in which a `third party receives and disburses money` or documents for the `primary transacting parties`. Transacting parties will agree to the conditions in which the disbursement depends on. For example, it can be an `account established by a broker for holding funds` on behalf of the broker’s principal or some other person `until the consummation or termination of a transaction.` An escrow can also be a trust account held in the borrower’s name to pay obligations such as property taxes and insurance premiums.
+An **escrow** is a `contractual arrangement` in which a `third party receives and disburses money` or documents for the `primary transacting parties`. Transacting parties will agree to the conditions in which the disbursement depend on. For example, it can be an `account established by a broker for holding funds` on behalf of the broker’s principal or some other person `until the consummation or termination of a transaction.` An escrow can also be a trust account held in the borrower’s name to pay obligations such as property taxes and insurance premiums.
 
 **Reference:**
 - Wikipedia Contributors. "Escrow." Wikipedia, Wikipedia Foundation, 25 June 2019. en.wikipedia.org/wiki/Escrow.
@@ -16,34 +16,34 @@ An **escrow** is a `contractual arrangement` in which a `third party receives an
 For this example, imagine the two parties agree on a virtual service, implying that the escrow can be executed immediately:
 
 1. Buyer and seller agree on terms.
-2. Buyer submits payment to escrow.
-3. Seller delivers goods or services to buyer.
-4. Buyer approves goods or services.
+2. Buyer submits payment to escrow
+3. Seller delivers goods or service to buyer.
+4. Buyer approves goods or service.
 5. Escrow releases payment to the seller.
 
 **How is it applied to Proximax Sirius Chain?**
 
 Normalizing the language into Sirius Chain related concepts:
 
-- **Contractual arrangement**: A new type of transaction called Aggregate Transaction.
-- **Third party receives and disburses money**: There is no third party; we are going to use blockchain technology.
-- **Primary transacting parties**: Sirius Chain accounts will represent the participants.
-- **Conditions agreed to by the transacting parties**: Whe nevery participant signs the aggregate transaction.
-- **Account established by a broker for holding funds**: There will not be an intermediate account, the exchange will happen atomically using an aggregate transaction.
-- **Until the consummation or termination of a transaction**: The transaction gets included in a block or expires.
+- **contractual arrangement**: A new type of transaction called Aggregate Transaction.
+- **third party receives and disburses money**: There is no third party, we are going to use blockchain technology.
+- **primary transacting parties**: Sirius Chain accounts will represent the participants.
+- **conditions agreed to by the transacting parties**: Whe nevery participant signs the aggregate transaction.
+- **account established by a broker for holding funds**: There will not be an intermediate account, the exchange will happen atomically using an aggregate transaction.
+- **until the consummation or termination of a transaction**: The transaction gets included in a block or expires.
 
 ## Prerequisites
 
-- XPX-Chain-SDK.
-- A text editor or IDE.
-- Finish [creating a mosaic guide](../mosaic/creating-a-mosaic.md).
-- Finish [sending payouts with aggregate complete transactions](./sending-payouts-with-aggregate-complete-transaction.md).
-- An account with `xpx`.
+- XPX-Chain-SDK
+- A text editor or IDE
+- Finish [creating a mosaic guide](../mosaic/creating-a-mosaic.md)
+- Finish [sending payouts with aggregate complete transactions](./sending-payouts-with-aggregate-complete-transaction.md)
+- An account with `xpx`
 
 
 ## Getting into some code
 
-![Aggregate Escrow](/img/aggregate-trustless-swap.png "Aggregate Escrow")
+![Aggregate Escrow](/img/aggregate-escrow-1.png "Aggregate Escrow")
 
 <p class=caption>Multi-Asset Escrowed Transactions</p>
 
@@ -65,9 +65,9 @@ Then, [create a mosaic](../mosaic/creating-a-mosaic.md) with the ticket distribu
 
 Alice will send a transaction to the ticket distributor exchanging 100 `xpx` for 1 `7cdf3b117a3c40cc` (museum ticket).
 
-1. Create two [transfer transactions](../../built-in-features/transfer-transaction.md):
+1. Create two [transfer transaction](../../built-in-features/transfer-transaction.md):
 
-A. From Alice to the ticket distributor sending 100 `xpx`.
+A. From Alice to the ticket distributor sending 100 `xpx`
 B. From the ticket distributor to Alice sending 1 `7cdf3b117a3c40cc`.
 
 <div class=info>
@@ -206,11 +206,11 @@ const ticketDistributorToAliceTx = TransferTransaction.create(
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-2. Wrap the defined transactions in an [aggregate transaction](../../built-in-features/aggregate-transaction.md) and sign it.
+2. Wrap the defined transactions in an [aggregate transaction](../../built-in-features/aggregate-transaction.md) sign it.
 
 An aggregate transaction is complete if before announcing it to the network, all required cosigners have signed it. If valid, it will be included in a block.
 
-In the case that signatures are required from other participants and the transaction is announced to the network, it is considered an aggregate bonded.
+In case that signatures are required from other participants and the transaction is announced to the network, it is considered an aggregate bonded.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -391,7 +391,7 @@ Copy the aggregate transaction hash, and check how to [cosign the aggregate tran
 - Alice could decide not to pay the distributor after receiving the ticket.
 - The distributor could choose not to send the ticket after receiving the payment.
 
-Using the aggregate transaction feature, we ensure that multiple transactions are executed at the same time when all the participants agree. The seller does not send the virtual goods.
+Using the aggregate transaction feature we ensure that multiple transactions are executed at the same time when all the participants agree. The seller does not send the virtual goods.
 
 ## What’s next?
 

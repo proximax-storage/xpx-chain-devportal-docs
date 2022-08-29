@@ -90,10 +90,10 @@ Announces a new remove exchange offer transaction.
 
 
 ### MatchedOffer
-| **Property** |    **Type**     |        **Description**          |
-| :----------: | :-------------: | :----------------------------:  |
-|    Offer     | [Offer](#offer) |         Extends offer.          |
-|    Owner     |    32 bytes     | The owner of the matched offer. |
+| **Property** |    **Type**     |        **Description**         |
+| :----------: | :-------------: | :----------------------------: |
+|    Offer     | [Offer](#offer) |         Extends offer.         |
+|    Owner     |    32 bytes     | The owner of the matched offer |
 
 ### OfferMosaic
 | **Name**  |         **Value**         |     **Description**     |

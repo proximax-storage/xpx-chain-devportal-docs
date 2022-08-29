@@ -13,16 +13,18 @@ Dan wants to send mosaics to Alice and Bob. He chooses to send an aggregate comp
 
 <p class=caption>Sending transactions to different recipients atomically</p>
 
+Dan chooses to send an aggregate complete transaction, so both will receive the funds at the same time.
+
 ## Prerequisites
 
-- XPX-Chain-SDK.
-- A text editor or IDE.
-- Finish [sending a transfer transaction guide](../transaction/sending-a-transfer-transaction.md).
-- An account with `XPX`.
+- XPX-Chain-SDK
+- A text editor or IDE
+- Finish [sending a transfer transaction guide](../transaction/sending-a-transfer-transaction.md)
+- An account with `xpx`
 
 ## Geting into some code
 
-1. Create two [transfer transactions](../../built-in-features/transfer-transaction.md) with two different recipients, wrapping them in an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples).
+1. Create two [transfer transaction](../../built-in-features/transfer-transaction.md) with two different recipients, wrapping them in an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples).
 
 As one private key can sign all the transactions in the aggregate, define the aggregate as complete. That means that there is no need to lock funds to send the transaction. If valid, it will be accepted by the network.
 

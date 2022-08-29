@@ -24,14 +24,14 @@ Sends a new transaction for preparing a new drive with defined parameters.
 
 |   **Property**   | **Type** |                               **Description**                               |
 | :--------------: | :------: | :-------------------------------------------------------------------------: |
-|      owner       | 32 bytes |           The PublicAccount of an owner who wants to create drive           |
-|     duration     |  uint64  |                           The drive duration                                |
-|  billingPeriod   |  uint64  |                              The payout frequency                           |
-|   billingPrice   |  uint64  |                         The price of one billing period                     |
-|    driveSize     |  uint64  |                            The size of drive                                |
+|      owner       | 32 bytes |           the PublicAccount of an owner who want to create drive            |
+|     duration     |  uint64  |                               drive duration                                |
+|  billingPeriod   |  uint64  |                              payout frequency                               |
+|   billingPrice   |  uint64  |                         price of one billing period                         |
+|    driveSize     |  uint64  |                                size of drive                                |
 |     replicas     |  uint16  |                          The count of drive copies                          |
-|  minReplicators  |  uint16  |       The minimum count of replicators for starting to execute drive        |
-| percentApprovers |  uint8   | The percentage of signatures for accepting any transaction (recommended 67) |
+|  minReplicators  |  uint16  |       the minimum count of replicators for starting to execute drive        |
+| percentApprovers |  uint8   | the percentage of signatures for accepting any transaction (recommended 67) |
 
 ## JoinToDriveTransaction
 
@@ -60,14 +60,14 @@ Changes a drive file system.
 |    **Property**    | **Type** |            **Description**             |
 | :----------------: | :------: | :------------------------------------: |
 |      driveKey      | 32 bytes |             Key of a drive             |
-|      RootHash      | Hash256  |  A new file system hash after changes  |
-|    XorRootHash     | Hash256  | An old file system hash before changes |
-|  AddActionsCount   |  uint16  |          Count of add actions          |
-| RemoveActionsCount |  uint16  |        Count of remove actions         |
+|      RootHash      | Hash256  |  a new file system hash after changes  |
+|    XorRootHash     | Hash256  | an old file system hash before changes |
+|  AddActionsCount   |  uint16  |          count of add actions          |
+| RemoveActionsCount |  uint16  |        count of remove actions         |
 
 ## FilesDepositTransaction
 
-Blocks mosaics at the rate of a file size.
+Blocks mocaics at the rate of a file size.
 
 **Version**: 0x01
 
@@ -78,7 +78,7 @@ Blocks mosaics at the rate of a file size.
 | **Property** | **Type** |  **Description**   |
 | :----------: | :------: | :----------------: |
 |   driveKey   | 32 bytes |   Key of a drive   |
-|  FilesCount  |  uint16  | Count of new files |
+|  FilesCount  |  uint16  | count of new files |
 
 ## EndDriveTransaction
 
@@ -96,7 +96,7 @@ Terminates a drive execution.
 
 ## DriveFilesRewardTransaction
 
-Sends rewards for files.
+Sends rewarding for files.
 
 **Version**: 0x01
 
@@ -106,7 +106,7 @@ Sends rewards for files.
 
 |   **Property**   | **Type** |     **Description**     |
 | :--------------: | :------: | :---------------------: |
-| UploadInfosCount |  uint16  | Count of uploaded files |
+| UploadInfosCount |  uint16  | count of uploaded files |
 
 ## StartDriveVerificationTransaction
 

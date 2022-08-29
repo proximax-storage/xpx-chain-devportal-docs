@@ -22,11 +22,11 @@ Thus, you opt to configure the product [account restrictions][Account-restrictio
 
 ## Prerequisites
 
-- XPX-Chain-SDK.
-- A text editor or IDE.
-- Finish sending a [transfer transaction guide][transfer-transaction-guide].
-- Finish [creating a mosaic guide][mosaic-guide].
-- An [account][Account] with `XPX`.
+- XPX-Chain-SDK
+- A text editor or IDE
+- Finish sending a [transfer transaction guide][transfer-transaction-guide]
+- Finish [creating a mosaic guide][mosaic-guide]
+- An [account][Account] with `xpx`
 
 ## Getting into some code
 
@@ -78,7 +78,7 @@ An account can decide to receive transactions only from an allowed list of [addr
 
 **Note**
 
-Allowing and blocking restrictions are mutually exclusive per restriction type. In other words, an account can only be configured to have either an allowed or blocked list per type of restriction.
+Allow and block restrictions are mutually exclusive per restriction type. In other words, an account can only be configured to have either an allowed or blocked list per type of restriction.
 
 </div>
 
@@ -365,7 +365,7 @@ const addressRestriction = AccountRestrictionModification.createForAddress(Restr
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-2. Create an `AccountRestrictionTransaction`, setting the type `AllowAddress`. Add the modification created as well.
+2. Create an `AccountRestrictionTransaction`, setting the type `AllowAddress`. Add as well the modification created.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->

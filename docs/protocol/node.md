@@ -45,9 +45,9 @@ Storing the state in memory is usually faster than using RocksDB. However, stori
 
 P2P nodes can be configured to have an API layer. The primary responsibility of the API is to store the data in a readable form in MongoDB.
 
-The API [verifies transactions](./transaction.md#transaction-validation) received from the REST component. Additionally, the broker process that stores changes in MongoDB, forwards them to ZMQ.
+The API [verify transactions](./transaction.md#transaction-validation) received from the REST component. Additionally, the broker process that stores changes in MongoDB, forwards them to ZMQ.
 
-This component is also responsible for collecting the cosignatures of [aggregated bonded](../built-in-features/aggregate-transaction.md) transactions, which are only processed once they are complete.
+This component also responsible for collecting the cosignatures of [aggregated bonded](../built-in-features/aggregate-transaction.md) transactions, which are only processed once they are complete.
 
 ## MongoDB
 

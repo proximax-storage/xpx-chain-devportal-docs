@@ -15,7 +15,7 @@ To record the transaction in the block, the other cosignatories will have to agr
 
 ## Minimum approval and removal
 
-It is not always necessary to force all cosignatories to cosign transactions associated with the multisig account. With Sirius Chain, setting up the minimum number of cosignatory agreements is allowed. These properties can also be [edited](../guides/multisig-account/modifying-a-multisig-account.md#editing-minapproval) afterward to suit almost all needs.
+It is not always necessary to force all cosignatories to cosign transactions associated with the multisig account. Sirius Chain allows to set up the minimum number of cosignatory agreements. These properties can be [edited](../guides/multisig-account/modifying-a-multisig-account.md#editing-minapproval) afterward to suit almost all needs.
 
 Sirius Chain’s current implementation of multisig is “M-of-N”. This means that M can be any number equal to or less than N, i.e., 1-of-4, 2-of-2, 4-of-9, 9-of-10 and so on.
 

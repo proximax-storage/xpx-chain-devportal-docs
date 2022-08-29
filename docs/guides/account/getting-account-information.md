@@ -80,7 +80,7 @@ xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 
 Can you determine the account’s public key? The **public key** identifies your account publicly in the network. Your **address** is derived from it, which contains further information such as network and validity check.
 
-If you don’t have a public key assigned, that means that your account has not announced or received any transactions yet. The `addressHeight` and `publicKeyHeight` specify the block where your address and public key first appeared.
+If you don’t have a public key assigned, that means that your account has not announced or received any transaction yet. The `addressHeight` and `publicKeyHeight` specify the block where your address and public key first appeared.
 
 2. How many different mosaics does your account hold? Call `mosaicsAmountViewFromAddress` function, passing your account’s address as a parameter.
 

@@ -1,15 +1,15 @@
 ---
 id: listening-new-blocks
-title: Listening to New Blocks
+title: Listening New Blocks
 ---
 
 Get notified when a new [block](../../protocol/block.md) is included.
 
 ## Prerequisites
 
-- Text editor or IDE.
-- XPX-Chain-SDK or XPX-Chain-CLI.
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
+- Text editor or IDE
+- XPX-Chain-SDK or XPX-Chain-CLI
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
 
 ## Getting into some code
 

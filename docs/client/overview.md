@@ -5,7 +5,7 @@ sidebar_label: Overview
 ---
 The Sirius Chain Command Line Interface is a unified tool to interact with the Sirius Chain.
 
-This tool will enable you to perform the most commonly used actions to interact with the blockchain.
+This tool will enable you to perform the most common used actions to interact with the blockchain.
 
 **XPX-Chain-CLI** is an open source tool built on top of the [XPX-Chain-SDK](../sdks/overview.md) Typescript. Use it in your favorite terminal program.
 
@@ -48,13 +48,13 @@ By default, XPX-Chain-CLI will always use the default profile. To use a named pr
 $> xpx2-cli account info --profile test_net_profile
 ```
 
-If you are going to use a named profile for multiple commands, you can use the XPX_PROFILE environment variable at the command line.
+If you are going to use named profile for multiple commands, you can use the XPX_PROFILE environment variable at the command line.
 
 ```bash
 $> export XPX_PROFILE=_test_net_profile
 ```
 
-If you do not have a private key to create a profile, you can generate a new account. Add a node URL and save it as default or named profile.
+If you do not have a private key to create a profile you can generate a new account, add a node url and save it as default or named profile.
 
 ```bash
 $> xpx2-cli account generate --network TEST_NET -s --url http://bctestnet1.brimstone.xpxsirius.io:3000 --profile test_net_profile

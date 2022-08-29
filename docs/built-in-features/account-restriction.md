@@ -18,7 +18,7 @@ AccountOperationRestriction |	❌ |	✔️
 
 An account can decide to **only receive** transactions from a list of allowed **addresses**. Alternatively, the account can define a list of blocked addresses.
 
-Restricting **incoming transactions** is useful when the account will only be receiving transactions from known addresses, or when the account wants to block transactions coming from unknown senders.
+Restricting **incoming transactions** is useful when the account will be only receiving transactions from known addresses, or when the account wants to block transactions coming from unknown senders.
 
 <div class="caption">
 
@@ -58,17 +58,17 @@ A pharmaceutical company is using the public chain to certify the quality of the
 
 When the quality verification process concludes, an operator sends a [quality seal][Mosaic] to the product account.
 
-The final customers can review the product mosaics scanning a QR code. For that reason, the company only wants to show related transactions, avoiding others from spamming their products with non-related information.
+The final customers can review the product mosaics scanning a QR code. For that reason, the company only wants to show related transactions, avoiding that others spam their products with non-related information.
 
 ![Blocking spam transactions](/img/account-properties-spam.png "Blocking spam transactions")
 
 <p class="caption">Blocking spam transactions</p>
 
-The company opts to configure their product accounts restrictions, enabling it to only receive transactions containing `pharmaceutical.quality.seal` mosaics.
+The company opts to configure their product accounts restrictions, enabling only to receive transactions containing `pharmaceutical.quality.seal` mosaics.
 
 ### Enhancing the account security
 
-Lately, Alice has only been using her main account to cosign aggregate transactions where she is a cosignatory for the [multisig][Multisig] account.
+Lately, Alice is only using her main account to cosign aggregate transactions where she is a cosignatory for the [multisig][Multisig] account.
 
 As a temporary security measure, Alice opts to disable announcing transfer transactions from her main account. Doing so, Alice double-checks that the funds held in the main account are not going to be transferred by mistake.
 

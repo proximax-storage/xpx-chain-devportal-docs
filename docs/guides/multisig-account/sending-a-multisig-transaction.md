@@ -23,12 +23,12 @@ In this guide, you will send a transaction from a multisig account.
 
 ## Prerequisites
 
-- XPX-Chain-SDK.
-- A text editor or IDE.
-- Finish sending a [transfer transaction guide](../transaction/sending-a-transfer-transaction.md).
-- Finish converting an [account to multisig guide](../multisig-account/converting-an-account-to-multisig.md).
-- A [multisig](../../built-in-features/multisig-account.md) account with `xpx`.
-- A cosignatory [account](../../built-in-features/account.md) with `xpx`.
+- XPX-Chain-SDK
+- A text editor or IDE
+- Finish sending a [transfer transaction guide](../transaction/sending-a-transfer-transaction.md)
+- Finish converting an [account to multisig guide](../multisig-account/converting-an-account-to-multisig.md)
+- An [multisig](../../built-in-features/multisig-account.md) account with `xpx`
+- An cosignatory [account](../../built-in-features/account.md) with `xpx`
 
 ## Getting into some code
 
@@ -258,7 +258,7 @@ What would have happened if the account was a 2-of-2 multisig instead of a 1-of-
 
 <p class=caption>Sending an aggregate bonded transaction</p>
 
-1. Open a new terminal to monitor the aggregate bonded transaction.
+1. Open a new terminal to monitor the aggreagte bonded transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--CLI-->

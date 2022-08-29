@@ -7,11 +7,11 @@ Get the ownership, divisibility, duration, and flags for a given [mosaic](../../
 
 ## Background
 
-In the Sirius Chain, accounts can link their registered namespaces to other accounts or mosaics by announcing an [alias transaction](../../built-in-features/namespace.md#mosaic-alias-transaction). This feature allows you to replace long and complex identifiers with short and familiar names for your accounts and mosaics.
+In Sirius Chain, accounts can link their registered namespaces to other accounts or mosaics by announcing an [alias transaction](../../built-in-features/namespace.md#mosaic-alias-transaction). This feature allows you to replace long and complex identifiers with short and familiar names for your accounts and mosaics.
 
 Imagine a ticket vendor sending tickets to their customers on the NEM blockchain. The company needs to send `1 0dc67fbe1cad29e3` to `SCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6`. With aliases, it can define the same transaction as sending `1 ticketsales.event1.ticket` to `@alice` instead.
 
-![Recognizable mosaics and addresses](/img/recognizable-mosaics-and-addresses.png "Recognizable mosaics and addresses")
+![Recognizable mosaics and addresses](img/recognizable-mosaics-and-addresses.png "Recognizable mosaics and addresses")
 
 <p class=caption>Recognizable mosaics and addresses</p>
 
@@ -52,14 +52,14 @@ At this point, you might be wondering: how then can we get the accurate relation
 
 ## Prerequisites
 
-- XPX-Chain-SDK or XPX-Chain-CLI.
-- A text editor or IDE.
-- Finish [creating a mosaic guide](./creating-a-mosaic.md).
-- Have an account with `xpx`.
+- XPX-Chain-SDK or XPX-Chain-CLI
+- A text editor or IDE
+- Finish [creating a mosaic guide](./creating-a-mosaic.md)
+- Have an account with `xpx`
 
 ## Getting into some code
 
-In this example, we are going to announce a transfer transaction using `xpx` instead of the native currency mosaic id. Once the network confirms the transaction, we will get the block height where the transaction has been recorded. With this information, we will then get the namespace-mosaic relation by looking into the block receipts.
+In this example, we are going to announce a transfer transaction using `xpx` instead of the native currency mosaic id. Once the network confirms the transaction, we will get the block height where the transaction has been recorded. With this information, we will then get the namespace-mosaic relation by looking into the block receipts’.
 
 1. Define the mosaic you want to send. Use a linked namespace identifier (e.g. xpx) instead of the mosaic identifier.
 
@@ -149,5 +149,5 @@ The receipt source `primaryId` references the transaction where the alias first 
 
 ## What is next?
 
-Receipts do not only store resolutions for aliases, but also every invisible state change that is not directly retrievable from transactions or the block header. You can check under the [receipts documentation](../../protocol/receipt.md) for the complete list of changes logged.
+Receipts do not only store resolutions for aliases, but also every invisible state change that is not directly retrievable from transactions or the block header. You can check under the [receipts documentation](../../protocol/receipt.md) the complete list of changes logged.
 
