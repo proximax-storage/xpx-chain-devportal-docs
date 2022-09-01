@@ -17,7 +17,7 @@ It is possible to create multiple subnamespaces with the same name in different 
 
 - XPX-Chain-SDK or XPX-Chain-CLI.
 - A text editor or IDE.
-- An account with `xpx` and at least one namespace.
+- An account with `XPX` and at least one namespace.
 - Finish [registering a namespace guide](./registering-a-namespace.md).
 
 ## Getting into some code

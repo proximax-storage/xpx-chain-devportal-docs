@@ -5,17 +5,17 @@ title: Sirius Chain Cheat Sheet
 
 ## Reading guides
 
-- Documents under "Protocol" category is categorized as a basic/common concept for most of the blockchain 
+- Documents under the "Protocol" category are categorized as a basic/common concept for most of the blockchain.
 
-- Documents under "Built-in features" are features specific for Sirius Chain.  
+- Documents under the "Built-in features" are features specifically for Sirius Chain.  
 
 - You do not need to understand the "Schema" sections of the documents if you are just using the SDKs, unless you need it for reference for SDK developments.
 
 - Check out the coding guides [here](./guides/overview.md), the client and some SDKs guides are still missing. We will update it soon.
 
-- List of SDKs -> [here](./sdks/languages.md)
+- List of SDKs -> [here](./sdks/languages.md).
 
-- Wallet and explorer -> [here](./wallets-explorers.md)
+- Wallet and explorer -> [here](./wallets-explorers.md).
 
 ## Sirius Chain
 
@@ -101,7 +101,7 @@ Private      | Z
 
 ### Uint64 value
 
-Since REST API is returned with json format, the uint64 number is not supported. Hence, it needs to be separated into 2 uint32 arrays. The higher and lower part. 
+Since REST API is returned with json format, the uint64 number is not supported. Hence, it needs to be separated into 2 uint32 arrayss: the higher and lower part. 
 ```
 [
     0 : lower
@@ -180,12 +180,12 @@ Refering to the above, the lower and higher, we can represent uint64 id in a hex
 
 - Use AliasTransaction to link or unlink the namespace to address or mosaic.
 
-- You can send transactions to linked namespace directly instead of using addresses or mosaic ids.
+- You can send transactions to linked namespaces directly instead of using addresses or mosaic ids.
 
 - eg.
-  - `mycompany.address` can be linked to mycompany's address
-  - `mycompany.coin` can be linked to mycompany's utility coin mosaic
-  - You can even use `mycompany` to link any address or mosaic 
+  - `mycompany.address` can be linked to mycompany's address.
+  - `mycompany.coin` can be linked to mycompany's utility coin mosaic.
+  - You can even use `mycompany` to link any address or mosaic.
 
 ## Fee
 
@@ -195,7 +195,7 @@ Refering to the above, the lower and higher, we can represent uint64 id in a hex
 
 - If effective_fee >= max_fee(defined by user), the validator can opt to include the transaction in the block.
 
-- Max_fee and effective_fee value is in the lowest currency absolute value. eg. `5000 max fee = 0.005000 XPX`
+- Max_fee and effective_fee value is in the lowest currency absolute value. eg. `5000 max fee = 0.005000 XPX`.
 
 - Transactions sent might not be the final transaction size; the size might be increased due to more complex transactions such as aggregate transactions with multisig accounts that come with extra cosigner information. Fee_multiplier will calculate with the final transaction size.
 

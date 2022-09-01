@@ -55,7 +55,7 @@ At this point, you might be wondering: how then can we get the accurate relation
 - XPX-Chain-SDK or XPX-Chain-CLI.
 - A text editor or IDE.
 - Finish [creating a mosaic guide](./creating-a-mosaic.md).
-- Have an account with `xpx`.
+- Have an account with `XPX`.
 
 ## Getting into some code
 

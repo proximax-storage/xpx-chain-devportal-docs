@@ -11,7 +11,7 @@ Link a [namespace](../../built-in-features/namespace.md) to a [ mosaic ](../../b
 - A text editor or IDE.
 - Have one [namespace](../../built-in-features/namespace.md) registered.
 - Have one [mosaic](../../built-in-features/mosaic.md) registered.
-- Have one account with `xpx`.
+- Have one account with `XPX`.
 
 ## Getting into some code
 

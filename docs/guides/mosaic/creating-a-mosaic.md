@@ -12,7 +12,7 @@ Mosaics can be used to represent any asset in the blockchain such as objects, ti
 ## Prerequisites
 
 - Finish [registering a namespace guide](../namespace/registering-a-namespace.md).
-- Have an `account` with `xpx`.
+- Have an `account` with `XPX`.
 - XPX-Chain-SDK or XPX-Chain-CLI.
 - A text editor or IDE.
 - An account with XPX and at least one namespace.

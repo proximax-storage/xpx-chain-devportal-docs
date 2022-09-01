@@ -20,7 +20,7 @@ When working with blockchain technology, it is interesting to “fire” the tra
 
 ## Getting into some code
 
-Sirius Chain enables asynchronous transaction announcement. After you publish a transaction, the API node will always accept it if it is well-formed.
+Sirius Chain enables asynchronous transactions announcement. After you publish a transaction, the API node will always accept it if it is well-formed.
 
 At this time, the server does not ensure that the transaction is valid. For example, you don’t have the amount of asset units you want to send, hence, it is not certain it will be added in a block.
 

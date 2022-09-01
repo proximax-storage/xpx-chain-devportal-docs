@@ -28,7 +28,7 @@ Normalizing the language into Sirius Chain related concepts:
 - **Contractual arrangement**: A new type of transaction called Aggregate Transaction.
 - **Third party receives and disburses money**: There is no third party; we are going to use blockchain technology.
 - **Primary transacting parties**: Sirius Chain accounts will represent the participants.
-- **Conditions agreed to by the transacting parties**: Whe nevery participant signs the aggregate transaction.
+- **Conditions agreed to by the transacting parties**: When every participant signs the aggregate transaction.
 - **Account established by a broker for holding funds**: There will not be an intermediate account, the exchange will happen atomically using an aggregate transaction.
 - **Until the consummation or termination of a transaction**: The transaction gets included in a block or expires.
 
@@ -38,7 +38,7 @@ Normalizing the language into Sirius Chain related concepts:
 - A text editor or IDE.
 - Finish [creating a mosaic guide](../mosaic/creating-a-mosaic.md).
 - Finish [sending payouts with aggregate complete transactions](./sending-payouts-with-aggregate-complete-transaction.md).
-- An account with `xpx`.
+- An account with `XPX`.
 
 
 ## Getting into some code
@@ -67,7 +67,7 @@ Alice will send a transaction to the ticket distributor exchanging 100 `xpx` for
 
 1. Create two [transfer transactions](../../built-in-features/transfer-transaction.md):
 
-A. From Alice to the ticket distributor sending 100 `xpx`.
+A. From Alice to the ticket distributor sending 100 `XPX`.
 B. From the ticket distributor to Alice sending 1 `7cdf3b117a3c40cc`.
 
 <div class=info>

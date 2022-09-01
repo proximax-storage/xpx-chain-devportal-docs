@@ -22,7 +22,7 @@ In this guide, you are going to create a 1-of-2 multisig account. In future guid
 - Text editor or IDE.
 - XPX-Chain-SDK or XPX-Chain-CLI.
 - Finish [creating and opening accounts guide](../account/creating-and-opening-an-account.md).
-- Have one account with `xpx`.
+- Have one account with `XPX`.
 
 ## Getting into some code
 

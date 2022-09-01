@@ -10,7 +10,7 @@ Send an encrypted message that only can be read by the recipient account.
 - Finish the [sending a transfer transaction guide](./sending-a-transfer-transaction.md).
 - XPX-Chain-SDK or XPX-Chain-CLI.
 - A text editor or IDE.
-- An account with `xpx`.
+- An account with `XPX`.
 
 ## Background
 

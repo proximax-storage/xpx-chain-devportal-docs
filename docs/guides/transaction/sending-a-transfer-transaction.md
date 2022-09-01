@@ -11,7 +11,7 @@ Transfer [mosaics](../../built-in-features/mosaic.md) and messages between two a
 - Finish the [getting started section](../../getting-started/setting-up-workstation.md).
 - XPX-Chain-SDK or XPX-Chain-CLI.
 - A text editor or IDE.
-- An account with `xpx`.
+- An account with `XPX`.
 
 ## Background Information 
 
@@ -19,7 +19,7 @@ Transfer [mosaics](../../built-in-features/mosaic.md) and messages between two a
 
 <p class=caption>Sending a transfer Transaction</p>
 
-Alice wants to send 10 `xpx` to Bob, whose address is `VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54`.
+Alice wants to send 10 `XPX` to Bob, whose address is `VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54`.
 
 ### Monitoring the transaction
 
@@ -45,7 +45,7 @@ xpx2-cli monitor confirmed
 
 ## Getting into some code
 
-1. Create the transfer transaction, including Bob's address as the recipient and 10 `xpx`.
+1. Create the transfer transaction, including Bob's address as the recipient and 10 `XPX`.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->

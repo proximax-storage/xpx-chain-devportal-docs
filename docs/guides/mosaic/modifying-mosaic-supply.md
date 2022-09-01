@@ -11,7 +11,7 @@ Alter the supply of a mosaic following this guide.
 - A text editor or IDE.
 - Finish [creating a mosaic guide](./creating-a-mosaic.md).
 - Have a supply mutable mosaic registered.
-- An account with `xpx`.
+- An account with `XPX`.
 
 ## Getting into some code
 

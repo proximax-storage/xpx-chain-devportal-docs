@@ -11,7 +11,7 @@ This guide will show you how to cosign aggregate bonded transactions that requir
 - Have received an aggregate bounded transaction.
 - XPX-Chain-SDK.
 - A text editor or IDE.
-- Have an account with `xpx`.
+- Have an account with `XPX`.
 
 ## Getting into some code
 

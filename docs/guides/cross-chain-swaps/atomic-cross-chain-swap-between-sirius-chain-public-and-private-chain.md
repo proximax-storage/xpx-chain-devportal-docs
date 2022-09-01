@@ -359,7 +359,7 @@ Consider the following scenarios:
 
 1. Bob does not want to announce TX2. Alice will receive her funds back after 94 hours.
 2. Alice does not want to swap tokens by signing TX3. Bob will receive his refund after 84h. Alice will unlock her funds as well after 94 hours.
-3. Alice signs and announces TX3, receiving Bob’s funds. Bob will have time to sign TX4, as Tx1 validity is longer than TX2.
+3. Alice signs and announces TX3, receiving Bob’s funds. Bob will have time to sign TX4, as TX1 validity is longer than TX2.
 
 The process is atomic but should be completed with lots of time before the deadlines.
 

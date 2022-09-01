@@ -27,14 +27,14 @@ In this guide, you will send a transaction from a multisig account.
 - A text editor or IDE.
 - Finish sending a [transfer transaction guide](../transaction/sending-a-transfer-transaction.md).
 - Finish converting an [account to multisig guide](../multisig-account/converting-an-account-to-multisig.md).
-- A [multisig](../../built-in-features/multisig-account.md) account with `xpx`.
-- A cosignatory [account](../../built-in-features/account.md) with `xpx`.
+- A [multisig](../../built-in-features/multisig-account.md) account with `XPX`.
+- A cosignatory [account](../../built-in-features/account.md) with `XPX`.
 
 ## Getting into some code
 
 ### 1-of-2 signatures required
 
-Bob has finished filling the basket, and he is ready to pay. The cashier’s screen indicates that the cost of the purchase adds up to `10 xpx`.
+Bob has finished filling the basket, and he is ready to pay. The cashier’s screen indicates that the cost of the purchase adds up to `10 XPX`.
 
 Let’s develop the piece of code present in Bob’s mobile wallet that enables him to send multisig transactions.
 
@@ -114,8 +114,8 @@ const recipientAddress = Address.createFromRawAddress('VD5DT3-CH4BLA-BL5HIM-EKP2
 2. Define the following [transfer transaction](../../built-in-features/transfer-transaction.md#transfertransaction).
 
 - Recipient: Grocery’s address
-- Message: sending 10 xpx
-- Mosaics: [10 `xpx`]
+- Message: sending 10 XPX
+- Mosaics: [10 `XPX`]
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -318,7 +318,7 @@ final SignedTransaction aggregateSignedTransaction = cosignatoryAccount.sign(agg
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-3. When an aggregate transaction is bonded, Bob needs to lock at least `10` xpx to avoid network spamming. Once all cosigners sign the transaction, the amount of xpx locked becomes available again in Bob’s account. After [hash lock](../../built-in-features/aggregate-transaction.md#hash-lock-transaction) transaction has been confirmed, [announce the aggregate bonded transaction](../../built-in-features/aggregate-transaction.md).
+3. When an aggregate transaction is bonded, Bob needs to lock at least `10` XPX to avoid network spamming. Once all cosigners sign the transaction, the amount of XPX locked becomes available again in Bob’s account. After [hash lock](../../built-in-features/aggregate-transaction.md#hash-lock-transaction) transaction has been confirmed, [announce the aggregate bonded transaction](../../built-in-features/aggregate-transaction.md).
 
 
 <!--DOCUSAURUS_CODE_TABS-->
