@@ -101,7 +101,7 @@ Private      | Z
 
 ### Uint64 value
 
-Since REST API is returned with json format, the uint64 number is not supported. Hence, it needs to be separated into 2 uint32 arrayss: the higher and lower part. 
+Since REST API is returned with json format, the uint64 number is not supported. Hence, it needs to be separated into 2 uint32 arrays: the higher and lower part. 
 ```
 [
     0 : lower
