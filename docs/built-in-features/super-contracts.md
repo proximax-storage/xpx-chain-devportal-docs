@@ -3,13 +3,13 @@ id: super-contracts
 title: Super Contracts
 ---
 
-Super Contract (SC) guarantees that executors will get rewards if they completely execute and finish SC. If some executor does not execute the SC it does not get rewards.
+Super Contract (SC) guarantees that executors will get rewards if they completely execute and finish SC. If an executor does not execute the SC, the executor does not get rewards.
 
 ## Schemas
 
 ### DeployTransaction
 
-Any file on a drive can be presented like a SC with **DeployTransaction**. This will mark the file in blockchain as the new SC. Also, it will be created a new multisig account where the participants are replicators from a drive.
+Any file on a drive can be presented like a SC with **DeployTransaction**. This will mark the file in the blockchain as the new SC. Also, it will be created as a new multisig account where the participants are replicators from a drive.
 
 **Version**: 0x01
 
@@ -26,7 +26,7 @@ Any file on a drive can be presented like a SC with **DeployTransaction**. This 
 
 ### StartExecuteTransaction
 
-Any user (initiator) can start SC execution. This should be created and announced a **StartExecuteTransaction** with pointed out a SC public account and a reward that will be charged and transferred to the SC account. If during execution mosaics are not enough SC will be terminated with the corresponded error. Note, in this case, spent mosaics will not be returned.
+Any user (initiator) can start SC execution. This should be created and announced as a **StartExecuteTransaction** with a SC public account, and a reward that will be charged and transferred to the SC account. During execution, if mosaics are not enough, the SC will be terminated with the corresponding error. Note that in this case, spent mosaics will not be returned.
 
 **Version**: 0x01
 
@@ -53,7 +53,7 @@ A new operation can be started by [`StartExecuteTransaction`](#startexecutetrans
 
 ### OperationIdentifyTransaction
 
-During SC execution can be generated a range of transactions. With **OperationIdentifyTransaction** the transactions can be marked by identifier as related to some certain function (StartExecutionTransaction).
+During SC execution, a range of transactions can be generated. With **OperationIdentifyTransaction**, the transactions can be marked by an identifier as related to certain functions (StartExecutionTransaction).
 
 **Version**: 0x01
 
@@ -90,7 +90,7 @@ This is the alias for [`DriveFileSystemTransaction`](drive#drivefilesystemtransa
 
 ### DeactivateTransaction
 
-When a SC is no longer needed the owner can deactivate it with **DeactivateTransaction** transaction. After that this SC cannot be executed
+When a SC is no longer needed, the owner can deactivate it with the **DeactivateTransaction** transaction. After that, this SC cannot be executed.
 
 **Version**: 0x01
 

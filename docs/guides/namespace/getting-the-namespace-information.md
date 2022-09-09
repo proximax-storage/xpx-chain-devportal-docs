@@ -7,10 +7,10 @@ Get the ownership and duration for a given [namespace](../../built-in-features/n
 
 ## Prerequisites
 
-- XPX-Chain-SDK or XPX-Chain-CLI
-- A text editor or IDE
-- Have registered one [ namespace ](../../built-in-features/namespace.md)
-- Have namespace with name `foo`
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- A text editor or IDE.
+- Have one [ namespace ](../../built-in-features/namespace.md) registered.
+- Have a namespace with name `foo`.
 
 ## Getting into some code
 
@@ -63,4 +63,4 @@ xpx2-cli namespace info --name foo
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-You can search subnamespace with the same way, by passing the subnamespace such as `foo.bar`.
+You can search a subnamespace with the same way, by passing the subnamespace such as `foo.bar`.

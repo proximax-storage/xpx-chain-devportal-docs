@@ -18,7 +18,7 @@ An aggregate transaction is *complete* when all the required participants have s
 
 The cosigners can sign the transaction without using the blockchain. Once it has all the required signatures, one of them can announce it to the network. If the inner transaction setup is valid, and there is no validation error, the transactions will get executed at the same time.
 
-Aggregate complete transactions enable adding more transactions per block by gathering multiple inner transactions.
+Aggregate complete transactions enable the adding of more transactions per block by gathering multiple inner transactions.
 
 ## Aggregate bonded
 
@@ -28,7 +28,7 @@ An aggregate transaction is **bonded** when it requires signatures from other pa
 
 **Note**
 
-Before announcing an **aggregate bonded transaction**, an account must announce and get confirmed a [hash lock transaction](#hashlocktransaction) locking `10 xpx`.
+Before announcing an **aggregate bonded transaction**, an account must announce and confirm a [hash lock transaction](#hashlocktransaction) locking `10 xpx`.
 
 </div>
 
@@ -81,7 +81,7 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 - [Sending payouts with aggregate complete transaction][Aggregate-complete]
 
-    HOw to seend transactions to different accounts atomically using an aggregate complete transaction.
+    How to send transactions to different accounts atomically using an aggregate complete transaction.
 
 - [Creating an escrow with aggregate bonded transaction][Aggregate-escrow]
 
@@ -105,7 +105,7 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 **Note:**
 
-Configuration parameters are [editable][Server-configurable] . Public network configuration may differ.
+Configuration parameters are [editable][Server-configurable]. Public network configuration may differ.
 
 </div>
 

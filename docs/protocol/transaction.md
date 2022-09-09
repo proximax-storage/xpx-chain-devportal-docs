@@ -64,7 +64,7 @@ We recommend to [use the xpx-chain-sdk to define](../sdks/overview.md) transacti
 
 ## Fees
 
-Transactions have an associated cost. This cost is necessary to provide an incentive for the [validator](./validating.md) who secure the network and run the infrastructure.
+Transactions have an associated cost. This cost is necessary to provide an incentive for the [validator](./validating.md) who secures the network and runs the infrastructure.
 
 The fee associated with a transaction primarily depends on the transaction’s size. The effective fee is the product of the size of the transaction, and a fee multiplier set by the Validator. The node owner can configure the latter value to all positive values, including zero.
 
@@ -88,11 +88,11 @@ By default, the fee is paid in `xpx`, the underlying currency of the Sirius Chai
 
 <div class="info">
 
-In short, validators need to define *fee_multiplier*, which considered as fee per byte. 
+In short, validators need to define *fee_multiplier*, which is considered as fee per byte. 
 
 Max fee value is the lowest currency absolute value. eg. `5000 max fee = 0.005000 xpx`.
 
-The final transaction size might be increase from client/user site due to more complex transaction such as transaction with multisig account with extra cosigner information. Fee_multiplier will calculate with the final transaction size.
+The final transaction size might be increased from client/user site due to more complex transactions such as transactions with multisig accounts with extra cosigner information. Fee_multiplier will calculate with the final transaction size.
 
 </div>
 
@@ -100,9 +100,9 @@ The final transaction size might be increase from client/user site due to more c
 
 Accounts must sign transactions before announcing them to the network. Signing a transaction expresses the account’s agreement to change the network state as defined.
 
-For example, a transfer transaction describes who is the recipient and the quantity of mosaics to transfer. In this case, signing the transaction means to accept moving those mosaics from one account’s balance to another.
+For example, a transfer transaction describes who is the recipient and the quantity of mosaics to be transferred. In this case, signing the transaction means to accept moving those mosaics from one account’s balance to another.
 
-An account has to follow the next steps to sign a transaction :
+An account has to follow the next steps to sign a transaction:
 
 1. Get the `signing bytes`, which are all the bytes of the transaction except the size, signature and signer.
 2. Get the nemesis block generation hash. You can query `http://bctestnet1.brimstone.xpxsirius.io:3000/block/1` and copy `meta.generationHash` value.
@@ -130,7 +130,7 @@ The transaction has **zero confirmations** at this point. When another block is 
 
 ## Rollbacks
 
-Blockchains are designed in a way that under certain circumstances recent blocks need to be rolled back. These are essential to resolve forks of the blockchain.
+Blockchains are designed in a way that under certain circumstances, recent blocks need to be rolled back. These are essential to resolve forks of the blockchain.
 
 The `rewrite limit` is the maximum number of blocks that can be rolled back. Hence, forks can only be resolved up to a certain depth too.
 

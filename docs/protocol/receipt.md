@@ -47,9 +47,9 @@ Sirius Chain records invisible state changes for the following entities.
 0x414E |	Namespace_Expired        |	[ArtifactExpiry](#artifactexpiryreceipt)   |	The namespaceId expiring in this block. It is recorded when a [namespace](../built-in-features/namespace.md) expires.
 0x124E |	Namespace_Rental_Fee     |	[BalanceTransfer](#balancetransferreceipt) |	The sender and recipient of the mosaicId and amount representing the cost of extending the namespace. It is recorded when a namespace is registered or its duration is extended.
 **HashLock** 	||||
-0x3148 |	LockHash_Created         |	[BalanceDebit](#balancetransferreceipt)    |	The lockhash sender, mosaicId and amount locked. It is recorded when a valid [HashLockTransaction](../built-in-features/aggregate-transaction.md#hashlocktransaction) is announced.
-0x2248 |	LockHash_Completed       |	[BalanceCredit](#balancechangereceipt)     |	The haslock sender, mosaicId and amount locked that is returned. It is recorded when an aggregate bonded transaction linked to the hash completes.
-0x2348 |	LockHash_Expired         |	[BalanceCredit](#balancechangereceipt)     |	The account receiving the locked mosaic, the mosaicId and the amount. It is recorded when a lock hash expires.
+0x3148 |	LockHash_Created         |	[BalanceDebit](#balancetransferreceipt)    |	The hash lock sender, mosaicId and amount locked. It is recorded when a valid [HashLockTransaction](../built-in-features/aggregate-transaction.md#hashlocktransaction) is announced.
+0x2248 |	LockHash_Completed       |	[BalanceCredit](#balancechangereceipt)     |	The hash lock sender, mosaicId and amount locked that is returned. It is recorded when an aggregate bonded transaction linked to the hash completes.
+0x2348 |	LockHash_Expired         |	[BalanceCredit](#balancechangereceipt)     |	The account receiving the locked mosaic, the mosaicId and the amount. It is recorded when a hash lock expires.
 **SecretLock**||||
 0x3152 |	LockSecret_Created       |	[BalanceDebit](#balancetransferreceipt)    |	The secretlock sender, mosaicId and amount locked. It is recorded when a valid [SecretLockTransaction](../built-in-features/cross-chain-swaps.md#secretlocktransaction) is announced.
 0x2252 |	LockSecret_Completed     |	[BalanceCredit](#balancechangereceipt)     |	The secretlock sender, mosaicId and amount locked. It is recorded when a secretlock is proved.

@@ -8,25 +8,25 @@ Make sure a [transaction](../../protocol/transaction.md) gets included in the bl
 
 ## Background Information 
 
-After calling an API method that changes the database state, you usually will receive a responsible if the change has been applied or failed due to some constraint. The application spends precious time waiting for the response, in the meanwhile other actions can be processed.
+After calling an API method that changes the database state, you usually will receive a response if the change has been applied or failed due to some constraint. As the application spends precious time waiting for the response, other actions can be processed in the meantime.
 
 When working with blockchain technology, it is interesting to “fire” the transaction, let the node process it, and receive a notification if it succeeded or failed. Differently, from a traditional database, the average confirmation time of modification is higher, passing from milliseconds to seconds - or minutes in the worst case.
 
 ## Prerequisites
 
-- Text editor or IDE
-- XPX-Chain-SDK or XPX-Chain-CLI
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
+- Text editor or IDE.
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
 
 ## Getting into some code
 
-Sirius Chain enables asynchronous transaction announcement. After you publish a transaction, the API node will always accept it if it is well-formed.
+Sirius Chain enables asynchronous transactions announcement. After you publish a transaction, the API node will always accept it if it is well-formed.
 
 At this time, the server does not ensure that the transaction is valid. For example, you don’t have the amount of asset units you want to send, hence, it is not certain it will be added in a block.
 
 To ensure the transaction is added in a block, you must track the [transaction status](../../protocol/transaction.md) using [Listeners](../../rest-api/websockets.md).
 
-[Listeners](../../rest-api/websockets.md) enable receiving notifications possible when a change in the blockchain occurs. The notification is received in real time without having to poll the API waiting for a reply.
+[Listeners](../../rest-api/websockets.md) enable receiving notifications when a change in the blockchain occurs. The notification is received in real time without having to poll the API waiting for a reply.
 
 1. Define the transaction you want to announce. In this case, we are going to send the message `Test` to `VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54`.
 
@@ -91,7 +91,7 @@ const signedTransaction = signer.sign(transferTransaction, generationHash);
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-3. Open a new [Listener](../../rest-api/websockets.md). This communicates with the API WebSocket, who will communicate you asynchronously the status of the transaction.
+3. Open a new [Listener](../../rest-api/websockets.md). This communicates with the API WebSocket, who will communicate with you asynchronously the status of the transaction.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -115,7 +115,7 @@ listener.open().then(() => {
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-4. Start monitoring if the WebSocket connection is alive. [Blocks](../../protocol/block.md) are generated every `15` seconds in average, so a timeout can be raised if there is no response after 30 seconds approximately.
+4. Start monitoring if the WebSocket connection is alive. [Blocks](../../protocol/block.md) are generated every `15` seconds on average, so a timeout can be raised if there is no response after approximately 30 seconds.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -186,7 +186,7 @@ xpx2-cli monitor status --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-6. Monitor as well if the transaction reaches the network. When you receive a message from unconfirmed WebSocket channel, the transaction is valid and is waiting to be included in a block. This does not mean necessarily that the transaction will be included, as a second validation happens before being finally confirmed.
+6. Monitor if the transaction reaches the network as well. When you receive a message from an unconfirmed WebSocket channel, the transaction is valid and is waiting to be included in a block. This does not necessarily mean that the transaction will be included, as a second validation happens before being finally confirmed.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -287,7 +287,7 @@ xpx2-cli transaction transfer --recipient VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-If you missed the WebSocket response, check the transaction status after by calling the [transaction status endpoint](../../../endpoints#operation/getTransaction). The status of failed transactions is not persistent, meaning that eventually is pruned.
+If you missed the WebSocket response, check the transaction status after by calling the [transaction status endpoint](../../../endpoints#operation/getTransaction). The status of failed transactions is not persistent, which means that eventually it will be pruned.
 
 ## What’s next?
 
