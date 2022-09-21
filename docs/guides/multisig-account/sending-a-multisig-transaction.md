@@ -93,21 +93,6 @@ const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicK
 const recipientAddress = Address.createFromRawAddress('VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54');
 ```
 
-<!--Java-->
-```java
-    // Replace with a Cosignatory's private key
-    final String cosignatoryPrivateKey = "<privateKey>";
-
-    // Replace with a Multisig's public key
-    final String multisigAccountPublicKey = "<publicKey>";
-
-    // Replace with recipient address
-    final String recipientAddress = "VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54";
-
-    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
-
-    final PublicAccount multisigPublicAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
-```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
@@ -151,16 +136,6 @@ const transferTransaction = TransferTransaction.create(
     NetworkType.TEST_NET);
 ```
 
-<!--Java-->
-```java
-    final TransferTransaction transferTransaction = TransferTransaction.create(
-        Deadline.create(2, HOURS),
-        Address.createFromRawAddress(recipientAddress),
-        Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10))),
-        PlainMessage.create("sending 10 xpx"),
-        NetworkType.TEST_NET
-    );
-```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 3. Wrap the transfer transaction under an [aggregate transaction](../../built-in-features/aggregate-transaction.md#examples), attaching multisig public key as the signer.
@@ -191,16 +166,6 @@ const aggregateTransaction = AggregateTransaction.createComplete(
     Deadline.create(),
     [transferTransaction.toAggregate(multisigAccount)],
     NetworkType.TEST_NET);
-```
-
-<!--Java-->
-```java
-
-final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateComplete()
-            .innerTransactions(Arrays.asList(
-                    transferTransaction.toAggregate(multisigPublicAccount)
-            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
-
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -239,14 +204,6 @@ transactionHttp
     .subscribe(x => console.log(x), err => console.error(err));
 ```
 
-<!--Java-->
-```java
-final SignedTransaction aggregateSignedTransaction = cosignatoryAccount.sign(aggregateTransaction, generationHash);
-
-final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    transactionHttp.announce(aggregateSignedTransaction).toFuture().get();
-```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -304,16 +261,6 @@ const aggregateTransaction = AggregateTransaction.createBonded(
     NetworkType.TEST_NET);
 
 const signedTransaction = cosignatoryAccount.sign(aggregateTransaction, generationHash);
-```
-
-<!--Java-->
-```java
-final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateBonded()
-            .innerTransactions(Arrays.asList(
-                    transferTransaction.toAggregate(multisigPublicAccount)
-            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
-
-final SignedTransaction aggregateSignedTransaction = cosignatoryAccount.sign(aggregateTransaction, generationHash);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -401,38 +348,6 @@ listener.open().then(() => {
         .subscribe(announcedAggregateBonded => console.log(announcedAggregateBonded),
             err => console.error(err));
 });
-```
-
-<!--Java-->
-```java
-
-    // Creating the lock funds transaction and announce it
-
-    final LockFundsTransaction lockFundsTransaction = LockFundsTransaction.create(
-        Deadline.create(2, HOURS),
-        NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
-        BigInteger.valueOf(480),
-        aggregateSignedTransaction,
-        NetworkType.TEST_NET
-    );
-
-    final SignedTransaction lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction, generationHash);
-
-    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    transactionHttp.announce(lockFundsTransactionSigned).toFuture().get();
-
-    System.out.println(lockFundsTransactionSigned.getHash());
-
-    final Listener listener = new Listener("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    listener.open().get();
-
-    final Transaction transaction = listener.confirmed(cosignatoryAccount.getAddress()).take(1).toFuture().get();
-
-    System.out.println(transaction);
-
-    transactionHttp.announceAggregateBonded(aggregateSignedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

@@ -175,35 +175,6 @@ const ticketDistributorToAliceTx = TransferTransaction.create(
     NetworkType.TEST_NET);
 ```
 
-<!--Java-->
-```java
-    // Replace with private key
-    final String alicePrivateKey = "<privateKey>";
-
-    // Replace with public key
-    final String ticketDistributorPublicKey = "<publicKey>";
-
-    final Account aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.TEST_NET);
-    final PublicAccount ticketDistributorPublicAccount = PublicAccount.createFromPublicKey(ticketDistributorPublicKey, NetworkType.TEST_NET);
-
-    final TransferTransaction aliceToTicketDistributorTx = TransferTransaction.create(
-            Deadline.create(2, HOURS),
-            ticketDistributorPublicAccount.getAddress(),
-            Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(100))),
-            PlainMessage.create("send 100 xpx to distributor"),
-            NetworkType.TEST_NET
-    );
-
-    final TransferTransaction ticketDistributorToAliceTx = TransferTransaction.create(
-            Deadline.create(2, HOURS),
-            aliceAccount.getAddress(),
-            Collections.singletonList(new Mosaic(new MosaicId("7cdf3b117a3c40cc"), BigInteger.valueOf(1))),
-            PlainMessage.create("send 1 museum ticket to alice"),
-            NetworkType.TEST_NET
-    );
-
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Wrap the defined transactions in an [aggregate transaction](../../built-in-features/aggregate-transaction.md) and sign it.
@@ -249,18 +220,6 @@ const aggregateTransaction = AggregateTransaction.createBonded(Deadline.create()
 
 const signedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
 
-```
-
-<!--Java-->
-```java
-
-    final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateBonded()
-            .innerTransactions(Arrays.asList(
-                    aliceToTicketDistributorTx.toAggregate(aliceAccount.getPublicAccount()),
-                    ticketDistributorToAliceTx.toAggregate(ticketDistributorPublicAccount)
-            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
-
-    final SignedTransaction aggregateSignedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -347,35 +306,6 @@ listener.open().then(() => {
         .subscribe(announcedAggregateBonded => console.log(announcedAggregateBonded),
             err => console.error(err));
 });
-```
-
-<!--Java-->
-```java
- // Creating the lock funds transaction and announce it
-
-        final LockFundsTransaction lockFundsTransaction = LockFundsTransaction.create(
-                Deadline.create(2, HOURS),
-                NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
-                BigInteger.valueOf(480),
-                aggregateSignedTransaction,
-                NetworkType.TEST_NET
-        );
-
-        final SignedTransaction lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction, generationHash);
-
-        final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-        transactionHttp.announce(lockFundsTransactionSigned).toFuture().get();
-
-        System.out.println(lockFundsTransactionSigned.getHash());
-
-        final Listener listener = new Listener("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-        listener.open().get();
-
-        final Transaction transaction = listener.confirmed(aliceAccount.getAddress()).take(1).toFuture().get();
-
-        transactionHttp.announceAggregateBonded(aggregateSignedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

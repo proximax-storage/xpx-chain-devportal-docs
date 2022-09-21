@@ -55,18 +55,6 @@ blockchainHttp
     .subscribe(block => console.log(block), err => console.error(err));
 ```
 
-<!--Java-->
-```java
-    final BlockchainHttp blockchainHttp = new BlockchainHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    // Replace with block height
-    final BigInteger blockHeight = BigInteger.valueOf(1);
-
-    final BlockInfo blockInfo = blockchainHttp.getBlockByHeight(blockHeight).toFuture().get();
-
-    System.out.print(blockInfo);
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 The following snippet returns the height of the latest block.
@@ -105,15 +93,6 @@ const blockchainHttp = new BlockchainHttp('http://bctestnet1.brimstone.xpxsirius
 blockchainHttp
     .getBlockchainHeight()
     .subscribe(height => console.log(height.compact()), err => console.error(err));
-```
-
-<!--Java-->
-```java
-    final BlockchainHttp blockchainHttp = new BlockchainHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    final BigInteger blockchainHeight = blockchainHttp.getBlockchainHeight().toFuture().get();
-
-    System.out.print(blockchainHeight);
 ```
 
 <!--CLI-->

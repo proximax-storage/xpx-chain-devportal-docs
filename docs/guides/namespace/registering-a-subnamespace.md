@@ -124,38 +124,6 @@ transactionHttp
     .subscribe(x => console.log(x), err => console.error(err));
 ```
 
-<!--Java-->
-```java
-    // Replace with private key
-    final String privateKey = "";
-
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-    // Replace with root namespace name
-    final NamespaceId rootNamespaceId = new NamespaceId("foo");
-
-    //Replace with subnamespace name
-    final String subnamespaceName = "bar";
-
-    final RegisterNamespaceTransaction registerNamespaceTransaction = RegisterNamespaceTransaction.createSubNamespace(
-        Deadline.create(2, ChronoUnit.HOURS),
-        subnamespaceName,
-        rootNamespaceId,
-        NetworkType.TEST_NET
-    );
-
-    final RegisterNamespaceTransaction registerNamespaceTransaction = new TransactionBuilderFactory()
-            .registerNamespace().subNamespace(rootNamespaceId, subnamespaceName)
-            .deadline(new Deadline(2, ChronoUnit.HOURS))
-            .networkType(NetworkType.TEST_NET).build();
-
-    final SignedTransaction signedTransaction = account.sign(registerNamespaceTransaction, generationHash);
-
-    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    transactionHttp.announce(signedTransaction).toFuture().get();
-```
-
 <!--CLI-->
 ```sh
 xpx2-cli transaction namespace --subnamespace --parentname foo --name bar

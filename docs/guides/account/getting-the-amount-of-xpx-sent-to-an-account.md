@@ -110,37 +110,6 @@ accountHttp
     );
 ```
 
-<!--Java-->
-```java
-        // Replace with public key
-        final String originPublicKey = "<public_key>";
-
-        // Replace with recipient address
-        final String recipientAddress = "VB2RPH-EMTFMB-KELX2Y-Q3MZTD-RV7DQG-UZEADV-CYKC";
-
-        // Replace with public key
-        final PublicAccount originAccount = PublicAccount.createFromPublicKey(originPublicKey, NetworkType.TEST_NET);
-
-        // Replace with address
-        final Address address = Address.createFromRawAddress(recipientAddress);
-
-        final AccountHttp accountHttp = new AccountHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-        final BigInteger total = accountHttp.outgoingTransactions(originAccount)
-                .flatMapIterable(tx -> tx) // Transform transaction array to single transactions to process them
-                .filter(tx -> tx.getType().equals(TransactionType.TRANSFER)) // Filter transfer transactions
-                .map(tx -> (TransferTransaction) tx) // Map transaction as transfer transaction
-                .filter(tx -> tx.getRecipient().equals(address)) // Filter transactions from to account
-                .filter(tx -> tx.getMosaics().size() == 1 && tx.getMosaics().get(0).getId().equals(NetworkCurrencyMosaic.ID)) // Filter xpx transactions
-                .map(tx -> tx.getMosaics().get(0).getAmount().divide(BigDecimal.valueOf(Math.pow(10, NetworkCurrencyMosaic.DIVISIBILITY)).toBigInteger())) // Map only amount in xpx
-                .toList() // Add all mosaics amounts into one array
-                .map(amounts -> amounts.stream().reduce(BigInteger.ZERO, BigInteger::add))
-                .toFuture()
-                .get();
-
-        System.out.println("Total xpx send to account " + address.pretty() + " is: " + total.toString());
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 If you want to check another mosaic that is different from the native currency, change `mosaicId` for the target mosaic.

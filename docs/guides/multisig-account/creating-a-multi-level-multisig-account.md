@@ -118,40 +118,6 @@ const convertMultisigAccount2Transaction = ModifyMultisigAccountTransaction.crea
 
 ```
 
-<!--Java-->
-```java
-    // Create multisig #2 (1-of-2)
-
-    // Replace with the private key of the account that you want to convert into multisig
-    final String multisig2PrivateKey = "<privateKey2>";
-
-    // Replace with cosignatories public keys
-    final String cosignatory5PublicKey = "<publicKey5>";
-    final String cosignatory6PublicKey = "<publicKey6>";
-
-    final Account multisigAccount2 = Account.createFromPrivateKey(multisig2PrivateKey, NetworkType.TEST_NET);
-
-    final PublicAccount cosignatory5PublicAccount = PublicAccount.createFromPublicKey(cosignatory5PublicKey, NetworkType.TEST_NET);
-    final PublicAccount cosignatory6PublicAccount = PublicAccount.createFromPublicKey(cosignatory6PublicKey, NetworkType.TEST_NET);
-
-    final ModifyMultisigAccountTransaction convertMultisigAccount2Transaction = ModifyMultisigAccountTransaction.create(
-        Deadline.create(2, HOURS),
-        1,
-        1,
-        Arrays.asList(
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                cosignatory5PublicAccount
-            ),
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                cosignatory6PublicAccount
-            )
-        ),
-        NetworkType.TEST_NET
-    );
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
@@ -262,45 +228,6 @@ const convertMultisigAccount3Transaction = ModifyMultisigAccountTransaction.crea
 
 ```
 
-<!--Java-->
-```java
-    // Replace with the private key of the account that you want to convert into multisig
-    final String multisig3PrivateKey = "<privateKey3>";
-
-    // Replace with cosignatories public keys
-    final String cosignatory7PublicKey = "<publicKey7>";
-    final String cosignatory8PublicKey = "<publicKey8>";
-    final String cosignatory4PublicKey = "<publicKey4>";
-
-    final Account multisigAccount3 = Account.createFromPrivateKey(multisig3PrivateKey, NetworkType.TEST_NET);
-
-    final PublicAccount cosignatory7PublicAccount = PublicAccount.createFromPublicKey(cosignatory7PublicKey, NetworkType.TEST_NET);
-    final PublicAccount cosignatory8PublicAccount = PublicAccount.createFromPublicKey(cosignatory8PublicKey, NetworkType.TEST_NET);
-    final PublicAccount cosignatory4PublicAccount = PublicAccount.createFromPublicKey(cosignatory4PublicKey, NetworkType.TEST_NET);
-
-    final ModifyMultisigAccountTransaction convertMultisigAccount3Transaction = ModifyMultisigAccountTransaction.create(
-        Deadline.create(2, HOURS),
-        2,
-        1,
-        Arrays.asList(
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                cosignatory7PublicAccount
-            ),
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                cosignatory8PublicAccount
-            ),
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                cosignatory4PublicAccount
-            )
-        ),
-        NetworkType.TEST_NET
-    );
-
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
@@ -375,36 +302,6 @@ const convertMultisigAccount1Transaction = ModifyMultisigAccountTransaction.crea
             cosignatory4,
         )],
     NetworkType.TEST_NET);
-
-```
-
-<!--Java-->
-```java
-    // Replace with the private key of the account that you want to convert into multisig
-    final String multisig1PrivateKey = "<privateKey1>";
-
-    final Account multisigAccount1 = Account.createFromPrivateKey(multisig1PrivateKey, NetworkType.TEST_NET);
-
-    final ModifyMultisigAccountTransaction convertMultisigAccount1Transaction = ModifyMultisigAccountTransaction.create(
-        Deadline.create(2, HOURS),
-        3,
-        1,
-        Arrays.asList(
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                multisigAccount2.getPublicAccount()
-            ),
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                multisigAccount3.getPublicAccount()
-            ),
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                cosignatory4PublicAccount
-            )
-        ),
-        NetworkType.TEST_NET
-    );
 
 ```
 
@@ -536,44 +433,6 @@ listener.open().then(() => {
         .subscribe(announcedAggregateBonded => console.log(announcedAggregateBonded),
             err => console.error(err));
 });
-```
-
-<!--Java-->
-```java
-
-    final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateBonded()
-            .innerTransactions(Arrays.asList(
-                convertMultisigAccount1Transaction.toAggregate(multisigAccount1.getPublicAccount()),
-                convertMultisigAccount2Transaction.toAggregate(multisigAccount2.getPublicAccount()),
-                convertMultisigAccount3Transaction.toAggregate(multisigAccount3.getPublicAccount())
-            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
-
-    final SignedTransaction aggregateSignedTransaction = multisigAccount1.sign(aggregateTransaction, generationHash);
-
-    // Creating the lock funds transaction and announce it
-    final LockFundsTransaction lockFundsTransaction = LockFundsTransaction.create(
-        Deadline.create(2, HOURS),
-        NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
-        BigInteger.valueOf(1000),
-        pullTransactionSigned,
-        NetworkType.TEST_NET
-    );
-
-    final SignedTransaction lockFundsTransactionSigned = multisigAccount1.sign(lockFundsTransaction, generationHash);
-
-    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    transactionHttp.announce(lockFundsTransactionSigned).toFuture().get();
-
-    System.out.println(lockFundsTransactionSigned.getHash());
-
-    final Listener listener = new Listener("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    listener.open().get();
-
-    final Transaction transaction = listener.confirmed(multisigAccount1.getAddress()).take(1).toFuture().get();
-
-    transactionHttp.announceAggregateBonded(aggregateSignedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

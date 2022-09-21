@@ -64,18 +64,6 @@ accountHttp
 xpx2-cli account info --address VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54
 ```
 
-<!--Java-->
-```java
-    final AccountHttp accountHttp = new AccountHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    // Replace with address
-    final String address = "VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54";
-
-    final AccountInfo accountInfo = accountHttp.getAccountInfo(Address.createFromRawAddress(address)).toFuture().get();
-
-    System.out.println(accountInfo);
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 Can you determine the account’s public key? The **public key** identifies your account publicly in the network. Your **address** is derived from it, which contains further information such as network and validity check.

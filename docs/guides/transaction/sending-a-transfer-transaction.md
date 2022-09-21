@@ -102,19 +102,6 @@ const transferTransaction = TransferTransaction.create(
     NetworkType.TEST_NET);
 ```
 
-<!--Java-->
-```java
-    final String recipientAddress = "VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54";
-
-    final TransferTransaction transferTransaction = TransferTransaction.create(
-        Deadline.create(2, HOURS),
-        Address.createFromRawAddress(recipientAddress),
-        Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10))),
-        PlainMessage.create("Welcome To Sirius Chain"),
-        NetworkType.TEST_NET
-    );
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 As you may have noticed, transfer transactions require an array of mosaics as a parameter, allowing to send transfer transactions with multiple mosaics at the same time.
@@ -161,19 +148,6 @@ var mosaics = [
     ];
 ```
 
-<!--Java-->
-```java
-
-    MosaicId myMosaicId = new MosaicId("<MosaicHexString>");
-
-    Mosaic myMosaic = new Mosaic(myMosaicId, BigInteger.valueOf(10));
-
-    List<Mosaic> mosaics = Arrays.asList(
-        myMosaic,
-        NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10))
-    );
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 <div class=info>
@@ -213,16 +187,6 @@ const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 const signedTransaction = account.sign(transferTransaction, generationHash);
 ```
 
-<!--Java-->
-```java
-    // Replace with private key
-    final String privateKey = "<privateKey>";
-
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-    final SignedTransaction signedTransaction = account.sign(transferTransaction, generationHash);
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 
@@ -253,13 +217,6 @@ const transactionHttp = new TransactionHttp('http://bctestnet1.brimstone.xpxsiri
 transactionHttp
     .announce(signedTransaction)
     .subscribe(x => console.log(x), err => console.error(err));
-```
-
-<!--Java-->
-```java
-    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    transactionHttp.announce(signedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

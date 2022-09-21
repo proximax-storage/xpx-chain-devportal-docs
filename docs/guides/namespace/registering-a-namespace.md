@@ -69,17 +69,6 @@ namespaceHttp
     .subscribe(namespace => console.log(namespace), err => console.error(err));
 ```
 
-<!--Java-->
-```java
-final NamespaceId namespaceId = new NamespaceId("foo");
-
-final NamespaceHttp namespaceHttp = new NamespaceHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-final NamespaceInfo namespaceInfo = namespaceHttp.getNamespace(namespaceId).toFuture().get();
-
-System.out.println(namespaceInfo);
-```
-
 <!--CLI-->
 ```sh
 xpx2-cli namespace info --name foo
@@ -174,29 +163,6 @@ const signedTransaction = account.sign(registerNamespaceTransaction, generationH
 transactionHttp
     .announce(signedTransaction)
     .subscribe(x => console.log(x), err => console.error(err));
-```
-
-<!--Java-->
-```java
-    // Replace with private key
-    final String privateKey = "<privateKey>";
-
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-    // Replace with namespace name
-    final String namespaceName = "foo";
-
-    final RegisterNamespaceTransaction registerNamespaceTransaction = new TransactionBuilderFactory()
-            .registerNamespace().rootNamespace(namespaceName)
-            .duration(BigInteger.valueOf(1000))
-            .deadline(new Deadline(2, ChronoUnit.HOURS))
-            .networkType(NetworkType.TEST_NET).build();
-
-    final SignedTransaction signedTransaction = account.sign(registerNamespaceTransaction, generationHash);
-
-    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    transactionHttp.announce(signedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

@@ -42,15 +42,6 @@ console.log('PrivateKey:', account.privateKey);
 console.log('PublicKey:', account.publicKey);
 ```
 
-<!--Java-->
-```java
-final Account account = Account.generateNewAccount(NetworkType.TEST_NET);
-
-System.out.printf("Address: '%S' %n", account.getAddress());
-System.out.printf("PrivateKey: '%S' %n", account.getPrivateKey());
-System.out.printf("PublicKey: '%S' %n", account.getPublicKey());
-```
-
 <!--CLI-->
 ```sh
 xpx2-cli account generate --network TEST_NET
@@ -97,18 +88,6 @@ const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 console.log('Address:', account.address.pretty());
 console.log('PrivateKey:', account.privateKey);
 console.log('PublicKey:', account.publicKey);
-```
-
-<!--Java-->
-```java
-    // Replace with a private key
-    final String privateKey = "<private_key>";
-
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-    System.out.printf("Address: '%S' %n", account.getAddress());
-    System.out.printf("PrivateKey: '%S' %n", account.getPrivateKey());
-    System.out.printf("PublicKey: '%S' %n", account.getPublicKey());
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

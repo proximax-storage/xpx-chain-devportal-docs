@@ -187,32 +187,6 @@ const transferTransaction = TransferTransaction.create(
 );
 ```
 
-<!--java-->
-```java
-import io.proximax.sdk.model.account.Address;
-import io.proximax.sdk.model.blockchain.NetworkType;
-import io.proximax.sdk.model.mosaic.Mosaic;
-import io.proximax.sdk.model.mosaic.MosaicId;
-import io.proximax.sdk.model.transaction.Deadline;
-import io.proximax.sdk.model.transaction.PlainMessage;
-import io.proximax.sdk.model.transaction.TransferTransaction;
-
-import java.math.BigInteger;
-import java.util.Arrays;
-
-import static java.time.temporal.ChronoUnit.HOURS;
-
-BigInteger mosaicId = new MosaicId("7CDF3B117A3C40CC").getId();
-
-final TransferTransaction transferTransaction = TransferTransaction.create(
-    Deadline.create(2, HOURS),
-    Address.createFromRawAddress("VC7A4H-7CYCSH-4CP4XI-ZS4G2G-CDZ7JP-PR5FRG-2VBU"),
-    Arrays.asList(new Mosaic(mosaicId, BigInteger.valueOf(1))),
-    PlainMessage.create("enjoy your ticket"),
-    NetworkType.TEST_NET
-);
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 Although the transaction is created, it has not been announced to the network yet.
@@ -249,15 +223,6 @@ const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 const signedTransaction = account.sign(transferTransaction, generationHash);
 ```
 
-<!--Java-->
-```java
-final String privateKey = "<private_key>";
-
-final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-final SignedTransaction signedTransaction = account.sign(transferTransaction, generationHash);
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 3. Once signed, announce the transaction to the network.
@@ -280,12 +245,6 @@ transactionHttp.announce(signedTransaction).subscribe(
     x => console.log(x),
     err => console.log(err)
 );
-```
-<!--Java-->
-```java
-final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-transactionHttp.announceTransaction(signedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

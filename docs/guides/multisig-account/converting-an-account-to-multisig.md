@@ -81,21 +81,6 @@ const cosignatory2PublicKey = 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC0
 const cosignatory2 = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.TEST_NET);
 ```
 
-<!--Java-->
-```java
-    // Replace with the private key of the account that you want to convert into multisig
-    final String privateKey = "<privateKey>";
-
-    // Replace with cosignatories public keys
-    final String cosignatory1PublicKey = "7D08373CFFE4154E129E04F0827E5F3D6907587E348757B0F87D2F839BF88246";
-    final String cosignatory2PublicKey = "F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D";
-
-    final Account accToMultisig = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-    final PublicAccount cosignatory1PublicAccount = PublicAccount.createFromPublicKey(cosignatory1PublicKey, NetworkType.TEST_NET);
-    final PublicAccount cosignatory2PublicAccount = PublicAccount.createFromPublicKey(cosignatory2PublicKey, NetworkType.TEST_NET);
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Create a [modify multisig account transaction](../../built-in-features/multisig-account.md#modify-multisig-account-transaction) to convert the shared account into a multisig account. As you want to create a 1-of-2 multisig account, set the minimum signatures required to `1`.
@@ -151,26 +136,6 @@ const convertIntoMultisigTransaction = ModifyMultisigAccountTransaction.create(
             cosignatory2,
         )],
     NetworkType.TEST_NET);
-```
-
-<!--Java-->
-```java
-    final ModifyMultisigAccountTransaction convertIntoMultisigTransaction = ModifyMultisigAccountTransaction.create(
-        Deadline.create(2, HOURS),
-        1,
-        1,
-        Arrays.asList(
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                cosignatory1PublicAccount
-            ),
-            new MultisigCosignatoryModification(
-                MultisigCosignatoryModificationType.ADD,
-                cosignatory2PublicAccount
-            )
-        ),
-        NetworkType.TEST_NET
-    );
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

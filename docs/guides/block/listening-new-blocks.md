@@ -58,17 +58,6 @@ listener.open().then(() => {
 });
 ```
 
-<!--Java-->
-```java
-    Listener listener = new Listener("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    listener.open().get();
-
-    BlockInfo blockInfo = listener.newBlock().take(1).toFuture().get();
-
-    System.out.println(blockInfo);
-```
-
 <!--CLI-->
 ```sh
 xpx2-cli monitor block

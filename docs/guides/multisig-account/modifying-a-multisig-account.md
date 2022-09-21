@@ -74,17 +74,6 @@ const multisigAccountPublicKey = "<multisigPublicKey>";
 const multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
 ```
 
-<!--Java-->
-```java
-    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    final String cosignatoryPrivateKey = "<cosignatoryPrivateKey>";
-    final String multisigAccountPublicKey = "<multisigPublicKey>";
-
-    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
-    final PublicAccount multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 2. Define a modify multisig account transaction to increase the `minAprovalDelta` in one unit.
@@ -121,17 +110,6 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
     0, // min to remove cosignatory - relative delta
     [],
     NetworkType.TEST_NET);
-```
-
-<!--Java-->
-```java
- final ModifyMultisigAccountTransaction modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-    Deadline.create(2, HOURS),
-    1, // min to Approve - relative delta
-    0, // min to remove cosignatory - relative delta
-    Collections.emptyList(),
-    NetworkType.TEST_NET
-);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -194,17 +172,6 @@ transactionHttp
     .subscribe(x => console.log(x), err => console.error(err));
 ```
 
-<!--Java-->
-```java
-    final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateComplete()
-            .innerTransactions(Arrays.asList(
-                modifyMultisigAccountTransaction.toAggregate(multisigAccount)
-            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
-
-    final SignedTransaction signedTransaction = cosignatoryAccount.sign(aggregateTransaction, generationHash);
-
-    transactionHttp.announce(signedTransaction).toFuture().get();
-```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -294,22 +261,6 @@ const newCosignatoryAccount = PublicAccount.createFromPublicKey(newCosignatoryPu
 const multisigCosignatoryModification = new MultisigCosignatoryModification(MultisigCosignatoryModificationType.Add,newCosignatoryAccount);
 ```
 
-<!--Java-->
-```java
-    // Replace with the multisig public key
-    final String cosignatoryPrivateKey = "<cosignatoryPrivateKey>";
-    final String multisigAccountPublicKey = "<multisigPublicKey>";
-    final String newCosignatoryPublicKey = "<newCosignatoryPublicKey>";
-
-    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
-    final PublicAccount newCosignatoryAccount = PublicAccount.createFromPublicKey(newCosignatoryPublicKey, NetworkType.TEST_NET);
-    final PublicAccount multisigAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
-
-    final MultisigCosignatoryModification multisigCosignatoryModification = new MultisigCosignatoryModification(
-        MultisigCosignatoryModificationType.ADD,
-        newCosignatoryAccount
-    );
-```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -351,17 +302,6 @@ const modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create
     NetworkType.TEST_NET);
 ```
 
-<!--Java-->
-```java
-    final ModifyMultisigAccountTransaction modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-        Deadline.create(2, HOURS),
-        0,
-        0,
-        Collections.singletonList(multisigCosignatoryModification),
-        NetworkType.TEST_NET
-    );
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 3. Wrap the modify multisig account transaction in an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md) and sign it.
@@ -400,16 +340,6 @@ const aggregateTransaction = AggregateTransaction.createBonded(
     NetworkType.TEST_NET);
 
 const signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
-```
-
-<!--Java-->
-```java
-    final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateBonded()
-            .innerTransactions(Arrays.asList(
-                modifyMultisigAccountTransaction.toAggregate(multisigAccount)
-            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
-
-    final SignedTransaction signedTransaction = cosignatoryAccount.sign(aggregateTransaction);
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -496,33 +426,6 @@ listener.open().then(() => {
         .subscribe(announcedAggregateBonded => console.log(announcedAggregateBonded),
             err => console.error(err));
 });
-```
-
-<!--Java-->
-```java
-    final LockFundsTransaction lockFundsTransaction = LockFundsTransaction.create(
-        Deadline.create(2, HOURS),
-        NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
-        BigInteger.valueOf(1000),
-        signedTransaction,
-        NetworkType.TEST_NET
-    );
-
-    final SignedTransaction lockFundsTransactionSigned = cosignatoryAccount.sign(lockFundsTransaction);
-
-    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    transactionHttp.announce(lockFundsTransactionSigned).toFuture().get();
-
-    final Listener listener = new Listener("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    listener.open().get();
-
-    // listen to confirmed transaction which is the LockFundsTransaction in this case
-    final Transaction transaction = listener.confirmed(cosignatoryAccount.getAddress()).toFuture().get();
-
-    // announce signed transaction
-    transactionHttp.announceAggregateBonded(signedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -682,42 +585,6 @@ const signedTransaction = cosignatoryAccount.sign(aggregateTransaction, generati
 transactionHttp
     .announce(signedTransaction)
     .subscribe(x => console.log(x), err => console.error(err));
-```
-
-<!--Java-->
-```java
-    // Replace with the multisig public key
-    final String multisigAccountPublicKey = "<multisigPublicKey>";;
-
-    // Replace with the cosignatory private key
-    final String cosignatoryPrivateKey =  "<cosignatoryPrivateKey>";
-
-    final Account cosignatoryAccount = Account.createFromPrivateKey(cosignatoryPrivateKey, NetworkType.TEST_NET);
-    final PublicAccount multisigPublicAccount = PublicAccount.createFromPublicKey(multisigAccountPublicKey, NetworkType.TEST_NET);
-
-    final MultisigCosignatoryModification multisigCosignatoryModification = new MultisigCosignatoryModification(
-        MultisigCosignatoryModificationType.REMOVE,
-        PublicAccount.createFromPublicKey("<cosignatoryToRemovePublicKey>", NetworkType.TEST_NET)
-    );
-
-    final ModifyMultisigAccountTransaction modifyMultisigAccountTransaction = ModifyMultisigAccountTransaction.create(
-        Deadline.create(2, HOURS),
-        0,
-        0,
-        Collections.singletonList(multisigCosignatoryModification),
-        NetworkType.TEST_NET
-    );
-
-    final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateComplete()
-            .innerTransactions(Arrays.asList(
-                modifyMultisigAccountTransaction.toAggregate(multisigPublicAccount)
-            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
-
-    final SignedTransaction signedTransaction = cosignatoryAccount.sign(aggregateTransaction, generationHash);
-
-    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    transactionHttp.announce(signedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

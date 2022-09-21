@@ -69,30 +69,6 @@ const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.T
 const bobPublicKey = 'F82527075248B043994F1CAFD965F3848324C9ABFEC506BC05FBCF5DD7307C9D';
 const bobAccount = PublicAccount.createFromPublicKey(bobPublicKey, NetworkType.TEST_NET);
 ```
-<!--Java-->
-```java
-import java.math.BigInteger;
-import java.net.MalformedURLException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.concurrent.ExecutionException;
-
-import static java.time.temporal.ChronoUnit.HOURS;
-
-class AskingForMosaicsWithAggregateBondedTransaction {
-
-    @Test
-    void askingForMosaicsWithAggregateBondedTransaction() throws ExecutionException, InterruptedException, MalformedURLException {
-
-        // Replace with a Alice's private key
-        final String alicePrivateKey = "";
-
-        // Replace with a Bob's public key
-        final String bobPublicKey = "";
-
-        final Account aliceAccount = Account.createFromPrivateKey(alicePrivateKey, NetworkType.TEST_NET);
-        final PublicAccount bobPublicAccount = PublicAccount.createFromPublicKey(bobPublicKey, NetworkType.TEST_NET);
-```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -134,17 +110,6 @@ const transferTransaction1 = TransferTransaction.create(
     NetworkType.TEST_NET);
 ```
 
-<!--Java-->
-```java
-    final TransferTransaction transferTransaction1 = TransferTransaction.create(
-        Deadline.create(2, HOURS),
-        bobPublicAccount.getAddress(),
-        Collections.emptyList(),
-        PlainMessage.create("send me 20 XPX"),
-        NetworkType.TEST_NET
-    );
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 <div class=cap-alpha-ol>
@@ -182,17 +147,6 @@ const transferTransaction2 = TransferTransaction.create(
     NetworkType.TEST_NET);
 ```
 
-<!--Java-->
-```java
-    final TransferTransaction transferTransaction2 = TransferTransaction.create(
-        Deadline.create(2, HOURS),
-        aliceAccount.getAddress(),
-        Collections.singletonList(NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(20))),
-        PlainMessage.Empty,
-        NetworkType.TEST_NET
-    );
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 3. Wrap the defined transactions in an [aggregate bonded transaction](../../built-in-features/aggregate-transaction.md):
@@ -227,18 +181,6 @@ const aggregateTransaction = AggregateTransaction.createBonded(
 
 const signedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
 ```
-
-<!--Java-->
-```java
-    final AggregateTransaction aggregateTransaction = new TransactionBuilderFactory().aggregateBonded()
-            .innerTransactions(Arrays.asList(
-                    transferTransaction1.toAggregate(aliceAccount.getPublicAccount()),
-                    transferTransaction2.toAggregate(bobPublicAccount)
-            )).deadline(new Deadline(2, ChronoUnit.HOURS)).networkType(NetworkType.TEST_NET);
-
-    final SignedTransaction aggregateSignedTransaction = aliceAccount.sign(aggregateTransaction, generationHash);
-```
-
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 4. Sign the aggregate bonded transaction with Alice’s account and announce it to the network. Remember to [lock 10 nativeCurrency](../../built-in-features/aggregate-transaction.md#hashlocktransaction) first. Alice will recover the locked mosaics if the aggregate transaction completes.
@@ -335,34 +277,6 @@ listener.open().then(() => {
         .subscribe(announcedAggregateBonded => console.log(announcedAggregateBonded),
             err => console.error(err));
 });
-```
-
-<!--Java-->
-```java
-    // Creating the lock funds transaction and announce it
-    final LockFundsTransaction lockFundsTransaction = LockFundsTransaction.create(
-        Deadline.create(2, HOURS),
-        NetworkCurrencyMosaic.createRelative(BigInteger.valueOf(10)),
-        BigInteger.valueOf(1000),
-        aggregateSignedTransaction,
-        NetworkType.TEST_NET
-    );
-
-    final SignedTransaction lockFundsTransactionSigned = aliceAccount.sign(lockFundsTransaction, generationHash);
-
-    final TransactionHttp transactionHttp = new TransactionHttp("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    transactionHttp.announce(lockFundsTransactionSigned).toFuture().get();
-
-    System.out.println(lockFundsTransactionSigned.getHash());
-
-    final Listener listener = new Listener("http://bctestnet1.brimstone.xpxsirius.io:3000");
-
-    listener.open().get();
-
-    final Transaction transaction = listener.confirmed(aliceAccount.getAddress()).take(1).toFuture().get();
-
-    transactionHttp.announceAggregateBonded(aggregateSignedTransaction).toFuture().get();
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->

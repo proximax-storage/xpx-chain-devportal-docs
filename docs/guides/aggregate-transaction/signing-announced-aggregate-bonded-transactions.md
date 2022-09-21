@@ -134,32 +134,5 @@ accountHttp
         err => console.error(err));
 ```
 
-<!--Java-->
-```java
-    // Replace with a private key
-    final String privateKey = "<privateKey>";
-
-    final Account account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
-
-    final String nodeUrl = 'http://bctestnet1.brimstone.xpxsirius.io:3000';
-
-    final AccountHttp accountHttp = new AccountHttp(nodeUrl);
-
-    final TransactionHttp transactionHttp = new TransactionHttp(nodeUrl);
-
-    accountHttp.aggregateBondedTransactions(account.getPublicAccount())
-        .flatMapIterable(tx -> tx) // Transform transaction array to single transactions to process them
-        .filter(tx -> tx.getHash() == signedAggregateBoundedTransaction.getHash() )
-        .filter(tx -> !tx.signedByAccount(account.getPublicAccount()))
-        .map(tx -> {
-            final CosignatureTransaction cosignatureTransaction = CosignatureTransaction.create(tx);
-
-            final CosignatureSignedTransaction cosignatureSignedTransaction = account.signCosignatureTransaction(cosignatureTransaction);
-
-            return transactionHttp.announceAggregateBondedCosignature(cosignatureSignedTransaction).toFuture().get();
-        })
-        .toFuture()
-        .get();
-```
 <!--END_DOCUSAURUS_CODE_TABS-->
 
