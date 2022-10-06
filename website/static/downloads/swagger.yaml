@@ -50,6 +50,9 @@ tags:
 - name: Exchange routes
   description: |
     Exchange related endpoints.
+- name: SDA-SDA Exchange routes
+  description: |
+    SDA-SDA Exchange related endpoints.
     
 paths:
   "/account/{accountId}":
@@ -377,6 +380,99 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MerkleProofInfoDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/block/{height}/receipts/{receiptType}":
+    get:
+      tags:
+      - Block routes
+      summary: Get a list of a receipt type from a block
+      description: Returns the list of receipts of a receipt type linked to a block.
+      operationId: getReceiptsAtHeightByReceiptType
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+      - name: receiptType
+        in: path
+        description: The type of receipt.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionStatementDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/block/{height}/receipts/exchangesda":
+    get:
+      tags:
+      - Block routes
+      summary: Get a list of SDA-SDA exchange related receipts from a block
+      description: Returns the list of receipts related to SDA-SDA exchange linked to a block.
+      operationId: getReceiptsAtHeightByReceiptType
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SdaExchangeStatementDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/block/{height}/receipts/exchangesda/{accountId}":
+    get:
+      tags:
+      - Block routes
+      summary: Get a list of SDA-SDA exchange related receipts of an account from a block
+      description: Returns the list of receipts related to SDA-SDA exchange of an account linked to a block.
+      operationId: getSdaExchangeReceiptsByAccountIdAtHeight
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SdaExchangeStatementDTO"
         "404":
           description: resource not found
         "409":
@@ -1411,7 +1507,69 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
-  
+
+  '/account/{accountId}/exchangesda':
+    get:
+      tags:
+      - SDA-SDA Exchange routes
+      summary: Get SDA-SDA offers information
+      description: Returns the active SDA-SDA offers information of the account
+      operationId: exchangesdaByIds
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SdaExchangeDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  '/exchangesda/{type}/{mosaicId}':
+    get:
+      tags:
+      - SDA-SDA Exchange routes
+      summary: Get SDA-SDA offers of a SDA type
+      description: Returns the active SDA-SDA offers information of a SDA type
+      operationId: exchangesdaByMosaicId{Give/Get}
+      parameters:
+      - name: type
+        in: path
+        description: The type of exchange offer - give or get.
+        required: true
+        schema:
+          type: string
+      - name: mosaicId
+        in: path
+        description: The mosaic identifier.
+        required: true
+        schema:
+          type: string
+          format: hex
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SdaOfferBalancesDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+
 externalDocs:
   description: ProximaX Developer Center
   url: 'https://proximax.io/'
@@ -3006,6 +3164,7 @@ components:
             - $ref: "#/components/schemas/BalanceChangeReceiptDTO"
             - $ref: "#/components/schemas/ArtifactExpiryReceiptDTO"
             - $ref: "#/components/schemas/InflationReceiptDTO"
+            - $ref: "#/components/schemas/SdaExchangeStatementDTO"
     ResolutionStatementDTO:
       type: object
       description: A resolution statement keeps the relation between a namespace alias used
@@ -3027,6 +3186,26 @@ components:
             due to alias related transactions.
           items:
             $ref: "#/components/schemas/ResolutionEntryDTO"
+    SdaExchangeStatementDTO:
+      type: object
+      description: The collection of receipts related to a SDA-SDA Exchange.
+      required:
+      - height
+      - source
+      - receipts
+      properties:
+        height:
+          $ref: "#/components/schemas/UInt64DTO"
+        source:
+          $ref: "#/components/schemas/SourceDTO"
+        receipts:
+          type: array
+          description: The array of receipts.
+          items:
+            anyOf:
+            - $ref: "#/components/schemas/OfferCreationReceiptDTO"
+            - $ref: "#/components/schemas/OfferExchangeReceiptDTO"
+            - $ref: "#/components/schemas/OfferRemovalReceiptDTO"
     ResolutionEntryDTO:
       type: object
       required:
@@ -3133,6 +3312,100 @@ components:
             $ref: "#/components/schemas/UInt64DTO"
           amount:
             $ref: "#/components/schemas/UInt64DTO"
+    OfferCreationReceiptDTO:
+      type: object
+      description:
+      allOf:
+      - $ref: "#/components/schemas/ReceiptDTO"
+      - type: object
+        required:
+        - sender
+        - mosaicIdGive
+        - mosaicIdGet
+        - mosaicAmountGive
+        - mosaicAmountGet
+        properties:
+          sender:
+            type: string
+            description: The sender's account public key.
+            example: EFF9BC7472263D03EF6362B1F200FD3061BCD1BABE78F82119FB88811227CE85
+          mosaicIdGive:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicIdGet:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicAmountGive:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicAmountGet:
+            $ref: "#/components/schemas/UInt64DTO"
+    OfferExchangeReceiptDTO:
+      type: object
+      description:
+      allOf:
+      - $ref: "#/components/schemas/ReceiptDTO"
+      - type: object
+        required:
+        - sender
+        - mosaicIdGive
+        - mosaicIdGet
+        - exchangeDetails
+        properties:
+          sender:
+            type: string
+            description: The sender's account public key.
+            example: EFF9BC7472263D03EF6362B1F200FD3061BCD1BABE78F82119FB88811227CE85
+          mosaicIdGive:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicIdGet:
+            $ref: "#/components/schemas/UInt64DTO"
+          exchangeDetails:
+            type: array
+            description: The array of exchange details statements.
+            items:
+              $ref: "#/components/schemas/ExchangeDetailsDTO"
+    OfferRemovalReceiptDTO:
+      type: object
+      description:
+      allOf:
+      - $ref: "#/components/schemas/ReceiptDTO"
+      - type: object
+        required:
+        - sender
+        - mosaicIdGive
+        - mosaicIdGet
+        - mosaicAmountGiveReturned
+        properties:
+          sender:
+            type: string
+            description: The sender's account public key.
+            example: EFF9BC7472263D03EF6362B1F200FD3061BCD1BABE78F82119FB88811227CE85
+          mosaicIdGive:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicIdGet:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicAmountGiveReturned:
+            $ref: "#/components/schemas/UInt64DTO"
+    ExchangeDetailsDTO:
+      type: object
+      description: The exchange details statements of the SDA-SDA offers.
+      required:
+      - recipient
+      - mosaicIdGive
+      - mosaicIdGet
+      - mosaicAmountGive
+      - mosaicAmountGet
+      properties:
+        recipient:
+          type: string
+          description: The recipient's account public key.
+          example: D799E559AB735A5E62187306E80C1679EE3E1170532280C968D974E351CB412F
+        mosaicIdGive:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicIdGet:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicAmountGive:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicAmountGet:
+          $ref: "#/components/schemas/UInt64DTO"
     ServerDTO:
       type: object
       required:
@@ -4365,6 +4638,126 @@ components:
         price:
           type: number
           example: 1.5
+
+    # SdaExchange endpoints
+    PlaceSdaOfferTransactionDTO:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/TransactionDTO"
+      required:
+      - offers
+      properties:
+        offers:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlaceSdaOfferTransactionBodyDTO"
+    RemoveSdaOfferTransactionDTO:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/TransactionDTO"
+      required:
+      - offers
+      properties:
+        offers:
+          type: array
+          items:
+            $ref: "#/components/schemas/RemoveSdaOfferTransactionBodyDTO"
+    PlaceSdaOfferTransactionBodyDTO:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/SdaOfferDTO"
+      required:
+        - duration
+      properties:
+        duration:
+            $ref: "#/components/schemas/UInt64DTO"
+    RemoveSdaOfferTransactionBodyDTO:
+      type: object
+      required:
+        - mosaicIdGive
+        - mosaicIdGet
+      properties:
+        mosaicIdGive:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicIdGet:
+          $ref: "#/components/schemas/UInt64DTO" 
+    SdaOfferDTO:
+      type: object
+      required:
+        - mosaicIdGive
+        - mosaicAmountGive
+        - mosaicIdGet
+        - mosaicAmountGet
+      properties:
+        mosaicIdGive:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicAmountGive:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicIdGet:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicAmountGet:
+          $ref: "#/components/schemas/UInt64DTO"
+    SdaExchangeDTO:
+      type: object
+      required:
+      - owner
+      - ownerAddress
+      - sdaOfferBalances
+      properties:
+        owner:
+          type: string
+          description: The account public key.
+          example: "AC1A6E1D8DE5B17D2C6B1293F1CAD3829EEACF38D09311BB3C8E5A880092DE26"
+        ownerAddress:
+          type: string
+          description: The account unique address in hexadecimal.
+          example: 9081FCCB41F8C8409A9B99E485E0E28D23BD6304EF7215E01A
+        sdaOfferBalances:
+          $ref: "#/components/schemas/SdaOfferBalancesDTO"
+    SdaOfferBalancesDTO:
+      type: object
+      required:
+      - mosaicIdGive
+      - mosaicIdGet
+      - currentMosaicGiveAmount
+      - currentMosaicGetAmount
+      - initialMosaicGiveAmount
+      - initialMosaicGetAmount
+      - deadline
+      - owner
+      properties:
+        mosaicIdGive:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        mosaicIdGet:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        currentMosaicGiveAmount:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        currentMosaicGetAmount:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        initialMosaicGiveAmount:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        initialMosaicGetAmount:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        deadline:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        owner:
+          type: string
+          description: The public key of the owner.
+          example: "AC1A6E1D8DE5B17D2C6B1293F1CAD3829EEACF38D09311BB3C8E5A880092DE26"
 
     # Service endpoints
     PrepareDriveTransactionDTO:
