@@ -40,7 +40,7 @@ const siteConfig = {
   headerLinks: [
     { doc: 'getting-started/what-is-proximax-sirius-chain', label: 'Getting Started' },
     { doc: 'built-in-features/account', label: 'Built-in Features' },
-    { page: 'endpoints', label: 'REST API Endpoints' },
+    { doc: 'rest-api/rest-api-overview', label: 'REST API Endpoints' },
     { doc: 'guides/guides-overview', label: 'Guides' },
     { doc: 'cheatsheet', label: 'Cheat Sheet' },
     { search: true }
