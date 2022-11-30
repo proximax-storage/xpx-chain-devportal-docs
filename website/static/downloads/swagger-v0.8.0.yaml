@@ -227,6 +227,53 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
+  "/account/{accountId}/harvesting":
+    get:
+      tags:
+      - Account routes
+      summary: Get harvesting details of accountId
+      description: Returns harvesting details of accountId.
+      operationId: getHarvestingDetailsFromAccount
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AccountHarvestingInfoDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  /harvesters:
+    get:
+      tags:
+      - Account routes
+      summary:  Get list of registered harvesting accounts in the blockchain
+      description: Returns list of registered harvesting accounts in the blockchain.
+      operationId: getRegisteredHarvestingAccounts
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HarvestersInfoDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
 
   # Account routes end
 
@@ -2835,6 +2882,69 @@ components:
           type: string
           description: The public key of the cosignatory account.
           example: 5D9513282B65A12A1B68DCB67DB64245721F7AE7822BE441FE813173803C512C
+    AccountHarvestingInfoDTO:
+      type: object
+      required:
+        - harvester
+      properties:
+        harvester:
+          $ref: "#/components/schemas/HarvesterDTO"
+    HarvesterDTO:
+      type: object
+      required:
+        - key
+        - owner
+        - address
+        - disabledHeight
+        - lastSigningBlockHeight
+        - effectiveBalance
+        - canHarvest
+        - activity
+        - greed
+      properties:
+        key:
+          type: string
+          description: The account public key.
+          example: AC1A6E1D8DE5B17D2C6B1293F1CAD3829EEACF38D09311BB3C8E5A880092DE26
+        owner:
+          type: string
+          description: The owner account public key.
+          example: AC1A6E1D8DE5B17D2C6B1293F1CAD3829EEACF38D09311BB3C8E5A880092DE26
+        address:
+          type: string
+          description: The address of the owner account in hexadecimal.
+          example: 9081FCCB41F8C8409A9B99E485E0E28D23BD6304EF7215E01A
+        disabledHeight:
+          $ref: "#/components/schemas/UInt64DTO"
+        lastSigningBlockHeight:
+          $ref: "#/components/schemas/UInt64DTO"
+        effectiveBalance:
+          $ref: "#/components/schemas/UInt64DTO"
+        canHarvest:
+          type: boolean
+        activity:
+          type: number
+          example: 0.5
+        greed:
+          type: number
+          example: 0.1
+    HarvesterMetaDTO:
+      type: object
+      required:
+          - id
+      properties:
+        id:
+          type: string
+    HarvestersInfoDTO:
+      type: object
+      required:
+        - harvester
+        - meta
+      properties:
+        harvester:
+          $ref: "#/components/schemas/HarvesterDTO"
+        meta:
+           $ref: "#/components/schemas/HarvesterMetaDTO"       
     
     # Blockchain endpoints
     BlockInfoDTO:
