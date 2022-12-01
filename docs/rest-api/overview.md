@@ -26,11 +26,6 @@ Refer to the latest documentation to get the list of available endpoints.
 - [v0.7.2](/v0.7.2/endpoints)
 - [v0.7.1](/v0.7.1/endpoints)
 - [v0.5.5](/v0.5.5/endpoints)
-- [v0.4.2](/v0.4.2/endpoints)
-- [v0.4.1](/v0.4.1/endpoints)
-- [v0.4.0](/v0.4.0/endpoints)
-- [v0.3.1](/v0.3.1/endpoints)
-- [v0.3.0](/v0.3.0/endpoints)
 
 ## HTTP Errors
 
