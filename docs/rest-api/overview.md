@@ -19,6 +19,7 @@ HTTP PUT and POST requests use JSON structures in the request body. Request retu
 ## Endpoints
 Refer to the latest documentation to get the list of available endpoints.
 
+- [v0.8.3-testing](/v0.8.3-testing/endpoints)
 - [v0.8.3 (latest)](/v0.8.3/endpoints)
 - [v0.8.0](/v0.8.0/endpoints)
 - [v0.7.4](/v0.7.4/endpoints)
