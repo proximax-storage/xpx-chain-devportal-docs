@@ -15,7 +15,17 @@ Assuming that Sirius Chain REST is running locally, HTTP GET requests can be exe
 
 HTTP PUT and POST requests use JSON structures in the request body. Request returns data (if any is returned) using JSON structures. This request cannot usually be executed from within the browser unless you use a [plugin](./tools.md) which enables you to do it.
 
-[Sirius Chain REST API Endpoints](/endpoints)
+
+## Endpoints
+Refer to the latest documentation to get the list of available endpoints.
+
+- [v0.8.3 (latest)](/v0.8.3/endpoints)
+- [v0.8.0](/v0.8.0/endpoints)
+- [v0.7.4](/v0.7.4/endpoints)
+- [v0.7.3](/v0.7.3/endpoints)
+- [v0.7.2](/v0.7.2/endpoints)
+- [v0.7.1](/v0.7.1/endpoints)
+- [v0.5.5](/v0.5.5/endpoints)
 
 ## HTTP Errors
 
