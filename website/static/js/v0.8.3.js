@@ -1,4 +1,4 @@
-Redoc.init('../downloads/swagger-v0.8.3.yaml', {
+Redoc.init('../../downloads/swagger-v0.8.3.yaml', {
     scrollYOffset: '101',
     suppressWarnings: true,
     theme: {
