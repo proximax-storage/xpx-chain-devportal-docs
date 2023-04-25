@@ -25,7 +25,6 @@ This section is still a work in progress.
 Node Description | Network Type| Node REST API URL | Address Prefix (1st Letter)
 -----------------|-------------|-------------------|------------------------
 Public Test Network node | TEST_NET | https://bctestnet1.brimstone.xpxsirius.io | V
-Private Network Node (internal demo node) | PRIVATE | http://siriusapi1.demo.xpxsirius.io <br> Please follow [instruction](#accessing-our-private-net) to gain access. | Z
 
 #
 You can use our Sirius Chain REST API directly with your respective URL and network type as above. Besides, you can use your own node with your own API URL and network type if you happen to have one.
@@ -95,10 +94,6 @@ Insert profile name (blank means default and it could overwrite the previous pro
 
 For `testnet` you can get test-XPX from our online faucet.
 Simply go to our [faucet](../cheatsheet.md#testnet-1-faucet) to get your test-XPX.
-
-## Accessing our PRIVATE Net
-
-For our `Private` net, please send an email to devops@proximax.io to gain access to the private network.
 
 ## Setting up the development environment
 It is time to choose a programming language. Pick the one you feel most comfortable with, or follow your project requirements.
