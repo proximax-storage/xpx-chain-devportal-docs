@@ -39,7 +39,7 @@ The amount of different [mosaics](./mosaic.md) the account owns.
 
 Accounts become truly smart when configured with special rules – directly on the Sirius Chain – that define how they relate and control each other, as well as how their contents can be updated and transferred.
 
-One crucial type of rule is [multisig](./multisig-account.md) control that allows ownership of account based assets to be shared in a variety of ways between multiple parties.
+One crucial type of rule is [multisig](./multisig-account.md) control that allows ownership of account-based assets to be shared in a variety of ways between multiple parties.
 
 ## Filters
 

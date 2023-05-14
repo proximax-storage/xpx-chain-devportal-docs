@@ -11,11 +11,11 @@ Mosaics can be used to represent any asset in the blockchain such as objects, ti
 
 ## Prerequisites
 
-- Finish [registering a namespace guide](../namespace/registering-a-namespace.md)
-- have an `account` with `xpx`
-- XPX-Chain-SDK or XPX-Chain-CLI
-- A text editor or IDE
-- An account with XPX and at least one namespace
+- Finish [registering a namespace guide](../namespace/registering-a-namespace.md).
+- Have an `account` with `XPX`.
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- A text editor or IDE.
+- An account with XPX and at least one namespace.
 
 ## Getting into some code
 
@@ -28,7 +28,7 @@ Define two transactions to create a mosaic:
 Divisibility   |0        | The mosaic won’t be divisible. Determines up to what decimal place the mosaic can be divided.
 Duration       |1000     | The mosaic will be created for the next 1000 blocks. If you want to create a non-expiring mosaic, do not set this property.
 Supply mutable |true     | The mosaic supply can change at a later point.
-Transferable   |true     | The mosaic can be transferred between arbitrary accounts. Otherwise, the mosaic can be only transferred back to the mosaic creator.
+Transferable   |true     | The mosaic can be transferred between arbitrary accounts. Otherwise, the mosaic can only be transferred back to the mosaic creator.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -113,7 +113,7 @@ const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
 
 **Note:**
 
-Sirius Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to create by power of 10 with divisibility as exponent. For example, if the mosaic has divisibility 2, to create 10 units (relative) you should define 1000 (absolute) instead.
+Sirius Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to create by power of 10 with divisibility as exponent. For example, if the mosaic has a divisibility of 2, to create 10 units (relative) you should define 1000 (absolute) instead.
 
 </div>
 

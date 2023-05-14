@@ -8,10 +8,10 @@ Transfer [mosaics](../../built-in-features/mosaic.md) and messages between two a
 
 ## Prerequisites
 
-- Finish the [getting started section](../../getting-started/setting-up-workstation.md)
-- XPX-Chain-SDK or XPX-Chain-CLI
-- A text editor or IDE
-- An account with `xpx`
+- Finish the [getting started section](../../getting-started/setting-up-workstation.md).
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- A text editor or IDE.
+- An account with `XPX`.
 
 ## Background Information 
 
@@ -19,13 +19,13 @@ Transfer [mosaics](../../built-in-features/mosaic.md) and messages between two a
 
 <p class=caption>Sending a transfer Transaction</p>
 
-Alice wants to send 10 `xpx` to Bob, whose address is `VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54`.
+Alice wants to send 10 `XPX` to Bob, whose address is `VD5DT3-CH4BLA-BL5HIM-EKP2TA-PUKF4N-Y3L5HR-IR54`.
 
 ### Monitoring the transaction
 
 Once an account announces a transaction, the server will always return an OK response. Receiving an OK response does not mean the transaction is valid. A good practice is to [monitor transactions](../monitoring/monitoring-a-transaction-status.md) before being announced.
 
-To understand the transaction lifecycle, we recommend you to open three new terminals. The first terminal monitors announced transactions validation errors.
+To understand the transaction life cycle, we recommend you to open three new terminals. The first terminal monitors announced transactions validation errors.
 
 ```sh
 xpx2-cli monitor status
@@ -45,7 +45,7 @@ xpx2-cli monitor confirmed
 
 ## Getting into some code
 
-1. Create the transfer transaction, including Bob address as the recipient and 10 `xpx`.
+1. Create the transfer transaction, including Bob's address as the recipient and 10 `XPX`.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -180,7 +180,7 @@ var mosaics = [
 
 **Note**
 
-Sirius Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to send by power of 10 with divisibility as exponent. For example, if the mosaic has divisibility 2, to send 10 units (relative) you should define 1000 (absolute) instead.
+Sirius Chain mainly works with absolute amounts. To get an absolute amount, multiply the amount of assets you want to send by the power of 10 with divisibility as the exponent. For example, if the mosaic has a divisibility of 2, to send 10 units (relative), you should define 1000 (absolute) instead.
 
 </div>
 

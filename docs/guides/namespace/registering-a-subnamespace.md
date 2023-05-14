@@ -9,16 +9,16 @@ Register a subnamespace following this guide.
 
 Once you have a registered root namespace, you can create up to `3` levels of subnamespaces.
 
-Subnamespaces do not have a renting duration on its own. They have the same one as their parent namespace.
+Subnamespaces do not have a renting duration on their own. They have the same one as their parent namespace.
 
 It is possible to create multiple subnamespaces with the same name in different namespaces (example: `foo.bar` and `foo2.bar`).
 
 ## Prerequisites
 
-- XPX-Chain-SDK or XPX-Chain-CLI
-- A text editor or IDE
-- An account with `xpx` and at least one namespace
-- Finish [registering a namespace guide](./registering-a-namespace.md)
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- A text editor or IDE.
+- An account with `XPX` and at least one namespace.
+- Finish [registering a namespace guide](./registering-a-namespace.md).
 
 ## Getting into some code
 
