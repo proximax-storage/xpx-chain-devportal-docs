@@ -11,7 +11,7 @@ const CompLibrary = require('../../core/CompLibrary.js');
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
-function Endpoints(props) {
+function Endpoints_v73(props) {
     const {config: siteConfig, language = '',} = props;
     const {baseUrl, docsUrl} = siteConfig;
     const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
@@ -27,7 +27,7 @@ function Endpoints(props) {
                         <script src="https://cdn.jsdelivr.net/npm/redoc@2.0.0-alpha.41/bundles/redoc.standalone.js"></script>
 
                         <div id="redoc"></div>
-                        <script src="../../js/v0.8.3.js"></script>
+                        <script src="../../js/v0.7.3.js"></script>
                     </div>
                 </Container>
             </div>
@@ -35,4 +35,4 @@ function Endpoints(props) {
     );
 }
 
-module.exports = Endpoints;
+module.exports = Endpoints_v73;
