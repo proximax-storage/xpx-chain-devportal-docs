@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 0.7.15
+  version: 0.7.3
   title: Catapult REST API Reference
   license:
     name: Apache 2.0
@@ -49,15 +49,8 @@ tags:
   - name: Exchange routes
     description: |
       Exchange related endpoints.
-  - name: Storage routes
-    description: |
-      Storage related endpoints.
-
 
 paths:
-
-  # Account start
-
   "/account/{accountId}":
     get:
       tags:
@@ -112,9 +105,7 @@ paths:
         - Account routes
       summary: Get account configurable properties information
       description: |
-        Returns the [configurable
-        properties](https://nemtech.github.io/concepts/account-filter.html) for
-        a given account.
+        Returns the configurable properties for a given account.
       operationId: getAccountProperties
       parameters:
         - name: accountId
@@ -140,9 +131,7 @@ paths:
         - Account routes
       summary: Get account properties for given array of addresses
       description: |
-        Returns the [configurable
-        properties](https://nemtech.github.io/concepts/account-filter.html) for
-        a given array of addresses.
+        Returns the configurable properties for a given array of addresses.
       operationId: getAccountPropertiesFromAccounts
       requestBody:
         $ref: "#/components/requestBodies/accountIds"
@@ -165,9 +154,7 @@ paths:
       tags:
         - Account routes
       summary: Get multisig account information
-      description: Returns the [multisig
-        account](https://nemtech.github.io/concepts/multisig-account.html)
-        information.
+      description: Returns the multisig account information.
       operationId: getAccountMultisig
       parameters:
         - name: accountId
@@ -192,9 +179,7 @@ paths:
       tags:
         - Account routes
       summary: Get multisig account graph information
-      description: Returns the [multisig
-        account](https://nemtech.github.io/concepts/multisig-account.html)
-        graph.
+      description: Returns the multisig account graph.
       operationId: getAccountMultisigGraph
       parameters:
         - name: accountId
@@ -216,11 +201,6 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
-
-  # Account end
-
-  # Block start
-
   "/blocks/{height}/limit/{limit}":
     get:
       tags:
@@ -294,8 +274,7 @@ paths:
         - Block routes
       summary: Get the merkle path for a given a transaction and block
       description: Returns the merkle path for a
-        [transaction](https://nemtech.github.io/concepts/transaction.html)
-        included in a block. The path is the complementary data needed to
+        transaction included in a block. The path is the complementary data needed to
         calculate the merkle root. A client can compare if the calculated root
         equals the one recorded in the block header, verifying that the
         transaction was included in the block.
@@ -331,8 +310,7 @@ paths:
       tags:
         - Block routes
       summary: Get receipts from a block
-      description: Returns the [receipts](https://nemtech.github.io/concepts/receipt.html)
-        linked to a block.
+      description: Returns the receipts linked to a block.
       operationId: getBlockReceipts
       parameters:
         - name: height
@@ -359,9 +337,8 @@ paths:
       tags:
         - Block routes
       summary: Get the merkle path for a given a receipt statement hash and block
-      description: Returns the merkle path for a [receipt statement or
-        resolution](https://nemtech.github.io/concepts/receipt.html) linked to a
-        block. The path is the complementary data needed to calculate the merkle
+      description: Returns the merkle path for a receipt statement or
+        resolution linked to a block. The path is the complementary data needed to calculate the merkle
         root. A client can compare if the calculated root equals the one
         recorded in the block header, verifying that the receipt was linked with
         the block.
@@ -392,11 +369,6 @@ paths:
           description: resource not found
         "409":
           description: invalid argument
-
-  # Block start
-
-  # Chain start
-
   /chain/height:
     get:
       tags:
@@ -432,11 +404,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BlockchainScoreDTO"
-
-  # Chain end
-
-  # Diagnostic start
-
   /diagnostic/storage:
     get:
       tags:
@@ -465,11 +432,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ServerDTO"
-
-  # Diagnostic end
-
-  # Config start
-
   '/config/{height}':
     get:
       tags:
@@ -497,11 +459,6 @@ paths:
           description: resource not found
         '409':
           description: invalid argument
-
-  # Config end
-
-  # Metadata_v2 start
-
   '/metadata_v2/{compositeHash}':
     get:
       tags:
@@ -575,11 +532,6 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-
-  # Metadata_v2 start
-
-  # Mosaic start
-
   "/mosaic/{mosaicId}":
     get:
       tags:
@@ -718,39 +670,6 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-  /mosaics:
-    get:
-      tags:
-      - Mosaic routes
-      summary: Search list of mosaics information
-      description: Search mosaics based on query parameters
-      operationId: searchMosaics
-      parameters:
-      - $ref: "#/components/parameters/ownerPubKeyQuery"
-      - $ref: "#/components/parameters/supplyQuery"
-      - $ref: "#/components/parameters/mutableQuery"
-      - $ref: "#/components/parameters/transferableQuery"
-      - $ref: '#/components/parameters/pageSizeQuery'
-      - $ref: '#/components/parameters/pageNumberQuery'
-      responses:
-        "200":
-          description: success
-          content:
-            application/json:
-              schema:
-                type: array
-                description: Array of mosaics
-                items:
-                  $ref: "#/components/schemas/MosaicInfoDTO"
-        "404":
-          description: resource not found
-        "409":
-          description: invalid argument
-
-  # Mosaic end
-
-  # Namespace start
-
   "/namespace/{namespaceId}":
     get:
       tags:
@@ -851,7 +770,7 @@ paths:
     post:
       tags:
         - Account routes
-      summary:  Get readable names for a set of accountIds.
+      summary:  Get readable names for a set of accountIds
       description: Returns friendly names for accounts.
       operationId: getAccountsNames
       requestBody:
@@ -897,11 +816,6 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-
-  # Namespace start
-
-  # Transaction start
-
   "/transactions":
     put:
       tags:
@@ -1083,9 +997,7 @@ paths:
       tags:
         - Transaction routes
       summary: Announce an aggregate bonded transaction
-      description: Announces an [aggregate bonded
-        transaction](https://nemtech.github.io/concepts/aggregate-transaction.html#aggregate-bonded)
-        to the network.
+      description: Announces an aggregate bonded transaction to the network.
       operationId: announcePartialTransaction
       requestBody:
         $ref: "#/components/requestBodies/transactionPayload"
@@ -1105,9 +1017,7 @@ paths:
       tags:
         - Transaction routes
       summary: Announce a cosignature transaction
-      description: Announces a [cosignature
-        transaction](https://nemtech.github.io/concepts/aggregate-transaction.html#cosignature-transaction)
-        to the network.
+      description: Announces a cosignature transaction to the network.
       operationId: announceCosignatureTransaction
       requestBody:
         $ref: "#/components/requestBodies/cosignature"
@@ -1151,7 +1061,7 @@ paths:
     post:
       tags:
         - Transaction routes
-      summary: Get transactions status.
+      summary: Get transactions status
       description: Returns an array of transaction statuses for a given array of transaction hashes.
       operationId: getTransactionsStatuses
       requestBody:
@@ -1174,11 +1084,6 @@ paths:
           description: invalid content
         "409":
           description: invalid argument
-
-  # Transaction start
-
-  # Network start
-
   /network:
     get:
       tags:
@@ -1193,11 +1098,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NetworkTypeDTO"
-
-  # Network ends
-
-  # Node start
-
   /node/info:
     get:
       tags:
@@ -1227,11 +1127,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NodeTimeDTO"
-
-  # Node end
-
-  # Upgrade start
-
   '/upgrade/{height}':
     get:
       tags:
@@ -1259,10 +1154,6 @@ paths:
           description: resource not found
         '409':
           description: invalid argument
-
-  # Upgrade end
-
-  # Exchange start
 
   '/account/{accountId}/exchange':
     get:
@@ -1346,11 +1237,6 @@ paths:
                     mosaicId:
                       type: string
                       example: "0DE5F42A0A3B4200"
-
-  # Exchange end
-
-  # Lock start
-
   '/account/{accountId}/lock/hash':
     get:
       tags:
@@ -1481,206 +1367,11 @@ paths:
         "409":
           description: invalid argument
 
-  # Lock end
-
-  # Storage routes start
-
-  '/bcdrives':
-      get:
-        tags:
-          - Storage routes
-        summary: Get pages with existen BcDrives
-        description: Returns the paged response with drives.
-        operationId: getBcDrives
-        parameters:
-          - $ref: '#/components/parameters/pageSizeQuery'
-          - $ref: '#/components/parameters/pageNumberQuery'
-          - $ref: '#/components/parameters/offsetQuery'
-          - $ref: '#/components/parameters/orderQuery'
-        responses:
-          "200":
-            description: success
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: "#/components/schemas/BcDriveDTO"
-          "404":
-            description: resource not found
-          "409":
-            description: invalid argument
-
-  '/bcdrives/{accountId}':
-      get:
-        tags:
-          - Storage routes
-        summary: Get a BcDrive by Public Key
-        description: Return BcDrive.
-        operationId: getBcDrive
-        parameters:
-          - name: accountId
-            in: path
-            description: Public key of the Drive.
-            required: true
-            schema:
-              type: string
-          - $ref: '#/components/parameters/pageSizeQuery'
-          - $ref: '#/components/parameters/pageNumberQuery'
-          - $ref: '#/components/parameters/offsetQuery'
-          - $ref: '#/components/parameters/orderQuery'
-        responses:
-          "200":
-            description: success
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    drive:
-                      $ref: "#/components/schemas/BcDriveDTO"
-          "404":
-            description: resource not found
-          "409":
-            description: invalid argument
-
-  '/replicators':
-      get:
-        tags:
-          - Storage routes
-        summary: Get pages with existen Replicators
-        description: Returns the paged response with Replicators.
-        operationId: getReplicators
-        parameters:
-          - $ref: '#/components/parameters/pageSizeQuery'
-          - $ref: '#/components/parameters/pageNumberQuery'
-          - $ref: '#/components/parameters/offsetQuery'
-          - $ref: '#/components/parameters/orderQuery'
-        responses:
-          "200":
-            description: success
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: "#/components/schemas/ReplicatorDTO"
-          "404":
-            description: resource not found
-          "409":
-            description: invalid argument
-
-  '/relicators/{publicKey}':
-      get:
-        tags:
-          - Storage routes
-        summary: Get a Replicator by Public Key
-        description: Return the Replicator.
-        operationId: getReplicator
-        parameters:
-          - name: publicKey
-            in: path
-            description: Public key of the Replicator.
-            required: true
-            schema:
-              type: string
-          - $ref: '#/components/parameters/pageSizeQuery'
-          - $ref: '#/components/parameters/pageNumberQuery'
-          - $ref: '#/components/parameters/offsetQuery'
-          - $ref: '#/components/parameters/orderQuery'
-        responses:
-          "200":
-            description: success
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    replicator:
-                      $ref: "#/components/schemas/ReplicatorDTO"
-          "404":
-            description: resource not found
-          "409":
-            description: invalid argument
-
-  '/download_channels':
-      get:
-        tags:
-          - Storage routes
-        summary: Get pages with existen Download Channels
-        description: Returns the paged response with Download Channels.
-        operationId: getDownloadChannels
-        parameters:
-          - $ref: '#/components/parameters/pageSizeQuery'
-          - $ref: '#/components/parameters/pageNumberQuery'
-          - $ref: '#/components/parameters/offsetQuery'
-          - $ref: '#/components/parameters/orderQuery'
-        responses:
-          "200":
-            description: success
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: "#/components/schemas/DownloadChannelInfoDTO"
-          "404":
-            description: resource not found
-          "409":
-            description: invalid argument
-
-  '/download_channels/{downloadChannelId}':
-      get:
-        tags:
-          - Storage routes
-        summary: Get a DownloadChannel by Public Key
-        description: Return the DownloadChannel by ID.
-        operationId: getDownloadChannel
-        parameters:
-          - name: downloadChannelId
-            in: path
-            description: Public key of the Replicator.
-            required: true
-            schema:
-              type: string
-          - $ref: '#/components/parameters/pageSizeQuery'
-          - $ref: '#/components/parameters/pageNumberQuery'
-          - $ref: '#/components/parameters/offsetQuery'
-          - $ref: '#/components/parameters/orderQuery'
-        responses:
-          "200":
-            description: success
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    downloadChannelInfo:
-                      $ref: "#/components/schemas/DownloadChannelInfoDTO"
-          "404":
-            description: resource not found
-          "409":
-            description: invalid argument
-
-
-  # Storage routes end
-
 externalDocs:
   description: ProximaX Developer Center
   url: 'https://proximax.io/'
 servers:
   - url: "http://bctestnet1.brimstone.xpxsirius.io:3000/"
-  - url: "http://bctestnet2.brimstone.xpxsirius.io:3000/"
-  - url: "http://bctestnet3.brimstone.xpxsirius.io:3000/"
 components:
   parameters:
     metadataType:
@@ -1815,37 +1506,13 @@ components:
     transactionTypeQuery:
       name: type[]
       in: query
-      description: The type of transaction
+      description: The type of transaction.
       schema:
         type: array
         items:
-         anyOf:
-         - $ref: '#/components/schemas/EntityTypeEnum'
-    ownerPubKeyQuery:
-      name: ownerPubKey
-      in: query
-      description: Public key of asset owner
-      schema:
-        type: string
-    supplyQuery:
-      name: supply
-      in: query
-      description: Asset supply
-      schema:
-        type: integer
-        format: uint64
-    mutableQuery:
-      name: mutable
-      in: query
-      description: Asset supply mutability
-      schema:
-        type: boolean
-    transferableQuery:
-      name: transferable
-      in: query
-      description: Asset transferability
-      schema:
-        type: boolean
+          anyOf:
+            - $ref: '#/components/schemas/EntityTypeEnum'
+
 
 
   requestBodies:
@@ -2587,24 +2254,14 @@ components:
         * 0x4360 (17248 decimal) - End Execute.
         * 0x4460 (17504 decimal) - Super Contract File System.
         * 0x4560 (17760 decimal) - Deactivate.
-        * 0x4162 (16738 decimal) - Prepare BcDrive transaction
-        * 0x4262 (16994 decimal) - Data modification transaction
-        * 0x4362 (17250 decimal) - Download transaction
-        * 0x4462 (17506 decimal) - Data modification approval transaction
-        * 0x4562 (17762 decimal) - Data modification cancel transaction
-        * 0x4662 (18018 decimal) - Replicator onboarding transaction
-        * 0x4762 (18274 decimal) - Replicator offboarding transaction
-        * 0x4862 (18530 decimal) - Finish download transaction
-        * 0x4962 (18786 decimal) - Download payment transaction
-        * 0x4A62 (19042 decimal) - Storage payment transaction
-        * 0x4B62 (19298 decimal) - Data modification single approval transaction
-        * 0x4C62 (19554 decimal) - Verification payment transaction
-        * 0x4D62 (19810 decimal) - Download approval transaction
-        * 0x4E62 (20066 decimal) - Drive closure transaction
-        * 0x4F62 (20322 decimal) - End drive verification transaction
-        * 0x4167 (16743 decimal) - Stream start
-        * 0x4267 (16999 decimal) - Stream finish
-        * 0x4367 (17255 decimal) - Stream payment
+        * 0x4162 (16738 decimal) - Prepare Bc Drive.
+        * 0x4262 (16994 decimal) - Data Modification.
+        * 0x4362 (17250 decimal) - Download.
+        * 0x4462 (17506 decimal) - Data Modification Approval.
+        * 0x4562 (17762 decimal) - Data Modification Cancel.
+        * 0x4662 (18018 decimal) - Replicator Onboarding.
+        * 0x4E62 (20066 decimal) - Drive Closure.
+
     HashAlgorithmEnum:
       type: integer
       enum:
@@ -2782,27 +2439,6 @@ components:
       example:
         - 59B8DA0F0CB2720001103922
         - 59B8D8E60CB2720001103904
-    PublicKey:
-        type: string
-        example: "C5563D82371B6EB2BC3B53CF3E2131A4DBBF728F8BAB25037E8028A03A05E1E1"
-    PublicKeyList:
-      type: array
-      items:
-        type: string
-      example:
-        - "8599BA6DB5B81BB69F96B88DD80A3B9EB7BBF8849CBD979100E89D69C30356E0"
-        - "3DCB6E5EFF4D63A38902EF948E895B01D6EA497EBF84B1460C14CA5BEDCAD9F3"
-    Signature:
-      type: string
-      format: "hex"
-      example: "C117DC00B78106923C440BB4B0D508244C193CD5845AC1681A1753C813CFF2491E4AE27AF78A29C7E86394472B76D8F40AFE4A17B28FA9EBD865A8830289CC06"
-    Multisig:
-      type: string
-      example: "415C7C61822B063F62A4876A6F6BA2DAAE114AB298D7AC7FC56FDBA95872C309"
-    MultisigAddress:
-      type: string
-      example: "9048760066A50F0F65820D3008A79CF73E1034A564BF44AB3E"
-
     # Account endpoints
     AccountInfoDTO:
       type: object
@@ -3866,21 +3502,6 @@ components:
             - $ref: "#/components/schemas/DriveFilesRewardTransactionDTO"
             - $ref: "#/components/schemas/StartDriveVerificationTransactionDTO"
             - $ref: "#/components/schemas/EndDriveVerificationTransactionDTO"
-            - $ref: "#/components/schemas/PrepareBcDriveTransactionDTO"
-            - $ref: "#/components/schemas/DataModificationTransactionDTO"
-            - $ref: "#/components/schemas/DownloadTransactionDTO"
-            - $ref: "#/components/schemas/DataModificationApprovalTransactionDTO"
-            - $ref: "#/components/schemas/DataModificationCancelTransactionDTO"
-            - $ref: "#/components/schemas/ReplicatorOnboardingTransactionDTO"
-            - $ref: "#/components/schemas/ReplicatorOffboardingTransactionDTO"
-            - $ref: "#/components/schemas/FinishDownloadTransactionDTO"
-            - $ref: "#/components/schemas/DownloadPaymentTransactionDTO"
-            - $ref: "#/components/schemas/StoragePaymentTransactionDTO"
-            - $ref: "#/components/schemas/DataModificationSingleApprovalTransactionDTO"
-            - $ref: "#/components/schemas/VerificationPaymentTransactionDTO"
-            - $ref: "#/components/schemas/DownloadApprovalTransactionDTO"
-            - $ref: "#/components/schemas/DriveClosureTransactionDTO"
-            - $ref: "#/components/schemas/EndDriveVerificationV2TransactionDTO"
     EmbeddedTransactionMetaDTO:
       type: object
       required:
@@ -4470,81 +4091,6 @@ components:
       allOf:
         - $ref: "#/components/schemas/EmbeddedTransactionDTO"
         - $ref: "#/components/schemas/AccountLinkTransactionBodyDTO"
-    EmbeddedPrepareBcDriveTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/PrepareBcDriveTransactionDTO"
-    EmbeddedDataModificationTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/DataModificationTransactionDTO"
-    EmbeddedDownloadTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/DownloadTransactionDTO"
-    EmbeddedDataModificationApprovalTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/DataModificationApprovalTransactionDTO"
-    EmbeddedDataModificationCancelTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/DataModificationCancelTransactionDTO"
-    EmbeddedReplicatorOnboardingTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/ReplicatorOnboardingTransactionDTO"
-    EmbeddedReplicatorOffboardingTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/ReplicatorOffboardingTransactionDTO"
-    EmbeddedFinishDownloadTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/FinishDownloadTransactionDTO"
-    EmbeddedDownloadPaymentTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/DownloadPaymentTransactionDTO"
-    EmbeddedStoragePaymentTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/StoragePaymentTransactionDTO"
-    EmbeddedDataModificationSingleApprovalTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/DataModificationSingleApprovalTransactionDTO"
-    EmbeddedVerificationPaymentTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/VerificationPaymentTransactionDTO"
-    EmbeddedDownloadApprovalTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/DownloadApprovalTransactionDTO"
-    EmbeddedDriveClosureTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/DriveClosureTransactionDTO"
-    EmbeddedEndDriveVerificationV2TransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/EmbeddedTransactionDTO"
-        - $ref: "#/components/schemas/EndDriveVerificationV2TransactionDTO"
     AnnounceTransactionInfoDTO:
       type: object
       required:
@@ -4763,7 +4309,7 @@ components:
           type: number
           example: 1.5
 
-    # Service transactions DTOs
+    # Service endpoints
     PrepareDriveTransactionDTO:
       type: object
       allOf:
@@ -4957,8 +4503,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/HashDTO"
-
-    # Service entities DTOs start
 
     DrivesArray:
       type: array
@@ -5265,663 +4809,6 @@ components:
       properties:
         communicationTimestamps:
           $ref: "#/components/schemas/communicationTimestamps"
-
-    # Storage DTOs
-
-    PrepareBcDriveTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/PrepareBcDriveTransactionBodyDTO"
-    DataModificationTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/DataModificationTransactionBodyDTO"
-    DownloadTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/DownloadTransactionBodyDTO"
-    DataModificationApprovalTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/DataModificationApprovalTransactionBodyDTO"
-    DataModificationCancelTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/DataModificationCancelTransactionBodyDTO"
-    ReplicatorOnboardingTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/ReplicatorOnboardingTransactionBodyDTO"
-    ReplicatorOffboardingTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/ReplicatorOffboardingTransactionBodyDTO"
-    FinishDownloadTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/FinishDownloadTransactionBodyDTO"
-    DownloadPaymentTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/DownloadPaymentTransactionBodyDTO"
-    StoragePaymentTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/StoragePaymentTransactionBodyDTO"
-    DataModificationSingleApprovalTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/DataModificationSingleApprovalTransactionBodyDTO"
-    VerificationPaymentTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/VerificationPaymentTransactionBodyDTO"
-    DownloadApprovalTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/DownloadApprovalTransactionBodyDTO"
-    DriveClosureTransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/DriveClosureTransactionBodyDTO"
-    EndDriveVerificationV2TransactionDTO:
-      type: object
-      allOf:
-        - $ref: "#/components/schemas/TransactionDTO"
-        - $ref: "#/components/schemas/EndDriveVerificationV2TransactionBodyDTO"
-
-    PrepareBcDriveTransactionBodyDTO:
-      type: object
-      required:
-        - driveSize
-        - verificationFeeAmount
-        - replicatorCount
-      properties:
-        driveSize:
-          $ref: "#/components/schemas/UInt64DTO"
-        verificationFeeAmount:
-          $ref: "#/components/schemas/UInt64DTO"
-        replicatorCount:
-          type: integer
-          example: 5
-    DataModificationTransactionBodyDTO:
-      type: object
-      required:
-        - driveKey
-        - downloadDataCdi
-        - uploadSize
-        - feedbackFeeAmount
-      properties:
-        driveKey:
-          description: public key of a drive
-          $ref: "#/components/schemas/PublicKey"
-        downloadDataCdi:
-          $ref: "#/components/schemas/HashDTO"
-        uploadSize:
-          $ref: "#/components/schemas/UInt64DTO"
-        feedbackFeeAmount:
-          $ref: "#/components/schemas/UInt64DTO"
-    DownloadTransactionBodyDTO:
-      type: object
-      required:
-        - driveKey
-        - downloadSize
-        - feedbackFeeAmount
-        - listOfPublicKeysSize
-      properties:
-        driveKey:
-          description: public key of a drive
-          $ref: "#/components/schemas/PublicKey"
-        downloadSize:
-          $ref: "#/components/schemas/UInt64DTO"
-        feedbackFeeAmount:
-          $ref: "#/components/schemas/UInt64DTO"
-        listOfPublicKeysSize:
-          type: integer
-          example: 5
-        listOfPublicKeys:
-          $ref: "#/components/schemas/PublicKeyList"
-    DataModificationApprovalTransactionBodyDTO:
-      type: object
-      required:
-        - driveKey
-        - dataModificationId
-        - fileStructureCdi
-        - fileStructureSizeBytes
-        - metaFilesSizeBytes
-        - usedDriveSizeBytes
-      properties:
-        driveKey:
-          description: public key of a drive
-          $ref: "#/components/schemas/PublicKey"
-        dataModificationId:
-          description: hash of a data modification
-          $ref: "#/components/schemas/HashDTO"
-        fileStructureCdi:
-          description: hash of a drive root
-          $ref: "#/components/schemas/HashDTO"
-        fileStructureSizeBytes:
-          $ref: "#/components/schemas/UInt64DTO"
-        metaFilesSizeBytes:
-          $ref: "#/components/schemas/UInt64DTO"
-        usedDriveSizeBytes:
-          $ref: "#/components/schemas/UInt64DTO"
-    DataModificationCancelTransactionBodyDTO:
-      type: object
-      required:
-        - driveKey
-        - dataModificationId
-      properties:
-        driveKey:
-          description: public key of a drive
-          $ref: "#/components/schemas/PublicKey"
-        dataModificationId:
-          description: hash of a data modification
-          $ref: "#/components/schemas/HashDTO"
-    ReplicatorOnboardingTransactionBodyDTO:
-      type: object
-      required:
-        - capacity
-      properties:
-        capacity:
-          $ref: "#/components/schemas/UInt64DTO"
-    ReplicatorOffboardingTransactionBodyDTO:
-      type: object
-      required:
-        - driveKey
-      properties:
-        driveKey:
-          description: public key of a drive
-          $ref: "#/components/schemas/PublicKey"
-    FinishDownloadTransactionBodyDTO:
-      type: object
-      required:
-        - downloadChannelId
-        - feedbackFeeAmount
-      properties:
-        downloadChannelId:
-          description: hash of a download channel
-          $ref: "#/components/schemas/HashDTO"
-        feedbackFeeAmount:
-          $ref: "#/components/schemas/UInt64DTO"
-    DownloadPaymentTransactionBodyDTO:
-      type: object
-      required:
-        - downloadChannelId
-        - downloadSize
-        - feedbackFeeAmount
-      properties:
-        downloadChannelId:
-          description: hash of a download channel
-          $ref: "#/components/schemas/HashDTO"
-        downloadSize:
-          $ref: "#/components/schemas/UInt64DTO"
-        feedbackFeeAmount:
-          $ref: "#/components/schemas/UInt64DTO"
-    StoragePaymentTransactionBodyDTO:
-      type: object
-      required:
-        - driveKey
-        - storageUnits
-      properties:
-        driveKey:
-          description: public key of a drive
-          $ref: "#/components/schemas/PublicKey"
-        storageUnits:
-          $ref: "#/components/schemas/UInt64DTO"
-    DataModificationSingleApprovalTransactionBodyDTO:
-      type: object
-      required:
-        - driveKey
-        - dataModificationId
-        - publicKeysCount
-        - publicKeys
-        - opinions
-      properties:
-        driveKey:
-          description: public key of a drive
-          $ref: "#/components/schemas/PublicKey"
-        dataModificationId:
-          description: hash of a data modification
-          $ref: "#/components/schemas/HashDTO"
-        publicKeysCount:
-          type: integer
-          example: 10
-        publicKeys:
-          $ref: "#/components/schemas/PublicKeyList"
-        opinions:
-          description: opinions are represented like a bit array
-          type: array
-          items:
-            type: integer
-            example: [ 57, 85 ]
-    VerificationPaymentTransactionBodyDTO:
-      type: object
-      required:
-        - driveKey
-        - verificationFeeAmount
-      properties:
-        driveKey:
-          description: public key of a drive
-          $ref: "#/components/schemas/PublicKey"
-        verificationFeeAmount:
-          $ref: "#/components/schemas/UInt64DTO"
-    DownloadApprovalTransactionBodyDTO:
-      type: object
-      required:
-        - downloadChannelId
-        - approvalTrigger
-        - judgingKeysCount
-        - overlappingKeysCount
-        - judgedKeysCount
-        - opinionElementCount
-        - publicKeys
-        - signatures
-        - presentOpinions
-        - opinions
-      properties:
-        downloadChannelId:
-          description: hash of a download channel
-          $ref: "#/components/schemas/HashDTO"
-        approvalTrigger:
-          description: a block hash that started verification
-          $ref: "#/components/schemas/HashDTO"
-        judgingKeysCount:
-          type: integer
-          example: 10
-        overlappingKeysCount:
-          type: integer
-          example: 10
-        judgedKeysCount:
-          type: integer
-          example: 10
-        opinionElementCount:
-          type: integer
-          example: 10
-        publicKeys:
-          $ref: "#/components/schemas/PublicKeyList"
-        signatures:
-          type: array
-          items:
-            $ref: "#/components/schemas/Signature"
-        presentOpinions:
-          description: presentOpinions are represented like a bit array
-          type: array
-          items:
-            type: integer
-            example: [ 45, 11 ]
-        opinions:
-          description: opinions are represented like a bit array
-          type: array
-          items:
-            type: integer
-            example: [ 57, 85 ]
-    DriveClosureTransactionBodyDTO:
-      type: object
-      required:
-        - driveKey
-      properties:
-        driveKey:
-          description: public key of a drive
-          $ref: "#/components/schemas/PublicKey"
-    EndDriveVerificationV2TransactionBodyDTO:
-      type: object
-      required:
-        - driveKey
-        - verificationTrigger
-        - shardId
-        - keyCount
-        - judgingKeyCount
-        - publicKeys
-        - signatures
-        - opinions
-      properties:
-        driveKey:
-          description: public key of a drive
-          $ref: "#/components/schemas/PublicKey"
-        verificationTrigger:
-          description: hash of a block that initiated verification
-          $ref: "#/components/schemas/HashDTO"
-        shardId:
-          type: integer
-          example: 1
-        keyCount:
-          type: integer
-          example: 10
-        judgingKeyCount:
-          type: integer
-          example: 10
-        publicKeys:
-          $ref: "#/components/schemas/PublicKeyList"
-        signatures:
-          type: array
-          items:
-            $ref: "#/components/schemas/Signature"
-        opinions:
-          description: opinions are represented like a bit array
-          type: array
-          items:
-            type: integer
-            example: [ 57, 85 ]
-
-    # Storage routes
-
-    DriveInfoDTO:
-      type: object
-      required:
-        - drive
-        - lastApprovedDataModificationId
-        - dataModificationIdIsValid
-        - initialDownloadWork
-        - lastCompletedCumulativeDownloadWork
-      properties:
-        drive:
-          description: public key of a Drive
-          $ref: "#/components/schemas/PublicKey"
-        lastApprovedDataModificationId:
-          description: hash of the last approved DataModificationTransaction
-          $ref: "#/components/schemas/HashDTO"
-        dataModificationIdIsValid:
-          type: boolean
-          example: true
-        initialDownloadWork:
-          $ref: "#/components/schemas/UInt64DTO"
-        lastCompletedCumulativeDownloadWork:
-          $ref: "#/components/schemas/UInt64DTO"
-
-    ReplicatorDTO:
-      type: object
-      required:
-        - key
-        - version
-        - capacity
-        - drives
-      properties:
-        key:
-          description: public key of Replicator
-          $ref: "#/components/schemas/PublicKey"
-        version:
-          type: integer
-          description: version of Replicator
-          example: 1
-        capacity:
-          description: capacity of Replicator in GB
-          $ref: "#/components/schemas/UInt64DTO"
-        drives:
-          type: array
-          items:
-            $ref: "#/components/schemas/DriveInfoDTO"
-
-    CumulativePaymentsDTO:
-      type: object
-      required:
-        - replicator
-        - payment
-      properties:
-        replicator:
-          description: public key of Replicator
-          $ref: "#/components/schemas/PublicKey"
-        payment:
-          $ref: "#/components/schemas/UInt64DTO"
-
-    DownloadChannelInfoDTO:
-      type: object
-      required:
-        - id
-        - consumer
-        - drive
-        - downloadSize
-        - downloadApprovalCountLeft
-        - listOfPublicKeys
-        - shardReplicators
-        - cumulativePayments
-      properties:
-        id:
-          description: hash of DownloadTransaction
-          $ref: "#/components/schemas/HashDTO"
-        consumer:
-          description: public key of a Consumer
-          $ref: "#/components/schemas/PublicKey"
-        drive:
-          description: public key of a Drive
-          $ref: "#/components/schemas/PublicKey"
-        downloadSize:
-          $ref: "#/components/schemas/UInt64DTO"
-          description: download size in bytes
-        downloadApprovalCountLeft:
-          type: integer
-          description: count of approvals to be confirmed
-          example: 2
-        listOfPublicKeys:
-          description: list of public keys
-          $ref: "#/components/schemas/PublicKeyList"
-        shardReplicators:
-          $ref: "#/components/schemas/PublicKeyList"
-          description: replicators of the download shard
-        cumulativePayments:
-          $ref: "#/components/schemas/CumulativePaymentsDTO"
-
-    ActiveDataModificationDTO:
-      type: object
-      required:
-        - id
-        - owner
-        - downloadDataCdi
-        - expectedUploadSize
-        - actualUploadSize
-        - folderName
-        - readyForApproval
-      properties:
-        id:
-          description: hash of DataModificationTransaction
-          $ref: "#/components/schemas/HashDTO"
-        owner:
-          description: public key of an Owner
-          $ref: "#/components/schemas/PublicKey"
-        downloadDataCdi:
-          description: CDI of download data
-          $ref: "#/components/schemas/HashDTO"
-        expectedUploadSize:
-          description: expected upload size in bytes
-          $ref: "#/components/schemas/UInt64DTO"
-        actualUploadSize:
-          description: actual upload size in bytes
-          $ref: "#/components/schemas/UInt64DTO"
-        folderName:
-          type: string
-          example: "newFolder"
-        readyForApproval:
-          type: boolean
-          example: true
-
-    CompletedDataModificationDTO:
-      allOf:
-        - $ref: "#/components/schemas/ActiveDataModificationDTO"
-        - type: object
-          required:
-            - state
-          properties:
-            state:
-              type: integer
-              enum: [0, 1]
-              description: >
-                State:
-                  * `0` - Succeeded
-                  * `1` - Cancelled
-
-    ConfirmedUsedSizeDTO:
-      type: object
-      required:
-        - replicator
-        - size
-      properties:
-        replicator:
-          description: public key of Replicator
-          $ref: "#/components/schemas/PublicKey"
-        size:
-          $ref: "#/components/schemas/UInt64DTO"
-
-    ShardDTO:
-      type: object
-      required:
-        - id
-        - replicators
-      properties:
-        id:
-          type: integer
-          example: 1
-        replicators:
-          description: replicators of the shard
-          items:
-            $ref: "#/components/schemas/PublicKey"
-
-    VerificationDTO:
-      type: object
-      required:
-        - verificationTrigger
-        - expiration
-        - expired
-        - shards
-      properties:
-        verificationTrigger:
-          description: hash of a block that initiated verification
-          $ref: "#/components/schemas/HashDTO"
-        expiration:
-          type: integer
-          description: expiration time
-        expired:
-          type: boolean
-          example: true
-        shards:
-          type: array
-          items:
-            $ref: "#/components/schemas/ShardDTO"
-
-    DownloadShardDTO:
-      type: object
-      required:
-        - downloadChannelId
-      properties:
-        downloadChannelId:
-          description: hash of DownloadTransaction
-          $ref: "#/components/schemas/HashDTO"
-
-    UploadInfoStorageDTO:
-      type: object
-      required:
-        - key
-        - uploadSize
-      properties:
-        key:
-          $ref: "#/components/schemas/PublicKey"
-        uploadSize:
-          $ref: "#/components/schemas/UInt64DTO"
-
-    DataModificationShardDTO:
-      type: object
-      required:
-        - replicator
-        - actualShardReplicators
-        - formerShardReplicators
-        - ownerUpload
-      properties:
-        replicator:
-          description: public key of a Replicator
-          $ref: "#/components/schemas/PublicKey"
-        actualShardReplicators:
-          type: array
-          items:
-            $ref: "#/components/schemas/UploadInfoStorageDTO"
-        formerShardReplicators:
-          type: array
-          items:
-            $ref: "#/components/schemas/UploadInfoStorageDTO"
-        ownerUpload:
-          $ref: "#/components/schemas/UInt64DTO"
-
-    BcDriveDTO:
-      type: object
-      required:
-        - multisig
-        - multisigAddress
-        - owner
-        - rootHash
-        - size
-        - usedSizeBytes
-        - metaFilesSizeBytes
-        - replicatorCount
-        - activeDataModifications
-        - completedDataModifications
-        - confirmedUsedSizes
-        - replicators
-        - offboardingReplicators
-        - verifications
-        - downloadShards
-        - dataModificationShards
-      properties:
-        multisig:
-          $ref: "#/components/schemas/Multisig"
-        multisigAddress:
-          $ref: "#/components/schemas/MultisigAddress"
-        owner:
-          description: public key of an Owner
-          $ref: "#/components/schemas/PublicKey"
-        rootHash:
-          description: root hash
-          $ref: "#/components/schemas/HashDTO"
-        size:
-          $ref: "#/components/schemas/UInt64DTO"
-        usedSizeBytes:
-          $ref: "#/components/schemas/UInt64DTO"
-        metaFilesSizeBytes:
-          $ref: "#/components/schemas/UInt64DTO"
-        replicatorCount:
-          type: integer
-          example: 5
-        activeDataModifications:
-          type: array
-          items:
-            $ref: "#/components/schemas/ActiveDataModificationDTO"
-        completedDataModifications:
-          type: array
-          items:
-            $ref: "#/components/schemas/CompletedDataModificationDTO"
-        confirmedUsedSizes:
-          type: array
-          items:
-            $ref: "#/components/schemas/ConfirmedUsedSizeDTO"
-        replicators:
-          $ref: "#/components/schemas/PublicKeyList"
-        offboardingReplicators:
-          $ref: "#/components/schemas/PublicKeyList"
-        verifications:
-          type: array
-          items:
-            $ref: "#/components/schemas/VerificationDTO"
-        downloadShards:
-          type: array
-          items:
-            $ref: "#/components/schemas/DownloadShardDTO"
-        dataModificationShards:
-          type: array
-          items:
-            $ref: "#/components/schemas/DataModificationShardDTO"
-
-
     # Request bodies
     mosaicIds:
       type: object

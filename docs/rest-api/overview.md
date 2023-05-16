@@ -15,7 +15,17 @@ Assuming that Sirius Chain REST is running locally, HTTP GET requests can be exe
 
 HTTP PUT and POST requests use JSON structures in the request body. Request returns data (if any is returned) using JSON structures. This request cannot usually be executed from within the browser unless you use a [plugin](./tools.md) which enables you to do it.
 
-[Sirius Chain REST API Endpoints](/endpoints)
+
+## Endpoints
+Refer to the latest documentation to get the list of available endpoints.
+
+- [v0.8.3 (latest)](/endpoints/v0.8.3)
+- [v0.8.0](/endpoints/v0.8.0)
+- [v0.7.4](/endpoints/v0.7.4)
+- [v0.7.3](/endpoints/v0.7.3)
+- [v0.7.2](/endpoints/v0.7.2)
+- [v0.7.1](/endpoints/v0.7.1)
+- [v0.5.5](/endpoints/v0.5.5)
 
 ## HTTP Errors
 
@@ -45,7 +55,7 @@ message |	Error explained in human-readable format.
 
 ## uint64: lower and higher
 
-Javascript operate on 32 bit values. To enable representation up to 64 bits, the API returns numbers encoded in two parts: `lower` and `higher`.
+Javascript operates on 32 bit values. To enable representation up to 64 bits, the API returns numbers encoded in two parts: `lower` and `higher`.
 
 Check [how to compact lower and higher into a single value](https://github.com/proximax-storage/tsjs-xpx-chain-sdk/blob/322960aab44b4e1d0485920c697b85a88e548674/src/core/format/RawUInt64.ts#L34).
 

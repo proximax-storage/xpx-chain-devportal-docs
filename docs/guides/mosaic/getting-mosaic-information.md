@@ -7,9 +7,9 @@ Get the ownership, divisibility, duration, and flags for a given [mosaic](../../
 
 ## Prerequisites
 
-- XPX-Chain-SDK or XPX-Chain-CLI
-- A text editor or IDE
-- Finish [creating a mosaic guide](./creating-a-mosaic.md)
+- XPX-Chain-SDK or XPX-Chain-CLI.
+- A text editor or IDE.
+- Finish [creating a mosaic guide](./creating-a-mosaic.md).
 
 ## Getting into some code
 
