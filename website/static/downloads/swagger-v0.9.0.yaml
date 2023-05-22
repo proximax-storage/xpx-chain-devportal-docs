@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 0.8.3
+  version: 0.9.0
   title: Catapult REST API Reference
   license:
     name: Apache 2.0
@@ -49,6 +49,12 @@ tags:
   - name: Exchange routes
     description: |
       Exchange related endpoints.
+  - name: SDA-SDA Exchange routes
+    description: |
+      SDA-SDA Exchange related endpoints.
+  - name: Liquidity Provider routes
+    description: |
+      Liquidity provider related endpoints.
   - name: Storage routes
     description: |
       Storage related endpoints.
@@ -448,6 +454,99 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MerkleProofInfoDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/block/{height}/receipts/{receiptType}":
+    get:
+      tags:
+      - Block routes
+      summary: Get a list of a receipt type from a block
+      description: Returns the list of receipts of a receipt type linked to a block.
+      operationId: getReceiptsAtHeightByReceiptType
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+      - name: receiptType
+        in: path
+        description: The type of receipt.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionStatementDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/block/{height}/receipts/exchangesda":
+    get:
+      tags:
+      - Block routes
+      summary: Get a list of SDA-SDA exchange related receipts from a block
+      description: Returns the list of receipts related to SDA-SDA exchange linked to a block.
+      operationId: getReceiptsAtHeightByReceiptType
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SdaExchangeStatementDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  "/block/{height}/receipts/exchangesda/{accountId}":
+    get:
+      tags:
+      - Block routes
+      summary: Get a list of SDA-SDA exchange related receipts of an account from a block
+      description: Returns the list of receipts related to SDA-SDA exchange of an account linked to a block.
+      operationId: getSdaExchangeReceiptsByAccountIdAtHeight
+      parameters:
+      - name: height
+        in: path
+        description: The height of the block.
+        required: true
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SdaExchangeStatementDTO"
         "404":
           description: resource not found
         "409":
@@ -1522,6 +1621,137 @@ paths:
 
   # Lock routes end
 
+  # SDA-SDA Exchange routes start
+
+  '/account/{accountId}/exchangesda':
+    get:
+      tags:
+      - SDA-SDA Exchange routes
+      summary: Get SDA-SDA offers information
+      description: Returns the active SDA-SDA offers information of the account
+      operationId: exchangesdaByIds
+      parameters:
+      - name: accountId
+        in: path
+        description: The public key or address of the account.
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SdaExchangeDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+  '/exchangesda/{type}/{mosaicId}':
+    get:
+      tags:
+      - SDA-SDA Exchange routes
+      summary: Get SDA-SDA offers of a SDA type
+      description: Returns the active SDA-SDA offers information of a SDA type
+      operationId: exchangesdaByMosaicId{Give/Get}
+      parameters:
+      - name: type
+        in: path
+        description: The type of exchange offer - give or get.
+        required: true
+        schema:
+          type: string
+      - name: mosaicId
+        in: path
+        description: The mosaic identifier.
+        required: true
+        schema:
+          type: string
+          format: hex
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SdaOfferBalancesDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+
+  # SDA-SDA Exchange routes end
+
+  # Liquidity Provider routes start
+
+  '/liquidity_providers':
+    get:
+      tags:
+        - Liquidity Provider routes
+      summary: Get pages with existen liquidity providers
+      description: Returns the paged response with liquidity providers.
+      operationId: getLiquidityProviders
+      parameters:
+        - $ref: '#/components/parameters/mosaicIdQuery'
+        - $ref: '#/components/parameters/slashingAccountQuery'
+        - $ref: '#/components/parameters/ownerQuery'
+        - $ref: '#/components/parameters/pageSizeQuery'
+        - $ref: '#/components/parameters/pageNumberQuery'
+        - $ref: '#/components/parameters/offsetQuery'
+        - $ref: '#/components/parameters/orderQuery'
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/LiquidityProvidersDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+
+  '/liquidity_providers/{providerKey}':
+    get:
+      tags:
+        - Liquidity Provider routes
+      summary: Get liquidity provider by provider key
+      description: Returns the liquidity provider by provider key.
+      operationId: getLiquidityProvider
+      parameters:
+        - name: providerKey
+          in: path
+          description: Public key of a liquidity provider.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  liquidityProvider:
+                    $ref: "#/components/schemas/LiquidityProviderInfoDTO"
+        "404":
+          description: resource not found
+        "409":
+          description: invalid argument
+
+  # Liquidity Provider routes end
+
   # Storage routes start
 
   '/bcdrives':
@@ -1532,6 +1762,19 @@ paths:
       description: Returns the paged response with drives.
       operationId: getBcDrives
       parameters:
+        - $ref: '#/components/parameters/sizeQuery'
+        - $ref: '#/components/parameters/fromSizeQuery'
+        - $ref: '#/components/parameters/toSizeQuery'
+        - $ref: '#/components/parameters/usedSizeQuery'
+        - $ref: '#/components/parameters/fromUsedSizeQuery'
+        - $ref: '#/components/parameters/toUsedSizeQuery'
+        - $ref: '#/components/parameters/metaFilesSizeQuery'
+        - $ref: '#/components/parameters/fromMetaFilesSizeQuery'
+        - $ref: '#/components/parameters/toMetaFilesSizeQuery'
+        - $ref: '#/components/parameters/replicatorCountQuery'
+        - $ref: '#/components/parameters/fromReplicatorCountQuery'
+        - $ref: '#/components/parameters/toReplicatorCountQuery'
+        - $ref: '#/components/parameters/ownerQuery'
         - $ref: '#/components/parameters/pageSizeQuery'
         - $ref: '#/components/parameters/pageNumberQuery'
         - $ref: '#/components/parameters/offsetQuery'
@@ -1567,10 +1810,6 @@ paths:
           required: true
           schema:
             type: string
-        - $ref: '#/components/parameters/pageSizeQuery'
-        - $ref: '#/components/parameters/pageNumberQuery'
-        - $ref: '#/components/parameters/offsetQuery'
-        - $ref: '#/components/parameters/orderQuery'
       responses:
         "200":
           description: success
@@ -1594,6 +1833,12 @@ paths:
       description: Returns the paged response with Replicators.
       operationId: getReplicators
       parameters:
+        - $ref: '#/components/parameters/versionQuery'
+        - $ref: '#/components/parameters/fromVersionQuery'
+        - $ref: '#/components/parameters/toVersionQuery'
+        - $ref: '#/components/parameters/capacityQuery'
+        - $ref: '#/components/parameters/fromCapacityQuery'
+        - $ref: '#/components/parameters/toCapacityQuery'
         - $ref: '#/components/parameters/pageSizeQuery'
         - $ref: '#/components/parameters/pageNumberQuery'
         - $ref: '#/components/parameters/offsetQuery'
@@ -1629,10 +1874,6 @@ paths:
           required: true
           schema:
             type: string
-        - $ref: '#/components/parameters/pageSizeQuery'
-        - $ref: '#/components/parameters/pageNumberQuery'
-        - $ref: '#/components/parameters/offsetQuery'
-        - $ref: '#/components/parameters/orderQuery'
       responses:
         "200":
           description: success
@@ -1656,6 +1897,13 @@ paths:
       description: Returns the paged response with Download Channels.
       operationId: getDownloadChannels
       parameters:
+        - $ref: '#/components/parameters/downloadSizeQuery'
+        - $ref: '#/components/parameters/fromDownloadSizeQuery'
+        - $ref: '#/components/parameters/toDownloadSizeQuery'
+        - $ref: '#/components/parameters/downloadApprovalCountQuery'
+        - $ref: '#/components/parameters/fromDownloadApprovalCountQuery'
+        - $ref: '#/components/parameters/toDownloadApprovalCountQuery'
+        - $ref: '#/components/parameters/consumerKeyQuery'
         - $ref: '#/components/parameters/pageSizeQuery'
         - $ref: '#/components/parameters/pageNumberQuery'
         - $ref: '#/components/parameters/offsetQuery'
@@ -1691,10 +1939,6 @@ paths:
           required: true
           schema:
             type: string
-        - $ref: '#/components/parameters/pageSizeQuery'
-        - $ref: '#/components/parameters/pageNumberQuery'
-        - $ref: '#/components/parameters/offsetQuery'
-        - $ref: '#/components/parameters/orderQuery'
       responses:
         "200":
           description: success
@@ -1925,6 +2169,199 @@ components:
       description: Filter by owner holding, need to use along with `ownerPubKey`
       schema:
         type: boolean
+    mosaicIdQuery:
+      name: mosaicId
+      in: query
+      description: Provider mosaic id.
+      example: 402B2F579FAEBC59
+      schema:
+        type: string
+    slashingAccountQuery:
+      name: slashingAccount
+      in: query
+      description: Public key of a Slashing account.
+      schema:
+        type: string
+    ownerQuery:
+      name: owner
+      in: query
+      description: Public key of an Owner.
+      schema:
+        type: string
+    sizeQuery:
+      name: size
+      in: query
+      description: Size of drive (MB).
+      schema:
+        type: integer
+        format: uint
+    fromSizeQuery:
+      name: fromSize
+      in: query
+      description: From size of drive (MB).
+      schema:
+        type: integer
+        format: uint   
+    toSizeQuery:
+      name: toSize
+      in: query
+      description: To size of drive (MB).
+      schema:
+        type: integer
+        format: uint   
+    usedSizeQuery:
+      name: usedSize
+      in: query
+      description: Used size of drive.
+      schema:
+        type: integer
+        format: uint   
+    fromUsedSizeQuery:
+      name: fromUsedSize
+      in: query
+      description: From used size of drive.
+      schema:
+        type: integer
+        format: uint
+    toUsedSizeQuery:
+      name: toUsedSize
+      in: query
+      description: To used size of drive.
+      schema:
+        type: integer
+        format: uint 
+    metaFilesSizeQuery:
+      name: metaFilesSize
+      in: query
+      description: Meta file size of drive.
+      schema:
+        type: integer
+        format: uint        
+    fromMetaFilesSizeQuery:
+      name: fromMetaFilesSize
+      in: query
+      description: From meta file size of drive.
+      schema:
+        type: integer
+        format: uint   
+    toMetaFilesSizeQuery:
+      name: toMetaFilesSize
+      in: query
+      description: To meta file size of drive.
+      schema:
+        type: integer
+        format: uint 
+    replicatorCountQuery:
+      name: replicatorCount
+      in: query
+      description: Number of replicators.
+      schema:
+        type: integer
+        format: uint 
+    fromReplicatorCountQuery:
+      name: fromReplicatorCount
+      in: query
+      description: From number of replicators.
+      schema:
+        type: integer
+        format: uint 
+    toReplicatorCountQuery:
+      name: toReplicatorCount
+      in: query
+      description: To number of replicators.
+      schema:
+        type: integer
+        format: uint 
+    versionQuery:
+      name: version
+      in: query
+      description: Version of replicator.
+      schema:
+        type: integer
+        format: uint 
+    fromVersionQuery:
+      name: fromVersion
+      in: query
+      description: From version of replicator.
+      schema:
+        type: integer
+        format: uint 
+    toVersionQuery:
+      name: toVersion
+      in: query
+      description: To version of replicator.
+      schema:
+        type: integer
+        format: uint 
+    capacityQuery:
+      name: capacity
+      in: query
+      description: Storage size that the replicator provides.
+      schema:
+        type: integer
+        format: uint 
+    fromCapacityQuery:
+      name: fromCapacity
+      in: query
+      description: From storage size that the replicator provides.
+      schema:
+        type: integer
+        format: uint 
+    toCapacityQuery:
+      name: toCapacity
+      in: query
+      description: To storage size that the replicator provides.
+      schema:
+        type: integer
+        format: uint 
+    downloadSizeQuery:
+      name: downloadSize
+      in: query
+      description: Download size in MB.
+      schema:
+        type: integer
+        format: uint 
+    fromDownloadSizeQuery:
+      name: fromDownloadSize
+      in: query
+      description: From download size in MB.
+      schema:
+        type: integer
+        format: uint
+    toDownloadSizeQuery:
+      name: toDownloadSize
+      in: query
+      description: To download size in MB.
+      schema:
+        type: integer
+        format: uint
+    downloadApprovalCountQuery:
+      name: downloadApprovalCount
+      in: query
+      description: Number of completed download approval transactions.
+      schema:
+        type: integer
+        format: uint 
+    fromDownloadApprovalCountQuery:
+      name: fromDownloadApprovalCount
+      in: query
+      description: From number of completed download approval transactions.
+      schema:
+        type: integer
+        format: uint16
+    toDownloadApprovalCountQuery:
+      name: toDownloadApprovalCount
+      in: query
+      description: To number of completed download approval transactions.
+      schema:
+        type: integer
+        format: uint16
+    consumerKeyQuery:
+      name: consumerKey
+      in: query
+      description: Consumer of download channel.
+      schema:
+        type: string
 
   requestBodies:
     metadataIds:
@@ -3438,6 +3875,7 @@ components:
               - $ref: "#/components/schemas/BalanceChangeReceiptDTO"
               - $ref: "#/components/schemas/ArtifactExpiryReceiptDTO"
               - $ref: "#/components/schemas/InflationReceiptDTO"
+              - $ref: "#/components/schemas/SdaExchangeStatementDTO"
     ResolutionStatementDTO:
       type: object
       description: A resolution statement keeps the relation between a namespace alias used
@@ -3586,6 +4024,120 @@ components:
           type: string
           example: 0.7.14
           description: The catapult-sdk component version.
+    SdaExchangeStatementDTO:
+      type: object
+      description: The collection of receipts related to a SDA-SDA Exchange.
+      required:
+      - height
+      - source
+      - receipts
+      properties:
+        height:
+          $ref: "#/components/schemas/UInt64DTO"
+        source:
+          $ref: "#/components/schemas/SourceDTO"
+        receipts:
+          type: array
+          description: The array of receipts.
+          items:
+            anyOf:
+            - $ref: "#/components/schemas/OfferCreationReceiptDTO"
+            - $ref: "#/components/schemas/OfferExchangeReceiptDTO"
+            - $ref: "#/components/schemas/OfferRemovalReceiptDTO"
+    OfferCreationReceiptDTO:
+      type: object
+      description: Returns the receipts of the placed exchange of a SDA pair.
+      allOf:
+      - $ref: "#/components/schemas/ReceiptDTO"
+      - type: object
+        required:
+        - sender
+        - mosaicIdGive
+        - mosaicIdGet
+        - mosaicAmountGive
+        - mosaicAmountGet
+        properties:
+          sender:
+            type: string
+            description: The sender's account public key.
+            example: EFF9BC7472263D03EF6362B1F200FD3061BCD1BABE78F82119FB88811227CE85
+          mosaicIdGive:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicIdGet:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicAmountGive:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicAmountGet:
+            $ref: "#/components/schemas/UInt64DTO"
+    OfferExchangeReceiptDTO:
+      type: object
+      description: Returns the receipts of the exchanges that had successfully taken place of a SDA pair.
+      allOf:
+      - $ref: "#/components/schemas/ReceiptDTO"
+      - type: object
+        required:
+        - sender
+        - mosaicIdGive
+        - mosaicIdGet
+        - exchangeDetails
+        properties:
+          sender:
+            type: string
+            description: The sender's account public key.
+            example: EFF9BC7472263D03EF6362B1F200FD3061BCD1BABE78F82119FB88811227CE85
+          mosaicIdGive:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicIdGet:
+            $ref: "#/components/schemas/UInt64DTO"
+          exchangeDetails:
+            type: array
+            description: The array of exchange details statements.
+            items:
+              $ref: "#/components/schemas/ExchangeDetailsDTO"
+    OfferRemovalReceiptDTO:
+      type: object
+      description: Returns the receipts of the removed exchange of a SDA pair.
+      allOf:
+      - $ref: "#/components/schemas/ReceiptDTO"
+      - type: object
+        required:
+        - sender
+        - mosaicIdGive
+        - mosaicIdGet
+        - mosaicAmountGiveReturned
+        properties:
+          sender:
+            type: string
+            description: The sender's account public key.
+            example: EFF9BC7472263D03EF6362B1F200FD3061BCD1BABE78F82119FB88811227CE85
+          mosaicIdGive:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicIdGet:
+            $ref: "#/components/schemas/UInt64DTO"
+          mosaicAmountGiveReturned:
+            $ref: "#/components/schemas/UInt64DTO"
+    ExchangeDetailsDTO:
+      type: object
+      description: The exchange details statements of the SDA-SDA offers.
+      required:
+      - recipient
+      - mosaicIdGive
+      - mosaicIdGet
+      - mosaicAmountGive
+      - mosaicAmountGet
+      properties:
+        recipient:
+          type: string
+          description: The recipient's account public key.
+          example: D799E559AB735A5E62187306E80C1679EE3E1170532280C968D974E351CB412F
+        mosaicIdGive:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicIdGet:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicAmountGive:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicAmountGet:
+          $ref: "#/components/schemas/UInt64DTO"
     
     # Metadata endpoints
     MosaicMetaDTO:
@@ -4892,6 +5444,126 @@ components:
           type: number
           example: 1.5
 
+    # SdaExchange endpoints
+    PlaceSdaOfferTransactionDTO:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/TransactionDTO"
+      required:
+      - offers
+      properties:
+        offers:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlaceSdaOfferTransactionBodyDTO"
+    RemoveSdaOfferTransactionDTO:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/TransactionDTO"
+      required:
+      - offers
+      properties:
+        offers:
+          type: array
+          items:
+            $ref: "#/components/schemas/RemoveSdaOfferTransactionBodyDTO"
+    PlaceSdaOfferTransactionBodyDTO:
+      type: object
+      allOf:
+        - $ref: "#/components/schemas/SdaOfferDTO"
+      required:
+        - duration
+      properties:
+        duration:
+            $ref: "#/components/schemas/UInt64DTO"
+    RemoveSdaOfferTransactionBodyDTO:
+      type: object
+      required:
+        - mosaicIdGive
+        - mosaicIdGet
+      properties:
+        mosaicIdGive:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicIdGet:
+          $ref: "#/components/schemas/UInt64DTO" 
+    SdaOfferDTO:
+      type: object
+      required:
+        - mosaicIdGive
+        - mosaicAmountGive
+        - mosaicIdGet
+        - mosaicAmountGet
+      properties:
+        mosaicIdGive:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicAmountGive:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicIdGet:
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicAmountGet:
+          $ref: "#/components/schemas/UInt64DTO"
+    SdaExchangeDTO:
+      type: object
+      required:
+      - owner
+      - ownerAddress
+      - sdaOfferBalances
+      properties:
+        owner:
+          type: string
+          description: The account public key.
+          example: "AC1A6E1D8DE5B17D2C6B1293F1CAD3829EEACF38D09311BB3C8E5A880092DE26"
+        ownerAddress:
+          type: string
+          description: The account unique address in hexadecimal.
+          example: 9081FCCB41F8C8409A9B99E485E0E28D23BD6304EF7215E01A
+        sdaOfferBalances:
+          $ref: "#/components/schemas/SdaOfferBalancesDTO"
+    SdaOfferBalancesDTO:
+      type: object
+      required:
+      - mosaicIdGive
+      - mosaicIdGet
+      - currentMosaicGiveAmount
+      - currentMosaicGetAmount
+      - initialMosaicGiveAmount
+      - initialMosaicGetAmount
+      - deadline
+      - owner
+      properties:
+        mosaicIdGive:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        mosaicIdGet:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        currentMosaicGiveAmount:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        currentMosaicGetAmount:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        initialMosaicGiveAmount:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        initialMosaicGetAmount:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        deadline:
+          type: array
+          items:
+            $ref: "#/components/schemas/UInt64DTO"
+        owner:
+          type: string
+          description: The public key of the owner.
+          example: "AC1A6E1D8DE5B17D2C6B1293F1CAD3829EEACF38D09311BB3C8E5A880092DE26"
+
     # Service endpoints
     PrepareDriveTransactionDTO:
       type: object
@@ -6047,6 +6719,103 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/DataModificationShardDTO"
+
+    # Liquidity Provider routes
+    RateDTO:
+      type: object
+      required:
+        - currencyAmount
+        - mosaicAmount
+      properties:
+        currencyAmount:
+          description: Amount of currency
+          $ref: "#/components/schemas/UInt64DTO"
+        mosaicAmount:
+          description: Amount of mosaic
+          $ref: "#/components/schemas/UInt64DTO"
+    TurnoverDTO:
+      type: object
+      required:
+        - rate
+        - turnover
+      properties:
+        rate:
+          description: Rate at the beginning of the observation
+          $ref: "#/components/schemas/RateDTO"
+        turnover:
+          description: Amount of provided mosaics
+          $ref: "#/components/schemas/UInt64DTO"
+    LiquidityProviderInfoDTO:
+      type: object
+      required:
+        - mosaicId
+        - providerKey
+        - owner
+        - additionallyMinted
+        - slashingAccount
+        - slashingPeriod
+        - windowSize
+        - creationHeight
+        - alpha
+        - beta
+        - turnoverHistory
+        - recentTurnover
+      properties:
+        mosaicId:
+          description: Provider mosaic id
+          $ref: "#/components/schemas/UInt64DTO"
+        providerKey:
+          description: Public key of a liquidity provider
+          $ref: "#/components/schemas/PublicKey"
+        owner:
+          description: Public key of an Owner
+          $ref: "#/components/schemas/PublicKey"
+        additionallyMinted:
+          description: Amount of additionally minted provided mosaic
+          $ref: "#/components/schemas/UInt64DTO"
+        slashingAccount:
+          description: Public key of a Slashing account
+          $ref: "#/components/schemas/PublicKey"
+        slashingPeriod:
+          type: integer
+          description: Period for slashing (blocks)
+          example: 500
+        windowSize:
+          type: integer
+          description: Number of periods for historical data
+          example: 5
+        creationHeight:
+          description: Height when the liquidity provider was created
+          $ref: "#/components/schemas/UInt64DTO"
+        alpha:
+          type: integer
+          description: "% (proportion) that a Client overpays when buying units"
+          example: 500
+        beta:
+          type: integer
+          description: "% (proportion) that a Worker gets less when selling units"
+          example: 500
+        turnoverHistory:
+          description: History of turnovers
+          type: array
+          items:
+            $ref: "#/components/schemas/TurnoverDTO"
+        recentTurnover:
+          description: The last turnover
+          $ref: "#/components/schemas/TurnoverDTO"
+    LiquidityProvidersDTO:
+      type: object
+      required:
+        - liquidityProvider
+        - meta
+      properties:
+        liquidityProvider:
+          description: Liquidity Provider information
+          $ref: "#/components/schemas/LiquidityProviderInfoDTO"
+        meta:
+          type: string
+          format: hex
+          example: 6464a3765d8971a8377cc6d0
 
     # Request bodies
     mosaicIds:
