@@ -2603,19 +2603,15 @@ components:
         - Failure_Exchange_Incorrect_Offer_Type
         - Failure_Exchange_Mosaic_Does_Not_Exist
         - Failure_ExchangeSda_No_Offers
-        - Failure_ExchangeSda_Exchanging_Own_Units_Is_Not_Allowed
         - Failure_ExchangeSda_Account_Doesnt_Have_Any_Offer
         - Failure_ExchangeSda_Duplicated_Offer_In_Request
         - Failure_ExchangeSda_Zero_Offer_Duration
         - Failure_ExchangeSda_Offer_Duration_Too_Large
-        - Failure_ExchangeSda_Mosaic_Not_Found
         - Failure_ExchangeSda_Zero_Amount
         - Failure_ExchangeSda_Zero_Price
         - Failure_ExchangeSda_Offer_Exists
         - Failure_ExchangeSda_Offer_Doesnt_Exist
         - Failure_ExchangeSda_Offer_Expired
-        - Failure_ExchangeSda_Invalid_Price
-        - Failure_ExchangeSda_Not_Enough_Units_In_Offer
         - Failure_ExchangeSda_Cant_Remove_Offer_At_Height
         - Failure_ExchangeSda_No_Offered_Mosaics_To_Remove
         - Failure_ExchangeSda_Plugin_Config_Malformed
@@ -2863,7 +2859,7 @@ components:
         * Failure_Mosaic_Supply_Negative - Validation failed because the resulting mosaic supply is negative.
         * Failure_Mosaic_Supply_Exceeded - Validation failed because the resulting mosaic supply exceeds the maximum allowed value. The range should be between 0 and `9.000.000.000`.
         * Failure_Mosaic_Non_Transferable - Validation failed because the mosaic is not transferable. Only the creator of the mosaic is eligible to be the recipient of a non-transferable mosaic once transferred.
-        * Failure_Mosaic_Offer_Duration_Exceeds_Mosaic_Duration
+        * Failure_Mosaic_Offer_Duration_Exceeds_Mosaic_Duration - Validation failed because the offer's lifetime exceeds the mosaic's lifetime.
         * Failure_Mosaic_Max_Mosaics_Exceeded - Validation failed because the credit of the mosaic would exceed the maximum different mosaics an account is allowed to own. Set by default to `10.000` different mosaics per account.
         * Failure_Mosaic_Plugin_Config_Malformed - Validation failed because the mosaic plugin configuration is malformed.
         * Failure_Mosaic_Insufficient_Levy_Balance
@@ -2989,24 +2985,20 @@ components:
         * Failure_Exchange_Offer_Duration_Exceeds_Mosaic_Duration
         * Failure_Exchange_Incorrect_Offer_Type
         * Failure_Exchange_Mosaic_Does_Not_Exist
-        * Failure_ExchangeSda_No_Offers
-        * Failure_ExchangeSda_Exchanging_Own_Units_Is_Not_Allowed
-        * Failure_ExchangeSda_Account_Doesnt_Have_Any_Offer
-        * Failure_ExchangeSda_Duplicated_Offer_In_Request
-        * Failure_ExchangeSda_Zero_Offer_Duration
-        * Failure_ExchangeSda_Offer_Duration_Too_Large
-        * Failure_ExchangeSda_Mosaic_Not_Found
-        * Failure_ExchangeSda_Zero_Amount
-        * Failure_ExchangeSda_Zero_Price
-        * Failure_ExchangeSda_Offer_Exists
-        * Failure_ExchangeSda_Offer_Doesnt_Exist
-        * Failure_ExchangeSda_Offer_Expired
-        * Failure_ExchangeSda_Invalid_Price
-        * Failure_ExchangeSda_Not_Enough_Units_In_Offer
-        * Failure_ExchangeSda_Cant_Remove_Offer_At_Height
-        * Failure_ExchangeSda_No_Offered_Mosaics_To_Remove
-        * Failure_ExchangeSda_Plugin_Config_Malformed - Validation failed because the exchange SDA plugin configuration is malformed.
-        * Failure_ExchangeSda_Exchanging_Same_Units_Is_Not_Allowed
+        * Failure_ExchangeSda_No_Offers - Validation failed because there are no offers being placed.
+        * Failure_ExchangeSda_Account_Doesnt_Have_Any_Offer - Validation failed because the account has no offers or completed all exchanges.
+        * Failure_ExchangeSda_Duplicated_Offer_In_Request - Validation failed because the offer has already set to be placed or removed.
+        * Failure_ExchangeSda_Zero_Offer_Duration - Validation failed because the offer duration is zero.
+        * Failure_ExchangeSda_Offer_Duration_Too_Large - Validation failed because the offer duration is more than the maximum duration that an offer is allowed to have.
+        * Failure_ExchangeSda_Zero_Amount - Validation failed because the amount to be given in the exchange is zero.
+        * Failure_ExchangeSda_Zero_Price - Validation failed because the amount to be gotten in the exchange is zero.
+        * Failure_ExchangeSda_Offer_Exists -  Validation failed because the offer pair to be placed already exists for the account.
+        * Failure_ExchangeSda_Offer_Doesnt_Exist - Validation failed because the offer pair to be removed does not exist for the account.
+        * Failure_ExchangeSda_Offer_Expired - Validation failed because the offer's lifetime has passed and cannot be manually removed.
+        * Failure_ExchangeSda_Cant_Remove_Offer_At_Height - Validation failed because the offer has expired at the current height and cannot be manually removed.
+        * Failure_ExchangeSda_No_Offered_Mosaics_To_Remove - Validation failed because there are no offers being set to be removed.
+        * Failure_ExchangeSda_Plugin_Config_Malformed - Validation failed because the exchangesda plugin configuration is malformed.
+        * Failure_ExchangeSda_Exchanging_Same_Units_Is_Not_Allowed - Validation failed because there is no possibility of exchanging between the same units.
         * Failure_Service_Drive_Duration_Is_Not_Multiple_Of_BillingPeriod - Validation failed because the duration multiple of is not billing period.
         * Failure_Service_Wrong_Percent_Approvers - Validation failed because the percentage of approvers is wrong.
         * Failure_Service_Min_Replicators_More_Than_Replicas - Validation failed because the minimum number of replicates more than the number of replicas.
