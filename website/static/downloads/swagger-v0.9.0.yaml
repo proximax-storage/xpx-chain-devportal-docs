@@ -3011,14 +3011,12 @@ components:
         - 16989
         - 17245
         - 16993
-        - 32835
         - 33091
+        - 32835
         - 16728
         - 16729
         - 16716
         - 16712
-        - 16722
-        - 16978
         - 16703
         - 16959
         - 17215
@@ -3029,24 +3027,54 @@ components:
         - 17229
         - 17485
         - 16718
+        - 16722
+        - 16978
         - 16724
         - 17520
         - 16738
         - 16994
-        - 17506
-        - 19298
-        - 17762
-        - 19042
-        - 18786
         - 17250
+        - 17506
+        - 17762
+        - 18018
+        - 18274
         - 18530
+        - 19042
+        - 19298
         - 19554
-        - 20322
         - 19810
         - 20066
-        - 18274
-        - 16744
-        - 17000
+        - 20322
+        - 16743
+        - 16999
+        - 17255
+        - 16701
+        - 16957
+        - 17213
+        - 16727
+        - 16730
+        - 16986
+        - 17242
+        - 17498
+        - 17754
+        - 18010
+        - 18266
+        - 18522
+        - 18778
+        - 19034
+        - 16735
+        - 16991
+        - 17247
+        - 16736
+        - 16992
+        - 17248
+        - 17504
+        - 17760
+        - 16745
+        - 17001
+        - 16746
+        - 17002
+        - 16748
 
       description: |
         The entity type:
@@ -3081,26 +3109,51 @@ components:
         * 0x4252 (16978 decimal) - Secret Proof Transaction.
         * 0x4154 (16724 decimal) - Transfer Transaction.
         * 0x4662 (17520 decimal) - Replicator Onboarding Transaction.
-        * 0x4162 (16738 decimal) - Prepare BcDrive transaction
-        * 0x4262 (16994 decimal) - Data modification transaction
-        * 0x4362 (17250 decimal) - Download transaction
-        * 0x4462 (17506 decimal) - Data modification approval transaction
-        * 0x4562 (17762 decimal) - Data modification cancel transaction
-        * 0x4662 (18018 decimal) - Replicator onboarding transaction
-        * 0x4762 (18274 decimal) - Replicator offboarding transaction
-        * 0x4862 (18530 decimal) - Finish download transaction
-        * 0x4962 (18786 decimal) - Download payment transaction
-        * 0x4A62 (19042 decimal) - Storage payment transaction
-        * 0x4B62 (19298 decimal) - Data modification single approval transaction
-        * 0x4C62 (19554 decimal) - Verification payment transaction
-        * 0x4D62 (19810 decimal) - Download approval transaction
-        * 0x4E62 (20066 decimal) - Drive closure transaction
-        * 0x4F62 (20322 decimal) - End drive verification transaction
-        * 0x4167 (16743 decimal) - Stream start
-        * 0x4267 (16999 decimal) - Stream finish
-        * 0x4367 (17255 decimal) - Stream payment
-        * 0x4168 (16744 decimal) - Create Liquidity Provider Transaction.
-        * 0x4268 (17000 decimal) - Manual Rate Change Transaction.
+        * 0x4162 (16738 decimal) - Prepare BcDrive Transaction.
+        * 0x4262 (16994 decimal) - Data Modification Transaction.
+        * 0x4362 (17250 decimal) - Download Transaction.
+        * 0x4462 (17506 decimal) - Data Modification Approval Transaction.
+        * 0x4562 (17762 decimal) - Data Modification Cancel Transaction.
+        * 0x4662 (18018 decimal) - Replicator Onboarding Transaction.
+        * 0x4762 (18274 decimal) - Replicator Offboarding Transaction.
+        * 0x4862 (18530 decimal) - Finish Download Transaction.
+        * 0x4962 (18786 decimal) - Download Payment Transaction.
+        * 0x4A62 (19042 decimal) - Storage Payment Transaction.
+        * 0x4B62 (19298 decimal) - Data Modification Single Approval Transaction.
+        * 0x4C62 (19554 decimal) - Verification Payment Transaction.
+        * 0x4D62 (19810 decimal) - Download Approval Transaction.
+        * 0x4E62 (20066 decimal) - Drive Closure Transaction.
+        * 0x4F62 (20322 decimal) - End Drive Verification V2 Transaction.
+        * 0x4167 (16743 decimal) - Stream start.
+        * 0x4267 (16999 decimal) - Stream finish.
+        * 0x4367 (17255 decimal) - Stream payment.
+        * 0x413D (16701 decimal) - Metadata Address Modification Transaction. 
+        * 0x423D (16957 decimal) - Metadata Mosaic Modification Transaction.
+        * 0x433D (17213 decimal) - Metadata Namespace Modification Transaction.
+        * 0x4157 (16727 decimal) - Modify Contract Transaction.
+        * 0x415A (16730 decimal) - Prepare Drive Transaction.
+        * 0x425A (16986 decimal) - Join To Drive Transaction.
+        * 0x435A (17242 decimal) - Drive File System Transaction.
+        * 0x445A (17498 decimal) - Files Deposit Transaction.
+        * 0x455A (17754 decimal) - End Drive Transaction.
+        * 0x465A (18010 decimal) - Drive Files Reward Transaction.
+        * 0x475A (18266 decimal) - Start Drive Verification Transaction.
+        * 0x485A (18522 decimal) - End Drive Verification Transaction.
+        * 0x495A (18778 decimal) - Start file download.
+        * 0x4A5A (19034 decimal) - End file download.
+        * 0x415f (16735 decimal) - Operation identify.
+        * 0x425f (16991 decimal) - Start operation.
+        * 0x435f (17247 decimal) - End operation.
+        * 0x4160 (16736 decimal) - Deploy.
+        * 0x4260 (16992 decimal) - Start execute.
+        * 0x4360 (17248 decimal) - End execute.
+        * 0x4460 (17504 decimal) - Upload file.
+        * 0x4560 (17760 decimal) - Deactivate super contract.
+        * 0x4169 (16745 decimal) - Create Liquidity Provider Transaction.
+        * 0x4269 (17001 decimal) - Manual Rate Change Transaction. (LP)
+        * 0x416A (16746 decimal) - Place SDA-SDA Exchange Offer Transaction.
+        * 0x426A (17002 decimal) - Remove SDA-SDA Exchange Offer Transaction.
+        * 0x416C (16748 decimal) - Install Message Transaction Body.
   
     HashAlgorithmEnum:
       type: integer
