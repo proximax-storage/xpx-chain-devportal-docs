@@ -2458,12 +2458,8 @@ components:
         - Failure_LockSecret_Invalid_Duration
         - Failure_LockSecret_Plugin_Config_Malformed
         - Failure_Mosaic_Invalid_Duration
-        - Failure_Mosaic_Invalid_Name
-        - Failure_Mosaic_Name_Id_Mismatch
         - Failure_Mosaic_Expired
         - Failure_Mosaic_Owner_Conflict
-        - Failure_Mosaic_Id_Mismatch
-        - Failure_Mosaic_Parent_Id_Conflict
         - Failure_Mosaic_Invalid_Property
         - Failure_Mosaic_Invalid_Flags
         - Failure_Mosaic_Invalid_Divisibility
@@ -2482,10 +2478,7 @@ components:
         - Failure_Mosaic_Insufficient_Levy_Balance
         - Failure_Mosaic_Recipient_Levy_Not_Exist
         - Failure_Mosaic_Invalid_Levy_Fee
-        - Failure_Mosaic_Ineligible_Signer
-        - Failure_Mosaic_Id_Not_Found
         - Failure_Mosaic_Levy_Entry_Not_Found
-        - Failure_Mosaic_Levy_Already_Exist
         - Failure_Mosaic_Invalid_Levy_Type
         - Failure_Mosaic_Current_Levy_Not_Set
         - Failure_Mosaic_Levy_Not_Found_Or_Expired
@@ -2677,10 +2670,9 @@ components:
         - Failure_Operation_End_Transaction_Misplaced
         - Failure_SuperContract_Super_Contract_Already_Exists
         - Failure_SuperContract_Operation_Is_Not_Permitted
-        - Failure_SuperContract_File_Is_Not_Exist
+        - Failure_SuperContract_File_Does_Not_Exist
         - Failure_SuperContract_Remove_Super_Contract_File
-        - Failure_SuperContract_Drive_Has_Ended
-        - Failure_SuperContract_SuperContract_Is_Not_Exist
+        - Failure_SuperContract_SuperContract_Does_Not_Exist
         - Failure_SuperContract_Plugin_Config_Malformed
         - Failure_SuperContract_End_Execute_Transaction_Misplaced
         - Failure_SuperContract_Execution_Count_Exceeded_Limit
@@ -2724,7 +2716,6 @@ components:
         - Failure_Storage_Data_Modification_Already_Exists
         - Failure_Storage_Modification_Invalid_Upload_Size
         - Failure_Storage_No_Replicator
-        - Failure_Storage_Multiple_Replicators
         - Failure_Storage_Replicator_Not_Found
         - Failure_Storage_Replicator_Already_Registered
         - Failure_Storage_Replicator_Not_Registered
@@ -2732,35 +2723,27 @@ components:
         - Failure_Storage_Invalid_Transaction_Signer
         - Failure_Storage_Drive_Not_Assigned_To_Replicator
         - Failure_Storage_No_Approved_Data_Modifications
-        - Failure_Storage_Invalid_Used_Size
         - Failure_Storage_Opinion_Duplicated_Keys
         - Failure_Storage_Opinion_Invalid_Key
         - Failure_Storage_Invalid_Opinion
         - Failure_Storage_Invalid_Opinions_Sum
-        - Failure_Storage_No_Confirmed_Used_Sizes
-        - Failure_Storage_Opinion_Invalid_Key_Order
-        - Failure_Storage_Opinion_Invalid_Index
         - Failure_Storage_Opinion_Invalid_Signature
         - Failure_Storage_Opinion_Unused_Key
-        - Failure_Storage_Opinions_Reocurring_Individual_Parts
         - Failure_Storage_Transaction_Already_Approved
         - Failure_Storage_Invalid_Approval_Trigger
         - Failure_Storage_No_Opinion_Provided_On_Self
-        - Failure_Storage_Unused_Opinion
         - Failure_Storage_Opinion_Provided_On_Self
         - Failure_Storage_Drive_Info_Not_Found
         - Failure_Storage_Bad_Verification_Trigger
         - Failure_Storage_Verification_Not_In_Progress
         - Failure_Storage_Verification_Invalid_Prover_Count
         - Failure_Storage_Verification_Invalid_Shard_Id
-        - Failure_Storage_Verification_Invalid_Prover
         - Failure_Storage_Stream_Already_Exists
         - Failure_Storage_Invalid_Stream_Id
         - Failure_Storage_Stream_Already_Finished
         - Failure_Storage_Expected_Upload_Size_Exceeded
         - Failure_Storage_Drive_Size_Excessive
         - Failure_Storage_Upload_Size_Excessive
-        - Failure_Storage_Download_Size_Excessive
         - Failure_Storage_Download_Size_Insufficient
         - Failure_Storage_Signature_Count_Insufficient
         - Failure_Storage_Already_Applied_For_Offboarding
@@ -2785,11 +2768,6 @@ components:
         - Failure_Committee_Account_Does_Not_Exist
         - Failure_Committee_Signer_Is_Not_Owner
         - Failure_Committee_Harvester_Already_Disabled
-        - Failure_Dbrb_View_Sequence_Already_Exists
-        - Failure_Dbrb_View_Sequence_Size_Insufficient
-        - Failure_Dbrb_Invalid_Replaced_View
-        - Failure_Dbrb_Signatures_Count_Insufficient
-        - Failure_Dbrb_Invalid_Signature
       description: |
         * Success - Validation result is success.
         * Neutral - Validation result is neither success nor failure.
@@ -2841,12 +2819,9 @@ components:
         * Failure_LockSecret_Invalid_Duration - Validation failed because the duration is too long. Duration is allowed to lie up to `30` days.
         * Failure_LockSecret_Plugin_Config_Malformed - Validation failed because the locksecret plugin configuration is malformed.
         * Failure_Mosaic_Invalid_Duration - Validation failed because the duration has an invalid value. Duration is allowed to lie up to `365` days.
-        * Failure_Mosaic_Invalid_Name - Validation failed because the name is invalid. The mosaic name may have a maximum length of `64` characters. Allowed characters are a-to-z; 0-to-9 and the following special characters: `_-
-        * Failure_Mosaic_Name_Id_Mismatch - Validation failed because the name and id don’t match.
         * Failure_Mosaic_Expired - Validation failed because the parent is expired.
         * Failure_Mosaic_Owner_Conflict - Validation failed because the parent owner conflicts with the child owner.
         * Failure_Mosaic_Id_Mismatch - Validation failed because the id is not the expected id generated from signer and nonce.
-        * Failure_Mosaic_Parent_Id_Conflict - Validation failed because the existing parent id does not match the supplied parent id.
         * Failure_Mosaic_Invalid_Property - Validation failed because a mosaic property is invalid.
         * Failure_Mosaic_Invalid_Flags - Validation failed because the mosaic flags are invalid.
         * Failure_Mosaic_Invalid_Divisibility - Validation failed because the mosaic divisibility is invalid. The specified divisibility is greater than `6` or negative.
@@ -2862,17 +2837,14 @@ components:
         * Failure_Mosaic_Offer_Duration_Exceeds_Mosaic_Duration - Validation failed because the offer's lifetime exceeds the mosaic's lifetime.
         * Failure_Mosaic_Max_Mosaics_Exceeded - Validation failed because the credit of the mosaic would exceed the maximum different mosaics an account is allowed to own. Set by default to `10.000` different mosaics per account.
         * Failure_Mosaic_Plugin_Config_Malformed - Validation failed because the mosaic plugin configuration is malformed.
-        * Failure_Mosaic_Insufficient_Levy_Balance
-        * Failure_Mosaic_Recipient_Levy_Not_Exist
-        * Failure_Mosaic_Invalid_Levy_Fee
-        * Failure_Mosaic_Ineligible_Signer
-        * Failure_Mosaic_Id_Not_Found
-        * Failure_Mosaic_Levy_Entry_Not_Found
-        * Failure_Mosaic_Levy_Already_Exist
-        * Failure_Mosaic_Invalid_Levy_Type
-        * Failure_Mosaic_Current_Levy_Not_Set
-        * Failure_Mosaic_Levy_Not_Found_Or_Expired
-        * Failure_Mosaic_Levy_Not_Enabled
+        * Failure_Mosaic_Insufficient_Levy_Balance - Validation failed because levy fund is insufficient.
+        * Failure_Mosaic_Recipient_Levy_Not_Exist - Validation failed because recipient of levy does not exist.
+        * Failure_Mosaic_Invalid_Levy_Fee - Validation failed because of levy invalied fees.
+        * Failure_Mosaic_Levy_Entry_Not_Found - Validation failed because of levy not found.
+        * Failure_Mosaic_Invalid_Levy_Type - Validation failed because levy type should not be empty.
+        * Failure_Mosaic_Current_Levy_Not_Set - Validation failed because current levy not set.
+        * Failure_Mosaic_Levy_Not_Found_Or_Expired - Validation failed because mosaic levy set expired.
+        * Failure_Mosaic_Levy_Not_Enabled - Validation failed because mosaic levy not enabled.
         * Failure_Multisig_Modify_Account_In_Both_Sets - Validation failed because an account is specified to be both added and removed.
         * Failure_Multisig_Modify_Multiple_Deletes - Validation failed because there are multiple removals.
         * Failure_Multisig_Modify_Redundant_Modifications - Validation failed because tehre are redundant modifications.
@@ -2980,11 +2952,11 @@ components:
         * Failure_Exchange_Duplicated_Offer_In_Request - Validation failed because the offer is duplicated in the request.
         * Failure_Exchange_Offer_Exists - Validation failed because the offer already exists.
         * Failure_Exchange_Zero_Offer_Duration - Validation failed because the offer duration is zero.
-        * Failure_Exchange_Offer_Expired
-        * Failure_Exchange_Cant_Remove_Offer_At_Height
-        * Failure_Exchange_Offer_Duration_Exceeds_Mosaic_Duration
-        * Failure_Exchange_Incorrect_Offer_Type
-        * Failure_Exchange_Mosaic_Does_Not_Exist
+        * Failure_Exchange_Offer_Expired - Validation failed because offer expired.
+        * Failure_Exchange_Cant_Remove_Offer_At_Height - Validation failed because there is already removed offer at the height.
+        * Failure_Exchange_Offer_Duration_Exceeds_Mosaic_Duration - Validation failed because offer duration exceeds mosaic duration.
+        * Failure_Exchange_Incorrect_Offer_Type - Validation failed because there is incorrect type of offer.
+        * Failure_Exchange_Mosaic_Does_Not_Exist - Validation failed because mosaic does not exist.
         * Failure_ExchangeSda_No_Offers - Validation failed because there are no offers being placed.
         * Failure_ExchangeSda_Account_Doesnt_Have_Any_Offer - Validation failed because the account has no offers or completed all exchanges.
         * Failure_ExchangeSda_Duplicated_Offer_In_Request - Validation failed because the offer has already set to be placed or removed.
@@ -3060,17 +3032,16 @@ components:
         * Failure_Operation_End_Transaction_Misplaced - Validation failed because the end transaction is misplaced.
         * Failure_SuperContract_Super_Contract_Already_Exists - Validation failed because the super contract already exists.
         * Failure_SuperContract_Operation_Is_Not_Permitted - Validation failed because the operation is not permited.
-        * Failure_SuperContract_File_Is_Not_Exist - Validation failed because the file is not exist.
+        * Failure_SuperContract_File_Does_Not_Exist - Validation failed because the file does not exist.
         * Failure_SuperContract_Remove_Super_Contract_File - Validation failed because the super contract executing and there is no possibility to remove the file.
-        * Failure_SuperContract_Drive_Has_Ended - Validation failed because the drive has ended (finished or terminated).
-        * Failure_SuperContract_SuperContract_Is_Not_Exist - Validation failed because the super contract is not exist.
+        * Failure_SuperContract_SuperContract_Does_Not_Exist - Validation failed because the super contract is not exist.
         * Failure_SuperContract_Plugin_Config_Malformed - Validation failed because the supercontract plugin configuration is malformed.
-        * Failure_SuperContract_End_Execute_Transaction_Misplaced
-        * Failure_SuperContract_Execution_Count_Exceeded_Limit
-        * Failure_SuperContract_Execution_Is_In_Progress
-        * Failure_SuperContract_Execution_Is_Not_In_Progress
-        * Failure_SuperContract_Invalid_Drive_Key
-        * Failure_SuperContract_Count_On_Drive_Exceeded_Limit
+        * Failure_SuperContract_End_Execute_Transaction_Misplaced - Validation failed because end execute transaction is not the last sub transaction.
+        * Failure_SuperContract_Execution_Count_Exceeded_Limit - Validation failed because execution count exceeded limit.
+        * Failure_SuperContract_Execution_Is_In_Progress - Validation failed because execution is in-progress.
+        * Failure_SuperContract_Execution_Is_Not_In_Progress - Validation failed because execution is not in-progress.
+        * Failure_SuperContract_Invalid_Drive_Key - Validation failed because drive key is invalid.
+        * Failure_SuperContract_Count_On_Drive_Exceeded_Limit - Validation failed because super contract count on drive exceeded limit.
         * Failure_Chain_Unlinked - Validation failed because a block was received that did not link with the existing chain.
         * Failure_Chain_Block_Not_Hit - Validation failed because a block was received that is not a hit.
         * Failure_Chain_Block_Inconsistent_State_Hash - Validation failed because a block was received that has an inconsistent state hash.
@@ -3089,90 +3060,76 @@ components:
         * Failure_Consumer_Remote_Chain_Too_Far_In_Future - Validation failed because the remote chain timestamp is too far in the future.
         * Failure_Extension_Partial_Transaction_Cache_Prune - Validation failed because the partial transaction was pruned from the temporal cache.
         * Failure_Extension_Partial_Transaction_Dependency_Removed - Validation failed because the partial transaction was pruned from the temporal cache due to its dependency being removed.
-        * Failure_Metadata_v2_Value_Too_Small
-        * Failure_Metadata_v2_Value_Too_Large
-        * Failure_Metadata_v2_Value_Size_Delta_Too_Large
-        * Failure_Metadata_v2_Value_Size_Delta_Mismatch
-        * Failure_Metadata_v2_Value_Change_Irreversible
-        * Failure_Storage_Drive_Size_Insufficient
-        * Failure_Storage_Replicator_Count_Insufficient
-        * Failure_Storage_Replicator_Capacity_Insufficient
-        * Failure_Storage_Plugin_Config_Malformed - Validation failed because the storage plugin configuration is malformed.
-        * Failure_Storage_Drive_Already_Exists
-        * Failure_Storage_No_Active_Data_Modifications
-        * Failure_Storage_Invalid_Data_Modification_Id
-        * Failure_Storage_Data_Modification_Not_Found
-        * Failure_Storage_Is_Not_Owner
-        * Failure_Storage_Drive_Not_Found
-        * Failure_Storage_Data_Modification_Already_Exists
-        * Failure_Storage_Modification_Invalid_Upload_Size
-        * Failure_Storage_No_Replicator
-        * Failure_Storage_Multiple_Replicators
-        * Failure_Storage_Replicator_Not_Found
-        * Failure_Storage_Replicator_Already_Registered
-        * Failure_Storage_Replicator_Not_Registered
-        * Failure_Storage_Download_Channel_Not_Found
-        * Failure_Storage_Invalid_Transaction_Signer
-        * Failure_Storage_Drive_Not_Assigned_To_Replicator
-        * Failure_Storage_No_Approved_Data_Modifications
-        * Failure_Storage_Invalid_Used_Size
-        * Failure_Storage_Opinion_Duplicated_Keys
-        * Failure_Storage_Opinion_Invalid_Key
-        * Failure_Storage_Invalid_Opinion
-        * Failure_Storage_Invalid_Opinions_Sum
-        * Failure_Storage_No_Confirmed_Used_Sizes
-        * Failure_Storage_Opinion_Invalid_Key_Order
-        * Failure_Storage_Opinion_Invalid_Index
-        * Failure_Storage_Opinion_Invalid_Signature
-        * Failure_Storage_Opinion_Unused_Key
-        * Failure_Storage_Opinions_Reocurring_Individual_Parts
-        * Failure_Storage_Transaction_Already_Approved
-        * Failure_Storage_Invalid_Approval_Trigger
-        * Failure_Storage_No_Opinion_Provided_On_Self
-        * Failure_Storage_Unused_Opinion
-        * Failure_Storage_Opinion_Provided_On_Self
-        * Failure_Storage_Drive_Info_Not_Found
-        * Failure_Storage_Bad_Verification_Trigger
-        * Failure_Storage_Verification_Not_In_Progress
-        * Failure_Storage_Verification_Invalid_Prover_Count
-        * Failure_Storage_Verification_Invalid_Shard_Id
-        * Failure_Storage_Verification_Invalid_Prover
-        * Failure_Storage_Stream_Already_Exists
-        * Failure_Storage_Invalid_Stream_Id
-        * Failure_Storage_Stream_Already_Finished
-        * Failure_Storage_Expected_Upload_Size_Exceeded
-        * Failure_Storage_Drive_Size_Excessive
-        * Failure_Storage_Upload_Size_Excessive
-        * Failure_Storage_Download_Size_Excessive
-        * Failure_Storage_Download_Size_Insufficient
-        * Failure_Storage_Signature_Count_Insufficient
-        * Failure_Storage_Already_Applied_For_Offboarding
-        * Failure_Storage_Already_Initiated_Channel_Closure
-        * Failure_Storage_Download_Channel_Is_Finished
-        * Failure_Storage_Service_Unit_Transfer
-        * Failure_LiquidityProvider_Liquidity_Provider_Already_Exists
-        * Failure_LiquidityProvider_Invalid_Owner
-        * Failure_LiquidityProvider_Invalid_Slashing_Period
-        * Failure_LiquidityProvider_Invalid_Window_Size
-        * Failure_LiquidityProvider_Is_Not_Registered
-        * Failure_LiquidityProvider_Insufficient_Currency
-        * Failure_LiquidityProvider_Insufficient_Mosaic
-        * Failure_LiquidityProvider_Invalid_Exchange_Rate
-        * Failure_LiquidityProvider_Plugin_Config_Malformed - Validation failed because the liquidity provider plugin configuration is malformed.
-        * Failure_LiquidityProvider_Invalid_Mosaic_Amount
-        * Failure_LiquidityProvider_Invalid_Currency_Amount
-        * Failure_LiquidityProvider_Reserved_Mosaic_Id
+        * Failure_Metadata_v2_Value_Too_Small - Validation failed because the metadata value is too small.
+        * Failure_Metadata_v2_Value_Too_Large - Validation failed because the metadata value is too large.
+        * Failure_Metadata_v2_Value_Size_Delta_Too_Large - Validation failed because the metadata value size delta is larger in magnitude than the value size.
+        * Failure_Metadata_v2_Value_Size_Delta_Mismatch - Validation failed because the metadata value size delta does not match expected value based on the current state.
+        * Failure_Metadata_v2_Value_Change_Irreversible - Validation failed because a metadata value change (truncation) is irreversible.
+        * Failure_Storage_Drive_Size_Insufficient - Validation failed because desired drive size is less than minimal.
+        * Failure_Storage_Replicator_Count_Insufficient - Validation failed because desired number of replicators is less than minimal, or offboarding of the replicator is not possible as drive's actual replicator count will become less than minimal, or there are not enough replicators on the drive.
+        * Failure_Storage_Replicator_Capacity_Insufficient - Validation failed because desired replicator capacity is less than minimal.
+        * Failure_Storage_Plugin_Config_Malformed - Validation failed because the storage plugin configuration data is malformed.
+        * Failure_Storage_Drive_Already_Exists - Validation failed because the drive already exists.
+        * Failure_Storage_No_Active_Data_Modifications - Validation failed because data modification is not present in activeDataModifications.
+        * Failure_Storage_Invalid_Data_Modification_Id - Validation failed because there are other active data modifications that need to be finished first.
+        * Failure_Storage_Data_Modification_Not_Found - Validation failed because DataModificationTransaction is not found.
+        * Failure_Storage_Is_Not_Owner - Validation failed because transaction signer is not an owner of the drive or download channel.
+        * Failure_Storage_Drive_Not_Found - Validation failed because drive does not exist.
+        * Failure_Storage_Data_Modification_Already_Exists - Validation failed because the data modification already exists.
+        * Failure_Storage_Modification_Invalid_Upload_Size - Validation failed because modification upload size is invalid.
+        * Failure_Storage_No_Replicator - Validation failed because no replicator.
+        * Failure_Storage_Replicator_Not_Found - Validation failed because replicator does not exist.
+        * Failure_Storage_Replicator_Already_Registered - Validation failed because replicator already registered.
+        * Failure_Storage_Replicator_Not_Registered - Validation failed because replicator not registered.
+        * Failure_Storage_Download_Channel_Not_Found - Validation failed because respective download channel is not found.
+        * Failure_Storage_Invalid_Transaction_Signer - Validation failed because the signer of the transaction is not allowed to issue transactions of such type.
+        * Failure_Storage_Drive_Not_Assigned_To_Replicator - Validation failed because the respective drive is not assigned to respective replicator.
+        * Failure_Storage_No_Approved_Data_Modifications - Validation failed because there are no data modifications in completedDataModifications with 'succeeded' state.
+        * Failure_Storage_Opinion_Duplicated_Keys - Validation failed because not every key in the opinion appears exactly once.
+        * Failure_Storage_Opinion_Invalid_Key - Validation failed because the key in upload opinion is neither a key of one of the current replicators of the drive nor a key of the drive owner.
+        * Failure_Storage_Invalid_Opinion - Validation failed because there is incorrect value in opinion.
+        * Failure_Storage_Invalid_Opinions_Sum - Validation failed because there is incorrect sum of opinions in data modification approval transaction.
+        * Failure_Storage_Opinion_Invalid_Signature - Validation failed because the signature doesn't match the message (opinion).
+        * Failure_Storage_Opinion_Unused_Key - Validation failed because the key is present in the list of public keys, but no opinion about it is given.
+        * Failure_Storage_Transaction_Already_Approved - Validation failed because multisig transaction for the corresponding billing period has already been approved.
+        * Failure_Storage_Invalid_Approval_Trigger - Validation failed because download approval transaction sequence number is invalid.
+        * Failure_Storage_No_Opinion_Provided_On_Self - Validation failed because replicator hasn't provided an opinion on itself.
+        * Failure_Storage_Opinion_Provided_On_Self - Validation failed because replicator has provided an opinion on itself when he shouldn't have done this.
+        * Failure_Storage_Drive_Info_Not_Found - Validation failed because there are no drive infos in the replicator entry with given drive key.
+        * Failure_Storage_Bad_Verification_Trigger - Validation failed because verification trigger is not equal to the pending verification.
+        * Failure_Storage_Verification_Not_In_Progress - Validation failed because verification is not in-progress.
+        * Failure_Storage_Verification_Invalid_Prover_Count - Validation failed because the provided count of Provers is not equal to desired.
+        * Failure_Storage_Verification_Invalid_Shard_Id - Validation failed because Shard ID exceeds the number of verification shards.
+        * Failure_Storage_Stream_Already_Exists - Validation failed because the stream already exists.
+        * Failure_Storage_Invalid_Stream_Id - Validation failed because the stream is not first in the queue.
+        * Failure_Storage_Stream_Already_Finished - Validation failed because the stream has already been finished.
+        * Failure_Storage_Expected_Upload_Size_Exceeded - Validation failed because declared stream actual size exceeds prepaid expected size.
+        * Failure_Storage_Drive_Size_Excessive - Validation failed because desired drive size is greater than maximal.
+        * Failure_Storage_Upload_Size_Excessive - Validation failed because desired modification size is greater than maximal.
+        * Failure_Storage_Download_Size_Insufficient - Validation failed because desired download size is less than minimal.
+        * Failure_Storage_Signature_Count_Insufficient - Validation failed because number of signatures in opinion-based multisignature transaction is less than minimal.
+        * Failure_Storage_Already_Applied_For_Offboarding - Validation failed because the replicator has already applied for offboarding from the drive.
+        * Failure_Storage_Already_Initiated_Channel_Closure - Validation failed because the replicator has already applied for offboarding from the drive.
+        * Failure_Storage_Download_Channel_Is_Finished - Validation failed because download channels is finished.
+        * Failure_Storage_Service_Unit_Transfer - Validation failed because attempting to transfer a service unit.
+        * Failure_LiquidityProvider_Liquidity_Provider_Already_Exists - Validation failed because the liquidity provider has already been created for the corresponding mosaic.
+        * Failure_LiquidityProvider_Invalid_Owner - Validation failed because the liquidity provider is tried to be manager by invalid owner.
+        * Failure_LiquidityProvider_Invalid_Slashing_Period - Validation failed because the liquidity provider slashing period is invalid.
+        * Failure_LiquidityProvider_Invalid_Window_Size - Validation failed because the liquidity provider history window size is invalid.
+        * Failure_LiquidityProvider_Is_Not_Registered - Validation failed because the liquidity provider is not registered.
+        * Failure_LiquidityProvider_Insufficient_Currency - Validation failed because of insufficient currency on balance.
+        * Failure_LiquidityProvider_Insufficient_Mosaic - Validation failed because of insufficient mosaic on balance.
+        * Failure_LiquidityProvider_Invalid_Exchange_Rate - Validation failed because exchange rate is invalid.
+        * Failure_LiquidityProvider_Plugin_Config_Malformed - Validation failed because the liquidity provider plugin configuration data is malformed.
+        * Failure_LiquidityProvider_Invalid_Mosaic_Amount - Validation failed because of an attempt to emit to much mosaics (overflow attack).
+        * Failure_LiquidityProvider_Invalid_Currency_Amount - Validation failed because of an attempt to emit to much currency (overflow attack).
+        * Failure_LiquidityProvider_Reserved_Mosaic_Id - Validation failed because of an attempt to create liquidity provider with reserved mosaic id.
         * Failure_Committee_Plugin_Config_Malformed - Validation failed because the committee plugin configuration is malformed.
-        * Failure_Committee_Redundant
-        * Failure_Committee_Harvester_Ineligible
-        * Failure_Committee_Account_Does_Not_Exist
-        * Failure_Committee_Signer_Is_Not_Owner
-        * Failure_Committee_Harvester_Already_Disabled
-        * Failure_Dbrb_View_Sequence_Already_Exists
-        * Failure_Dbrb_View_Sequence_Size_Insufficient
-        * Failure_Dbrb_Invalid_Replaced_View
-        * Failure_Dbrb_Signatures_Count_Insufficient
-        * Failure_Dbrb_Invalid_Signature
+        * Failure_Committee_Redundant - Validation failed because the account already registered.
+        * Failure_Committee_Harvester_Ineligible - Validation failed because the account is an ineligible harvester.
+        * Failure_Committee_Account_Does_Not_Exist - Validation failed because the account does not exist.
+        * Failure_Committee_Signer_Is_Not_Owner - Validation failed because the transaction signer is not owner.
+        * Failure_Committee_Harvester_Already_Disabled -  Validation failed because the harvester account is already disabled.
     AccountLinkTypeEnum:
       type: integer
       enum:
@@ -3396,7 +3353,7 @@ components:
         * 0x416A (16746 decimal) - Place SDA-SDA Exchange Offer Transaction.
         * 0x426A (17002 decimal) - Remove SDA-SDA Exchange Offer Transaction.
         * 0x416C (16748 decimal) - Install Message Transaction Body.
-  
+
     HashAlgorithmEnum:
       type: integer
       enum:
