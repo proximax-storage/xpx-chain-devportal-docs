@@ -59,7 +59,7 @@ There are different types of transactions. For example, you can transfer [mosaic
 |0x4662| [Replicator Onboarding Transaction](../guides/storage/replicator-onboarding) | Replicator Onboarding|
 |0x4162| [Prepare BcDrive Transaction](../guides/storage/prepare-bc-drive) | Prepare a New Drive|
 |0x4262| [Data Modification Transaction](../guides/storage/data-modification) | New Data Modification|
-|0x4462| [Data Modification Approval Transaction]() | Data Modification Approval. Inner transaction, sends Only by Replicators |
+|0x4462| [Data Modification Approval Transaction]() | Data Modification Approval. Inner transaction, sent by Replicators only |
 |0x4B62| [Data Modification SingleApproval Transaction]() | Inner transaction, sends Only by Replicators |
 |0x4562| [Data Modification Cancel Transaction](../guides/storage/data-modification-cancel) | Cancel Data Modification |
 |0x4A62| [Storage Payment Transaction](../guides/storage/storage-payment) | Storage Payment |
