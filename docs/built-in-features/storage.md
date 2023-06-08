@@ -56,17 +56,17 @@ the [FinishDownloadTransaction](#finishdownloadtransaction).
 
 ## Guides
 
-- [Send Data Modification Cancel Transaction](../guides/storage/data-modification-cancel)
-- [Send Data Modification Transaction](../guides/storage/data-modification)
-- [Send Download Transaction](../guides/storage/download)
-- [Send Download Payment Transaction](../guides/storage/download-payment)
-- [Send Drive Closure Transaction](../guides/storage/drive-closure)
-- [Send Finish Download Transaction](../guides/storage/finish-download)
-- [Send Prepare Drive Transaction](../guides/storage/prepare-bc-drive)
-- [Send Replicator Offboarding Transaction](../guides/storage/replicator-offboarding)
-- [Send Replicator Onboarding Transaction](../guides/storage/replicator-onboarding)
-- [Send Storage Payment Transaction](../guides/storage/storage-payment)
-- [Send Verification Payment Transaction](../guides/storage/verification-payment)
+- [Send Data Modification Cancel Transaction](../guides/storage/data-modification-cancel.md)
+- [Send Data Modification Transaction](../guides/storage/data-modification.md)
+- [Send Download Transaction](../guides/storage/download.md)
+- [Send Download Payment Transaction](../guides/storage/download-payment.md)
+- [Send Drive Closure Transaction](../guides/storage/drive-closure.md)
+- [Send Finish Download Transaction](../guides/storage/finish-download.md)
+- [Send Prepare Drive Transaction](../guides/storage/prepare-bc-drive.md)
+- [Send Replicator Offboarding Transaction](../guides/storage/replicator-offboarding.md)
+- [Send Replicator Onboarding Transaction](../guides/storage/replicator-onboarding.md)
+- [Send Storage Payment Transaction](../guides/storage/storage-payment.md)
+- [Send Verification Payment Transaction](../guides/storage/verification-payment.md)
 
 ## Schemas
 
