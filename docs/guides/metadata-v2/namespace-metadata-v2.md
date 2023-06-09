@@ -1,6 +1,5 @@
 ---
 id: namespace-metadata-v2
-id: namespace-metadata-v2
 title: Namespace Metadata
 ---
 

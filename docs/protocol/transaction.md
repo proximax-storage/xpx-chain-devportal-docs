@@ -41,20 +41,36 @@ There are different types of transactions. For example, you can transfer [mosaic
 | 0x425D | [Exchange Offer Transaction](../built-in-features/exchange-market.md#exchangeoffertransaction) | Make exchanging.|
 | 0x435D | [Remove Exchange Offer Transaction](../built-in-features/exchange-market.md#removeexchangeoffertransaction) | Remove a new exhange offer.|
 |**Drive** | | |
-|0x415A | [Prepare Drive Transaction](../built-in-features/drive.md#preparedrivetransaction) | Preparing a new drive.|
-|0x425A | [Join To Drive Transaction](../built-in-features/drive.md#jointodrivetransaction) | Send a new join transaction to drive.|
-|0x435A | [Drive File System Transaction](../built-in-features/drive.md#drivefilesystemtransaction) | Change a drive file system.|
-|0x445A | [Files Deposit Transaction](../built-in-features/drive.md#filesdeposittransaction) | Block mocaics at the rate of a file size.|
-|0x455A | [End Drive Transaction](../built-in-features/drive.md#enddrivetransaction) | Terminate a drive execution.|
-|0x465A | [Drive Files Reward Transaction](../built-in-features/drive.md#drivefilesrewardtransaction) | Send rewarding for files.|
-|0x475A | [Start Drive Verification Transaction](../built-in-features/drive.md#startdriveverificationtransaction) | Start verifying files storing.|
-|0x485A | [End Drive Verification Transaction](../built-in-features/drive.md#enddriveverificationtransaction) | End verifying files storing.|
+|0x415A | [(Deprecated) Prepare Drive Transaction](../built-in-features/drive.md#preparedrivetransaction) | Preparing a new drive.|
+|0x425A | [(Deprecated) Join To Drive Transaction](../built-in-features/drive.md#jointodrivetransaction) | Send a new join transaction to drive.|
+|0x435A | [(Deprecated) Drive File System Transaction](../built-in-features/drive.md#drivefilesystemtransaction) | Change a drive file system.|
+|0x445A | [(Deprecated) Files Deposit Transaction](../built-in-features/drive.md#filesdeposittransaction) | Block mocaics at the rate of a file size.|
+|0x455A | [(Deprecated) End Drive Transaction](../built-in-features/drive.md#enddrivetransaction) | Terminate a drive execution.|
+|0x465A | [(Deprecated) Drive Files Reward Transaction](../built-in-features/drive.md#drivefilesrewardtransaction) | Send rewarding for files.|
+|0x475A | [(Deprecated) Start Drive Verification Transaction](../built-in-features/drive.md#startdriveverificationtransaction) | Start verifying files storing.|
+|0x485A | [(Deprecated) End Drive Verification Transaction](../built-in-features/drive.md#enddriveverificationtransaction) | End verifying files storing.|
 |**Super Contract** | | |
 |- | [Deploy Transaction]() | Deploying super contract.|
 |- | [Execute Transaction]() | Start contract executing.|
 |- | [Start Operation Transaction]() | Starting executing operation.|
 |- | [End Operation Transaction]() | Ending executing operation.|
 |- | [Operation Identify Transaction]() | Identifying execute operation.|
+|**Storage**|||
+|0x4662| [Replicator Onboarding Transaction](../guides/storage/replicator-onboarding) | Replicator Onboarding|
+|0x4162| [Prepare BcDrive Transaction](../guides/storage/prepare-bc-drive) | Prepare a New Drive|
+|0x4262| [Data Modification Transaction](../guides/storage/data-modification) | New Data Modification|
+|0x4462| [Data Modification Approval Transaction]() | Data Modification Approval. Inner transaction, sent by Replicators only |
+|0x4B62| [Data Modification SingleApproval Transaction]() | Inner transaction, sends Only by Replicators |
+|0x4562| [Data Modification Cancel Transaction](../guides/storage/data-modification-cancel) | Cancel Data Modification |
+|0x4A62| [Storage Payment Transaction](../guides/storage/storage-payment) | Storage Payment |
+|0x4962| [Download Payment Transaction](../guides/storage/download-payment) | Download Payment|
+|0x4362| [Download Transaction](../guides/storage/download) | New Download Channel |
+|0x4862| [Finish Download Transaction](../guides/storage/finish-download) | Close Download Channel |
+|0x4C62| [Verification Payment Transaction](../guides/storage/verification-payment) | Verification Payment |
+|0x4F62| [End Drive Verification V2 Transaction]() | End Drive Verification. Inner transaction, sends Only by Replicators |
+|0x4D62| [Download Approval Transaction]() | Download Approval. Inner transaction, sends Only by Replicators |
+|0x4E62| [Drive Closure Transaction](../guides/storage/drive-closure) | Drive Closure |
+|0x4762| [Replicator Offboarding Transaction](../guides/storage/replicator-offboarding) | Replicator Offboarding |
 
 ## Defining a transaction
 
