@@ -150,35 +150,35 @@ title: Guides
   Send an encrypted message that only can be read by the recipient account.
 
 ## Storage
-- [Send Data Modification Cancel Transaction](./storage/data-modification-cancel)
+- [Send Data Modification Cancel Transaction](./storage/data-modification-cancel.md)
   Close an existing Data Modification
 
-- [Send Data Modification Transaction](./storage/data-modification)
+- [Send Data Modification Transaction](./storage/data-modification.md)
   Send a new Data Modification
 
-- [Send Download Transaction](./storage/download)
+- [Send Download Transaction](./storage/download.md)
   Create a New Download
 
-- [Send Download Payment Transaction](./storage/download-payment)
+- [Send Download Payment Transaction](./storage/download-payment.md)
   Pay to a Download Channel
 
-- [Send Drive Closure Transaction](./storage/drive-closure)
+- [Send Drive Closure Transaction](./storage/drive-closure.md)
   Closure a Drive
 
-- [Send Finish Download Transaction](./storage/finish-download)
+- [Send Finish Download Transaction](./storage/finish-download.md)
   Finish a Download Channel
 
-- [Send Prepare Drive Transaction](./storage/prepare-bc-drive)
+- [Send Prepare Drive Transaction](./storage/prepare-bc-drive.md)
   Prepare a New Drive
 
-- [Send Replicator Offboarding Transaction](./storage/replicator-offboarding)
+- [Send Replicator Offboarding Transaction](./storage/replicator-offboarding.md)
   Offboard a Replicator from a Drive
 
-- [Send Replicator Onboarding Transaction](./storage/replicator-onboarding)
+- [Send Replicator Onboarding Transaction](./storage/replicator-onboarding.md)
   Onboard a New Replicator
 
-- [Send Storage Payment Transaction](./storage/storage-payment)
+- [Send Storage Payment Transaction](./storage/storage-payment.md)
   Pay to a Drive for Billing Period
 
-- [Send Verification Payment Transaction](./storage/verification-payment)
+- [Send Verification Payment Transaction](./storage/verification-payment.md)
   Pay to a Drive for Verification
