@@ -17,7 +17,7 @@ Sirius Chain [nodes](../protocol/node.md) provide a powerful, stable and secure 
 
 All the features are available through the API interface on each node in the network itself. This means that the blockchain can be used to create a variety of architecture solutions with lightweight [code in any language](../sdks/languages.md).
 
-![Architecting Sirius Chain Solutions](/img/architecting-Sirius-Chain-solutions.png "Architecting Sirius Chain Solutions")
+![Architecting Sirius Chain Solutions](/img/architecting-sirius-chain-solutions.png "Architecting Sirius Chain Solutions")
 
 **Mobile app direct access**
 
