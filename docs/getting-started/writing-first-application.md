@@ -44,7 +44,7 @@ The rest of the code remains **off-chain**. This reduces the inherent immutabili
 
 - Finish [getting started section](./setting-up-workstation.md)
 - Text editor or IDE
-- XPX-Chain-SDK and XPX-Chain-CLI
+- XPX-Chain-SDK
 - An account with `xpx`
 
 ## Getting into some code
@@ -62,23 +62,58 @@ Have you loaded an account with test `xpx`? If it is not the case, go back to [g
 
 1. After running the following command, you should see on your screen a line similar to:
 
+```typescript
+import { NetworkType, Address, AccountHttp, AccountInfo } from 'tsjs-xpx-chain-sdk';
+
+const API_URL = 'https://api-2.testnet2.xpxsirius.io';
+const NETWORK_TYPE = NetworkType.TEST_NET;
+
+const accountHttp = new AccountHttp(API_URL);
+
+const getAccountInfoForAnAccount = () => {
+    //replace VAUOT2T4IRGFAY4WSD7DY3EUHANTRL3IAUG2TPNZ with your wallet address
+    const address = Address.createFromRawAddress('VAUOT2T4IRGFAY4WSD7DY3EUHANTRL3IAUG2TPNZ');
+
+    return accountHttp.getAccountInfo(address).subscribe(accountInfo => {
+        console.log('Account Address: '+ accountInfo.address.pretty());
+        console.log('Mosaics')
+        for (var index in accountInfo.mosaics){
+            console.log(accountInfo.mosaics[index].amount.toBigInt() + ":\t" + accountInfo.mosaics[index].id.toHex())
+        }
+    }, error => {
+        console.error(error);
+    }, () => {
+        console.log('done.');
+    });
+}
+
+getAccountInfoForAnAccount();
+}
 ```
-$> xpx2-cli account info
 
-
-New Account: VCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6
-
-[...]
-
-Mosaics
-
-3628d0b327fb1dd8:       1000000
+If the output is something like this:
 ```
+Account Address: VAUOT2T4IRGFAY4WSD7DY3EUHANTRL3IAUG2TPNZ
+Mosaics:
+50000000000: 13bfc518e40549d7
+```
+**Note:** In Testnet2, the mosaic ID of XPX is 13bfc518e40549d7 and XPX has a divisibility of 6 i.e  1000000 = 1 XPX
 
-2. This account owns 1,000,000 XPX. If your own mosaics is empty, follow the [previous guide instructions](./setting-up-workstation.md).
+
+2. This account owns 50,000 XPX . If your own mosaics is empty, follow the [previous guide instructions](./setting-up-workstation.md).
 3. Create a second account to identify the ticket buyer.
-```
-$> xpx2-cli account generate --network TEST_NET --save --url http://bctestnet1.brimstone.xpxsirius.io:3000 --profile buyer
+
+```typescript
+import {Account, NetworkType, Address} from 'tsjs-xpx-chain-sdk';
+
+const NETWORK_TYPE = NetworkType.TEST_NET;
+
+const newAccount = Account.generateNewAccount(NETWORK_TYPE);
+
+console.log('Ticker Buyer Account')
+console.log('Private Key: ' + newAccount.privateKey);
+console.log('Public Key:  ' + newAccount.publicKey);
+console.log('Address:     ' + newAccount.address.plain());
 ```
 
 ### Monitoring the blockchain
@@ -91,18 +126,69 @@ We suggest opening three new terminals:
 
 1. The first terminal [monitors announce transactions](../guides/monitoring/monitoring-a-transaction-status.md) validation errors.
 
-```
-$> xpx2-cli monitor status
+```typescript
+import { Listener, Address } from "tsjs-xpx-chain-sdk";
+
+const listener = new Listener('https://api-2.testnet2.xpxsirius.io');
+
+const subscribeStatus = (address: Address) => {
+    listener.open().then(() => {
+        const subscription = listener.status(address).subscribe(transactionStatusError => {
+            console.log(JSON.stringify(transactionStatusError));
+        }, error => {
+            console.error(error);
+        }, () => {
+            console.log('done.');
+        })
+    });
+}
+
+const address = Address.createFromRawAddress('VACQ54-STSYEZ-EA6IYE-H4WKOT-64W5DU-TOVFKI-LODB');
+subscribeStatus(address)
 ```
 
 2. Monitoring `unconfirmed` shows you which transactions have reached the network, but are not included in a block yet.
-```
-$> xpx2-cli monitor unconfirmed
+```typescript
+import { Listener, Address } from "tsjs-xpx-chain-sdk";
+
+const listener = new Listener('https://api-2.testnet2.xpxsirius.io');
+
+const subscribeUnconfirmedAdded = (address: Address) => {
+    listener.open().then(() => {
+        const subscription = listener.unconfirmedAdded(address).subscribe(transaction => {
+            console.log(JSON.stringify(transaction));
+        }, error => {
+            console.error(error);
+        }, () => {
+            console.log('done.');
+        })
+    });
+}
+
+const address = Address.createFromRawAddress('VACQ54-STSYEZ-EA6IYE-H4WKOT-64W5DU-TOVFKI-LODB');
+subscribeUnconfirmedAdded(address)
 ```
 
 3. Once a transaction is included, you will see it under the confirmed terminal.
-```
-$> xpx2-cli monitor confirmed
+```typescript
+import { Listener, Address } from "tsjs-xpx-chain-sdk";
+
+const listener = new Listener('https://api-2.testnet2.xpxsirius.io');
+
+const subscribeConfirmed = (address: Address) => {
+    listener.open().then(() => {
+        const subscription = listener.confirmed(address).subscribe(transaction => {
+            console.log(JSON.stringify(transaction));
+        }, error => {
+            console.error(error);
+        }, () => {
+            console.log('done.');
+        })
+    });
+}
+
+const address = Address.createFromRawAddress('VACQ54-STSYEZ-EA6IYE-H4WKOT-64W5DU-TOVFKI-LODB');
+subscribeConfirmed(address)
 ```
 
 ### Creating the ticket
