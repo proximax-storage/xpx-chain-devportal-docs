@@ -51,7 +51,7 @@ npm install tsjs-xpx-chain-sdk
 ```typescript
 import {Account, NetworkType, Address} from 'tsjs-xpx-chain-sdk';
 
-const NETWORK_TYPE = NetworkType.PUBLIC_TEST;
+const NETWORK_TYPE = NetworkType.TEST_NET;
 
 const newAccount = Account.generateNewAccount(NETWORK_TYPE);
 
