@@ -83,7 +83,7 @@ Each REST node connects to one API instance to send new transactions requests tr
 
 Deploy a Sirius Chain full node for learning and development purposes.
 
-- Deploying a test net node (upcoming)
+- Deploying a testnet node (upcoming)
 - Configuring a private network (upcoming)
 - Creating a custom plugin (upcoming)
 

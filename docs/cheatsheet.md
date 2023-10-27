@@ -82,12 +82,12 @@ Address     | -
 
 - The first character represents the different network types.
 
-Network Type | Address Prefix
--------------|---------------
-Main Net     | X
-Test Net     | V
-Private Test | W
-Private      | Z
+Network Type        | Address Prefix
+--------------------|---------------
+Public Mainnet      | X
+Public Testnet      | V
+Private Test        | W
+Private             | Z
 
 ## REST API
 
@@ -244,6 +244,7 @@ Refering to the above, the lower and higher, we can represent uint64 id in a hex
 ### Testnet 2
 
 - https://api-1.testnet2.xpxsirius.io
+- https://api-2.testnet2.xpxsirius.io
 
 #### Testnet 2 Faucet
 
