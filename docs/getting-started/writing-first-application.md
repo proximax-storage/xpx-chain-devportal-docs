@@ -60,7 +60,7 @@ We have decided to represent the ticket vendor and buyer as separate [accounts](
 
 Have you loaded an account with test `xpx`? If it is not the case, go back to [getting started section](./setting-up-workstation.md). The account you have created represents the ticket vendor.
 
-1. After running the following command, you should see on your screen a line similar to:
+1. The following code will get the account info of `VAUOT2T4IRGFAY4WSD7DY3EUHANTRL3IAUG2TPNZ`.  Replace this address with your address created from the [getting started section](./setting-up-workstation.md):
 
 ```typescript
 import { NetworkType, Address, AccountHttp, AccountInfo } from 'tsjs-xpx-chain-sdk';
@@ -91,16 +91,17 @@ getAccountInfoForAnAccount();
 }
 ```
 
-If the output is something like this:
+After running the above code, you should see on your screen an output similar to:
 ```
 Account Address: VAUOT2T4IRGFAY4WSD7DY3EUHANTRL3IAUG2TPNZ
 Mosaics:
 50000000000: 13bfc518e40549d7
 ```
-**Note:** In Testnet2, the mosaic ID of XPX is 13bfc518e40549d7 and XPX has a divisibility of 6 i.e  1000000 = 1 XPX
+**Note:** In Testnet2, the mosaic ID of XPX is `13bfc518e40549d7` and XPX has a divisibility of 6 i.e  1000000 = 1 XPX
 
 
 2. This account owns 50,000 XPX . If your own mosaics is empty, follow the [previous guide instructions](./setting-up-workstation.md).
+
 3. Create a second account to identify the ticket buyer.
 
 ```typescript
