@@ -199,7 +199,44 @@ We are representing the ticket as a mosaic. [Mosaics](../built-in-features/mosai
 1. Create a mosaic named `ticket`.
 
 ```
-$> xpx2-cli transaction mosaic --mosaicname ticket--namespacename company--amount 1000000 --supplymutable --divisibility 0 --duration 1000
+const vendor = PublicAccount.createFromPublicKey('<public_key>', NetworkType.TEST_NET)
+
+const registerNamespaceTx = RegisterNamespaceTransaction.createRootNamespace(
+    Deadline.create(),
+    "company",
+    UInt64.fromUint(1000),
+    NetworkType.TEST_NET
+);
+
+const registerSubNamespaceTx = RegisterNamespaceTransaction.createSubNamespace(
+    Deadline.create(),
+    "ticket",
+    "company",
+    NetworkType.TEST_NET
+)
+
+const nonce = MosaicNonce.createRandom();
+const mosaicId = MosaicId.createFromNonce(nonce, vendor);
+const mosaicDefinitionTx = MosaicDefinitionTransaction.create(
+    Deadline.create(),
+    nonce,
+    mosaicId,
+    MosaicProperties.create({
+        "supplyMutable": true,
+        "transferable": false,
+        "divisibility": 0,
+        "duration": UInt64.fromUint(1000),
+    }),
+    NetworkType.TEST_NET
+);
+
+const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
+    Deadline.create(),
+    mosaicId,
+    MosaicSupplyType.Increase,
+    UInt64.fromUint(1000000),
+    NetworkType.TEST_NET
+)
 ```
 
 **Property**    |**Type** |	**Description**
@@ -210,7 +247,38 @@ Initial supply  |1000000  |	The number of tickets you are going to create.
 Supply mutable  |true     |	The mosaic supply can change at a later point.
 Transferability |false    |	The mosaic can be only transferred back to the mosaic creator.
 
-2. Copy the mosaicId returned in the `monitor confirmed` tab after the transaction gets confirmed.
+Although the transaction is created, it has not been signed and announced to the network yet.
+
+2. Sign the transaction with the ticket vendor account first, so that the network can verify the authenticity of the transaction.
+
+<div class="info">
+
+**Note**
+
+To make the transaction only valid for your network, include the first block generation hash. Open `http://api-2.testnet2.xpxsirius.io:3000/block/1` in a new tab and copy the `meta.generationHash` value.
+</div>
+
+
+```typescript
+const privateKey = "<private_key>";
+
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+const signedTransaction = account.sign(transferTransaction, generationHash);
+```
+
+3. Once signed, announce the transaction to the network.
+
+```typescript
+const transactionHttp = new TransactionHttp('http://api-2.testnet2.xpxsirius.io:3000');
+
+transactionHttp.announce(signedTransaction).subscribe(
+    x => console.log(x),
+    err => console.log(err)
+);
+```
+
+4. Copy the mosaicId returned in the `monitor confirmed` tab after the transaction gets confirmed.
 
 ```
 ...  MosaicId:7cdf3b117a3c40cc ...
@@ -310,7 +378,7 @@ Although the transaction is created, it has not been announced to the network ye
 
 **Note**
 
-To make the transaction only valid for your network, include the first block generation hash. Open `http://bctestnet1.brimstone.xpxsirius.io:3000/block/1` in a new tab and copy the `meta.generationHash` value.
+To make the transaction only valid for your network, include the first block generation hash. Open `http://api-2.testnet2.xpxsirius.io:3000/block/1` in a new tab and copy the `meta.generationHash` value.
 </div>
 
 <!--DOCUSAURUS_CODE_TABS-->
