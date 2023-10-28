@@ -264,7 +264,7 @@ const privateKey = "<private_key>";
 
 const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-const signedTransaction = account.sign(transferTransaction, generationHash);
+const signedTransaction = account.preV2Sign(transferTransaction, generationHash);
 ```
 
 3. Once signed, announce the transaction to the network.
@@ -401,7 +401,7 @@ const privateKey = "<private_key>";
 
 const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-const signedTransaction = account.sign(transferTransaction, generationHash);
+const signedTransaction = account.preV2Sign(transferTransaction, generationHash);
 ```
 
 <!--Java-->
