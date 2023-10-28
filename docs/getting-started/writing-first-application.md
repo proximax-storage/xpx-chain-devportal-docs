@@ -44,7 +44,7 @@ The rest of the code remains **off-chain**. This reduces the inherent immutabili
 
 - Finish [getting started section](./setting-up-workstation.md)
 - Text editor or IDE
-- XPX-Chain-SDK and XPX-Chain-CLI
+- XPX-Chain-SDK
 - An account with `xpx`
 
 ## Getting into some code
@@ -60,25 +60,61 @@ We have decided to represent the ticket vendor and buyer as separate [accounts](
 
 Have you loaded an account with test `xpx`? If it is not the case, go back to [getting started section](./setting-up-workstation.md). The account you have created represents the ticket vendor.
 
-1. After running the following command, you should see on your screen a line similar to:
+1. The following code will get the account info of `VAUOT2T4IRGFAY4WSD7DY3EUHANTRL3IAUG2TPNZ`.  Replace this address with your address created from the [getting started section](./setting-up-workstation.md):
 
+```typescript
+import { NetworkType, Address, AccountHttp, AccountInfo } from 'tsjs-xpx-chain-sdk';
+
+const API_URL = 'https://api-2.testnet2.xpxsirius.io';
+const NETWORK_TYPE = NetworkType.TEST_NET;
+
+const accountHttp = new AccountHttp(API_URL);
+
+const getAccountInfoForAnAccount = () => {
+    //replace VAUOT2T4IRGFAY4WSD7DY3EUHANTRL3IAUG2TPNZ with your wallet address
+    const address = Address.createFromRawAddress('VAUOT2T4IRGFAY4WSD7DY3EUHANTRL3IAUG2TPNZ');
+
+    return accountHttp.getAccountInfo(address).subscribe(accountInfo => {
+        console.log('Account Address: '+ accountInfo.address.pretty());
+        console.log('Mosaics')
+        for (var index in accountInfo.mosaics){
+            console.log(accountInfo.mosaics[index].amount.toBigInt() + ":\t" + accountInfo.mosaics[index].id.toHex())
+        }
+    }, error => {
+        console.error(error);
+    }, () => {
+        console.log('done.');
+    });
+}
+
+getAccountInfoForAnAccount();
+}
 ```
-$> xpx2-cli account info
 
-
-New Account: VCVG35-ZSPMYP-L2POZQ-JGSVEG-RYOJ3V-BNIU3U-N2E6
-
-[...]
-
-Mosaics
-
-3628d0b327fb1dd8:       1000000
+After running the above code, you should see on your screen an output similar to:
 ```
+Account Address: VAUOT2T4IRGFAY4WSD7DY3EUHANTRL3IAUG2TPNZ
+Mosaics:
+50000000000: 13bfc518e40549d7
+```
+**Note:** In Testnet2, the mosaic ID of XPX is `13bfc518e40549d7` and XPX has a divisibility of 6 i.e  1000000 = 1 XPX
 
-2. This account owns 1,000,000 XPX. If your own mosaics is empty, follow the [previous guide instructions](./setting-up-workstation.md).
+
+2. This account owns 50,000 XPX . If your own mosaics is empty, follow the [previous guide instructions](./setting-up-workstation.md).
+
 3. Create a second account to identify the ticket buyer.
-```
-$> xpx2-cli account generate --network TEST_NET --save --url http://bctestnet1.brimstone.xpxsirius.io:3000 --profile buyer
+
+```typescript
+import {Account, NetworkType, Address} from 'tsjs-xpx-chain-sdk';
+
+const NETWORK_TYPE = NetworkType.TEST_NET;
+
+const newAccount = Account.generateNewAccount(NETWORK_TYPE);
+
+console.log('Ticker Buyer Account')
+console.log('Private Key: ' + newAccount.privateKey);
+console.log('Public Key:  ' + newAccount.publicKey);
+console.log('Address:     ' + newAccount.address.plain());
 ```
 
 ### Monitoring the blockchain
@@ -91,18 +127,69 @@ We suggest opening three new terminals:
 
 1. The first terminal [monitors announce transactions](../guides/monitoring/monitoring-a-transaction-status.md) validation errors.
 
-```
-$> xpx2-cli monitor status
+```typescript
+import { Listener, Address } from "tsjs-xpx-chain-sdk";
+
+const listener = new Listener('https://api-2.testnet2.xpxsirius.io');
+
+const subscribeStatus = (address: Address) => {
+    listener.open().then(() => {
+        const subscription = listener.status(address).subscribe(transactionStatusError => {
+            console.log(JSON.stringify(transactionStatusError));
+        }, error => {
+            console.error(error);
+        }, () => {
+            console.log('done.');
+        })
+    });
+}
+
+const address = Address.createFromRawAddress('VACQ54-STSYEZ-EA6IYE-H4WKOT-64W5DU-TOVFKI-LODB');
+subscribeStatus(address)
 ```
 
 2. Monitoring `unconfirmed` shows you which transactions have reached the network, but are not included in a block yet.
-```
-$> xpx2-cli monitor unconfirmed
+```typescript
+import { Listener, Address } from "tsjs-xpx-chain-sdk";
+
+const listener = new Listener('https://api-2.testnet2.xpxsirius.io');
+
+const subscribeUnconfirmedAdded = (address: Address) => {
+    listener.open().then(() => {
+        const subscription = listener.unconfirmedAdded(address).subscribe(transaction => {
+            console.log(JSON.stringify(transaction));
+        }, error => {
+            console.error(error);
+        }, () => {
+            console.log('done.');
+        })
+    });
+}
+
+const address = Address.createFromRawAddress('VACQ54-STSYEZ-EA6IYE-H4WKOT-64W5DU-TOVFKI-LODB');
+subscribeUnconfirmedAdded(address)
 ```
 
 3. Once a transaction is included, you will see it under the confirmed terminal.
-```
-$> xpx2-cli monitor confirmed
+```typescript
+import { Listener, Address } from "tsjs-xpx-chain-sdk";
+
+const listener = new Listener('https://api-2.testnet2.xpxsirius.io');
+
+const subscribeConfirmed = (address: Address) => {
+    listener.open().then(() => {
+        const subscription = listener.confirmed(address).subscribe(transaction => {
+            console.log(JSON.stringify(transaction));
+        }, error => {
+            console.error(error);
+        }, () => {
+            console.log('done.');
+        })
+    });
+}
+
+const address = Address.createFromRawAddress('VACQ54-STSYEZ-EA6IYE-H4WKOT-64W5DU-TOVFKI-LODB');
+subscribeConfirmed(address)
 ```
 
 ### Creating the ticket
@@ -112,7 +199,44 @@ We are representing the ticket as a mosaic. [Mosaics](../built-in-features/mosai
 1. Create a mosaic named `ticket`.
 
 ```
-$> xpx2-cli transaction mosaic --mosaicname ticket--namespacename company--amount 1000000 --supplymutable --divisibility 0 --duration 1000
+const vendor = PublicAccount.createFromPublicKey('<public_key>', NetworkType.TEST_NET)
+
+const registerNamespaceTx = RegisterNamespaceTransaction.createRootNamespace(
+    Deadline.create(),
+    "company",
+    UInt64.fromUint(1000),
+    NetworkType.TEST_NET
+);
+
+const registerSubNamespaceTx = RegisterNamespaceTransaction.createSubNamespace(
+    Deadline.create(),
+    "ticket",
+    "company",
+    NetworkType.TEST_NET
+)
+
+const nonce = MosaicNonce.createRandom();
+const mosaicId = MosaicId.createFromNonce(nonce, vendor);
+const mosaicDefinitionTx = MosaicDefinitionTransaction.create(
+    Deadline.create(),
+    nonce,
+    mosaicId,
+    MosaicProperties.create({
+        "supplyMutable": true,
+        "transferable": false,
+        "divisibility": 0,
+        "duration": UInt64.fromUint(1000),
+    }),
+    NetworkType.TEST_NET
+);
+
+const mosaicSupplyChangeTransaction = MosaicSupplyChangeTransaction.create(
+    Deadline.create(),
+    mosaicId,
+    MosaicSupplyType.Increase,
+    UInt64.fromUint(1000000),
+    NetworkType.TEST_NET
+)
 ```
 
 **Property**    |**Type** |	**Description**
@@ -123,7 +247,38 @@ Initial supply  |1000000  |	The number of tickets you are going to create.
 Supply mutable  |true     |	The mosaic supply can change at a later point.
 Transferability |false    |	The mosaic can be only transferred back to the mosaic creator.
 
-2. Copy the mosaicId returned in the `monitor confirmed` tab after the transaction gets confirmed.
+Although the transaction is created, it has not been signed and announced to the network yet.
+
+2. Sign the transaction with the ticket vendor account first, so that the network can verify the authenticity of the transaction.
+
+<div class="info">
+
+**Note**
+
+To make the transaction only valid for your network, include the first block generation hash. Open `http://api-2.testnet2.xpxsirius.io:3000/block/1` in a new tab and copy the `meta.generationHash` value.
+</div>
+
+
+```typescript
+const privateKey = "<private_key>";
+
+const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
+
+const signedTransaction = account.preV2Sign(transferTransaction, generationHash);
+```
+
+3. Once signed, announce the transaction to the network.
+
+```typescript
+const transactionHttp = new TransactionHttp('http://api-2.testnet2.xpxsirius.io:3000');
+
+transactionHttp.announce(signedTransaction).subscribe(
+    x => console.log(x),
+    err => console.log(err)
+);
+```
+
+4. Copy the mosaicId returned in the `monitor confirmed` tab after the transaction gets confirmed.
 
 ```
 ...  MosaicId:7cdf3b117a3c40cc ...
@@ -223,7 +378,7 @@ Although the transaction is created, it has not been announced to the network ye
 
 **Note**
 
-To make the transaction only valid for your network, include the first block generation hash. Open `http://bctestnet1.brimstone.xpxsirius.io:3000/block/1` in a new tab and copy the `meta.generationHash` value.
+To make the transaction only valid for your network, include the first block generation hash. Open `http://api-2.testnet2.xpxsirius.io:3000/block/1` in a new tab and copy the `meta.generationHash` value.
 </div>
 
 <!--DOCUSAURUS_CODE_TABS-->
@@ -246,7 +401,7 @@ const privateKey = "<private_key>";
 
 const account = Account.createFromPrivateKey(privateKey, NetworkType.TEST_NET);
 
-const signedTransaction = account.sign(transferTransaction, generationHash);
+const signedTransaction = account.preV2Sign(transferTransaction, generationHash);
 ```
 
 <!--Java-->
