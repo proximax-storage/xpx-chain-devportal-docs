@@ -11,7 +11,7 @@ const CompLibrary = require('../../core/CompLibrary.js');
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
-function Endpoints_v90(props) {
+function Endpoints_v100(props) {
     const {config: siteConfig, language = '',} = props;
     const {baseUrl, docsUrl} = siteConfig;
     const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
@@ -35,4 +35,4 @@ function Endpoints_v90(props) {
     );
 }
 
-module.exports = Endpoints_v90;
+module.exports = Endpoints_v100;
