@@ -20,7 +20,7 @@ One non-atomic solution could be:
 3. Bob sends 10 bob:token to Alice (public chain).
 4. Alice receives the transaction.
 
-However, they do not trust each other that much. Bob could decide not to send his mosaics to Alice. Following this guide, you will observe how to make this swap possible using Sirius technology to remove the need for trust. 
+However, they do not trust each other. Bob could decide not to send his mosaics to Alice. Following this guide, you will observe how to make this swap possible using Sirius technology to remove the need for trust. 
 
 ## Prerequisites
 
