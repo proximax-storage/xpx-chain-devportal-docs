@@ -3,7 +3,7 @@ id: mosaic
 title: Mosaic
 ---
 
-Mosaics are part of what makes the Smart Asset System unique and flexible. They are *fixed assets* on the Sirius Chain that can represent a set of multiple identical things that do not change.
+Mosaics are part of what makes the Smart Asset System unique and flexible. Also known as Sirius Digital Asset - SDA - they are *fixed assets* on the Sirius Chain that can represent a set of multiple identical things that do not change.
 
 A mosaic could be a token, but it could also be a collection of more specialized assets such as reward points, shares of stock, signatures, status flags, votes or even other currencies.
 
