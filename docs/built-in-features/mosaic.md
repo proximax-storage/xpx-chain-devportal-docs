@@ -1,6 +1,6 @@
 ---
 id: mosaic
-title: Mosaic
+title: Mosaic (SDA)
 ---
 
 Mosaics are part of what makes the Smart Asset System unique and flexible. Also known as Sirius Digital Asset - SDA - they are *fixed assets* on the Sirius Chain that can represent a set of multiple identical things that do not change.
