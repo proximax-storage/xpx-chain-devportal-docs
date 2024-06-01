@@ -7,7 +7,7 @@ Follow this guide to create a [mosaic (SDA)](../../built-in-features/mosaic.md).
 
 ## Background
 
-Mosaics can be used to represent any asset in the blockchain such as objects, tickets, coupons, stock share representation, and even your cryptocurrency.
+A mosaic is synonomously known as Sirius Digital Asset - SDA - are used interchangeably. SDAs can be used to represent any asset in the blockchain such as objects, tickets, coupons, stock share representation, and even your cryptocurrency.
 
 ## Prerequisites
 
@@ -19,16 +19,16 @@ Mosaics can be used to represent any asset in the blockchain such as objects, ti
 
 ## Getting into some code
 
-Define two transactions to create a mosaic:
+Define two transactions to create an SDA:
 
-1. A [mosaic definition transaction](../../built-in-features/mosaic.md#mosaicdefinitiontransaction), to create the mosaic, with the following properties:
+1. An [SDA definition transaction](../../built-in-features/mosaic.md#mosaicdefinitiontransaction), to create the SDA, with the following properties:
 
 **Property**   |**Value**|**Description**
 ---------------|---------|---------------
-Divisibility   |0        | The mosaic won’t be divisible. Determines up to what decimal place the mosaic can be divided.
-Duration       |1000     | The mosaic will be created for the next 1000 blocks. If you want to create a non-expiring mosaic, do not set this property.
-Supply mutable |true     | The mosaic supply can change at a later point.
-Transferable   |true     | The mosaic can be transferred between arbitrary accounts. Otherwise, the mosaic can only be transferred back to the mosaic creator.
+Divisibility   |0        | The SDA won’t be divisible. Determines up to what decimal place the mosaic can be divided.
+Duration       |1000     | The SDA will be created for the next 1000 blocks. If you want to create a non-expiring SDA, do not set this property.
+Supply mutable |true     | The SDA supply can change at a later point.
+Transferable   |true     | The SDA can be transferred between arbitrary accounts. Otherwise, the SDA can only be transferred back to the SDA creator.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
@@ -76,7 +76,7 @@ if err != nil {
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
-2. A [mosaic supply change transaction](../../built-in-features/mosaic.md#mosaicsupplychangetransaction), to set the supply. We are going to create 1.000.000 mosaic units.
+2. An [SDA supply change transaction](../../built-in-features/mosaic.md#mosaicsupplychangetransaction), to set the supply. We are going to create 1.000.000 SDA units.
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Golang-->
