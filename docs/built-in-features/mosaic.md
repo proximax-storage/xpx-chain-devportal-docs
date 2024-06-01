@@ -3,39 +3,39 @@ id: mosaic
 title: Mosaic (SDA)
 ---
 
-Mosaics are part of what makes the Smart Asset System unique and flexible. Also known as Sirius Digital Asset - SDA - they are *fixed assets* on the Sirius Chain that can represent a set of multiple identical things that do not change.
+Mosaics, synonomously known as Sirius Digital Asset - SDA - are part of what makes the Smart Asset System unique and flexible. Throughout this document, SDA and mosaic are used interchangeably. SDAs are *fixed assets* on the Sirius Chain that can represent a set of multiple identical things that do not change.
 
-A mosaic could be a token, but it could also be a collection of more specialized assets such as reward points, shares of stock, signatures, status flags, votes or even other currencies. A unique token can also be made into a Non-Fungible Token, more commonly known as NFT.
+An SDA could be a token, but it could also be a collection of more specialized assets such as reward points, shares of stock, signatures, status flags, votes or even other currencies. A unique token can also be made into a Non-Fungible Token, more commonly known as NFT.
 
 ## Properties
 
-Each mosaic has a unique identifier and a set of configurable properties. During the [SDA creation](../guides/mosaic/creating-a-mosaic.md), you can define:
+Each SDA has a unique identifier and a set of configurable properties. During the [SDA creation](../guides/mosaic/creating-a-mosaic.md), you can define:
 
 | **Property**    | **Type** | **Description**                                                                                                                                                                                                 |
 | --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Divisibility    | Integer  | Determines up to what decimal place the mosaic can be divided. Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics. The divisibility must be in the range of `0` and `6`. |
-| Duration        | Integer  | Specifies the number of confirmed blocks the mosaic is rented for. Duration is allowed to lie up to `3650` days (10 years). To create non-expiring mosaics, leave this property undefined.                      |
-| Supply mutable  | Boolean  | If set to true, the mosaic supply can change at a later point. Otherwise, the mosaic supply remains immutable.                                                                                                  |
-| Transferability | Boolean  | If set to true, the mosaic can be transferred between arbitrary accounts. Otherwise, the mosaic can be only transferred back to the mosaic creator.                                                             |
+| Divisibility    | Integer  | Determines up to what decimal place the SDA can be divided. Divisibility of 3 means that an SDA can be divided into smallest parts of 0.001 SDAs. The divisibility must be in the range of `0` and `6`. |
+| Duration        | Integer  | Specifies the number of confirmed blocks the SDA is rented for. Duration is allowed to lie up to `3650` days (10 years). To create non-expiring SDAs, leave this property undefined.                      |
+| Supply mutable  | Boolean  | If set to true, the SDA supply can change at a later point. Otherwise, the SDA supply remains immutable.                                                                                                  |
+| Transferability | Boolean  | If set to true, the SDA can be transferred between arbitrary accounts. Otherwise, the SDA can be only transferred back to the SDA creator.                                                             |
 
 ## Absolute and relative amounts
 
-Sirius Chain works with absolute amounts, removing the comma when the mosaic can be divisible. To get an absolute amount, multiply the amount of assets you want to create or send by ![](http://latex.codecogs.com/gif.latex?10^{divisibility}).
+Sirius Chain works with absolute amounts, removing the comma when the SDA can be divisible. To get an absolute amount, multiply the amount of assets you want to create or send by ![](http://latex.codecogs.com/gif.latex?10^{divisibility}).
 
-For example, if the mosaic has divisibility 2, to create or send 10 units (relative) you should define 1000 (absolute) instead.
+For example, if the SDA has divisibility 2, to create or send 10 units (relative) you should define 1000 (absolute) instead.
 
 ## Cost
 
-The cost of creating a mosaic is configurable per network. By default, it has a cost of `500 xpx` plus transaction fees.
+The cost of creating an SDA is configurable per network. By default, it has a cost of `500 xpx` plus transaction fees.
 
-## Mosaic Levy
+## SDA Levy
 
-A levy allows the creator of a mosaic to set a tax on any subsequent transactions of that mosaic. This levy is sent to an account of the creators choosing. Any mosaic may be used as a levy.
+A levy allows the creator of an SDA to set a tax on any subsequent transactions of that SDA. This levy is sent to an account of the creators choosing. Any SDA may be used as a levy.
 
 ## Example
 A private company, ComfyClothingCompany, decides that it wants to go public. Instead of a traditional IPO, the company decides to do an STO to issue tokens through the Sirius Chain platform.
 
-Thus, the company must create a mosaic to represent shares to their company. Here is how the company might configure the mosaic properties:
+Thus, the company must create an SDA to represent shares to their company. Here is how the company might configure the SDA properties:
 
  | **Property**   | **Configuration** |
  | -------------- | ----------------- |
@@ -44,15 +44,15 @@ Thus, the company must create a mosaic to represent shares to their company. Her
  | Supply mutable | true              |
  | Transferable   | true              |
 
-*Duration*: Shares of the company should exist as long as the company is in business. The ComfyClothingCompany leaves this property *undefined*, creating a non-expiring mosaic representing their assets.
+*Duration*: Shares of the company should exist as long as the company is in business. The ComfyClothingCompany leaves this property *undefined*, creating a non-expiring SDA representing their assets.
 
 *Divisibility*: Although brokerages and investment firms can fractionalize shares, the traditional minimum number of shares an investor can purchase from the open market is 1.
 
-However, Sirius Chain mosaics offer more flexibility in tokenizing their company shares. ComfyClothingCompany chooses the divisibility to be `2`, allowing the smallest fraction of their shares to be 0.01.
+However, Sirius Chain SDAs offer more flexibility in tokenizing their company shares. ComfyClothingCompany chooses the divisibility to be `2`, allowing the smallest fraction of their shares to be 0.01.
 
 Fractional ownership, along with the ability to trade 24/7, brings additional liquidity to the market. These same characteristics also open up the market to smaller investors.
 
-*Supply*: ComfyClothingCompany sets the initial supply of the mosaic to a typical startup amount of `10,000,000` authorized shares. As the company grows, it could choose to increase the number of shares, so the supply mutable is set to `true`.
+*Supply*: ComfyClothingCompany sets the initial supply of the SDA to a typical startup amount of `10,000,000` authorized shares. As the company grows, it could choose to increase the number of shares, so the supply mutable is set to `true`.
 
 *Transferable*: Once the initial shares are distributed, the shares will be on the market to be traded in public. Thus, the transferability property needs to be set to `true`.
 
@@ -76,26 +76,26 @@ We recommend checking out [setting up your workstation][Workstation] before goin
 
 </div>
 
-- [Creating a mosaic](../guides/mosaic/creating-a-mosaic.md)
- -After creating a namespace, follow this guide to create a mosaic.
+- [Creating a SDA](../guides/mosaic/creating-a-mosaic.md)
+ -After creating a namespace, follow this guide to create an SDA.
 
-- [Modifying mosaic supply](../guides/mosaic/modifying-mosaic-supply.md)
- -After the supply of a mosaic following this guide.
+- [Modifying SDA supply](../guides/mosaic/modifying-mosaic-supply.md)
+ -After the supply of an SDA following this guide.
 
-- [Linking a namespace to a mosaic](../guides/namespace/linking-a-namespace-to-a-mosaic.md)
- -Link a namespace to a mosaic.
+- [Linking a namespace to a SDA](../guides/namespace/linking-a-namespace-to-a-mosaic.md)
+ -Link a namespace to an SDA.
 
-- [Getting the mosaic information](../guides/mosaic/getting-mosaic-information.md)
- -Get the ownership, divisibility, duration, and flags for a given mosaic identifier.
+- [Getting the SDA information](../guides/mosaic/getting-mosaic-information.md)
+ -Get the ownership, divisibility, duration, and flags for a given SDA identifier.
 
 - [Getting the asset identifier behind a namespace with receipts](../guides/mosaic/getting-the-mosaic-indentifier-behind-a-namespace-with-receipts.md)
  -Get the resolution for a given alias and transaction using receipts.
 
-- [Create(modify) and get mosaic levy](../guides/mosaic/modify_mosaic_levy.md)
- -Create a new levy for a mosaic and get a mosaic levy info.
+- [Create(modify) and get SDA levy](../guides/mosaic/modify_mosaic_levy.md)
+ -Create a new levy for an SDA and get an SDA levy info.
 
-- [Remove mosaic levy](../guides/mosaic/remove_mosaic_levy.md)
- -Remove a mosaic levy.
+- [Remove SDA levy](../guides/mosaic/remove_mosaic_levy.md)
+ -Remove an SDA levy.
 
 ## Schemas
 
@@ -109,7 +109,7 @@ Configuration parameters are [editable](https://github.com/proximax-storage/cpp-
 
 ### MosaicDefinitionTransaction
 
-Announce a mosaic definition transaction to create a new mosaic.
+Announce an SDA definition transaction to create a new SDA.
 
 **Version**: 0x02
 
@@ -121,16 +121,16 @@ Announce a mosaic definition transaction to create a new mosaic.
 
 | **Property**    | **Type**                                        | **Description**                               |
 | --------------- | ----------------------------------------------- | --------------------------------------------- |
-| mosaicNonce     | uint32                                          | Random nonce used to generate the mosaic id.  |
-| mosaicId        | uint64                                          | The mosaic Id.                                |
+| mosaicNonce     | uint32                                          | Random nonce used to generate the SDA id.  |
+| mosaicId        | uint64                                          | The SDA Id.                                |
 | propertiesCount | uint8                                           | The number of elements in optional properties |
-| flags           | [MosaicFlag](#mosaicflags)                      | The mosaic flags.                             |
-| divisibility    | uint8                                           | The mosaic divisibility.                      |
-| properties      | array([MosaicProperty](#mosaicproperty), count) | The optional mosaic properties.               |
+| flags           | [MosaicFlag](#mosaicflags)                      | The SDA flags.                             |
+| divisibility    | uint8                                           | The SDA divisibility.                      |
+| properties      | array([MosaicProperty](#mosaicproperty), count) | The optional SDA properties.               |
 
 ### MosaicSupplyChangeTransaction
 
-Announce a supply change transaction to increase or decrease a mosaic’s supply.
+Announce a supply change transaction to increase or decrease an SDA’s supply.
 
 **Version**: 0x02
 
@@ -142,13 +142,13 @@ Announce a supply change transaction to increase or decrease a mosaic’s supply
 
 | **Property** | **Type**                                                    | **Description**                               |
 | ------------ | ----------------------------------------------------------- | --------------------------------------------- |
-| mosaicId     | uint64                                                      | The id of the affected mosaic.                |
+| mosaicId     | uint64                                                      | The id of the affected SDA.                |
 | direction    | [MosaicSupplyChangeDirection](#mosaicsupplychangedirection) | The supply change direction.                  |
 | delta        | uint64                                                      | The amount of supply to increase or decrease. |
 
 ### MosaicModifyLevyTransaction
 
-Add levy to mosaic.
+Add levy to SDA.
 
 **Version**: 0x01
 
@@ -160,12 +160,12 @@ Add levy to mosaic.
 
 | **Property** | **Type**                        | **Description**                |
 | ------------ | ------------------------------- | ------------------------------ |
-| mosaicId     | uint64                          | The id of the affected mosaic. |
+| mosaicId     | uint64                          | The id of the affected SDA. |
 | Levy         | [MosaicLevyRaw](#mosaiclevyraw) | A new levy.                     |
 
 ### MosaicRemoveLevyTransactionBody
 
-Remove mosaic levy.
+Remove SDA levy.
 
 **Version**: 0x01
 
@@ -177,28 +177,28 @@ Remove mosaic levy.
 
 | **Property** | **Type** | **Description**                |
 | ------------ | -------- | ------------------------------ |
-| mosaicId     | uint64   | The id of the affected mosaic. |
+| mosaicId     | uint64   | The id of the affected SDA. |
 
 ### MosaicProperty
 
 | **Property** | **Type** | **Description**                              |
 | ------------ | -------- | -------------------------------------------- |
 | id           | uint8    | The property id. (0x02) stands for duration. |
-| mosaicId     | uint64   | The mosaic property value.                   |
+| mosaicId     | uint64   | The SDA property value.                   |
 
 ### Mosaic
 
 | **Property** | **Type** | **Description**           |
 | ------------ | -------- | ------------------------- |
 | mosaicId     | uint64   | The mosaic id.            |
-| amount       | uint64   | The amount of the mosaic. |
+| amount       | uint64   | The amount of the SDA. |
 
 ### UnresolvedMosaic
 
 | **Property** | **Type** | **Description**           |
 | ------------ | -------- | ------------------------- |
 | mosaicId     | uint64   | The mosaic id.            |
-| amount       | uint64   | The amount of the mosaic. |
+| amount       | uint64   | The amount of the SDA. |
 
 ### MosaicFlags
 
@@ -207,8 +207,8 @@ Enumeration: uint8
 | **Id** | **Description**               |
 | ------ | ----------------------------- |
 | 0x00   | No flags present.             |
-| 0x01   | The mosaic supply is mutable. |
-| 0x02   | The mosaic is transferable.   |
+| 0x01   | The SDA supply is mutable. |
+| 0x02   | The SDA is transferable.   |
 
 ### MosaicSupplyChangeDirection
 
@@ -231,7 +231,7 @@ Enumeration: uint8
 | ------------ | --------------------------- | --------------------- |
 | Type         | [LevyType](#mosaiclevytype) | Levy type             |
 | Recipient    | UnresolvedAddress           | Transaction recipient |
-| MosaicId     | UnresolvedMosaicId          | Levy mosaic currency  |
+| MosaicId     | UnresolvedMosaicId          | Levy SDA currency  |
 | Fee          | Amount                      | The Levy fee          |
 
 ### MosaicLevyType
