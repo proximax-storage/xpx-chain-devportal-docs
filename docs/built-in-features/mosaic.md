@@ -5,7 +5,7 @@ title: Mosaic (SDA)
 
 Mosaics, synonymously known as Sirius Digital Assets - SDAs - are part of what makes the Smart Asset System unique and flexible. Throughout this document, SDA and mosaic are used interchangeably. SDAs are *fixed assets* on the Sirius Chain that can represent a set of multiple identical things that do not change.
 
-An SDA can be a token, but it can also be a collection of more specialized assets such as reward points, shares of stock, signatures, status flags, votes or even other currencies. A unique token can also be made into a Non-Fungible Token, more commonly known as NFT.
+An SDA can be a token, but it can also be a class collection of more specialized assets such as reward points, shares of stock, signatures, status flags, votes or even other currencies. A singular SDA that is unique is a Non-Fungible Token, more commonly known as NFT.
 
 ## Properties
 
