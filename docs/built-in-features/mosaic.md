@@ -9,7 +9,7 @@ A mosaic could be a token, but it could also be a collection of more specialized
 
 ## Properties
 
-Each mosaic has a unique identifier and a set of configurable properties. During the [mosaic creation](../guides/mosaic/creating-a-mosaic.md), you can define:
+Each mosaic has a unique identifier and a set of configurable properties. During the [SDA creation](../guides/mosaic/creating-a-mosaic.md), you can define:
 
 | **Property**    | **Type** | **Description**                                                                                                                                                                                                 |
 | --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
