@@ -1,9 +1,9 @@
 ---
 id: creating-a-mosaic
-title: Creating a mosaic
+title: Creating a mosaic (SDA)
 ---
 
-Follow this guide to create a [mosaic](../../built-in-features/mosaic.md).
+Follow this guide to create a [mosaic (SDA)](../../built-in-features/mosaic.md).
 
 ## Background
 
