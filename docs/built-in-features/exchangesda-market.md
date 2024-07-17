@@ -6,9 +6,17 @@ title: Decentralized Exchange Market
 # Overview
 A user can create an [SDA-SDA offer](exchangesda-market.md#exchangesda) through the ProximaX Decentralized Exchange Market.
 
+<div class="info">
+
+**Note**
+
+It is not possible to exchange services mosaics such as Review, [SO](https://storagedocs.xpxsirius.io/docs/getting_started/economy/#storage-units-so), [SM](https://storagedocs.xpxsirius.io/docs/getting_started/economy/#streaming-units-sm) and [SC](https://storagedocs.xpxsirius.io/docs/getting_started/economy/#streaming-units-sc).
+
+</div>
+
 ## SDA-SDA Exchange
 
-The [decentralized exchange](exchange-market.md) mechanism involves automatically exchanging whole units of Sirius Digital Assets (SDAs). Offers for special SDAs - Storage (SO), Streaming (SM), Review, Supercontract (SC) - cannot be placed through this method. Refer to the [Exchange Market](exchange-market.md) to buy and sell offers for special SDAs.
+The [decentralized exchange](exchange-market.md) mechanism involves automatically exchanging whole units of Sirius Digital Assets (SDAs).
 
 This feature can be used only when fast finality is enabled, and NXT PoS is disabled. It comes with the following constraints:
 1. An offer that exchanges with the same unit types cannot be placed. For example, it is not allowed to place an offer to exchange SDA1 units with SDA1 units.
