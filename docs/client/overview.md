@@ -9,6 +9,14 @@ This tool will enable you to perform the most commonly used actions to interact 
 
 **XPX-Chain-CLI** is an open source tool built on top of the [XPX-Chain-SDK](../sdks/overview.md) Typescript. Use it in your favorite terminal program.
 
+<div class="info">
+
+**Warning**
+
+The CLI client is not supported for now.
+
+</div>
+
 ## Installation
 
 XPX-Chain-CLI is distributed using the node package manager `npm`.
