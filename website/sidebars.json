@@ -17,6 +17,7 @@
       "built-in-features/cross-chain-swaps",
       "built-in-features/exchange-market",
       "built-in-features/exchangesda-market",
+      "built-in-features/liquidity-provider",
       "built-in-features/storage"
     ],
     "Protocol": [
@@ -99,6 +100,11 @@
       "guides/mosaic/getting-mosaic-information",
       "guides/mosaic/getting-the-mosaic-identifier-behind-a-namespace-with-recepits",
       "guides/mosaic/modifying-mosaic-supply"
+    ],
+    "Mosaic Levy": [
+      "guides/mosaic/modify_mosaic_levy",
+      "guides/mosaic/modifying-mosaic-supply",
+      "guides/mosaic/remove_mosaic_levy"
     ],
     "Multisig Account": [
       "guides/multisig-account/converting-an-account-to-multisig",

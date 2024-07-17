@@ -84,9 +84,9 @@ class Footer extends React.Component {
             <a href={this.docUrl('built-in-features/account')}>
               Account
             </a>
-            <a href={this.docUrl('built-in-features/account-filter')}>
-              Account Filter
-            </a>
+//            <a href={this.docUrl('built-in-features/account-filter')}>
+//              Account Filter
+//            </a>
             <a href={this.docUrl('built-in-features/aggregate-transaction')}>
               Aggregate Transaction
             </a>
@@ -95,6 +95,12 @@ class Footer extends React.Component {
             </a>
             <a href={this.docUrl('built-in-features/exchange-market')}>
               Exchange Market
+            </a>
+            <a href={this.docUrl('built-in-features/exchangesda-market')}>
+              Decentralized Exchange Market
+            </a>
+            <a href={this.docUrl('built-in-features/liquidity-provider')}>
+              Liquidity Provider
             </a>
             <a href={this.docUrl('built-in-features/metadata')}>
               Metadata
@@ -108,11 +114,11 @@ class Footer extends React.Component {
             <a href={this.docUrl('built-in-features/namespace')}>
               Namespace
             </a>
-            <a href={this.docUrl('built-in-features/super-contracts')}>
-              Super contract
-            </a>
             <a href={this.docUrl('built-in-features/transfer-transaction')}>
               Transfer Transaction
+            </a>
+            <a href={this.docUrl('built-in-features/storage')}>
+              Storage
             </a>
           </div>
           <div>
