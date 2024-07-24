@@ -3,6 +3,8 @@ id: lp
 title: Liquidity Provider
 ---
 
+# Overview
+
 Liquidity Provider is intended for putting into circulation and decentralized exchange of various mosaics on XPX.
 In particular, Storage, Streaming, Execution units, etc. An important feature is the ability to participate in the work
 of any number of investors who contribute their XPX and receive passive income from the work of the Liquidity Provider.
