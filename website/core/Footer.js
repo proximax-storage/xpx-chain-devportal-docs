@@ -84,9 +84,6 @@ class Footer extends React.Component {
             <a href={this.docUrl('built-in-features/account')}>
               Account
             </a>
-//            <a href={this.docUrl('built-in-features/account-filter')}>
-//              Account Filter
-//            </a>
             <a href={this.docUrl('built-in-features/aggregate-transaction')}>
               Aggregate Transaction
             </a>
@@ -98,9 +95,6 @@ class Footer extends React.Component {
             </a>
             <a href={this.docUrl('built-in-features/exchangesda-market')}>
               Decentralized Exchange Market
-            </a>
-            <a href={this.docUrl('built-in-features/liquidity-provider')}>
-              Liquidity Provider
             </a>
             <a href={this.docUrl('built-in-features/metadata')}>
               Metadata
@@ -119,6 +113,9 @@ class Footer extends React.Component {
             </a>
             <a href={this.docUrl('built-in-features/storage')}>
               Storage
+            </a>
+            <a href={this.docUrl('built-in-features/liquidity-provider')}>
+              Liquidity Provider
             </a>
           </div>
           <div>
