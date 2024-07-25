@@ -64,7 +64,7 @@ func main() {
 		panic(err)
 	}
 
-	_, err = Client.Transaction.Announce(Ctx, signedTx)
+	_, err = Client.Transaction.Announce(context.TODO(), signedTx)
 	if err != nil {
 		panic(err)
 	}

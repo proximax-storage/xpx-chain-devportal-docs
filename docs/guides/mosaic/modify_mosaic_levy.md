@@ -32,7 +32,7 @@ if err != nil {
 
 // ** Anounnce levyTx and wait **
 
-info, err = Client.Mosaic.GetMosaicLevy(Ctx, mosaicId)
+info, err = Client.Mosaic.GetMosaicLevy(context.TODO(), mosaicId)
 if err != nil {
     panic(err)
 }

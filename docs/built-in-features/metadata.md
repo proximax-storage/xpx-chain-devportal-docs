@@ -88,10 +88,17 @@ If users own a namespace, they can attach extra details with metadata for their 
 
 ## Schemas
 
+### MetadataTransactionHeader
+
+| **Property**      | **Type** | **Description**                                |
+|-------------------|----------|------------------------------------------------|
+| TargetPubKey      | 32 bytes | Metadata target public key                     |
+| ScopedMetadataKey | uint64   | Metadata key scoped to source, target and type |
+
 ### BasicMetadataTransactionBody
 
 | **Property**   | **Type** | **Description**                           |
-| -------------- | -------- | ----------------------------------------- |
+|----------------|----------|-------------------------------------------|
 | ValueSizeDelta | int16    | Difference between old and new value size |
 | ValueSize      | uint16   | Value size                                |
 | Value          | uint8    | Value                                     |
@@ -103,7 +110,8 @@ If users own a namespace, they can attach extra details with metadata for their 
 **Entity type**: 0x413f
 
 | **Property**                                                  | **Type**                     | **Description** |
-| ------------------------------------------------------------- | ---------------------------- | --------------- |
+|---------------------------------------------------------------|------------------------------|-----------------|
+| [MetadataTransactionHeader](#metadatatransactionheader)       | MetadataTransactionHeader    |                 |
 | [BasicMetadataTransactionBody](#basicmetadatatransactionbody) | BasicMetadataTransactionBody |                 |
 
 ### MosaicMetadataTransaction
@@ -113,7 +121,8 @@ If users own a namespace, they can attach extra details with metadata for their 
 **Entity type**: 0x423f
 
 | **Property**                                                  | **Type**                     | **Description**               |
-| ------------------------------------------------------------- | ---------------------------- | ----------------------------- |
+|---------------------------------------------------------------|------------------------------|-------------------------------|
+| [MetadataTransactionHeader](#metadatatransactionheader)       | MetadataTransactionHeader    |                               |
 | [BasicMetadataTransactionBody](#basicmetadatatransactionbody) | BasicMetadataTransactionBody |                               |
 | MosaicId                                                      | uint64                       | The id of the affected mosaic |
 
@@ -124,7 +133,8 @@ If users own a namespace, they can attach extra details with metadata for their 
 **Entity type**: 0x433f
 
 | **Property**                                                  | **Type**                     | **Description**         |
-| ------------------------------------------------------------- | ---------------------------- | ----------------------- |
+|---------------------------------------------------------------|------------------------------|-------------------------|
+| [MetadataTransactionHeader](#metadatatransactionheader)       | MetadataTransactionHeader    |                         |
 | [BasicMetadataTransactionBody](#basicmetadatatransactionbody) | BasicMetadataTransactionBody |                         |
 | NamespaceId                                                   | uint64                       | The id of the namespace |
 

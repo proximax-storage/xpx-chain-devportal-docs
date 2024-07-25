@@ -30,6 +30,7 @@ const (
 	baseUrl = "http://localhost:3000"
 	// an account thad added metadata
 	privateKey = "809CD6699B7F38063E28F606BD3A8AECA6E13B1E688FE8E733D13DB843BC14B7"
+	nodeBootPrivateKey = "809CD6699B7F38063E28F606BD3A8AECA6E13B1E688FE8E733D13DB843BC14B8"
 )
 
 func main() {
@@ -47,9 +48,28 @@ func main() {
 		panic(err)
 	}
 
-	replicatorOnboardingTx, err := Client.NewReplicatorOnboardingTransaction(
-		sdk.NewDeadline(Deadline),
-		sdk.Amount(1), //capacity of and Replicator
+	nodeAccount, err := client.NewAccountFromPrivateKey(nodeBootPrivateKey)
+	if err != nil {
+		panic(err)
+	}
+
+	var message sdk.Hash
+	_, err = rand.Read(message[:])
+	if err != nil {
+		panic(err)
+	}
+
+	messageSignature, err := nodeAccount.SignData(message[:])
+	if err != nil {
+		panic(err)
+	}
+
+	replicatorOnboardingTx, err := client.NewReplicatorOnboardingTransaction(
+		sdk.NewDeadline(time.Hour),
+		sdk.Amount(capacity),
+		nodeAccount.PublicAccount,
+		&message,
+		messageSignature,
 	)
 	if err != nil {
 		panic(err)
@@ -60,7 +80,7 @@ func main() {
 		panic(err)
 	}
 
-	_, err = Client.Transaction.Announce(Ctx, signedTx)
+	_, err = Client.Transaction.Announce(context.TODO(), signedTx)
 	if err != nil {
 		panic(err)
 	}

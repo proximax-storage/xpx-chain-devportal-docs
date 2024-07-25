@@ -3,15 +3,14 @@ id: storage
 title: Storage
 ---
 
-ProximaX provides decentralized data storage and distribution, media streaming, execution of Supercontracts, payments,
-and asset exchange that are closely linked into a single ecosystem based on the Sirius blockchain.
+ProximaX provides decentralized data storage and distribution. More info by the [link](https://storagedocs.xpxsirius.io).
 
 ### Owner
 
 To create the Drive, the Owner should send a [PrepareDriveTransaction](#preparedrivetransaction) indicating the size of
 the new Drive, the desired number of Replicators, and other parameters.
 
-Once per `Billing Period (4 weeks)`, Harvesters make payment for the Storage, so the Drive account should have enough
+Once per `Billing Period (4 weeks by default, value is saved in the BC config)`, Harvesters make payment for the Storage, so the Drive account should have enough
 Storage Units. To replenish the Storage Units, the Drive Owner can send at any
 time [StoragePaymentTransaction](#storagepaymenttransaction).
 
@@ -74,39 +73,42 @@ the [FinishDownloadTransaction](#finishdownloadtransaction).
 
 **Version**: 0x01
 
-**Entity type**:
+**Entity type**: 0x4662
 
 **Inlines**:
 
 - [Transaction](../protocol/transaction.md#transaction)
   or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-| **Property** | **Type** | **Description**                               |
-|--------------|----------|-----------------------------------------------|
-| Capacity     | uint64   | The Storage Size that the Replicator provides |
+| **Property**     | **Type**   | **Description**                                                           |
+|------------------|------------|---------------------------------------------------------------------------|
+| Capacity         | uint64     | The Storage Size that the Replicator provides                             |
+| NodeBootKey      | 32 bytes   | The boot public key of the node where this replicator will be running on  |
+| Message          | Hash256    | The message signed by the boot private key of the node                    |
+| MessageSignature | Signature  | The signature of the message                                              |
 
-### PrepareDriveTransaction
+### PrepareBcDriveTransaction
 
 **Version**: 0x01
 
-**Entity type**:
+**Entity type**: 0x4162
 
 **Inlines**:
 
 - [Transaction](../protocol/transaction.md#transaction)
   or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-| **Property**          | **Type** | **Description**                          |
-|-----------------------|----------|------------------------------------------|
-| DriveSize             | uint64   | Size of drive                            |
-| VerificationFeeAmount | uint64   | TAmount of XPXs to transfer to the drive |
-| ReplicatorCount       | uint16   | Number of replicators                    |
+| **Property**          | **Type** | **Description**                         |
+|-----------------------|----------|-----------------------------------------|
+| DriveSize             | uint64   | Size of drive in MB                     |
+| VerificationFeeAmount | uint64   | Amount of XPXs to transfer to the drive |
+| ReplicatorCount       | uint16   | Number of replicators                   |
 
 ### DriveClosureTransaction
 
 **Version**: 0x01
 
-**Entity type**:
+**Entity type**: 0x4E62
 
 **Inlines**:
 
@@ -121,7 +123,7 @@ the [FinishDownloadTransaction](#finishdownloadtransaction).
 
 **Version**: 0x01
 
-**Entity type**:
+**Entity type**: 0x4A62
 
 **Inlines**:
 
@@ -137,7 +139,7 @@ the [FinishDownloadTransaction](#finishdownloadtransaction).
 
 **Version**: 0x01
 
-**Entity type**:
+**Entity type**: 0x4762
 
 **Inlines**:
 
@@ -152,7 +154,7 @@ the [FinishDownloadTransaction](#finishdownloadtransaction).
 
 **Version**: 0x01
 
-**Entity type**:
+**Entity type**: 0x4262
 
 **Inlines**:
 
@@ -170,7 +172,7 @@ the [FinishDownloadTransaction](#finishdownloadtransaction).
 
 **Version**: 0x01
 
-**Entity type**:
+**Entity type**: 0x4562
 
 **Inlines**:
 
@@ -186,7 +188,7 @@ the [FinishDownloadTransaction](#finishdownloadtransaction).
 
 **Version**: 0x01
 
-**Entity type**:
+**Entity type**: 0x4362
 
 **Inlines**:
 
@@ -205,7 +207,7 @@ the [FinishDownloadTransaction](#finishdownloadtransaction).
 
 **Version**: 0x01
 
-**Entity type**:
+**Entity type**: 0x4962
 
 **Inlines**:
 
@@ -222,22 +224,23 @@ the [FinishDownloadTransaction](#finishdownloadtransaction).
 
 **Version**: 0x01
 
-**Entity type**:
+**Entity type**: 0x4862
 
 **Inlines**:
 
 - [Transaction](../protocol/transaction.md#transaction)
   or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
 
-| **Property**      | **Type** | **Description**                        |
-|-------------------|----------|----------------------------------------|
-| DownloadChannelId | 32 bytes | The identifier of the download channel |
+| **Property**      | **Type** | **Description**                                    |
+|-------------------|----------|----------------------------------------------------|
+| DownloadChannelId | 32 bytes | The identifier of the download channel             |
+| FeedbackFeeAmount | 32 bytes | Amount of XPXs to transfer to the download channel |
 
 ### VerificationPaymentTransaction
 
 **Version**: 0x01
 
-**Entity type**:
+**Entity type**: 0x4C62
 
 **Inlines**:
 
@@ -248,25 +251,3 @@ the [FinishDownloadTransaction](#finishdownloadtransaction).
 |-----------------------|----------|-----------------------------------------|
 | DriveKey              | 32 bytes | Public key of the drive                 |
 | VerificationFeeAmount | uint64   | Amount of XPXs to transfer to the drive |
-
-### EndDriveVerificationTransaction
-
-**Version**: 0x01
-
-**Entity type**:
-
-**Inlines**:
-
-- [Transaction](../protocol/transaction.md#transaction)
-  or [EmbeddedTransaction](../protocol/transaction.md#embeddedtransaction)
-
-| **Property**        | **Type**                  | **Description**                                                    |
-|---------------------|---------------------------|--------------------------------------------------------------------|
-| DriveKey            | 32 bytes                  | Public key of the drive                                            |
-| VerificationTrigger | 32 bytes                  | The hash of block that initiated the Verification                  |
-| ShardId             | uint16                    | Shard identifier                                                   |
-| KeyCount            | uint8                     | Total number of replicators                                        |
-| JudgingKeyCount     | uint8                     | Number of replicators that provided their opinions                 |
-| PublicKeys          | Key(32 bytes) array       | Replicators' public keys                                           |
-| Signatures          | Signature(32 bytes) array | Signatures of replicators' opinions                                |
-| Opinions            | uint8 array               | Two-dimensional bit array of opinions (1 is success, 0 is failure) |

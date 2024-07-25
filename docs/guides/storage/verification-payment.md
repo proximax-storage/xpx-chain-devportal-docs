@@ -62,7 +62,7 @@ func main() {
 	verificationPaymentTx, err := Client.NewVerificationPaymentTransaction(
 		sdk.NewDeadline(Deadline),
 		driveAccount.PublicAccount,
-		sdk.Amount(100), // Verification payment in XPX
+		sdk.Amount(100), // VerificationFeeAmount payment in XPX
 	)
 	if err != nil {
 		panic(err)
@@ -73,7 +73,7 @@ func main() {
 		panic(err)
 	}
 
-	_, err = Client.Transaction.Announce(Ctx, signedTx)
+	_, err = Client.Transaction.Announce(context.TODO(), signedTx)
 	if err != nil {
 		panic(err)
 	}

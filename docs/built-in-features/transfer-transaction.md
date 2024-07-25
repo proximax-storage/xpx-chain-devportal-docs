@@ -5,10 +5,17 @@ title: Transfer Transaction
 
 Transfer transactions are used to send [mosaics](./mosaic.md) between two [accounts](./account.md).
 
+<div class="info">
+
+**Note**
+
+It is not possible to transfer services mosaics such as SO, SM and SC.
+
+</div>
+
 ![Transfer Transaction](/img/transfer-transaction.png "Transfer Transaction")
 
 <p class="caption">Alice sends 10 `xpx` to Bob</p>
-
 
 ## Recipient
 

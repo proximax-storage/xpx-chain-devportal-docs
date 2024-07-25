@@ -30,7 +30,11 @@ The cost of creating an SDA is configurable per network. By default, it has a co
 
 ## SDA Levy
 
-A levy allows the creator of an SDA to set a tax on any subsequent transactions of that SDA. This levy is sent to an account of the creators choosing. Any SDA may be used as a levy.
+A levy allows a creator of an SDA to set a tax on any subsequent transactions of that SDA. 
+The tax could be set as absolute and percentile. For example, if levy is 20 and absolute then every time when somebody
+transfer the mosaic the creator gets 20 units of this mosaic. If levy is 20 and percentile then the creator gets 20 percent
+of the transfer amount.
+Any SDA may be used as a levy.
 
 ## Example
 A private company, ComfyClothingCompany, decides that it wants to go public. Instead of a traditional IPO, the company decides to do an STO to issue tokens through the Sirius Chain platform.
