@@ -1,5 +1,5 @@
 ---
-id: lp
+id: liquidity-provider
 title: Liquidity Provider
 ---
 
