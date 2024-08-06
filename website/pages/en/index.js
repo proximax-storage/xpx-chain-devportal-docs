@@ -30,7 +30,7 @@ class HomeSplash extends React.Component {
             Proximax Sirius extends traditional blockchain protocols by integrating off-chain,
             peer-to-peer storage, streaming, and database service layers.
             </h6>
-          <p>Sirius Chain Version <span>0.6.5</span></p>
+          <p>Sirius Chain Version <span>1.8.0</span></p>
         </div>
       </div>
     );
