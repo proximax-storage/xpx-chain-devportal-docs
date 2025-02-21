@@ -23,6 +23,6 @@ Some examples of reference generators are [GoDoc](https://godoc.org/) for GO, wh
 
 ## Guides 
 
-The ProximaX Sirius Chain Developer Center gathers a collection of [guides](../guides/overview.md). They show developers how to use Sirius Chain built-in features while following step-by-step use cases.
+Sirius Developer Center gathers a collection of [guides](../guides/overview.md). They show developers how to use Sirius Chain built-in features while following step-by-step use cases.
 
 Each guide comes with at least one snippet. Snippets are executable pieces of code that solve the proposed use case.

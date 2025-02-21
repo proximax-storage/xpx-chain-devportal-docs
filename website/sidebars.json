@@ -58,6 +58,44 @@
     ],
     "Cheat Sheet":[
       "cheatsheet"
+    ],
+    "Storage": [
+      "storage/storage-overview",
+      "storage/storage-setting-up",
+      "storage/storage-economy",
+      "storage/storage-roles",
+      "storage/storage-verification",
+      "storage/storage-challenge",
+      "storage/storage-reward",
+      {
+        "type": "subcategory",
+        "label": "Built-In Features",
+        "ids": [
+          "storage/built_in_features/storage-drive",
+          "storage/built_in_features/storage-replicator",
+          "storage/built_in_features/storage-verifier",
+          "storage/built_in_features/storage-supercontract"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Protocols",
+        "ids": [
+          "storage/protocols/cross-block-protocol",
+          "storage/protocols/fair-streaming"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Storage User Application",
+        "ids": [
+          "storage/storage_user_app/storage-user-app-overview",
+          "storage/storage_user_app/getting-started",
+          "storage/storage_user_app/managing-drives",
+          "storage/storage_user_app/managing-drive-files",
+          "storage/storage_user_app/downloading-data"
+        ]
+      }
     ]
   },
   "guides": {
