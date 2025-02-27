@@ -17,8 +17,11 @@ The **cross-block protocol** is needed to check that [Storage Replicator Nodes](
 >
 > A [Drive](../built_in_features/drive.md) has 5 [Storage Replicator Nodes](../roles.md#replicator-node). Every _R_ splits each file into 4 parts. _R0_ requests from _R1_ the file part at number 1; from _R2_ the file part at number 2 and so on. Also, _R0_ sends the file part at number 1 to _R1_; the file part at number 2 to _R2_ and so on.
 
->**Note**\
->Every _R_ has its number on the [Drive](../built_in_features/drive.md) contract. It gets the number according to the consensus algorithm.
+<div class="info">
+
+**Note** <br>
+    Every _R_ has its number on the [Drive](../built_in_features/drive.md) contract. It gets the number according to the consensus algorithm.
+</div>
 
 ## Formulas
 

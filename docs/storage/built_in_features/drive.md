@@ -31,8 +31,11 @@ The [Drive](drive.md) has the following properties:
 
 # Lifecycle
 
->**Note**\
-See [bcdocs](https://bcdocs.xpxsirius.io/docs/built-in-features/drive) for information about schemas of transactions described on this page.
+<div class="info">
+
+**Note** <br>
+    See [this page](../transaction_schemas.md) for detailed information about transactions schemas.
+</div>
 
 ## Creating Drive
 

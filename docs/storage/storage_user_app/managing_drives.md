@@ -26,11 +26,17 @@ To order a creation of a new drive, click the **[ + ]** button in the upper left
 
 - `Local drive folder` is a directory where your local drive files will be stored. The contents of this directory will be synchronized with and stored on the Replicators that will be assigned to the drive. *You will be able to change this directory later at any moment.*
 
-> **Note**\
-The `Replicator number` and `Max drive size` values are final. You will not be able to change the number of Replicators, or to shrink or extend an existing Drive. If you ever need to, you will have to order a new Drive with new desired values (and possibly [remove](#removing-an-existing-drive) the old Drive after that).
+<div class="info">
 
-> **Note**\
-Keep in mind that increasing the `Replicator number` will also increase operational costs of the Drive.
+**Note** <br>
+    The `Replicator number` and `Max drive size` values are final. You will not be able to change the number of Replicators, or to shrink or extend an existing Drive. If you ever need to, you will have to order a new Drive with new desired values (and possibly [remove](#removing-an-existing-drive) the old Drive after that).
+</div>
+
+<div class="info">
+
+**Note** <br>
+    Keep in mind that increasing the `Replicator number` will also increase operational costs of the Drive.
+</div>
 
 When you are ready, press **Confirm** to proceed to the creation of the drive. The name of the drive will appear in the drop-down list in the upper left part of the window, indicating that it is now in a process of creation:
 
@@ -59,8 +65,11 @@ If you have several drives, you can switch between them using the drop-down list
 
 # Removing an Existing Drive
 
-> **Note**\
-Removing a Drive involves sending a transaction. Make sure that you have enough XPX to be able to pay for it.
+<div class="info">
+
+**Note** <br>
+    Removing a Drive involves sending a transaction. Make sure that you have enough XPX to be able to pay for it.
+</div>
 
 > **Removed Drives CANNOT be restored in any way. This is an irreversible operation.**
 
@@ -87,8 +96,11 @@ You can rename any of your Drives at any moment. To do this, select the Drive yo
 
 Click **OK** when you are ready. The Drive will be renamed instantly.
 
-> **Note**\
-Drive names are stored locally and do not require sending a transaction. Because of that, Drive renaming is instantaneous and free, but the names will not be synchronized between the instances of the User Application on different devices.
+<div class="info">
+
+**Note** <br>
+    Drive names are stored locally and do not require sending a transaction. Because of that, Drive renaming is instantaneous and free, but the names will not be synchronized between the instances of the User Application on different devices.
+</div>
 
 ## Changing a Local Folder
 

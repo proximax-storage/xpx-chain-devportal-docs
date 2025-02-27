@@ -4,8 +4,11 @@ title: Getting Started
 sidebar_label: Getting Started
 ---
 
-> The [User Application](./overview.md) must be built from sources from the following repository: https://github.com/proximax-storage/cpp-xpx-storage-user-app. Build instructions are available in the `README.md` file. Currently supported platforms are Linux and MacOS.
+<div class="info">
 
+**Note** <br>
+    The [User Application](./overview.md) must be built from sources from the following repository: https://github.com/proximax-storage/cpp-xpx-storage-user-app. Build instructions are available in the `README.md` file. Currently supported platforms are Linux and MacOS.
+</div>
 
 # First Launch
 
@@ -38,8 +41,11 @@ After creating and saving your first account, you will be prompted to fill in ne
 
 - `Download folder` is a directory where the files will be downloaded via the [Download Tab](./downloading_data.md) of the application. It is preferable (though not required) to select an empty directory for this.
 
-> **Note**\
-`Local UDP Port` and `Fee Multiplier` fields should be left at their default values.
+<div class="info">
+
+**Note** <br>
+    `Local UDP Port` and `Fee Multiplier` fields should be left at their default values.
+</div>
 
 When you are ready, click **Save** to complete the setup and proceed to the main window of the User Application.
 

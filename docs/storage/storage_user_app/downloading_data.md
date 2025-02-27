@@ -61,13 +61,19 @@ If you had an **invalid** Download Link in your clipboard, it also will be autom
   <figcaption align="center">Download dialog with an invalid link</figcaption>
 </figure>
 
->**Note**\
-The text field of the dialog box is copyable, but not editable. To update it, copy a valid Download Link to the clipboard and click the **Paste Link** button in the dialog box.
+<div class="info">
+
+**Note** <br>
+    The text field of the dialog box is copyable, but not editable. To update it, copy a valid Download Link to the clipboard and click the **Paste Link** button in the dialog box.
+</div>
 
 With a valid Download Link pasted, double-check the download information and click the **Download** button once you are ready. This will close the dialog, add the newly created download to the list of downloads in the main area of the window, and immediately launch it. As it is being downloaded, you will be able to see its progress in percent.
 
->**Note**\
-Despite the fact that the download path is hard-coded in the Download Link, the User Application checks for potential name conflicts and adds suffixes to the downloaded files and folders when it is necessary. You don't have to worry about data overwriting in the local download folder.
+<div class="info">
+
+**Note** <br>
+    Despite the fact that the download path is hard-coded in the Download Link, the User Application checks for potential name conflicts and adds suffixes to the downloaded files and folders when it is necessary. You don't have to worry about data overwriting in the local download folder.
+</div>
 
 ## Removing Download Records
 
@@ -77,5 +83,8 @@ To remove from the main area of the window a download record that is no longer n
 
 Click **OK** to confirm your decision. After this, the selected download record will be instantly removed from the list.
 
->**Note**\
-Download records are stored locally, and their deletion does not require sending any transactions. Because of that, their removal is instantaneous and free.
+<div class="info">
+
+**Note** <br>
+    Download records are stored locally, and their deletion does not require sending any transactions. Because of that, their removal is instantaneous and free.
+</div>

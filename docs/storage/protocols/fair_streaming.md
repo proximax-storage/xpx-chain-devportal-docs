@@ -11,8 +11,11 @@ The **fair streaming protocol** is used to transfer blocks of the file between [
 
 When the recipient wants to get a block, it initiates streaming. When the recipient received the block's hash, it starts to search for the sender that has it. When it has been found, the recipient requests this block. The sender transfers it to the recipient and waits for confirmation. At this time, the recipient compares the hash of the obtained block and the expected hash. If they are equal, it sends the confirmed and signed transaction with the private key. In case when the sender did not receive confirmation, it cannot send other blocks. When the sender gets approval, it checks the validity and, if everything is correct, the sender confirms it. Subsequently, the sender uses this confirmed transaction (receipts) to receive a reward, so it would be good to save receipts in a safe place. All of these transactions are sent from node to node on [DFMS](../overview.md) layer, not in the Blockchain.
 
-> **Note** \
-Only the [Storage Replicator Node](../roles.md#replicator-node) that deposited [SO](../economy.md#storage-units--so) or a node that has paid a fee in [SM](../economy.md#streaming-units--sm) can download the file.
+<div class="info">
+
+**Note** <br>
+    Only the [Storage Replicator Node](../roles.md#replicator-node) that deposited [SO](../economy.md#storage-units--so) or a node that has paid a fee in [SM](../economy.md#streaming-units--sm) can download the file.
+</div>
 
 ### Possible cases
 
