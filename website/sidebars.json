@@ -67,6 +67,7 @@
       "storage/storage-verification",
       "storage/storage-challenge",
       "storage/storage-reward",
+      "storage/storage-transaction-schemas",
       {
         "type": "subcategory",
         "label": "Built-In Features",
