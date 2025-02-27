@@ -3,55 +3,16 @@ id: storage
 title: Storage
 ---
 
-ProximaX provides decentralized data storage and distribution. More info by the [link](https://storagedocs.xpxsirius.io).
+<div class="info">
 
-### Owner
+**Note** <br>
+    Detailed documentation for the Sirius Storage is available [in a separate section](../storage/overview.md).
+</div>
 
-To create the Drive, the Owner should send a [PrepareDriveTransaction](#preparedrivetransaction) indicating the size of
-the new Drive, the desired number of Replicators, and other parameters.
+**Sirius Storage** is a distributed file management platform that enables autonomous distribution of storage network capability, providing open disk space usability to multiple level consumers using peer-to-peer architecture.
 
-Once per `Billing Period (4 weeks by default, value is saved in the BC config)`, Harvesters make payment for the Storage, so the Drive account should have enough
-Storage Units. To replenish the Storage Units, the Drive Owner can send at any
-time [StoragePaymentTransaction](#storagepaymenttransaction).
+Sirius Storage owners can participate as Replicators. Consumers such as developers, document management systems and application owners can use the platform to store all sorts of digital binary data, while Supercontracts developers can use it as an off-chain storage and execution environment.
 
-To perform a modification, the Owner must form the action list that contains all actions which must be executed by the
-Replicators and post it on the blockchain via [DataModificationTransaction](#datamodificationtransaction). The Owner has
-the possibility to cancel the modification with [DataModificationCancelTransaction](#datamodificationcanceltransaction).
-In this case the Owner still has to pay the Replicators for the modification.
-
-To close the Drive, the Owner should send a [DriveClosureTransaction](#driveclosuretransaction). Unspent funds will be
-returned to the Owner.
-
-### Replicator
-
-To provide the Storage, the Replicator should
-release [ReplicatorOnboardingTransaction](#replicatoronboardingtransaction) and prove its space with collateral. The
-real free space on the Replicator’s hard drive MUST be at least twice larger than mentioned
-in [ReplicatorOnboardingTransaction](#replicatoronboardingtransaction) to provide the possibility of rollbacks.
-
-With a special algorithm, the Replicator will be automatically attached to a Drive.
-
-The replicator leaves the Drive if it was closed or the next `Billing Period` has not been paid. Also, the replicator
-could be excluded from the Drive based on the results of the verification.
-
-To offboard Storage, the Replicator should
-release [ReplicatorOffBoardingTransaction](#replicatoroffboardingtransaction). The Replicator receives the payments for
-the work at the end of the `Billing Period`, and returns the deposit for the Drive, but loses part of its Streaming
-deposit. This amount will be compensated for further data uploading during substitution.
-
-### Content Consumer
-
-To download data from a Drive, the Content Consumer should open a Download Channel on this Drive and prepay some amount
-via [DownloadTransaction](#downloadtransaction). Nodes issuing this transaction should contain a list of Public keys (
-Content Consumers) that can download files within this channel. If a node wants to grant free downloading to any
-interested node, it should record zero-key in this field. Once per `Download Billing Period (24h)`, some amount of
-locked money will be paid to the Replicators.
-
-The Content Consumer or another Sponsor can increase the locked amount of each currency by
-posting [DownloadPaymentTransaction](#downloadpaymenttransaction).
-
-The units are locked until the node that opened the download channel doesn’t ask to return them via
-the [FinishDownloadTransaction](#finishdownloadtransaction).
 
 ## Guides
 
