@@ -21,7 +21,7 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'Sirius Developer Center', // Title for your website.
+  title: 'Developer Center', // Title for your website.
   tagline: 'A website for blockchain developers',
   url: 'https://bcdocs.xpxsirius.io', // Your website URL
   baseUrl: '/', // Base URL for your project */
@@ -38,7 +38,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: 'getting-started/what-is-proximax-sirius-chain', label: 'Getting Started' },
+    { doc: 'getting-started/what-is-sirius-chain', label: 'Getting Started' },
     { doc: 'built-in-features/account', label: 'Built-in Features' },
     { doc: 'rest-api/rest-api-overview', label: 'REST API Endpoints' },
     { doc: 'guides/guides-overview', label: 'Guides' },
@@ -59,9 +59,9 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/logo-proximax.png',
+  headerIcon: 'img/Siriuschain_blacktext.svg',
   footerIcon: 'img/logo-proximax.png',
-  favicon: 'img/favicon.png',
+  favicon: 'img/sirius-favicon.png',
 
   /* Colors for website */
   colors: {
@@ -90,7 +90,7 @@ const siteConfig = {
   docsSideNavCollapsible: true,
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} ProximaX`,
+  copyright: `Copyright © ${new Date().getFullYear()} Sirius Chain`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -98,7 +98,7 @@ const siteConfig = {
   },
 
   // Add custom scripts here that would be placed in <script> tags.
-  scripts: ['/fontawesome-5.9/js/all.js'],
+  scripts: ['/fontawesome-free-6.7.2/js/all.js'],
 
   // On page navigation for the current documentation page.
   onPageNav: 'separate',
