@@ -1,7 +1,7 @@
 {
   "docs": {
     "Getting Started": [
-      "getting-started/what-is-proximax-sirius-chain",
+      "getting-started/what-is-sirius-chain",
       "getting-started/setting-up-workstation",
       "getting-started/writing-first-application"
     ],
@@ -45,16 +45,8 @@
       "sdks/sdk-development",
       "sdks/sdk-documentation"
     ],
-    "Client": [
-      "client/client-overview",
-      "client/commands"
-    ],
     "Wallets & Explorers": [
       "wallets-explorers"
-    ],
-    "Extensions": [
-      "extensions/extension-overview",
-      "extensions/dfms-version1-extension"
     ],
     "Cheat Sheet":[
       "cheatsheet"

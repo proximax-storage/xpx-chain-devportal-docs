@@ -1369,8 +1369,8 @@ paths:
           description: invalid argument
 
 externalDocs:
-  description: ProximaX Developer Center
-  url: 'https://proximax.io/'
+  description: Sirius Developer Center
+  url: 'https://www.siriuschain.io/'
 servers:
   - url: "http://bctestnet1.brimstone.xpxsirius.io:3000/"
 components:
