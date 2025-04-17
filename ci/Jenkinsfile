@@ -86,7 +86,7 @@ pipeline {
     // staging: build and deploy to dev-bcdocs.proximaxtest.com
     stage('Staging Build') {
       when {
-          tag 'release-internal-v*'
+          tag 'release-internal'
       }
       steps {
         echo 'Starting Docker Container'
@@ -119,7 +119,7 @@ pipeline {
  
     stage('Deploy to dev-bcdocs.proximaxtest.com') {
       when {
-          tag 'release-internal-v*'
+          tag 'release-internal'
       }
       steps {
         echo 'Managing S3'
