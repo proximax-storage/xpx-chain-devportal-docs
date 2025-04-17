@@ -86,7 +86,9 @@ pipeline {
     // staging: build and deploy to dev-bcdocs.proximaxtest.com
     stage('Staging Build') {
       when {
-          tag 'release-internal'
+          anyOf {
+              branch 'storage-docs';
+          }
       }
       steps {
         echo 'Starting Docker Container'
@@ -108,18 +110,20 @@ pipeline {
         // sh "tar cJfv bcdocs-${env.GIT_BRANCH}.tar.xz dist"
       }
 
-    //   post {
-    //     failure {
-    //       slackSend channel: '#devops',
-    //         color: 'bad',
-    //         message: "Branch *${env.GIT_BRANCH}* build of *${currentBuild.fullDisplayName}* FAILED :scream:"
-    //     }
-    //   }
+      post {
+        failure {
+          slackSend channel: '#devops',
+            color: 'bad',
+            message: "Branch *${env.GIT_BRANCH}* build of *${currentBuild.fullDisplayName}* FAILED :scream:"
+        }
+      }
     }
  
     stage('Deploy to dev-bcdocs.proximaxtest.com') {
       when {
-          tag 'release-internal'
+          anyOf {
+              branch 'storage-docs';
+          }
       }
       steps {
         echo 'Managing S3'
@@ -138,19 +142,19 @@ pipeline {
         }
       }
 
-    //   post {
-    //     success {
-    //       slackSend channel: '#devops',
-    //         color: 'good',
-    //         message: "Branch *${env.GIT_BRANCH}* Deployment of *${currentBuild.fullDisplayName}* completed successfully :100:\nAvailable at https://dev-bcdocs.proximaxtest.com"
-    //     }
+      post {
+        success {
+          slackSend channel: '#devops',
+            color: 'good',
+            message: "Branch *${env.GIT_BRANCH}* Deployment of *${currentBuild.fullDisplayName}* completed successfully :100:\nAvailable at https://dev-bcdocs.proximaxtest.com"
+        }
 
-    //     failure {
-    //       slackSend channel: '#devops',
-    //         color: 'bad',
-    //         message: "Branch *${env.GIT_BRANCH}* Deployment of *${currentBuild.fullDisplayName}* FAILED :scream:"
-    //     }
-    //   }  
+        failure {
+          slackSend channel: '#devops',
+            color: 'bad',
+            message: "Branch *${env.GIT_BRANCH}* Deployment of *${currentBuild.fullDisplayName}* FAILED :scream:"
+        }
+      }  
     }
   }
 }
