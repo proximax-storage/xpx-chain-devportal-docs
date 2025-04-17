@@ -52,7 +52,7 @@ The duration of the Billing Period is defined to be equal to **4 weeks** by defa
 
 To replenish the Drive account, the Drive Owner can send `StoragePayment` transaction at any time. To prepay the Drive for the next Billing Period, the Drive Owner (or any other user) should release the StoragePayment Transaction and specify the desired amount of Storage units it wants to pay for the Drive.
 
-As soon as the Billing Period since the last payment according to the time mentioned in the block passes, Harvesters make an automatic payment for the Storage for the past period. If there are not enough [SO units](../economy.md#storage-units--so) for the Drive prolongation, or not enough Verifications were prepaid, then the Drive is closed in compliance with all procedures mentioned in the `DriveClosure` transaction. Since ProximaX blockchain is public, there is no possibility to encourage the Replicators to work free of charge, so there is no a so-called buffer zone when the Billing Period has already finished, but the Drive still works.
+As soon as the Billing Period since the last payment according to the time mentioned in the block passes, Harvesters make an automatic payment for the Storage for the past period. If there are not enough [SO units](../economy.md#storage-units--so) for the Drive prolongation, or not enough Verifications were prepaid, then the Drive is closed in compliance with all procedures mentioned in the `DriveClosure` transaction. Since Sirius blockchain is public, there is no possibility to encourage the Replicators to work free of charge, so there is no a so-called buffer zone when the Billing Period has already finished, but the Drive still works.
 
 ## Interacting with Drive
 

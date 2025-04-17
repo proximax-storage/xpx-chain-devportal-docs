@@ -7,8 +7,8 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 0.1.0
 externalDocs:
-  description: ProximaX Sirius-Chain Developer Center
-  url: https://bcdocs.xpxsirius.io/
+  description: Sirius Developer Center
+  url: 'https://www.siriuschain.io/'
 servers:
 - url: http://bctestnet1.brimstone.xpxsirius.io:3000/
 tags:

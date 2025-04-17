@@ -2,7 +2,7 @@
 
 # xpx-chain-sdk for <LANGUAGE_NAME>
 
-xpx-chain-sdk for <LANGUAGE_NAME> to interact with ProximaX Sirius Chain.
+xpx-chain-sdk for <LANGUAGE_NAME> to interact with Sirius Chain.
 
 ## Requirements
 
@@ -39,7 +39,7 @@ Please, use the following available resources to get help:
 
 ## License
 
-Copyright (c) <YEAR> ProximaX
+Copyright (c) <YEAR> Sirius Chain
 Licensed under the <LICENSE_NAME>
 
 [self]: https://github.com/proximax-storage/<LANGUAGE_NAME>-xpx-chain-sdk

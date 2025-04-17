@@ -4,7 +4,7 @@ title: Decentralized Exchange Market
 ---
 
 # Overview
-A user can create an [SDA-SDA offer](exchangesda-market.md#exchangesda) through the ProximaX Decentralized Exchange Market.
+A user can create an [SDA-SDA offer](exchangesda-market.md#exchangesda) through the Sirius Chain Decentralized Exchange Market.
 
 <div class="info">
 
