@@ -14,7 +14,7 @@ const users = [
     caption: 'User1',
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/image.jpg'.
-    image: '/img/undraw_open_source.svg',
+    image: '/img/Siriuschain_blacktext.svg',
     infoLink: 'https://www.facebook.com',
     pinned: true,
   },
@@ -56,7 +56,7 @@ const siteConfig = {
 
 
   // If you have users set above, you add it here:
-  users,
+  //users,
 
   /* path to images for header/footer */
   headerIcon: 'img/Siriuschain_blacktext.svg',
@@ -106,8 +106,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: 'img/undraw_online.svg',
-  twitterImage: 'img/undraw_tweetstorm.svg',
+  ogImage: 'img/Siriuschain_blacktext.svg',
+  twitterImage: 'img/Siriuschain_blacktext.svg',
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,
