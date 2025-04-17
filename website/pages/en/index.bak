@@ -6,7 +6,6 @@
  */
 
 const React = require('react');
-
 const CompLibrary = require('../../core/CompLibrary.js');
 
 const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
@@ -24,10 +23,10 @@ class HomeSplash extends React.Component {
     return (
       <div className="home jumbotron text-center gap">
         <div className="inner">
-          <h1>Start building apps on the ProximaX Sirius' Blockchain Layer</h1>
+          <h1>Start building apps on the Sirius' Blockchain Layer</h1>
           <h6>This developer center is for Sirius Chain, which is the blockchain layer
-              that forms an integral part of the <b>ProximaX Sirius</b> development platform.
-            Proximax Sirius extends traditional blockchain protocols by integrating off-chain,
+              that forms an integral part of the <b>Sirius</b> development platform.
+              Sirius extends traditional blockchain protocols by integrating off-chain,
             peer-to-peer storage, streaming, and database service layers.
             </h6>
           <p>Sirius Chain Version <span>1.8.0</span></p>
@@ -110,7 +109,7 @@ class Index extends React.Component {
             content: 'Install the development kit and start coding your first blockchain app',
             image: `${baseUrl}img/home-getting-started.png`,
             imageAlign: 'top',
-            link: `${baseUrl + docsUrl}/getting-started/what-is-proximax-sirius-chain`,
+            link: `${baseUrl + docsUrl}/getting-started/what-is-sirius-chain`,
             title: 'Getting started',
           },
           {
