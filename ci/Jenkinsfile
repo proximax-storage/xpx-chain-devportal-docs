@@ -94,8 +94,8 @@ pipeline {
         echo 'Starting Docker Container'
         withDockerContainer(image: 'node:14') {
           sh '''
-            cp ./config/siteConfig_staging.js ./website/siteConfig.js
             cd website
+            sed -i "s|url: '.*'|url: 'https://dev-bcdocs.proximaxtest.com'|" siteConfig.js
             echo 'Installing dependencies'
             npm install
             echo 'Building'
