@@ -51,6 +51,136 @@
     "Cheat Sheet":[
       "cheatsheet"
     ],
+    "Guides": [
+      "guides/guides-overview",
+      {
+        "type": "subcategory",
+        "label": "Account",
+        "ids": [
+          "guides/account/creating-and-opening-an-account",
+          "guides/account/getting-account-information",
+          "guides/account/getting-the-amount-of-xpx-sent-to-an-account",
+          "guides/account/reading-transactions-from-an-account"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Account Restriction",
+        "ids": [
+        "guides/account-restriction/preventing-spam-attacks"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Aggregate Transaction",
+        "ids":[
+          "guides/aggregate-transaction/sending-payouts-with-aggregate-complete-transaction",
+          "guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction",
+          "guides/aggregate-transaction/asking-for-mosaics-with-aggregate-bonded-transaction",
+          "guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions",
+          "guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions-automatically"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Block",
+        "ids": [
+          "guides/block/listening-new-blocks",
+          "guides/block/getting-block-by-height"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Cross Chain Swaps",
+        "ids": [
+          "guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Metadata",
+        "ids":[
+          "guides/metadata-v2/account-metadata-v2",
+          "guides/metadata-v2/mosaic-metadata-v2",
+          "guides/metadata-v2/namespace-metadata-v2",
+          "guides/metadata/account-metadata",
+          "guides/metadata/mosaic-metadata",
+          "guides/metadata/namespace-metadata"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Monitoring",
+        "ids": [
+          "guides/monitoring/monitoring-a-transaction-status"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Mosaic",
+        "ids":[
+          "guides/mosaic/creating-a-mosaic",
+          "guides/mosaic/getting-mosaic-information",
+          "guides/mosaic/getting-the-mosaic-identifier-behind-a-namespace-with-recepits",
+          "guides/mosaic/modifying-mosaic-supply"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Mosaic Levy",
+        "ids":[
+          "guides/mosaic/modify_mosaic_levy",
+          "guides/mosaic/modifying-mosaic-supply",
+          "guides/mosaic/remove_mosaic_levy"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Multisig Account",
+        "ids":[
+          "guides/multisig-account/converting-an-account-to-multisig",
+          "guides/multisig-account/modifying-a-multisig-account",
+          "guides/multisig-account/creating-a-multi-level-multisig-account",
+          "guides/multisig-account/sending-a-multisig-transaction"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Namespace",
+        "ids":[
+          "guides/namespace/registering-a-namespace",
+          "guides/namespace/registering-a-subnamespace",
+          "guides/namespace/getting-the-namespace-information",
+          "guides/namespace/linking-a-namespace-to-a-mosaic",
+          "guides/namespace/linking-a-namespace-to-account"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Transfer Transaction",
+        "ids":[
+          "guides/transaction/sending-a-transfer-transaction",
+          "guides/transaction/sending-an-encrypted-message"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Storage",
+        "ids":[
+          "guides/storage/data-modification-cancel",
+          "guides/storage/data-modification",
+          "guides/storage/download",
+          "guides/storage/download-payment",
+          "guides/storage/drive-closure",
+          "guides/storage/finish-download",
+          "guides/storage/prepare-bc-drive",
+          "guides/storage/replicator-offboarding",
+          "guides/storage/replicator-onboarding",
+          "guides/storage/storage-payment",
+          "guides/storage/verification-payment"
+        ]
+      }
+    ],
     "Storage": [
       "storage/storage-overview",
       "storage/storage-setting-up",
@@ -90,82 +220,6 @@
         ]
       }
     ]
-  },
-  "guides": {
-    "Account": [
-      "guides/account/creating-and-opening-an-account",
-      "guides/account/getting-account-information",
-      "guides/account/getting-the-amount-of-xpx-sent-to-an-account",
-      "guides/account/reading-transactions-from-an-account"
-    ],
-    "Account Restriction": [
-      "guides/account-restriction/preventing-spam-attacks"
-    ],
-    "Aggregate Transaction": [
-      "guides/aggregate-transaction/sending-payouts-with-aggregate-complete-transaction",
-      "guides/aggregate-transaction/creating-an-escrow-with-aggregate-bonded-transaction",
-      "guides/aggregate-transaction/asking-for-mosaics-with-aggregate-bonded-transaction",
-      "guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions",
-      "guides/aggregate-transaction/signing-announced-aggregate-bonded-transactions-automatically"
-    ],
-    "Block": [
-      "guides/block/listening-new-blocks",
-      "guides/block/getting-block-by-height"
-    ],
-    "Cross Chain Swaps": [
-      "guides/cross-chain-swaps/atomic-cross-chain-swap-between-sirius-chain-public-and-private-chain"
-    ],
-    "Metadata":[
-      "guides/metadata-v2/account-metadata-v2",
-      "guides/metadata-v2/mosaic-metadata-v2",
-      "guides/metadata-v2/namespace-metadata-v2",
-      "guides/metadata/account-metadata",
-      "guides/metadata/mosaic-metadata",
-      "guides/metadata/namespace-metadata"
-    ],
-    "Monitoring": [
-      "guides/monitoring/monitoring-a-transaction-status"
-    ],
-    "Mosaic": [
-      "guides/mosaic/creating-a-mosaic",
-      "guides/mosaic/getting-mosaic-information",
-      "guides/mosaic/getting-the-mosaic-identifier-behind-a-namespace-with-recepits",
-      "guides/mosaic/modifying-mosaic-supply"
-    ],
-    "Mosaic Levy": [
-      "guides/mosaic/modify_mosaic_levy",
-      "guides/mosaic/modifying-mosaic-supply",
-      "guides/mosaic/remove_mosaic_levy"
-    ],
-    "Multisig Account": [
-      "guides/multisig-account/converting-an-account-to-multisig",
-      "guides/multisig-account/modifying-a-multisig-account",
-      "guides/multisig-account/creating-a-multi-level-multisig-account",
-      "guides/multisig-account/sending-a-multisig-transaction"
-    ],
-    "Namespace": [
-      "guides/namespace/registering-a-namespace",
-      "guides/namespace/registering-a-subnamespace",
-      "guides/namespace/getting-the-namespace-information",
-      "guides/namespace/linking-a-namespace-to-a-mosaic",
-      "guides/namespace/linking-a-namespace-to-account"
-    ],
-    "Transfer Transaction": [
-      "guides/transaction/sending-a-transfer-transaction",
-      "guides/transaction/sending-an-encrypted-message"
-    ],
-    "Storage": [
-      "guides/storage/data-modification-cancel",
-      "guides/storage/data-modification",
-      "guides/storage/download",
-      "guides/storage/download-payment",
-      "guides/storage/drive-closure",
-      "guides/storage/finish-download",
-      "guides/storage/prepare-bc-drive",
-      "guides/storage/replicator-offboarding",
-      "guides/storage/replicator-onboarding",
-      "guides/storage/storage-payment",
-      "guides/storage/verification-payment"
-    ]
   }
+  
 }

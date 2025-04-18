@@ -98,7 +98,7 @@ const siteConfig = {
   },
 
   // Add custom scripts here that would be placed in <script> tags.
-  scripts: ['/fontawesome-free-6.7.2/js/all.js'],
+  scripts: ['/fontawesome-free-6.7.2/js/all.js','/js/adjust-sidebar.js'],
 
   // On page navigation for the current documentation page.
   onPageNav: 'separate',
