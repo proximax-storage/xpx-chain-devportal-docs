@@ -8,7 +8,7 @@ Sirius Chain is a developer-friendly blockchain platform. Rather than forcing yo
 
 Sirius Chain is suitable for an amazing variety of solutions of different classes, such as direct public transactions via a streamlined smartphone app, efficient cloud services that connect client or web applications, as well as a high-performance permissioned enterprise back-end for business-critical record keeping.
 
-![Smart Assets System](/img/smart-assets-system.png "Smart Assets System")
+![Smart Assets System](/img/smart-assets-system.svg "Smart Assets System")
 <p class="caption">The Smart Asset System</p>
 
 ## Architecting on Sirius Chain
