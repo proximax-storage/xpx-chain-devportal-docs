@@ -132,7 +132,7 @@ class Footer extends React.Component {
           </div>
         </section>
 
-        <section className="acknowledgement">Documentation Forked From NEM</section>
+        <section className="acknowledgement">Includes Documentation Forked from NEM</section>
 
         <section className="copyright">{this.props.config.copyright}</section>
       </footer>
