@@ -53,6 +53,7 @@
     ],
     "Guides": [
       "guides/guides-overview",
+      "guides/external-guides",
       {
         "type": "subcategory",
         "label": "Account",
