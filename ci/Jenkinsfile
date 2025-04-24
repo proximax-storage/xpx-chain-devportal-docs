@@ -87,7 +87,7 @@ pipeline {
     stage('Staging Build') {
       when {
           anyOf {
-              branch 'storage-docs';
+              branch 'develop';
           }
       }
       steps {
@@ -122,7 +122,7 @@ pipeline {
     stage('Deploy to dev-bcdocs.proximaxtest.com') {
       when {
           anyOf {
-              branch 'storage-docs';
+              branch 'develop';
           }
       }
       steps {
