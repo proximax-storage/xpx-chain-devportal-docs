@@ -1,6 +1,7 @@
 ---
 id: guides-overview
 title: Guides
+sidebar_label: Overview
 ---
 
 ## Account

@@ -4,7 +4,7 @@ title: Exchange Market
 ---
 
 # Overview
-A user can create an [exchange](exchange-market.md#exchange) offer. Also, any user can select a suitable offer and [exchange](exchange-market.md#exchange) its [mosaics](mosaic.md) for others using ProximaX Exchange Market. The market always has the ProximaX permanent offer for buying and selling any official mosaic.
+A user can create an [exchange](exchange-market.md#exchange) offer. Also, any user can select a suitable offer and [exchange](exchange-market.md#exchange) its [mosaics](mosaic.md) for others using Sirius Exchange Market. The market always has the Sirius permanent offer for buying and selling any official mosaic.
 
 <div class="info">
 
@@ -45,7 +45,7 @@ If 1 [XPX](https://storagedocs.xpxsirius.io/docs/getting_started/economy/#xpx) c
 <div class="info">
 
 **Note**
-Any user can create an exchange offer with a max duration of 10 days. But ProximaX can create offers with unlimited duration.
+Any user can create an exchange offer with a max duration of 10 days. But Sirius Chain can create offers with unlimited duration.
 </div>
 
 ## Schemas

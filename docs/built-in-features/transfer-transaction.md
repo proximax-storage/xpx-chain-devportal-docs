@@ -13,7 +13,7 @@ It is not possible to transfer services mosaics such as SO, SM and SC.
 
 </div>
 
-![Transfer Transaction](/img/transfer-transaction.png "Transfer Transaction")
+![Transfer Transaction](/img/transfer-transaction.svg "Transfer Transaction")
 
 <p class="caption">Alice sends 10 `xpx` to Bob</p>
 

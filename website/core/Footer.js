@@ -28,18 +28,23 @@ class Footer extends React.Component {
         <section className="socialInfo">
           <ul>
             <li>
-              <a href="https://www.reddit.com/user/ProximaXio/">
-                <i className="fab fa-reddit"></i> Join #general discussion
+              <a href="https://x.com/SiriusXPX">
+                <i className="fab fa-x-twitter"></i> Follow our profile
               </a>
             </li>
             <li>
-              <a href="http://t.me/ProximaXio">
+              <a href="https://t.me/ProximaXio">
                 <i className="fab fa-telegram"></i> Ask development questions
               </a>
             </li>
             <li>
-              <a href="https://twitter.com/ProximaXio">
-                <i className="fab fa-twitter"></i> Follow the dev updates
+              <a href="https://discord.com/invite/QGsDQqv5vX">
+                <i className="fab fa-discord"></i> Join our Discord channel
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/c/ProximaXio">
+                <i className="fab fa-youtube"></i> Explore our Youtube channel
               </a>
             </li>
             <li>
@@ -123,12 +128,11 @@ class Footer extends React.Component {
             <h5>References</h5>
             <a href={this.docUrl('rest-api/rest-api-overview')}>REST API</a>
             <a href={this.docUrl('sdks/languages')}>SDKs</a>
-            <a href={this.docUrl('client/client-overview')}>XPX-Chain-CLI</a>
             <a href={this.docUrl('cheatsheet')}>Cheat Sheet</a>
           </div>
         </section>
 
-        <section className="acknowledgement">Documentation Forked From NEM</section>
+        <section className="acknowledgement">Includes Documentation Forked from NEM</section>
 
         <section className="copyright">{this.props.config.copyright}</section>
       </footer>

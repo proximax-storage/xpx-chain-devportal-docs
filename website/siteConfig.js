@@ -14,15 +14,15 @@ const users = [
     caption: 'User1',
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/image.jpg'.
-    image: '/img/undraw_open_source.svg',
+    image: '/img/Siriuschain_blacktext.svg',
     infoLink: 'https://www.facebook.com',
     pinned: true,
   },
 ];
 
 const siteConfig = {
-  title: 'Sirius Chain Developer Center 0.2.6', // Title for your website.
-  tagline: 'A website for blockchain developers',
+  title: 'Developer Center', // Title for your website.
+  tagline: "Sirius blockchain platform's official documentation hub",
   url: 'https://bcdocs.xpxsirius.io', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -38,7 +38,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: 'getting-started/what-is-proximax-sirius-chain', label: 'Getting Started' },
+    { doc: 'getting-started/what-is-sirius-chain', label: 'Getting Started' },
     { doc: 'built-in-features/account', label: 'Built-in Features' },
     { doc: 'rest-api/rest-api-overview', label: 'REST API Endpoints' },
     { doc: 'guides/guides-overview', label: 'Guides' },
@@ -56,12 +56,12 @@ const siteConfig = {
 
 
   // If you have users set above, you add it here:
-  users,
+  //users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/logo-proximax.png',
+  headerIcon: 'img/Siriuschain_blacktext.svg',
   footerIcon: 'img/logo-proximax.png',
-  favicon: 'img/favicon.png',
+  favicon: 'img/sirius-favicon.png',
 
   /* Colors for website */
   colors: {
@@ -90,7 +90,7 @@ const siteConfig = {
   docsSideNavCollapsible: true,
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} ProximaX`,
+  copyright: `Copyright © ${new Date().getFullYear()} Sirius Chain`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -98,7 +98,7 @@ const siteConfig = {
   },
 
   // Add custom scripts here that would be placed in <script> tags.
-  scripts: ['/fontawesome-5.9/js/all.js'],
+  scripts: ['/fontawesome-free-6.7.2/js/all.js','/js/adjust-sidebar.js'],
 
   // On page navigation for the current documentation page.
   onPageNav: 'separate',
@@ -106,8 +106,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: 'img/undraw_online.svg',
-  twitterImage: 'img/undraw_tweetstorm.svg',
+  ogImage: 'img/Siriuschain_blacktext.svg',
+  twitterImage: 'img/Siriuschain_blacktext.svg',
 
   // Show documentation's last contributor's name.
   // enableUpdateBy: true,

@@ -10,9 +10,14 @@ pipeline {
   }
 
   stages {
-    stage('Build') {
-      steps {
-
+    // production: build and deploy to bcdocs.xpxsirius.io
+    stage('Production Build') {
+      when {
+          anyOf {
+              branch 'master';
+          }
+      }
+      steps { 
         echo 'Starting Docker Container'
         withDockerContainer(image: 'node:14') {
           sh '''
@@ -41,6 +46,11 @@ pipeline {
     }
  
     stage('Deploy to bcdocs.xpxsirius.io') {
+      when {
+          anyOf {
+              branch 'master';
+          }
+      }
       steps {
         echo 'Managing S3'
         withAWS(credentials: 'jenkins-ecr', region: 'ap-southeast-2') {
@@ -63,6 +73,80 @@ pipeline {
           slackSend channel: '#devops',
             color: 'good',
             message: "Branch *${env.GIT_BRANCH}* Deployment of *${currentBuild.fullDisplayName}* completed successfully :100:\nAvailable at http://bcdocs.xpxsirius.io"
+        }
+
+        failure {
+          slackSend channel: '#devops',
+            color: 'bad',
+            message: "Branch *${env.GIT_BRANCH}* Deployment of *${currentBuild.fullDisplayName}* FAILED :scream:"
+        }
+      }  
+    }
+
+    // staging: build and deploy to dev-bcdocs.proximaxtest.com
+    stage('Staging Build') {
+      when {
+          anyOf {
+              branch 'storage-docs';
+          }
+      }
+      steps {
+        echo 'Starting Docker Container'
+        withDockerContainer(image: 'node:14') {
+          sh '''
+            cd website
+            sed -i "s|url: '.*'|url: 'https://dev-bcdocs.proximaxtest.com'|" siteConfig.js
+            echo 'Installing dependencies'
+            npm install
+            echo 'Building'
+            npm run build
+          '''
+        }
+
+        echo 'Leaving Container'
+
+        // echo 'Compressing Artifacts'
+        // // Creates an XZ compressed archive
+        // sh "tar cJfv bcdocs-${env.GIT_BRANCH}.tar.xz dist"
+      }
+
+      post {
+        failure {
+          slackSend channel: '#devops',
+            color: 'bad',
+            message: "Branch *${env.GIT_BRANCH}* build of *${currentBuild.fullDisplayName}* FAILED :scream:"
+        }
+      }
+    }
+ 
+    stage('Deploy to dev-bcdocs.proximaxtest.com') {
+      when {
+          anyOf {
+              branch 'storage-docs';
+          }
+      }
+      steps {
+        echo 'Managing S3'
+        withAWS(credentials: 'jenkins-ecr', region: 'ap-southeast-1') {
+        echo 'Deleting old files'
+        s3Delete bucket: 'dev-bcdocs.proximaxtest.com', path: './'
+
+        echo 'Uploading new files'
+        s3Upload bucket: 'dev-bcdocs.proximaxtest.com', acl: 'PublicRead', file: 'website/build/Sirius-Chain Developer Center/', sseAlgorithm: 'AES256'
+      }
+
+        echo 'Managing CloudFront'
+        withAWS(credentials: 'jenkins-ecr') {
+          echo 'Invalidating CloudFront'
+          cfInvalidate distribution: 'E66NRFRNMZPFA', paths: ['/*']
+        }
+      }
+
+      post {
+        success {
+          slackSend channel: '#devops',
+            color: 'good',
+            message: "Branch *${env.GIT_BRANCH}* Deployment of *${currentBuild.fullDisplayName}* completed successfully :100:\nAvailable at https://dev-bcdocs.proximaxtest.com"
         }
 
         failure {

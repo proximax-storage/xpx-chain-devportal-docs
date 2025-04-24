@@ -14,7 +14,7 @@ The liquidity provider automatically manages the minting of mosaics and an excha
 
 **NOTE**
 
-For now only ProximaX can emplace the offers for service units like SO, SM and SC.
+For now only Sirius Chain official can emplace the offers for service units like SO, SM and SC.
 
 </div>
 
