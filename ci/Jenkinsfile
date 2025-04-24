@@ -19,7 +19,7 @@ pipeline {
       }
       steps { 
         echo 'Starting Docker Container'
-        withDockerContainer(image: 'node:14') {
+        withDockerContainer(image: 'node:latest') {
           sh '''
             cd website
             echo 'Installing dependencies'
@@ -92,7 +92,7 @@ pipeline {
       }
       steps {
         echo 'Starting Docker Container'
-        withDockerContainer(image: 'node:14') {
+        withDockerContainer(image: 'node:latest') {
           sh '''
             cd website
             sed -i "s|url: '.*'|url: 'https://dev-bcdocs.proximaxtest.com'|" siteConfig.js
