@@ -229,18 +229,6 @@ Refering to the above, the lower and higher, we can represent uint64 id in a hex
 
 - https://lyrasithara.xpxsirius.io
 
-### Testnet 1
-
-- https://bctestnet1.brimstone.xpxsirius.io/
-
-- https://bctestnet2.brimstone.xpxsirius.io/
-
-- https://bctestnet3.brimstone.xpxsirius.io/
-
-#### Testnet 1 Faucet
-
-- https://bctestnetfaucet.xpxsirius.io
-
 ### Testnet 2
 
 - https://api-1.testnet2.xpxsirius.io
