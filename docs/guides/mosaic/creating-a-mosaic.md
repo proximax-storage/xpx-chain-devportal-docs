@@ -7,7 +7,7 @@ Follow this guide to create a [mosaic (SDA)](../../built-in-features/mosaic.md).
 
 ## Background
 
-A mosaic is synonomously known as Sirius Digital Asset - SDA - are used interchangeably. SDAs can be used to represent any asset in the blockchain such as objects, tickets, coupons, stock share representation, and even your cryptocurrency.
+A mosaic is synonomously known as Sirius Digital Asset (SDA), Mosaics and SDAs are used interchangeably. SDAs can be used to represent any asset in the blockchain such as objects, tickets, coupons, stock share representation, and even your cryptocurrency.
 
 ## Prerequisites
 
