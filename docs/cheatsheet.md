@@ -223,10 +223,6 @@ Refering to the above, the lower and higher, we can represent uint64 id in a hex
 
 - https://betelgeuse.xpxsirius.io
 
-- https://bigcalvin.xpxsirius.io
-
-- https://delphinus.xpxsirius.io
-
 - https://lyrasithara.xpxsirius.io
 
 ### Testnet 2
